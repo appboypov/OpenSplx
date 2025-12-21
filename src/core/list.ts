@@ -4,11 +4,13 @@ import { getTaskProgressForChange, formatTaskStatus } from '../utils/task-progre
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { MarkdownParser } from './parsers/markdown-parser.js';
+import type { TrackedIssue } from './schemas/index.js';
 
 interface ChangeInfo {
   name: string;
   completedTasks: number;
   totalTasks: number;
+  trackedIssue?: string;
 }
 
 export class ListCommand {
@@ -36,13 +38,29 @@ export class ListCommand {
 
       // Collect information about each change
       const changes: ChangeInfo[] = [];
-      
+
       for (const changeDir of changeDirs) {
         const progress = await getTaskProgressForChange(changesDir, changeDir);
+
+        // Try to get tracked issue from proposal.md frontmatter
+        let trackedIssue: string | undefined;
+        try {
+          const proposalPath = path.join(changesDir, changeDir, 'proposal.md');
+          const proposalContent = await fs.readFile(proposalPath, 'utf-8');
+          const parser = new MarkdownParser(proposalContent);
+          const frontmatter = parser.getFrontmatter();
+          if (frontmatter?.trackedIssues && frontmatter.trackedIssues.length > 0) {
+            trackedIssue = frontmatter.trackedIssues[0].id;
+          }
+        } catch {
+          // proposal.md might not exist or be unreadable
+        }
+
         changes.push({
           name: changeDir,
           completedTasks: progress.completed,
-          totalTasks: progress.total
+          totalTasks: progress.total,
+          trackedIssue,
         });
       }
 
@@ -52,11 +70,15 @@ export class ListCommand {
       // Display results
       console.log('Changes:');
       const padding = '  ';
-      const nameWidth = Math.max(...changes.map(c => c.name.length));
+      const getDisplayName = (c: ChangeInfo) => {
+        const issueDisplay = c.trackedIssue ? ` (${c.trackedIssue})` : '';
+        return `${c.name}${issueDisplay}`;
+      };
+      const nameWidth = Math.max(...changes.map(c => getDisplayName(c).length));
       for (const change of changes) {
-        const paddedName = change.name.padEnd(nameWidth);
+        const displayName = getDisplayName(change).padEnd(nameWidth);
         const status = formatTaskStatus({ total: change.totalTasks, completed: change.completedTasks });
-        console.log(`${padding}${paddedName}     ${status}`);
+        console.log(`${padding}${displayName}     ${status}`);
       }
       return;
     }
