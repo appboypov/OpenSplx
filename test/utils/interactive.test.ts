@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { isInteractive, resolveNoInteractive, InteractiveOptions } from '../../src/utils/interactive.js';
+import { isInteractive, resolveNoInteractive } from '../../src/utils/interactive.js';
 
 describe('interactive utilities', () => {
   let originalOpenSpecInteractive: string | undefined;
