@@ -1,5 +1,26 @@
 # @fission-ai/openspec
 
+## Unreleased
+
+### Minor Changes (OpenSplx Fork)
+
+- e51eb99: Add PLX architecture documentation commands (PLX-5)
+
+  - **feat(cli)**: Add `plx/init-architecture` and `plx/update-architecture` slash commands
+  - PLX commands are installed during `plx init` alongside OpenSpec commands
+  - Archive workflow now suggests refreshing architecture documentation after spec updates
+  - Add PLX-specific template and configurator infrastructure
+
+- 258801f: Add external issue tracking support (OpenSplx-#2)
+
+  - **feat(cli)**: Support external issue tracking in proposal frontmatter
+  - Track issues with `tracker` (linear, github, etc.) and `id` fields
+
+- af9ed15: Add plx command alias and rebrand as OpenSplx (OpenSplx-#1)
+
+  - **feat(cli)**: Add `plx` as an alias for `openspec` command
+  - Rebrand fork as OpenSplx while maintaining upstream compatibility
+
 ## 0.16.0
 
 ### Minor Changes
