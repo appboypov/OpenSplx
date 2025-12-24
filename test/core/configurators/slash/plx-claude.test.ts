@@ -51,4 +51,18 @@ describe('PlxClaudeSlashCommandConfigurator', () => {
       expect(updateTarget?.path).toBe('.claude/commands/plx/update-architecture.md');
     });
   });
+
+  describe('resolveAbsolutePath', () => {
+    it('correctly joins project path with init-architecture path', () => {
+      const result = configurator.resolveAbsolutePath('/project', 'init-architecture');
+
+      expect(result).toBe('/project/.claude/commands/plx/init-architecture.md');
+    });
+
+    it('correctly joins project path with update-architecture path', () => {
+      const result = configurator.resolveAbsolutePath('/project', 'update-architecture');
+
+      expect(result).toBe('/project/.claude/commands/plx/update-architecture.md');
+    });
+  });
 });

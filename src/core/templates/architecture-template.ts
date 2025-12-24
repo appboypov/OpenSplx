@@ -1,5 +1,4 @@
 export interface ArchitectureContext {
-  projectName?: string;
   description?: string;
 }
 

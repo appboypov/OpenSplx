@@ -22,7 +22,7 @@ The system SHALL provide a `plx/init-architecture` slash command that instructs 
 - **AND** include frontmatter with name "PLX: Init Architecture", description, category "PLX", and relevant tags
 - **AND** wrap the command body in OpenSpec markers
 - **AND** include guardrails focusing on practical, usable documentation
-- **AND** include steps for: reading package.json/pubspec.yaml, exploring src/ structure, identifying patterns, creating ARCHITECTURE.md at project root
+- **AND** include steps for: reading project manifest files, exploring the project directory structure, identifying patterns, creating ARCHITECTURE.md at project root
 
 ### Requirement: Update Architecture Command
 
