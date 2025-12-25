@@ -13,7 +13,7 @@ import {
 import chalk from 'chalk';
 import ora from 'ora';
 import { FileSystemUtils } from '../utils/file-system.js';
-import { TemplateManager, ProjectContext } from './templates/index.js';
+import { TemplateManager } from './templates/index.js';
 import { ToolRegistry } from './configurators/registry.js';
 import { SlashCommandRegistry } from './configurators/slash/registry.js';
 import { PlxSlashCommandRegistry } from './configurators/slash/plx-registry.js';
@@ -421,7 +421,7 @@ export class InitCommand {
         'Creating OpenSpec structure...'
       );
       await this.createDirectoryStructure(openspecPath);
-      await this.generateFiles(openspecPath, config);
+      await this.generateFiles(projectPath, openspecPath, config);
       structureSpinner.stopAndPersist({
         symbol: PALETTE.white('▌'),
         text: PALETTE.white('OpenSpec structure created'),
@@ -433,7 +433,7 @@ export class InitCommand {
         )
       );
       await this.createDirectoryStructure(openspecPath);
-      await this.ensureTemplateFiles(openspecPath, config);
+      await this.ensureTemplateFiles(projectPath, openspecPath, config);
     }
 
     // Step 2: Configure AI tools
@@ -720,29 +720,28 @@ export class InitCommand {
   }
 
   private async generateFiles(
+    projectPath: string,
     openspecPath: string,
     config: OpenSpecConfig
   ): Promise<void> {
-    await this.writeTemplateFiles(openspecPath, config, false);
+    await this.writeTemplateFiles(projectPath, openspecPath, config, false);
   }
 
   private async ensureTemplateFiles(
+    projectPath: string,
     openspecPath: string,
     config: OpenSpecConfig
   ): Promise<void> {
-    await this.writeTemplateFiles(openspecPath, config, true);
+    await this.writeTemplateFiles(projectPath, openspecPath, config, true);
   }
 
   private async writeTemplateFiles(
+    projectPath: string,
     openspecPath: string,
     config: OpenSpecConfig,
     skipExisting: boolean
   ): Promise<void> {
-    const context: ProjectContext = {
-      // Could be enhanced with prompts for project details
-    };
-
-    const templates = TemplateManager.getTemplates(context);
+    const templates = TemplateManager.getTemplates();
 
     for (const template of templates) {
       const filePath = path.join(openspecPath, template.path);
@@ -752,12 +751,14 @@ export class InitCommand {
         continue;
       }
 
-      const content =
-        typeof template.content === 'function'
-          ? template.content(context)
-          : template.content;
+      await FileSystemUtils.writeFile(filePath, template.content);
+    }
 
-      await FileSystemUtils.writeFile(filePath, content);
+    // Write ARCHITECTURE.md at project root
+    const architecturePath = path.join(projectPath, 'ARCHITECTURE.md');
+    if (!skipExisting || !(await FileSystemUtils.fileExists(architecturePath))) {
+      const architectureContent = TemplateManager.getArchitectureTemplate();
+      await FileSystemUtils.writeFile(architecturePath, architectureContent);
     }
   }
 
@@ -892,10 +893,10 @@ export class InitCommand {
     console.log(
       chalk.gray('────────────────────────────────────────────────────────────')
     );
-    console.log(PALETTE.white('1. Populate your project context:'));
+    console.log(PALETTE.white('1. Populate your architecture documentation:'));
     console.log(
       PALETTE.lightGray(
-        '   "Please read openspec/project.md and help me fill it out'
+        '   "Please read ARCHITECTURE.md and help me fill it out'
       )
     );
     console.log(

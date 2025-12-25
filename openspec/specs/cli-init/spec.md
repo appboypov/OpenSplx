@@ -25,12 +25,13 @@ The command SHALL create the complete OpenSpec directory structure with all requ
 - **WHEN** `openspec init` is executed
 - **THEN** create the following directory structure:
 ```
-openspec/
-├── project.md
-├── AGENTS.md
-├── specs/
-└── changes/
-    └── archive/
+project-root/
+├── ARCHITECTURE.md
+└── openspec/
+    ├── AGENTS.md
+    ├── specs/
+    └── changes/
+        └── archive/
 ```
 
 ### Requirement: File Generation
@@ -39,7 +40,7 @@ The command SHALL generate required template files with appropriate content for 
 #### Scenario: Generating template files
 - **WHEN** initializing OpenSpec
 - **THEN** generate `openspec/AGENTS.md` containing complete OpenSpec instructions for AI assistants
-- **AND** generate `project.md` with project context template
+- **AND** generate `ARCHITECTURE.md` at project root with architecture documentation template
 
 ### Requirement: AI Tool Configuration
 The command SHALL configure AI coding assistants with OpenSpec instructions using a grouped selection experience so teams can enable native integrations while always provisioning guidance for other assistants.

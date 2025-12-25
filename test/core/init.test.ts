@@ -79,14 +79,14 @@ describe('InitCommand', () => {
       ).toBe(true);
     });
 
-    it('should create AGENTS.md and project.md', async () => {
+    it('should create AGENTS.md and ARCHITECTURE.md', async () => {
       queueSelections('claude', DONE);
 
       await initCommand.execute(testDir);
 
       const openspecPath = path.join(testDir, 'openspec');
       expect(await fileExists(path.join(openspecPath, 'AGENTS.md'))).toBe(true);
-      expect(await fileExists(path.join(openspecPath, 'project.md'))).toBe(
+      expect(await fileExists(path.join(testDir, 'ARCHITECTURE.md'))).toBe(
         true
       );
 
@@ -96,11 +96,11 @@ describe('InitCommand', () => {
       );
       expect(agentsContent).toContain('OpenSpec Instructions');
 
-      const projectContent = await fs.readFile(
-        path.join(openspecPath, 'project.md'),
+      const architectureContent = await fs.readFile(
+        path.join(testDir, 'ARCHITECTURE.md'),
         'utf-8'
       );
-      expect(projectContent).toContain('Project Context');
+      expect(architectureContent).toContain('Architecture');
     });
 
     it('should create CLAUDE.md when Claude Code is selected', async () => {
@@ -812,12 +812,12 @@ describe('InitCommand', () => {
       );
     });
 
-    it('should recreate deleted openspec/project.md in extend mode', async () => {
+    it('should recreate deleted ARCHITECTURE.md in extend mode', async () => {
       await testFileRecreationInExtendMode(
         testDir,
         initCommand,
-        'openspec/project.md',
-        'Project Context'
+        'ARCHITECTURE.md',
+        'Architecture'
       );
     });
 

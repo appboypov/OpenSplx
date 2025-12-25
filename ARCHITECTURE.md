@@ -259,8 +259,8 @@ OpenSpec creates/updates these files in a project:
 
 | File | Purpose |
 |------|---------|
+| `ARCHITECTURE.md` (root) | Project context and conventions |
 | `openspec/AGENTS.md` | AI agent instructions |
-| `openspec/project.md` | Project context template |
 | `AGENTS.md` (root) | Universal stub for AGENTS.md-compatible tools |
 | `.claude/commands/` | Claude Code slash commands |
 | Various tool configs | Tool-specific configuration files |

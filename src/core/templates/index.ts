@@ -1,5 +1,4 @@
 import { agentsTemplate } from './agents-template.js';
-import { projectTemplate, ProjectContext } from './project-template.js';
 import { claudeTemplate } from './claude-template.js';
 import { clineTemplate } from './cline-template.js';
 import { costrictTemplate } from './costrict-template.js';
@@ -10,19 +9,15 @@ import { architectureTemplate, ArchitectureContext } from './architecture-templa
 
 export interface Template {
   path: string;
-  content: string | ((context: ProjectContext) => string);
+  content: string;
 }
 
 export class TemplateManager {
-  static getTemplates(context: ProjectContext = {}): Template[] {
+  static getTemplates(): Template[] {
     return [
       {
         path: 'AGENTS.md',
         content: agentsTemplate
-      },
-      {
-        path: 'project.md',
-        content: projectTemplate(context)
       }
     ];
   }
@@ -56,7 +51,6 @@ export class TemplateManager {
   }
 }
 
-export { ProjectContext } from './project-template.js';
 export type { SlashCommandId } from './slash-command-templates.js';
 export type { PlxSlashCommandId } from './plx-slash-command-templates.js';
 export type { ArchitectureContext } from './architecture-template.js';
