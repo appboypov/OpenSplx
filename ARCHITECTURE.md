@@ -38,6 +38,7 @@ OpenSplx/
 │   │   ├── change.ts       # Change management subcommands
 │   │   ├── completion.ts   # Shell completion commands
 │   │   ├── config.ts       # Configuration commands
+│   │   ├── get.ts          # Artifact retrieval (get task)
 │   │   ├── show.ts         # Item display command
 │   │   ├── spec.ts         # Spec management commands
 │   │   └── validate.ts     # Validation command
@@ -59,13 +60,17 @@ OpenSplx/
 │   │   ├── templates/      # Template generators
 │   │   └── validation/     # Validation rules and constants
 │   └── utils/              # Shared utilities
+│       ├── change-prioritization.ts # Change priority scoring
 │       ├── command-name.ts # CLI command name detection
 │       ├── file-system.ts  # File operations with markers
 │       ├── interactive.ts  # Interactive mode helpers
 │       ├── item-discovery.ts # Find specs/changes
 │       ├── match.ts        # Pattern matching utilities
 │       ├── shell-detection.ts # Detect user's shell
-│       └── task-progress.ts # Task completion tracking
+│       ├── task-file-parser.ts # Parse task filenames (NNN-name.md)
+│       ├── task-migration.ts # Legacy tasks.md migration
+│       ├── task-progress.ts # Task completion tracking
+│       └── task-status.ts  # Task status (to-do/in-progress/done)
 ├── test/                   # Test files (mirrors src structure)
 ├── openspec/               # OpenSpec directory (dogfooding)
 ├── .claude/commands/       # Claude Code slash commands
@@ -97,6 +102,7 @@ Each command class encapsulates its own logic:
 - `ChangeCommand` - Change management
 - `CompletionCommand` - Shell completions
 - `ConfigCommand` - Global configuration
+- `GetCommand` - Retrieve project artifacts (tasks)
 
 ### Registry Pattern
 
@@ -147,8 +153,29 @@ ValidationReport { valid, issues, summary }
 Schema hierarchy:
 - `ScenarioSchema` → `RequirementSchema` → `SpecSchema`
 - `DeltaSchema` → `ChangeSchema`
-- `TrackedIssueSchema` (embedded in Change)
+- `TrackedIssueSchema` (embedded in Change frontmatter)
 - `GlobalConfigSchema` (for CLI configuration)
+
+### External Issue Tracking
+
+Change proposals can link to external issue trackers via YAML frontmatter in `proposal.md`:
+
+```yaml
+---
+tracked-issues:
+  - tracker: linear
+    id: PLX-123
+    url: https://linear.app/team/issue/PLX-123
+  - tracker: github
+    id: "#45"
+    url: https://github.com/org/repo/issues/45
+---
+```
+
+Tracked issues are:
+- Displayed in `openspec list` output alongside change names
+- Included in `openspec show --json` output
+- Reported when archiving changes
 
 ### Template System
 
@@ -243,7 +270,7 @@ Move change to archive/YYYY-MM-DD-<name>/
 
 ### Global Configuration
 
-Location: `~/.config/openspec/config.json` (XDG-compliant)
+Location: `~/.config/openspec/config.json` (XDG-compliant, respects `XDG_CONFIG_HOME`)
 
 ```json
 {
@@ -251,7 +278,14 @@ Location: `~/.config/openspec/config.json` (XDG-compliant)
 }
 ```
 
-Managed via `openspec config get/set/delete` commands.
+Managed via `openspec config` subcommands:
+- `config path` - Show config file location
+- `config list [--json]` - Show all settings
+- `config get <key>` - Get specific value (raw, scriptable)
+- `config set <key> <value>` - Set value (auto-coerces types)
+- `config unset <key>` - Remove key (revert to default)
+- `config reset --all [-y]` - Reset all configuration
+- `config edit` - Open config in `$EDITOR`
 
 ### Project Configuration
 
@@ -259,25 +293,40 @@ OpenSpec creates/updates these files in a project:
 
 | File | Purpose |
 |------|---------|
-| `ARCHITECTURE.md` (root) | Project context and conventions |
+| `ARCHITECTURE.md` (root) | Project context and conventions (auto-generated during init) |
 | `openspec/AGENTS.md` | AI agent instructions |
 | `AGENTS.md` (root) | Universal stub for AGENTS.md-compatible tools |
 | `.claude/commands/` | Claude Code slash commands |
 | Various tool configs | Tool-specific configuration files |
 
+The `openspec init` command generates `ARCHITECTURE.md` at the project root with technology stack, folder structure, and architectural patterns. This replaces the previous `openspec/project.md` approach.
+
 ### AI Tool Support
 
-Tools are defined in `src/core/config.ts` with availability flags:
+Tools are defined in `src/core/config.ts` with availability flags. Currently supported:
 
 | Tool | Config File | Slash Commands |
 |------|-------------|----------------|
+| Amazon Q Developer | `.amazonq/rules/` | `.amazonq/prompts/` |
+| Antigravity | `.antigravity/rules/` | `.antigravity/prompts/` |
+| Auggie (CLI) | `.auggie/rules/` | `.auggie/prompts/` |
 | Claude Code | `.claude/settings.local.json` | `.claude/commands/openspec/` |
-| Cursor | `.cursor/rules/openspec.mdc` | `.cursor/prompts/` |
-| Windsurf | `.windsurf/workflows/` | (workflow files) |
 | Cline | `.clinerules` | `.clinerules/workflows/` |
 | Codex | N/A | `~/.codex/prompts/` (global) |
-| GitHub Copilot | N/A | `.github/prompts/` |
-| ... | ... | ... |
+| CodeBuddy Code | `.codebuddy/rules/` | `.codebuddy/prompts/` |
+| CoStrict | `.costrict/` | `.costrict/prompts/` |
+| Crush | `.crush/rules/` | `.crush/prompts/` |
+| Cursor | `.cursor/rules/openspec.mdc` | `.cursor/prompts/` |
+| Factory Droid | `.factory/rules/` | `.factory/prompts/` |
+| Gemini CLI | `.gemini/` | `.gemini/prompts/` |
+| GitHub Copilot | `.github/copilot-instructions.md` | `.github/prompts/` |
+| iFlow | `.iflow/rules/` | `.iflow/prompts/` |
+| Kilo Code | `.kilocode/rules/` | `.kilocode/prompts/` |
+| OpenCode | `.opencode/rules/` | `.opencode/prompts/` |
+| Qoder (CLI) | `.qoder/rules/` | `.qoder/prompts/` |
+| Qwen Code | `.qwen/rules/` | `.qwen/prompts/` |
+| RooCode | `.roocode/rules/` | `.roocode/prompts/` |
+| Windsurf | `.windsurf/workflows/` | (workflow files) |
 
 ## Key Conventions
 
@@ -318,6 +367,25 @@ if (!options.noInteractive) {
 - Commands are async and return `Promise<void>`
 - Parallel operations where possible (e.g., `Promise.all` for independent validations)
 
+### Shell Completions
+
+The CLI supports shell completions for tab-completion of commands and arguments:
+
+```bash
+openspec completion install [shell]   # Install completions
+openspec completion generate [shell]  # Output script to stdout
+openspec completion uninstall [shell] # Remove completions
+```
+
+Shell auto-detection uses `$SHELL` environment variable. Currently supports: `zsh`.
+
+The completion system uses:
+- `src/core/completions/command-registry.ts` - Defines available commands and their arguments
+- `src/core/completions/generators/` - Shell-specific script generators
+- `src/core/completions/installers/` - Shell-specific installation logic
+
+Hidden `__complete <type>` command provides machine-readable completion data for dynamic completions (changes, specs, archived-changes).
+
 ## Testing
 
 Tests mirror the source structure under `test/`:
@@ -350,16 +418,94 @@ Build output goes to `dist/` with:
 - `.d.ts` declaration files
 - Source maps
 
+## Task Management System
+
+OpenSplx includes a task management system for tracking implementation progress within changes.
+
+### Task File Structure
+
+Tasks are stored in `openspec/changes/<change-name>/tasks/` as individual markdown files:
+
+```
+tasks/
+├── 001-design.md       # First task
+├── 002-implement.md    # Second task
+└── 003-test.md         # Third task
+```
+
+Task filenames follow the pattern `NNN-<kebab-case-name>.md` where NNN is a zero-padded sequence number.
+
+### Task Status
+
+Each task file has YAML frontmatter with a status field:
+
+```yaml
+---
+status: to-do    # or 'in-progress' or 'done'
+---
+```
+
+Status transitions:
+- `to-do` → `in-progress` (when starting work)
+- `in-progress` → `done` (when completing)
+
+### Task Progress Tracking
+
+Progress is calculated from checkbox items in task files:
+
+```markdown
+## Implementation Checklist
+- [x] Completed item
+- [ ] Pending item
+```
+
+Checkboxes under `## Constraints` and `## Acceptance Criteria` sections are excluded from progress calculations.
+
+### Change Prioritization
+
+The `openspec get task` command selects the highest-priority change using:
+
+1. **Completion Percentage** (highest first): Changes closer to completion get priority
+2. **Creation Date** (oldest first): Tiebreaker when percentages are equal
+
+Changes with 0 tasks or 100% completion are filtered out as non-actionable.
+
+### Get Task Flow
+
+```
+User runs: openspec get task
+    ↓
+getPrioritizedChange() → find highest-priority change
+    ↓
+Find next task (in-progress or first to-do)
+    ↓
+Display proposal.md, design.md (optional), and task content
+```
+
+With `--did-complete-previous`:
+```
+Mark in-progress task as 'done'
+    ↓
+Complete all Implementation Checklist items
+    ↓
+Find next to-do task → mark as 'in-progress'
+    ↓
+Display next task (without proposal/design)
+```
+
 ## Fork-Specific Features (OpenSplx)
 
 OpenSplx extends OpenSpec with:
 
-1. **PLX Command Alias**: Both `openspec` and `plx` CLI commands
-2. **PLX Slash Commands**: Additional commands in `.claude/commands/plx/`
+1. **PLX Command Alias**: Both `openspec` and `plx` CLI commands work identically
+2. **Dynamic Command Name**: CLI detects invocation name (`openspec` or `plx`) and uses it in output messages, help text, and shell completions via `src/utils/command-name.ts`
+3. **PLX Slash Commands**: Additional commands in `.claude/commands/plx/`
    - `/plx/init-architecture` - Generate ARCHITECTURE.md
    - `/plx/update-architecture` - Refresh architecture documentation
-3. **PlxSlashCommandRegistry**: Separate registry for PLX-specific commands
-4. **Extended Templates**: Architecture template generation
+   - `/plx/get-task` - Get next prioritized task and execute workflow
+4. **PlxSlashCommandRegistry**: Separate registry for PLX-specific commands
+5. **Extended Templates**: Architecture template generation
+6. **Get Command**: `openspec get task` for automated task retrieval and completion
 
 ## Extending the System
 
