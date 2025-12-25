@@ -8,7 +8,6 @@ import {
   getTaskStatus,
   setTaskStatus,
   DEFAULT_TASK_STATUS,
-  TaskStatus,
 } from '../../src/utils/task-status.js';
 
 describe('task-status', () => {

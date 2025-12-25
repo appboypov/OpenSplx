@@ -1,5 +1,4 @@
 import { promises as fs } from 'fs';
-import path from 'path';
 
 export type TaskStatus = 'to-do' | 'in-progress' | 'done';
 
@@ -9,11 +8,19 @@ const FRONTMATTER_REGEX = /^---\n([\s\S]*?)\n---/;
 const STATUS_LINE_REGEX = /^status:\s*(to-do|in-progress|done)\s*$/m;
 
 /**
+ * Normalizes line endings to Unix-style (\n).
+ */
+function normalizeContent(content: string): string {
+  return content.replace(/\r\n?/g, '\n');
+}
+
+/**
  * Parses the task status from YAML frontmatter in a task file's content.
  * Returns the default status ('to-do') if frontmatter or status field is missing.
  */
 export function parseStatus(content: string): TaskStatus {
-  const frontmatterMatch = content.match(FRONTMATTER_REGEX);
+  const normalized = normalizeContent(content);
+  const frontmatterMatch = normalized.match(FRONTMATTER_REGEX);
   if (!frontmatterMatch) {
     return DEFAULT_TASK_STATUS;
   }
@@ -32,15 +39,16 @@ export function parseStatus(content: string): TaskStatus {
  * Adds frontmatter with status if it doesn't exist.
  */
 export function updateStatus(content: string, newStatus: TaskStatus): string {
-  const frontmatterMatch = content.match(FRONTMATTER_REGEX);
+  const normalized = normalizeContent(content);
+  const frontmatterMatch = normalized.match(FRONTMATTER_REGEX);
 
   if (!frontmatterMatch) {
     // No frontmatter - add it at the beginning
-    return `---\nstatus: ${newStatus}\n---\n\n${content}`;
+    return `---\nstatus: ${newStatus}\n---\n\n${normalized}`;
   }
 
   const frontmatter = frontmatterMatch[1];
-  const afterFrontmatter = content.slice(frontmatterMatch[0].length);
+  const afterFrontmatter = normalized.slice(frontmatterMatch[0].length);
 
   if (STATUS_LINE_REGEX.test(frontmatter)) {
     // Update existing status line

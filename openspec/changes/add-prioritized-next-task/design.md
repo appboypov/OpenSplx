@@ -48,12 +48,12 @@ Rationale: YAML frontmatter is a standard pattern, easy to parse, and keeps stat
 ### Decision: Completion Percentage Calculation
 
 ```
-percentage = (completed_tasks / total_tasks) * 100
+percentage = (completed_checkboxes / total_checkboxes) * 100
 ```
 
-Where `completed_tasks` = tasks with `status: done`, `total_tasks` = all tasks in change.
+Where `completed_checkboxes` = checked items `[x]` in Implementation Checklist sections, `total_checkboxes` = all checkbox items (excludes Constraints and Acceptance Criteria sections).
 
-When `total_tasks = 0`, percentage = 0.
+When `total_checkboxes = 0`, percentage = 0.
 
 Changes at 100% completion are still selectable (for edge cases where all tasks are done but change isn't archived).
 

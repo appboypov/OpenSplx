@@ -5,7 +5,7 @@ import {
   TaskProgress,
   TaskFileInfo,
 } from './task-progress.js';
-import { parseStatus, TaskStatus } from './task-status.js';
+import { parseStatus } from './task-status.js';
 
 export interface PrioritizedChange {
   id: string;
