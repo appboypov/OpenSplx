@@ -69,11 +69,11 @@ Alternatives considered:
 ### Decision: Command Structure
 
 ```bash
-openspec next-task [--did-complete-previous] [--json]
-openspec next [--did-complete-previous] [--json]  # alias
+openspec act next [--did-complete-previous] [--json]
+plx act next [--did-complete-previous] [--json]
 ```
 
-The `next-task` name follows the verb-noun pattern used by `next` in workflow contexts. The `next` alias provides brevity.
+The `act` parent command groups workflow actions. The `next` subcommand follows the pattern of other grouped commands like `openspec change show`.
 
 ## Risks / Trade-offs
 

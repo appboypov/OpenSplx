@@ -35,8 +35,8 @@ All code is reviewed for:
 - [ ] 4.2 Run `npm run lint` and fix any errors
 - [ ] 4.3 Verify task-status.ts exports and functionality
 - [ ] 4.4 Verify change-prioritization.ts exports and functionality
-- [ ] 4.5 Verify next-task command registration and help text
-- [ ] 4.6 Test command manually: `openspec next-task --help`
+- [ ] 4.5 Verify act command registration and help text
+- [ ] 4.6 Test command manually: `openspec act next --help`
 
 ## Notes
 

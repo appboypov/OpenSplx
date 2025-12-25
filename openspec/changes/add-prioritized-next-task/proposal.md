@@ -1,4 +1,4 @@
-# Change: Add prioritized next-task command with status tracking
+# Change: Add prioritized act next command with status tracking
 
 ---
 tracked-issues:
@@ -16,19 +16,21 @@ Developers need an automated way to identify the next task to work on across mul
 
 ## What Changes
 
-- Add `openspec next-task` CLI command (with `next` alias)
+- Add `openspec act next` CLI command (parent `act` command with `next` subcommand)
 - Introduce task status field in task file frontmatter (`to-do`, `in-progress`, `done`)
 - Implement completion-based change prioritization (highest % first, oldest as tiebreaker)
 - Support `--did-complete-previous` flag for automatic status transitions
 - Add `--json` flag for machine-readable output
-- Create new capability spec: `cli-next-task`
+- Create new capability spec: `cli-act-next`
+- Add PLX slash command: `plx/act-next`
 
 ## Impact
 
-- Affected specs: `cli-next-task` (new)
+- Affected specs: `cli-act-next` (new)
 - Affected code:
-  - `src/commands/next-task.ts` (new)
+  - `src/commands/act.ts` (new)
   - `src/cli/index.ts` (register command)
   - `src/utils/task-status.ts` (new)
   - `src/utils/change-prioritization.ts` (new)
   - `src/utils/task-progress.ts` (extend)
+  - `.claude/commands/plx/act-next.md` (new)
