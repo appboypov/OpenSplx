@@ -41,6 +41,10 @@ describe('act next command', () => {
         '# Change: Test Change\n\n## Why\nTest\n\n## What Changes\n- Test'
       );
       await fs.writeFile(
+        path.join(changeDir, 'design.md'),
+        '## Design\n\nTest design content'
+      );
+      await fs.writeFile(
         path.join(tasksDir, '001-first-task.md'),
         `---
 status: to-do
@@ -60,6 +64,8 @@ status: to-do
           encoding: 'utf-8',
         });
         expect(output).toContain('Proposal: test-change');
+        expect(output).toContain('Design');
+        expect(output).toContain('Test design content');
         expect(output).toContain('Task 1: first-task');
         expect(output).toContain('Do something');
       } finally {
