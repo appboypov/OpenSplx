@@ -18,9 +18,9 @@ openspec/
     ├── [change-name]/      # Descriptive change identifier
     │   ├── proposal.md     # Why, what, and impact
     │   ├── tasks/          # Task files directory
-    │   │   ├── 001-implement.md
-    │   │   ├── 002-review.md
-    │   │   └── 003-test.md
+    │   │   ├── 001-<task-name>.md
+    │   │   ├── 002-<task-name>.md
+    │   │   └── NNN-<task-name>.md
     │   ├── design.md       # Technical decisions (optional)
     │   └── specs/          # Complete future state
     │       └── [capability]/

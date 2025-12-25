@@ -7,7 +7,7 @@ Instructions for AI coding assistants using OpenSpec for spec-driven development
 - Search existing work: `openspec spec list --long`, `openspec list` (use `rg` only for full-text search)
 - Decide scope: new capability vs modify existing capability
 - Pick a unique `change-id`: kebab-case, verb-led (`add-`, `update-`, `remove-`, `refactor-`)
-- Scaffold: `proposal.md`, `tasks/` directory (minimum 3 files: 001-implement.md, 002-review.md, 003-test.md), `design.md` (only if needed), and delta specs per affected capability
+- Scaffold: `proposal.md`, `tasks/` directory (minimum 3 files: implementation tasks, one review task, one test task), `design.md` (only if needed), and delta specs per affected capability
 - Write deltas: use `## ADDED|MODIFIED|REMOVED|RENAMED Requirements`; include at least one `#### Scenario:` per requirement
 - Validate: `openspec validate [change-id] --strict` and fix issues
 - Request approval: Do not start implementation until proposal is approved
@@ -177,9 +177,9 @@ openspec/
 │   │   ├── proposal.md     # Why, what, impact
 │   │   ├── design.md       # Technical decisions (optional; see criteria)
 │   │   ├── tasks/          # Task files (numbered sequence)
-│   │   │   ├── 001-implement.md
-│   │   │   ├── 002-review.md
-│   │   │   └── 003-test.md
+│   │   │   ├── 001-<task-name>.md
+│   │   │   ├── 002-<task-name>.md
+│   │   │   └── NNN-<task-name>.md
 │   │   └── specs/          # Delta changes
 │   │       └── [capability]/
 │   │           └── spec.md # ADDED/MODIFIED/REMOVED
@@ -243,13 +243,14 @@ If multiple capabilities are affected, create multiple delta files under `change
 
 4. **Create tasks/ directory with task files:**
 
-Create a minimum of 3 task files, named with sequence prefix `NNN-<name>.md`:
+Create a minimum of 3 task files, named with sequence prefix `NNN-<name>.md`. Include implementation tasks as needed, followed by at least one review task and one test task:
 
 ```
 tasks/
-├── 001-implement.md    # Implementation tasks
-├── 002-review.md       # Code review tasks
-└── 003-test.md         # Testing tasks
+├── 001-<first-task>.md
+├── 002-<second-task>.md
+├── ...
+└── NNN-<last-task>.md
 ```
 
 Each task file follows this template:
@@ -266,23 +267,19 @@ Each task file follows this template:
 <Expected state after this task>
 
 ## Constraints
-- [ ] Constraint 1
-- [ ] Constraint 2
+<Add constraints as unchecked markdown checkboxes>
 
 ## Acceptance Criteria
-- [ ] Criterion 1
-- [ ] Criterion 2
+<Add acceptance criteria as unchecked markdown checkboxes>
 
 ## Implementation Checklist
-- [ ] Step 1
-- [ ] Step 2
-- [ ] Step 3
+<Add implementation steps as unchecked markdown checkboxes>
 
 ## Notes
 <Additional context if needed>
 ```
 
-**Important**: Checkboxes under `## Constraints` and `## Acceptance Criteria` are NOT counted in task progress. Only checkboxes under `## Implementation Checklist` are counted.
+**Important**: Checkboxes under `## Constraints` and `## Acceptance Criteria` are NOT counted in task progress. Checkboxes under all other sections (including `## Implementation Checklist`) ARE counted.
 
 Each task file should be scoped to be completable within a single AI conversation context (100k-120k tokens).
 
@@ -463,9 +460,9 @@ openspec validate $CHANGE --strict
 openspec/changes/add-2fa-notify/
 ├── proposal.md
 ├── tasks/
-│   ├── 001-implement.md
-│   ├── 002-review.md
-│   └── 003-test.md
+│   ├── 001-<first-task>.md
+│   ├── ...
+│   └── NNN-<last-task>.md
 └── specs/
     ├── auth/
     │   └── spec.md   # ADDED: Two-Factor Authentication

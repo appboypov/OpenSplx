@@ -6,7 +6,7 @@
 #### Scenario: Documenting task directory structure
 - **WHEN** an agent reads the task creation instructions
 - **THEN** find documentation that tasks are stored in `tasks/` directory
-- **AND** find that each task file is named with a three-digit prefix (e.g., `001-implement.md`)
+- **AND** find that each task file is named with a three-digit prefix (e.g., `001-<task-name>.md`)
 - **AND** find that files are processed in sequence order based on the numeric prefix
 - **AND** find guidance that minimum 3 task files are recommended: implementation, review, testing
 
@@ -39,4 +39,4 @@
 - **WHEN** an agent names task files
 - **THEN** find guidance to use format `NNN-<kebab-case-name>.md`
 - **AND** find that NNN is a three-digit zero-padded sequence number
-- **AND** find examples: `001-implement-core.md`, `002-review.md`, `003-test.md`
+- **AND** find examples using `NNN-<descriptive-name>.md` pattern
