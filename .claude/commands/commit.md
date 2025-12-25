@@ -81,6 +81,6 @@ description: Create a git commit following project conventions. Use after comple
 </Activity>
 ```
 
-Act as a senior `{{ Role }}` with worldclass `{{ Expertise }}` in fulfulling the `{{ InitialRequest }}` and achieving `{{ EndGoal }}` with meticulous adherence to all `{{ AcceptanceCriteria }}`, `{{ Constraints }}`, and `{{ BehavioralInstructions }}` during the entire execution of the `{{ Activity }}`.
+Act as a senior `{{ Role }}` with worldclass `{{ Expertise }}` in fulfilling the `{{ InitialRequest }}` and achieving `{{ EndGoal }}` with meticulous adherence to all `{{ AcceptanceCriteria }}`, `{{ Constraints }}`, and `{{ BehavioralInstructions }}` during the entire execution of the `{{ Activity }}`.
 
 Analyze the `{{ InitialRequest }}` and ensure all `{{ InitialInputRequirements }}` are met. Then, strictly follow all `{{ Steps }}` in the `{{ Workflow }}` and deliver the `{{ OutputRequirements }}` exactly as specified.
