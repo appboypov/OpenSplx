@@ -3,9 +3,9 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 
-describe('act next command', () => {
+describe('get task command', () => {
   const projectRoot = process.cwd();
-  const testDir = path.join(projectRoot, 'test-act-command-tmp');
+  const testDir = path.join(projectRoot, 'test-get-command-tmp');
   const changesDir = path.join(testDir, 'openspec', 'changes');
   const openspecBin = path.join(projectRoot, 'bin', 'openspec.js');
 
@@ -22,7 +22,7 @@ describe('act next command', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${openspecBin} act next 2>&1`, {
+        const output = execSync(`node ${openspecBin} get task 2>&1`, {
           encoding: 'utf-8',
         });
         expect(output).toContain('No active changes found');
@@ -60,7 +60,7 @@ status: to-do
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${openspecBin} act next`, {
+        const output = execSync(`node ${openspecBin} get task`, {
           encoding: 'utf-8',
         });
         expect(output).toContain('Proposal: test-change');
@@ -98,7 +98,7 @@ status: done
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${openspecBin} act next 2>&1`, {
+        const output = execSync(`node ${openspecBin} get task 2>&1`, {
           encoding: 'utf-8',
         });
         expect(output).toContain('No active changes found');
@@ -134,7 +134,7 @@ status: in-progress
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${openspecBin} act next --json`, {
+        const output = execSync(`node ${openspecBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -156,7 +156,7 @@ status: in-progress
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${openspecBin} act next --json`, {
+        const output = execSync(`node ${openspecBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -206,7 +206,7 @@ status: to-do
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${openspecBin} act next --did-complete-previous`,
+          `node ${openspecBin} get task --did-complete-previous`,
           { encoding: 'utf-8' }
         );
 
@@ -261,7 +261,7 @@ status: to-do
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${openspecBin} act next --did-complete-previous 2>&1`,
+          `node ${openspecBin} get task --did-complete-previous 2>&1`,
           { encoding: 'utf-8' }
         );
         expect(output).toContain('No in-progress task found');
@@ -273,6 +273,177 @@ status: to-do
           'utf-8'
         );
         expect(taskContent).toContain('status: in-progress');
+      } finally {
+        process.chdir(originalCwd);
+      }
+    });
+
+    it('marks Implementation Checklist items as complete', async () => {
+      const changeDir = path.join(changesDir, 'test-change');
+      const tasksDir = path.join(changeDir, 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
+
+      await fs.writeFile(
+        path.join(changeDir, 'proposal.md'),
+        '# Change: Test\n\n## Why\nTest\n\n## What Changes\n- Test'
+      );
+      await fs.writeFile(
+        path.join(tasksDir, '001-first-task.md'),
+        `---
+status: in-progress
+---
+
+# Task: First Task
+
+## Implementation Checklist
+- [ ] First item
+- [x] Already done
+- [ ] Third item
+
+## Constraints
+- [ ] Constraint item
+
+## Acceptance Criteria
+- [ ] Acceptance item
+`
+      );
+      await fs.writeFile(
+        path.join(tasksDir, '002-second-task.md'),
+        `---
+status: to-do
+---
+
+# Task: Second Task
+
+## Implementation Checklist
+- [ ] Next item
+`
+      );
+
+      const originalCwd = process.cwd();
+      try {
+        process.chdir(testDir);
+        execSync(
+          `node ${openspecBin} get task --did-complete-previous`,
+          { encoding: 'utf-8' }
+        );
+
+        // Verify first task checkboxes
+        const firstTaskContent = await fs.readFile(
+          path.join(tasksDir, '001-first-task.md'),
+          'utf-8'
+        );
+
+        // Implementation Checklist items should be checked
+        expect(firstTaskContent).toContain('[x] First item');
+        expect(firstTaskContent).toContain('[x] Third item');
+
+        // Constraints and Acceptance Criteria should NOT be modified
+        expect(firstTaskContent).toMatch(/## Constraints\n- \[ \] Constraint item/);
+        expect(firstTaskContent).toMatch(/## Acceptance Criteria\n- \[ \] Acceptance item/);
+      } finally {
+        process.chdir(originalCwd);
+      }
+    });
+
+    it('includes completedTask in JSON output', async () => {
+      const changeDir = path.join(changesDir, 'test-change');
+      const tasksDir = path.join(changeDir, 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
+
+      await fs.writeFile(
+        path.join(changeDir, 'proposal.md'),
+        '# Change: Test\n\n## Why\nTest\n\n## What Changes\n- Test'
+      );
+      await fs.writeFile(
+        path.join(tasksDir, '001-first-task.md'),
+        `---
+status: in-progress
+---
+
+# Task: First Task
+
+## Implementation Checklist
+- [ ] First item
+- [ ] Second item
+`
+      );
+      await fs.writeFile(
+        path.join(tasksDir, '002-second-task.md'),
+        `---
+status: to-do
+---
+
+# Task: Second Task
+
+## Implementation Checklist
+- [ ] Next item
+`
+      );
+
+      const originalCwd = process.cwd();
+      try {
+        process.chdir(testDir);
+        const output = execSync(
+          `node ${openspecBin} get task --did-complete-previous --json`,
+          { encoding: 'utf-8' }
+        );
+        const json = JSON.parse(output);
+
+        expect(json.completedTask).toBeDefined();
+        expect(json.completedTask.name).toBe('first-task');
+        expect(json.completedTask.completedItems).toContain('First item');
+        expect(json.completedTask.completedItems).toContain('Second item');
+      } finally {
+        process.chdir(originalCwd);
+      }
+    });
+
+    it('shows completed task info in text output', async () => {
+      const changeDir = path.join(changesDir, 'test-change');
+      const tasksDir = path.join(changeDir, 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
+
+      await fs.writeFile(
+        path.join(changeDir, 'proposal.md'),
+        '# Change: Test\n\n## Why\nTest\n\n## What Changes\n- Test'
+      );
+      await fs.writeFile(
+        path.join(tasksDir, '001-first-task.md'),
+        `---
+status: in-progress
+---
+
+# Task: First Task
+
+## Implementation Checklist
+- [ ] First item
+`
+      );
+      await fs.writeFile(
+        path.join(tasksDir, '002-second-task.md'),
+        `---
+status: to-do
+---
+
+# Task: Second Task
+
+## Implementation Checklist
+- [ ] Next item
+`
+      );
+
+      const originalCwd = process.cwd();
+      try {
+        process.chdir(testDir);
+        const output = execSync(
+          `node ${openspecBin} get task --did-complete-previous`,
+          { encoding: 'utf-8' }
+        );
+
+        expect(output).toContain('Completed task: first-task');
+        expect(output).toContain('Marked complete:');
+        expect(output).toContain('First item');
       } finally {
         process.chdir(originalCwd);
       }
@@ -318,7 +489,7 @@ status: to-do
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${openspecBin} act next --json`, {
+        const output = execSync(`node ${openspecBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -370,7 +541,7 @@ status: to-do
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${openspecBin} act next --json`, {
+        const output = execSync(`node ${openspecBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -428,7 +599,7 @@ status: to-do
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${openspecBin} act next --json`, {
+        const output = execSync(`node ${openspecBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
