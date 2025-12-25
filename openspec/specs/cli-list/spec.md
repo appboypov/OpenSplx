@@ -11,7 +11,8 @@ The command SHALL scan and analyze either active changes or specs based on the s
 - **WHEN** `openspec list` is executed without flags
 - **THEN** scan the `openspec/changes/` directory for change directories
 - **AND** exclude the `archive/` subdirectory from results
-- **AND** parse each change's `tasks.md` file to count task completion
+- **AND** trigger auto-migration if legacy `tasks.md` exists without `tasks/` directory
+- **AND** parse each change's `tasks/` directory to count task completion across all task files
 
 #### Scenario: Scanning for specs
 - **WHEN** `openspec list --specs` is executed
@@ -21,15 +22,18 @@ The command SHALL scan and analyze either active changes or specs based on the s
 
 ### Requirement: Task Counting
 
-The command SHALL accurately count task completion status using standard markdown checkbox patterns.
+The command SHALL accurately count task completion status by aggregating across all task files in the `tasks/` directory, ignoring checkboxes under Constraints and Acceptance Criteria sections.
 
-#### Scenario: Counting tasks in tasks.md
+#### Scenario: Counting tasks in tasks directory
 
-- **WHEN** parsing a `tasks.md` file
-- **THEN** count tasks matching these patterns:
+- **WHEN** parsing a change's task files
+- **THEN** scan the `tasks/` directory for files matching `NNN-*.md` pattern
+- **AND** count tasks in each file matching these patterns:
   - Completed: Lines containing `- [x]`
   - Incomplete: Lines containing `- [ ]`
-- **AND** calculate total tasks as the sum of completed and incomplete
+- **AND** ignore checkboxes under `## Constraints` header
+- **AND** ignore checkboxes under `## Acceptance Criteria` header
+- **AND** calculate aggregate total as sum of all task files' completed and incomplete counts
 
 ### Requirement: Output Format
 The command SHALL display items in a clear, readable table format with mode-appropriate progress or counts, including tracked issue references when available.
@@ -83,9 +87,14 @@ The command SHALL provide clear feedback when no items are present for the selec
 
 The command SHALL gracefully handle missing files and directories with appropriate messages.
 
-#### Scenario: Missing tasks.md file
+#### Scenario: Missing tasks directory
 
-- **WHEN** a change directory has no `tasks.md` file
+- **WHEN** a change directory has no `tasks/` directory and no `tasks.md` file
+- **THEN** display the change with "No tasks" status
+
+#### Scenario: Empty tasks directory
+
+- **WHEN** a change directory has an empty `tasks/` directory
 - **THEN** display the change with "No tasks" status
 
 #### Scenario: Missing changes directory
