@@ -8,7 +8,7 @@ The AI instructions SHALL begin with a quick-reference section that surfaces req
 
 #### Scenario: Loading templates at the top
 - **WHEN** `openspec/AGENTS.md` is regenerated or updated
-- **THEN** the first substantive section after the title SHALL provide copy-ready headings for `proposal.md`, `tasks.md`, spec deltas, and scenario formatting
+- **THEN** the first substantive section after the title SHALL provide copy-ready headings for `proposal.md`, `tasks/` directory structure, spec deltas, and scenario formatting
 - **AND** link each template to the corresponding workflow step for deeper reading
 
 ### Requirement: Embedded Templates and Examples
