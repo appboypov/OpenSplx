@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import { getActiveChangeIds, getSpecIds } from '../utils/item-discovery.js';
+import { getActiveChangeIds } from '../utils/item-discovery.js';
 import {
   parseTaskFilename,
   sortTaskFilesBySequence,
