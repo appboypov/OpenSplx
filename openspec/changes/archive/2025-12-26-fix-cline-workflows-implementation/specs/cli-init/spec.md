@@ -3,6 +3,8 @@
 ## MODIFIED Requirements
 ### Requirement: Slash Command Configuration
 
+The init command SHALL generate slash command files for supported editors using shared templates.
+
 #### Scenario: Generating slash commands for Cline
 - **WHEN** the user selects Cline during initialization
 - **THEN** create `.clinerules/workflows/openspec-proposal.md`, `.clinerules/workflows/openspec-apply.md`, and `.clinerules/workflows/openspec-archive.md`

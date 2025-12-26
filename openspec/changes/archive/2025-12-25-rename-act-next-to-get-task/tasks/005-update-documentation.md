@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 ---
 
 # Task: Update documentation
@@ -23,25 +23,25 @@ All documentation references the new `get task` command with accurate descriptio
 
 ## Constraints
 
-- [ ] Keep documentation concise
-- [ ] Include examples of new output format
+- [x] Keep documentation concise
+- [x] Include examples of new output format
 
 ## Acceptance Criteria
 
-- [ ] Slash command file renamed and content updated
-- [ ] README section renamed with updated examples
-- [ ] CHANGELOG entry added for breaking change
+- [x] Slash command file renamed and content updated
+- [x] README section renamed with updated examples
+- [x] CHANGELOG entry added for breaking change
 
 ## Implementation Checklist
 
-- [ ] 5.1 Rename `.claude/commands/plx/act-next.md` to `get-task.md`
-- [ ] 5.2 Update frontmatter `name` from "PLX: Act Next" to "PLX: Get Task"
-- [ ] 5.3 Update command references in slash command file
-- [ ] 5.4 Update README.md section title to "Get Task Command"
-- [ ] 5.5 Update README.md command examples to use `get task`
-- [ ] 5.6 Update README.md slash command reference to `/plx/get-task`
-- [ ] 5.7 Add description of checkbox completion behavior to README
-- [ ] 5.8 Add CHANGELOG entry documenting breaking change and new feature
+- [x] 5.1 Rename `.claude/commands/plx/act-next.md` to `get-task.md`
+- [x] 5.2 Update frontmatter `name` from "PLX: Act Next" to "PLX: Get Task"
+- [x] 5.3 Update command references in slash command file
+- [x] 5.4 Update README.md section title to "Get Task Command"
+- [x] 5.5 Update README.md command examples to use `get task`
+- [x] 5.6 Update README.md slash command reference to `/plx/get-task`
+- [x] 5.7 Add description of checkbox completion behavior to README
+- [x] 5.8 Add CHANGELOG entry documenting breaking change and new feature
 
 ## Notes
 
