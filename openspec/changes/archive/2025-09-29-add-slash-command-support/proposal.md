@@ -108,7 +108,7 @@ Slash invocation: `/openspec-proposal` (flat, prefixed)
 
 ## Template Content
 Templates should be brief, actionable, and sourced from `openspec/README.md` to avoid duplication. Each command body includes:
-- Guardrails: ask 1–2 clarifying questions if needed; follow minimal-complexity rules; use `pnpm` for Node projects.
+- Guardrails: ask as many as necessary clarifying questions if needed; follow minimal-complexity rules; use `pnpm` for Node projects.
 - Step list tailored to the workflow stage (proposal, apply, archive), including strict validation commands.
 - Pointers to `openspec show`, `openspec list`, and troubleshooting tips when validation fails.
 
