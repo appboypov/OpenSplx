@@ -76,7 +76,7 @@ After deployment, create separate PR to:
 - Always check if capability already exists
 - Prefer modifying existing specs over creating duplicates
 - Use `openspec show [spec]` to review current state
-- If request is ambiguous, gather 1–2 clarifications (using your question tool if available) before scaffolding
+- If request is ambiguous, gather as many as necessary clarifications (using your question tool if available) before scaffolding
 
 ### Search Guidance
 - Enumerate specs: `openspec spec list --long` (or `--json` for scripts)
