@@ -5,7 +5,11 @@ const FILE_PATHS: Record<PlxSlashCommandId, string> = {
   'init-architecture': '.amazonq/prompts/plx-init-architecture.md',
   'update-architecture': '.amazonq/prompts/plx-update-architecture.md',
   'get-task': '.amazonq/prompts/plx-get-task.md',
-  'compact': '.amazonq/prompts/plx-compact.md'
+  'compact': '.amazonq/prompts/plx-compact.md',
+  'review': '.amazonq/prompts/plx-review.md',
+  'refine-architecture': '.amazonq/prompts/plx-refine-architecture.md',
+  'refine-review': '.amazonq/prompts/plx-refine-review.md',
+  'parse-feedback': '.amazonq/prompts/plx-parse-feedback.md'
 };
 
 const FRONTMATTER: Record<PlxSlashCommandId, string> = {
@@ -26,6 +30,26 @@ description: Select and display the next prioritized task to work on.
 <arguments>$ARGUMENTS</arguments>`,
   'compact': `---
 description: Preserve session progress in PROGRESS.md for context continuity.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'review': `---
+description: Review implementations against specs, changes, or tasks.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'refine-architecture': `---
+description: Create or update ARCHITECTURE.md.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'refine-review': `---
+description: Create or update REVIEW.md.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'parse-feedback': `---
+description: Parse feedback markers and generate review tasks.
 ---
 
 <arguments>$ARGUMENTS</arguments>`

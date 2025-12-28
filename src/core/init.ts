@@ -760,6 +760,13 @@ export class InitCommand {
       const architectureContent = TemplateManager.getArchitectureTemplate();
       await FileSystemUtils.writeFile(architecturePath, architectureContent);
     }
+
+    // Write REVIEW.md at project root
+    const reviewPath = path.join(projectPath, 'REVIEW.md');
+    if (!skipExisting || !(await FileSystemUtils.fileExists(reviewPath))) {
+      const reviewContent = TemplateManager.getReviewTemplate();
+      await FileSystemUtils.writeFile(reviewPath, reviewContent);
+    }
   }
 
   private async configureAITools(

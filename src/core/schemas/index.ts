@@ -20,3 +20,12 @@ export {
   type TrackedIssue,
   type Change,
 } from './change.schema.js';
+
+export {
+  ReviewParentType,
+  ReviewSchema,
+  ReviewTaskSchema,
+  type ReviewParent,
+  type Review,
+  type ReviewTask,
+} from './review.schema.js';

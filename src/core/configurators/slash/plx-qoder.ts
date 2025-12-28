@@ -5,7 +5,11 @@ const FILE_PATHS: Record<PlxSlashCommandId, string> = {
   'init-architecture': '.qoder/commands/plx/init-architecture.md',
   'update-architecture': '.qoder/commands/plx/update-architecture.md',
   'get-task': '.qoder/commands/plx/get-task.md',
-  'compact': '.qoder/commands/plx/compact.md'
+  'compact': '.qoder/commands/plx/compact.md',
+  'review': '.qoder/commands/plx/review.md',
+  'refine-architecture': '.qoder/commands/plx/refine-architecture.md',
+  'refine-review': '.qoder/commands/plx/refine-review.md',
+  'parse-feedback': '.qoder/commands/plx/parse-feedback.md'
 };
 
 const FRONTMATTER: Record<PlxSlashCommandId, string> = {
@@ -32,6 +36,30 @@ name: PLX: Compact
 description: Preserve session progress in PROGRESS.md for context continuity.
 category: PLX
 tags: [plx, context, session]
+---`,
+  'review': `---
+name: PLX: Review
+description: Review implementations against specs, changes, or tasks.
+category: PLX
+tags: [plx, review, workflow]
+---`,
+  'refine-architecture': `---
+name: PLX: Refine Architecture
+description: Create or update ARCHITECTURE.md.
+category: PLX
+tags: [plx, architecture, documentation]
+---`,
+  'refine-review': `---
+name: PLX: Refine Review
+description: Create or update REVIEW.md.
+category: PLX
+tags: [plx, review, documentation]
+---`,
+  'parse-feedback': `---
+name: PLX: Parse Feedback
+description: Parse feedback markers and generate review tasks.
+category: PLX
+tags: [plx, review, workflow]
 ---`
 };
 

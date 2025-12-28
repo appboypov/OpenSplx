@@ -5,6 +5,7 @@ import { ToolRegistry } from './configurators/registry.js';
 import { SlashCommandRegistry } from './configurators/slash/registry.js';
 import { PlxSlashCommandRegistry } from './configurators/slash/plx-registry.js';
 import { agentsTemplate } from './templates/agents-template.js';
+import { TemplateManager } from './templates/index.js';
 
 export class UpdateCommand {
   async execute(projectPath: string): Promise<void> {
@@ -22,7 +23,14 @@ export class UpdateCommand {
 
     await FileSystemUtils.writeFile(agentsPath, agentsTemplate);
 
-    // 3. Update existing AI tool configuration files only
+    // 3. Create REVIEW.md if not exists
+    const reviewPath = path.join(resolvedProjectPath, 'REVIEW.md');
+    if (!(await FileSystemUtils.fileExists(reviewPath))) {
+      const reviewContent = TemplateManager.getReviewTemplate();
+      await FileSystemUtils.writeFile(reviewPath, reviewContent);
+    }
+
+    // 4. Update existing AI tool configuration files only
     const configurators = ToolRegistry.getAll();
     const slashConfigurators = SlashCommandRegistry.getAll();
     const updatedFiles: string[] = [];

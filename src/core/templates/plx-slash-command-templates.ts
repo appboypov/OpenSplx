@@ -1,4 +1,12 @@
-export type PlxSlashCommandId = 'init-architecture' | 'update-architecture' | 'get-task' | 'compact';
+export type PlxSlashCommandId =
+  | 'init-architecture'
+  | 'update-architecture'
+  | 'get-task'
+  | 'compact'
+  | 'review'
+  | 'refine-architecture'
+  | 'refine-review'
+  | 'parse-feedback';
 
 const baseGuardrails = `**Guardrails**
 - Focus on practical, usable documentation that enables feature planning.
@@ -45,11 +53,57 @@ const compactSteps = `**Steps**
 3. Check if \`.gitignore\` contains \`PROGRESS.md\`; if not present, add it on a new line.
 4. Confirm to user that progress has been saved and they can start a new session.`;
 
+const reviewGuardrails = `**Guardrails**
+- Use CLI to retrieve review context.
+- Output feedback as language-aware markers.
+- For spec-impacting feedback, include spec reference.`;
+
+const reviewSteps = `**Steps**
+1. Run \`plx review --change-id <id>\` (or --spec-id, --task-id).
+2. Read the output: REVIEW.md guidelines + parent documents.
+3. Review implementation against constraints/acceptance criteria.
+4. Insert feedback markers in relevant code.
+5. Summarize findings.
+6. Instruct to run \`plx parse feedback <name> --change-id <id>\`.`;
+
+const refineArchitectureGuardrails = `**Guardrails**
+- Focus on practical documentation.
+- Preserve user content.`;
+
+const refineArchitectureSteps = `**Steps**
+1. Check if ARCHITECTURE.md exists.
+2. If not: create from template.
+3. If exists: read and update.`;
+
+const refineReviewGuardrails = `**Guardrails**
+- Use REVIEW.md template structure.
+- Preserve existing guidelines.`;
+
+const refineReviewSteps = `**Steps**
+1. Check if REVIEW.md exists.
+2. If not: create from template.
+3. If exists: read and update.`;
+
+const parseFeedbackGuardrails = `**Guardrails**
+- Scan only tracked files.
+- Generate one task per marker.
+- Require parent linkage.`;
+
+const parseFeedbackSteps = `**Steps**
+1. Run \`plx parse feedback <name> --change-id <id>\`.
+2. Review generated tasks.
+3. Address feedback.
+4. Archive when complete.`;
+
 export const plxSlashCommandBodies: Record<PlxSlashCommandId, string> = {
   'init-architecture': [baseGuardrails, initArchitectureSteps].join('\n\n'),
   'update-architecture': [baseGuardrails, updateArchitectureSteps].join('\n\n'),
   'get-task': [getTaskGuardrails, getTaskSteps].join('\n\n'),
-  'compact': [compactGuardrails, compactSteps].join('\n\n')
+  'compact': [compactGuardrails, compactSteps].join('\n\n'),
+  'review': [reviewGuardrails, reviewSteps].join('\n\n'),
+  'refine-architecture': [refineArchitectureGuardrails, refineArchitectureSteps].join('\n\n'),
+  'refine-review': [refineReviewGuardrails, refineReviewSteps].join('\n\n'),
+  'parse-feedback': [parseFeedbackGuardrails, parseFeedbackSteps].join('\n\n')
 };
 
 export function getPlxSlashCommandBody(id: PlxSlashCommandId): string {

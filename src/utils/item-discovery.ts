@@ -64,3 +64,44 @@ export async function getArchivedChangeIds(root: string = process.cwd()): Promis
   }
 }
 
+export async function getActiveReviewIds(root: string = process.cwd()): Promise<string[]> {
+  const reviewsPath = path.join(root, 'openspec', 'reviews');
+  try {
+    const entries = await fs.readdir(reviewsPath, { withFileTypes: true });
+    const result: string[] = [];
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name.startsWith('.') || entry.name === 'archive') continue;
+      const reviewPath = path.join(reviewsPath, entry.name, 'review.md');
+      try {
+        await fs.access(reviewPath);
+        result.push(entry.name);
+      } catch {
+        // skip directories without review.md
+      }
+    }
+    return result.sort();
+  } catch {
+    return [];
+  }
+}
+
+export async function getArchivedReviewIds(root: string = process.cwd()): Promise<string[]> {
+  const archivePath = path.join(root, 'openspec', 'reviews', 'archive');
+  try {
+    const entries = await fs.readdir(archivePath, { withFileTypes: true });
+    const result: string[] = [];
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name.startsWith('.')) continue;
+      const reviewPath = path.join(archivePath, entry.name, 'review.md');
+      try {
+        await fs.access(reviewPath);
+        result.push(entry.name);
+      } catch {
+        // skip directories without review.md
+      }
+    }
+    return result.sort();
+  } catch {
+    return [];
+  }
+}

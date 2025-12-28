@@ -38,6 +38,7 @@
 | Auto-completion | — | Detects fully checked tasks, auto-advances |
 | Auto-transition | — | `get task` auto-transitions to-do → in-progress |
 | Complete/Undo | — | `complete task`, `complete change`, `undo task`, `undo change` |
+| Review System | — | `plx review`, `plx parse feedback` with feedback markers |
 | Architecture Docs | `openspec/project.md` | `ARCHITECTURE.md` |
 | Issue Tracking | — | External issue tracking in proposals |
 | Install | `npm i -g @fission-ai/openspec` | `npm i -g @appboypov/opensplx` |
@@ -112,6 +113,33 @@ plx undo change --id add-feature         # Revert all tasks in a change to to-do
 # All commands support --json for machine-readable output
 ```
 
+### Review Commands
+
+OpenSplx provides a structured review workflow for validating implementations:
+
+```bash
+# Output review context
+plx review --change-id add-feature    # Review a change
+plx review --spec-id user-auth        # Review a spec
+plx review --task-id 001-implement    # Review a task
+
+# Parse feedback markers from code
+plx parse feedback review-name --change-id add-feature
+
+# List and archive reviews
+plx list --reviews                     # List active reviews
+plx archive review-name --type review  # Archive completed review
+
+# All commands support --json for machine-readable output
+```
+
+**Feedback markers:** Add inline markers in code during review:
+- `// #FEEDBACK #TODO | feedback text` (C-style: .ts, .js, .go, .rs, etc.)
+- `# #FEEDBACK #TODO | feedback text` (Python/Shell: .py, .sh, .yaml, etc.)
+- `<!-- #FEEDBACK #TODO | feedback text -->` (HTML/Markdown)
+
+For spec-impacting feedback, add suffix: `(spec:<spec-id>)`
+
 ### PLX Slash Commands
 
 When you run `plx init`, these additional commands are installed:
@@ -119,6 +147,10 @@ When you run `plx init`, these additional commands are installed:
 - **`/plx/get-task`** - Get the next prioritized task across active changes
 - **`/plx/init-architecture`** - Generate comprehensive `ARCHITECTURE.md` from codebase analysis
 - **`/plx/update-architecture`** - Refresh architecture documentation based on current codebase state
+- **`/plx/review`** - Review implementations against specs/changes/tasks
+- **`/plx/parse-feedback`** - Parse feedback markers and generate review tasks
+- **`/plx/refine-architecture`** - Create or update `ARCHITECTURE.md`
+- **`/plx/refine-review`** - Create or update `REVIEW.md` template
 
 ### Quick Start (OpenSplx)
 

@@ -17,6 +17,8 @@ import { registerConfigCommand } from '../commands/config.js';
 import { GetCommand } from '../commands/get.js';
 import { CompleteCommand } from '../commands/complete.js';
 import { UndoCommand } from '../commands/undo.js';
+import { ParseFeedbackCommand } from '../commands/parse-feedback.js';
+import { ReviewCommand } from '../commands/review.js';
 
 // Import command name detection utility
 import { commandName } from '../utils/command-name.js';
@@ -98,13 +100,16 @@ program
 
 program
   .command('list')
-  .description('List items (changes by default). Use --specs to list specs.')
+  .description('List items (changes by default). Use --specs or --reviews to list other types.')
   .option('--specs', 'List specs instead of changes')
+  .option('--reviews', 'List reviews instead of changes')
   .option('--changes', 'List changes explicitly (default)')
-  .action(async (options?: { specs?: boolean; changes?: boolean }) => {
+  .action(async (options?: { specs?: boolean; reviews?: boolean; changes?: boolean }) => {
     try {
       const listCommand = new ListCommand();
-      const mode: 'changes' | 'specs' = options?.specs ? 'specs' : 'changes';
+      let mode: 'changes' | 'specs' | 'reviews' = 'changes';
+      if (options?.specs) mode = 'specs';
+      else if (options?.reviews) mode = 'reviews';
       await listCommand.execute('.', mode);
     } catch (error) {
       console.log(); // Empty line for spacing
@@ -190,15 +195,17 @@ changeCmd
   });
 
 program
-  .command('archive [change-name]')
-  .description('Archive a completed change and update main specs')
+  .command('archive [item-name]')
+  .description('Archive a completed change or review and update main specs')
   .option('-y, --yes', 'Skip confirmation prompts')
   .option('--skip-specs', 'Skip spec update operations (useful for infrastructure, tooling, or doc-only changes)')
   .option('--no-validate', 'Skip validation (not recommended, requires confirmation)')
-  .action(async (changeName?: string, options?: { yes?: boolean; skipSpecs?: boolean; noValidate?: boolean; validate?: boolean }) => {
+  .option('--type <type>', 'Specify item type when ambiguous: change|review')
+  .action(async (itemName?: string, options?: { yes?: boolean; skipSpecs?: boolean; noValidate?: boolean; validate?: boolean; type?: string }) => {
     try {
       const archiveCommand = new ArchiveCommand();
-      await archiveCommand.execute(changeName, options);
+      const entityType = options?.type as 'change' | 'review' | undefined;
+      await archiveCommand.execute(itemName, { ...options, type: entityType });
     } catch (error) {
       console.log(); // Empty line for spacing
       ora().fail(`Error: ${(error as Error).message}`);
@@ -461,6 +468,50 @@ undoCmd
     try {
       const undoCommand = new UndoCommand();
       await undoCommand.change(options);
+    } catch (error) {
+      console.log();
+      ora().fail(`Error: ${(error as Error).message}`);
+      process.exit(1);
+    }
+  });
+
+// Parse command with subcommands
+const parseCmd = program
+  .command('parse')
+  .description('Parse project artifacts');
+
+parseCmd
+  .command('feedback [review-name]')
+  .description('Scan codebase for feedback markers and generate review tasks')
+  .option('--change-id <id>', 'Link review to a change')
+  .option('--spec-id <id>', 'Link review to a spec')
+  .option('--task-id <id>', 'Link review to a task')
+  .option('--json', 'Output as JSON')
+  .option('--no-interactive', 'Disable interactive prompts')
+  .action(async (reviewName?: string, options?: { changeId?: string; specId?: string; taskId?: string; json?: boolean; noInteractive?: boolean; interactive?: boolean }) => {
+    try {
+      const command = new ParseFeedbackCommand();
+      await command.execute(reviewName, options);
+    } catch (error) {
+      console.log();
+      ora().fail(`Error: ${(error as Error).message}`);
+      process.exit(1);
+    }
+  });
+
+// Review command (verb-first)
+program
+  .command('review')
+  .description('Output review context for a change, spec, or task')
+  .option('--change-id <id>', 'Review a change')
+  .option('--spec-id <id>', 'Review a spec')
+  .option('--task-id <id>', 'Review a task')
+  .option('--json', 'Output as JSON')
+  .option('--no-interactive', 'Disable interactive prompts')
+  .action(async (options?: { changeId?: string; specId?: string; taskId?: string; json?: boolean; noInteractive?: boolean; interactive?: boolean }) => {
+    try {
+      const command = new ReviewCommand();
+      await command.execute(options);
     } catch (error) {
       console.log();
       ora().fail(`Error: ${(error as Error).message}`);

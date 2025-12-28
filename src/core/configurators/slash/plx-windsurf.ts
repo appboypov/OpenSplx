@@ -5,14 +5,22 @@ const FILE_PATHS: Record<PlxSlashCommandId, string> = {
   'init-architecture': '.windsurf/workflows/plx-init-architecture.md',
   'update-architecture': '.windsurf/workflows/plx-update-architecture.md',
   'get-task': '.windsurf/workflows/plx-get-task.md',
-  'compact': '.windsurf/workflows/plx-compact.md'
+  'compact': '.windsurf/workflows/plx-compact.md',
+  'review': '.windsurf/workflows/plx-review.md',
+  'refine-architecture': '.windsurf/workflows/plx-refine-architecture.md',
+  'refine-review': '.windsurf/workflows/plx-refine-review.md',
+  'parse-feedback': '.windsurf/workflows/plx-parse-feedback.md'
 };
 
 const DESCRIPTIONS: Record<PlxSlashCommandId, string> = {
   'init-architecture': 'Generate comprehensive ARCHITECTURE.md from codebase analysis.',
   'update-architecture': 'Refresh ARCHITECTURE.md based on current codebase state.',
   'get-task': 'Select and display the next prioritized task to work on.',
-  'compact': 'Preserve session progress in PROGRESS.md for context continuity.'
+  'compact': 'Preserve session progress in PROGRESS.md for context continuity.',
+  'review': 'Review implementations against specs, changes, or tasks.',
+  'refine-architecture': 'Create or update ARCHITECTURE.md.',
+  'refine-review': 'Create or update REVIEW.md.',
+  'parse-feedback': 'Parse feedback markers and generate review tasks.'
 };
 
 export class PlxWindsurfSlashCommandConfigurator extends PlxSlashCommandConfigurator {

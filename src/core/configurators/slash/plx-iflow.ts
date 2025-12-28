@@ -5,7 +5,11 @@ const FILE_PATHS: Record<PlxSlashCommandId, string> = {
   'init-architecture': '.iflow/commands/plx-init-architecture.md',
   'update-architecture': '.iflow/commands/plx-update-architecture.md',
   'get-task': '.iflow/commands/plx-get-task.md',
-  'compact': '.iflow/commands/plx-compact.md'
+  'compact': '.iflow/commands/plx-compact.md',
+  'review': '.iflow/commands/plx-review.md',
+  'refine-architecture': '.iflow/commands/plx-refine-architecture.md',
+  'refine-review': '.iflow/commands/plx-refine-review.md',
+  'parse-feedback': '.iflow/commands/plx-parse-feedback.md'
 };
 
 const FRONTMATTER: Record<PlxSlashCommandId, string> = {
@@ -32,6 +36,30 @@ name: /plx-compact
 id: plx-compact
 category: PLX
 description: Preserve session progress in PROGRESS.md for context continuity.
+---`,
+  'review': `---
+name: /plx-review
+id: plx-review
+category: PLX
+description: Review implementations against specs, changes, or tasks.
+---`,
+  'refine-architecture': `---
+name: /plx-refine-architecture
+id: plx-refine-architecture
+category: PLX
+description: Create or update ARCHITECTURE.md.
+---`,
+  'refine-review': `---
+name: /plx-refine-review
+id: plx-refine-review
+category: PLX
+description: Create or update REVIEW.md.
+---`,
+  'parse-feedback': `---
+name: /plx-parse-feedback
+id: plx-parse-feedback
+category: PLX
+description: Parse feedback markers and generate review tasks.
 ---`
 };
 

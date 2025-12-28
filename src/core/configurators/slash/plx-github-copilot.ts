@@ -5,7 +5,11 @@ const FILE_PATHS: Record<PlxSlashCommandId, string> = {
   'init-architecture': '.github/prompts/plx-init-architecture.prompt.md',
   'update-architecture': '.github/prompts/plx-update-architecture.prompt.md',
   'get-task': '.github/prompts/plx-get-task.prompt.md',
-  'compact': '.github/prompts/plx-compact.prompt.md'
+  'compact': '.github/prompts/plx-compact.prompt.md',
+  'review': '.github/prompts/plx-review.prompt.md',
+  'refine-architecture': '.github/prompts/plx-refine-architecture.prompt.md',
+  'refine-review': '.github/prompts/plx-refine-review.prompt.md',
+  'parse-feedback': '.github/prompts/plx-parse-feedback.prompt.md'
 };
 
 const FRONTMATTER: Record<PlxSlashCommandId, string> = {
@@ -26,6 +30,26 @@ description: Select and display the next prioritized task to work on.
 $ARGUMENTS`,
   'compact': `---
 description: Preserve session progress in PROGRESS.md for context continuity.
+---
+
+$ARGUMENTS`,
+  'review': `---
+description: Review implementations against specs, changes, or tasks.
+---
+
+$ARGUMENTS`,
+  'refine-architecture': `---
+description: Create or update ARCHITECTURE.md.
+---
+
+$ARGUMENTS`,
+  'refine-review': `---
+description: Create or update REVIEW.md.
+---
+
+$ARGUMENTS`,
+  'parse-feedback': `---
+description: Parse feedback markers and generate review tasks.
 ---
 
 $ARGUMENTS`
