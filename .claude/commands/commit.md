@@ -24,8 +24,8 @@ description: Create a git commit using both a conventional commit message (`type
                 - Type is one of: feat, fix, chore, docs, refactor, test
                 - Scope is present (if applicable)
                 - Subject describes "what", is under 72 characters, and starts with lowercase verb
-            - After a blank line, the following sections appear in order, each with its markdown heading:
-                - [What changed:Concise description of changes made]
+            - After a blank line, the following sections appear in order:
+                - A short paragraph (1-2 sentences) summarizing what changed. No heading, no brackets, no prefix.
                 - ### How It Works: Non-technical explanation for stakeholders, no fluff
                 - ### Manual Testing Plan: Step-by-step, actionable, specific, no fluff
                 - ### Technical Details: Developer-focused implementation explanation, no fluff
@@ -85,22 +85,27 @@ description: Create a git commit using both a conventional commit message (`type
         <CommitMessageTemplate>
 type(scope): subject
 
-[What changed:Concise description of changes made]
+Short paragraph summarizing what changed. Plain text, no heading, no brackets, no prefix. 1-2 sentences max.
 
 ### How It Works
 
-[Non-technical explanation for stakeholders without fluff]
+Non-technical explanation for stakeholders.
 
 ### Manual Testing Plan
 
-[Step-by-step testing instructions, actionable and specific without fluff]
+Step-by-step testing instructions.
 
 ### Technical Details
 
-[Developer-focused implementation details without fluff]
+Developer-focused implementation details.
 
-[Each tracked issue reference, one per line, after blank line]
+Issue references (one per line)
         </CommitMessageTemplate>
+        <TemplateNotes>
+            - The summary paragraph after the subject line is PLAIN TEXT, not a heading
+            - Do NOT use brackets, colons, or "What changed:" prefix
+            - Write the summary as a natural sentence describing what was done
+        </TemplateNotes>
         <SmartCommitFormat>
             When proposals have tracked issues in frontmatter, add footer references:
             - GitHub: `Fixes #NUMBER` (e.g., `Fixes #18`)
