@@ -1,0 +1,18 @@
+---
+name: PLX: Parse Feedback
+description: Parse feedback markers and generate review tasks.
+category: PLX
+tags: [plx, review, workflow]
+---
+<!-- OPENSPEC:START -->
+**Guardrails**
+- Scan only tracked files.
+- Generate one task per marker.
+- Require parent linkage.
+
+**Steps**
+1. Run `plx parse feedback <name> --change-id <id>`.
+2. Review generated tasks.
+3. Address feedback.
+4. Archive when complete.
+<!-- OPENSPEC:END -->
