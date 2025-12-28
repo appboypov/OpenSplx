@@ -1,13 +1,22 @@
 # OpenSplx Changelog
 
-## [Unreleased]
-
----
-
 ## 0.5.0 - 2025-12-26
 
 ### Added
 
+- **Review system**: Complete review workflow for validating implementations against specs/changes/tasks
+  - `plx review --change-id|--spec-id|--task-id <id>` - Output review context for a parent entity
+  - `plx parse feedback [review-name] --change-id|--spec-id|--task-id <id>` - Scan codebase for feedback markers and generate review tasks
+  - `plx list --reviews` - List active reviews
+  - `plx archive <review-id> --type review` - Archive completed reviews with optional spec updates
+- **Feedback marker system**: Language-aware inline markers for 40+ file extensions
+  - C-style: `// #FEEDBACK #TODO | feedback`
+  - Python/Shell: `# #FEEDBACK #TODO | feedback`
+  - SQL/Lua: `-- #FEEDBACK #TODO | feedback`
+  - HTML/XML/Markdown: `<!-- #FEEDBACK #TODO | feedback -->`
+  - Spec-impacting: `(spec:<spec-id>)` suffix for spec updates on archive
+- **Review entity type**: New entity in `openspec/reviews/` with parent linkage, task generation, and archiving with spec updates
+- **PLX slash commands**: `plx/review`, `plx/refine-architecture`, `plx/refine-review`, `plx/parse-feedback`
 - **Complete and undo commands**: New CLI commands for explicit task/change management
   - `complete task --id <task-id>` - Mark task as done, check all Implementation Checklist items
   - `complete change --id <change-id>` - Complete all tasks in a change
