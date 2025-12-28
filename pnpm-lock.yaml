@@ -20,6 +20,9 @@ importers:
       commander:
         specifier: ^14.0.0
         version: 14.0.0
+      ignore:
+        specifier: ^7.0.5
+        version: 7.0.5
       ora:
         specifier: ^8.2.0
         version: 8.2.0

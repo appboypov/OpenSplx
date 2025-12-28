@@ -5,7 +5,11 @@ const FILE_PATHS: Record<PlxSlashCommandId, string> = {
   'init-architecture': '.cospec/plx/commands/plx-init-architecture.md',
   'update-architecture': '.cospec/plx/commands/plx-update-architecture.md',
   'get-task': '.cospec/plx/commands/plx-get-task.md',
-  'compact': '.cospec/plx/commands/plx-compact.md'
+  'compact': '.cospec/plx/commands/plx-compact.md',
+  'review': '.cospec/plx/commands/plx-review.md',
+  'refine-architecture': '.cospec/plx/commands/plx-refine-architecture.md',
+  'refine-review': '.cospec/plx/commands/plx-refine-review.md',
+  'parse-feedback': '.cospec/plx/commands/plx-parse-feedback.md'
 };
 
 const FRONTMATTER: Record<PlxSlashCommandId, string> = {
@@ -23,6 +27,22 @@ argument-hint: (optional context)
 ---`,
   'compact': `---
 description: "Preserve session progress in PROGRESS.md for context continuity."
+argument-hint: (optional context)
+---`,
+  'review': `---
+description: "Review implementations against specs, changes, or tasks."
+argument-hint: (optional context)
+---`,
+  'refine-architecture': `---
+description: "Create or update ARCHITECTURE.md."
+argument-hint: (optional context)
+---`,
+  'refine-review': `---
+description: "Create or update REVIEW.md."
+argument-hint: (optional context)
+---`,
+  'parse-feedback': `---
+description: "Parse feedback markers and generate review tasks."
 argument-hint: (optional context)
 ---`
 };

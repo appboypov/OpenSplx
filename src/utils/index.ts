@@ -13,3 +13,12 @@ export {
   getChangeCreatedAt,
   getPrioritizedChange,
 } from './change-prioritization.js';
+
+export {
+  CommentStyle,
+  ParsedFeedbackMarker,
+  FEEDBACK_PATTERN,
+  getCommentStyle,
+  formatFeedbackMarker,
+  parseFeedbackMarker,
+} from './comment-markers.js';

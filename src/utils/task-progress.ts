@@ -145,3 +145,44 @@ export function formatTaskStatus(progress: TaskProgress): string {
   if (progress.completed === progress.total) return '✓ Complete';
   return `${progress.completed}/${progress.total} tasks`;
 }
+
+/**
+ * Gets aggregate task progress for a review.
+ * Reviews use the same task structure as changes (tasks/ directory).
+ */
+export async function getTaskProgressForReview(reviewsDir: string, reviewName: string): Promise<TaskProgress> {
+  const reviewDir = path.join(reviewsDir, reviewName);
+  const tasksDir = path.join(reviewDir, TASKS_DIRECTORY_NAME);
+
+  try {
+    const stat = await fs.stat(tasksDir);
+    if (!stat.isDirectory()) {
+      return { total: 0, completed: 0 };
+    }
+  } catch {
+    return { total: 0, completed: 0 };
+  }
+
+  const entries = await fs.readdir(tasksDir);
+  const sortedFiles = sortTaskFilesBySequence(entries);
+
+  let totalAggregate = 0;
+  let completedAggregate = 0;
+
+  for (const filename of sortedFiles) {
+    const parsed = parseTaskFilename(filename);
+    if (!parsed) continue;
+
+    const filepath = path.join(tasksDir, filename);
+    try {
+      const content = await fs.readFile(filepath, 'utf-8');
+      const progress = countTasksFromContent(content);
+      totalAggregate += progress.total;
+      completedAggregate += progress.completed;
+    } catch {
+      // Skip files that can't be read
+    }
+  }
+
+  return { total: totalAggregate, completed: completedAggregate };
+}

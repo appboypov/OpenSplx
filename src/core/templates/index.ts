@@ -6,6 +6,7 @@ import { agentsRootStubTemplate } from './agents-root-stub.js';
 import { getSlashCommandBody, SlashCommandId } from './slash-command-templates.js';
 import { getPlxSlashCommandBody, PlxSlashCommandId } from './plx-slash-command-templates.js';
 import { architectureTemplate, ArchitectureContext } from './architecture-template.js';
+import { reviewTemplate } from './review-template.js';
 
 export interface Template {
   path: string;
@@ -48,6 +49,10 @@ export class TemplateManager {
 
   static getArchitectureTemplate(context?: ArchitectureContext): string {
     return architectureTemplate(context);
+  }
+
+  static getReviewTemplate(): string {
+    return reviewTemplate();
   }
 }
 

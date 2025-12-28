@@ -5,7 +5,8 @@ import { migrateIfNeeded } from '../utils/task-migration.js';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { MarkdownParser } from './parsers/markdown-parser.js';
-import type { TrackedIssue } from './schemas/index.js';
+import { getActiveReviewIds } from '../utils/item-discovery.js';
+import type { TrackedIssue, ReviewParent } from './schemas/index.js';
 
 interface ChangeInfo {
   name: string;
@@ -14,8 +15,16 @@ interface ChangeInfo {
   trackedIssue?: string;
 }
 
+interface ReviewInfo {
+  name: string;
+  parentType: ReviewParent;
+  parentId: string;
+  completedTasks: number;
+  totalTasks: number;
+}
+
 export class ListCommand {
-  async execute(targetPath: string = '.', mode: 'changes' | 'specs' = 'changes'): Promise<void> {
+  async execute(targetPath: string = '.', mode: 'changes' | 'specs' | 'reviews' = 'changes'): Promise<void> {
     if (mode === 'changes') {
       const changesDir = path.join(targetPath, 'openspec', 'changes');
       
@@ -91,44 +100,98 @@ export class ListCommand {
       return;
     }
 
-    // specs mode
-    const specsDir = path.join(targetPath, 'openspec', 'specs');
-    try {
-      await fs.access(specsDir);
-    } catch {
-      console.log('No specs found.');
-      return;
-    }
-
-    const entries = await fs.readdir(specsDir, { withFileTypes: true });
-    const specDirs = entries.filter(e => e.isDirectory()).map(e => e.name);
-    if (specDirs.length === 0) {
-      console.log('No specs found.');
-      return;
-    }
-
-    type SpecInfo = { id: string; requirementCount: number };
-    const specs: SpecInfo[] = [];
-    for (const id of specDirs) {
-      const specPath = join(specsDir, id, 'spec.md');
+    if (mode === 'specs') {
+      const specsDir = path.join(targetPath, 'openspec', 'specs');
       try {
-        const content = readFileSync(specPath, 'utf-8');
-        const parser = new MarkdownParser(content);
-        const spec = parser.parseSpec(id);
-        specs.push({ id, requirementCount: spec.requirements.length });
+        await fs.access(specsDir);
       } catch {
-        // If spec cannot be read or parsed, include with 0 count
-        specs.push({ id, requirementCount: 0 });
+        console.log('No specs found.');
+        return;
       }
+
+      const entries = await fs.readdir(specsDir, { withFileTypes: true });
+      const specDirs = entries.filter(e => e.isDirectory()).map(e => e.name);
+      if (specDirs.length === 0) {
+        console.log('No specs found.');
+        return;
+      }
+
+      type SpecInfo = { id: string; requirementCount: number };
+      const specs: SpecInfo[] = [];
+      for (const id of specDirs) {
+        const specPath = join(specsDir, id, 'spec.md');
+        try {
+          const content = readFileSync(specPath, 'utf-8');
+          const parser = new MarkdownParser(content);
+          const spec = parser.parseSpec(id);
+          specs.push({ id, requirementCount: spec.requirements.length });
+        } catch {
+          specs.push({ id, requirementCount: 0 });
+        }
+      }
+
+      specs.sort((a, b) => a.id.localeCompare(b.id));
+      console.log('Specs:');
+      const padding = '  ';
+      const nameWidth = Math.max(...specs.map(s => s.id.length));
+      for (const spec of specs) {
+        const padded = spec.id.padEnd(nameWidth);
+        console.log(`${padding}${padded}     requirements ${spec.requirementCount}`);
+      }
+      return;
     }
 
-    specs.sort((a, b) => a.id.localeCompare(b.id));
-    console.log('Specs:');
+    // reviews mode
+    const reviewIds = await getActiveReviewIds(targetPath);
+    if (reviewIds.length === 0) {
+      console.log('No active reviews found.');
+      return;
+    }
+
+    const reviewsDir = path.join(targetPath, 'openspec', 'reviews');
+    const reviews: ReviewInfo[] = [];
+
+    for (const reviewId of reviewIds) {
+      let parentType: ReviewParent = 'change';
+      let parentId = '';
+
+      try {
+        const reviewPath = path.join(reviewsDir, reviewId, 'review.md');
+        const reviewContent = await fs.readFile(reviewPath, 'utf-8');
+        const parser = new MarkdownParser(reviewContent);
+        const frontmatter = parser.getFrontmatter();
+        if (frontmatter?.parentType) {
+          parentType = frontmatter.parentType as ReviewParent;
+        }
+        if (frontmatter?.parentId) {
+          parentId = frontmatter.parentId;
+        }
+      } catch {
+        // review.md might be unreadable
+      }
+
+      const progress = await getTaskProgressForChange(reviewsDir, reviewId);
+
+      reviews.push({
+        name: reviewId,
+        parentType,
+        parentId,
+        completedTasks: progress.completed,
+        totalTasks: progress.total,
+      });
+    }
+
+    reviews.sort((a, b) => a.name.localeCompare(b.name));
+
+    console.log('Reviews:');
     const padding = '  ';
-    const nameWidth = Math.max(...specs.map(s => s.id.length));
-    for (const spec of specs) {
-      const padded = spec.id.padEnd(nameWidth);
-      console.log(`${padding}${padded}     requirements ${spec.requirementCount}`);
+    const nameWidth = Math.max(...reviews.map(r => r.name.length));
+    const typeWidth = Math.max(...reviews.map(r => r.parentType.length));
+    for (const review of reviews) {
+      const paddedName = review.name.padEnd(nameWidth);
+      const paddedType = review.parentType.padEnd(typeWidth);
+      const status = formatTaskStatus({ total: review.totalTasks, completed: review.completedTasks });
+      console.log(`${padding}${paddedName}     ${paddedType}     ${status}`);
     }
   }
 }

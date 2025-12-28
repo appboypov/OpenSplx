@@ -33,7 +33,16 @@ describe('plx-slash-command-templates', () => {
 
   describe('plxSlashCommandBodies', () => {
     it('contains all PLX command IDs', () => {
-      const expectedIds: PlxSlashCommandId[] = ['init-architecture', 'update-architecture', 'get-task', 'compact'];
+      const expectedIds: PlxSlashCommandId[] = [
+        'init-architecture',
+        'update-architecture',
+        'get-task',
+        'compact',
+        'review',
+        'refine-architecture',
+        'refine-review',
+        'parse-feedback'
+      ];
 
       for (const id of expectedIds) {
         expect(plxSlashCommandBodies[id]).toBeDefined();
@@ -76,6 +85,36 @@ describe('plx-slash-command-templates', () => {
       expect(body).toContain('.gitignore');
       expect(body).toContain('Save all files');
       expect(body).toContain('Context for Next Agent');
+    });
+
+    it('review command includes review workflow content', () => {
+      const body = plxSlashCommandBodies['review'];
+
+      expect(body).toContain('plx review');
+      expect(body).toContain('feedback markers');
+      expect(body).toContain('plx parse feedback');
+    });
+
+    it('refine-architecture command includes architecture content', () => {
+      const body = plxSlashCommandBodies['refine-architecture'];
+
+      expect(body).toContain('ARCHITECTURE.md');
+      expect(body).toContain('Preserve user content');
+    });
+
+    it('refine-review command includes review template content', () => {
+      const body = plxSlashCommandBodies['refine-review'];
+
+      expect(body).toContain('REVIEW.md');
+      expect(body).toContain('Preserve existing guidelines');
+    });
+
+    it('parse-feedback command includes feedback parsing content', () => {
+      const body = plxSlashCommandBodies['parse-feedback'];
+
+      expect(body).toContain('plx parse feedback');
+      expect(body).toContain('one task per marker');
+      expect(body).toContain('parent linkage');
     });
   });
 });

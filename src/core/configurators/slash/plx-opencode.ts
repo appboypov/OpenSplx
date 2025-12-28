@@ -5,7 +5,11 @@ const FILE_PATHS: Record<PlxSlashCommandId, string> = {
   'init-architecture': '.opencode/command/plx-init-architecture.md',
   'update-architecture': '.opencode/command/plx-update-architecture.md',
   'get-task': '.opencode/command/plx-get-task.md',
-  'compact': '.opencode/command/plx-compact.md'
+  'compact': '.opencode/command/plx-compact.md',
+  'review': '.opencode/command/plx-review.md',
+  'refine-architecture': '.opencode/command/plx-refine-architecture.md',
+  'refine-review': '.opencode/command/plx-refine-review.md',
+  'parse-feedback': '.opencode/command/plx-parse-feedback.md'
 };
 
 const FRONTMATTER: Record<PlxSlashCommandId, string> = {
@@ -29,6 +33,30 @@ argument-hint: (optional context)
 $ARGUMENTS`,
   'compact': `---
 description: Preserve session progress in PROGRESS.md for context continuity.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'review': `---
+description: Review implementations against specs, changes, or tasks.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'refine-architecture': `---
+description: Create or update ARCHITECTURE.md.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'refine-review': `---
+description: Create or update REVIEW.md.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'parse-feedback': `---
+description: Parse feedback markers and generate review tasks.
 argument-hint: (optional context)
 ---
 

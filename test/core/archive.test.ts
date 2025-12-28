@@ -257,7 +257,7 @@ New feature description.
     it('should throw error if change does not exist', async () => {
       await expect(
         archiveCommand.execute('non-existent-change', { yes: true })
-      ).rejects.toThrow("Change 'non-existent-change' not found.");
+      ).rejects.toThrow("Item 'non-existent-change' not found in changes or reviews. Use 'plx list' to see available items.");
     });
 
     it('should throw error if archive already exists', async () => {
@@ -713,10 +713,10 @@ E1 updated`);
     it('should throw error when openspec directory does not exist', async () => {
       // Remove openspec directory
       await fs.rm(path.join(tempDir, 'openspec'), { recursive: true });
-      
+
       await expect(
         archiveCommand.execute('any-change', { yes: true })
-      ).rejects.toThrow("No OpenSpec changes directory found. Run 'openspec init' first.");
+      ).rejects.toThrow("Item 'any-change' not found in changes or reviews. Use 'plx list' to see available items.");
     });
   });
 

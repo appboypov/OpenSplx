@@ -9,6 +9,11 @@ export interface Section {
 
 export interface Frontmatter {
   trackedIssues?: TrackedIssue[];
+  parentType?: string;
+  parentId?: string;
+  status?: string;
+  archivedAt?: string;
+  specUpdatesApplied?: boolean;
   raw?: Record<string, unknown>;
 }
 
@@ -61,6 +66,99 @@ export class MarkdownParser {
     return { frontmatter, content: remainingContent };
   }
 
+  static updateFrontmatter(content: string, updates: Record<string, unknown>): string {
+    const lines = content.split('\n');
+
+    // Check if frontmatter exists
+    if (lines.length === 0 || lines[0].trim() !== '---') {
+      // No frontmatter exists - create one
+      const yamlLines = MarkdownParser.serializeUpdatesToYaml(updates);
+      return `---\n${yamlLines}---\n${content}`;
+    }
+
+    // Find end of frontmatter
+    let endIndex = -1;
+    for (let i = 1; i < lines.length; i++) {
+      if (lines[i].trim() === '---') {
+        endIndex = i;
+        break;
+      }
+    }
+
+    if (endIndex === -1) {
+      // Malformed frontmatter - create new one
+      const yamlLines = MarkdownParser.serializeUpdatesToYaml(updates);
+      return `---\n${yamlLines}---\n${content}`;
+    }
+
+    // Parse existing frontmatter and merge updates
+    const existingYamlLines = lines.slice(1, endIndex);
+    const remainingContent = lines.slice(endIndex + 1).join('\n');
+
+    // Build merged frontmatter
+    const mergedLines: string[] = [];
+    const updatedKeys = new Set<string>();
+
+    // Process existing lines and update values where needed
+    for (const line of existingYamlLines) {
+      const keyMatch = line.match(/^(\w[\w-]*)\s*:/);
+      if (keyMatch) {
+        const yamlKey = keyMatch[1];
+        const jsKey = MarkdownParser.yamlKeyToJsKey(yamlKey);
+        if (jsKey in updates) {
+          // Replace with updated value
+          const value = updates[jsKey];
+          mergedLines.push(MarkdownParser.serializeKeyValue(yamlKey, value));
+          updatedKeys.add(jsKey);
+        } else {
+          mergedLines.push(line);
+        }
+      } else {
+        mergedLines.push(line);
+      }
+    }
+
+    // Add new keys that weren't in original
+    for (const [key, value] of Object.entries(updates)) {
+      if (!updatedKeys.has(key)) {
+        const yamlKey = MarkdownParser.jsKeyToYamlKey(key);
+        mergedLines.push(MarkdownParser.serializeKeyValue(yamlKey, value));
+      }
+    }
+
+    return `---\n${mergedLines.join('\n')}\n---${remainingContent}`;
+  }
+
+  private static yamlKeyToJsKey(yamlKey: string): string {
+    return yamlKey.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+  }
+
+  private static jsKeyToYamlKey(jsKey: string): string {
+    return jsKey.replace(/([A-Z])/g, '-$1').toLowerCase();
+  }
+
+  private static serializeKeyValue(key: string, value: unknown): string {
+    if (typeof value === 'boolean') {
+      return `${key}: ${value}`;
+    }
+    if (typeof value === 'string') {
+      return `${key}: ${value}`;
+    }
+    if (typeof value === 'number') {
+      return `${key}: ${value}`;
+    }
+    return `${key}: ${String(value)}`;
+  }
+
+  private static serializeUpdatesToYaml(updates: Record<string, unknown>): string {
+    const lines: string[] = [];
+    for (const [key, value] of Object.entries(updates)) {
+      const yamlKey = MarkdownParser.jsKeyToYamlKey(key);
+      lines.push(MarkdownParser.serializeKeyValue(yamlKey, value));
+    }
+    return lines.join('\n') + '\n';
+  }
+
   private static parseSimpleYaml(lines: string[]): Frontmatter {
     const result: Frontmatter = { raw: {} };
     const trackedIssues: TrackedIssue[] = [];
@@ -71,14 +169,23 @@ export class MarkdownParser {
     for (const line of lines) {
       if (line.trim() === '' || line.trim().startsWith('#')) continue;
 
-      const topLevelMatch = line.match(/^(\w[\w-]*)\s*:/);
+      const topLevelMatch = line.match(/^(\w[\w-]*)\s*:\s*(.*)$/);
       if (topLevelMatch && !line.startsWith(' ') && !line.startsWith('\t')) {
-        if (topLevelMatch[1] === 'tracked-issues') {
+        const key = topLevelMatch[1];
+        const value = topLevelMatch[2].trim().replace(/^["']|["']$/g, '');
+
+        if (key === 'tracked-issues') {
           inTrackedIssues = true;
           continue;
         } else {
           inTrackedIssues = false;
           currentIssue = null;
+        }
+
+        if (key === 'parent-type' && value) {
+          result.parentType = value;
+        } else if (key === 'parent-id' && value) {
+          result.parentId = value;
         }
       }
 

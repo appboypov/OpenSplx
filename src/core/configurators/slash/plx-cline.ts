@@ -5,7 +5,11 @@ const FILE_PATHS: Record<PlxSlashCommandId, string> = {
   'init-architecture': '.clinerules/workflows/plx-init-architecture.md',
   'update-architecture': '.clinerules/workflows/plx-update-architecture.md',
   'get-task': '.clinerules/workflows/plx-get-task.md',
-  'compact': '.clinerules/workflows/plx-compact.md'
+  'compact': '.clinerules/workflows/plx-compact.md',
+  'review': '.clinerules/workflows/plx-review.md',
+  'refine-architecture': '.clinerules/workflows/plx-refine-architecture.md',
+  'refine-review': '.clinerules/workflows/plx-refine-review.md',
+  'parse-feedback': '.clinerules/workflows/plx-parse-feedback.md'
 };
 
 const FRONTMATTER: Record<PlxSlashCommandId, string> = {
@@ -20,7 +24,19 @@ Refresh ARCHITECTURE.md based on current codebase state.`,
 Select and display the next prioritized task to work on.`,
   'compact': `# PLX: Compact
 
-Preserve session progress in PROGRESS.md for context continuity.`
+Preserve session progress in PROGRESS.md for context continuity.`,
+  'review': `# PLX: Review
+
+Review implementations against specs, changes, or tasks.`,
+  'refine-architecture': `# PLX: Refine Architecture
+
+Create or update ARCHITECTURE.md.`,
+  'refine-review': `# PLX: Refine Review
+
+Create or update REVIEW.md.`,
+  'parse-feedback': `# PLX: Parse Feedback
+
+Parse feedback markers and generate review tasks.`
 };
 
 export class PlxClineSlashCommandConfigurator extends PlxSlashCommandConfigurator {
