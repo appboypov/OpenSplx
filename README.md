@@ -1,14 +1,4 @@
-<p align="center">
-  <a href="https://github.com/appboypov/pew-pew-plx">
-    <picture>
-      <source srcset="assets/pew_pew_plx_pixel_dark.svg" media="(prefers-color-scheme: dark)">
-      <source srcset="assets/pew_pew_plx_pixel_light.svg" media="(prefers-color-scheme: light)">
-      <img src="assets/pew_pew_plx_pixel_light.svg" alt="Pew Pew Plx logo" height="64">
-    </picture>
-  </a>
-
-</p>
-<p align="center">Spec-driven development for AI coding assistants.</p>
+<p align="center">OpenSpec-driven development for AI coding assistants.</p>
 <p align="center">
   <a href="https://github.com/Fission-AI/OpenSpec"><img alt="Fork of OpenSpec" src="https://img.shields.io/badge/Fork%20of-OpenSpec-blue?style=flat-square" /></a>
   <a href="https://www.npmjs.com/package/@appboypov/pew-pew-plx"><img alt="npm version" src="https://img.shields.io/npm/v/@appboypov/pew-pew-plx?style=flat-square" /></a>
@@ -23,6 +13,8 @@
 # Pew Pew Plx
 
 Pew Pew Plx aligns humans and AI coding assistants with spec-driven development. Agree on what to build before any code is written. **No API keys required.**
+
+> Fork of [OpenSpec](https://github.com/Fission-AI/OpenSpec) with extended task management, review workflows, and automatic migration from OpenSpec projects.
 
 ## Installation
 
