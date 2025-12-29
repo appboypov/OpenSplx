@@ -51,8 +51,7 @@ All tests pass with the updated PLX terminology. Test fixtures use `workspace/` 
 
 1. Updated `test/utils/marker-updates.test.ts`: Changed markers from `OPENSPEC:START/END` to `PLX:START/END`
 2. Updated `test/core/init.test.ts`:
-   - Replaced all `<!-- OPENSPEC:START -->` with `<!-- PLX:START -->`
-   - Replaced all `<!-- OPENSPEC:END -->` with `<!-- PLX:END -->`
+   - Replaced all `<!-- OPENSPEC:START/END -->` with `<!-- PLX:START/END -->`
    - Replaced `OpenSpec:` command names with `PLX:` (Proposal, Apply, Archive)
    - Replaced `category: OpenSpec` with `category: PLX`
    - Replaced descriptions containing "OpenSpec change" with "PLX change"

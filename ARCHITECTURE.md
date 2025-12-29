@@ -724,7 +724,7 @@ reviewed-at: <ISO timestamp>
 
 ## Fork-Specific Features (Pew Pew Plx)
 
-Pew Pew Plx extends OpenSpec with:
+Pew Pew Plx provides:
 
 1. **PLX Command**: The CLI uses `plx` as the command name
 2. **Dynamic Command Name**: CLI detects invocation name and uses it in output messages, help text, and shell completions via `src/utils/command-name.ts`

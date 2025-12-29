@@ -15,8 +15,8 @@ The update command SHALL automatically migrate legacy OpenSpec project structure
 #### Scenario: Migrating markers in files
 
 - **WHEN** `plx update` is run
-- **AND** files contain `<!-- OPENSPEC:START -->` or `<!-- OPENSPEC:END -->` markers
-- **THEN** replace all occurrences with `<!-- PLX:START -->` and `<!-- PLX:END -->`
+- **AND** files contain `<!-- OPENSPEC:START/END -->` markers
+- **THEN** replace all occurrences with `<!-- PLX:START/END -->` markers
 - **AND** log count of files updated
 
 #### Scenario: Migrating global config
@@ -39,5 +39,5 @@ The update command SHALL automatically migrate legacy OpenSpec project structure
 
 - **WHEN** `plx update` is run
 - **AND** no `openspec/` directory exists
-- **AND** no files contain `<!-- OPENSPEC:START -->` markers
+- **AND** no files contain `<!-- OPENSPEC:START/END -->` markers
 - **THEN** proceed silently with normal update (no migration messages)

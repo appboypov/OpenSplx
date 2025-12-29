@@ -17,14 +17,12 @@
 </p>
 
 <p align="center">
-  <img src="assets/plx_dashboard.png" alt="Pew Pew Plx dashboard preview" width="90%">
+  <img src="assets/hero.png" alt="Pew Pew Plx dashboard preview" width="90%">
 </p>
 
 # Pew Pew Plx
 
 Pew Pew Plx aligns humans and AI coding assistants with spec-driven development. Agree on what to build before any code is written. **No API keys required.**
-
-> Fork of [OpenSpec](https://github.com/Fission-AI/OpenSpec) with extended task management, review workflows, and automatic migration from OpenSpec projects.
 
 ## Installation
 
@@ -204,14 +202,6 @@ Tools that read workflow instructions from `workspace/AGENTS.md`:
 Amp, Jules, and others following the [AGENTS.md convention](https://agents.md/).
 
 </details>
-
-## OpenSpec Migration
-
-Projects created with OpenSpec are automatically migrated when running `plx update` or `plx init`:
-
-- `openspec/` directory contents moved to `workspace/`
-- `<!-- OPENSPEC:START/END -->` markers updated to `<!-- PLX:START/END -->`
-- `~/.openspec/` global config moved to `~/.plx/`
 
 ## Contributing
 

@@ -2,7 +2,7 @@
 
 ## Why
 
-Projects created with the original OpenSpec CLI have `openspec/` directories and `<!-- OPENSPEC:START -->` markers. When these users upgrade to the PLX CLI and run `plx update` or `plx init`, the CLI should automatically detect and migrate legacy structures to the new PLX format.
+Projects created with the original OpenSpec CLI have `openspec/` directories and `<!-- OPENSPEC:START/END -->` markers. When these users upgrade to the PLX CLI and run `plx update` or `plx init`, the CLI should automatically detect and migrate legacy structures to the new PLX format.
 
 ## What Changes
 

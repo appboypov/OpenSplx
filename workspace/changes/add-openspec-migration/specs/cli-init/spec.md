@@ -16,8 +16,8 @@ The init command SHALL automatically migrate legacy OpenSpec project structures 
 #### Scenario: Migrating markers during init
 
 - **WHEN** `plx init` is run
-- **AND** files contain `<!-- OPENSPEC:START -->` or `<!-- OPENSPEC:END -->` markers
-- **THEN** replace all occurrences with `<!-- PLX:START -->` and `<!-- PLX:END -->`
+- **AND** files contain `<!-- OPENSPEC:START/END -->` markers
+- **THEN** replace all occurrences with `<!-- PLX:START/END -->` markers
 - **AND** log count of files updated
 
 #### Scenario: Both directories exist on init

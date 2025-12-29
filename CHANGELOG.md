@@ -6,16 +6,32 @@
 
 - **BREAKING**: Rebrand from OpenSpec to PLX across entire codebase
   - CLI command changed from `openspec` to `plx`
-  - All internal references updated (constants, templates, configurators)
-  - Markers remain as `<!-- PLX:START -->` / `<!-- PLX:END -->`
+  - Project directory renamed from `openspec/` to `workspace/`
+  - Markers changed from `<!-- OPENSPEC:START/END -->` to `<!-- PLX:START/END -->`
+  - Global config moved from `~/.openspec/` to `~/.plx/`
+  - Environment variables renamed: `OPENSPEC_CONCURRENCY` → `PLX_CONCURRENCY`, `OPEN_SPEC_INTERACTIVE` → `PLX_INTERACTIVE`
 - **BREAKING**: Rebrand display name from "PLX" to "Pew Pew Plx"
   - User-facing display names updated in CLI help, dashboard, slash commands
   - CLI command stays as `plx`, constants like `PLX_DIR_NAME` unchanged
+- **BREAKING**: Rename package from `@appboypov/opensplx` to `@appboypov/pew-pew-plx`
+  - GitHub repository URLs updated to `appboypov/pew-pew-plx`
+  - Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_plx_pixel_*.svg`
+- ASCII banner updated to display "PEW PEW PLX"
+- README rewritten for Pew Pew Plx as standalone project
 - Clarify backward compatibility test descriptions
 
 ### Added
 
+- Automatic OpenSpec to PLX migration on `plx update` or `plx init`
+  - Renames `openspec/` directory to `workspace/`
+  - Converts `<!-- OPENSPEC:START/END -->` markers to `<!-- PLX:START/END -->`
+  - Migrates `~/.openspec/` config to `~/.plx/`
+  - Merges `openspec/` contents into `workspace/` when both directories exist
 - Architecture documentation commands: `plx/refine-architecture`, `plx/refine-review`, `plx/parse-feedback`
+
+### Fixed
+
+- Migration now merges `openspec/` contents into `workspace/` instead of skipping when both exist
 
 ---
 

@@ -129,6 +129,9 @@ export async function migrateAllMarkers(projectPath: string): Promise<number> {
           }
           await scanDirectory(fullPath);
         } else if (entry.isFile()) {
+          if (entry.name === 'openspec-migration.ts') {
+            continue;
+          }
           const ext = path.extname(entry.name).toLowerCase();
           if (MARKER_FILE_EXTENSIONS.includes(ext)) {
             const migrated = await migrateMarkersInFile(fullPath);

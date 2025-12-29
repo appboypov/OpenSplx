@@ -8,7 +8,7 @@ Pew Pew Plx is a fork that needs a distinct identity to coexist with the origina
 
 - **BREAKING**: Remove `openspec` CLI command entirely - only `plx` command remains
 - **BREAKING**: Rename project directory from `openspec/` to `workspace/`
-- **BREAKING**: Change markers from `<!-- OPENSPEC:START -->` to `<!-- PLX:START -->`
+- **BREAKING**: Change markers from `<!-- OPENSPEC:START/END -->` to `<!-- PLX:START/END -->`
 - **BREAKING**: Rename global config directory from `~/.openspec/` to `~/.plx/`
 - **BREAKING**: Rename environment variable from `OPENSPEC_CONCURRENCY` to `PLX_CONCURRENCY`
 - Update all internal constants, variables, and imports
