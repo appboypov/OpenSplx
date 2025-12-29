@@ -187,7 +187,7 @@ export class FeedbackScannerService {
         } else if (entry.isFile()) {
           const ext = path.extname(entry.name).toLowerCase();
           if (SCANNABLE_EXTENSIONS.has(ext)) {
-            files.push(relativePath);
+            files.push(relativePath.replace(/\\/g, '/'));
           }
         }
       }
@@ -211,7 +211,7 @@ export class FeedbackScannerService {
         const parsed = parseFeedbackMarker(lines[i]);
         if (parsed) {
           markers.push({
-            file: relativePath,
+            file: relativePath.replace(/\\/g, '/'),
             line: i + 1,
             feedback: parsed.feedback,
             specImpact: parsed.specImpact,
