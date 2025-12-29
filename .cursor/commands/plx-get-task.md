@@ -1,7 +1,7 @@
 ---
 name: /plx-get-task
 id: plx-get-task
-category: PLX
+category: Pew Pew Plx
 description: Select and display the next prioritized task to work on.
 ---
 <!-- PLX:START -->

@@ -1,7 +1,7 @@
 ---
 name: /plx-init-architecture
 id: plx-init-architecture
-category: PLX
+category: Pew Pew Plx
 description: Generate comprehensive ARCHITECTURE.md from codebase analysis.
 ---
 <!-- PLX:START -->

@@ -1,7 +1,7 @@
 ---
-name: PLX: Review
+name: Pew Pew Plx: Review
 description: Review implementations against specs, changes, or tasks.
-category: PLX
+category: Pew Pew Plx
 tags: [plx, review, workflow]
 ---
 <!-- PLX:START -->

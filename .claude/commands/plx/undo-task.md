@@ -1,7 +1,7 @@
 ---
-name: PLX: Undo Task
+name: Pew Pew Plx: Undo Task
 description: Revert a task to to-do status and uncheck Implementation Checklist items.
-category: PLX
+category: Pew Pew Plx
 tags: [plx, task, undo, workflow]
 ---
 <!-- PLX:START -->

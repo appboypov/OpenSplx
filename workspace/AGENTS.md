@@ -1,6 +1,6 @@
-# PLX Instructions
+# Pew Pew Plx Instructions
 
-Instructions for AI coding assistants using PLX for spec-driven development.
+Instructions for AI coding assistants using Pew Pew Plx for spec-driven development.
 
 ## TL;DR Quick Checklist
 
@@ -136,7 +136,7 @@ plx validate [item]       # Validate changes or specs
 plx archive <change-id> [--yes|-y]   # Archive after deployment (add --yes for non-interactive runs)
 
 # Project management
-plx init [path]           # Initialize PLX
+plx init [path]           # Initialize Pew Pew Plx
 plx update [path]         # Update instruction files
 
 # Interactive mode

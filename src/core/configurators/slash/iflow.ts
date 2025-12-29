@@ -11,20 +11,20 @@ const FRONTMATTER: Record<SlashCommandId, string> = {
   proposal: `---
 name: /plx-proposal
 id: plx-proposal
-category: PLX
-description: Scaffold a new PLX change and validate strictly.
+category: Pew Pew Plx
+description: Scaffold a new Pew Pew Plx change and validate strictly.
 ---`,
   apply: `---
 name: /plx-apply
 id: plx-apply
-category: PLX
-description: Implement an approved PLX change and keep tasks in sync.
+category: Pew Pew Plx
+description: Implement an approved Pew Pew Plx change and keep tasks in sync.
 ---`,
   archive: `---
 name: /plx-archive
 id: plx-archive
-category: PLX
-description: Archive a deployed PLX change and update specs.
+category: Pew Pew Plx
+description: Archive a deployed Pew Pew Plx change and update specs.
 ---`
 };
 

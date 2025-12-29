@@ -9,15 +9,15 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
   proposal: `---
-description: Scaffold a new PLX change and validate strictly.
+description: Scaffold a new Pew Pew Plx change and validate strictly.
 argument-hint: feature description or request
 ---`,
   apply: `---
-description: Implement an approved PLX change and keep tasks in sync.
+description: Implement an approved Pew Pew Plx change and keep tasks in sync.
 argument-hint: change-id
 ---`,
   archive: `---
-description: Archive a deployed PLX change and update specs.
+description: Archive a deployed Pew Pew Plx change and update specs.
 argument-hint: change-id
 ---`
 };

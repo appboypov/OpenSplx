@@ -293,11 +293,11 @@ const toolSelectionWizard = createPrompt<string[], ToolWizardConfig>(
 
     if (step === 'intro') {
       const introHeadline = config.extendMode
-        ? 'Extend your PLX tooling'
-        : 'Configure your PLX tooling';
+        ? 'Extend your Pew Pew Plx tooling'
+        : 'Configure your Pew Pew Plx tooling';
       const introBody = config.extendMode
         ? 'We detected an existing setup. We will help you refresh or add integrations.'
-        : "Let's get your AI assistants connected so they understand PLX.";
+        : "Let's get your AI assistants connected so they understand Pew Pew Plx.";
 
       lines.push(PALETTE.white(introHeadline));
       lines.push(PALETTE.midGray(introBody));
@@ -415,18 +415,18 @@ export class InitCommand {
     // Step 1: Create directory structure
     if (!extendMode) {
       const structureSpinner = this.startSpinner(
-        'Creating PLX structure...'
+        'Creating Pew Pew Plx structure...'
       );
       await this.createDirectoryStructure(workspacePath);
       await this.generateFiles(projectPath, workspacePath, config);
       structureSpinner.stopAndPersist({
         symbol: PALETTE.white('▌'),
-        text: PALETTE.white('PLX structure created'),
+        text: PALETTE.white('Pew Pew Plx structure created'),
       });
     } else {
       ora({ stream: process.stdout }).info(
         PALETTE.midGray(
-          'PLX already initialized. Checking for missing files...'
+          'Pew Pew Plx already initialized. Checking for missing files...'
         )
       );
       await this.createDirectoryStructure(workspacePath);
@@ -824,8 +824,8 @@ export class InitCommand {
   ): void {
     console.log(); // Empty line for spacing
     const successHeadline = extendMode
-      ? 'PLX tool configuration updated!'
-      : 'PLX initialized successfully!';
+      ? 'Pew Pew Plx tool configuration updated!'
+      : 'Pew Pew Plx initialized successfully!';
     ora().succeed(PALETTE.white(successHeadline));
 
     console.log();
@@ -915,12 +915,12 @@ export class InitCommand {
       )
     );
     console.log(
-      PALETTE.lightGray('    PLX change proposal for this feature"\n')
+      PALETTE.lightGray('    Pew Pew Plx change proposal for this feature"\n')
     );
-    console.log(PALETTE.white('3. Learn the PLX workflow:'));
+    console.log(PALETTE.white('3. Learn the Pew Pew Plx workflow:'));
     console.log(
       PALETTE.lightGray(
-        '   "Please explain the PLX workflow from workspace/AGENTS.md'
+        '   "Please explain the Pew Pew Plx workflow from workspace/AGENTS.md'
       )
     );
     console.log(
@@ -982,7 +982,7 @@ export class InitCommand {
       console.log(rowStyles[index](row.replace(/\s+$/u, '')));
     });
     console.log();
-    console.log(PALETTE.white('Welcome to PLX!'));
+    console.log(PALETTE.white('Welcome to Pew Pew Plx!'));
     console.log();
   }
 

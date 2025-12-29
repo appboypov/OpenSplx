@@ -1,4 +1,4 @@
-export const agentsRootStubTemplate = `# PLX Instructions
+export const agentsRootStubTemplate = `# Pew Pew Plx Instructions
 
 These instructions are for AI assistants working in this project.
 
@@ -17,7 +17,7 @@ Use \`@/workspace/AGENTS.md\` to learn:
 ### Project Setup
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx init [path]\` | Initialize PLX | New project setup |
+| \`plx init [path]\` | Initialize Pew Pew Plx | New project setup |
 | \`plx init --tools <list>\` | Initialize with specific AI tools | Non-interactive setup |
 | \`plx update [path]\` | Refresh instruction files | After CLI updates |
 

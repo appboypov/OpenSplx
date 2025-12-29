@@ -1,7 +1,7 @@
 ---
 name: /plx-refine-architecture
 id: plx-refine-architecture
-category: PLX
+category: Pew Pew Plx
 description: Create or update ARCHITECTURE.md.
 ---
 <!-- PLX:START -->

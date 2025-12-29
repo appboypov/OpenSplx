@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/plx_dashboard.png" alt="PLX dashboard preview" width="90%">
+  <img src="assets/plx_dashboard.png" alt="Pew Pew Plx dashboard preview" width="90%">
 </p>
 
 # OpenSplx
@@ -140,7 +140,7 @@ plx archive review-name --type review  # Archive completed review
 
 For spec-impacting feedback, add suffix: `(spec:<spec-id>)`
 
-### PLX Slash Commands
+### Pew Pew Plx Slash Commands
 
 When you run `plx init`, these additional commands are installed:
 

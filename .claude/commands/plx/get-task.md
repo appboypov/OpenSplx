@@ -1,7 +1,7 @@
 ---
-name: PLX: Get Task
+name: Pew Pew Plx: Get Task
 description: Select and display the next prioritized task to work on.
-category: PLX
+category: Pew Pew Plx
 tags: [plx, task, workflow]
 ---
 <!-- PLX:START -->

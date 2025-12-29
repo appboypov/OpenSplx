@@ -24,21 +24,21 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
  */
 const FRONTMATTER: Record<SlashCommandId, string> = {
   proposal: `---
-name: PLX: Proposal
-description: Scaffold a new PLX change and validate strictly.
-category: PLX
+name: Pew Pew Plx: Proposal
+description: Scaffold a new Pew Pew Plx change and validate strictly.
+category: Pew Pew Plx
 tags: [plx, change]
 ---`,
   apply: `---
-name: PLX: Apply
-description: Implement an approved PLX change and keep tasks in sync.
-category: PLX
+name: Pew Pew Plx: Apply
+description: Implement an approved Pew Pew Plx change and keep tasks in sync.
+category: Pew Pew Plx
 tags: [plx, apply]
 ---`,
   archive: `---
-name: PLX: Archive
-description: Archive a deployed PLX change and update specs.
-category: PLX
+name: Pew Pew Plx: Archive
+description: Archive a deployed Pew Pew Plx change and update specs.
+category: Pew Pew Plx
 tags: [plx, archive]
 ---`
 };

@@ -1,7 +1,7 @@
 ---
-name: PLX: Refine Architecture
+name: Pew Pew Plx: Refine Architecture
 description: Create or update ARCHITECTURE.md.
-category: PLX
+category: Pew Pew Plx
 tags: [plx, architecture, documentation]
 ---
 <!-- PLX:START -->

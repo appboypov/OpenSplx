@@ -1,7 +1,7 @@
 ---
 name: /plx-update-architecture
 id: plx-update-architecture
-category: PLX
+category: Pew Pew Plx
 description: Refresh ARCHITECTURE.md based on current codebase state.
 ---
 <!-- PLX:START -->

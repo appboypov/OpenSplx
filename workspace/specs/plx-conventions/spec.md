@@ -217,6 +217,11 @@ PLX CLI design SHALL use verbs as top-level commands with nouns provided as argu
 - **THEN** the verb communicates the action clearly
 - **AND** nouns refine scope via flags or arguments (e.g., `--changes`, `--specs`)
 
+#### Scenario: Single CLI entry point
+- **WHEN** a user invokes the CLI
+- **THEN** only the `plx` command is available
+- **AND** no legacy aliases exist
+
 #### Scenario: Backward compatibility for noun commands
 - **WHEN** users run noun-prefixed commands such as `plx spec ...` or `plx change ...`
 - **THEN** the CLI SHALL continue to support them for at least one release

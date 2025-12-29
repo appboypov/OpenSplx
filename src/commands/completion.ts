@@ -25,7 +25,7 @@ interface CompleteOptions {
 }
 
 /**
- * Command for managing shell completions for PLX CLI
+ * Command for managing shell completions for Pew Pew Plx CLI
  */
 export class CompletionCommand {
   private completionProvider: CompletionProvider;

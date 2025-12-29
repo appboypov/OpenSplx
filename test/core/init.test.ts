@@ -94,7 +94,7 @@ describe('InitCommand', () => {
         path.join(workspacePath, 'AGENTS.md'),
         'utf-8'
       );
-      expect(agentsContent).toContain('PLX Instructions');
+      expect(agentsContent).toContain('Pew Pew Plx Instructions');
 
       const architectureContent = await fs.readFile(
         path.join(testDir, 'ARCHITECTURE.md'),
@@ -298,16 +298,16 @@ describe('InitCommand', () => {
       expect(await fileExists(claudeArchive)).toBe(true);
 
       const proposalContent = await fs.readFile(claudeProposal, 'utf-8');
-      expect(proposalContent).toContain('name: PLX: Proposal');
+      expect(proposalContent).toContain('name: Pew Pew Plx: Proposal');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
 
       const applyContent = await fs.readFile(claudeApply, 'utf-8');
-      expect(applyContent).toContain('name: PLX: Apply');
+      expect(applyContent).toContain('name: Pew Pew Plx: Apply');
       expect(applyContent).toContain('Work through that task');
 
       const archiveContent = await fs.readFile(claudeArchive, 'utf-8');
-      expect(archiveContent).toContain('name: PLX: Archive');
+      expect(archiveContent).toContain('name: Pew Pew Plx: Archive');
       expect(archiveContent).toContain('plx archive <id>');
       expect(archiveContent).toContain(
         '`--skip-specs` only for tooling-only work'
@@ -438,17 +438,17 @@ describe('InitCommand', () => {
       expect(await fileExists(iflowArchive)).toBe(true);
 
       const proposalContent = await fs.readFile(iflowProposal, 'utf-8');
-      expect(proposalContent).toContain('description: Scaffold a new PLX change and validate strictly.');
+      expect(proposalContent).toContain('description: Scaffold a new Pew Pew Plx change and validate strictly.');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
       expect(proposalContent).toContain('<!-- PLX:END -->');
 
       const applyContent = await fs.readFile(iflowApply, 'utf-8');
-      expect(applyContent).toContain('description: Implement an approved PLX change and keep tasks in sync.');
+      expect(applyContent).toContain('description: Implement an approved Pew Pew Plx change and keep tasks in sync.');
       expect(applyContent).toContain('Work through that task');
 
       const archiveContent = await fs.readFile(iflowArchive, 'utf-8');
-      expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
+      expect(archiveContent).toContain('description: Archive a deployed Pew Pew Plx change and update specs.');
       expect(archiveContent).toContain('plx archive <id>');
     });
 
@@ -808,7 +808,7 @@ describe('InitCommand', () => {
         testDir,
         initCommand,
         'workspace/AGENTS.md',
-        'PLX Instructions'
+        'Pew Pew Plx Instructions'
       );
     });
 
@@ -838,7 +838,7 @@ describe('InitCommand', () => {
 
       const content = await fs.readFile(agentsPath, 'utf-8');
       expect(content).toBe(customContent);
-      expect(content).not.toContain('PLX Instructions');
+      expect(content).not.toContain('Pew Pew Plx Instructions');
     });
 
     it('should handle non-existent target directory', async () => {
@@ -1066,20 +1066,20 @@ describe('InitCommand', () => {
 
       const proposalContent = await fs.readFile(auggieProposal, 'utf-8');
       expect(proposalContent).toContain('---');
-      expect(proposalContent).toContain('description: Scaffold a new PLX change and validate strictly.');
+      expect(proposalContent).toContain('description: Scaffold a new Pew Pew Plx change and validate strictly.');
       expect(proposalContent).toContain('argument-hint: feature description or request');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
 
       const applyContent = await fs.readFile(auggieApply, 'utf-8');
       expect(applyContent).toContain('---');
-      expect(applyContent).toContain('description: Implement an approved PLX change and keep tasks in sync.');
+      expect(applyContent).toContain('description: Implement an approved Pew Pew Plx change and keep tasks in sync.');
       expect(applyContent).toContain('argument-hint: change-id');
       expect(applyContent).toContain('Work through that task');
 
       const archiveContent = await fs.readFile(auggieArchive, 'utf-8');
       expect(archiveContent).toContain('---');
-      expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
+      expect(archiveContent).toContain('description: Archive a deployed Pew Pew Plx change and update specs.');
       expect(archiveContent).toContain('argument-hint: change-id');
       expect(archiveContent).toContain('plx archive <id> --yes');
     });
@@ -1120,22 +1120,22 @@ describe('InitCommand', () => {
 
       const proposalContent = await fs.readFile(codeBuddyProposal, 'utf-8');
       expect(proposalContent).toContain('---');
-      expect(proposalContent).toContain('name: PLX: Proposal');
-      expect(proposalContent).toContain('description: Scaffold a new PLX change and validate strictly.');
-      expect(proposalContent).toContain('category: PLX');
+      expect(proposalContent).toContain('name: Pew Pew Plx: Proposal');
+      expect(proposalContent).toContain('description: Scaffold a new Pew Pew Plx change and validate strictly.');
+      expect(proposalContent).toContain('category: Pew Pew Plx');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
 
       const applyContent = await fs.readFile(codeBuddyApply, 'utf-8');
       expect(applyContent).toContain('---');
-      expect(applyContent).toContain('name: PLX: Apply');
-      expect(applyContent).toContain('description: Implement an approved PLX change and keep tasks in sync.');
+      expect(applyContent).toContain('name: Pew Pew Plx: Apply');
+      expect(applyContent).toContain('description: Implement an approved Pew Pew Plx change and keep tasks in sync.');
       expect(applyContent).toContain('Work through that task');
 
       const archiveContent = await fs.readFile(codeBuddyArchive, 'utf-8');
       expect(archiveContent).toContain('---');
-      expect(archiveContent).toContain('name: PLX: Archive');
-      expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
+      expect(archiveContent).toContain('name: Pew Pew Plx: Archive');
+      expect(archiveContent).toContain('description: Archive a deployed Pew Pew Plx change and update specs.');
       expect(archiveContent).toContain('plx archive <id> --yes');
     });
 
@@ -1208,26 +1208,26 @@ describe('InitCommand', () => {
 
       const proposalContent = await fs.readFile(crushProposal, 'utf-8');
       expect(proposalContent).toContain('---');
-      expect(proposalContent).toContain('name: PLX: Proposal');
-      expect(proposalContent).toContain('description: Scaffold a new PLX change and validate strictly.');
-      expect(proposalContent).toContain('category: PLX');
+      expect(proposalContent).toContain('name: Pew Pew Plx: Proposal');
+      expect(proposalContent).toContain('description: Scaffold a new Pew Pew Plx change and validate strictly.');
+      expect(proposalContent).toContain('category: Pew Pew Plx');
       expect(proposalContent).toContain('tags: [plx, change]');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
 
       const applyContent = await fs.readFile(crushApply, 'utf-8');
       expect(applyContent).toContain('---');
-      expect(applyContent).toContain('name: PLX: Apply');
-      expect(applyContent).toContain('description: Implement an approved PLX change and keep tasks in sync.');
-      expect(applyContent).toContain('category: PLX');
+      expect(applyContent).toContain('name: Pew Pew Plx: Apply');
+      expect(applyContent).toContain('description: Implement an approved Pew Pew Plx change and keep tasks in sync.');
+      expect(applyContent).toContain('category: Pew Pew Plx');
       expect(applyContent).toContain('tags: [plx, apply]');
       expect(applyContent).toContain('Work through that task');
 
       const archiveContent = await fs.readFile(crushArchive, 'utf-8');
       expect(archiveContent).toContain('---');
-      expect(archiveContent).toContain('name: PLX: Archive');
-      expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
-      expect(archiveContent).toContain('category: PLX');
+      expect(archiveContent).toContain('name: Pew Pew Plx: Archive');
+      expect(archiveContent).toContain('description: Archive a deployed Pew Pew Plx change and update specs.');
+      expect(archiveContent).toContain('category: Pew Pew Plx');
       expect(archiveContent).toContain('tags: [plx, archive]');
       expect(archiveContent).toContain('plx archive <id> --yes');
     });
@@ -1369,22 +1369,22 @@ describe('InitCommand', () => {
 
       const proposalContent = await fs.readFile(qoderProposal, 'utf-8');
       expect(proposalContent).toContain('---');
-      expect(proposalContent).toContain('name: PLX: Proposal');
-      expect(proposalContent).toContain('description: Scaffold a new PLX change and validate strictly.');
-      expect(proposalContent).toContain('category: PLX');
+      expect(proposalContent).toContain('name: Pew Pew Plx: Proposal');
+      expect(proposalContent).toContain('description: Scaffold a new Pew Pew Plx change and validate strictly.');
+      expect(proposalContent).toContain('category: Pew Pew Plx');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
 
       const applyContent = await fs.readFile(qoderApply, 'utf-8');
       expect(applyContent).toContain('---');
-      expect(applyContent).toContain('name: PLX: Apply');
-      expect(applyContent).toContain('description: Implement an approved PLX change and keep tasks in sync.');
+      expect(applyContent).toContain('name: Pew Pew Plx: Apply');
+      expect(applyContent).toContain('description: Implement an approved Pew Pew Plx change and keep tasks in sync.');
       expect(applyContent).toContain('Work through that task');
 
       const archiveContent = await fs.readFile(qoderArchive, 'utf-8');
       expect(archiveContent).toContain('---');
-      expect(archiveContent).toContain('name: PLX: Archive');
-      expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
+      expect(archiveContent).toContain('name: Pew Pew Plx: Archive');
+      expect(archiveContent).toContain('description: Archive a deployed Pew Pew Plx change and update specs.');
       expect(archiveContent).toContain('plx archive <id> --yes');
     });
 

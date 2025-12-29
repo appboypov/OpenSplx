@@ -3,7 +3,7 @@ export type SlashCommandId = 'proposal' | 'apply' | 'archive';
 const baseGuardrails = `**Guardrails**
 - Favor straightforward, minimal implementations first and add complexity only when it is requested or clearly required.
 - Keep changes tightly scoped to the requested outcome.
-- Refer to \`workspace/AGENTS.md\` (located inside the \`workspace/\` directory—run \`ls workspace\` or \`plx update\` if you don't see it) if you need additional PLX conventions or clarifications.
+- Refer to \`workspace/AGENTS.md\` (located inside the \`workspace/\` directory—run \`ls workspace\` or \`plx update\` if you don't see it) if you need additional Pew Pew Plx conventions or clarifications.
 - When clarification is needed, use your available question tool (if one exists) instead of asking in chat. If no question tool is available, ask in chat.`;
 
 const proposalGuardrails = `${baseGuardrails}\n- Identify any vague or ambiguous details and gather the necessary clarifications before editing files.

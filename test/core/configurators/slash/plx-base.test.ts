@@ -29,7 +29,7 @@ describe('PlxSlashCommandConfigurator base class', () => {
 
       const initArchPath = path.join(plxDir, 'init-architecture.md');
       const originalContent = `---
-name: PLX: Init Architecture
+name: Pew Pew Plx: Init Architecture
 ---
 ${PLX_MARKERS.start}
 Old body content
@@ -60,7 +60,7 @@ ${PLX_MARKERS.end}
 
       const initArchPath = path.join(plxDir, 'init-architecture.md');
       const originalContent = `---
-name: PLX: Init Architecture
+name: Pew Pew Plx: Init Architecture
 description: Custom description
 ---
 ${PLX_MARKERS.start}

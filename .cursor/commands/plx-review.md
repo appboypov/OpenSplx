@@ -1,7 +1,7 @@
 ---
 name: /plx-review
 id: plx-review
-category: PLX
+category: Pew Pew Plx
 description: Review implementations against specs, changes, or tasks.
 ---
 <!-- PLX:START -->

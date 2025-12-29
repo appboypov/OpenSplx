@@ -35,7 +35,7 @@ const COMMON_FLAGS = {
 export const COMMAND_REGISTRY: CommandDefinition[] = [
   {
     name: 'init',
-    description: 'Initialize PLX in your project',
+    description: 'Initialize Pew Pew Plx in your project',
     acceptsPositional: true,
     positionalType: 'path',
     flags: [
@@ -48,7 +48,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'update',
-    description: 'Update PLX instruction files',
+    description: 'Update Pew Pew Plx instruction files',
     acceptsPositional: true,
     positionalType: 'path',
     flags: [],
@@ -157,7 +157,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'change',
-    description: 'Manage PLX change proposals (deprecated)',
+    description: 'Manage Pew Pew Plx change proposals (deprecated)',
     flags: [],
     subcommands: [
       {
@@ -204,7 +204,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'spec',
-    description: 'Manage PLX specifications',
+    description: 'Manage Pew Pew Plx specifications',
     flags: [],
     subcommands: [
       {
@@ -257,7 +257,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'completion',
-    description: 'Manage shell completions for PLX CLI',
+    description: 'Manage shell completions for Pew Pew Plx CLI',
     flags: [],
     subcommands: [
       {
@@ -290,7 +290,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'config',
-    description: 'View and modify global PLX configuration',
+    description: 'View and modify global Pew Pew Plx configuration',
     flags: [
       {
         name: 'scope',

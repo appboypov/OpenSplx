@@ -1,7 +1,7 @@
 ---
 name: /plx-refine-review
 id: plx-refine-review
-category: PLX
+category: Pew Pew Plx
 description: Create or update REVIEW.md.
 ---
 <!-- PLX:START -->
