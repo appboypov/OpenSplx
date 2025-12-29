@@ -1,7 +1,7 @@
 export const releaseTemplate = (): string => `# Release Preparation
 
 ## Purpose
-This file guides release preparation for the project. Run \`plx prepare\` to interactively update changelog, readme, and architecture documentation before publishing a new version.
+This file guides release preparation for the project. Run \`/plx-prepare-release\` to interactively update changelog, readme, and architecture documentation before publishing a new version.
 
 ---
 
