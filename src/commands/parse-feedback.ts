@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import ora from 'ora';
-import { FeedbackScannerService, GroupedMarkers } from '../services/feedback-scanner.js';
+import { FeedbackScannerService } from '../services/feedback-scanner.js';
 import { getActiveReviewIds, getActiveChangeIds, getSpecIds } from '../utils/item-discovery.js';
 import { isInteractive } from '../utils/interactive.js';
 import { ReviewParent } from '../core/schemas/index.js';
@@ -264,12 +264,9 @@ export class ParseFeedbackCommand {
       }
       reviewNames.push(reviewName);
     } else {
-      // Multiple parent groups - use suffixed names
-      const typeCounters: Record<string, number> = {};
+      // Multiple parent groups - use suffixed names with parent ID
       for (const group of groups.assigned) {
-        const count = (typeCounters[group.parentType] || 0) + 1;
-        typeCounters[group.parentType] = count;
-        const suffixedName = `${reviewName}-${group.parentType}-${count}`;
+        const suffixedName = `${reviewName}-${group.parentType}-${group.parentId}`;
         if (existingReviews.includes(suffixedName)) {
           if (options.json) {
             console.log(
