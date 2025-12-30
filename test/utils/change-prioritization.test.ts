@@ -329,8 +329,8 @@ status: done
       expect(result!.taskFiles[1].filename).toBe('002-second.md');
     });
 
-    it('should skip changes with all checkboxes complete', async () => {
-      // Create complete-change with 100% completion
+    it('should skip changes with all task files done', async () => {
+      // Create complete-change with all tasks done
       const completeChange = path.join(tempDir, 'complete-change');
       const completeTasks = path.join(completeChange, TASKS_DIRECTORY_NAME);
       await fs.mkdir(completeTasks, { recursive: true });
@@ -340,14 +340,18 @@ status: done
       );
       await fs.writeFile(
         path.join(completeTasks, '001-task.md'),
-        `# Task
+        `---
+status: done
+---
+
+# Task
 ## Implementation Checklist
 - [x] Done
 - [x] Also done
 `
       );
 
-      // Create actionable-change with 50% completion
+      // Create actionable-change with to-do task
       const actionableChange = path.join(tempDir, 'actionable-change');
       const actionableTasks = path.join(actionableChange, TASKS_DIRECTORY_NAME);
       await fs.mkdir(actionableTasks, { recursive: true });
@@ -411,7 +415,7 @@ No checkboxes here
     });
 
     it('should return null when only non-actionable changes exist', async () => {
-      // Create complete-change with 100% completion
+      // Create complete-change with all tasks done
       const completeChange = path.join(tempDir, 'complete-change');
       const completeTasks = path.join(completeChange, TASKS_DIRECTORY_NAME);
       await fs.mkdir(completeTasks, { recursive: true });
@@ -421,13 +425,17 @@ No checkboxes here
       );
       await fs.writeFile(
         path.join(completeTasks, '001-task.md'),
-        `# Task
+        `---
+status: done
+---
+
+# Task
 ## Implementation Checklist
 - [x] Done
 `
       );
 
-      // Create change with no checkboxes
+      // Create change with all tasks done (no checkboxes)
       const noCheckboxChange = path.join(tempDir, 'no-checkbox-change');
       const noCheckboxTasks = path.join(noCheckboxChange, TASKS_DIRECTORY_NAME);
       await fs.mkdir(noCheckboxTasks, { recursive: true });
@@ -437,7 +445,11 @@ No checkboxes here
       );
       await fs.writeFile(
         path.join(noCheckboxTasks, '001-task.md'),
-        `# Task
+        `---
+status: done
+---
+
+# Task
 No checkboxes
 `
       );
@@ -477,7 +489,7 @@ status: in-progress
     });
 
     it('should prioritize actionable changes by completion percentage', async () => {
-      // Create complete-change (should be skipped)
+      // Create complete-change (should be skipped - all tasks done)
       const completeChange = path.join(tempDir, 'complete-change');
       const completeTasks = path.join(completeChange, TASKS_DIRECTORY_NAME);
       await fs.mkdir(completeTasks, { recursive: true });
@@ -487,7 +499,11 @@ status: in-progress
       );
       await fs.writeFile(
         path.join(completeTasks, '001-task.md'),
-        `# Task
+        `---
+status: done
+---
+
+# Task
 ## Implementation Checklist
 - [x] Done
 `
