@@ -195,12 +195,12 @@ Tracked issues are:
 
 Domain services encapsulate business logic for reuse across commands:
 
-- **ItemRetrievalService** - Retrieves tasks, changes, and specs by ID
-  - `getTaskById(id)` - Find task across all changes
+- **ItemRetrievalService** - Retrieves tasks, changes, specs, and reviews by ID
+  - `getTaskById(id)` - Find task across all changes and reviews
   - `getChangeById(id)` - Get change proposal with tasks
   - `getSpecById(id)` - Get spec content
-  - `getTasksForChange(id)` - List tasks for a change
-  - `getAllOpenTasks()` - List all non-done tasks
+  - `getTasksForChange(id)` - List tasks for a change or review
+  - `getAllOpenTasks()` - List all non-done tasks from changes and reviews
 
 - **ContentFilterService** - Extracts markdown sections
   - `filterSections(content, sections)` - Extract named sections

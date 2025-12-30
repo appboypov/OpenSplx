@@ -153,6 +153,7 @@ When you run `plx init`, these commands are installed for supported AI tools:
 - `/plx/get-task` - Get next prioritized task
 - `/plx/complete-task` - Mark task as done
 - `/plx/undo-task` - Revert task to to-do
+- `/plx/implement` - Implement current task with guided workflow
 - `/plx/refine-architecture` - Create or update `ARCHITECTURE.md`
 - `/plx/refine-review` - Create or update `REVIEW.md` template
 - `/plx/refine-release` - Create or update `RELEASE.md` template
