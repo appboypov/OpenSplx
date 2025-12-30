@@ -799,6 +799,7 @@ Pew Pew Plx provides:
    - `/plx/get-task` - Get next prioritized task and execute workflow
    - `/plx/complete-task` - Mark task as done
    - `/plx/undo-task` - Revert task to to-do
+   - `/plx/orchestrate` - Coordinate sub-agents for multi-task work
    - `/plx/refine-architecture` - Create or update ARCHITECTURE.md
    - `/plx/review` - Review implementations against specs/changes/tasks
    - `/plx/parse-feedback` - Parse feedback markers and generate review tasks

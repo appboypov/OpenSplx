@@ -877,7 +877,7 @@ status: in-progress
 
   describe('change prioritization', () => {
     it('skips completed changes and selects actionable one', async () => {
-      // Create complete-change with 100% completion (should be skipped)
+      // Create complete-change with all tasks marked done (should be skipped)
       const completeChange = path.join(changesDir, 'complete-change');
       const completeTasks = path.join(completeChange, 'tasks');
       await fs.mkdir(completeTasks, { recursive: true });
@@ -887,7 +887,10 @@ status: in-progress
       );
       await fs.writeFile(
         path.join(completeTasks, '001-task.md'),
-        `# Task
+        `---
+status: done
+---
+# Task
 ## Implementation Checklist
 - [x] Done
 - [x] Also done

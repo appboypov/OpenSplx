@@ -109,6 +109,16 @@ This creates the `workspace/` directory structure and configures slash commands 
 | `plx config list` | Show all settings |
 | `plx update` | Refresh instruction files |
 
+### Multi-Workspace (Monorepo)
+
+| Command | Description |
+|---------|-------------|
+| `plx list --workspace <name>` | Filter to specific workspace |
+| `plx get task --workspace <name>` | Get task from specific workspace |
+| `plx validate --all --workspace <name>` | Validate specific workspace |
+
+In monorepos, items display with project prefixes (e.g., `project-a/add-feature`). Use `--workspace` to filter operations.
+
 ## Task Structure
 
 Tasks live in `workspace/changes/<change-id>/tasks/` as numbered files:
@@ -160,6 +170,7 @@ When you run `plx init`, these commands are installed for supported AI tools:
 - `/plx/complete-task` - Mark task as done
 - `/plx/undo-task` - Revert task to to-do
 - `/plx/implement` - Implement current task with guided workflow
+- `/plx/orchestrate` - Coordinate sub-agents for multi-task work
 - `/plx/refine-architecture` - Create or update `ARCHITECTURE.md`
 - `/plx/refine-review` - Create or update `REVIEW.md` template
 - `/plx/refine-release` - Create or update `RELEASE.md` template

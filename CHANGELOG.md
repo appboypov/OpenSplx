@@ -1,5 +1,30 @@
 # Pew Pew Plx Changelog
 
+## 0.8.0 - 2025-12-30
+
+### Added
+
+- Multi-workspace discovery for monorepo support
+  - Commands scan recursively for `workspace/` directories from the current directory
+  - Item IDs display with project prefixes in multi-workspace mode (e.g., `project-a/add-feature`)
+  - Global `--workspace <name>` flag filters operations to a specific project
+  - Single-workspace projects work unchanged (no prefixes shown)
+  - Ambiguity detection when unprefixed IDs match multiple workspaces
+  - Case-insensitive workspace prefix matching
+- `/plx:orchestrate` slash command for sub-agent coordination
+  - Structured workflow for delegating work to sub-agents
+  - Enforces quality gates, scope adherence, and TracelessChanges principles
+  - Sequential execution with one sub-agent per task
+  - Requires review before accepting sub-agent work
+
+### Changed
+
+- Change prioritization now uses task file status instead of checkbox completion percentage
+  - Changes with no remaining tasks (all `status: done`) are filtered out
+  - Aligns with task-file-based workflow
+
+---
+
 ## 0.7.0 - 2025-12-30
 
 ### Added
