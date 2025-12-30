@@ -57,7 +57,12 @@ export class ChangeCommand {
         (c) => c.projectName.toLowerCase() === projectName.toLowerCase() && c.id === itemId
       );
     }
-    return changeItems.find((c) => c.id === itemId);
+    const matches = changeItems.filter((c) => c.id === itemId);
+    if (matches.length > 1) {
+      const workspaceNames = matches.map(c => c.displayId).join(', ');
+      throw new Error(`Ambiguous item '${itemId}' exists in multiple workspaces: ${workspaceNames}. Specify the workspace prefix.`);
+    }
+    return matches[0];
   }
 
   /**

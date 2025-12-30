@@ -11,10 +11,7 @@ import {
 import { nearestMatches } from '../utils/match.js';
 import { migrateIfNeeded } from '../utils/task-migration.js';
 import { getFilteredWorkspaces } from '../utils/workspace-filter.js';
-import {
-  isMultiWorkspace,
-  DiscoveredWorkspace,
-} from '../utils/workspace-discovery.js';
+import { isMultiWorkspace } from '../utils/workspace-discovery.js';
 
 type ItemType = 'change' | 'spec';
 
@@ -138,28 +135,44 @@ export class ValidateCommand {
 
     if (slashIndex !== -1) {
       const potentialPrefix = itemName.substring(0, slashIndex);
-      // Check if it's a valid workspace prefix
-      if (workspaces.some(w => w.projectName === potentialPrefix)) {
+      if (workspaces.some(w => w.projectName.toLowerCase() === potentialPrefix.toLowerCase())) {
         projectPrefix = potentialPrefix;
         actualItemName = itemName.substring(slashIndex + 1);
       }
     }
 
-    // Get all changes and specs from all workspaces
     const [changes, specs] = await Promise.all([
       getActiveChangeIdsMulti(workspaces),
       getSpecIdsMulti(workspaces),
     ]);
 
-    // Find matching items
-    const matchingChange = changes.find(c =>
+    const matchingChanges = changes.filter(c =>
       c.id === actualItemName &&
-      (projectPrefix === null || c.projectName === projectPrefix)
+      (projectPrefix === null || c.projectName.toLowerCase() === projectPrefix.toLowerCase())
     );
-    const matchingSpec = specs.find(s =>
+    const matchingSpecs = specs.filter(s =>
       s.id === actualItemName &&
-      (projectPrefix === null || s.projectName === projectPrefix)
+      (projectPrefix === null || s.projectName.toLowerCase() === projectPrefix.toLowerCase())
     );
+
+    if (projectPrefix === null && matchingChanges.length > 1) {
+      const workspaceNames = matchingChanges.map(c => c.displayId).join(', ');
+      console.error(`Ambiguous item '${itemName}' exists in multiple workspaces: ${workspaceNames}`);
+      console.error('Specify the workspace prefix, e.g.: plx validate <workspace>/<item>');
+      process.exitCode = 1;
+      return;
+    }
+
+    if (projectPrefix === null && matchingSpecs.length > 1) {
+      const workspaceNames = matchingSpecs.map(s => s.displayId).join(', ');
+      console.error(`Ambiguous item '${itemName}' exists in multiple workspaces: ${workspaceNames}`);
+      console.error('Specify the workspace prefix, e.g.: plx validate <workspace>/<item>');
+      process.exitCode = 1;
+      return;
+    }
+
+    const matchingChange = matchingChanges[0];
+    const matchingSpec = matchingSpecs[0];
 
     const isChange = !!matchingChange;
     const isSpec = !!matchingSpec;
