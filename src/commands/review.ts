@@ -61,7 +61,12 @@ export class ReviewCommand {
         (c) => c.projectName.toLowerCase() === projectName.toLowerCase() && c.id === itemId
       );
     }
-    return changeItems.find((c) => c.id === itemId);
+    const matches = changeItems.filter((c) => c.id === itemId);
+    if (matches.length > 1) {
+      const workspaceNames = matches.map(c => c.displayId).join(', ');
+      throw new Error(`Ambiguous change '${itemId}' exists in multiple workspaces: ${workspaceNames}. Specify the workspace prefix.`);
+    }
+    return matches[0];
   }
 
   private findSpecForItem(
@@ -74,7 +79,12 @@ export class ReviewCommand {
         (s) => s.projectName.toLowerCase() === projectName.toLowerCase() && s.id === itemId
       );
     }
-    return specItems.find((s) => s.id === itemId);
+    const matches = specItems.filter((s) => s.id === itemId);
+    if (matches.length > 1) {
+      const workspaceNames = matches.map(s => s.displayId).join(', ');
+      throw new Error(`Ambiguous spec '${itemId}' exists in multiple workspaces: ${workspaceNames}. Specify the workspace prefix.`);
+    }
+    return matches[0];
   }
 
   async execute(options: ReviewOptions = {}): Promise<void> {
