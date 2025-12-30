@@ -153,6 +153,7 @@ When you run `plx init`, these commands are installed for supported AI tools:
 - `/plx/get-task` - Get next prioritized task
 - `/plx/complete-task` - Mark task as done
 - `/plx/undo-task` - Revert task to to-do
+- `/plx/implement` - Implement current task with guided workflow
 - `/plx/refine-architecture` - Create or update `ARCHITECTURE.md`
 - `/plx/refine-review` - Create or update `REVIEW.md` template
 - `/plx/refine-release` - Create or update `RELEASE.md` template
@@ -168,26 +169,26 @@ When you run `plx init`, these commands are installed for supported AI tools:
 
 | Tool | Command Format |
 |------|----------------|
-| Amazon Q Developer | `@plx-proposal`, `@plx-apply`, `@plx-archive` |
-| Antigravity | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| Auggie (Augment CLI) | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| Claude Code | `/plx:proposal`, `/plx:apply`, `/plx:archive` |
+| Amazon Q Developer | `@plx-proposal`, `@plx-implement`, `@plx-archive` |
+| Antigravity | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| Auggie (Augment CLI) | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| Claude Code | `/plx:proposal`, `/plx:implement`, `/plx:archive` |
 | Cline | Workflows in `.clinerules/workflows/` |
-| CodeBuddy Code | `/plx:proposal`, `/plx:apply`, `/plx:archive` |
-| Codex | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| CoStrict | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| Crush | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| Cursor | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| Factory Droid | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| Gemini CLI | `/plx:proposal`, `/plx:apply`, `/plx:archive` |
-| GitHub Copilot | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| iFlow | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| Kilo Code | `/plx-proposal.md`, `/plx-apply.md`, `/plx-archive.md` |
-| OpenCode | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| Qoder | `/plx:proposal`, `/plx:apply`, `/plx:archive` |
-| Qwen Code | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| RooCode | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
-| Windsurf | `/plx-proposal`, `/plx-apply`, `/plx-archive` |
+| CodeBuddy Code | `/plx:proposal`, `/plx:implement`, `/plx:archive` |
+| Codex | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| CoStrict | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| Crush | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| Cursor | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| Factory Droid | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| Gemini CLI | `/plx:proposal`, `/plx:implement`, `/plx:archive` |
+| GitHub Copilot | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| iFlow | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| Kilo Code | `/plx-proposal.md`, `/plx-implement.md`, `/plx-archive.md` |
+| OpenCode | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| Qoder | `/plx:proposal`, `/plx:implement`, `/plx:archive` |
+| Qwen Code | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| RooCode | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
+| Windsurf | `/plx-proposal`, `/plx-implement`, `/plx-archive` |
 
 </details>
 

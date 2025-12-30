@@ -264,7 +264,7 @@ export class ParseFeedbackCommand {
       }
       reviewNames.push(reviewName);
     } else {
-      // Multiple parent groups - use suffixed names with parent ID
+      // Multiple parent groups - use suffixed names with parent type and ID
       for (const group of groups.assigned) {
         const suffixedName = `${reviewName}-${group.parentType}-${group.parentId}`;
         if (existingReviews.includes(suffixedName)) {

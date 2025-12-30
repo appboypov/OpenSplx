@@ -1,5 +1,23 @@
 # Pew Pew Plx Changelog
 
+## 0.6.2 - 2025-12-30
+
+### Added
+
+- Review task retrieval: `plx get tasks --id <review-id>` and `plx get task --id <review-id>/<task-id>` now work with reviews
+- Parent linkage for feedback markers: markers can specify parent type and ID inline
+
+### Changed
+
+- Renamed `/plx:apply` slash command to `/plx:implement` with enhanced task workflow integration
+
+### Fixed
+
+- `ItemRetrievalService` now searches `workspace/reviews` for task retrieval (previously only searched `workspace/changes`)
+- `ListCommand` path resolution: `plx list` now works correctly when invoked with relative paths
+
+---
+
 ## 0.6.1 - 2025-12-29
 
 ### Added
