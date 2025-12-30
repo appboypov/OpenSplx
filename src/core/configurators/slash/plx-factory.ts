@@ -3,13 +3,14 @@ import { PlxSlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<PlxSlashCommandId, string> = {
   'get-task': '.factory/commands/plx-get-task.md',
-  'prepare-compact': '.factory/commands/plx-prepare-compact.md',
-  'review': '.factory/commands/plx-review.md',
-  'refine-architecture': '.factory/commands/plx-refine-architecture.md',
-  'refine-review': '.factory/commands/plx-refine-review.md',
-  'refine-release': '.factory/commands/plx-refine-release.md',
+  'orchestrate': '.factory/commands/plx-orchestrate.md',
   'parse-feedback': '.factory/commands/plx-parse-feedback.md',
-  'prepare-release': '.factory/commands/plx-prepare-release.md'
+  'prepare-compact': '.factory/commands/plx-prepare-compact.md',
+  'prepare-release': '.factory/commands/plx-prepare-release.md',
+  'refine-architecture': '.factory/commands/plx-refine-architecture.md',
+  'refine-release': '.factory/commands/plx-refine-release.md',
+  'refine-review': '.factory/commands/plx-refine-review.md',
+  'review': '.factory/commands/plx-review.md'
 };
 
 const FRONTMATTER: Record<PlxSlashCommandId, string> = {
@@ -19,32 +20,8 @@ argument-hint: (optional context)
 ---
 
 $ARGUMENTS`,
-  'prepare-compact': `---
-description: Preserve session progress in PROGRESS.md for context continuity.
-argument-hint: (optional context)
----
-
-$ARGUMENTS`,
-  'review': `---
-description: Review implementations against specs, changes, or tasks.
-argument-hint: (optional context)
----
-
-$ARGUMENTS`,
-  'refine-architecture': `---
-description: Create or update ARCHITECTURE.md.
-argument-hint: (optional context)
----
-
-$ARGUMENTS`,
-  'refine-review': `---
-description: Create or update REVIEW.md.
-argument-hint: (optional context)
----
-
-$ARGUMENTS`,
-  'refine-release': `---
-description: Create or update RELEASE.md.
+  'orchestrate': `---
+description: Orchestrate sub-agents to complete work collaboratively.
 argument-hint: (optional context)
 ---
 
@@ -55,8 +32,38 @@ argument-hint: (optional context)
 ---
 
 $ARGUMENTS`,
+  'prepare-compact': `---
+description: Preserve session progress in PROGRESS.md for context continuity.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
   'prepare-release': `---
 description: Prepare release by updating changelog, readme, and architecture documentation.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'refine-architecture': `---
+description: Create or update ARCHITECTURE.md.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'refine-release': `---
+description: Create or update RELEASE.md.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'refine-review': `---
+description: Create or update REVIEW.md.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'review': `---
+description: Review implementations against specs, changes, or tasks.
 argument-hint: (optional context)
 ---
 

@@ -10,13 +10,14 @@ export interface PlxSlashCommandTarget {
 
 export const ALL_PLX_COMMANDS: PlxSlashCommandId[] = [
   'get-task',
-  'prepare-compact',
-  'review',
-  'refine-architecture',
-  'refine-review',
-  'refine-release',
+  'orchestrate',
   'parse-feedback',
-  'prepare-release'
+  'prepare-compact',
+  'prepare-release',
+  'refine-architecture',
+  'refine-release',
+  'refine-review',
+  'review'
 ];
 
 export abstract class PlxSlashCommandConfigurator {
