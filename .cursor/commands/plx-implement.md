@@ -14,16 +14,14 @@ description: Implement an approved Pew Pew Plx change and keep tasks in sync.
 **Steps**
 Track these steps as TODOs and complete them one by one.
 1. Determine the scope:
-   - If user specified a task ID in ARGUMENTS, use `plx get task --id <task-id>` to get that specific task and skip to step 2
-   - Otherwise, run `plx get task` to retrieve the next prioritized task and note its change ID
-2. Work through the task's Implementation Checklist, keeping edits minimal.
-3. Mark checklist items complete (`[x]`) in the task file.
-4. Mark the task as done with `plx complete task --id <task-id>`.
-5. If implementing a specific task ID (from step 1), stop here.
-6. Run `plx get task` to get the next task:
-   - If from the same change, repeat from step 2
-   - If from a different change or no tasks remain, stop
-7. Reference `plx list` or `plx show <item>` when additional context is required.
+   - If user specified a task ID in ARGUMENTS, use `plx get task --id <task-id>` to get that specific task and proceed to step 2
+   - Otherwise, run `plx get tasks` to retrieve all tasks for the highest-priority change
+2. For each task (or the single task if task ID was provided):
+   a. Work through the task's Implementation Checklist, keeping edits minimal
+   b. Mark checklist items complete (`[x]`) in the task file
+   c. Mark the task as done with `plx complete task --id <task-id>`
+3. If implementing a specific task ID (from step 1), stop after completing that task.
+4. Reference `plx list` or `plx show <item>` when additional context is required.
 
 **Reference**
 - Use `plx show <id> --json --deltas-only` if you need additional context from the proposal while implementing.

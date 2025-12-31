@@ -38,16 +38,14 @@ Modify `implementSteps` in `src/core/templates/slash-command-templates.ts`:
 ```markdown
 **Steps**
 1. Determine scope:
-   - If task ID in ARGUMENTS: get specific task, skip to step 2
-   - Otherwise: get next prioritized task, note its change ID
-2. Work through task's Implementation Checklist
-3. Mark checklist items complete in task file
-4. Mark task done with `plx complete task --id <task-id>`
-5. If implementing specific task ID: stop here
-6. Get next task:
-   - If same change: repeat from step 2
-   - If different change or no tasks: stop
-7. Reference `plx list` or `plx show` for additional context
+   - If task ID in ARGUMENTS: use `plx get task --id <task-id>` to get that specific task
+   - Otherwise: use `plx get tasks` to retrieve all tasks for the highest-priority change
+2. For each task (or single task if task ID was provided):
+   a. Work through the task's Implementation Checklist
+   b. Mark checklist items complete in task file
+   c. Mark task done with `plx complete task --id <task-id>`
+3. If implementing specific task ID: stop after completing that task
+4. Reference `plx list` or `plx show` for additional context
 ```
 
 ## Scope
