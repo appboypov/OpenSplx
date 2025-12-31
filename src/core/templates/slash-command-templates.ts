@@ -33,7 +33,9 @@ Track these steps as TODOs and complete them one by one.
    a. Work through the task's Implementation Checklist, keeping edits minimal
    b. Mark checklist items complete (\`[x]\`) in the task file
    c. Mark the task as done with \`plx complete task --id <task-id>\`
-3. If implementing a specific task ID (from step 1), stop after completing that task.
+3. Stop when complete:
+   - If implementing a specific task ID (from step 1), stop after completing that task
+   - If implementing all tasks in a change, stop after all tasks have been completed
 4. Reference \`plx list\` or \`plx show <item>\` when additional context is required.`;
 
 const implementReferences = `**Reference**
