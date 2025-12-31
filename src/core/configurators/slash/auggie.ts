@@ -39,7 +39,7 @@ description: Parse feedback markers and generate review tasks.
 argument-hint: (optional context)
 ---`,
   'plan-proposal': `---
-description: Scaffold a new Pew Pew Plx change and validate strictly.
+description: Scaffold a new Pew Pew Plx change and validate strictly. Consumes request.md when present.
 argument-hint: feature description or request
 ---`,
   'plan-request': `---

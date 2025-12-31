@@ -35,7 +35,7 @@ Orchestrate sub-agents to complete work collaboratively.`,
 Parse feedback markers and generate review tasks.`,
   'plan-proposal': `# PLX: Plan Proposal
 
-Scaffold a new PLX change and validate strictly.`,
+Scaffold a new PLX change and validate strictly. Consumes request.md when present.`,
   'plan-request': `# PLX: Plan Request
 
 Clarify user intent through iterative yes/no questions before proposal creation.`,

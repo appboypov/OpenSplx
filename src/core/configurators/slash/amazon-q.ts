@@ -52,7 +52,7 @@ description: Parse feedback markers and generate review tasks.
 
 <arguments>$ARGUMENTS</arguments>`,
   'plan-proposal': `---
-description: Scaffold a new PLX change and validate strictly.
+description: Scaffold a new PLX change and validate strictly. Consumes request.md when present.
 ---
 
 The user has requested the following change proposal. Use the PLX instructions to create their change proposal.

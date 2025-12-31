@@ -52,7 +52,7 @@ description: Parse feedback markers and generate review tasks.
 name: /plx-plan-proposal
 id: plx-plan-proposal
 category: Pew Pew Plx
-description: Scaffold a new Pew Pew Plx change and validate strictly.
+description: Scaffold a new Pew Pew Plx change and validate strictly. Consumes request.md when present.
 ---`,
   'plan-request': `---
 name: /plx-plan-request

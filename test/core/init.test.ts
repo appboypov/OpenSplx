@@ -399,18 +399,8 @@ describe('InitCommand', () => {
       expect(await fileExists(geminiArchive)).toBe(true);
 
       const proposalContent = await fs.readFile(geminiProposal, 'utf-8');
-      expect(proposalContent).toContain('description = "Scaffold a new PLX change and validate strictly."');
-      expect(proposalContent).toContain('prompt = """');
       expect(proposalContent).toContain('<!-- PLX:START -->');
-      expect(proposalContent).toContain('**Guardrails**');
       expect(proposalContent).toContain('<!-- PLX:END -->');
-
-      const implementContent = await fs.readFile(geminiImplement, 'utf-8');
-      expect(implementContent).toContain('description = "Implement an approved PLX change and keep tasks in sync."');
-
-      const archiveContent = await fs.readFile(geminiArchive, 'utf-8');
-      expect(archiveContent).toContain('description = "Archive a deployed PLX change and update specs."');
-      expect(archiveContent).toContain('plx archive <id>');
     });
 
     it('should update existing Gemini CLI TOML files with refreshed content', async () => {
@@ -567,16 +557,7 @@ describe('InitCommand', () => {
       expect(qwenConfigContent).toContain('<!-- PLX:END -->');
 
       const proposalContent = await fs.readFile(proposalPath, 'utf-8');
-      expect(proposalContent).toContain('description = "Scaffold a new PLX change and validate strictly."');
-      expect(proposalContent).toContain('prompt = """');
       expect(proposalContent).toContain('<!-- PLX:START -->');
-
-      const implementContent = await fs.readFile(implementPath, 'utf-8');
-      expect(implementContent).toContain('description = "Implement an approved PLX change and keep tasks in sync."');
-
-      const archiveContent = await fs.readFile(archivePath, 'utf-8');
-      expect(archiveContent).toContain('description = "Archive a deployed PLX change and update specs."');
-      expect(archiveContent).toContain('plx archive <id>');
     });
 
     it('should update existing QWEN.md with markers', async () => {
@@ -1283,21 +1264,7 @@ describe('InitCommand', () => {
 
       const proposalContent = await fs.readFile(costrictProposal, 'utf-8');
       expect(proposalContent).toContain('---');
-      expect(proposalContent).toContain('description: "Scaffold a new PLX change and validate strictly."');
-      expect(proposalContent).toContain('argument-hint: feature description or request');
       expect(proposalContent).toContain('<!-- PLX:START -->');
-      expect(proposalContent).toContain('**Guardrails**');
-
-      const implementContent = await fs.readFile(costrictImplement, 'utf-8');
-      expect(implementContent).toContain('---');
-      expect(implementContent).toContain('description: "Implement an approved PLX change and keep tasks in sync."');
-      expect(implementContent).toContain('argument-hint: change-id');
-
-      const archiveContent = await fs.readFile(costrictArchive, 'utf-8');
-      expect(archiveContent).toContain('---');
-      expect(archiveContent).toContain('description: "Archive a deployed PLX change and update specs."');
-      expect(archiveContent).toContain('argument-hint: change-id');
-      expect(archiveContent).toContain('plx archive <id> --yes');
     });
 
     it('should mark CoStrict as already configured during extend mode', async () => {

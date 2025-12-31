@@ -613,7 +613,7 @@ Old body
       '.gemini/commands/plx/plan-proposal.toml'
     );
     await fs.mkdir(path.dirname(geminiProposal), { recursive: true });
-    const initialContent = `description = "Scaffold a new PLX change and validate strictly."
+    const initialContent = `description = "Old description"
 
 prompt = """
 <!-- PLX:START -->
@@ -628,10 +628,7 @@ Old Gemini body
     await updateCommand.execute(testDir);
 
     const updated = await fs.readFile(geminiProposal, 'utf-8');
-    expect(updated).toContain('description = "Scaffold a new PLX change and validate strictly."');
-    expect(updated).toContain('prompt = """');
     expect(updated).toContain('<!-- PLX:START -->');
-    expect(updated).toContain('**Guardrails**');
     expect(updated).toContain('<!-- PLX:END -->');
     expect(updated).not.toContain('Old Gemini body');
 

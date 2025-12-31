@@ -23,7 +23,7 @@ const DESCRIPTIONS: Record<SlashCommandId, string> = {
   'implement': 'Implement an approved PLX change and keep tasks in sync.',
   'orchestrate': 'Orchestrate sub-agents to complete work collaboratively.',
   'parse-feedback': 'Parse feedback markers and generate review tasks.',
-  'plan-proposal': 'Scaffold a new PLX change and validate strictly.',
+  'plan-proposal': 'Scaffold a new PLX change and validate strictly. Consumes request.md when present.',
   'plan-request': 'Clarify user intent through iterative yes/no questions before proposal creation.',
   'prepare-compact': 'Preserve session progress in PROGRESS.md for context continuity.',
   'prepare-release': 'Prepare release by updating changelog, readme, and architecture documentation.',

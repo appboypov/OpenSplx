@@ -50,7 +50,7 @@ tags: [plx, review, workflow]
 ---`,
   'plan-proposal': `---
 name: Pew Pew Plx: Plan Proposal
-description: Scaffold a new Pew Pew Plx change and validate strictly.
+description: Scaffold a new Pew Pew Plx change and validate strictly. Consumes request.md when present.
 category: Pew Pew Plx
 tags: [plx, change]
 ---`,

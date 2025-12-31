@@ -53,7 +53,7 @@ argument-hint: (optional context)
 
 $ARGUMENTS`,
   'plan-proposal': `---
-description: Scaffold a new PLX change and validate strictly.
+description: Scaffold a new PLX change and validate strictly. Consumes request.md when present.
 argument-hint: request or feature description
 ---
 

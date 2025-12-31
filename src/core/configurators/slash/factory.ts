@@ -39,7 +39,7 @@ description: Parse feedback markers and generate review tasks.
 argument-hint: (optional context)
 ---`,
   'plan-proposal': `---
-description: Scaffold a new PLX change and validate strictly.
+description: Scaffold a new PLX change and validate strictly. Consumes request.md when present.
 argument-hint: request or feature description
 ---`,
   'plan-request': `---
