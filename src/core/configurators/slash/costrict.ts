@@ -2,13 +2,13 @@ import { SlashCommandConfigurator } from './base.js';
 import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS = {
-  proposal: '.cospec/plx/commands/plx-proposal.md',
+  'plan-proposal': '.cospec/plx/commands/plx-plan-proposal.md',
   implement: '.cospec/plx/commands/plx-implement.md',
   archive: '.cospec/plx/commands/plx-archive.md',
 } as const satisfies Record<SlashCommandId, string>;
 
 const FRONTMATTER = {
-  proposal: `---
+  'plan-proposal': `---
 description: "Scaffold a new PLX change and validate strictly."
 argument-hint: feature description or request
 ---`,

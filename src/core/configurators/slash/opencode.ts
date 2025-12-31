@@ -4,13 +4,13 @@ import { FileSystemUtils } from "../../../utils/file-system.js";
 import { PLX_MARKERS } from "../../config.js";
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
-  proposal: ".opencode/command/plx-proposal.md",
+  'plan-proposal': ".opencode/command/plx-plan-proposal.md",
   implement: ".opencode/command/plx-implement.md",
   archive: ".opencode/command/plx-archive.md",
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
-  proposal: `---
+  'plan-proposal': `---
 description: Scaffold a new PLX change and validate strictly.
 ---
 The user has requested the following change proposal. Use the PLX instructions to create their change proposal.

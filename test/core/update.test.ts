@@ -111,7 +111,7 @@ More notes here.`;
   it('should refresh existing Claude slash command files', async () => {
     const proposalPath = path.join(
       testDir,
-      '.claude/commands/plx/proposal.md'
+      '.claude/commands/plx/plan-proposal.md'
     );
     await fs.mkdir(path.dirname(proposalPath), { recursive: true });
     const initialContent = `---
@@ -143,7 +143,7 @@ Old slash content
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain(
-      'Updated slash commands: .claude/commands/plx/proposal.md'
+      'Updated slash commands: .claude/commands/plx/plan-proposal.md'
     );
 
     consoleSpy.mockRestore();
@@ -213,7 +213,7 @@ Old content
 
     const proposalPath = path.join(
       testDir,
-      '.qwen/commands/plx-proposal.toml'
+      '.qwen/commands/plx-plan-proposal.toml'
     );
     const archivePath = path.join(
       testDir,
@@ -295,7 +295,7 @@ More rules after.`;
   it('should refresh existing Cline workflow files', async () => {
     const proposalPath = path.join(
       testDir,
-      '.clinerules/workflows/plx-proposal.md'
+      '.clinerules/workflows/plx-plan-proposal.md'
     );
     await fs.mkdir(path.dirname(proposalPath), { recursive: true });
     const initialContent = `# Pew Pew Plx: Proposal
@@ -325,7 +325,7 @@ Old slash content
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain(
-      'Updated slash commands: .clinerules/workflows/plx-proposal.md'
+      'Updated slash commands: .clinerules/workflows/plx-plan-proposal.md'
     );
 
     consoleSpy.mockRestore();
@@ -533,7 +533,7 @@ Old body
 
     const codexProposal = path.join(
       testDir,
-      '.codex/prompts/plx-proposal.md'
+      '.codex/prompts/plx-plan-proposal.md'
     );
     const codexArchive = path.join(
       testDir,
@@ -595,7 +595,7 @@ Old body
 
     const ghProposal = path.join(
       testDir,
-      '.github/prompts/plx-proposal.prompt.md'
+      '.github/prompts/plx-plan-proposal.prompt.md'
     );
     const ghArchive = path.join(
       testDir,
@@ -610,7 +610,7 @@ Old body
   it('should refresh existing Gemini CLI TOML files without creating new ones', async () => {
     const geminiProposal = path.join(
       testDir,
-      '.gemini/commands/plx/proposal.toml'
+      '.gemini/commands/plx/plan-proposal.toml'
     );
     await fs.mkdir(path.dirname(geminiProposal), { recursive: true });
     const initialContent = `description = "Scaffold a new PLX change and validate strictly."
@@ -649,7 +649,7 @@ Old Gemini body
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated slash commands: .gemini/commands/plx/proposal.toml'
+      'Updated slash commands: .gemini/commands/plx/plan-proposal.toml'
     );
 
     consoleSpy.mockRestore();
@@ -658,7 +658,7 @@ Old Gemini body
   it('should refresh existing IFLOW slash commands', async () => {
     const iflowProposal = path.join(
       testDir,
-      '.iflow/commands/plx-proposal.md'
+      '.iflow/commands/plx-plan-proposal.md'
     );
     await fs.mkdir(path.dirname(iflowProposal), { recursive: true });
     const initialContent = `description: Scaffold a new PLX change and validate strictly."
@@ -696,7 +696,7 @@ Old IFlow body
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated slash commands: .iflow/commands/plx-proposal.md'
+      'Updated slash commands: .iflow/commands/plx-plan-proposal.md'
     );
 
     consoleSpy.mockRestore();
@@ -705,7 +705,7 @@ Old IFlow body
   it('should refresh existing Factory slash commands', async () => {
     const factoryPath = path.join(
       testDir,
-      '.factory/commands/plx-proposal.md'
+      '.factory/commands/plx-plan-proposal.md'
     );
     await fs.mkdir(path.dirname(factoryPath), { recursive: true });
     const initialContent = `---
@@ -732,7 +732,7 @@ Old body
     expect(updated).not.toContain('Old body');
 
     expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining('.factory/commands/plx-proposal.md')
+      expect.stringContaining('.factory/commands/plx-plan-proposal.md')
     );
 
     consoleSpy.mockRestore();
@@ -761,7 +761,7 @@ Old body
 
     const factoryProposal = path.join(
       testDir,
-      '.factory/commands/plx-proposal.md'
+      '.factory/commands/plx-plan-proposal.md'
     );
     const factoryArchive = path.join(
       testDir,
@@ -825,7 +825,7 @@ Old body
 
     const aqProposal = path.join(
       testDir,
-      '.amazonq/prompts/plx-proposal.md'
+      '.amazonq/prompts/plx-plan-proposal.md'
     );
     const aqArchive = path.join(
       testDir,
@@ -885,7 +885,7 @@ Old body
 
     const auggieProposal = path.join(
       testDir,
-      '.augment/commands/plx-proposal.md'
+      '.augment/commands/plx-plan-proposal.md'
     );
     const auggieArchive = path.join(
       testDir,
@@ -900,7 +900,7 @@ Old body
   it('should refresh existing CodeBuddy slash command files', async () => {
     const codeBuddyPath = path.join(
       testDir,
-      '.codebuddy/commands/plx/proposal.md'
+      '.codebuddy/commands/plx/plan-proposal.md'
     );
     await fs.mkdir(path.dirname(codeBuddyPath), { recursive: true });
     const initialContent = `---
@@ -932,7 +932,7 @@ Old slash content
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain(
-      'Updated slash commands: .codebuddy/commands/plx/proposal.md'
+      'Updated slash commands: .codebuddy/commands/plx/plan-proposal.md'
     );
 
     consoleSpy.mockRestore();
@@ -944,7 +944,7 @@ Old slash content
       '.codebuddy/commands/plx/implement.md'
     );
 
-    // Only create implement; leave proposal and archive missing
+    // Only create implement; leave plan-proposal and archive missing
     await fs.mkdir(path.dirname(codeBuddyImplement), { recursive: true });
     await fs.writeFile(
       codeBuddyImplement,
@@ -963,7 +963,7 @@ Old body
 
     const codeBuddyProposal = path.join(
       testDir,
-      '.codebuddy/commands/plx/proposal.md'
+      '.codebuddy/commands/plx/plan-proposal.md'
     );
     const codeBuddyArchive = path.join(
       testDir,
@@ -978,7 +978,7 @@ Old body
   it('should refresh existing Crush slash command files', async () => {
     const crushPath = path.join(
       testDir,
-      '.crush/commands/plx/proposal.md'
+      '.crush/commands/plx/plan-proposal.md'
     );
     await fs.mkdir(path.dirname(crushPath), { recursive: true });
     const initialContent = `---
@@ -1010,7 +1010,7 @@ Old slash content
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain(
-      'Updated slash commands: .crush/commands/plx/proposal.md'
+      'Updated slash commands: .crush/commands/plx/plan-proposal.md'
     );
 
     consoleSpy.mockRestore();
@@ -1022,7 +1022,7 @@ Old slash content
       '.crush/commands/plx-implement.md'
     );
 
-    // Only create implement; leave proposal and archive missing
+    // Only create implement; leave plan-proposal and archive missing
     await fs.mkdir(path.dirname(crushImplement), { recursive: true });
     await fs.writeFile(
       crushImplement,
@@ -1041,7 +1041,7 @@ Old body
 
     const crushProposal = path.join(
       testDir,
-      '.crush/commands/plx-proposal.md'
+      '.crush/commands/plx-plan-proposal.md'
     );
     const crushArchive = path.join(
       testDir,
@@ -1056,7 +1056,7 @@ Old body
   it('should refresh existing CoStrict slash command files', async () => {
     const costrictPath = path.join(
       testDir,
-      '.cospec/plx/commands/plx-proposal.md'
+      '.cospec/plx/commands/plx-plan-proposal.md'
     );
     await fs.mkdir(path.dirname(costrictPath), { recursive: true });
     const initialContent = `---
@@ -1088,7 +1088,7 @@ Old body
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain(
-      'Updated slash commands: .cospec/plx/commands/plx-proposal.md'
+      'Updated slash commands: .cospec/plx/commands/plx-plan-proposal.md'
     );
 
     consoleSpy.mockRestore();
@@ -1097,7 +1097,7 @@ Old body
   it('should refresh existing Qoder slash command files', async () => {
     const qoderPath = path.join(
       testDir,
-      '.qoder/commands/plx/proposal.md'
+      '.qoder/commands/plx/plan-proposal.md'
     );
     await fs.mkdir(path.dirname(qoderPath), { recursive: true });
     const initialContent = `---
@@ -1129,7 +1129,7 @@ Old slash content
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain(
-      'Updated slash commands: .qoder/commands/plx/proposal.md'
+      'Updated slash commands: .qoder/commands/plx/plan-proposal.md'
     );
 
     consoleSpy.mockRestore();
@@ -1138,7 +1138,7 @@ Old slash content
   it('should refresh existing RooCode slash command files', async () => {
     const rooPath = path.join(
       testDir,
-      '.roo/commands/plx-proposal.md'
+      '.roo/commands/plx-plan-proposal.md'
     );
     await fs.mkdir(path.dirname(rooPath), { recursive: true });
     const initialContent = `# Pew Pew Plx: Proposal
@@ -1169,7 +1169,7 @@ Old body
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain(
-      'Updated slash commands: .roo/commands/plx-proposal.md'
+      'Updated slash commands: .roo/commands/plx-plan-proposal.md'
     );
 
     consoleSpy.mockRestore();
@@ -1181,7 +1181,7 @@ Old body
       '.roo/commands/plx-implement.md'
     );
 
-    // Only create implement; leave proposal and archive missing
+    // Only create implement; leave plan-proposal and archive missing
     await fs.mkdir(path.dirname(rooImplement), { recursive: true });
     await fs.writeFile(
       rooImplement,
@@ -1196,7 +1196,7 @@ Old body
 
     const rooProposal = path.join(
       testDir,
-      '.roo/commands/plx-proposal.md'
+      '.roo/commands/plx-plan-proposal.md'
     );
     const rooArchive = path.join(
       testDir,
@@ -1214,7 +1214,7 @@ Old body
       '.cospec/plx/commands/plx-implement.md'
     );
 
-    // Only create implement; leave proposal and archive missing
+    // Only create implement; leave plan-proposal and archive missing
     await fs.mkdir(path.dirname(costrictImplement), { recursive: true });
     await fs.writeFile(
       costrictImplement,
@@ -1231,7 +1231,7 @@ Old
 
     const costrictProposal = path.join(
       testDir,
-      '.cospec/plx/commands/plx-proposal.md'
+      '.cospec/plx/commands/plx-plan-proposal.md'
     );
     const costrictArchive = path.join(
       testDir,
@@ -1249,7 +1249,7 @@ Old
       '.qoder/commands/plx/implement.md'
     );
 
-    // Only create implement; leave proposal and archive missing
+    // Only create implement; leave plan-proposal and archive missing
     await fs.mkdir(path.dirname(qoderImplement), { recursive: true });
     await fs.writeFile(
       qoderImplement,
@@ -1268,7 +1268,7 @@ Old body
 
     const qoderProposal = path.join(
       testDir,
-      '.qoder/commands/plx/proposal.md'
+      '.qoder/commands/plx/plan-proposal.md'
     );
     const qoderArchive = path.join(
       testDir,
@@ -1334,7 +1334,7 @@ More instructions after.`;
   it('should preserve CoStrict content outside markers during update', async () => {
     const costrictPath = path.join(
       testDir,
-      '.cospec/plx/commands/plx-proposal.md'
+      '.cospec/plx/commands/plx-plan-proposal.md'
     );
     await fs.mkdir(path.dirname(costrictPath), { recursive: true });
     const initialContent = `## Custom Intro Title\nSome intro text\n<!-- PLX:START -->\nOld body\n<!-- PLX:END -->\n\nFooter stays`;
@@ -1390,7 +1390,7 @@ More instructions after.`;
   it('should preserve Windsurf content outside markers during update', async () => {
     const wsPath = path.join(
       testDir,
-      '.windsurf/workflows/plx-proposal.md'
+      '.windsurf/workflows/plx-plan-proposal.md'
     );
     await fs.mkdir(path.dirname(wsPath), { recursive: true });
     const initialContent = `## Custom Intro Title\nSome intro text\n<!-- PLX:START -->\nOld body\n<!-- PLX:END -->\n\nFooter stays`;
@@ -1410,7 +1410,7 @@ More instructions after.`;
       testDir,
       '.windsurf/workflows/plx-implement.md'
     );
-    // Only create implement; leave proposal and archive missing
+    // Only create implement; leave plan-proposal and archive missing
     await fs.mkdir(path.dirname(wsImplement), { recursive: true });
     await fs.writeFile(
       wsImplement,
@@ -1421,7 +1421,7 @@ More instructions after.`;
 
     const wsProposal = path.join(
       testDir,
-      '.windsurf/workflows/plx-proposal.md'
+      '.windsurf/workflows/plx-plan-proposal.md'
     );
     const wsArchive = path.join(
       testDir,
@@ -1475,7 +1475,7 @@ More instructions after.`;
   it('should skip creating missing slash commands during update', async () => {
     const proposalPath = path.join(
       testDir,
-      '.claude/commands/plx/proposal.md'
+      '.claude/commands/plx/plan-proposal.md'
     );
     await fs.mkdir(path.dirname(proposalPath), { recursive: true });
     await fs.writeFile(
@@ -1634,7 +1634,7 @@ Old content
       // Create existing Claude slash command
       const proposalPath = path.join(
         testDir,
-        '.claude/commands/plx/proposal.md'
+        '.claude/commands/plx/plan-proposal.md'
       );
       await fs.mkdir(path.dirname(proposalPath), { recursive: true });
       await fs.writeFile(
@@ -1748,7 +1748,7 @@ Old body
       // Create Claude slash command
       const claudeProposalPath = path.join(
         testDir,
-        '.claude/commands/plx/proposal.md'
+        '.claude/commands/plx/plan-proposal.md'
       );
       await fs.mkdir(path.dirname(claudeProposalPath), { recursive: true });
       await fs.writeFile(
@@ -1809,7 +1809,7 @@ Old
       // Create Claude slash command
       const proposalPath = path.join(
         testDir,
-        '.claude/commands/plx/proposal.md'
+        '.claude/commands/plx/plan-proposal.md'
       );
       await fs.mkdir(path.dirname(proposalPath), { recursive: true });
       await fs.writeFile(

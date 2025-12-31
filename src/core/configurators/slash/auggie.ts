@@ -2,13 +2,13 @@ import { SlashCommandConfigurator } from './base.js';
 import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
-  proposal: '.augment/commands/plx-proposal.md',
+  'plan-proposal': '.augment/commands/plx-plan-proposal.md',
   implement: '.augment/commands/plx-implement.md',
   archive: '.augment/commands/plx-archive.md'
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
-  proposal: `---
+  'plan-proposal': `---
 description: Scaffold a new Pew Pew Plx change and validate strictly.
 argument-hint: feature description or request
 ---`,

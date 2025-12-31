@@ -2,13 +2,13 @@ import { TomlSlashCommandConfigurator } from './toml-base.js';
 import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
-  proposal: '.gemini/commands/plx/proposal.toml',
+  'plan-proposal': '.gemini/commands/plx/plan-proposal.toml',
   implement: '.gemini/commands/plx/implement.toml',
   archive: '.gemini/commands/plx/archive.toml'
 };
 
 const DESCRIPTIONS: Record<SlashCommandId, string> = {
-  proposal: 'Scaffold a new PLX change and validate strictly.',
+  'plan-proposal': 'Scaffold a new PLX change and validate strictly.',
   implement: 'Implement an approved PLX change and keep tasks in sync.',
   archive: 'Archive a deployed PLX change and update specs.'
 };

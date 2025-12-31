@@ -8,7 +8,7 @@ import { SlashCommandId } from '../../templates/index.js';
  */
 const FILE_PATHS: Record<SlashCommandId, string> = {
   // Create and validate new change proposals
-  proposal: '.qoder/commands/plx/proposal.md',
+  'plan-proposal': '.qoder/commands/plx/plan-proposal.md',
 
   // Implement approved changes with task tracking
   implement: '.qoder/commands/plx/implement.md',
@@ -23,8 +23,8 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
  * Each command is categorized and tagged for easy discovery
  */
 const FRONTMATTER: Record<SlashCommandId, string> = {
-  proposal: `---
-name: Pew Pew Plx: Proposal
+  'plan-proposal': `---
+name: Pew Pew Plx: Plan Proposal
 description: Scaffold a new Pew Pew Plx change and validate strictly.
 category: Pew Pew Plx
 tags: [plx, change]

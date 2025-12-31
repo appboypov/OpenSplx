@@ -2,14 +2,14 @@ import { SlashCommandConfigurator } from './base.js';
 import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
-  proposal: '.codebuddy/commands/plx/proposal.md',
+  'plan-proposal': '.codebuddy/commands/plx/plan-proposal.md',
   implement: '.codebuddy/commands/plx/implement.md',
   archive: '.codebuddy/commands/plx/archive.md'
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
-  proposal: `---
-name: Pew Pew Plx: Proposal
+  'plan-proposal': `---
+name: Pew Pew Plx: Plan Proposal
 description: Scaffold a new Pew Pew Plx change and validate strictly.
 category: Pew Pew Plx
 tags: [plx, change]

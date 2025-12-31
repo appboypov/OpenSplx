@@ -2,7 +2,7 @@ import { SlashCommandConfigurator } from './base.js';
 import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
-  proposal: '.windsurf/workflows/plx-proposal.md',
+  'plan-proposal': '.windsurf/workflows/plx-plan-proposal.md',
   implement: '.windsurf/workflows/plx-implement.md',
   archive: '.windsurf/workflows/plx-archive.md'
 };
@@ -17,7 +17,7 @@ export class WindsurfSlashCommandConfigurator extends SlashCommandConfigurator {
 
   protected getFrontmatter(id: SlashCommandId): string | undefined {
     const descriptions: Record<SlashCommandId, string> = {
-      proposal: 'Scaffold a new PLX change and validate strictly.',
+      'plan-proposal': 'Scaffold a new PLX change and validate strictly.',
       implement: 'Implement an approved PLX change and keep tasks in sync.',
       archive: 'Archive a deployed PLX change and update specs.'
     };

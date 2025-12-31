@@ -2,13 +2,13 @@ import { SlashCommandConfigurator } from './base.js';
 import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
-  proposal: '.amazonq/prompts/plx-proposal.md',
+  'plan-proposal': '.amazonq/prompts/plx-plan-proposal.md',
   implement: '.amazonq/prompts/plx-implement.md',
   archive: '.amazonq/prompts/plx-archive.md'
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
-  proposal: `---
+  'plan-proposal': `---
 description: Scaffold a new PLX change and validate strictly.
 ---
 

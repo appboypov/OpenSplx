@@ -1,4 +1,4 @@
-export type SlashCommandId = 'proposal' | 'implement' | 'archive';
+export type SlashCommandId = 'plan-proposal' | 'implement' | 'archive';
 
 const baseGuardrails = `**Guardrails**
 - Favor straightforward, minimal implementations first and add complexity only when it is requested or clearly required.
@@ -57,7 +57,7 @@ const archiveReferences = `**Reference**
 - Inspect refreshed specs with \`plx list --specs\` and address any validation issues before handing off.`;
 
 export const slashCommandBodies: Record<SlashCommandId, string> = {
-  proposal: [proposalGuardrails, proposalSteps, proposalReferences].join('\n\n'),
+  'plan-proposal': [proposalGuardrails, proposalSteps, proposalReferences].join('\n\n'),
   implement: [baseGuardrails, implementSteps, implementReferences].join('\n\n'),
   archive: [baseGuardrails, archiveSteps, archiveReferences].join('\n\n')
 };

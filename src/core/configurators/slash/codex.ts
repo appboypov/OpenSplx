@@ -7,7 +7,7 @@ import { PLX_MARKERS } from "../../config.js";
 
 // Use POSIX-style paths for consistent logging across platforms.
 const FILE_PATHS: Record<SlashCommandId, string> = {
-  proposal: ".codex/prompts/plx-proposal.md",
+  'plan-proposal': ".codex/prompts/plx-plan-proposal.md",
   implement: ".codex/prompts/plx-implement.md",
   archive: ".codex/prompts/plx-archive.md",
 };
@@ -24,7 +24,7 @@ export class CodexSlashCommandConfigurator extends SlashCommandConfigurator {
     // Codex supports YAML frontmatter with description and argument-hint fields,
     // plus $ARGUMENTS to capture all arguments as a single string.
     const frontmatter: Record<SlashCommandId, string> = {
-      proposal: `---
+      'plan-proposal': `---
 description: Scaffold a new PLX change and validate strictly.
 argument-hint: request or feature description
 ---

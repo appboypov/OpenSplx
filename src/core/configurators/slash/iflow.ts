@@ -2,15 +2,15 @@ import { SlashCommandConfigurator } from './base.js';
 import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
-  proposal: '.iflow/commands/plx-proposal.md',
+  'plan-proposal': '.iflow/commands/plx-plan-proposal.md',
   implement: '.iflow/commands/plx-implement.md',
   archive: '.iflow/commands/plx-archive.md'
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
-  proposal: `---
-name: /plx-proposal
-id: plx-proposal
+  'plan-proposal': `---
+name: /plx-plan-proposal
+id: plx-plan-proposal
 category: Pew Pew Plx
 description: Scaffold a new Pew Pew Plx change and validate strictly.
 ---`,
