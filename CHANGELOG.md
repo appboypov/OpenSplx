@@ -1,6 +1,6 @@
 # Pew Pew Plx Changelog
 
-## 0.9.0 - 2025-12-31
+## 0.10.0 - 2025-12-31
 
 ### Added
 
@@ -11,12 +11,18 @@
 - `/plx:plan-proposal` auto-detects and consumes `request.md` when present
   - Step 0 checks for existing request context from `plan-request` workflow
   - Uses Final Intent section as primary input for proposal generation
+- Context file references added to planning commands
+  - `@ARCHITECTURE.md` and `@workspace/AGENTS.md` automatically included in plan-proposal and plan-request
 
 ### Changed
 
 - **BREAKING**: Renamed `/plx:proposal` slash command to `/plx:plan-proposal`
   - All 21 tool configurators updated with new file paths and frontmatter
   - `SlashCommandId` type updated from `'proposal'` to `'plan-proposal'`
+- **BREAKING**: Unified dual slash command systems into single registry
+  - `SlashCommandRegistry` now generates all commands via `generateAll()`
+  - Removed redundant `PlxSlashCommandConfigurator` classes
+  - Configurators now use shared templates from `slash-command-templates.ts`
 - `/plx:implement` command now processes entire change by default
   - Iterates through all remaining tasks instead of single task
   - Maintains per-task review and confirmation workflow

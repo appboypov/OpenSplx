@@ -298,6 +298,9 @@ describe('InitCommand', () => {
       const proposalContent = await fs.readFile(claudeProposal, 'utf-8');
       expect(proposalContent).toContain('name: Pew Pew Plx: Plan Proposal');
       expect(proposalContent).toContain('<!-- PLX:START -->');
+      expect(proposalContent).toContain('**Context**');
+      expect(proposalContent).toContain('@ARCHITECTURE.md');
+      expect(proposalContent).toContain('@workspace/AGENTS.md');
       expect(proposalContent).toContain('**Guardrails**');
 
       const implementContent = await fs.readFile(claudeImplement, 'utf-8');
@@ -309,6 +312,34 @@ describe('InitCommand', () => {
       expect(archiveContent).toContain(
         '`--skip-specs` only for tooling-only work'
       );
+    });
+
+    it('should include context file references in planning commands', async () => {
+      queueSelections('claude', DONE);
+
+      await initCommand.execute(testDir);
+
+      const planProposal = path.join(
+        testDir,
+        '.claude/commands/plx/plan-proposal.md'
+      );
+      const planRequest = path.join(
+        testDir,
+        '.claude/commands/plx/plan-request.md'
+      );
+
+      expect(await fileExists(planProposal)).toBe(true);
+      expect(await fileExists(planRequest)).toBe(true);
+
+      const proposalContent = await fs.readFile(planProposal, 'utf-8');
+      expect(proposalContent).toContain('**Context**');
+      expect(proposalContent).toContain('@ARCHITECTURE.md');
+      expect(proposalContent).toContain('@workspace/AGENTS.md');
+
+      const requestContent = await fs.readFile(planRequest, 'utf-8');
+      expect(requestContent).toContain('**Context**');
+      expect(requestContent).toContain('@ARCHITECTURE.md');
+      expect(requestContent).toContain('@workspace/AGENTS.md');
     });
 
     it('should create Cursor slash command files with templates', async () => {
