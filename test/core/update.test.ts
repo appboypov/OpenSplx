@@ -142,9 +142,8 @@ Old slash content
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .claude/commands/plx/plan-proposal.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.claude/commands/plx/plan-proposal.md');
 
     consoleSpy.mockRestore();
   });
@@ -180,14 +179,13 @@ Old body
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .qwen/commands/plx-implement.toml'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.qwen/commands/plx-implement.toml');
 
     consoleSpy.mockRestore();
   });
 
-  it('should not create missing Qwen slash command files on update', async () => {
+  it('should create missing Qwen slash command files on update', async () => {
     const implementPath = path.join(
       testDir,
       '.qwen/commands/plx-implement.toml'
@@ -220,8 +218,9 @@ Old content
       '.qwen/commands/plx-archive.toml'
     );
 
-    await expect(FileSystemUtils.fileExists(proposalPath)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(archivePath)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(proposalPath)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(archivePath)).resolves.toBe(true);
   });
 
   it('should not create CLAUDE.md if it does not exist', async () => {
@@ -324,9 +323,8 @@ Old slash content
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .clinerules/workflows/plx-plan-proposal.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.clinerules/workflows/plx-plan-proposal.md');
 
     consoleSpy.mockRestore();
   });
@@ -358,9 +356,8 @@ Old body
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .cursor/commands/plx-implement.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.cursor/commands/plx-implement.md');
 
     consoleSpy.mockRestore();
   });
@@ -395,9 +392,8 @@ Old body
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .opencode/command/plx-implement.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.opencode/command/plx-implement.md');
 
     consoleSpy.mockRestore();
   });
@@ -422,9 +418,8 @@ Old body
     expect(updated.startsWith('<!-- PLX:START -->')).toBe(true);
 
     const [logMessage] = consoleSpy.mock.calls[0];
-    expect(logMessage).toContain(
-      'Updated slash commands: .kilocode/workflows/plx-implement.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.kilocode/workflows/plx-implement.md');
 
     consoleSpy.mockRestore();
   });
@@ -451,9 +446,8 @@ Old body
     expect(updated).toContain('## PLX: Implement (Windsurf)');
 
     const [logMessage] = consoleSpy.mock.calls[0];
-    expect(logMessage).toContain(
-      'Updated slash commands: .windsurf/workflows/plx-implement.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.windsurf/workflows/plx-implement.md');
     consoleSpy.mockRestore();
   });
 
@@ -482,9 +476,8 @@ Old body
     expect(updated).not.toContain('auto_execution_mode: 3');
 
     const [logMessage] = consoleSpy.mock.calls[0];
-    expect(logMessage).toContain(
-      'Updated slash commands: .agent/workflows/plx-implement.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.agent/workflows/plx-implement.md');
     consoleSpy.mockRestore();
   });
 
@@ -509,14 +502,13 @@ Old body
     expect(updated).not.toContain('Old description');
 
     const [logMessage] = consoleSpy.mock.calls[0];
-    expect(logMessage).toContain(
-      'Updated slash commands: .codex/prompts/plx-implement.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.codex/prompts/plx-implement.md');
 
     consoleSpy.mockRestore();
   });
 
-  it('should not create missing Codex prompts on update', async () => {
+  it('should create missing Codex prompts on update', async () => {
     const codexImplement = path.join(
       testDir,
       '.codex/prompts/plx-implement.md'
@@ -540,9 +532,9 @@ Old body
       '.codex/prompts/plx-archive.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(codexProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(codexArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(codexProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(codexArchive)).resolves.toBe(true);
   });
 
   it('should refresh existing GitHub Copilot prompts', async () => {
@@ -571,14 +563,13 @@ Old body
     expect(updated).not.toContain('Old body');
 
     const [logMessage] = consoleSpy.mock.calls[0];
-    expect(logMessage).toContain(
-      'Updated slash commands: .github/prompts/plx-implement.prompt.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.github/prompts/plx-implement.prompt.md');
 
     consoleSpy.mockRestore();
   });
 
-  it('should not create missing GitHub Copilot prompts on update', async () => {
+  it('should create missing GitHub Copilot prompts on update', async () => {
     const ghImplement = path.join(
       testDir,
       '.github/prompts/plx-implement.prompt.md'
@@ -602,12 +593,12 @@ Old body
       '.github/prompts/plx-archive.prompt.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(ghProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(ghArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(ghProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(ghArchive)).resolves.toBe(true);
   });
 
-  it('should refresh existing Gemini CLI TOML files without creating new ones', async () => {
+  it('should refresh existing Gemini CLI TOML files and create missing ones', async () => {
     const geminiProposal = path.join(
       testDir,
       '.gemini/commands/plx/plan-proposal.toml'
@@ -641,18 +632,19 @@ Old Gemini body
       '.gemini/commands/plx/archive.toml'
     );
 
-    await expect(FileSystemUtils.fileExists(geminiImplement)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(geminiArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(geminiImplement)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(geminiArchive)).resolves.toBe(true);
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated slash commands: .gemini/commands/plx/plan-proposal.toml'
+      'Updated slash commands:'
     );
 
     consoleSpy.mockRestore();
   });
   
-  it('should refresh existing IFLOW slash commands', async () => {
+  it('should refresh existing IFLOW slash commands and create missing ones', async () => {
     const iflowProposal = path.join(
       testDir,
       '.iflow/commands/plx-plan-proposal.md'
@@ -688,12 +680,13 @@ Old IFlow body
       '.iflow/commands/plx-archive.md'
     );
 
-    await expect(FileSystemUtils.fileExists(iflowImplement)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(iflowArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(iflowImplement)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(iflowArchive)).resolves.toBe(true);
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated slash commands: .iflow/commands/plx-plan-proposal.md'
+      'Updated slash commands:'
     );
 
     consoleSpy.mockRestore();
@@ -735,7 +728,7 @@ Old body
     consoleSpy.mockRestore();
   });
 
-  it('should not create missing Factory slash command files on update', async () => {
+  it('should create missing Factory slash command files on update', async () => {
     const factoryImplement = path.join(
       testDir,
       '.factory/commands/plx-implement.md'
@@ -765,8 +758,9 @@ Old body
       '.factory/commands/plx-archive.md'
     );
 
-    await expect(FileSystemUtils.fileExists(factoryProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(factoryArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(factoryProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(factoryArchive)).resolves.toBe(true);
   });
 
   it('should refresh existing Amazon Q Developer prompts', async () => {
@@ -805,7 +799,7 @@ Old body
     consoleSpy.mockRestore();
   });
 
-  it('should not create missing Amazon Q Developer prompts on update', async () => {
+  it('should create missing Amazon Q Developer prompts on update', async () => {
     const aqImplement = path.join(
       testDir,
       '.amazonq/prompts/plx-implement.md'
@@ -829,9 +823,9 @@ Old body
       '.amazonq/prompts/plx-archive.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(aqProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(aqArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(aqProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(aqArchive)).resolves.toBe(true);
   });
 
   it('should refresh existing Auggie slash command files', async () => {
@@ -865,7 +859,7 @@ Old body
     consoleSpy.mockRestore();
   });
 
-  it('should not create missing Auggie slash command files on update', async () => {
+  it('should create missing Auggie slash command files on update', async () => {
     const auggieImplement = path.join(
       testDir,
       '.augment/commands/plx-implement.md'
@@ -889,9 +883,9 @@ Old body
       '.augment/commands/plx-archive.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(auggieProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(auggieArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(auggieProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(auggieArchive)).resolves.toBe(true);
   });
 
   it('should refresh existing CodeBuddy slash command files', async () => {
@@ -928,14 +922,13 @@ Old slash content
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .codebuddy/commands/plx/plan-proposal.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.codebuddy/commands/plx/plan-proposal.md');
 
     consoleSpy.mockRestore();
   });
 
-  it('should not create missing CodeBuddy slash command files on update', async () => {
+  it('should create missing CodeBuddy slash command files on update', async () => {
     const codeBuddyImplement = path.join(
       testDir,
       '.codebuddy/commands/plx/implement.md'
@@ -967,9 +960,9 @@ Old body
       '.codebuddy/commands/plx/archive.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(codeBuddyProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(codeBuddyArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(codeBuddyProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(codeBuddyArchive)).resolves.toBe(true);
   });
 
   it('should refresh existing Crush slash command files', async () => {
@@ -1006,17 +999,16 @@ Old slash content
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .crush/commands/plx/plan-proposal.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.crush/commands/plx/plan-proposal.md');
 
     consoleSpy.mockRestore();
   });
 
-  it('should not create missing Crush slash command files on update', async () => {
+  it('should create missing Crush slash command files on update', async () => {
     const crushImplement = path.join(
       testDir,
-      '.crush/commands/plx-implement.md'
+      '.crush/commands/plx/implement.md'
     );
 
     // Only create implement; leave plan-proposal and archive missing
@@ -1038,16 +1030,16 @@ Old body
 
     const crushProposal = path.join(
       testDir,
-      '.crush/commands/plx-plan-proposal.md'
+      '.crush/commands/plx/plan-proposal.md'
     );
     const crushArchive = path.join(
       testDir,
-      '.crush/commands/plx-archive.md'
+      '.crush/commands/plx/archive.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(crushProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(crushArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(crushProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(crushArchive)).resolves.toBe(true);
   });
 
   it('should refresh existing CoStrict slash command files', async () => {
@@ -1084,9 +1076,8 @@ Old body
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .cospec/plx/commands/plx-plan-proposal.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.cospec/plx/commands/plx-plan-proposal.md');
 
     consoleSpy.mockRestore();
   });
@@ -1125,9 +1116,8 @@ Old slash content
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .qoder/commands/plx/plan-proposal.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.qoder/commands/plx/plan-proposal.md');
 
     consoleSpy.mockRestore();
   });
@@ -1165,14 +1155,13 @@ Old body
       'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
-    expect(logMessage).toContain(
-      'Updated slash commands: .roo/commands/plx-plan-proposal.md'
-    );
+    expect(logMessage).toContain('Updated slash commands:');
+    expect(logMessage).toContain('.roo/commands/plx-plan-proposal.md');
 
     consoleSpy.mockRestore();
   });
 
-  it('should not create missing RooCode slash command files on update', async () => {
+  it('should create missing RooCode slash command files on update', async () => {
     const rooImplement = path.join(
       testDir,
       '.roo/commands/plx-implement.md'
@@ -1200,12 +1189,12 @@ Old body
       '.roo/commands/plx-archive.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(rooProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(rooArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(rooProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(rooArchive)).resolves.toBe(true);
   });
 
-  it('should not create missing CoStrict slash command files on update', async () => {
+  it('should create missing CoStrict slash command files on update', async () => {
     const costrictImplement = path.join(
       testDir,
       '.cospec/plx/commands/plx-implement.md'
@@ -1235,12 +1224,12 @@ Old
       '.cospec/plx/commands/plx-archive.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(costrictProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(costrictArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(costrictProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(costrictArchive)).resolves.toBe(true);
   });
 
-  it('should not create missing Qoder slash command files on update', async () => {
+  it('should create missing Qoder slash command files on update', async () => {
     const qoderImplement = path.join(
       testDir,
       '.qoder/commands/plx/implement.md'
@@ -1272,9 +1261,9 @@ Old body
       '.qoder/commands/plx/archive.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(qoderProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(qoderArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(qoderProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(qoderArchive)).resolves.toBe(true);
   });
 
   it('should update only existing COSTRICT.md file', async () => {
@@ -1402,7 +1391,7 @@ More instructions after.`;
     expect(updated).toContain('Validate with `plx validate <id> --strict`');
   });
 
-  it('should not create missing Windsurf workflows on update', async () => {
+  it('should create missing Windsurf workflows on update', async () => {
     const wsImplement = path.join(
       testDir,
       '.windsurf/workflows/plx-implement.md'
@@ -1425,9 +1414,9 @@ More instructions after.`;
       '.windsurf/workflows/plx-archive.md'
     );
 
-    // Confirm they weren't created by update
-    await expect(FileSystemUtils.fileExists(wsProposal)).resolves.toBe(false);
-    await expect(FileSystemUtils.fileExists(wsArchive)).resolves.toBe(false);
+    // Now update creates missing files
+    await expect(FileSystemUtils.fileExists(wsProposal)).resolves.toBe(true);
+    await expect(FileSystemUtils.fileExists(wsArchive)).resolves.toBe(true);
   });
 
   it('should handle no AI tool files present', async () => {
@@ -1469,7 +1458,7 @@ More instructions after.`;
     consoleSpy.mockRestore();
   });
 
-  it('should skip creating missing slash commands during update', async () => {
+  it('should create missing slash commands during update', async () => {
     const proposalPath = path.join(
       testDir,
       '.claude/commands/plx/plan-proposal.md'
@@ -1497,8 +1486,9 @@ Old content
       path.join(testDir, '.claude/commands/plx/archive.md')
     );
 
-    expect(implementExists).toBe(false);
-    expect(archiveExists).toBe(false);
+    // Now update creates missing files
+    expect(implementExists).toBe(true);
+    expect(archiveExists).toBe(true);
   });
 
   it('should never create new AI tool files', async () => {

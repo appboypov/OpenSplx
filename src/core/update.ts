@@ -111,7 +111,7 @@ export class UpdateCommand {
       }
 
       try {
-        const updated = await slashConfigurator.updateExisting(
+        const updated = await slashConfigurator.generateAll(
           resolvedProjectPath
         );
         updatedSlashFiles.push(...updated);
