@@ -1,8 +1,8 @@
 ---
-name: Pew Pew Plx: Plan Proposal
-description: Scaffold a new Pew Pew Plx change and validate strictly.
+name: /plx-plan-proposal
+id: plx-plan-proposal
 category: Pew Pew Plx
-tags: [plx, change]
+description: Scaffold a new Pew Pew Plx change and validate strictly.
 ---
 <!-- PLX:START -->
 **Guardrails**

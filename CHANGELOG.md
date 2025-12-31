@@ -1,5 +1,32 @@
 # Pew Pew Plx Changelog
 
+## 0.9.0 - 2025-12-31
+
+### Added
+
+- `/plx:plan-request` slash command for intent clarification
+  - Iterative yes/no questions to capture user intent before proposal scaffolding
+  - Creates `workspace/changes/{change-id}/request.md` with structured sections
+  - Activity XML template with Intent Analyst role and AskActUpdateRepeat loop
+- `/plx:plan-proposal` auto-detects and consumes `request.md` when present
+  - Step 0 checks for existing request context from `plan-request` workflow
+  - Uses Final Intent section as primary input for proposal generation
+
+### Changed
+
+- **BREAKING**: Renamed `/plx:proposal` slash command to `/plx:plan-proposal`
+  - All 21 tool configurators updated with new file paths and frontmatter
+  - `SlashCommandId` type updated from `'proposal'` to `'plan-proposal'`
+- `/plx:implement` command now processes entire change by default
+  - Iterates through all remaining tasks instead of single task
+  - Maintains per-task review and confirmation workflow
+
+### Fixed
+
+- Windows compatibility: Use Node.js fs instead of shell commands in tests
+
+---
+
 ## 0.8.0 - 2025-12-30
 
 ### Added

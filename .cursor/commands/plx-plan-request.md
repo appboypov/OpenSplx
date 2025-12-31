@@ -1,8 +1,8 @@
 ---
-name: Pew Pew Plx: Plan Request
-description: Clarify user intent through iterative yes/no questions before proposal creation.
+name: /plx-plan-request
+id: plx-plan-request
 category: Pew Pew Plx
-tags: [plx, change, planning]
+description: Clarify user intent through iterative yes/no questions before proposal creation.
 ---
 <!-- PLX:START -->
 **Guardrails**
@@ -28,7 +28,3 @@ tags: [plx, change, planning]
 - Run `plx/plan-proposal <change-id>` after this command to scaffold the proposal.
 - The plan-proposal command auto-detects and consumes request.md when present.
 <!-- PLX:END -->
-
-Act as a senior `{{ Role }}` with worldclass `{{ Expertise }}` in fulfilling the `{{ InitialRequest }}` and achieving `{{ EndGoal }}` with meticulous adherence to all `{{ AcceptanceCriteria }}`, `{{ Constraints }}`, and `{{ BehavioralInstructions }}` during the entire execution of the `{{ Activity }}`.
-
-Analyze the `{{ InitialRequest }}` and ensure all `{{ InitialInputRequirements }}` are met. Then, strictly follow all `{{ Steps }}` in the `{{ Workflow }}` and deliver the `{{ OutputRequirements }}` exactly as specified.

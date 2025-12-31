@@ -2,12 +2,55 @@ import { SlashCommandConfigurator } from './base.js';
 import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
+  'archive': '.amazonq/prompts/plx-archive.md',
+  'get-task': '.amazonq/prompts/plx-get-task.md',
+  'implement': '.amazonq/prompts/plx-implement.md',
+  'orchestrate': '.amazonq/prompts/plx-orchestrate.md',
+  'parse-feedback': '.amazonq/prompts/plx-parse-feedback.md',
   'plan-proposal': '.amazonq/prompts/plx-plan-proposal.md',
-  implement: '.amazonq/prompts/plx-implement.md',
-  archive: '.amazonq/prompts/plx-archive.md'
+  'plan-request': '.amazonq/prompts/plx-plan-request.md',
+  'prepare-compact': '.amazonq/prompts/plx-prepare-compact.md',
+  'prepare-release': '.amazonq/prompts/plx-prepare-release.md',
+  'refine-architecture': '.amazonq/prompts/plx-refine-architecture.md',
+  'refine-release': '.amazonq/prompts/plx-refine-release.md',
+  'refine-review': '.amazonq/prompts/plx-refine-review.md',
+  'review': '.amazonq/prompts/plx-review.md'
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
+  'archive': `---
+description: Archive a deployed PLX change and update specs.
+---
+
+The user wants to archive the following deployed change. Use the PLX instructions to archive the change and update specs.
+
+<ChangeId>
+  $ARGUMENTS
+</ChangeId>`,
+  'get-task': `---
+description: Select and display the next prioritized task to work on.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'implement': `---
+description: Implement an approved PLX change and keep tasks in sync.
+---
+
+The user wants to implement the following change. Use the PLX instructions to implement the approved change.
+
+<ChangeId>
+  $ARGUMENTS
+</ChangeId>`,
+  'orchestrate': `---
+description: Orchestrate sub-agents to complete work collaboratively.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'parse-feedback': `---
+description: Parse feedback markers and generate review tasks.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
   'plan-proposal': `---
 description: Scaffold a new PLX change and validate strictly.
 ---
@@ -17,24 +60,41 @@ The user has requested the following change proposal. Use the PLX instructions t
 <UserRequest>
   $ARGUMENTS
 </UserRequest>`,
-  implement: `---
-description: Implement an approved PLX change and keep tasks in sync.
+  'plan-request': `---
+description: Clarify user intent through iterative yes/no questions before proposal creation.
 ---
 
-The user wants to implement the following change. Use the PLX instructions to implement the approved change.
-
-<ChangeId>
-  $ARGUMENTS
-</ChangeId>`,
-  archive: `---
-description: Archive a deployed PLX change and update specs.
+<arguments>$ARGUMENTS</arguments>`,
+  'prepare-compact': `---
+description: Preserve session progress in PROGRESS.md for context continuity.
 ---
 
-The user wants to archive the following deployed change. Use the PLX instructions to archive the change and update specs.
+<arguments>$ARGUMENTS</arguments>`,
+  'prepare-release': `---
+description: Prepare release by updating changelog, readme, and architecture documentation.
+---
 
-<ChangeId>
-  $ARGUMENTS
-</ChangeId>`
+<arguments>$ARGUMENTS</arguments>`,
+  'refine-architecture': `---
+description: Create or update ARCHITECTURE.md.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'refine-release': `---
+description: Create or update RELEASE.md.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'refine-review': `---
+description: Create or update REVIEW.md.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'review': `---
+description: Review implementations against specs, changes, or tasks.
+---
+
+<arguments>$ARGUMENTS</arguments>`
 };
 
 export class AmazonQSlashCommandConfigurator extends SlashCommandConfigurator {
