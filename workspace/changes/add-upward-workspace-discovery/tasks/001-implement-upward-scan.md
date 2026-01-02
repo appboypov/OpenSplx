@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: in-progress
 ---
 
 # Task: Implement upward workspace scanning

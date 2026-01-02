@@ -110,6 +110,12 @@ export class UpdateCommand {
         continue;
       }
 
+      // Only process tools that have at least one existing slash command file
+      const isConfigured = await slashConfigurator.hasAnyExisting(resolvedProjectPath);
+      if (!isConfigured) {
+        continue;
+      }
+
       try {
         const updated = await slashConfigurator.generateAll(
           resolvedProjectPath
