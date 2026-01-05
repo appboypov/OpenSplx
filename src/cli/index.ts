@@ -20,6 +20,7 @@ import { UndoCommand } from '../commands/undo.js';
 import { ParseFeedbackCommand } from '../commands/parse-feedback.js';
 import { ReviewCommand } from '../commands/review.js';
 import { PasteCommand } from '../commands/paste.js';
+import { CreateCommand } from '../commands/create.js';
 import { emitDeprecationWarning } from '../utils/deprecation.js';
 
 // Import command name detection utility
@@ -794,6 +795,79 @@ pasteCmd
     try {
       const pasteCommand = new PasteCommand();
       await pasteCommand.request(options);
+    } catch (error) {
+      console.log();
+      ora().fail(`Error: ${(error as Error).message}`);
+      process.exit(1);
+    }
+  });
+
+// Create command with subcommands
+const createCmd = program
+  .command('create')
+  .description('Create new project artifacts');
+
+createCmd
+  .command('task <title>')
+  .description('Create a new task')
+  .option('--parent-id <id>', 'Link task to a parent (change or review)')
+  .option('--parent-type <type>', 'Specify parent type: change or review')
+  .option('--skill-level <level>', 'Task skill level: junior, medior, or senior')
+  .option('--json', 'Output as JSON')
+  .action(async (title: string, options: { parentId?: string; parentType?: string; skillLevel?: string; json?: boolean }) => {
+    try {
+      const createCommand = new CreateCommand();
+      await createCommand.createTask(title, {
+        parentId: options.parentId,
+        parentType: options.parentType as 'change' | 'review' | 'spec' | undefined,
+        skillLevel: options.skillLevel as 'junior' | 'medior' | 'senior' | undefined,
+        json: options.json,
+      });
+    } catch (error) {
+      console.log();
+      ora().fail(`Error: ${(error as Error).message}`);
+      process.exit(1);
+    }
+  });
+
+createCmd
+  .command('change <name>')
+  .description('Create a new change proposal')
+  .option('--json', 'Output as JSON')
+  .action(async (name: string, options: { json?: boolean }) => {
+    try {
+      const createCommand = new CreateCommand();
+      await createCommand.createChange(name, options);
+    } catch (error) {
+      console.log();
+      ora().fail(`Error: ${(error as Error).message}`);
+      process.exit(1);
+    }
+  });
+
+createCmd
+  .command('spec <name>')
+  .description('Create a new specification')
+  .option('--json', 'Output as JSON')
+  .action(async (name: string, options: { json?: boolean }) => {
+    try {
+      const createCommand = new CreateCommand();
+      await createCommand.createSpec(name, options);
+    } catch (error) {
+      console.log();
+      ora().fail(`Error: ${(error as Error).message}`);
+      process.exit(1);
+    }
+  });
+
+createCmd
+  .command('request <description>')
+  .description('Create a new request')
+  .option('--json', 'Output as JSON')
+  .action(async (description: string, options: { json?: boolean }) => {
+    try {
+      const createCommand = new CreateCommand();
+      await createCommand.createRequest(description, options);
     } catch (error) {
       console.log();
       ora().fail(`Error: ${(error as Error).message}`);

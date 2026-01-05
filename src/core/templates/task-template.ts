@@ -4,8 +4,7 @@ export interface TaskContext {
 }
 
 export const taskTemplate = (context: TaskContext): string => `---
-status: to-do
-${context.skillLevel ? `skill-level: ${context.skillLevel}` : ''}
+status: to-do${context.skillLevel ? `\nskill-level: ${context.skillLevel}` : ''}
 ---
 
 # Task: ${context.title}

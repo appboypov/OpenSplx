@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -43,14 +43,14 @@ No `plx create` command exists. Entity creation happens manually or via other co
 
 ## Implementation Checklist
 
-- [ ] 2.1 Create `src/commands/create.ts` with `CreateCommand` class
-- [ ] 2.2 Implement `createTask` method with parent resolution logic
-- [ ] 2.3 Implement `createChange` method with directory scaffolding
-- [ ] 2.4 Implement `createSpec` method with directory scaffolding
-- [ ] 2.5 Implement `createRequest` method with change directory creation
-- [ ] 2.6 Add slugification utility (or reuse existing if available)
-- [ ] 2.7 Register command in `src/cli/index.ts`
-- [ ] 2.8 Add help text for command and all subcommands
+- [x] 2.1 Create `src/commands/create.ts` with `CreateCommand` class
+- [x] 2.2 Implement `createTask` method with parent resolution logic
+- [x] 2.3 Implement `createChange` method with directory scaffolding
+- [x] 2.4 Implement `createSpec` method with directory scaffolding
+- [x] 2.5 Implement `createRequest` method with change directory creation
+- [x] 2.6 Add slugification utility (or reuse existing if available)
+- [x] 2.7 Register command in `src/cli/index.ts`
+- [x] 2.8 Add help text for command and all subcommands
 
 ## Notes
 

@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -40,13 +40,13 @@ No parent resolution logic exists for the create command. Existing `ItemRetrieva
 
 ## Implementation Checklist
 
-- [ ] 3.1 Create `resolveParentEntity` function accepting parentId and optional parentType
-- [ ] 3.2 Implement search across changes for matching ID
-- [ ] 3.3 Implement search across reviews for matching ID
-- [ ] 3.4 Implement search across specs for matching ID
-- [ ] 3.5 Implement collision detection and error messaging
-- [ ] 3.6 Integrate resolution into `createTask` method
-- [ ] 3.7 Handle multi-workspace prefixed IDs (e.g., `project-a/change-name`)
+- [x] 3.1 Create `resolveParentEntity` function accepting parentId and optional parentType
+- [x] 3.2 Implement search across changes for matching ID
+- [x] 3.3 Implement search across reviews for matching ID
+- [x] 3.4 Implement search across specs for matching ID
+- [x] 3.5 Implement collision detection and error messaging
+- [x] 3.6 Integrate resolution into `createTask` method
+- [x] 3.7 Handle multi-workspace prefixed IDs (e.g., `project-a/change-name`)
 
 ## Notes
 

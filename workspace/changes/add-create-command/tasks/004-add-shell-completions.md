@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: junior
 ---
 
@@ -35,11 +35,11 @@ Shell completions exist for existing commands. No completions for `create` comma
 
 ## Implementation Checklist
 
-- [ ] 4.1 Update `src/core/completions/command-registry.ts` with create command definition
-- [ ] 4.2 Add subcommand completions (task, change, spec, request)
-- [ ] 4.3 Add option completions for each subcommand
-- [ ] 4.4 Add parent-type value completions
-- [ ] 4.5 Test completion generation
+- [x] 4.1 Update `src/core/completions/command-registry.ts` with create command definition
+- [x] 4.2 Add subcommand completions (task, change, spec, request)
+- [x] 4.3 Add option completions for each subcommand
+- [x] 4.4 Add parent-type value completions
+- [x] 4.5 Test completion generation
 
 ## Notes
 

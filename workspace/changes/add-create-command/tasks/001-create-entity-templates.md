@@ -1,5 +1,5 @@
 ---
-status: in-progress
+status: done
 skill-level: junior
 ---
 
@@ -39,12 +39,12 @@ Templates exist for agents, architecture, review, release, testing, and slash co
 
 ## Implementation Checklist
 
-- [ ] 1.1 Create `src/core/templates/task-template.ts` with `taskTemplate(title: string)` function
-- [ ] 1.2 Create `src/core/templates/change-template.ts` with `changeTemplate(name: string)` function
-- [ ] 1.3 Create `src/core/templates/spec-template.ts` with `specTemplate(name: string)` function
-- [ ] 1.4 Create `src/core/templates/request-template.ts` with `requestTemplate(description: string)` function
-- [ ] 1.5 Update `src/core/templates/index.ts` to import and export via TemplateManager
-- [ ] 1.6 Add `getTaskTemplate`, `getChangeTemplate`, `getSpecTemplate`, `getRequestTemplate` static methods
+- [x] 1.1 Create `src/core/templates/task-template.ts` with `taskTemplate(title: string)` function
+- [x] 1.2 Create `src/core/templates/change-template.ts` with `changeTemplate(name: string)` function
+- [x] 1.3 Create `src/core/templates/spec-template.ts` with `specTemplate(name: string)` function
+- [x] 1.4 Create `src/core/templates/request-template.ts` with `requestTemplate(description: string)` function
+- [x] 1.5 Update `src/core/templates/index.ts` to import and export via TemplateManager
+- [x] 1.6 Add `getTaskTemplate`, `getChangeTemplate`, `getSpecTemplate`, `getRequestTemplate` static methods
 
 ## Notes
 

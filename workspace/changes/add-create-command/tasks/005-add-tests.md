@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -39,14 +39,14 @@ No tests exist for create command as it does not yet exist.
 
 ## Implementation Checklist
 
-- [ ] 5.1 Create `test/core/templates/task-template.test.ts`
-- [ ] 5.2 Create `test/core/templates/change-template.test.ts`
-- [ ] 5.3 Create `test/core/templates/spec-template.test.ts`
-- [ ] 5.4 Create `test/core/templates/request-template.test.ts`
-- [ ] 5.5 Create `test/commands/create.test.ts` with subcommand tests
-- [ ] 5.6 Add tests for parent resolution edge cases
-- [ ] 5.7 Add tests for duplicate entity handling
-- [ ] 5.8 Run full test suite and verify all pass
+- [x] 5.1 Create `test/core/templates/task-template.test.ts`
+- [x] 5.2 Create `test/core/templates/change-template.test.ts`
+- [x] 5.3 Create `test/core/templates/spec-template.test.ts`
+- [x] 5.4 Create `test/core/templates/request-template.test.ts`
+- [x] 5.5 Create `test/commands/create.test.ts` with subcommand tests
+- [x] 5.6 Add tests for parent resolution edge cases
+- [x] 5.7 Add tests for duplicate entity handling
+- [x] 5.8 Run full test suite and verify all pass
 
 ## Notes
 

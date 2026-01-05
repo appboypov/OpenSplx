@@ -762,4 +762,60 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
       },
     ],
   },
+  {
+    name: 'create',
+    description: 'Create new project artifacts',
+    flags: [],
+    subcommands: [
+      {
+        name: 'task',
+        description: 'Create a new task',
+        acceptsPositional: true,
+        flags: [
+          {
+            name: 'parent-id',
+            description: 'Link task to a parent (change or review)',
+            takesValue: true,
+          },
+          {
+            name: 'parent-type',
+            description: 'Specify parent type',
+            takesValue: true,
+            values: ['change', 'review'],
+          },
+          {
+            name: 'skill-level',
+            description: 'Task skill level',
+            takesValue: true,
+            values: ['junior', 'medior', 'senior'],
+          },
+          COMMON_FLAGS.json,
+        ],
+      },
+      {
+        name: 'change',
+        description: 'Create a new change proposal',
+        acceptsPositional: true,
+        flags: [
+          COMMON_FLAGS.json,
+        ],
+      },
+      {
+        name: 'spec',
+        description: 'Create a new specification',
+        acceptsPositional: true,
+        flags: [
+          COMMON_FLAGS.json,
+        ],
+      },
+      {
+        name: 'request',
+        description: 'Create a new request',
+        acceptsPositional: true,
+        flags: [
+          COMMON_FLAGS.json,
+        ],
+      },
+    ],
+  },
 ];

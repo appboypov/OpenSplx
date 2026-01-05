@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: junior
 ---
 
@@ -35,11 +35,11 @@ Documentation does not reference `plx create` command as it does not exist.
 
 ## Implementation Checklist
 
-- [ ] 6.1 Update `src/core/templates/agents-template.ts` with create command entries
-- [ ] 6.2 Update `ARCHITECTURE.md` command list
-- [ ] 6.3 Verify help text clarity for main command
-- [ ] 6.4 Verify help text clarity for each subcommand
-- [ ] 6.5 Run `plx update` to regenerate managed content
+- [x] 6.1 Update `src/core/templates/agents-template.ts` with create command entries
+- [x] 6.2 Update `ARCHITECTURE.md` command list
+- [x] 6.3 Verify help text clarity for main command
+- [x] 6.4 Verify help text clarity for each subcommand
+- [x] 6.5 Run `plx update` to regenerate managed content
 
 ## Notes
 

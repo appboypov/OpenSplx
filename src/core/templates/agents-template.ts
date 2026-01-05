@@ -152,6 +152,12 @@ plx validate              # Bulk validation mode
 plx show [change] --json --deltas-only
 plx validate [change] --strict
 
+# Create project artifacts
+plx create task "Title" --parent-id <id>      # Create task linked to change or review
+plx create change "Name"                      # Create new change proposal
+plx create spec "Name"                        # Create new specification
+plx create request "Description"              # Create new request
+
 # Retrieve tasks and items
 plx get task                          # Get next task from highest-priority change
 plx get task --id <task-id>           # Get specific task by ID

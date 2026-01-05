@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -37,16 +37,16 @@ Implementation tasks are in progress or pending.
 
 ## Implementation Checklist
 
-- [ ] 7.1 Run `pnpm build` and fix any errors
-- [ ] 7.2 Run `pnpm test` and fix any failures
-- [ ] 7.3 Run `pnpm lint` and fix any warnings
-- [ ] 7.4 Run `plx validate add-create-command --strict`
-- [ ] 7.5 Test `plx create task "Test"` manually
-- [ ] 7.6 Test `plx create task "Test" --parent-id <existing-change>` manually
-- [ ] 7.7 Test `plx create change "Test Change"` manually
-- [ ] 7.8 Test `plx create spec "Test Spec"` manually
-- [ ] 7.9 Test `plx create request "Test Request"` manually
-- [ ] 7.10 Verify JSON output for each subcommand
+- [x] 7.1 Run `pnpm build` and fix any errors
+- [x] 7.2 Run `pnpm test` and fix any failures
+- [x] 7.3 Run `pnpm lint` and fix any warnings
+- [x] 7.4 Run `plx validate add-create-command --strict`
+- [x] 7.5 Test `plx create task "Test"` manually
+- [x] 7.6 Test `plx create task "Test" --parent-id <existing-change>` manually
+- [x] 7.7 Test `plx create change "Test Change"` manually
+- [x] 7.8 Test `plx create spec "Test Spec"` manually
+- [x] 7.9 Test `plx create request "Test Request"` manually
+- [x] 7.10 Verify JSON output for each subcommand
 
 ## Notes
 

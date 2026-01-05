@@ -115,6 +115,7 @@ Each command class encapsulates its own logic:
 - `ChangeCommand` - Change management
 - `CompletionCommand` - Shell completions
 - `ConfigCommand` - Global configuration
+- `CreateCommand` - Create entities (tasks, changes, specs, requests)
 - `GetCommand` - Retrieve project artifacts (tasks, changes, specs)
 - `CompleteCommand` - Mark tasks/changes as done
 - `UndoCommand` - Revert tasks/changes to to-do status
