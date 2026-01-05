@@ -264,6 +264,134 @@ describe('ParseFeedbackCommand', () => {
     });
   });
 
+  describe('new parent-id/parent-type pattern', () => {
+    beforeEach(() => {
+      mockIsInteractive.mockReturnValue(false);
+    });
+
+    it('uses --parent-id with --parent-type for unassigned markers', async () => {
+      await createChange('test-change');
+      await createSourceWithMarker('src/file.ts', 'Unassigned feedback');
+
+      await command.execute('parent-type-review', {
+        noInteractive: true,
+        parentId: 'test-change',
+        parentType: 'change',
+      });
+
+      const reviewPath = path.join(
+        tempDir,
+        'workspace',
+        'reviews',
+        'parent-type-review',
+        'review.md'
+      );
+      const content = await fs.readFile(reviewPath, 'utf-8');
+      expect(content).toContain('parent-type: change');
+      expect(content).toContain('parent-id: test-change');
+    });
+
+    it('auto-detects change type when --parent-id is unambiguous', async () => {
+      await createChange('unique-change');
+      await createSourceWithMarker('src/file.ts', 'Unassigned feedback');
+
+      await command.execute('auto-detect-change-review', {
+        noInteractive: true,
+        parentId: 'unique-change',
+      });
+
+      const reviewPath = path.join(
+        tempDir,
+        'workspace',
+        'reviews',
+        'auto-detect-change-review',
+        'review.md'
+      );
+      const content = await fs.readFile(reviewPath, 'utf-8');
+      expect(content).toContain('parent-type: change');
+      expect(content).toContain('parent-id: unique-change');
+    });
+
+    it('auto-detects spec type when --parent-id is unambiguous', async () => {
+      await createSpec('unique-spec');
+      await createSourceWithMarker('src/file.ts', 'Unassigned feedback');
+
+      await command.execute('auto-detect-spec-review', {
+        noInteractive: true,
+        parentId: 'unique-spec',
+      });
+
+      const reviewPath = path.join(
+        tempDir,
+        'workspace',
+        'reviews',
+        'auto-detect-spec-review',
+        'review.md'
+      );
+      const content = await fs.readFile(reviewPath, 'utf-8');
+      expect(content).toContain('parent-type: spec');
+      expect(content).toContain('parent-id: unique-spec');
+    });
+
+    it('defaults to task type when ID does not match change or spec', async () => {
+      await createSourceWithMarker('src/file.ts', 'Unassigned feedback');
+
+      await command.execute('task-default-review', {
+        noInteractive: true,
+        parentId: '001-some-task',
+      });
+
+      const reviewPath = path.join(
+        tempDir,
+        'workspace',
+        'reviews',
+        'task-default-review',
+        'review.md'
+      );
+      const content = await fs.readFile(reviewPath, 'utf-8');
+      expect(content).toContain('parent-type: task');
+      expect(content).toContain('parent-id: 001-some-task');
+    });
+
+    it('fails when --parent-id is ambiguous without --parent-type', async () => {
+      // Create both a change and spec with the same ID
+      await createChange('ambiguous-id');
+      await createSpec('ambiguous-id');
+      await createSourceWithMarker('src/file.ts', 'Unassigned feedback');
+
+      await command.execute('ambiguous-review', {
+        noInteractive: true,
+        parentId: 'ambiguous-id',
+      });
+
+      expect(process.exitCode).toBe(1);
+    });
+
+    it('resolves ambiguous ID with explicit --parent-type', async () => {
+      await createChange('ambiguous-id');
+      await createSpec('ambiguous-id');
+      await createSourceWithMarker('src/file.ts', 'Unassigned feedback');
+
+      await command.execute('explicit-type-review', {
+        noInteractive: true,
+        parentId: 'ambiguous-id',
+        parentType: 'spec',
+      });
+
+      const reviewPath = path.join(
+        tempDir,
+        'workspace',
+        'reviews',
+        'explicit-type-review',
+        'review.md'
+      );
+      const content = await fs.readFile(reviewPath, 'utf-8');
+      expect(content).toContain('parent-type: spec');
+      expect(content).toContain('parent-id: ambiguous-id');
+      expect(process.exitCode).not.toBe(1);
+    });
+  });
+
   describe('unassigned markers with CLI fallback', () => {
     beforeEach(() => {
       mockIsInteractive.mockReturnValue(false);

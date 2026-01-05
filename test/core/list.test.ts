@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import os from 'os';
@@ -8,24 +8,42 @@ import { createValidPlxWorkspace } from '../test-utils.js';
 describe('ListCommand', () => {
   let tempDir: string;
   let originalLog: typeof console.log;
+  let originalError: typeof console.error;
   let logOutput: string[] = [];
+  let errorOutput: string[] = [];
+  let originalEnv: NodeJS.ProcessEnv;
 
   beforeEach(async () => {
     // Create temp directory
     tempDir = path.join(os.tmpdir(), `plx-list-test-${Date.now()}`);
     await fs.mkdir(tempDir, { recursive: true });
 
+    // Store original env
+    originalEnv = { ...process.env };
+    delete process.env.PLX_NO_DEPRECATION_WARNINGS;
+
     // Mock console.log to capture output
     originalLog = console.log;
     console.log = (...args: any[]) => {
       logOutput.push(args.join(' '));
     };
+
+    // Mock console.error to capture stderr output
+    originalError = console.error;
+    console.error = (...args: any[]) => {
+      errorOutput.push(args.join(' '));
+    };
     logOutput = [];
+    errorOutput = [];
   });
 
   afterEach(async () => {
-    // Restore console.log
+    // Restore console.log and console.error
     console.log = originalLog;
+    console.error = originalError;
+
+    // Restore environment
+    process.env = originalEnv;
 
     // Clean up temp directory
     await fs.rm(tempDir, { recursive: true, force: true });
@@ -322,6 +340,62 @@ tracked-issues:
       expect(logOutput.some(line => line.includes('alpha-with-issue') && line.includes('(GH-999)'))).toBe(true);
       expect(logOutput.some(line => line.includes('beta-no-issue'))).toBe(true);
       expect(logOutput.some(line => line.includes('beta-no-issue') && line.includes('('))).toBe(false);
+    });
+  });
+
+  describe('deprecation warnings', () => {
+    it('should emit deprecation warning for plx list (changes)', async () => {
+      await createValidPlxWorkspace(tempDir);
+      const changesDir = path.join(tempDir, 'workspace', 'changes');
+      await fs.mkdir(changesDir, { recursive: true });
+
+      const listCommand = new ListCommand();
+      await listCommand.execute(tempDir, 'changes');
+
+      expect(errorOutput.some(line =>
+        line.includes("Deprecation: 'plx list' is deprecated") &&
+        line.includes('plx get changes')
+      )).toBe(true);
+    });
+
+    it('should emit deprecation warning for plx list --specs', async () => {
+      await createValidPlxWorkspace(tempDir);
+      const specsDir = path.join(tempDir, 'workspace', 'specs');
+      await fs.mkdir(specsDir, { recursive: true });
+
+      const listCommand = new ListCommand();
+      await listCommand.execute(tempDir, 'specs');
+
+      expect(errorOutput.some(line =>
+        line.includes("Deprecation: 'plx list --specs' is deprecated") &&
+        line.includes('plx get specs')
+      )).toBe(true);
+    });
+
+    it('should emit deprecation warning for plx list --reviews', async () => {
+      await createValidPlxWorkspace(tempDir);
+      const reviewsDir = path.join(tempDir, 'workspace', 'reviews');
+      await fs.mkdir(reviewsDir, { recursive: true });
+
+      const listCommand = new ListCommand();
+      await listCommand.execute(tempDir, 'reviews');
+
+      expect(errorOutput.some(line =>
+        line.includes("Deprecation: 'plx list --reviews' is deprecated") &&
+        line.includes('plx get reviews')
+      )).toBe(true);
+    });
+
+    it('should suppress deprecation warning when PLX_NO_DEPRECATION_WARNINGS is set', async () => {
+      process.env.PLX_NO_DEPRECATION_WARNINGS = '1';
+      await createValidPlxWorkspace(tempDir);
+      const changesDir = path.join(tempDir, 'workspace', 'changes');
+      await fs.mkdir(changesDir, { recursive: true });
+
+      const listCommand = new ListCommand();
+      await listCommand.execute(tempDir, 'changes');
+
+      expect(errorOutput.some(line => line.includes('Deprecation'))).toBe(false);
     });
   });
 });

@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -48,16 +48,16 @@ The `plx validate` command uses entity subcommands with `--id` flag for consiste
 
 ## Implementation Checklist
 
-- [ ] 6.1 Add `change` subcommand to validate command with `--id` option
-- [ ] 6.2 Add `changes` subcommand to validate command (plural)
-- [ ] 6.3 Add `spec` subcommand to validate command with `--id` option
-- [ ] 6.4 Add `specs` subcommand to validate command (plural)
-- [ ] 6.5 Add deprecation warning to legacy positional argument
-- [ ] 6.6 Add deprecation warning to `--changes` flag
-- [ ] 6.7 Add deprecation warning to `--specs` flag
-- [ ] 6.8 Update shell completions with new subcommands
-- [ ] 6.9 Add unit tests for new subcommands
-- [ ] 6.10 Verify parity between new and legacy commands
+- [x] 6.1 Add `change` subcommand to validate command with `--id` option
+- [x] 6.2 Add `changes` subcommand to validate command (plural)
+- [x] 6.3 Add `spec` subcommand to validate command with `--id` option
+- [x] 6.4 Add `specs` subcommand to validate command (plural)
+- [x] 6.5 Add deprecation warning to legacy positional argument
+- [x] 6.6 Add deprecation warning to `--changes` flag
+- [x] 6.7 Add deprecation warning to `--specs` flag
+- [x] 6.8 Update shell completions with new subcommands
+- [x] 6.9 Add unit tests for new subcommands
+- [x] 6.10 Verify parity between new and legacy commands
 
 ## Notes
 

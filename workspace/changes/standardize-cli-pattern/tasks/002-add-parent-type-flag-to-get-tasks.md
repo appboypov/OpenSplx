@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -42,13 +42,13 @@ The `plx get tasks` command supports `--parent-type <type>` flag for filtering t
 
 ## Implementation Checklist
 
-- [ ] 2.1 Add `--parent-type` option to `get tasks` command
-- [ ] 2.2 Implement parent type filtering in `ItemRetrievalService`
-- [ ] 2.3 Add ambiguity detection when `--parent-id` matches multiple types
-- [ ] 2.4 Update JSON output schema to include `parentType`
-- [ ] 2.5 Update shell completions with `--parent-type` option and valid values
-- [ ] 2.6 Add unit tests for parent type filtering
-- [ ] 2.7 Add unit tests for ambiguity detection
+- [x] 2.1 Add `--parent-type` option to `get tasks` command
+- [x] 2.2 Implement parent type filtering in `ItemRetrievalService`
+- [x] 2.3 Add ambiguity detection when `--parent-id` matches multiple types
+- [x] 2.4 Update JSON output schema to include `parentType`
+- [x] 2.5 Update shell completions with `--parent-type` option and valid values
+- [x] 2.6 Add unit tests for parent type filtering
+- [x] 2.7 Add unit tests for ambiguity detection
 
 ## Notes
 

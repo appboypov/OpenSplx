@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -46,17 +46,17 @@ The `plx parse feedback` command uses `--parent-id` and `--parent-type` flags in
 
 ## Implementation Checklist
 
-- [ ] 9.1 Add `--parent-id` flag to parse feedback command
-- [ ] 9.2 Add `--parent-type` flag with valid values: change, spec, task
-- [ ] 9.3 Implement type auto-detection when `--parent-type` omitted
-- [ ] 9.4 Implement ambiguity error with suggestion to add `--parent-type`
-- [ ] 9.5 Add deprecation warning to `--change-id` flag
-- [ ] 9.6 Add deprecation warning to `--spec-id` flag
-- [ ] 9.7 Add deprecation warning to `--task-id` flag
-- [ ] 9.8 Update shell completions with new flags
-- [ ] 9.9 Add unit tests for new flags
-- [ ] 9.10 Add unit tests for ambiguity detection
-- [ ] 9.11 Verify parity with legacy flags
+- [x] 9.1 Add `--parent-id` flag to parse feedback command
+- [x] 9.2 Add `--parent-type` flag with valid values: change, spec, task
+- [x] 9.3 Implement type auto-detection when `--parent-type` omitted
+- [x] 9.4 Implement ambiguity error with suggestion to add `--parent-type`
+- [x] 9.5 Add deprecation warning to `--change-id` flag
+- [x] 9.6 Add deprecation warning to `--spec-id` flag
+- [x] 9.7 Add deprecation warning to `--task-id` flag
+- [x] 9.8 Update shell completions with new flags
+- [x] 9.9 Add unit tests for new flags
+- [x] 9.10 Add unit tests for ambiguity detection
+- [x] 9.11 Verify parity with legacy flags
 
 ## Notes
 

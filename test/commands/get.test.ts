@@ -1598,6 +1598,41 @@ describe('get change command', () => {
       process.chdir(originalCwd);
     }
   });
+
+  it('supports --deltas-only filter', async () => {
+    const changeDir = path.join(changesDir, 'test-change');
+    const specsDir = path.join(changeDir, 'specs');
+    await fs.mkdir(specsDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(changeDir, 'proposal.md'),
+      '# Change: Test\n\n## Why\nTest\n\n## What Changes\n- **auth:** Add login'
+    );
+    await fs.writeFile(
+      path.join(specsDir, 'auth.md'),
+      `## ADDED Requirements
+
+### Requirement: User Login
+Users can log in`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(
+        `node ${plxBin} get change --id test-change --json --deltas-only`,
+        { encoding: 'utf-8' }
+      );
+      const json = JSON.parse(output);
+      expect(json.changeId).toBe('test-change');
+      expect(json.deltas).toBeDefined();
+      expect(Array.isArray(json.deltas)).toBe(true);
+      expect(json.proposal).toBeUndefined();
+      expect(json.tasks).toBeUndefined();
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
 });
 
 describe('get spec command', () => {
@@ -1676,6 +1711,110 @@ describe('get spec command', () => {
       const json = JSON.parse(output);
       expect(json.specId).toBe('test-spec');
       expect(json.content).toContain('Requirement 1');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('supports --requirements filter', async () => {
+    const specDir = path.join(specsDir, 'test-spec');
+    await fs.mkdir(specDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(specDir, 'spec.md'),
+      `## Purpose
+Test spec
+
+## Requirements
+
+### Requirement: User Login
+User can log in
+
+#### Scenario: Valid credentials
+When user enters valid credentials`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(
+        `node ${plxBin} get spec --id test-spec --json --requirements`,
+        { encoding: 'utf-8' }
+      );
+      const json = JSON.parse(output);
+      expect(json.specId).toBe('test-spec');
+      expect(json.requirements).toBeDefined();
+      expect(json.requirements[0].text).toBe('User can log in');
+      expect(json.requirements[0].scenarios).toHaveLength(0);
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('supports --no-scenarios filter', async () => {
+    const specDir = path.join(specsDir, 'test-spec');
+    await fs.mkdir(specDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(specDir, 'spec.md'),
+      `## Purpose
+Test spec
+
+## Requirements
+
+### Requirement: User Login
+User can log in
+
+#### Scenario: Valid credentials
+When user enters valid credentials`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(
+        `node ${plxBin} get spec --id test-spec --json --no-scenarios`,
+        { encoding: 'utf-8' }
+      );
+      const json = JSON.parse(output);
+      expect(json.specId).toBe('test-spec');
+      expect(json.requirements).toBeDefined();
+      expect(json.requirements[0].text).toBe('User can log in');
+      expect(json.requirements[0].scenarios).toHaveLength(0);
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('supports -r filter for specific requirement', async () => {
+    const specDir = path.join(specsDir, 'test-spec');
+    await fs.mkdir(specDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(specDir, 'spec.md'),
+      `## Purpose
+Test spec
+
+## Requirements
+
+### Requirement: First
+First requirement
+
+### Requirement: Second
+Second requirement`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(
+        `node ${plxBin} get spec --id test-spec --json -r 2`,
+        { encoding: 'utf-8' }
+      );
+      const json = JSON.parse(output);
+      expect(json.specId).toBe('test-spec');
+      expect(json.requirements).toHaveLength(1);
+      expect(json.requirements[0].text).toBe('Second requirement');
     } finally {
       process.chdir(originalCwd);
     }
@@ -1785,7 +1924,7 @@ status: in-progress
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
-      expect(json.changeId).toBe('my-change');
+      expect(json.parentId).toBe('my-change');
       expect(json.tasks).toHaveLength(2);
     } finally {
       process.chdir(originalCwd);
@@ -2053,5 +2192,438 @@ status: to-do
         process.chdir(originalCwd);
       }
     });
+  });
+});
+
+describe('get changes command', () => {
+  const projectRoot = process.cwd();
+  const testDir = path.join(projectRoot, 'test-get-changes-tmp');
+  const changesDir = path.join(testDir, 'workspace', 'changes');
+  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+
+  beforeEach(async () => {
+    await createValidPlxWorkspace(testDir);
+    await fs.mkdir(changesDir, { recursive: true });
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  it('shows "No active changes found" when no changes exist', () => {
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get changes 2>&1`, {
+        encoding: 'utf-8',
+      });
+      expect(output).toContain('No active changes found');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('lists all active changes', async () => {
+    const change1Dir = path.join(changesDir, 'change-alpha');
+    const tasks1Dir = path.join(change1Dir, 'tasks');
+    await fs.mkdir(tasks1Dir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(change1Dir, 'proposal.md'),
+      '# Change: Alpha\n\n## Why\nTest\n\n## What Changes\n- Test'
+    );
+    await fs.writeFile(
+      path.join(tasks1Dir, '001-task.md'),
+      `---
+status: done
+---
+# Task`
+    );
+
+    const change2Dir = path.join(changesDir, 'change-beta');
+    const tasks2Dir = path.join(change2Dir, 'tasks');
+    await fs.mkdir(tasks2Dir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(change2Dir, 'proposal.md'),
+      '# Change: Beta\n\n## Why\nTest\n\n## What Changes\n- Test'
+    );
+    await fs.writeFile(
+      path.join(tasks2Dir, '001-task.md'),
+      `---
+status: to-do
+---
+# Task`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get changes`, {
+        encoding: 'utf-8',
+      });
+      expect(output).toContain('Changes:');
+      expect(output).toContain('change-alpha');
+      expect(output).toContain('change-beta');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('outputs JSON format', async () => {
+    const changeDir = path.join(changesDir, 'test-change');
+    const tasksDir = path.join(changeDir, 'tasks');
+    await fs.mkdir(tasksDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(changeDir, 'proposal.md'),
+      '# Change: Test\n\n## Why\nTest\n\n## What Changes\n- Test'
+    );
+    await fs.writeFile(
+      path.join(tasksDir, '001-task.md'),
+      `---
+status: in-progress
+---
+# Task
+## Implementation Checklist
+- [x] Done
+- [ ] Not done`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get changes --json`, {
+        encoding: 'utf-8',
+      });
+      const json = JSON.parse(output);
+      expect(json.changes).toHaveLength(1);
+      expect(json.changes[0].id).toBe('test-change');
+      expect(json.changes[0].completedTasks).toBe(1);
+      expect(json.changes[0].totalTasks).toBe(2);
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('includes tracked issue in output', async () => {
+    const changeDir = path.join(changesDir, 'tracked-change');
+    await fs.mkdir(changeDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(changeDir, 'proposal.md'),
+      `---
+tracked-issues:
+  - tracker: linear
+    id: PROJ-123
+    url: https://linear.app/proj/issue/PROJ-123
+---
+
+# Change: Tracked
+
+## Why
+Test
+
+## What Changes
+- Test`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get changes --json`, {
+        encoding: 'utf-8',
+      });
+      const json = JSON.parse(output);
+      expect(json.changes[0].trackedIssue).toBe('PROJ-123');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+});
+
+describe('get specs command', () => {
+  const projectRoot = process.cwd();
+  const testDir = path.join(projectRoot, 'test-get-specs-tmp');
+  const specsDir = path.join(testDir, 'workspace', 'specs');
+  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+
+  beforeEach(async () => {
+    await createValidPlxWorkspace(testDir);
+    await fs.mkdir(specsDir, { recursive: true });
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  it('shows "No specs found" when no specs exist', () => {
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get specs 2>&1`, {
+        encoding: 'utf-8',
+      });
+      expect(output).toContain('No specs found');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('lists all specs', async () => {
+    const spec1Dir = path.join(specsDir, 'auth');
+    await fs.mkdir(spec1Dir, { recursive: true });
+    await fs.writeFile(
+      path.join(spec1Dir, 'spec.md'),
+      '# Spec: Auth\n\n## Purpose\nAuthentication spec\n\n## Requirements\n### Login\nUsers can log in'
+    );
+
+    const spec2Dir = path.join(specsDir, 'users');
+    await fs.mkdir(spec2Dir, { recursive: true });
+    await fs.writeFile(
+      path.join(spec2Dir, 'spec.md'),
+      '# Spec: Users\n\n## Purpose\nUser management spec\n\n## Requirements\n### Create\nCreate users\n### Delete\nDelete users'
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get specs`, {
+        encoding: 'utf-8',
+      });
+      expect(output).toContain('Specs:');
+      expect(output).toContain('auth');
+      expect(output).toContain('users');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('outputs JSON format', async () => {
+    const specDir = path.join(specsDir, 'test-spec');
+    await fs.mkdir(specDir, { recursive: true });
+    await fs.writeFile(
+      path.join(specDir, 'spec.md'),
+      '# Spec: Test\n\n## Purpose\nTest spec purpose\n\n## Requirements\n### First\nFirst requirement\n### Second\nSecond requirement'
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get specs --json`, {
+        encoding: 'utf-8',
+      });
+      const json = JSON.parse(output);
+      expect(json.specs).toHaveLength(1);
+      expect(json.specs[0].id).toBe('test-spec');
+      expect(json.specs[0].requirementCount).toBe(2);
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+});
+
+describe('get reviews command', () => {
+  const projectRoot = process.cwd();
+  const testDir = path.join(projectRoot, 'test-get-reviews-tmp');
+  const reviewsDir = path.join(testDir, 'workspace', 'reviews');
+  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+
+  beforeEach(async () => {
+    await createValidPlxWorkspace(testDir);
+    await fs.mkdir(reviewsDir, { recursive: true });
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  it('shows "No active reviews found" when no reviews exist', () => {
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get reviews 2>&1`, {
+        encoding: 'utf-8',
+      });
+      expect(output).toContain('No active reviews found');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('lists all active reviews', async () => {
+    const reviewDir = path.join(reviewsDir, 'test-review');
+    const tasksDir = path.join(reviewDir, 'tasks');
+    await fs.mkdir(tasksDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(reviewDir, 'review.md'),
+      `---
+parent-type: change
+parent-id: some-change
+reviewed-at: 2024-01-01T00:00:00Z
+---
+
+# Review: Test Review`
+    );
+    await fs.writeFile(
+      path.join(tasksDir, '001-review-task.md'),
+      `---
+status: to-do
+---
+# Review Task`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get reviews`, {
+        encoding: 'utf-8',
+      });
+      expect(output).toContain('Reviews:');
+      expect(output).toContain('test-review');
+      expect(output).toContain('change');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('outputs JSON format', async () => {
+    const reviewDir = path.join(reviewsDir, 'json-review');
+    const tasksDir = path.join(reviewDir, 'tasks');
+    await fs.mkdir(tasksDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(reviewDir, 'review.md'),
+      `---
+parent-type: spec
+parent-id: user-auth
+reviewed-at: 2024-01-01T00:00:00Z
+---
+
+# Review: JSON Review`
+    );
+    await fs.writeFile(
+      path.join(tasksDir, '001-task.md'),
+      `---
+status: done
+---
+# Task
+## Implementation Checklist
+- [x] Done`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get reviews --json`, {
+        encoding: 'utf-8',
+      });
+      const json = JSON.parse(output);
+      expect(json.reviews).toHaveLength(1);
+      expect(json.reviews[0].id).toBe('json-review');
+      expect(json.reviews[0].parentType).toBe('spec');
+      expect(json.reviews[0].parentId).toBe('user-auth');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+});
+
+describe('get review command', () => {
+  const projectRoot = process.cwd();
+  const testDir = path.join(projectRoot, 'test-get-review-tmp');
+  const reviewsDir = path.join(testDir, 'workspace', 'reviews');
+  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+
+  beforeEach(async () => {
+    await createValidPlxWorkspace(testDir);
+    await fs.mkdir(reviewsDir, { recursive: true });
+  });
+
+  afterEach(async () => {
+    await fs.rm(testDir, { recursive: true, force: true });
+  });
+
+  it('retrieves a review by ID', async () => {
+    const reviewDir = path.join(reviewsDir, 'my-review');
+    await fs.mkdir(reviewDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(reviewDir, 'review.md'),
+      `---
+parent-type: change
+parent-id: my-change
+reviewed-at: 2024-01-01T00:00:00Z
+---
+
+# Review: My Review
+
+Some review content here.`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(`node ${plxBin} get review --id my-review`, {
+        encoding: 'utf-8',
+      });
+      expect(output).toContain('Review: my-review');
+      expect(output).toContain('Parent: change/my-change');
+      expect(output).toContain('Some review content here.');
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('returns error when review not found', async () => {
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      try {
+        execSync(`node ${plxBin} get review --id nonexistent --json`, {
+          encoding: 'utf-8',
+        });
+      } catch (error: any) {
+        const json = JSON.parse(error.stdout);
+        expect(json.error).toContain('Review not found');
+      }
+    } finally {
+      process.chdir(originalCwd);
+    }
+  });
+
+  it('outputs JSON format', async () => {
+    const reviewDir = path.join(reviewsDir, 'json-test-review');
+    await fs.mkdir(reviewDir, { recursive: true });
+
+    await fs.writeFile(
+      path.join(reviewDir, 'review.md'),
+      `---
+parent-type: task
+parent-id: some-task
+reviewed-at: 2024-06-15T12:00:00Z
+---
+
+# Review: JSON Test
+
+Content for JSON output.`
+    );
+
+    const originalCwd = process.cwd();
+    try {
+      process.chdir(testDir);
+      const output = execSync(
+        `node ${plxBin} get review --id json-test-review --json`,
+        { encoding: 'utf-8' }
+      );
+      const json = JSON.parse(output);
+      expect(json.reviewId).toBe('json-test-review');
+      expect(json.parentType).toBe('task');
+      expect(json.parentId).toBe('some-task');
+      expect(json.content).toContain('JSON Test');
+    } finally {
+      process.chdir(originalCwd);
+    }
   });
 });

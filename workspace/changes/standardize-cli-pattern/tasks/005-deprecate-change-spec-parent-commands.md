@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: junior
 ---
 
@@ -47,14 +47,14 @@ The `plx change` and `plx spec` parent commands emit deprecation warnings direct
 
 ## Implementation Checklist
 
-- [ ] 5.1 Add deprecation warning to `plx change show` subcommand
-- [ ] 5.2 Add deprecation warning to `plx change list` subcommand
-- [ ] 5.3 Add deprecation warning to `plx change validate` subcommand
-- [ ] 5.4 Add deprecation warning to `plx spec show` subcommand
-- [ ] 5.5 Add deprecation warning to `plx spec list` subcommand
-- [ ] 5.6 Add deprecation warning to `plx spec validate` subcommand
-- [ ] 5.7 Add unit tests verifying deprecation warnings
-- [ ] 5.8 Verify all deprecated commands still function correctly
+- [x] 5.1 Add deprecation warning to `plx change show` subcommand
+- [x] 5.2 Add deprecation warning to `plx change list` subcommand
+- [x] 5.3 Add deprecation warning to `plx change validate` subcommand
+- [x] 5.4 Add deprecation warning to `plx spec show` subcommand
+- [x] 5.5 Add deprecation warning to `plx spec list` subcommand
+- [x] 5.6 Add deprecation warning to `plx spec validate` subcommand
+- [x] 5.7 Add unit tests verifying deprecation warnings
+- [x] 5.8 Verify all deprecated commands still function correctly
 
 ## Notes
 

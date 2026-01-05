@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -44,15 +44,15 @@ The `plx review` command uses entity subcommands with `--id` flag for reviewing 
 
 ## Implementation Checklist
 
-- [ ] 8.1 Add `change` subcommand to review command with `--id` option
-- [ ] 8.2 Add `spec` subcommand to review command with `--id` option
-- [ ] 8.3 Add `task` subcommand to review command with `--id` option
-- [ ] 8.4 Add deprecation warning to `--change-id` flag
-- [ ] 8.5 Add deprecation warning to `--spec-id` flag
-- [ ] 8.6 Add deprecation warning to `--task-id` flag
-- [ ] 8.7 Update shell completions with new subcommands
-- [ ] 8.8 Add unit tests for new subcommands
-- [ ] 8.9 Verify output parity with legacy flags
+- [x] 8.1 Add `change` subcommand to review command with `--id` option
+- [x] 8.2 Add `spec` subcommand to review command with `--id` option
+- [x] 8.3 Add `task` subcommand to review command with `--id` option
+- [x] 8.4 Add deprecation warning to `--change-id` flag
+- [x] 8.5 Add deprecation warning to `--spec-id` flag
+- [x] 8.6 Add deprecation warning to `--task-id` flag
+- [x] 8.7 Update shell completions with new subcommands
+- [x] 8.8 Add unit tests for new subcommands
+- [x] 8.9 Verify output parity with legacy flags
 
 ## Notes
 

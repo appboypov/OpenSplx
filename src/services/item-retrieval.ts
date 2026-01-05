@@ -54,7 +54,8 @@ export interface SpecWithWorkspace {
 
 export interface OpenTaskInfo {
   taskId: string;
-  changeId: string;
+  parentId: string;
+  parentType: 'change' | 'review' | 'spec';
   task: TaskFileInfo;
   status: TaskStatus;
   skillLevel?: SkillLevel;
@@ -492,29 +493,36 @@ export class ItemRetrievalService {
    * - With project: {projectName}/{itemId}
    * - Without: {itemId}
    * @param itemId The change or review identifier
+   * @param parentType Optional parent type filter
    * @returns Array of task file info, or empty array if item not found
    */
-  async getTasksForChange(itemId: string): Promise<TaskFileInfo[]> {
+  async getTasksForParent(
+    itemId: string,
+    parentType?: 'change' | 'review' | 'spec'
+  ): Promise<TaskFileInfo[]> {
     const parsed = this.parsePrefixedId(itemId);
     const workspacePaths = this.getWorkspacePaths(parsed.projectName);
 
-    for (const { changesPath, reviewsPath } of workspacePaths) {
-      // Try changes first
-      const changeStructure = await getTaskStructureForChange(
-        changesPath,
-        parsed.itemId
-      );
-      if (changeStructure.files.length > 0) {
-        return changeStructure.files;
-      }
+    const typesToSearch = parentType
+      ? [parentType]
+      : (['change', 'review'] as const);
 
-      // Try reviews if not found in changes
-      const reviewStructure = await getTaskStructureForChange(
-        reviewsPath,
-        parsed.itemId
-      );
-      if (reviewStructure.files.length > 0) {
-        return reviewStructure.files;
+    for (const { changesPath, reviewsPath, specsPath } of workspacePaths) {
+      for (const type of typesToSearch) {
+        const basePath =
+          type === 'change'
+            ? changesPath
+            : type === 'review'
+            ? reviewsPath
+            : specsPath;
+
+        const structure = await getTaskStructureForChange(
+          basePath,
+          parsed.itemId
+        );
+        if (structure.files.length > 0) {
+          return structure.files;
+        }
       }
     }
 
@@ -523,121 +531,133 @@ export class ItemRetrievalService {
 
   /**
    * Retrieves all open tasks (status: to-do or in-progress) across all active changes and reviews.
+   * @param parentType Optional filter by parent type
    * @returns Array of open task info with workspace context
    */
-  async getAllOpenTasks(): Promise<OpenTaskInfo[]> {
+  async getAllOpenTasks(
+    parentType?: 'change' | 'review' | 'spec'
+  ): Promise<OpenTaskInfo[]> {
     const openTasks: OpenTaskInfo[] = [];
+
+    const includeChanges = !parentType || parentType === 'change';
+    const includeReviews = !parentType || parentType === 'review';
 
     for (const workspacePath of this.getWorkspacePaths(null)) {
       const { changesPath, reviewsPath, workspace } = workspacePath;
 
-      // Get active changes for this workspace
-      const activeChanges = await getActiveChangeIdsMulti([workspace]);
+      if (includeChanges) {
+        // Get active changes for this workspace
+        const activeChanges = await getActiveChangeIdsMulti([workspace]);
 
-      for (const change of activeChanges) {
-        const tasksDir = path.join(changesPath, change.id, TASKS_DIRECTORY_NAME);
+        for (const change of activeChanges) {
+          const tasksDir = path.join(changesPath, change.id, TASKS_DIRECTORY_NAME);
 
-        try {
-          const entries = await fs.readdir(tasksDir);
-          const sortedFiles = sortTaskFilesBySequence(entries);
+          try {
+            const entries = await fs.readdir(tasksDir);
+            const sortedFiles = sortTaskFilesBySequence(entries);
 
-          for (const filename of sortedFiles) {
-            const parsed = parseTaskFilename(filename);
-            if (!parsed) continue;
+            for (const filename of sortedFiles) {
+              const parsed = parseTaskFilename(filename);
+              if (!parsed) continue;
 
-            const filepath = path.join(tasksDir, filename);
+              const filepath = path.join(tasksDir, filename);
 
-            try {
-              const content = await fs.readFile(filepath, 'utf-8');
-              const status = parseStatus(content);
+              try {
+                const content = await fs.readFile(filepath, 'utf-8');
+                const status = parseStatus(content);
 
-              if (status === 'to-do' || status === 'in-progress') {
-                const skillLevel = parseSkillLevel(content);
-                const task: TaskFileInfo = {
-                  filename,
-                  filepath,
-                  sequence: parsed.sequence,
-                  name: parsed.name,
-                  progress: { total: 0, completed: 0 },
-                };
+                if (status === 'to-do' || status === 'in-progress') {
+                  const skillLevel = parseSkillLevel(content);
+                  const task: TaskFileInfo = {
+                    filename,
+                    filepath,
+                    sequence: parsed.sequence,
+                    name: parsed.name,
+                    progress: { total: 0, completed: 0 },
+                  };
 
-                const taskId = getTaskIdFromFilename(filename);
+                  const taskId = getTaskIdFromFilename(filename);
 
-                openTasks.push({
-                  taskId,
-                  changeId: change.id,
-                  task,
-                  status,
-                  skillLevel,
-                  workspacePath: workspace.path,
-                  projectName: workspace.projectName,
-                  displayId: this.getDisplayId(
-                    workspace.projectName,
-                    `${change.id}/${taskId}`
-                  ),
-                });
+                  openTasks.push({
+                    taskId,
+                    parentId: change.id,
+                    parentType: 'change',
+                    task,
+                    status,
+                    skillLevel,
+                    workspacePath: workspace.path,
+                    projectName: workspace.projectName,
+                    displayId: this.getDisplayId(
+                      workspace.projectName,
+                      `${change.id}/${taskId}`
+                    ),
+                  });
+                }
+              } catch {
+                // Skip files that can't be read
               }
-            } catch {
-              // Skip files that can't be read
             }
+          } catch {
+            // Skip changes without tasks directory
           }
-        } catch {
-          // Skip changes without tasks directory
         }
       }
 
-      // Get active reviews for this workspace
-      const activeReviews = await getActiveReviewIdsMulti([workspace]);
+      if (includeReviews) {
+        // Get active reviews for this workspace
+        const activeReviews = await getActiveReviewIdsMulti([workspace]);
 
-      for (const review of activeReviews) {
-        const tasksDir = path.join(reviewsPath, review.id, TASKS_DIRECTORY_NAME);
+        for (const review of activeReviews) {
+          const tasksDir = path.join(reviewsPath, review.id, TASKS_DIRECTORY_NAME);
 
-        try {
-          const entries = await fs.readdir(tasksDir);
-          const sortedFiles = sortTaskFilesBySequence(entries);
+          try {
+            const entries = await fs.readdir(tasksDir);
+            const sortedFiles = sortTaskFilesBySequence(entries);
 
-          for (const filename of sortedFiles) {
-            const parsed = parseTaskFilename(filename);
-            if (!parsed) continue;
+            for (const filename of sortedFiles) {
+              const parsed = parseTaskFilename(filename);
+              if (!parsed) continue;
 
-            const filepath = path.join(tasksDir, filename);
+              const filepath = path.join(tasksDir, filename);
 
-            try {
-              const content = await fs.readFile(filepath, 'utf-8');
-              const status = parseStatus(content);
+              try {
+                const content = await fs.readFile(filepath, 'utf-8');
+                const status = parseStatus(content);
 
-              if (status === 'to-do' || status === 'in-progress') {
-                const skillLevel = parseSkillLevel(content);
-                const task: TaskFileInfo = {
-                  filename,
-                  filepath,
-                  sequence: parsed.sequence,
-                  name: parsed.name,
-                  progress: { total: 0, completed: 0 },
-                };
+                if (status === 'to-do' || status === 'in-progress') {
+                  const skillLevel = parseSkillLevel(content);
+                  const task: TaskFileInfo = {
+                    filename,
+                    filepath,
+                    sequence: parsed.sequence,
+                    name: parsed.name,
+                    progress: { total: 0, completed: 0 },
+                  };
 
-                const taskId = getTaskIdFromFilename(filename);
+                  const taskId = getTaskIdFromFilename(filename);
 
-                openTasks.push({
-                  taskId,
-                  changeId: review.id,
-                  task,
-                  status,
-                  skillLevel,
-                  workspacePath: workspace.path,
-                  projectName: workspace.projectName,
-                  displayId: this.getDisplayId(
-                    workspace.projectName,
-                    `${review.id}/${taskId}`
-                  ),
-                });
+                  openTasks.push({
+                    taskId,
+                    parentId: review.id,
+                    parentType: 'review',
+                    task,
+                    status,
+                    skillLevel,
+                    workspacePath: workspace.path,
+                    projectName: workspace.projectName,
+                    displayId: this.getDisplayId(
+                      workspace.projectName,
+                      `${review.id}/${taskId}`
+                    ),
+                  });
+                }
+              } catch {
+                // Skip files that can't be read
               }
-            } catch {
-              // Skip files that can't be read
             }
+          } catch {
+            // Skip reviews without tasks directory
           }
-        } catch {
-          // Skip reviews without tasks directory
         }
       }
     }

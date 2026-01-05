@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: senior
 ---
 
@@ -48,14 +48,14 @@ The `plx get` command supports `changes`, `specs`, and `reviews` subcommands for
 
 ## Implementation Checklist
 
-- [ ] 1.1 Add `changes` subcommand to `get` command in `src/commands/get.ts`
-- [ ] 1.2 Add `specs` subcommand to `get` command
-- [ ] 1.3 Add `reviews` subcommand to `get` command
-- [ ] 1.4 Add `review` singular subcommand with `--id` flag
-- [ ] 1.5 Extract shared listing logic from `src/core/list.ts` to a service
-- [ ] 1.6 Update shell completion registry with new subcommands
-- [ ] 1.7 Add unit tests for new subcommands
-- [ ] 1.8 Add integration tests for JSON output
+- [x] 1.1 Add `changes` subcommand to `get` command in `src/commands/get.ts`
+- [x] 1.2 Add `specs` subcommand to `get` command
+- [x] 1.3 Add `reviews` subcommand to `get` command
+- [x] 1.4 Add `review` singular subcommand with `--id` flag
+- [x] 1.5 Extract shared listing logic from `src/core/list.ts` to a service
+- [x] 1.6 Update shell completion registry with new subcommands
+- [x] 1.7 Add unit tests for new subcommands
+- [x] 1.8 Add integration tests for JSON output
 
 ## Notes
 

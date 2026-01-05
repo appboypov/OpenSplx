@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: junior
 ---
 
@@ -45,13 +45,13 @@ The `plx list` and `plx show` commands emit deprecation warnings directing users
 
 ## Implementation Checklist
 
-- [ ] 4.1 Create deprecation warning utility in `src/utils/`
-- [ ] 4.2 Add deprecation warning to `plx list` command
-- [ ] 4.3 Add deprecation warning to `plx show` command
-- [ ] 4.4 Ensure warnings go to stderr
-- [ ] 4.5 Add global `--no-deprecation-warnings` flag
-- [ ] 4.6 Add unit tests for deprecation warning output
-- [ ] 4.7 Verify JSON output remains unaffected
+- [x] 4.1 Create deprecation warning utility in `src/utils/`
+- [x] 4.2 Add deprecation warning to `plx list` command
+- [x] 4.3 Add deprecation warning to `plx show` command
+- [x] 4.4 Ensure warnings go to stderr
+- [x] 4.5 Add global `--no-deprecation-warnings` flag
+- [x] 4.6 Add unit tests for deprecation warning output
+- [x] 4.7 Verify JSON output remains unaffected
 
 ## Notes
 

@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -47,16 +47,16 @@ Integration tests cover all new command patterns and verify deprecation behavior
 
 ## Implementation Checklist
 
-- [ ] 12.1 Add integration tests for `get changes/specs/reviews` in `test/commands/get.test.ts`
-- [ ] 12.2 Add integration tests for `validate change/changes/spec/specs`
-- [ ] 12.3 Add integration tests for `archive change/review`
-- [ ] 12.4 Add integration tests for `review change/spec/task`
-- [ ] 12.5 Add integration tests for `parse feedback` with new flags
-- [ ] 12.6 Add tests verifying deprecation warning output
-- [ ] 12.7 Add tests for `--no-deprecation-warnings` flag
-- [ ] 12.8 Add tests for parent type ambiguity detection
-- [ ] 12.9 Run full test suite and ensure all pass
-- [ ] 12.10 Verify test coverage for critical paths
+- [x] 12.1 Add integration tests for `get changes/specs/reviews` in `test/commands/get.test.ts`
+- [x] 12.2 Add integration tests for `validate change/changes/spec/specs`
+- [x] 12.3 Add integration tests for `archive change/review`
+- [x] 12.4 Add integration tests for `review change/spec/task`
+- [x] 12.5 Add integration tests for `parse feedback` with new flags
+- [x] 12.6 Add tests verifying deprecation warning output
+- [x] 12.7 Add tests for `--no-deprecation-warnings` flag
+- [x] 12.8 Add tests for parent type ambiguity detection
+- [x] 12.9 Run full test suite and ensure all pass
+- [x] 12.10 Verify test coverage for critical paths
 
 ## Notes
 

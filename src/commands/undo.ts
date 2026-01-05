@@ -99,7 +99,7 @@ export class UndoCommand {
       return;
     }
 
-    const tasks = await this.itemRetrievalService!.getTasksForChange(options.id);
+    const tasks = await this.itemRetrievalService!.getTasksForParent(options.id);
     const undoneTasks: TaskUndoResult[] = [];
     const skippedTasks: string[] = [];
 

@@ -154,14 +154,14 @@ status: in-progress
     });
   });
 
-  describe('getTasksForChange', () => {
+  describe('getTasksForParent', () => {
     it('should return all tasks for a change', async () => {
       await createChange('my-change', '# Proposal');
       await createTask('my-change', '001-first.md', '---\nstatus: done\n---\n# First');
       await createTask('my-change', '002-second.md', '---\nstatus: to-do\n---\n# Second');
       await createTask('my-change', '003-third.md', '---\nstatus: to-do\n---\n# Third');
 
-      const result = await service.getTasksForChange('my-change');
+      const result = await service.getTasksForParent('my-change');
       expect(result).toHaveLength(3);
       expect(result[0].name).toBe('first');
       expect(result[1].name).toBe('second');
@@ -171,12 +171,12 @@ status: in-progress
     it('should return empty array for change without tasks', async () => {
       await createChange('no-tasks', '# Proposal');
 
-      const result = await service.getTasksForChange('no-tasks');
+      const result = await service.getTasksForParent('no-tasks');
       expect(result).toEqual([]);
     });
 
     it('should return empty array for non-existent change', async () => {
-      const result = await service.getTasksForChange('non-existent');
+      const result = await service.getTasksForParent('non-existent');
       expect(result).toEqual([]);
     });
   });
@@ -268,12 +268,12 @@ status: in-progress
       expect(result!.task.name).toBe('fix');
     });
 
-    it('should return tasks for review via getTasksForChange', async () => {
+    it('should return tasks for review via getTasksForParent', async () => {
       await createReview('my-review');
       await createReviewTask('my-review', '001-first.md', '---\nstatus: to-do\n---\n# First');
       await createReviewTask('my-review', '002-second.md', '---\nstatus: to-do\n---\n# Second');
 
-      const result = await service.getTasksForChange('my-review');
+      const result = await service.getTasksForParent('my-review');
       expect(result).toHaveLength(2);
     });
 
@@ -282,7 +282,7 @@ status: in-progress
       await createReviewTask('my-review', '001-wip.md', '---\nstatus: in-progress\n---\n# WIP');
 
       const result = await service.getAllOpenTasks();
-      expect(result.some((t) => t.changeId === 'my-review')).toBe(true);
+      expect(result.some((t) => t.parentId === 'my-review')).toBe(true);
     });
 
     it('should prioritize change tasks over review tasks with same ID', async () => {
@@ -300,7 +300,7 @@ status: in-progress
     it('should return empty array for review without tasks', async () => {
       await createReview('empty-review');
 
-      const result = await service.getTasksForChange('empty-review');
+      const result = await service.getTasksForParent('empty-review');
       expect(result).toEqual([]);
     });
   });

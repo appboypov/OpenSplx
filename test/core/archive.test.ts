@@ -51,27 +51,94 @@ describe('ArchiveCommand', () => {
     }
   });
 
+  describe('archiveChangeById', () => {
+    it('should archive a change successfully', async () => {
+      // Create a test change
+      const changeName = 'test-feature';
+      const changeDir = path.join(tempDir, 'workspace', 'changes', changeName);
+      await fs.mkdir(changeDir, { recursive: true });
+
+      // Create tasks.md with completed tasks
+      const tasksContent = '- [x] Task 1\n- [x] Task 2';
+      await fs.writeFile(path.join(changeDir, 'tasks.md'), tasksContent);
+
+      // Execute archive with --yes flag
+      await archiveCommand.archiveChangeById(changeName, { yes: true });
+
+      // Check that change was moved to archive
+      const archiveDir = path.join(tempDir, 'workspace', 'changes', 'archive');
+      const archives = await fs.readdir(archiveDir);
+
+      expect(archives.length).toBe(1);
+      expect(archives[0]).toMatch(new RegExp(`\\d{4}-\\d{2}-\\d{2}-${changeName}`));
+
+      // Verify original change directory no longer exists
+      await expect(fs.access(changeDir)).rejects.toThrow();
+    });
+
+    it('should throw error if change does not exist', async () => {
+      await expect(
+        archiveCommand.archiveChangeById('non-existent-change', { yes: true })
+      ).rejects.toThrow("Change 'non-existent-change' not found.");
+    });
+  });
+
+  describe('archiveReviewById', () => {
+    it('should archive a review successfully', async () => {
+      // Create a test review
+      const reviewName = 'test-review';
+      const reviewDir = path.join(tempDir, 'workspace', 'reviews', reviewName);
+      await fs.mkdir(reviewDir, { recursive: true });
+
+      // Create review.md
+      const reviewContent = '---\nstatus: open\n---\n# Review';
+      await fs.writeFile(path.join(reviewDir, 'review.md'), reviewContent);
+
+      // Execute archive with --yes flag and skip validation
+      await archiveCommand.archiveReviewById(reviewName, { yes: true, noValidate: true });
+
+      // Check that review was moved to archive
+      const archiveDir = path.join(tempDir, 'workspace', 'reviews', 'archive');
+      const archives = await fs.readdir(archiveDir);
+
+      expect(archives.length).toBe(1);
+      expect(archives[0]).toMatch(new RegExp(`\\d{4}-\\d{2}-\\d{2}-${reviewName}`));
+
+      // Verify original review directory no longer exists
+      await expect(fs.access(reviewDir)).rejects.toThrow();
+    });
+
+    it('should throw error if review does not exist', async () => {
+      // Create reviews directory first
+      await fs.mkdir(path.join(tempDir, 'workspace', 'reviews'), { recursive: true });
+
+      await expect(
+        archiveCommand.archiveReviewById('non-existent-review', { yes: true })
+      ).rejects.toThrow("Review 'non-existent-review' not found.");
+    });
+  });
+
   describe('execute', () => {
     it('should archive a change successfully', async () => {
       // Create a test change
       const changeName = 'test-feature';
       const changeDir = path.join(tempDir, 'workspace', 'changes', changeName);
       await fs.mkdir(changeDir, { recursive: true });
-      
+
       // Create tasks.md with completed tasks
       const tasksContent = '- [x] Task 1\n- [x] Task 2';
       await fs.writeFile(path.join(changeDir, 'tasks.md'), tasksContent);
-      
+
       // Execute archive with --yes flag
       await archiveCommand.execute(changeName, { yes: true });
-      
+
       // Check that change was moved to archive
       const archiveDir = path.join(tempDir, 'workspace', 'changes', 'archive');
       const archives = await fs.readdir(archiveDir);
-      
+
       expect(archives.length).toBe(1);
       expect(archives[0]).toMatch(new RegExp(`\\d{4}-\\d{2}-\\d{2}-${changeName}`));
-      
+
       // Verify original change directory no longer exists
       await expect(fs.access(changeDir)).rejects.toThrow();
     });

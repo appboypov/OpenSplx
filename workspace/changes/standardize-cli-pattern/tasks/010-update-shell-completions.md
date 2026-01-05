@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: junior
 ---
 
@@ -43,16 +43,16 @@ Shell completions are updated to include all new subcommands and flags from the 
 
 ## Implementation Checklist
 
-- [ ] 10.1 Add `changes`, `specs`, `reviews` to get command completions
-- [ ] 10.2 Add `review` singular to get command completions
-- [ ] 10.3 Add `change`, `changes`, `spec`, `specs` to validate command completions
-- [ ] 10.4 Add `change`, `review` to archive command completions
-- [ ] 10.5 Add `change`, `spec`, `task` to review command completions
-- [ ] 10.6 Add `--parent-type` option with value completions
-- [ ] 10.7 Add `--parent-id` option completions
-- [ ] 10.8 Update dynamic completion handler for new commands
-- [ ] 10.9 Test completions in zsh shell
-- [ ] 10.10 Verify all new commands have appropriate completions
+- [x] 10.1 Add `changes`, `specs`, `reviews` to get command completions
+- [x] 10.2 Add `review` singular to get command completions
+- [x] 10.3 Add `change`, `changes`, `spec`, `specs` to validate command completions
+- [x] 10.4 Add `change`, `review` to archive command completions
+- [x] 10.5 Add `change`, `spec`, `task` to review command completions
+- [x] 10.6 Add `--parent-type` option with value completions
+- [x] 10.7 Add `--parent-id` option completions
+- [x] 10.8 Update dynamic completion handler for new commands
+- [x] 10.9 Test completions in zsh shell
+- [x] 10.10 Verify all new commands have appropriate completions
 
 ## Notes
 

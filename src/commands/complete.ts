@@ -99,7 +99,7 @@ export class CompleteCommand {
       return;
     }
 
-    const tasks = await this.itemRetrievalService!.getTasksForChange(options.id);
+    const tasks = await this.itemRetrievalService!.getTasksForParent(options.id);
     const completedTasks: TaskCompletionResult[] = [];
     const skippedTasks: string[] = [];
 

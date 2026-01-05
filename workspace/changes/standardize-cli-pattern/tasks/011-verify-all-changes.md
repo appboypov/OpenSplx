@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -45,17 +45,17 @@ All changes from this proposal are verified to work correctly with consistent be
 
 ## Implementation Checklist
 
-- [ ] 11.1 Run full test suite and verify all tests pass
-- [ ] 11.2 Manual verification of `plx get changes` vs `plx list`
-- [ ] 11.3 Manual verification of `plx get specs` vs `plx list --specs`
-- [ ] 11.4 Manual verification of `plx get reviews` vs `plx list --reviews`
-- [ ] 11.5 Manual verification of validate command variants
-- [ ] 11.6 Manual verification of archive command variants
-- [ ] 11.7 Manual verification of review command variants
-- [ ] 11.8 Manual verification of parse feedback command variants
-- [ ] 11.9 Verify deprecation warnings appear correctly
-- [ ] 11.10 Verify JSON output for all new commands
-- [ ] 11.11 Test multi-workspace scenarios with new commands
+- [x] 11.1 Run full test suite and verify all tests pass
+- [x] 11.2 Manual verification of `plx get changes` vs `plx list`
+- [x] 11.3 Manual verification of `plx get specs` vs `plx list --specs`
+- [x] 11.4 Manual verification of `plx get reviews` vs `plx list --reviews`
+- [x] 11.5 Manual verification of validate command variants
+- [x] 11.6 Manual verification of archive command variants
+- [x] 11.7 Manual verification of review command variants
+- [x] 11.8 Manual verification of parse feedback command variants
+- [x] 11.9 Verify deprecation warnings appear correctly
+- [x] 11.10 Verify JSON output for all new commands
+- [x] 11.11 Test multi-workspace scenarios with new commands
 
 ## Notes
 

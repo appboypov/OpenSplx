@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -43,15 +43,15 @@ The `plx archive` command uses entity subcommands with `--id` flag for consisten
 
 ## Implementation Checklist
 
-- [ ] 7.1 Add `change` subcommand to archive command with `--id` option
-- [ ] 7.2 Add `review` subcommand to archive command with `--id` option
-- [ ] 7.3 Pass through `--yes`, `--skip-specs`, `--no-validate` to subcommands
-- [ ] 7.4 Add deprecation warning to legacy positional argument
-- [ ] 7.5 Add deprecation warning to `--type` flag
-- [ ] 7.6 Update interactive mode to prompt for entity type
-- [ ] 7.7 Update shell completions with new subcommands
-- [ ] 7.8 Add unit tests for new subcommands
-- [ ] 7.9 Verify parity with legacy commands
+- [x] 7.1 Add `change` subcommand to archive command with `--id` option
+- [x] 7.2 Add `review` subcommand to archive command with `--id` option
+- [x] 7.3 Pass through `--yes`, `--skip-specs`, `--no-validate` to subcommands
+- [x] 7.4 Add deprecation warning to legacy positional argument
+- [x] 7.5 Add deprecation warning to `--type` flag
+- [x] 7.6 Update interactive mode to prompt for entity type
+- [x] 7.7 Update shell completions with new subcommands
+- [x] 7.8 Add unit tests for new subcommands
+- [x] 7.9 Verify parity with legacy commands
 
 ## Notes
 

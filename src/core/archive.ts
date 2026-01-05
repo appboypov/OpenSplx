@@ -52,6 +52,26 @@ export class ArchiveCommand {
     return this.archiveChange(itemName, changesDir, mainSpecsDir, options);
   }
 
+  async archiveChangeById(
+    id: string,
+    options: { yes?: boolean; skipSpecs?: boolean; noValidate?: boolean; validate?: boolean } = {}
+  ): Promise<void> {
+    const targetPath = '.';
+    const changesDir = path.join(targetPath, 'workspace', 'changes');
+    const mainSpecsDir = path.join(targetPath, 'workspace', 'specs');
+    return this.archiveChange(id, changesDir, mainSpecsDir, options);
+  }
+
+  async archiveReviewById(
+    id: string,
+    options: { yes?: boolean; skipSpecs?: boolean; noValidate?: boolean; validate?: boolean } = {}
+  ): Promise<void> {
+    const targetPath = '.';
+    const reviewsDir = path.join(targetPath, 'workspace', 'reviews');
+    const mainSpecsDir = path.join(targetPath, 'workspace', 'specs');
+    return this.archiveReview(id, reviewsDir, mainSpecsDir, options);
+  }
+
   private async detectEntityType(id: string, changesDir: string, reviewsDir: string): Promise<EntityType> {
     let isChange = false;
     let isReview = false;

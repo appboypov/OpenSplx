@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 ---
 
@@ -44,14 +44,14 @@ The `plx get change` and `plx get spec` commands support all filtering options f
 
 ## Implementation Checklist
 
-- [ ] 3.1 Add `--deltas-only` option to `get change` subcommand
-- [ ] 3.2 Add `--requirements` option to `get spec` subcommand
-- [ ] 3.3 Add `--no-scenarios` option to `get spec` subcommand
-- [ ] 3.4 Add `-r`/`--requirement` option to `get spec` subcommand
-- [ ] 3.5 Extract filtering logic from `show.ts` to shared service
-- [ ] 3.6 Update shell completions with new options
-- [ ] 3.7 Add unit tests verifying parity with show command
-- [ ] 3.8 Add integration tests for combined options
+- [x] 3.1 Add `--deltas-only` option to `get change` subcommand
+- [x] 3.2 Add `--requirements` option to `get spec` subcommand
+- [x] 3.3 Add `--no-scenarios` option to `get spec` subcommand
+- [x] 3.4 Add `-r`/`--requirement` option to `get spec` subcommand
+- [x] 3.5 Extract filtering logic from `show.ts` to shared service
+- [x] 3.6 Update shell completions with new options
+- [x] 3.7 Add unit tests verifying parity with show command
+- [x] 3.8 Add integration tests for combined options
 
 ## Notes
 
