@@ -213,13 +213,7 @@ describe('ParseFeedbackCommand', () => {
 
       await command.execute('tasks-review', { noInteractive: true });
 
-      const tasksDir = path.join(
-        tempDir,
-        'workspace',
-        'reviews',
-        'tasks-review',
-        'tasks'
-      );
+      const tasksDir = path.join(tempDir, 'workspace', 'tasks');
       const tasks = await fs.readdir(tasksDir);
       expect(tasks).toHaveLength(2);
     });
@@ -476,13 +470,7 @@ describe('ParseFeedbackCommand', () => {
       });
 
       // Should create single review with both markers
-      const tasksDir = path.join(
-        tempDir,
-        'workspace',
-        'reviews',
-        'merged-review',
-        'tasks'
-      );
+      const tasksDir = path.join(tempDir, 'workspace', 'tasks');
       const tasks = await fs.readdir(tasksDir);
       expect(tasks).toHaveLength(2);
     });

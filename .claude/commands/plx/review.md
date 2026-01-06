@@ -11,7 +11,7 @@ tags: [plx, review, workflow]
 - Include parent linkage in markers when reviewing a task, change, or spec.
 
 **Steps**
-1. Run `plx review change --id <id>` (or spec, task with appropriate --parent-type).
+1. Run `plx review change --id <id>` (or `plx review spec --id <id>` or `plx review task --id <id>`).
 2. Read the output: @REVIEW.md guidelines + parent documents.
 3. Review implementation against constraints/acceptance criteria.
 4. Insert feedback markers with format: `#FEEDBACK #TODO | {type}:{id} | {feedback}`
