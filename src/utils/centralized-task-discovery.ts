@@ -90,8 +90,12 @@ export async function discoverTasks(
         if (status === 'done') {
           const { updatedContent } = completeImplementationChecklist(rawContent);
           if (updatedContent !== rawContent) {
-            await fs.writeFile(filepath, updatedContent, 'utf-8');
-            content = updatedContent;
+            try {
+              await fs.writeFile(filepath, updatedContent, 'utf-8');
+              content = updatedContent;
+            } catch {
+              // Write failed (read-only, disk full, etc.) - continue with original content
+            }
           }
         }
 

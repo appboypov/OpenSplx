@@ -191,8 +191,14 @@ export class ViewCommand {
             ? `${workspace.projectName}/${entry.name}`
             : entry.name;
 
+          // Skip directories without spec.md
           try {
             await fs.access(specFile);
+          } catch {
+            continue;
+          }
+
+          try {
             const content = await fs.readFile(specFile, 'utf-8');
             const parser = new MarkdownParser(content);
             const spec = parser.parseSpec(entry.name);
@@ -203,6 +209,7 @@ export class ViewCommand {
               projectName: workspace.projectName,
             });
           } catch {
+            // File exists but can't be read or parsed
             specs.push({
               name: entry.name,
               displayName,
