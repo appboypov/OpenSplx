@@ -210,7 +210,7 @@ describe('create command', () => {
   });
 
   describe('create task', () => {
-    it('creates task in parent change', async () => {
+    it('creates task in centralized workspace/tasks', async () => {
       // First create a change
       const changeDir = path.join(testDir, 'workspace', 'changes', 'parent-change');
       await fs.mkdir(changeDir, { recursive: true });
@@ -231,34 +231,39 @@ describe('create command', () => {
         expect(json.success).toBe(true);
         expect(json.type).toBe('task');
         expect(json.parentId).toBe('parent-change');
-        expect(json.taskId).toBe('001-implement-feature');
+        expect(json.taskId).toBe('parent-change-implement-feature');
 
-        const taskPath = path.join(changeDir, 'tasks', '001-implement-feature.md');
+        // Tasks are stored in centralized workspace/tasks with parent ID in filename
+        const taskPath = path.join(testDir, 'workspace', 'tasks', '001-parent-change-implement-feature.md');
         expect(await fs.stat(taskPath).then(() => true).catch(() => false)).toBe(true);
 
         const taskContent = await fs.readFile(taskPath, 'utf-8');
         expect(taskContent).toContain('status: to-do');
+        expect(taskContent).toContain('parent-type: change');
+        expect(taskContent).toContain('parent-id: parent-change');
         expect(taskContent).toContain('# Task: Implement feature');
       } finally {
         process.chdir(originalCwd);
       }
     });
 
-    it('auto-increments task sequence number', async () => {
+    it('auto-increments task sequence number for same parent', async () => {
       const changeDir = path.join(testDir, 'workspace', 'changes', 'seq-test');
-      const tasksDir = path.join(changeDir, 'tasks');
+      const tasksDir = path.join(testDir, 'workspace', 'tasks');
+      await fs.mkdir(changeDir, { recursive: true });
       await fs.mkdir(tasksDir, { recursive: true });
       await fs.writeFile(
         path.join(changeDir, 'proposal.md'),
         '# Change: Seq Test\n\n## Why\nTest\n\n## What Changes\n- Test'
       );
+      // Existing tasks in centralized storage with parent prefix
       await fs.writeFile(
-        path.join(tasksDir, '001-first.md'),
-        '---\nstatus: to-do\n---\n\n# Task: First'
+        path.join(tasksDir, '001-seq-test-first.md'),
+        '---\nstatus: to-do\nparent-type: change\nparent-id: seq-test\n---\n\n# Task: First'
       );
       await fs.writeFile(
-        path.join(tasksDir, '002-second.md'),
-        '---\nstatus: to-do\n---\n\n# Task: Second'
+        path.join(tasksDir, '002-seq-test-second.md'),
+        '---\nstatus: to-do\nparent-type: change\nparent-id: seq-test\n---\n\n# Task: Second'
       );
 
       const originalCwd = process.cwd();
@@ -270,7 +275,7 @@ describe('create command', () => {
         );
         const json = JSON.parse(output);
 
-        expect(json.taskId).toBe('003-third-task');
+        expect(json.taskId).toBe('seq-test-third-task');
       } finally {
         process.chdir(originalCwd);
       }
@@ -328,7 +333,8 @@ describe('create command', () => {
           { encoding: 'utf-8' }
         );
 
-        const taskPath = path.join(changeDir, 'tasks', '001-senior-task.md');
+        // Tasks are stored in centralized workspace/tasks with parent ID in filename
+        const taskPath = path.join(testDir, 'workspace', 'tasks', '001-skill-test-senior-task.md');
         const taskContent = await fs.readFile(taskPath, 'utf-8');
         expect(taskContent).toContain('skill-level: senior');
       } finally {
@@ -352,7 +358,8 @@ describe('create command', () => {
           { encoding: 'utf-8' }
         );
 
-        const taskPath = path.join(changeDir, 'tasks', '001-regular-task.md');
+        // Tasks are stored in centralized workspace/tasks with parent ID in filename
+        const taskPath = path.join(testDir, 'workspace', 'tasks', '001-no-skill-test-regular-task.md');
         const taskContent = await fs.readFile(taskPath, 'utf-8');
         expect(taskContent).not.toContain('skill-level:');
       } finally {
@@ -401,14 +408,15 @@ describe('create command', () => {
           { encoding: 'utf-8' }
         );
 
-        const taskPath = path.join(changeDir, 'tasks', '001-add-user-profile-page.md');
+        // Tasks are stored in centralized workspace/tasks with parent ID in filename
+        const taskPath = path.join(testDir, 'workspace', 'tasks', '001-kebab-test-add-user-profile-page.md');
         expect(await fs.stat(taskPath).then(() => true).catch(() => false)).toBe(true);
       } finally {
         process.chdir(originalCwd);
       }
     });
 
-    it('pads sequence number with zeros', async () => {
+    it('pads sequence number with zeros in filename', async () => {
       const changeDir = path.join(testDir, 'workspace', 'changes', 'pad-test');
       await fs.mkdir(changeDir, { recursive: true });
       await fs.writeFile(
@@ -425,7 +433,12 @@ describe('create command', () => {
         );
         const json = JSON.parse(output);
 
-        expect(json.taskId).toMatch(/^001-/);
+        // taskId is now parentId-taskName (no sequence prefix)
+        expect(json.taskId).toBe('pad-test-first-task');
+
+        // Verify the filename has the padded sequence number
+        const taskPath = path.join(testDir, 'workspace', 'tasks', '001-pad-test-first-task.md');
+        expect(await fs.stat(taskPath).then(() => true).catch(() => false)).toBe(true);
       } finally {
         process.chdir(originalCwd);
       }

@@ -29,29 +29,29 @@ Users can run `plx undo review --id <id>` and `plx undo spec --id <id>` to rever
 
 ## Constraints
 
-- [ ] Error handling must match existing patterns (exit code 1 for not found)
-- [ ] JSON output must include `reviewId` or `specId` (not `changeId`)
-- [ ] Must use `ItemRetrievalService` methods from task 001
+- [x] Error handling must match existing patterns (exit code 1 for not found)
+- [x] JSON output must include `reviewId` or `specId` (not `changeId`)
+- [x] Must use `ItemRetrievalService` methods from task 001
 
 ## Acceptance Criteria
 
-- [ ] `plx undo review --id <id>` reverts all tasks in the review to to-do
-- [ ] `plx undo spec --id <id>` reverts all tasks linked to the spec to to-do
-- [ ] Already to-do tasks are skipped with appropriate message
-- [ ] Non-existent entities produce error with exit code 1
-- [ ] `--json` flag produces valid JSON output
-- [ ] Console output matches existing styling (chalk colors, formatting)
+- [x] `plx undo review --id <id>` reverts all tasks in the review to to-do
+- [x] `plx undo spec --id <id>` reverts all tasks linked to the spec to to-do
+- [x] Already to-do tasks are skipped with appropriate message
+- [x] Non-existent entities produce error with exit code 1
+- [x] `--json` flag produces valid JSON output
+- [x] Console output matches existing styling (chalk colors, formatting)
 
 ## Implementation Checklist
 
-- [ ] 3.1 Add `ReviewOptions` interface to undo.ts
-- [ ] 3.2 Add `SpecOptions` interface to undo.ts
-- [ ] 3.3 Implement `review()` method in UndoCommand
-- [ ] 3.4 Implement `spec()` method in UndoCommand
-- [ ] 3.5 Register `undo review` subcommand in cli/index.ts
-- [ ] 3.6 Register `undo spec` subcommand in cli/index.ts
-- [ ] 3.7 Add integration tests for undo review command
-- [ ] 3.8 Add integration tests for undo spec command
+- [x] 3.1 Add `ReviewOptions` interface to undo.ts
+- [x] 3.2 Add `SpecOptions` interface to undo.ts
+- [x] 3.3 Implement `review()` method in UndoCommand
+- [x] 3.4 Implement `spec()` method in UndoCommand
+- [x] 3.5 Register `undo review` subcommand in cli/index.ts
+- [x] 3.6 Register `undo spec` subcommand in cli/index.ts
+- [x] 3.7 Add integration tests for undo review command
+- [x] 3.8 Add integration tests for undo spec command
 
 ## Notes
 

@@ -20,30 +20,30 @@ Task prioritization considers parent entity completion status using frontmatter 
 - Standalone tasks are deprioritized (no parent = lower priority)
 
 ## Constraints
-- [ ] Must maintain backward compatibility with change-based prioritization
-- [ ] Must handle standalone tasks (no parent linkage)
-- [ ] Must work with multi-workspace task aggregation
+- [x] Must maintain backward compatibility with change-based prioritization
+- [x] Must handle standalone tasks (no parent linkage)
+- [x] Must work with multi-workspace task aggregation
 
 ## Acceptance Criteria
-- [ ] Prioritization calculates completion per parent entity
-- [ ] All parent types (change, review, spec) are considered
-- [ ] Standalone tasks appear after parented tasks
-- [ ] `plx get task` returns expected next task based on prioritization
+- [x] Prioritization calculates completion per parent entity
+- [x] All parent types (change, review, spec) are considered
+- [x] Standalone tasks appear after parented tasks
+- [x] `plx get task` returns expected next task based on prioritization
 
 ## Implementation Checklist
-- [ ] 3.1 Refactor `src/utils/change-prioritization.ts`:
+- [x] 3.1 Refactor `src/utils/change-prioritization.ts`:
   - Rename to `parent-prioritization.ts` (update imports)
   - Add `getPrioritizedParent(tasks)` function
   - Calculate completion per unique parent-id
   - Handle standalone tasks (group separately)
-- [ ] 3.2 Update priority calculation:
+- [x] 3.2 Update priority calculation:
   - Group tasks by parent-id
   - Calculate done/total per parent
   - Sort by completion percentage (highest first), then creation date
-- [ ] 3.3 Update `src/commands/get.ts`:
+- [x] 3.3 Update `src/commands/get.ts`:
   - Use new prioritization for `get task` without filters
   - Retrieve tasks for prioritized parent
-- [ ] 3.4 Add unit tests for parent-based prioritization
+- [x] 3.4 Add unit tests for parent-based prioritization
 
 ## Notes
 Standalone task handling may be refined in future proposals. Current behavior: standalone tasks sorted by filename, shown after parented tasks.

@@ -7,7 +7,7 @@ import { FileSystemUtils } from '../utils/file-system.js';
 import { getFilteredWorkspaces } from '../utils/workspace-filter.js';
 import { TemplateManager } from '../core/templates/index.js';
 import { ItemRetrievalService } from '../services/item-retrieval.js';
-import { sortTaskFilesBySequence } from '../utils/task-file-parser.js';
+import { sortTaskFilesBySequence, buildTaskFilename } from '../utils/task-file-parser.js';
 
 interface RequestOptions {
   json?: boolean;
@@ -285,18 +285,32 @@ export class PasteCommand {
         return;
       }
 
-      const parentPath = resolved.path;
+      const parentWorkspacePath = resolved.workspacePath;
       const actualParentType = resolved.type;
 
-      // Create tasks directory
-      const tasksDir = path.join(parentPath, 'tasks');
+      // Use centralized task storage
+      const tasksDir = path.join(parentWorkspacePath, 'tasks');
       await FileSystemUtils.createDirectory(tasksDir);
 
-      // Determine next sequence number
+      // Parse the parent ID to get the item ID without workspace prefix
+      const parsePrefixedId = (id: string): string => {
+        const slashIndex = id.indexOf('/');
+        if (slashIndex === -1) {
+          return id;
+        }
+        return id.substring(slashIndex + 1);
+      };
+      const parentItemId = parsePrefixedId(options.parentId);
+
+      // Find next sequence number by scanning existing tasks for this parent
       let nextSequence = 1;
       try {
         const existingTasks = await fs.readdir(tasksDir);
-        const sortedTasks = sortTaskFilesBySequence(existingTasks.filter(f => f.endsWith('.md')));
+        const parentPrefix = `${parentItemId}-`;
+        const parentTasks = existingTasks.filter(f =>
+          f.endsWith('.md') && f.substring(4).startsWith(parentPrefix)
+        );
+        const sortedTasks = sortTaskFilesBySequence(parentTasks);
 
         if (sortedTasks.length > 0) {
           const lastTask = sortedTasks[sortedTasks.length - 1];
@@ -309,15 +323,20 @@ export class PasteCommand {
         // Directory might not exist yet
       }
 
-      const sequenceStr = String(nextSequence).padStart(3, '0');
       const kebabTitle = this.toKebabCase(title);
-      const filename = `${sequenceStr}-${kebabTitle}.md`;
+      const filename = buildTaskFilename({
+        sequence: nextSequence,
+        parentId: parentItemId,
+        name: kebabTitle,
+      });
       const filepath = path.join(tasksDir, filename);
 
       // Get base template and inject clipboard content into End Goal
       const templateContent = TemplateManager.getTaskTemplate({
         title,
-        skillLevel: options.skillLevel
+        skillLevel: options.skillLevel,
+        parentType: actualParentType,
+        parentId: parentItemId,
       });
 
       const content = templateContent.replace(
@@ -334,9 +353,9 @@ export class PasteCommand {
           success: true,
           type: 'task',
           path: relativePath,
-          parentId: options.parentId,
+          parentId: parentItemId,
           parentType: actualParentType,
-          taskId: `${sequenceStr}-${kebabTitle}`,
+          taskId: `${parentItemId}-${kebabTitle}`,
         }, null, 2));
       } else {
         console.log(chalk.green(`\n✓ Created task: ${relativePath}\n`));

@@ -29,29 +29,29 @@ Users can run `plx complete review --id <id>` and `plx complete spec --id <id>` 
 
 ## Constraints
 
-- [ ] Error handling must match existing patterns (exit code 1 for not found)
-- [ ] JSON output must include `reviewId` or `specId` (not `changeId`)
-- [ ] Must use `ItemRetrievalService` methods from task 001
+- [x] Error handling must match existing patterns (exit code 1 for not found)
+- [x] JSON output must include `reviewId` or `specId` (not `changeId`)
+- [x] Must use `ItemRetrievalService` methods from task 001
 
 ## Acceptance Criteria
 
-- [ ] `plx complete review --id <id>` completes all tasks in the review
-- [ ] `plx complete spec --id <id>` completes all tasks linked to the spec
-- [ ] Already-done tasks are skipped with appropriate message
-- [ ] Non-existent entities produce error with exit code 1
-- [ ] `--json` flag produces valid JSON output
-- [ ] Console output matches existing styling (chalk colors, formatting)
+- [x] `plx complete review --id <id>` completes all tasks in the review
+- [x] `plx complete spec --id <id>` completes all tasks linked to the spec
+- [x] Already-done tasks are skipped with appropriate message
+- [x] Non-existent entities produce error with exit code 1
+- [x] `--json` flag produces valid JSON output
+- [x] Console output matches existing styling (chalk colors, formatting)
 
 ## Implementation Checklist
 
-- [ ] 2.1 Add `ReviewOptions` interface to complete.ts
-- [ ] 2.2 Add `SpecOptions` interface to complete.ts
-- [ ] 2.3 Implement `review()` method in CompleteCommand
-- [ ] 2.4 Implement `spec()` method in CompleteCommand
-- [ ] 2.5 Register `complete review` subcommand in cli/index.ts
-- [ ] 2.6 Register `complete spec` subcommand in cli/index.ts
-- [ ] 2.7 Add integration tests for complete review command
-- [ ] 2.8 Add integration tests for complete spec command
+- [x] 2.1 Add `ReviewOptions` interface to complete.ts
+- [x] 2.2 Add `SpecOptions` interface to complete.ts
+- [x] 2.3 Implement `review()` method in CompleteCommand
+- [x] 2.4 Implement `spec()` method in CompleteCommand
+- [x] 2.5 Register `complete review` subcommand in cli/index.ts
+- [x] 2.6 Register `complete spec` subcommand in cli/index.ts
+- [x] 2.7 Add integration tests for complete review command
+- [x] 2.8 Add integration tests for complete spec command
 
 ## Notes
 

@@ -24,25 +24,25 @@ The `ItemRetrievalService` provides methods to retrieve reviews by ID and to get
 
 ## Constraints
 
-- [ ] Methods must support multi-workspace prefixed IDs (e.g., `projectName/reviewId`)
-- [ ] Methods must return null/empty array when entity not found (no exceptions)
-- [ ] Pattern must match existing service architecture
+- [x] Methods must support multi-workspace prefixed IDs (e.g., `projectName/reviewId`)
+- [x] Methods must return null/empty array when entity not found (no exceptions)
+- [x] Pattern must match existing service architecture
 
 ## Acceptance Criteria
 
-- [ ] `getReviewById()` returns review content and workspace context or null
-- [ ] `getTasksForSpec()` returns tasks linked to the spec via centralized storage
-- [ ] `getTasksForReview()` returns tasks from the review's tasks directory
-- [ ] All methods support both prefixed and unprefixed IDs
-- [ ] TypeScript interfaces exported for return types
+- [x] `getReviewById()` returns review content and workspace context or null
+- [x] `getTasksForSpec()` returns tasks linked to the spec via centralized storage
+- [x] `getTasksForReview()` returns tasks from the review's tasks directory
+- [x] All methods support both prefixed and unprefixed IDs
+- [x] TypeScript interfaces exported for return types
 
 ## Implementation Checklist
 
-- [ ] 1.1 Add `ReviewWithWorkspace` interface to item-retrieval.ts
-- [ ] 1.2 Implement `getReviewById()` method following `getChangeById()` pattern
-- [ ] 1.3 Add `getTasksForReview()` method (alias/refactor of existing review task retrieval)
-- [ ] 1.4 Implement `getTasksForSpec()` method querying centralized task storage
-- [ ] 1.5 Add unit tests for new methods
+- [x] 1.1 Add `ReviewWithWorkspace` interface to item-retrieval.ts
+- [x] 1.2 Implement `getReviewById()` method following `getChangeById()` pattern
+- [x] 1.3 Add `getTasksForReview()` method (alias/refactor of existing review task retrieval)
+- [x] 1.4 Implement `getTasksForSpec()` method querying centralized task storage
+- [x] 1.5 Add unit tests for new methods
 
 ## Notes
 

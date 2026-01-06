@@ -169,7 +169,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
     await fs.rm(testDir, { recursive: true, force: true });
   });
 
-  it('creates task with parented task content from clipboard', async () => {
+  it('creates task in centralized workspace/tasks with content from clipboard', async () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
@@ -197,13 +197,15 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       expect(json.type).toBe('task');
       expect(json.parentId).toBe('test-change');
       expect(json.parentType).toBe('change');
-      expect(json.taskId).toMatch(/^001-implement-user-authentication$/);
+      expect(json.taskId).toMatch(/^test-change-implement-user-authentica/);
 
-      // Verify task file was created with correct structure
-      const taskPath = path.join(changeDir, 'tasks', '001-implement-user-authentication.md');
+      // Verify task file was created in centralized workspace/tasks
+      const taskPath = path.join(testDir, 'workspace', 'tasks', '001-test-change-implement-user-authentication.md');
       const taskContent = await fs.readFile(taskPath, 'utf-8');
 
       expect(taskContent).toContain('status: to-do');
+      expect(taskContent).toContain('parent-type: change');
+      expect(taskContent).toContain('parent-id: test-change');
       expect(taskContent).toContain('# Task: Implement user authentication');
       expect(taskContent).toContain('## End Goal');
       expect(taskContent).toContain('Implement user authentication');
@@ -213,7 +215,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
     }
   });
 
-  it('creates task with correct frontmatter', async () => {
+  it('creates task with correct frontmatter including parent linkage', async () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
@@ -236,11 +238,11 @@ describe.skipIf(!isMacOS)('paste task command', () => {
         { encoding: 'utf-8' }
       );
 
-      // Verify frontmatter
-      const taskPath = path.join(changeDir, 'tasks', '001-add-new-feature.md');
+      // Verify frontmatter in centralized storage
+      const taskPath = path.join(testDir, 'workspace', 'tasks', '001-test-change-add-new-feature.md');
       const taskContent = await fs.readFile(taskPath, 'utf-8');
 
-      expect(taskContent).toMatch(/^---\nstatus: to-do\n---/);
+      expect(taskContent).toMatch(/^---\nstatus: to-do\nparent-type: change\nparent-id: test-change\n---/);
     } finally {
       process.chdir(originalCwd);
     }
@@ -269,11 +271,11 @@ describe.skipIf(!isMacOS)('paste task command', () => {
         { encoding: 'utf-8' }
       );
 
-      // Verify frontmatter includes skill-level
-      const taskPath = path.join(changeDir, 'tasks', '001-complex-refactoring-task.md');
+      // Verify frontmatter includes skill-level in centralized storage
+      const taskPath = path.join(testDir, 'workspace', 'tasks', '001-test-change-complex-refactoring-task.md');
       const taskContent = await fs.readFile(taskPath, 'utf-8');
 
-      expect(taskContent).toMatch(/^---\nstatus: to-do\nskill-level: senior\n---/);
+      expect(taskContent).toMatch(/^---\nstatus: to-do\nskill-level: senior\nparent-type: change\nparent-id: test-change\n---/);
     } finally {
       process.chdir(originalCwd);
     }
@@ -396,7 +398,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
     }
   });
 
-  it('increments sequence number for multiple tasks', async () => {
+  it('increments sequence number for multiple tasks in centralized storage', async () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
@@ -426,11 +428,11 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       );
       const json = JSON.parse(output);
 
-      expect(json.taskId).toMatch(/^002-second-task$/);
+      expect(json.taskId).toMatch(/^test-change-second-task$/);
 
-      // Verify both files exist
-      const task1Path = path.join(changeDir, 'tasks', '001-first-task.md');
-      const task2Path = path.join(changeDir, 'tasks', '002-second-task.md');
+      // Verify both files exist in centralized workspace/tasks
+      const task1Path = path.join(testDir, 'workspace', 'tasks', '001-test-change-first-task.md');
+      const task2Path = path.join(testDir, 'workspace', 'tasks', '002-test-change-second-task.md');
 
       await expect(fs.access(task1Path)).resolves.not.toThrow();
       await expect(fs.access(task2Path)).resolves.not.toThrow();
