@@ -38,9 +38,9 @@ tags: [plx, workspace, maintenance]
 5. Wait for user selection—do not proceed without explicit confirmation.
 6. Execute selected actions sequentially:
    - Archive: `plx archive change --id <id> --yes`
-   - Create tasks: scaffold task files in `workspace/changes/<id>/tasks/`
+   - Create tasks: scaffold task files in `workspace/tasks/` with format `NNN-<parent-id>-<name>.md` and frontmatter including parent-type and parent-id
    - Update proposals: edit `proposal.md` or `design.md`
-   - Validate: `plx validate <id> --strict`
+   - Validate: `plx validate change --id <id> --strict`
 7. Report summary:
    - List all actions taken with outcomes.
    - Show current workspace state with `plx get changes`.
@@ -49,8 +49,9 @@ tags: [plx, workspace, maintenance]
 **Reference**
 - Use `plx get changes` to see all active changes.
 - Use `plx get tasks` to see all open tasks across changes.
-- Use `plx get tasks --id <change-id>` to see tasks for a specific change.
+- Use `plx get tasks --parent-id <change-id> --parent-type change` to see tasks for a specific change.
 - Use `plx validate --all --strict` for comprehensive validation.
 - Use `plx archive change --id <id> --yes` to archive without prompts.
-- Use `plx get change --id <id>` or `plx get spec --id <id>` to inspect details.
+- Use `plx get change --id <id>` to inspect change details.
+- Use `plx get spec --id <id>` to inspect spec details.
 <!-- PLX:END -->
