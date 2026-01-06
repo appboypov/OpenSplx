@@ -1,7 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { readFileSync } from 'fs';
-import { getTaskProgressForChange } from '../utils/task-progress.js';
 import { migrateIfNeeded } from '../utils/task-migration.js';
 import { MarkdownParser } from '../core/parsers/markdown-parser.js';
 import {
@@ -15,6 +14,13 @@ import {
   isMultiWorkspace,
 } from '../utils/workspace-discovery.js';
 import type { ReviewParent } from '../core/schemas/index.js';
+import {
+  discoverTasks,
+  filterTasksByParent,
+  DiscoveredTask,
+} from '../utils/centralized-task-discovery.js';
+import { countTasksFromContent, TaskProgress } from '../utils/task-progress.js';
+import { ParentType } from '../core/config.js';
 
 export interface ChangeInfo {
   name: string;
@@ -82,6 +88,29 @@ export class EntityListingService {
   }
 
   /**
+   * Calculates task progress from centralized task storage for a parent entity.
+   */
+  private async getTaskProgressFromCentralized(
+    workspace: DiscoveredWorkspace,
+    parentId: string,
+    parentType: ParentType
+  ): Promise<TaskProgress> {
+    const result = await discoverTasks(workspace);
+    const parentTasks = filterTasksByParent(result.tasks, parentId, parentType);
+
+    let total = 0;
+    let completed = 0;
+
+    for (const task of parentTasks) {
+      const taskProgress = countTasksFromContent(task.content);
+      total += taskProgress.total;
+      completed += taskProgress.completed;
+    }
+
+    return { total, completed };
+  }
+
+  /**
    * Lists all active changes across workspaces.
    */
   async listChanges(): Promise<ChangeInfo[]> {
@@ -106,7 +135,11 @@ export class EntityListingService {
         // Migration happened, but we don't log here (let caller handle)
       }
 
-      const progress = await getTaskProgressForChange(changesDir, change.id);
+      // Find the workspace for this change
+      const workspace = this.workspaces.find(w => w.path === change.workspacePath);
+      const progress = workspace
+        ? await this.getTaskProgressFromCentralized(workspace, change.id, 'change')
+        : { total: 0, completed: 0 };
 
       let trackedIssue: string | undefined;
       try {
@@ -211,7 +244,11 @@ export class EntityListingService {
         // review.md might be unreadable
       }
 
-      const progress = await getTaskProgressForChange(reviewsDir, review.id);
+      // Find the workspace for this review
+      const workspace = this.workspaces.find(w => w.path === review.workspacePath);
+      const progress = workspace
+        ? await this.getTaskProgressFromCentralized(workspace, review.id, 'review')
+        : { total: 0, completed: 0 };
 
       reviews.push({
         name: review.id,

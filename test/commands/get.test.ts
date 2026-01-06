@@ -2281,17 +2281,23 @@ status: to-do
 
   it('outputs JSON format', async () => {
     const changeDir = path.join(changesDir, 'test-change');
-    const tasksDir = path.join(changeDir, 'tasks');
-    await fs.mkdir(tasksDir, { recursive: true });
+    await fs.mkdir(changeDir, { recursive: true });
+
+    // Create centralized tasks directory
+    const centralTasksDir = path.join(testDir, 'workspace', 'tasks');
+    await fs.mkdir(centralTasksDir, { recursive: true });
 
     await fs.writeFile(
       path.join(changeDir, 'proposal.md'),
       '# Change: Test\n\n## Why\nTest\n\n## What Changes\n- Test'
     );
+    // Tasks now stored in centralized workspace/tasks with parent frontmatter
     await fs.writeFile(
-      path.join(tasksDir, '001-task.md'),
+      path.join(centralTasksDir, '001-test-change-task.md'),
       `---
 status: in-progress
+parent-type: change
+parent-id: test-change
 ---
 # Task
 ## Implementation Checklist

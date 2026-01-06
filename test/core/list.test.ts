@@ -101,7 +101,9 @@ describe('ListCommand', () => {
     it('should count tasks correctly', async () => {
       await createValidPlxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
+      const tasksDir = path.join(tempDir, 'workspace', 'tasks');
       await fs.mkdir(path.join(changesDir, 'test-change'), { recursive: true });
+      await fs.mkdir(tasksDir, { recursive: true });
 
       // Create proposal.md (required for change detection)
       await fs.writeFile(
@@ -109,9 +111,16 @@ describe('ListCommand', () => {
         '# Change: Test Change\n\n## Why\nTest\n\n## What Changes\nTest'
       );
 
+      // Tasks in centralized storage with parent frontmatter
       await fs.writeFile(
-        path.join(changesDir, 'test-change', 'tasks.md'),
-        `# Tasks
+        path.join(tasksDir, '001-test-change-task.md'),
+        `---
+status: in-progress
+parent-type: change
+parent-id: test-change
+---
+# Tasks
+## Implementation Checklist
 - [x] Completed task 1
 - [x] Completed task 2
 - [ ] Incomplete task 1
@@ -130,7 +139,9 @@ Regular text that should be ignored
     it('should show complete status for fully completed changes', async () => {
       await createValidPlxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
+      const tasksDir = path.join(tempDir, 'workspace', 'tasks');
       await fs.mkdir(path.join(changesDir, 'completed-change'), { recursive: true });
+      await fs.mkdir(tasksDir, { recursive: true });
 
       // Create proposal.md (required for change detection)
       await fs.writeFile(
@@ -138,9 +149,10 @@ Regular text that should be ignored
         '# Change: Completed Change\n\n## Why\nTest\n\n## What Changes\nTest'
       );
 
+      // Tasks in centralized storage with parent frontmatter
       await fs.writeFile(
-        path.join(changesDir, 'completed-change', 'tasks.md'),
-        '- [x] Task 1\n- [x] Task 2\n- [x] Task 3\n'
+        path.join(tasksDir, '001-completed-change-task.md'),
+        '---\nstatus: done\nparent-type: change\nparent-id: completed-change\n---\n# Task\n## Implementation Checklist\n- [x] Task 1\n- [x] Task 2\n- [x] Task 3\n'
       );
 
       const listCommand = new ListCommand();
@@ -202,6 +214,8 @@ Regular text that should be ignored
     it('should handle multiple changes with various states', async () => {
       await createValidPlxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
+      const tasksDir = path.join(tempDir, 'workspace', 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
 
       // Complete change
       await fs.mkdir(path.join(changesDir, 'completed'), { recursive: true });
@@ -209,9 +223,10 @@ Regular text that should be ignored
         path.join(changesDir, 'completed', 'proposal.md'),
         '# Change: Completed\n\n## Why\nTest\n\n## What Changes\nTest'
       );
+      // Tasks in centralized storage with parent frontmatter
       await fs.writeFile(
-        path.join(changesDir, 'completed', 'tasks.md'),
-        '- [x] Task 1\n- [x] Task 2\n'
+        path.join(tasksDir, '001-completed-task.md'),
+        '---\nstatus: done\nparent-type: change\nparent-id: completed\n---\n# Task\n## Implementation Checklist\n- [x] Task 1\n- [x] Task 2\n'
       );
 
       // Partial change
@@ -221,8 +236,8 @@ Regular text that should be ignored
         '# Change: Partial\n\n## Why\nTest\n\n## What Changes\nTest'
       );
       await fs.writeFile(
-        path.join(changesDir, 'partial', 'tasks.md'),
-        '- [x] Done\n- [ ] Not done\n- [ ] Also not done\n'
+        path.join(tasksDir, '001-partial-task.md'),
+        '---\nstatus: in-progress\nparent-type: change\nparent-id: partial\n---\n# Task\n## Implementation Checklist\n- [x] Done\n- [ ] Not done\n- [ ] Also not done\n'
       );
 
       // No tasks
@@ -271,6 +286,8 @@ Test`;
     it('should align columns correctly when changes have different issue ID lengths', async () => {
       await createValidPlxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
+      const tasksDir = path.join(tempDir, 'workspace', 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
 
       // Change with short issue ID
       await fs.mkdir(path.join(changesDir, 'short'), { recursive: true });
@@ -282,7 +299,11 @@ tracked-issues:
 ---
 # Change: Short`;
       await fs.writeFile(path.join(changesDir, 'short', 'proposal.md'), shortProposal);
-      await fs.writeFile(path.join(changesDir, 'short', 'tasks.md'), '- [x] Done\n');
+      // Tasks in centralized storage
+      await fs.writeFile(
+        path.join(tasksDir, '001-short-task.md'),
+        '---\nstatus: done\nparent-type: change\nparent-id: short\n---\n# Task\n## Implementation Checklist\n- [x] Done\n'
+      );
 
       // Change with long issue ID
       await fs.mkdir(path.join(changesDir, 'long'), { recursive: true });
@@ -294,12 +315,18 @@ tracked-issues:
 ---
 # Change: Long`;
       await fs.writeFile(path.join(changesDir, 'long', 'proposal.md'), longProposal);
-      await fs.writeFile(path.join(changesDir, 'long', 'tasks.md'), '- [x] Done\n');
+      await fs.writeFile(
+        path.join(tasksDir, '001-long-task.md'),
+        '---\nstatus: done\nparent-type: change\nparent-id: long\n---\n# Task\n## Implementation Checklist\n- [x] Done\n'
+      );
 
       // Change without issue
       await fs.mkdir(path.join(changesDir, 'no-issue'), { recursive: true });
       await fs.writeFile(path.join(changesDir, 'no-issue', 'proposal.md'), '# Change: No Issue');
-      await fs.writeFile(path.join(changesDir, 'no-issue', 'tasks.md'), '- [x] Done\n');
+      await fs.writeFile(
+        path.join(tasksDir, '001-no-issue-task.md'),
+        '---\nstatus: done\nparent-type: change\nparent-id: no-issue\n---\n# Task\n## Implementation Checklist\n- [x] Done\n'
+      );
 
       const listCommand = new ListCommand();
       await listCommand.execute(tempDir, 'changes');

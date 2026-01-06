@@ -7,6 +7,7 @@ import { getActiveReviewIds, getActiveChangeIds, getSpecIds } from '../utils/ite
 import { isInteractive } from '../utils/interactive.js';
 import { ReviewParent } from '../core/schemas/index.js';
 import { emitDeprecationWarning } from '../utils/deprecation.js';
+import { getFilteredWorkspaces } from '../utils/workspace-filter.js';
 
 interface ParseFeedbackOptions {
   json?: boolean;
@@ -36,25 +37,33 @@ interface ParseFeedbackJsonOutput {
 
 export class ParseFeedbackCommand {
   private async checkChangeExists(id: string): Promise<boolean> {
-    const changesPath = path.join(process.cwd(), 'workspace', 'changes', id);
-    const proposalPath = path.join(changesPath, 'proposal.md');
-    try {
-      await fs.access(proposalPath);
-      return true;
-    } catch {
-      return false;
+    const workspaces = await getFilteredWorkspaces(process.cwd());
+    for (const workspace of workspaces) {
+      const changesPath = path.join(workspace.path, 'changes', id);
+      const proposalPath = path.join(changesPath, 'proposal.md');
+      try {
+        await fs.access(proposalPath);
+        return true;
+      } catch {
+        // Continue to next workspace
+      }
     }
+    return false;
   }
 
   private async checkSpecExists(id: string): Promise<boolean> {
-    const specsPath = path.join(process.cwd(), 'workspace', 'specs', id);
-    const specPath = path.join(specsPath, 'spec.md');
-    try {
-      await fs.access(specPath);
-      return true;
-    } catch {
-      return false;
+    const workspaces = await getFilteredWorkspaces(process.cwd());
+    for (const workspace of workspaces) {
+      const specsPath = path.join(workspace.path, 'specs', id);
+      const specPath = path.join(specsPath, 'spec.md');
+      try {
+        await fs.access(specPath);
+        return true;
+      } catch {
+        // Continue to next workspace
+      }
     }
+    return false;
   }
 
   async execute(
