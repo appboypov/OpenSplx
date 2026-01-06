@@ -158,7 +158,9 @@ plx get task --did-complete-previous  # Complete current task and get next
 plx get task --constraints            # Show only Constraints section
 plx get task --acceptance-criteria    # Show only Acceptance Criteria section
 plx get tasks                         # List all open tasks
-plx get tasks --id <change-id>        # List tasks for specific change
+plx get tasks --parent-id <change-id> --parent-type change  # List tasks for specific change
+plx get reviews                       # List all active reviews
+plx get review --id <review-id>      # Retrieve specific review
 
 # Complete tasks and changes
 plx complete task --id <task-id>      # Mark task as done, check Implementation Checklist items
@@ -183,16 +185,18 @@ plx archive change --id <id> --skip-specs --yes # Archive tooling-only changes
 
 # Review
 plx review change --id <change-id>    # Review a change proposal
+plx review spec --id <spec-id>       # Review a specification
+plx review task --id <task-id>       # Review a task
 
 # Parse feedback
-plx parse feedback <name> --parent-id <id> --parent-type <change|review>  # Parse feedback into tasks
+plx parse feedback <name> --parent-id <id> --parent-type change|spec|task  # Parse feedback into tasks
 ```
 
 ### Command Flags
 
 - `--id <id>` - Specify entity ID (change, spec, task)
-- `--parent-id <id>` - Specify parent ID when creating tasks
-- `--parent-type <change|review>` - Specify parent type when creating tasks
+- `--parent-id <id>` - Specify parent ID when creating tasks or filtering
+- `--parent-type <change|review|spec>` - Specify parent type when creating tasks or filtering
 - `--json` - Machine-readable output
 - `--strict` - Comprehensive validation
 - `--long` - Show additional details
