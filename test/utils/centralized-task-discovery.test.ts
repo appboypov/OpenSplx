@@ -64,14 +64,14 @@ describe('centralized-task-discovery', () => {
   describe('getTasksDir', () => {
     it('should return correct tasks directory path', () => {
       const result = getTasksDir('/some/workspace');
-      expect(result).toBe('/some/workspace/tasks');
+      expect(result).toBe(path.join('/some/workspace', 'tasks'));
     });
   });
 
   describe('getTasksArchiveDir', () => {
     it('should return correct tasks archive directory path', () => {
       const result = getTasksArchiveDir('/some/workspace');
-      expect(result).toBe('/some/workspace/tasks/archive');
+      expect(result).toBe(path.join('/some/workspace', 'tasks', 'archive'));
     });
   });
 
