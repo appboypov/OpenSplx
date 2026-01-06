@@ -712,7 +712,7 @@ The global `--workspace <name>` flag filters operations to a specific workspace:
 
 ```bash
 plx get changes --workspace project-a         # List only project-a changes
-plx validate --all --workspace project-a      # Validate only project-a
+plx validate all --workspace project-a      # Validate only project-a
 plx get task --workspace project-a            # Get task from project-a only
 ```
 

@@ -188,9 +188,9 @@ export class ValidateCommand {
 
   private printNonInteractiveHint(): void {
     console.error('Nothing to validate. Try one of:');
-    console.error('  plx validate --all');
-    console.error('  plx validate --changes');
-    console.error('  plx validate --specs');
+    console.error('  plx validate all');
+    console.error('  plx validate changes');
+    console.error('  plx validate specs');
     console.error('  plx validate change --id <id>');
     console.error('  plx validate spec --id <id>');
     console.error('Or run in an interactive terminal.');
