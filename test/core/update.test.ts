@@ -133,7 +133,7 @@ Old slash content
     expect(updated).toContain('name: Pew Pew Plx: Proposal');
     expect(updated).toContain('**Guardrails**');
     expect(updated).toContain(
-      'Validate with `plx validate <id> --strict`'
+      'Validate with `plx validate change --id <id> --strict`'
     );
     expect(updated).not.toContain('Old slash content');
 
@@ -314,7 +314,7 @@ Old slash content
     expect(updated).toContain('# Pew Pew Plx: Proposal');
     expect(updated).toContain('**Guardrails**');
     expect(updated).toContain(
-      'Validate with `plx validate <id> --strict`'
+      'Validate with `plx validate change --id <id> --strict`'
     );
     expect(updated).not.toContain('Old slash content');
 
@@ -913,7 +913,7 @@ Old slash content
     expect(updated).toContain('name: Pew Pew Plx: Proposal');
     expect(updated).toContain('**Guardrails**');
     expect(updated).toContain(
-      'Validate with `plx validate <id> --strict`'
+      'Validate with `plx validate change --id <id> --strict`'
     );
     expect(updated).not.toContain('Old slash content');
 
@@ -990,7 +990,7 @@ Old slash content
     expect(updated).toContain('name: Pew Pew Plx: Proposal');
     expect(updated).toContain('**Guardrails**');
     expect(updated).toContain(
-      'Validate with `plx validate <id> --strict`'
+      'Validate with `plx validate change --id <id> --strict`'
     );
     expect(updated).not.toContain('Old slash content');
 
@@ -1067,7 +1067,7 @@ Old body
     expect(updated).toContain('argument-hint: old-hint');
     expect(updated).toContain('**Guardrails**');
     expect(updated).toContain(
-      'Validate with `plx validate <id> --strict`'
+      'Validate with `plx validate change --id <id> --strict`'
     );
     expect(updated).not.toContain('Old body');
 
@@ -1107,7 +1107,7 @@ Old slash content
     expect(updated).toContain('name: Pew Pew Plx: Proposal');
     expect(updated).toContain('**Guardrails**');
     expect(updated).toContain(
-      'Validate with `plx validate <id> --strict`'
+      'Validate with `plx validate change --id <id> --strict`'
     );
     expect(updated).not.toContain('Old slash content');
 
@@ -1146,7 +1146,7 @@ Old body
     expect(updated).toContain('# Pew Pew Plx: Proposal');
     expect(updated).toContain('**Guardrails**');
     expect(updated).toContain(
-      'Validate with `plx validate <id> --strict`'
+      'Validate with `plx validate change --id <id> --strict`'
     );
     expect(updated).not.toContain('Old body');
 

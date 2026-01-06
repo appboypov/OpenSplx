@@ -9,7 +9,7 @@ Instructions for AI coding assistants using Pew Pew Plx for spec-driven developm
 - Pick a unique \`change-id\`: kebab-case, verb-led (\`add-\`, \`update-\`, \`remove-\`, \`refactor-\`)
 - Scaffold: \`proposal.md\`, \`tasks/\` directory, \`design.md\` (only if needed), and delta specs per affected capability
 - Write deltas: use \`## ADDED|MODIFIED|REMOVED|RENAMED Requirements\`; include at least one \`#### Scenario:\` per requirement
-- Validate: \`plx validate [change-id] --strict\` and fix issues
+- Validate: \`plx validate change --id <change-id> --strict\` and fix issues
 - Request approval: Do not start implementation until proposal is approved
 
 ## Three-Stage Workflow
@@ -138,7 +138,11 @@ plx get changes           # List active changes
 plx get specs             # List specifications
 plx get change --id [id]  # Display change
 plx get spec --id [id]    # Display spec
-plx validate [item]       # Validate changes or specs
+plx validate change --id <id>  # Validate specific change
+plx validate spec --id <id>     # Validate specific spec
+plx validate changes            # Validate all changes
+plx validate specs              # Validate all specs
+plx validate all                # Validate everything
 plx archive change --id <change-id> [--yes|-y]   # Archive after deployment (add --yes for non-interactive runs)
 
 # Project management
@@ -150,7 +154,7 @@ plx validate              # Bulk validation mode
 
 # Debugging
 plx get change --id [change] --json --deltas-only
-plx validate [change] --strict
+plx validate change --id <change-id> --strict
 
 # Create project artifacts
 plx create task "Title" --parent-id <id>      # Create task linked to change or review
@@ -447,7 +451,7 @@ Example for RENAMED:
 
 \`\`\`bash
 # Always use strict mode for comprehensive checks
-plx validate [change] --strict
+plx validate change --id <change-id> --strict
 
 # Debug delta parsing
 plx get change --id [change] --json | jq '.deltas'
@@ -484,7 +488,7 @@ Users MUST provide a second factor during login.
 EOF
 
 # 4) Validate
-plx validate $CHANGE --strict
+plx validate change --id $CHANGE --strict
 \`\`\`
 
 ## Multi-Capability Example
