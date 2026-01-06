@@ -29,19 +29,19 @@ const planningContext = `**Context**
 @workspace/AGENTS.md`;
 
 const proposalGuardrails = `${planningContext}\n\n${baseGuardrails}\n- Identify any vague or ambiguous details and gather the necessary clarifications before editing files.
-- Do not write any code during the proposal stage. Only create design documents (proposal.md, tasks/ directory, design.md, and spec deltas). Implementation happens in the implement stage after approval.`;
+- Do not write any code during the proposal stage. Only create design documents (proposal.md, task files in workspace/tasks/, design.md, and spec deltas). Implementation happens in the implement stage after approval.`;
 
 const proposalSteps = `**Steps**
 0. Check for existing \`workspace/changes/<change-id>/request.md\`:
    - If found: consume it as the source of truth for user intent and skip interactive clarification.
    - If not found: proceed with gathering intent through conversation or your question tool.
 1. Review \`ARCHITECTURE.md\`, run \`plx get changes\` and \`plx get specs\`, and inspect related code or docs (e.g., via \`rg\`/\`ls\`) to ground the proposal in current behaviour; note any gaps that require clarification.
-2. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, \`tasks/\` directory, and \`design.md\` (when needed) under \`workspace/changes/<id>/\`.
+2. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, task files in \`workspace/tasks/\`, and \`design.md\` (when needed) under \`workspace/changes/<id>/\`.
 3. Map the change into concrete capabilities or requirements, breaking multi-scope efforts into distinct spec deltas with clear relationships and sequencing.
 4. Capture architectural reasoning in \`design.md\` when the solution spans multiple systems, introduces new patterns, or demands trade-off discussion before committing to specs.
 5. Draft spec deltas in \`changes/<id>/specs/<capability>/spec.md\` (one folder per capability) using \`## ADDED|MODIFIED|REMOVED Requirements\` with at least one \`#### Scenario:\` per requirement and cross-reference related capabilities when relevant.
-6. Create \`tasks/\` directory with numbered task files (minimum 3: implementation, review, test). Each file uses format \`NNN-<name>.md\` with frontmatter (status: to-do, skill-level: junior|medior|senior) and sections: End Goal, Currently, Should, Constraints, Acceptance Criteria, Implementation Checklist, Notes. Assign skill-level based on complexity: junior for straightforward changes, medior for feature implementation, senior for architectural work.
-7. Validate with \`plx validate <id> --strict\` and resolve every issue before sharing the proposal.`;
+6. Create task files in \`workspace/tasks/\` with numbered files (minimum 3: implementation, review, test). Use format \`NNN-<parent-id>-<kebab-case-name>.md\` for parented tasks (e.g., \`001-add-feature-implement.md\`) or \`NNN-<kebab-case-name>.md\` for standalone tasks. Each file includes frontmatter: status: to-do, skill-level: junior|medior|senior, parent-type: change|review|spec (for parented tasks), parent-id: <id> (for parented tasks). Include sections: End Goal, Currently, Should, Constraints, Acceptance Criteria, Implementation Checklist, Notes. Assign skill-level based on complexity: junior for straightforward changes, medior for feature implementation, senior for architectural work.
+7. Validate with \`plx validate change --id <id> --strict\` and resolve every issue before sharing the proposal.`;
 
 
 const proposalReferences = `**Reference**
@@ -75,7 +75,7 @@ const archiveSteps = `**Steps**
 2. Validate the change ID by running \`plx get changes\` (or \`plx get change --id <id>\`) and stop if the change is missing, already archived, or otherwise not ready to archive.
 3. Run \`plx archive change --id <id> --yes\` so the CLI moves the change and applies spec updates without prompts (use \`--skip-specs\` only for tooling-only work).
 4. Review the command output to confirm the target specs were updated and the change landed in \`changes/archive/\`.
-5. Validate with \`plx validate --strict\` and inspect with \`plx get change --id <id>\` if anything looks off.`;
+5. Validate with \`plx validate all --strict\` and inspect with \`plx get change --id <id>\` if anything looks off.`;
 
 const archiveReferences = `**Reference**
 - Use \`plx get changes\` to confirm change IDs before archiving.
@@ -111,14 +111,14 @@ const reviewGuardrails = `**Guardrails**
 - Include parent linkage in markers when reviewing a task, change, or spec.`;
 
 const reviewSteps = `**Steps**
-1. Run \`plx review --change-id <id>\` (or --spec-id, --task-id).
+1. Run \`plx review change --id <id>\` (or \`plx review spec --id <id>\`, \`plx review task --id <id>\`).
 2. Read the output: @REVIEW.md guidelines + parent documents.
 3. Review implementation against constraints/acceptance criteria.
 4. Insert feedback markers with format: \`#FEEDBACK #TODO | {type}:{id} | {feedback}\`
    - Examples: \`task:001\`, \`change:my-feature\`, \`spec:auth-spec\`
    - Parent linkage is optional but recommended.
 5. Summarize findings.
-6. Instruct to run \`plx parse feedback <name>\` (optionally with --change-id, --spec-id, or --task-id for unassigned markers).`;
+6. Instruct to run \`plx parse feedback <name> --parent-id <id> --parent-type change|spec|task\` (or omit flags if markers include parent linkage).`;
 
 const refineArchitectureGuardrails = `**Guardrails**
 - Reference @ARCHITECTURE.md template structure.
@@ -263,7 +263,7 @@ const parseFeedbackGuardrails = `**Guardrails**
 - Markers with parent linkage are grouped automatically.`;
 
 const parseFeedbackSteps = `**Steps**
-1. Run \`plx parse feedback <name>\` (CLI flags --change-id, --spec-id, --task-id are optional fallbacks for unassigned markers).
+1. Run \`plx parse feedback <name> --parent-id <id> --parent-type change|spec|task\` (or omit flags if markers include parent linkage: \`{type}:{id} |\`).
 2. Review generated tasks.
 3. Address feedback.
 4. Archive when complete.`;
@@ -525,9 +525,9 @@ const syncWorkspaceSteps = `**Steps**
 5. Wait for user selection—do not proceed without explicit confirmation.
 6. Execute selected actions sequentially:
    - Archive: \`plx archive change --id <id> --yes\`
-   - Create tasks: scaffold task files in \`workspace/changes/<id>/tasks/\`
+   - Create tasks: scaffold task files in \`workspace/tasks/\` with format \`NNN-<parent-id>-<name>.md\` and frontmatter including parent-type and parent-id
    - Update proposals: edit \`proposal.md\` or \`design.md\`
-   - Validate: \`plx validate <id> --strict\`
+   - Validate: \`plx validate change --id <id> --strict\`
 7. Report summary:
    - List all actions taken with outcomes.
    - Show current workspace state with \`plx get changes\`.

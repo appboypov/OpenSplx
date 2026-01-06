@@ -42,14 +42,14 @@ Skip proposal for:
 
 **Slash Commands**
 - \`plx/plan-request\` - Clarify ambiguous requirements through iterative yes/no questions before scaffolding
-- \`plx/plan-proposal\` - Scaffold \`proposal.md\`, \`tasks/\` directory, \`design.md\`, and spec deltas. Consumes request.md when present.
+- \`plx/plan-proposal\` - Scaffold \`proposal.md\`, task files in \`workspace/tasks/\`, \`design.md\`, and spec deltas. Consumes request.md when present.
 
 **Workflow**
 1. Review \`ARCHITECTURE.md\`, \`plx get changes\`, and \`plx get specs\` to understand current context.
 2. If requirements are ambiguous, run \`plx/plan-request\` to clarify intent first.
-3. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, \`tasks/\` directory, optional \`design.md\`, and spec deltas under \`workspace/changes/<id>/\`.
+3. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, task files in \`workspace/tasks/\`, optional \`design.md\`, and spec deltas under \`workspace/changes/<id>/\`.
 4. Draft spec deltas using \`## ADDED|MODIFIED|REMOVED Requirements\` with at least one \`#### Scenario:\` per requirement.
-5. Run \`plx validate <id> --strict\` and resolve any issues before sharing the proposal.
+5. Run \`plx validate change --id <id> --strict\` and resolve any issues before sharing the proposal.
 
 ### Stage 2: Implementing Changes
 Track these steps as TODOs and complete them one by one.
@@ -66,7 +66,7 @@ After deployment, create separate PR to:
 - Move \`changes/[name]/\` → \`changes/archive/YYYY-MM-DD-[name]/\`
 - Update \`specs/\` if capabilities changed
 - Use \`plx archive change --id <change-id> --skip-specs --yes\` for tooling-only changes (always pass the change ID explicitly)
-- Run \`plx validate --strict\` to confirm the archived change passes checks
+- Run \`plx validate all --strict\` to confirm the archived change passes checks
 
 ## Before Any Task
 
@@ -271,20 +271,23 @@ The system SHALL provide...
 \`\`\`
 If multiple capabilities are affected, create multiple delta files under \`changes/[change-id]/specs/<capability>/spec.md\`—one per capability.
 
-4. **Create tasks/ directory:**
+4. **Create tasks:**
 
-Create a \`tasks/\` directory with numbered task files. Minimum 3 files recommended:
+Create task files in \`workspace/tasks/\` with numbered files. Minimum 3 files recommended:
 - Implementation task(s): The actual work
 - Review task: Verify all changes are complete and consistent
 - Test task: Validate behavior meets acceptance criteria
 
-Each task file uses format \`NNN-<kebab-case-name>.md\` (e.g., \`001-implement-core.md\`).
+For parented tasks, use format \`NNN-<parent-id>-<kebab-case-name>.md\` (e.g., \`001-add-feature-implement.md\`).
+For standalone tasks, use format \`NNN-<kebab-case-name>.md\` (e.g., \`003-standalone-task.md\`).
 
-Example \`tasks/001-implement-feature.md\`:
+Example \`workspace/tasks/001-add-feature-implement.md\`:
 \`\`\`markdown
 ---
 status: to-do
 skill-level: junior|medior|senior
+parent-type: change
+parent-id: add-feature
 ---
 
 # Task: Implement feature
@@ -339,7 +342,7 @@ For non-Claude models, the agent determines an equivalent model or ignores the f
 
 **Usage:**
 - Add \`skill-level\` to task frontmatter during proposal creation
-- \`plx validate --strict\` warns when skill-level is missing
+- \`plx validate change --id <id> --strict\` warns when skill-level is missing
 - Skill level appears in \`plx get task\` output
 
 5. **Create design.md when needed:**
@@ -465,9 +468,9 @@ plx get changes
 
 # 2) Choose change id and scaffold
 CHANGE=add-two-factor-auth
-mkdir -p workspace/changes/$CHANGE/{specs/auth,tasks}
+mkdir -p workspace/changes/$CHANGE/specs/auth
 printf "## Why\\n...\\n\\n## What Changes\\n- ...\\n\\n## Impact\\n- ...\\n" > workspace/changes/$CHANGE/proposal.md
-printf "---\\nstatus: to-do\\nskill-level: junior|medior|senior\\n---\\n\\n# Task: Implement feature\\n\\n## End Goal\\n...\\n\\n## Implementation Checklist\\n- [ ] 1.1 ...\\n" > workspace/changes/$CHANGE/tasks/001-implement.md
+printf "---\\nstatus: to-do\\nskill-level: junior|medior|senior\\nparent-type: change\\nparent-id: add-two-factor-auth\\n---\\n\\n# Task: Implement feature\\n\\n## End Goal\\n...\\n\\n## Implementation Checklist\\n- [ ] 1.1 ...\\n" > workspace/tasks/001-add-two-factor-auth-implement.md
 
 # 3) Add deltas (example)
 cat > workspace/changes/$CHANGE/specs/auth/spec.md << 'EOF'
@@ -592,7 +595,7 @@ Only add complexity with:
 plx get changes            # What's in progress?
 plx get change --id [item] # View change details
 plx get spec --id [item]   # View spec details
-plx validate --strict      # Is it correct?
+plx validate change --id <id> --strict  # Is it correct?
 plx archive change --id <change-id> [--yes|-y]  # Mark complete (add --yes for automation)
 \`\`\`
 
