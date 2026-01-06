@@ -62,6 +62,16 @@ $ARGUMENTS
 ## Part 2: Review Scope Research
 6. Research and populate each Review Scope section in @REVIEW.md:
 
+   **Architecture Patterns**
+   - Identify core architectural patterns (MVC, MVVM, Clean Architecture, etc.)
+   - Find pattern documentation or examples
+   - Note where patterns are enforced vs flexible
+
+   **Project Conventions**
+   - Find style guides, linting configs, formatting rules
+   - Identify naming conventions (files, classes, functions)
+   - Note file organization rules and folder structure patterns
+
    **Critical Paths**
    - Find files imported by many others
    - Identify core business logic files

@@ -30,8 +30,9 @@ describe('review-template', () => {
     it('contains Review Scope section', () => {
       const result = reviewTemplate();
       expect(result).toContain('## Review Scope');
+      expect(result).toContain('### Architecture Patterns');
+      expect(result).toContain('### Project Conventions');
       expect(result).toContain('### Critical Paths');
-      expect(result).toContain('### Security-Sensitive');
     });
 
     it('contains Feedback Format section', () => {

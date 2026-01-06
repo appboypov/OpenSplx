@@ -19,6 +19,12 @@ checklist_level: standard
 
 ## Review Scope
 
+### Architecture Patterns
+<!-- Core architectural patterns; deviations need justification -->
+
+### Project Conventions
+<!-- Style guides, naming conventions, file organization rules -->
+
 ### Critical Paths
 <!-- Files that affect many others; changes here need careful review -->
 
@@ -36,6 +42,9 @@ checklist_level: standard
 
 ### Configuration
 <!-- Environment configs, feature flags, secrets handling -->
+
+### Package Adherence
+<!-- Installed packages that must be used; no custom alternatives -->
 
 ### External Dependencies
 <!-- Third-party integrations, API clients, SDK usage -->
