@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: junior
 parent-type: change
 parent-id: update-refine-architecture
@@ -37,7 +37,7 @@ All implementation verified, tests pass, validation passes, and change is ready 
 - [x] 3.2 Run `pnpm build`
 - [x] 3.3 Run `pnpm test`
 - [x] 3.4 Verify git status shows expected changed files
-- [ ] 3.5 Create commit with changes
+- [x] 3.5 Create commit with changes
 
 ## Notes
 
