@@ -606,6 +606,9 @@ export class TransferService {
     const relatedChanges = await this.findRelatedChanges(specId);
     const isRename = targetName !== specId;
 
+    // Collect all linked tasks from all related changes first to avoid duplicate sequences
+    const allLinkedTasks: DiscoveredTask[] = [];
+
     for (const changeId of relatedChanges) {
       const sourceChangePath = path.join(this.sourceWorkspace!.path, 'changes', changeId);
       const targetChangePath = path.join(this.targetWorkspace!.path, 'changes', changeId);
@@ -618,9 +621,14 @@ export class TransferService {
         ...(isRename && { specRename: { oldName: specId, newName: targetName } }),
       });
 
-      // Find and plan linked tasks for this change
+      // Collect linked tasks for this change
       const linkedTasks = await this.findLinkedTasks(changeId, 'change');
-      const taskRenumbers = await this.calculateTaskRenumbering(linkedTasks);
+      allLinkedTasks.push(...linkedTasks);
+    }
+
+    // Calculate task renumbering once for all collected tasks to ensure unique sequences
+    if (allLinkedTasks.length > 0) {
+      const taskRenumbers = await this.calculateTaskRenumbering(allLinkedTasks);
       plan.tasksToRenumber.push(...taskRenumbers);
     }
   }

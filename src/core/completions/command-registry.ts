@@ -1028,6 +1028,11 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
             takesValue: true,
           },
           {
+            name: 'target-name',
+            description: 'Rename entity in target workspace',
+            takesValue: true,
+          },
+          {
             name: 'dry-run',
             description: 'Preview transfer without executing',
           },
