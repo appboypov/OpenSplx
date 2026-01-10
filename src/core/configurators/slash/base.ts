@@ -49,7 +49,7 @@ export abstract class SlashCommandConfigurator {
       const filePath = FileSystemUtils.joinPath(projectPath, target.path);
 
       if (await FileSystemUtils.fileExists(filePath)) {
-        await this.updateBody(filePath, body);
+        await this.updateFullFile(filePath, target.id, body);
       } else {
         const frontmatter = this.getFrontmatter(target.id);
         const sections: string[] = [];
@@ -74,7 +74,7 @@ export abstract class SlashCommandConfigurator {
       const filePath = FileSystemUtils.joinPath(projectPath, target.path);
       if (await FileSystemUtils.fileExists(filePath)) {
         const body = this.getBody(target.id);
-        await this.updateBody(filePath, body);
+        await this.updateFullFile(filePath, target.id, body);
         updated.push(target.path);
       }
     }
@@ -106,19 +106,50 @@ export abstract class SlashCommandConfigurator {
     return FileSystemUtils.joinPath(projectPath, rel);
   }
 
-  protected async updateBody(filePath: string, body: string): Promise<void> {
+  protected async updateFullFile(filePath: string, id: SlashCommandId, body: string): Promise<void> {
     const content = await FileSystemUtils.readFile(filePath);
     const startIndex = content.indexOf(PLX_MARKERS.start);
     const endIndex = content.indexOf(PLX_MARKERS.end);
 
     if (startIndex === -1 || endIndex === -1 || endIndex <= startIndex) {
-      throw new Error(`Missing PLX markers in ${filePath}`);
+      throw new Error(`Missing or malformed PLX markers in ${filePath}`);
     }
 
-    const before = content.slice(0, startIndex + PLX_MARKERS.start.length);
-    const after = content.slice(endIndex);
-    const updatedContent = `${before}\n${body}\n${after}`;
+    const beforeMarker = content.slice(0, startIndex);
+    const afterMarker = content.slice(endIndex + PLX_MARKERS.end.length);
 
-    await FileSystemUtils.writeFile(filePath, updatedContent);
+    // Get the new frontmatter template
+    const newFrontmatter = this.getFrontmatter(id);
+    const newFrontmatterTrimmed = (newFrontmatter || '').trim();
+
+    // Strip YAML frontmatter from existing content
+    let existingPreContent = beforeMarker;
+    const frontmatterMatch = beforeMarker.match(/^---\n[\s\S]*?\n---\n?/);
+    if (frontmatterMatch) {
+      existingPreContent = beforeMarker.slice(frontmatterMatch[0].length);
+    }
+
+    // Check if existing pre-content is already part of the new frontmatter template
+    // This prevents duplication when frontmatter includes non-YAML content
+    const existingPreContentTrimmed = existingPreContent.trim();
+    const isPreContentManaged = existingPreContentTrimmed && newFrontmatterTrimmed.includes(existingPreContentTrimmed);
+
+    // Build new content
+    const sections: string[] = [];
+    if (newFrontmatter) sections.push(newFrontmatterTrimmed);
+    // Only preserve pre-content if it's truly custom (not part of the frontmatter template)
+    if (existingPreContentTrimmed && !isPreContentManaged) {
+      sections.push(existingPreContentTrimmed);
+    }
+    sections.push(`${PLX_MARKERS.start}\n${body}\n${PLX_MARKERS.end}`);
+
+    let result = sections.join('\n');
+    if (afterMarker.trim()) {
+      result += afterMarker;
+    } else {
+      result += '\n';
+    }
+
+    await FileSystemUtils.writeFile(filePath, result);
   }
 }
