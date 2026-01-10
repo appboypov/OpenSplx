@@ -4,10 +4,12 @@ import { SlashCommandId } from '../../templates/index.js';
 const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.github/prompts/plx-archive.prompt.md',
   'complete-task': '.github/prompts/plx-complete-task.prompt.md',
+  'copy-next-task': '.github/prompts/plx-copy-next-task.prompt.md',
   'get-task': '.github/prompts/plx-get-task.prompt.md',
   'implement': '.github/prompts/plx-implement.prompt.md',
   'orchestrate': '.github/prompts/plx-orchestrate.prompt.md',
   'parse-feedback': '.github/prompts/plx-parse-feedback.prompt.md',
+  'plan-implementation': '.github/prompts/plx-plan-implementation.prompt.md',
   'plan-proposal': '.github/prompts/plx-plan-proposal.prompt.md',
   'plan-request': '.github/prompts/plx-plan-request.prompt.md',
   'prepare-compact': '.github/prompts/plx-prepare-compact.prompt.md',
@@ -33,6 +35,11 @@ description: Mark a task as done.
 ---
 
 $ARGUMENTS`,
+  'copy-next-task': `---
+description: Copy next task or feedback block to clipboard for external agent handoff.
+---
+
+$ARGUMENTS`,
   'get-task': `---
 description: Select and display the next prioritized task to work on.
 ---
@@ -50,6 +57,11 @@ description: Orchestrate sub-agents to complete work collaboratively.
 $ARGUMENTS`,
   'parse-feedback': `---
 description: Parse feedback markers and generate review tasks.
+---
+
+$ARGUMENTS`,
+  'plan-implementation': `---
+description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
 ---
 
 $ARGUMENTS`,

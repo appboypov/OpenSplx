@@ -6,10 +6,12 @@ import { PLX_MARKERS } from '../../config.js';
 const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.opencode/command/plx-archive.md',
   'complete-task': '.opencode/command/plx-complete-task.md',
+  'copy-next-task': '.opencode/command/plx-copy-next-task.md',
   'get-task': '.opencode/command/plx-get-task.md',
   'implement': '.opencode/command/plx-implement.md',
   'orchestrate': '.opencode/command/plx-orchestrate.md',
   'parse-feedback': '.opencode/command/plx-parse-feedback.md',
+  'plan-implementation': '.opencode/command/plx-plan-implementation.md',
   'plan-proposal': '.opencode/command/plx-plan-proposal.md',
   'plan-request': '.opencode/command/plx-plan-request.md',
   'prepare-compact': '.opencode/command/plx-prepare-compact.md',
@@ -38,6 +40,12 @@ argument-hint: task-id
 ---
 
 $ARGUMENTS`,
+  'copy-next-task': `---
+description: Copy next task or feedback block to clipboard for external agent handoff.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
   'get-task': `---
 description: Select and display the next prioritized task to work on.
 argument-hint: (optional context)
@@ -60,6 +68,12 @@ argument-hint: (optional context)
 $ARGUMENTS`,
   'parse-feedback': `---
 description: Parse feedback markers and generate review tasks.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'plan-implementation': `---
+description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
 argument-hint: (optional context)
 ---
 

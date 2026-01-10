@@ -4,10 +4,12 @@ import { SlashCommandId } from '../../templates/index.js';
 const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.roo/commands/plx-archive.md',
   'complete-task': '.roo/commands/plx-complete-task.md',
+  'copy-next-task': '.roo/commands/plx-copy-next-task.md',
   'get-task': '.roo/commands/plx-get-task.md',
   'implement': '.roo/commands/plx-implement.md',
   'orchestrate': '.roo/commands/plx-orchestrate.md',
   'parse-feedback': '.roo/commands/plx-parse-feedback.md',
+  'plan-implementation': '.roo/commands/plx-plan-implementation.md',
   'plan-proposal': '.roo/commands/plx-plan-proposal.md',
   'plan-request': '.roo/commands/plx-plan-request.md',
   'prepare-compact': '.roo/commands/plx-prepare-compact.md',
@@ -29,6 +31,9 @@ Archive a deployed PLX change and update specs.`,
   'complete-task': `# PLX: Complete Task
 
 Mark a task as done.`,
+  'copy-next-task': `# PLX: Copy Next Task
+
+Copy next task or feedback block to clipboard for external agent handoff.`,
   'get-task': `# PLX: Get Task
 
 Select and display the next prioritized task to work on.`,
@@ -41,6 +46,9 @@ Orchestrate sub-agents to complete work collaboratively.`,
   'parse-feedback': `# PLX: Parse Feedback
 
 Parse feedback markers and generate review tasks.`,
+  'plan-implementation': `# PLX: Plan Implementation
+
+Generate PROGRESS.md and orchestrate multi-agent task handoff.`,
   'plan-proposal': `# PLX: Plan Proposal
 
 Scaffold a new PLX change and validate strictly. Consumes request.md when present.`,

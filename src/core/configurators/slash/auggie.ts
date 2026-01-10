@@ -4,10 +4,12 @@ import { SlashCommandId } from '../../templates/index.js';
 const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.augment/commands/plx-archive.md',
   'complete-task': '.augment/commands/plx-complete-task.md',
+  'copy-next-task': '.augment/commands/plx-copy-next-task.md',
   'get-task': '.augment/commands/plx-get-task.md',
   'implement': '.augment/commands/plx-implement.md',
   'orchestrate': '.augment/commands/plx-orchestrate.md',
   'parse-feedback': '.augment/commands/plx-parse-feedback.md',
+  'plan-implementation': '.augment/commands/plx-plan-implementation.md',
   'plan-proposal': '.augment/commands/plx-plan-proposal.md',
   'plan-request': '.augment/commands/plx-plan-request.md',
   'prepare-compact': '.augment/commands/plx-prepare-compact.md',
@@ -31,6 +33,10 @@ argument-hint: change-id
 description: Mark a task as done.
 argument-hint: task-id
 ---`,
+  'copy-next-task': `---
+description: Copy next task or feedback block to clipboard for external agent handoff.
+argument-hint: (optional context)
+---`,
   'get-task': `---
 description: Select and display the next prioritized task to work on.
 argument-hint: (optional context)
@@ -45,6 +51,10 @@ argument-hint: (optional context)
 ---`,
   'parse-feedback': `---
 description: Parse feedback markers and generate review tasks.
+argument-hint: (optional context)
+---`,
+  'plan-implementation': `---
+description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
 argument-hint: (optional context)
 ---`,
   'plan-proposal': `---

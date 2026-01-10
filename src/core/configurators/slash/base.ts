@@ -11,10 +11,12 @@ export interface SlashCommandTarget {
 const ALL_COMMANDS: SlashCommandId[] = [
   'archive',
   'complete-task',
+  'copy-next-task',
   'get-task',
   'implement',
   'orchestrate',
   'parse-feedback',
+  'plan-implementation',
   'plan-proposal',
   'plan-request',
   'prepare-compact',

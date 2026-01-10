@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 parent-type: change
 parent-id: add-plan-implementation-command
@@ -48,16 +48,16 @@ The CLI command `plx create progress --change-id <id>` exists and generates PROG
 
 ## Implementation Checklist
 
-- [ ] 1.1 Add `ProgressOptions` interface to `src/commands/create.ts`
-- [ ] 1.2 Add `createProgress` method to `CreateCommand` class
-- [ ] 1.3 Implement task discovery using ItemRetrievalService
-- [ ] 1.4 Filter tasks to non-completed (to-do, in-progress)
-- [ ] 1.5 Load proposal.md content for context embedding
-- [ ] 1.6 Add `getProgressTemplate` method to TemplateManager
-- [ ] 1.7 Generate task block content with embedded task and proposal context
-- [ ] 1.8 Write PROGRESS.md to project root
-- [ ] 1.9 Register `create progress` subcommand in `src/cli/index.ts`
-- [ ] 1.10 Add command to shell completion registry
+- [x] 1.1 Add `ProgressOptions` interface to `src/commands/create.ts`
+- [x] 1.2 Add `createProgress` method to `CreateCommand` class
+- [x] 1.3 Implement task discovery using ItemRetrievalService
+- [x] 1.4 Filter tasks to non-completed (to-do, in-progress)
+- [x] 1.5 Load proposal.md content for context embedding
+- [x] 1.6 Add `getProgressTemplate` method to TemplateManager
+- [x] 1.7 Generate task block content with embedded task and proposal context
+- [x] 1.8 Write PROGRESS.md to project root
+- [x] 1.9 Register `create progress` subcommand in `src/cli/index.ts`
+- [x] 1.10 Add command to shell completion registry
 
 ## Notes
 

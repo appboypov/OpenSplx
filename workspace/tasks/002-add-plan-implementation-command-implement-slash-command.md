@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 parent-type: change
 parent-id: add-plan-implementation-command
@@ -45,15 +45,15 @@ The `/plx:plan-implementation` slash command exists for all supported AI tools a
 
 ## Implementation Checklist
 
-- [ ] 2.1 Add `plan-implementation` to `SlashCommandId` type in `src/core/templates/index.ts`
-- [ ] 2.2 Add `plan-implementation` to `ALL_COMMANDS` array in `src/core/configurators/slash/base.ts`
-- [ ] 2.3 Create `getPlanImplementationBody` in slash command templates
-- [ ] 2.4 Define task block template format
-- [ ] 2.5 Define feedback block template format
-- [ ] 2.6 Define verification checklist (scope, traceless, conventions, tests, AC)
-- [ ] 2.7 Add frontmatter generation for plan-implementation
-- [ ] 2.8 Run `plx update` to generate commands for all tools
-- [ ] 2.9 Verify command exists in Claude Code commands
+- [x] 2.1 Add `plan-implementation` to `SlashCommandId` type in `src/core/templates/index.ts`
+- [x] 2.2 Add `plan-implementation` to `ALL_COMMANDS` array in `src/core/configurators/slash/base.ts`
+- [x] 2.3 Create `getPlanImplementationBody` in slash command templates
+- [x] 2.4 Define task block template format
+- [x] 2.5 Define feedback block template format
+- [x] 2.6 Define verification checklist (scope, traceless, conventions, tests, AC)
+- [x] 2.7 Add frontmatter generation for plan-implementation
+- [x] 2.8 Run `plx update` to generate commands for all tools
+- [x] 2.9 Verify command exists in Claude Code commands
 
 ## Notes
 
