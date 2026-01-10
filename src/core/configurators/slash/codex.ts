@@ -9,6 +9,8 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.codex/prompts/plx-archive.md',
   'complete-task': '.codex/prompts/plx-complete-task.md',
   'copy-next-task': '.codex/prompts/plx-copy-next-task.md',
+  'copy-review-request': '.codex/prompts/plx-copy-review-request.md',
+  'copy-test-request': '.codex/prompts/plx-copy-test-request.md',
   'get-task': '.codex/prompts/plx-get-task.md',
   'implement': '.codex/prompts/plx-implement.md',
   'orchestrate': '.codex/prompts/plx-orchestrate.md',
@@ -43,6 +45,18 @@ argument-hint: task-id
 $ARGUMENTS`,
   'copy-next-task': `---
 description: Copy next task or feedback block to clipboard for external agent handoff.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'copy-review-request': `---
+description: Copy review request block with REVIEW.md guidelines to clipboard for external agent.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'copy-test-request': `---
+description: Copy test request block with TESTING.md configuration to clipboard for external agent.
 argument-hint: (optional context)
 ---
 

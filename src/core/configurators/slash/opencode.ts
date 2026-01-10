@@ -7,6 +7,8 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.opencode/command/plx-archive.md',
   'complete-task': '.opencode/command/plx-complete-task.md',
   'copy-next-task': '.opencode/command/plx-copy-next-task.md',
+  'copy-review-request': '.opencode/command/plx-copy-review-request.md',
+  'copy-test-request': '.opencode/command/plx-copy-test-request.md',
   'get-task': '.opencode/command/plx-get-task.md',
   'implement': '.opencode/command/plx-implement.md',
   'orchestrate': '.opencode/command/plx-orchestrate.md',
@@ -42,6 +44,18 @@ argument-hint: task-id
 $ARGUMENTS`,
   'copy-next-task': `---
 description: Copy next task or feedback block to clipboard for external agent handoff.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'copy-review-request': `---
+description: Copy review request block with REVIEW.md guidelines to clipboard for external agent.
+argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'copy-test-request': `---
+description: Copy test request block with TESTING.md configuration to clipboard for external agent.
 argument-hint: (optional context)
 ---
 

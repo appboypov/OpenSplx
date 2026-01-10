@@ -5,6 +5,8 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.codebuddy/commands/plx/archive.md',
   'complete-task': '.codebuddy/commands/plx/complete-task.md',
   'copy-next-task': '.codebuddy/commands/plx/copy-next-task.md',
+  'copy-review-request': '.codebuddy/commands/plx/copy-review-request.md',
+  'copy-test-request': '.codebuddy/commands/plx/copy-test-request.md',
   'get-task': '.codebuddy/commands/plx/get-task.md',
   'implement': '.codebuddy/commands/plx/implement.md',
   'orchestrate': '.codebuddy/commands/plx/orchestrate.md',
@@ -42,6 +44,18 @@ name: Copy Next Task
 description: Copy next task or feedback block to clipboard for external agent handoff.
 category: Pew Pew Plx
 tags: [plx, orchestrate, workflow]
+---`,
+  'copy-review-request': `---
+name: Copy Review Request
+description: Copy review request block with REVIEW.md guidelines to clipboard for external agent.
+category: Pew Pew Plx
+tags: [plx, review, workflow]
+---`,
+  'copy-test-request': `---
+name: Copy Test Request
+description: Copy test request block with TESTING.md configuration to clipboard for external agent.
+category: Pew Pew Plx
+tags: [plx, testing, workflow]
 ---`,
   'get-task': `---
 name: Get Task

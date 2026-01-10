@@ -5,6 +5,8 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.roo/commands/plx-archive.md',
   'complete-task': '.roo/commands/plx-complete-task.md',
   'copy-next-task': '.roo/commands/plx-copy-next-task.md',
+  'copy-review-request': '.roo/commands/plx-copy-review-request.md',
+  'copy-test-request': '.roo/commands/plx-copy-test-request.md',
   'get-task': '.roo/commands/plx-get-task.md',
   'implement': '.roo/commands/plx-implement.md',
   'orchestrate': '.roo/commands/plx-orchestrate.md',
@@ -34,6 +36,12 @@ Mark a task as done.`,
   'copy-next-task': `# PLX: Copy Next Task
 
 Copy next task or feedback block to clipboard for external agent handoff.`,
+  'copy-review-request': `# PLX: Copy Review Request
+
+Copy review request block with REVIEW.md guidelines to clipboard for external agent.`,
+  'copy-test-request': `# PLX: Copy Test Request
+
+Copy test request block with TESTING.md configuration to clipboard for external agent.`,
   'get-task': `# PLX: Get Task
 
 Select and display the next prioritized task to work on.`,

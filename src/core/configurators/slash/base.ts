@@ -12,6 +12,8 @@ const ALL_COMMANDS: SlashCommandId[] = [
   'archive',
   'complete-task',
   'copy-next-task',
+  'copy-review-request',
+  'copy-test-request',
   'get-task',
   'implement',
   'orchestrate',

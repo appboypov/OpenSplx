@@ -5,6 +5,8 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.kilocode/workflows/plx-archive.md',
   'complete-task': '.kilocode/workflows/plx-complete-task.md',
   'copy-next-task': '.kilocode/workflows/plx-copy-next-task.md',
+  'copy-review-request': '.kilocode/workflows/plx-copy-review-request.md',
+  'copy-test-request': '.kilocode/workflows/plx-copy-test-request.md',
   'get-task': '.kilocode/workflows/plx-get-task.md',
   'implement': '.kilocode/workflows/plx-implement.md',
   'orchestrate': '.kilocode/workflows/plx-orchestrate.md',

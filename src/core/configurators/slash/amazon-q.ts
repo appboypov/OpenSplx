@@ -5,6 +5,8 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.amazonq/prompts/plx-archive.md',
   'complete-task': '.amazonq/prompts/plx-complete-task.md',
   'copy-next-task': '.amazonq/prompts/plx-copy-next-task.md',
+  'copy-review-request': '.amazonq/prompts/plx-copy-review-request.md',
+  'copy-test-request': '.amazonq/prompts/plx-copy-test-request.md',
   'get-task': '.amazonq/prompts/plx-get-task.md',
   'implement': '.amazonq/prompts/plx-implement.md',
   'orchestrate': '.amazonq/prompts/plx-orchestrate.md',
@@ -41,6 +43,16 @@ description: Mark a task as done.
 <arguments>$ARGUMENTS</arguments>`,
   'copy-next-task': `---
 description: Copy next task or feedback block to clipboard for external agent handoff.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'copy-review-request': `---
+description: Copy review request block with REVIEW.md guidelines to clipboard for external agent.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'copy-test-request': `---
+description: Copy test request block with TESTING.md configuration to clipboard for external agent.
 ---
 
 <arguments>$ARGUMENTS</arguments>`,

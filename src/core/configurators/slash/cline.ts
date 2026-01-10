@@ -5,6 +5,8 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'archive': '.clinerules/workflows/plx-archive.md',
   'complete-task': '.clinerules/workflows/plx-complete-task.md',
   'copy-next-task': '.clinerules/workflows/plx-copy-next-task.md',
+  'copy-review-request': '.clinerules/workflows/plx-copy-review-request.md',
+  'copy-test-request': '.clinerules/workflows/plx-copy-test-request.md',
   'get-task': '.clinerules/workflows/plx-get-task.md',
   'implement': '.clinerules/workflows/plx-implement.md',
   'orchestrate': '.clinerules/workflows/plx-orchestrate.md',
@@ -34,6 +36,12 @@ Mark a task as done.`,
   'copy-next-task': `# PLX: Copy Next Task
 
 Copy next task or feedback block to clipboard for external agent handoff.`,
+  'copy-review-request': `# PLX: Copy Review Request
+
+Copy review request block with REVIEW.md guidelines to clipboard for external agent.`,
+  'copy-test-request': `# PLX: Copy Test Request
+
+Copy test request block with TESTING.md configuration to clipboard for external agent.`,
   'get-task': `# PLX: Get Task
 
 Select and display the next prioritized task to work on.`,
