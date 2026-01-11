@@ -86,7 +86,7 @@ describe('InitCommand', () => {
 
       const workspacePath = path.join(testDir, 'workspace');
       expect(await fileExists(path.join(workspacePath, 'AGENTS.md'))).toBe(true);
-      expect(await fileExists(path.join(testDir, 'ARCHITECTURE.md'))).toBe(
+      expect(await fileExists(path.join(workspacePath, 'ARCHITECTURE.md'))).toBe(
         true
       );
 
@@ -97,7 +97,7 @@ describe('InitCommand', () => {
       expect(agentsContent).toContain('Pew Pew Plx Instructions');
 
       const architectureContent = await fs.readFile(
-        path.join(testDir, 'ARCHITECTURE.md'),
+        path.join(workspacePath, 'ARCHITECTURE.md'),
         'utf-8'
       );
       expect(architectureContent).toContain('Architecture');
