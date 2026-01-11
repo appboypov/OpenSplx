@@ -1569,11 +1569,17 @@ Old content
       force: true,
     });
 
-    // Execute update command - migration creates workspace, so it should succeed
+    // Create a root file that needs migration
+    await fs.writeFile(path.join(testDir, 'ARCHITECTURE.md'), 'root content');
+
+    // Execute update command - migration creates workspace when files exist, so it should succeed
     await updateCommand.execute(testDir);
 
     // Verify workspace was created
     expect(await FileSystemUtils.directoryExists(path.join(testDir, 'workspace'))).toBe(true);
+    // Verify file was migrated
+    expect(await FileSystemUtils.fileExists(path.join(testDir, 'workspace', 'ARCHITECTURE.md'))).toBe(true);
+    expect(await FileSystemUtils.fileExists(path.join(testDir, 'ARCHITECTURE.md'))).toBe(false);
   });
 
   it('should handle configurator errors gracefully', async () => {

@@ -50,10 +50,24 @@ export async function migrateRootFiles(
     errors: []
   };
 
+  // Check if there are any root files to migrate first
+  const rootFilesToMigrate: string[] = [];
+  for (const fileName of PUBLIC_TEMPLATE_FILES) {
+    const rootFilePath = path.join(projectPath, fileName);
+    if (await FileSystemUtils.fileExists(rootFilePath)) {
+      rootFilesToMigrate.push(fileName);
+    }
+  }
+
+  // Only create workspace directory if there are files to migrate
+  if (rootFilesToMigrate.length === 0) {
+    return result;
+  }
+
   // Ensure workspace directory exists
   await FileSystemUtils.createDirectory(workspacePath);
 
-  for (const fileName of PUBLIC_TEMPLATE_FILES) {
+  for (const fileName of rootFilesToMigrate) {
     const rootFilePath = path.join(projectPath, fileName);
     const workspaceFilePath = path.join(workspacePath, fileName);
 
