@@ -149,3 +149,5 @@ CLAUDE.md
 .pnpm-store/
 PROGRESS.md
 .dart_tool/**/*
+workspace/evals/.dart_tool/
+workspace/evals/.dart_tool/**/*
