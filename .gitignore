@@ -149,3 +149,4 @@ CLAUDE.md
 .pnpm-store/
 PROGRESS.md
 .dart_tool/
+.dart-tool/
