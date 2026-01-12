@@ -26,7 +26,7 @@ OpenSplx is a fork of [OpenSpec](https://github.com/Fission-AI/OpenSpec) that pr
 ## Project Structure
 
 ```
-pew-pew-splx/
+OpenSplx/
 ├── bin/                    # CLI entry points
 │   └── splx.js              # CLI entry (splx command)
 ├── src/

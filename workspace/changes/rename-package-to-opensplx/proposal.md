@@ -7,14 +7,14 @@ The package was originally named "OpenSplx" as a temporary fork name. We need to
 ## What Changes
 
 - **BREAKING**: CLI command renamed from `splx` to `splx`
-- **BREAKING**: Package name changed from `@appboypov/pew-pew-splx` to `@appboypov/opensplx`
-- **BREAKING**: Repository URL updated from `appboypov/pew-pew-splx` to `appboypov/OpenSplx`
+- **BREAKING**: Package name changed from `@appboypov/OpenSplx` to `@appboypov/opensplx`
+- **BREAKING**: Repository URL updated from `appboypov/OpenSplx` to `appboypov/OpenSplx`
 - All occurrences of "OpenSplx", "splx", and "Splx" renamed to "OpenSplx" and "splx" throughout:
   - Source code files
   - Documentation (README.md, ARCHITECTURE.md, AGENTS.md, etc.)
   - Templates and generated content
   - Package.json metadata
-- Deprecate current npm package `@appboypov/pew-pew-splx` with migration notice
+- Deprecate current npm package `@appboypov/OpenSplx` with migration notice
 - Update npm package page for release pipeline using Playwright automation
 - Update git repository configuration
 

@@ -92,10 +92,10 @@ sequenceDiagram
 
 ## Pull requests
 
-- [#66 🧱 Refactor task storage to use centralized workspace/tasks/ folder with parent linking](https://github.com/appboypov/pew-pew-splx/issues/66)
+- [#66 🧱 Refactor task storage to use centralized workspace/tasks/ folder with parent linking](https://github.com/appboypov/OpenSplx/issues/66)
 
 ## Comments
 
 - GitHub integration:
 
-  This comment thread is synced to a corresponding [GitHub issue](https://github.com/appboypov/pew-pew-splx/issues/66). All replies are displayed in both locations.
+  This comment thread is synced to a corresponding [GitHub issue](https://github.com/appboypov/OpenSplx/issues/66). All replies are displayed in both locations.

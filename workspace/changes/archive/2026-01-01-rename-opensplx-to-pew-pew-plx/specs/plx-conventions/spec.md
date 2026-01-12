@@ -7,13 +7,13 @@ The project SHALL use consistent naming conventions across all artifacts and reg
 #### Scenario: Package naming on npm
 
 - **WHEN** the package is published to npm
-- **THEN** the package name SHALL be `@appboypov/pew-pew-splx`
+- **THEN** the package name SHALL be `@appboypov/OpenSplx`
 - **AND** the previous package `@appboypov/opensplx` SHALL be deprecated with migration instructions
 
 #### Scenario: Repository naming on GitHub
 
 - **WHEN** accessing the project repository
-- **THEN** the repository SHALL be at `github.com/appboypov/pew-pew-splx`
+- **THEN** the repository SHALL be at `github.com/appboypov/OpenSplx`
 - **AND** old URLs SHALL redirect automatically
 
 #### Scenario: Display name usage

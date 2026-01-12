@@ -31,7 +31,7 @@ Regeneration command: `pnpm build && splx update`
 
 ### Shared Values
 - Version in `package.json`
-- Project name `@appboypov/pew-pew-splx`
+- Project name `@appboypov/OpenSplx`
 - CLI binary name `splx`
 
 ### Behavioral Contracts

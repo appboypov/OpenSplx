@@ -2,7 +2,7 @@
 
 ## Why
 
-Currently `splx update` only refreshes project instruction files (AGENTS.md, slash commands, etc.) but does not update the CLI binary itself. Users must manually run `npm update -g @appboypov/pew-pew-splx` to get new CLI versions. This is confusing because `splx update` sounds like it should update the CLI, and users have no built-in way to check if a newer version is available.
+Currently `splx update` only refreshes project instruction files (AGENTS.md, slash commands, etc.) but does not update the CLI binary itself. Users must manually run `npm update -g @appboypov/OpenSplx` to get new CLI versions. This is confusing because `splx update` sounds like it should update the CLI, and users have no built-in way to check if a newer version is available.
 
 ## What Changes
 

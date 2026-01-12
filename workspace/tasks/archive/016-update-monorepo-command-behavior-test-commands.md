@@ -47,4 +47,4 @@ Commands should be manually tested to verify:
 
 ## Notes
 
-Testing requires projects with PLX workspaces. Use pew-pew-splx itself for single-workspace testing. For monorepo testing, may need to create or use an existing monorepo project.
+Testing requires projects with PLX workspaces. Use OpenSplx itself for single-workspace testing. For monorepo testing, may need to create or use an existing monorepo project.

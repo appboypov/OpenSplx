@@ -31,7 +31,7 @@ All changes are verified:
 
 - [ ] `npm run build` succeeds
 - [ ] `npm run test` passes
-- [ ] Running `splx update` in the pew-pew-splx project generates `.claude/commands/splx/sync-workspace.md`
+- [ ] Running `splx update` in the OpenSplx project generates `.claude/commands/splx/sync-workspace.md`
 - [ ] Generated file has correct frontmatter and PLX markers
 
 ## Implementation Checklist

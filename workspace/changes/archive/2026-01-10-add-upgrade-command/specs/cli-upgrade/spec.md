@@ -23,7 +23,7 @@ The upgrade command SHALL check versions against the npm registry before attempt
 
 #### Scenario: Checking version
 - **WHEN** the command starts
-- **THEN** fetch latest version from npm registry for `@appboypov/pew-pew-splx`
+- **THEN** fetch latest version from npm registry for `@appboypov/OpenSplx`
 - **AND** compare against locally installed version from package.json
 
 #### Scenario: Network failure during version check
@@ -59,7 +59,7 @@ The command SHALL detect and use the appropriate package manager (npm or pnpm).
 
 #### Scenario: Package manager execution
 - **WHEN** running the package manager command
-- **THEN** execute `<pm> install -g @appboypov/pew-pew-splx@latest`
+- **THEN** execute `<pm> install -g @appboypov/OpenSplx@latest`
 - **AND** stream output to the terminal
 - **AND** report success or failure based on exit code
 

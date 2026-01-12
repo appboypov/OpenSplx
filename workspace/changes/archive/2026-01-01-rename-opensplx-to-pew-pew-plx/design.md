@@ -3,8 +3,8 @@
 ## Overview
 
 This change completes the rebrand by updating all remaining "OpenSplx" / "opensplx" references to use the new identity:
-- Package name: `@appboypov/pew-pew-splx`
-- Repository: `github.com/appboypov/pew-pew-splx`
+- Package name: `@appboypov/OpenSplx`
+- Repository: `github.com/appboypov/OpenSplx`
 - Display name: "OpenSplx"
 
 ## Scope Analysis
@@ -46,12 +46,12 @@ Legacy OpenSpec assets can remain for historical reference:
 ### Phase 2: npm Migration
 1. Merge and push code changes
 2. Use Playwright to navigate npmjs.com
-3. Deprecate `@appboypov/opensplx` with message: "This package has been renamed to @appboypov/pew-pew-splx"
+3. Deprecate `@appboypov/opensplx` with message: "This package has been renamed to @appboypov/OpenSplx"
 4. Publish first version under new package name
 
 ### Phase 3: GitHub Rename
 1. Use Playwright to navigate github.com settings
-2. Rename repository from `OpenSplx` to `pew-pew-splx`
+2. Rename repository from `OpenSplx` to `OpenSplx`
 3. GitHub automatically maintains redirects
 4. Update local git remote (optional)
 
@@ -59,8 +59,8 @@ Legacy OpenSpec assets can remain for historical reference:
 
 | Context | Format | Value |
 |---------|--------|-------|
-| npm package | kebab-case | `@appboypov/pew-pew-splx` |
-| GitHub repo | kebab-case | `pew-pew-splx` |
+| npm package | kebab-case | `@appboypov/OpenSplx` |
+| GitHub repo | kebab-case | `OpenSplx` |
 | Display name | Title Case | "OpenSplx" |
 | Asset files | snake_case | `pew_pew_splx_pixel_*.svg` |
 

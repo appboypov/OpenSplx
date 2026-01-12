@@ -107,7 +107,7 @@ Keep this managed block so 'splx update' can refresh the instructions.
 # OpenSplx Fork Configuration
 
 This is a fork of `Fission-AI/OpenSpec`. The git remotes are configured as:
-- `origin` → `appboypov/pew-pew-splx` (this fork, PRs go here)
+- `origin` → `appboypov/OpenSplx` (this fork, PRs go here)
 - `sync` → `Fission-AI/OpenSpec` (upstream, sync only)
 
 ## Syncing with Upstream
@@ -135,7 +135,7 @@ Use merge (not rebase) to preserve upstream commit SHAs and enable PR review.
    ```
 
 4. **Resolve conflicts intentionally:**
-   - For package.json: keep fork's name (`appboypov/pew-pew-splx`) and version
+   - For package.json: keep fork's name (`appboypov/OpenSplx`) and version
    - All other conflicts must be discussed with the user before resolving
 
 5. **Push and create PR:**

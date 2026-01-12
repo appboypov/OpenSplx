@@ -9,7 +9,7 @@ All agent instruction documentation SHALL reference "OpenSplx" instead of "OpenS
 - **WHEN** generating or updating `workspace/AGENTS.md`
 - **THEN** all references to "OpenSplx" are replaced with "OpenSplx"
 - **AND** all command examples use `splx` instead of `splx`
-- **AND** all package references use `@appboypov/opensplx` instead of `@appboypov/pew-pew-splx`
+- **AND** all package references use `@appboypov/opensplx` instead of `@appboypov/OpenSplx`
 
 #### Scenario: README.md content
 

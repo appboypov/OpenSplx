@@ -13,8 +13,8 @@ Package.json contains updated package name, repository URLs, and all metadata re
 
 ## Currently
 
-- Package name is `@appboypov/pew-pew-splx`
-- Repository URL is `appboypov/pew-pew-splx`
+- Package name is `@appboypov/OpenSplx`
+- Repository URL is `appboypov/OpenSplx`
 - Author mentions "OpenSplx Contributors"
 - Keywords include "splx"
 

@@ -29,7 +29,7 @@ Individual tasks have been completed but full integration verification is pendin
 
 - [ ] `grep -ri "opensplx" . --include="*.md" --include="*.json" --include="*.mjs" --include="*.yml"` returns empty
 - [ ] `pnpm run build && pnpm test` succeeds
-- [ ] `npm view @appboypov/pew-pew-splx` shows correct info
+- [ ] `npm view @appboypov/OpenSplx` shows correct info
 - [ ] `npm view @appboypov/opensplx` shows deprecated status
 - [ ] README badge URLs render correctly
 - [ ] GitHub repository responds at new URL

@@ -15,8 +15,8 @@ All "OpenSplx" and "opensplx" references in the codebase are updated to use the 
 ## Should
 
 - Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_splx_pixel_*.svg`
-- package.json uses `@appboypov/pew-pew-splx` as name
-- All GitHub URLs point to `appboypov/pew-pew-splx`
+- package.json uses `@appboypov/OpenSplx` as name
+- All GitHub URLs point to `appboypov/OpenSplx`
 - All display text uses "OpenSplx"
 - Build and tests pass
 - No "opensplx" matches found via grep (excluding .git)

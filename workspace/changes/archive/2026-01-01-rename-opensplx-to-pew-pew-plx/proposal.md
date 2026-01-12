@@ -6,8 +6,8 @@ The project display name was rebranded to "OpenSplx" but the package name, repos
 
 ## What Changes
 
-- **Package name**: `@appboypov/opensplx` to `@appboypov/pew-pew-splx`
-- **GitHub repository**: References updated from `appboypov/OpenSplx` to `appboypov/pew-pew-splx`
+- **Package name**: `@appboypov/opensplx` to `@appboypov/OpenSplx`
+- **GitHub repository**: References updated from `appboypov/OpenSplx` to `appboypov/OpenSplx`
 - **Asset files**: Rename `opensplx_pixel_*.svg` to `pew_pew_splx_pixel_*.svg`
 - **Documentation**: Update all "OpenSplx" display text to "OpenSplx"
 - **Archived changes**: Update historical references for consistency
@@ -25,7 +25,7 @@ The project display name was rebranded to "OpenSplx" but the package name, repos
 
 - Affected files: package.json, README.md, CHANGELOG.md, ARCHITECTURE.md, scripts/, workflows/, archived changes
 - Breaking changes: Package name change requires users to reinstall
-- Migration: Users must `npm uninstall @appboypov/opensplx && npm install @appboypov/pew-pew-splx`
+- Migration: Users must `npm uninstall @appboypov/opensplx && npm install @appboypov/OpenSplx`
 
 ## Constraints
 

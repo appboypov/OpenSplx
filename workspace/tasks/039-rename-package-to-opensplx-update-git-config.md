@@ -13,7 +13,7 @@ Git repository configuration points to the renamed repository `appboypov/OpenSpl
 
 ## Currently
 
-- `.git/config` has remote origin URL pointing to `appboypov/pew-pew-splx`
+- `.git/config` has remote origin URL pointing to `appboypov/OpenSplx`
 
 ## Should
 

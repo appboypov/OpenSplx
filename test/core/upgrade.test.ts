@@ -170,7 +170,7 @@ describe('UpgradeCommand', () => {
         });
         expect(mockSpawn).toHaveBeenCalledWith(
           'pnpm',
-          ['install', '-g', '@appboypov/pew-pew-splx@latest'],
+          ['install', '-g', '@appboypov/OpenSplx@latest'],
           { stdio: 'inherit', shell: true }
         );
       });
@@ -191,7 +191,7 @@ describe('UpgradeCommand', () => {
 
         expect(mockSpawn).toHaveBeenCalledWith(
           'npm',
-          ['install', '-g', '@appboypov/pew-pew-splx@latest'],
+          ['install', '-g', '@appboypov/OpenSplx@latest'],
           { stdio: 'inherit', shell: true }
         );
       });
@@ -253,7 +253,7 @@ describe('UpgradeCommand', () => {
         await upgradeCommand.execute();
 
         expect(mockFetch).toHaveBeenCalledWith(
-          'https://registry.npmjs.org/@appboypov/pew-pew-splx/latest'
+          'https://registry.npmjs.org/@appboypov/OpenSplx/latest'
         );
       });
     });

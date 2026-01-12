@@ -15,7 +15,7 @@ A working `splx upgrade` command that self-updates the CLI binary via npm/pnpm.
 
 - `splx update` only refreshes project instruction files
 - No way to check for or install CLI updates from within the CLI
-- Users must manually run `npm update -g @appboypov/pew-pew-splx`
+- Users must manually run `npm update -g @appboypov/OpenSplx`
 
 ## Should
 
@@ -42,7 +42,7 @@ A working `splx upgrade` command that self-updates the CLI binary via npm/pnpm.
 ## Implementation Checklist
 
 - [x] 1.1 Create `src/core/upgrade.ts` with UpgradeCommand class
-- [x] 1.2 Implement version check using npm registry API (`https://registry.npmjs.org/@appboypov/pew-pew-splx/latest`)
+- [x] 1.2 Implement version check using npm registry API (`https://registry.npmjs.org/@appboypov/OpenSplx/latest`)
 - [x] 1.3 Implement package manager detection (check for pnpm first, fall back to npm)
 - [x] 1.4 Implement upgrade execution with `spawn` to stream output
 - [x] 1.5 Add `--check` flag support
@@ -52,5 +52,5 @@ A working `splx upgrade` command that self-updates the CLI binary via npm/pnpm.
 ## Notes
 
 - Use native `fetch` (available in Node 18+) to avoid new dependencies
-- Package name is `@appboypov/pew-pew-splx`
+- Package name is `@appboypov/OpenSplx`
 - Follow existing command patterns in `src/core/` (e.g., `update.ts`, `init.ts`)
