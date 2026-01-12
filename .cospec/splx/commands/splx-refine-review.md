@@ -4,10 +4,10 @@ argument-hint: (optional context)
 ---
 <!-- PLX:START -->
 **Guardrails**
-- Reference @REVIEW.md template structure.
+- Reference @workspace/REVIEW.md template structure.
 - Preserve existing review guidelines.
 - Use question tool to guide user through configuration options.
-- Write final selections to REVIEW.md.
+- Write final selections to workspace/REVIEW.md.
 
 **Monorepo Awareness**
 - Derive target package from the user's request context (mentioned package name, file paths, or current focus).
@@ -46,7 +46,7 @@ argument-hint: (optional context)
 **Steps**
 
 ## Part 1: Review Config
-1. Check if @REVIEW.md exists:
+1. Check if @workspace/REVIEW.md exists:
    - If not: create from template.
    - If exists: read current configuration.
 
@@ -63,10 +63,10 @@ argument-hint: (optional context)
    - Present options: minimal, standard, comprehensive, custom.
    - Record selection.
 
-5. Write selections to REVIEW.md Review Config section.
+5. Write selections to workspace/REVIEW.md Review Config section.
 
 ## Part 2: Review Scope Research
-6. Research and populate each Review Scope section in @REVIEW.md:
+6. Research and populate each Review Scope section in @workspace/REVIEW.md:
 
    **Architecture Patterns**
    - Identify core architectural patterns (MVC, MVVM, Clean Architecture, etc.)

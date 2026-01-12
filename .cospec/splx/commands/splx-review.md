@@ -18,7 +18,7 @@ argument-hint: (optional context)
 
 **Steps**
 1. Run `splx review change --id <id>` (or `splx review spec --id <id>`, `splx review task --id <id>`).
-2. Read the output: @REVIEW.md guidelines + parent documents.
+2. Read the output: @workspace/REVIEW.md guidelines + parent documents.
 3. Review implementation against constraints/acceptance criteria.
 4. Insert feedback markers with format: `#FEEDBACK #TODO | {type}:{id} | {feedback}`
    - Examples: `task:001`, `change:my-feature`, `spec:auth-spec`

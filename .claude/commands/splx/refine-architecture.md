@@ -45,15 +45,15 @@ Run these queries iteratively until no new components are discovered. Cross-refe
 
 **Steps**
 1. **Discover** - Run Context Retrieval queries to build complete component inventory.
-2. **Check** - Determine if ARCHITECTURE.md exists at target location.
+2. **Check** - Determine if workspace/ARCHITECTURE.md exists.
 3. **Create or Load** - If missing: create from Template Structure below. If exists: read full content, identify gaps against discovered inventory.
 4. **Populate Inventories** - For each component category: list all discovered items with file paths, group by feature/domain where applicable, include brief purpose description for each item.
 5. **Map Dependencies** - Document service → API/repository relationships, view model → service relationships, data flow from external sources to UI.
 6. **Validate Completeness** - Cross-reference inventory against file tree. Flag any component types with zero entries (likely missed). Re-run targeted queries for empty categories.
-7. **Write** - Update ARCHITECTURE.md preserving user content outside PLX markers.
+7. **Write** - Update workspace/ARCHITECTURE.md preserving user content outside PLX markers.
 
 **Template Structure**
-Reference `workspace/templates/ARCHITECTURE.template.md` for the canonical template structure. If it does not exist, use the project's existing ARCHITECTURE.md as reference, or create from these required sections:
+Reference `workspace/templates/ARCHITECTURE.template.md` for the canonical template structure. If it does not exist, use the project's existing workspace/ARCHITECTURE.md as reference, or create from these required sections:
 
 **Required Sections:**
 - Technology Stack (table format)

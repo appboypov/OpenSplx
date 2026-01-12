@@ -2,7 +2,7 @@
 status: done
 skill-level: junior
 parent-type: change
-parent-id: rename-package-to-OpenSplx
+parent-id: rename-package-to-opensplx
 ---
 
 # Task: Update Git Configuration

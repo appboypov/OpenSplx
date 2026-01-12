@@ -1,8 +1,8 @@
 ---
-status: in-progress
+status: done
 skill-level: senior
 parent-type: change
-parent-id: rename-package-to-OpenSplx
+parent-id: rename-package-to-opensplx
 ---
 
 # Task: Update NPM Package Page with Playwright
@@ -35,10 +35,10 @@ The npm package page for `@appboypov/OpenSplx` is updated manually. The user wil
 
 ## Implementation Checklist
 
-- [ ] 6.1 Navigate to https://www.npmjs.com/package/@appboypov/OpenSplx/edit (after package is published)
-- [ ] 6.2 Update package description if needed
-- [ ] 6.3 Verify README is synced from package
-- [ ] 6.4 Save changes
+- [x] 6.1 Navigate to https://www.npmjs.com/package/@appboypov/OpenSplx/edit (after package is published)
+- [x] 6.2 Update package description if needed
+- [x] 6.3 Verify README is synced from package
+- [x] 6.4 Save changes
 
 ## Notes
 

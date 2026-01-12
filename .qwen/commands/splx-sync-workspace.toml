@@ -3,7 +3,7 @@ description = "Scan workspace state and suggest maintenance actions."
 prompt = """
 <!-- PLX:START -->
 **Context**
-@ARCHITECTURE.md
+@workspace/ARCHITECTURE.md
 @workspace/AGENTS.md
 
 **Guardrails**

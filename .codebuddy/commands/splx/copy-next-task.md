@@ -23,9 +23,9 @@ tags: [splx, orchestrate, workflow]
 **Context Detection**
 Determine which scenario applies:
 
-1. **Plan-implementation workflow active**: Check if PROGRESS.md exists AND conversation contains task blocks or feedback blocks.
+1. **Plan-implementation workflow active**: Check if workspace/PROGRESS.md exists AND conversation contains task blocks or feedback blocks.
    - If pending feedback: copy the most recent feedback block.
-   - If no feedback: copy the next uncompleted task block from PROGRESS.md.
+   - If no feedback: copy the next uncompleted task block from workspace/PROGRESS.md.
 
 2. **New conversation (no context)**: Run `splx get task` to retrieve the highest-priority task.
    - Generate a task block from the task content.
@@ -59,7 +59,7 @@ Determine which scenario applies:
 
    **If copying next task (no pending feedback):**
    a. Get task content:
-      - From PROGRESS.md if it exists and has uncompleted tasks
+      - From workspace/PROGRESS.md if it exists and has uncompleted tasks
       - Otherwise via `splx get task` (or `splx get task --did-complete-previous` if previous completed)
    b. Generate task block:
    ```markdown
@@ -94,5 +94,5 @@ Determine which scenario applies:
 - Use `splx get task` to retrieve highest-priority task when no context exists.
 - Use `splx get task --did-complete-previous` after completing a task.
 - Use `splx get change --id <change-id>` to get proposal context.
-- Read PROGRESS.md if it exists to find next uncompleted task block.
+- Read workspace/PROGRESS.md if it exists to find next uncompleted task block.
 <!-- PLX:END -->

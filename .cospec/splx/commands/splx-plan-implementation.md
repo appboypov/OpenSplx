@@ -4,11 +4,11 @@ argument-hint: (optional context)
 ---
 <!-- PLX:START -->
 **Context**
-@ARCHITECTURE.md
+@workspace/ARCHITECTURE.md
 @workspace/AGENTS.md
 
 **Guardrails**
-- Generate PROGRESS.md before outputting task blocks.
+- Generate workspace/PROGRESS.md before outputting task blocks.
 - Output task blocks to chat for immediate copy to external agents.
 - Do NOT reference PROGRESS.md in task blocks—agents must work without knowledge of it.
 - Verify each agent's work against scope, TracelessChanges, conventions, and acceptance criteria.
@@ -33,7 +33,7 @@ argument-hint: (optional context)
    ```bash
    splx create progress --change-id <change-id>
    ```
-3. Read the generated PROGRESS.md and identify the first non-completed task.
+3. Read the generated workspace/PROGRESS.md and identify the first non-completed task.
 4. Output the first task block to chat. Format:
    ```markdown
    ## Task: <task-name>

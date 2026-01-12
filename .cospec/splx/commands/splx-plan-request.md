@@ -4,7 +4,7 @@ argument-hint: (optional context)
 ---
 <!-- PLX:START -->
 **Context**
-@ARCHITECTURE.md
+@workspace/ARCHITECTURE.md
 @workspace/AGENTS.md
 
 **Guardrails**

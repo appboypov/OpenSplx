@@ -4,7 +4,7 @@ argument-hint: --id <id> --parent-type change|task
 ---
 <!-- PLX:START -->
 **Context**
-@ARCHITECTURE.md
+@workspace/ARCHITECTURE.md
 @workspace/AGENTS.md
 
 **Guardrails**

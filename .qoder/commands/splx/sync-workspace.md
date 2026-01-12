@@ -6,7 +6,7 @@ tags: [splx, workspace, maintenance]
 ---
 <!-- PLX:START -->
 **Context**
-@ARCHITECTURE.md
+@workspace/ARCHITECTURE.md
 @workspace/AGENTS.md
 
 **Guardrails**

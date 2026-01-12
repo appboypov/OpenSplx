@@ -6,10 +6,10 @@ tags: [splx, testing, documentation]
 ---
 <!-- PLX:START -->
 **Guardrails**
-- Reference @TESTING.md template structure.
+- Reference @workspace/TESTING.md template structure.
 - Preserve existing testing configuration.
 - Use question tool to guide user through configuration options.
-- Write final selections to TESTING.md.
+- Write final selections to workspace/TESTING.md.
 
 **Monorepo Awareness**
 - Derive target package from the user's request context (mentioned package name, file paths, or current focus).
@@ -49,7 +49,7 @@ tags: [splx, testing, documentation]
 **Steps**
 
 ## Part 1: Test Config
-1. Check if @TESTING.md exists:
+1. Check if @workspace/TESTING.md exists:
    - If not: create from template.
    - If exists: read current configuration.
 
@@ -70,10 +70,10 @@ tags: [splx, testing, documentation]
    - Present common patterns based on selected runner.
    - Record patterns.
 
-6. Write selections to TESTING.md Test Config section.
+6. Write selections to workspace/TESTING.md Test Config section.
 
 ## Part 2: Test Scope Research
-7. Research and populate each Test Scope section in @TESTING.md:
+7. Research and populate each Test Scope section in @workspace/TESTING.md:
 
    **Unit Tests**
    - Find unit test directories and files

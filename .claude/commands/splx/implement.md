@@ -14,16 +14,21 @@ tags: [splx, implement]
 **Steps**
 Track these steps as TODOs and complete them one by one.
 1. Determine the scope:
-   - If user specified a task ID in ARGUMENTS, use `splx get task --id <task-id>` to get that specific task and proceed to step 2
+   - If user specified a task ID in ARGUMENTS, use `splx get task --id <task-id>` to get that specific task and proceed to step 3
    - Otherwise, run `splx get tasks` to retrieve all tasks for the highest-priority change
-2. For each task (or the single task if task ID was provided):
+2. Generate progress file for tracking:
+   ```bash
+   splx create progress --change-id <change-id>
+   ```
+3. For each task (or the single task if task ID was provided):
    a. Work through the task's Implementation Checklist, keeping edits minimal
    b. Mark checklist items complete (`[x]`) in the task file
    c. Mark the task as done with `splx complete task --id <task-id>`
-3. Stop when complete:
+   d. Regenerate progress: `splx create progress --change-id <change-id>`
+4. Stop when complete:
    - If implementing a specific task ID (from step 1), stop after completing that task
    - If implementing all tasks in a change, stop after all tasks have been completed
-4. Reference `splx get changes` or `splx get change --id <item>` when additional context is required.
+5. Reference `splx get changes` or `splx get change --id <item>` when additional context is required.
 
 **Reference**
 - Use `splx get change --id <id> --json --deltas-only` if you need additional context from the proposal while implementing.

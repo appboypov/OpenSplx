@@ -6,9 +6,9 @@ tags: [splx, release, documentation]
 ---
 <!-- PLX:START -->
 **Guardrails**
-- Read @RELEASE.md Config section for release configuration.
+- Read @workspace/RELEASE.md Config section for release configuration.
 - Apply defaults when config values are not specified.
-- Reference @README.md, @CHANGELOG.md, and @ARCHITECTURE.md for updates.
+- Reference @README.md, @CHANGELOG.md, and @workspace/ARCHITECTURE.md for updates.
 - Execute steps sequentially: changelog → readme → architecture.
 - User confirms or skips each step before proceeding.
 - Preserve existing content when updating files.
@@ -24,7 +24,7 @@ tags: [splx, release, documentation]
 - Follow each package's AGENTS.md instructions if present.
 
 ## Default Configuration
-When RELEASE.md Config section is missing or incomplete, apply these defaults:
+When workspace/RELEASE.md Config section is missing or incomplete, apply these defaults:
 | Setting | Default Value |
 |---------|---------------|
 | format | keep-a-changelog |
@@ -34,7 +34,7 @@ When RELEASE.md Config section is missing or incomplete, apply these defaults:
 | badges | (none) |
 
 **Steps**
-1. Parse configuration from @RELEASE.md:
+1. Parse configuration from @workspace/RELEASE.md:
    - Read Config section (YAML block after "# Config" header).
    - Extract: format, style, audience, emoji, badges, owner, repo, package.
    - Apply defaults for any missing values:
@@ -61,7 +61,7 @@ When RELEASE.md Config section is missing or incomplete, apply these defaults:
    - Update or create README.md preserving user content.
 
 4. Execute architecture update:
-   - Read existing ARCHITECTURE.md.
+   - Read existing workspace/ARCHITECTURE.md.
    - Explore codebase for current patterns and structure.
    - Update documentation while preserving user-written content.
    - Add sections for undocumented patterns.

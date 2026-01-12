@@ -3,7 +3,7 @@ description = "Clarify user intent through iterative yes/no questions before pro
 prompt = """
 <!-- PLX:START -->
 **Context**
-@ARCHITECTURE.md
+@workspace/ARCHITECTURE.md
 @workspace/AGENTS.md
 
 **Guardrails**

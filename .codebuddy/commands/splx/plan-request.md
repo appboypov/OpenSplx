@@ -6,7 +6,7 @@ tags: [splx, change, planning]
 ---
 <!-- PLX:START -->
 **Context**
-@ARCHITECTURE.md
+@workspace/ARCHITECTURE.md
 @workspace/AGENTS.md
 
 **Guardrails**

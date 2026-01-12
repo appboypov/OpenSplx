@@ -4,7 +4,7 @@ argument-hint: feature description or request
 ---
 <!-- PLX:START -->
 **Context**
-@ARCHITECTURE.md
+@workspace/ARCHITECTURE.md
 @workspace/AGENTS.md
 
 **Guardrails**
@@ -27,7 +27,7 @@ argument-hint: feature description or request
 0. Check for existing `workspace/changes/<change-id>/request.md`:
    - If found: consume it as the source of truth for user intent and skip interactive clarification.
    - If not found: proceed with gathering intent through conversation or your question tool.
-1. Review `ARCHITECTURE.md`, run `splx get changes` and `splx get specs`, and inspect related code or docs (e.g., via `rg`/`ls`) to ground the proposal in current behaviour; note any gaps that require clarification.
+1. Review `workspace/ARCHITECTURE.md`, run `splx get changes` and `splx get specs`, and inspect related code or docs (e.g., via `rg`/`ls`) to ground the proposal in current behaviour; note any gaps that require clarification.
 2. Choose a unique verb-led `change-id` and scaffold `proposal.md`, task files in `workspace/tasks/`, and `design.md` (when needed) under `workspace/changes/<id>/`.
 3. Map the change into concrete capabilities or requirements, breaking multi-scope efforts into distinct spec deltas with clear relationships and sequencing.
 4. Capture architectural reasoning in `design.md` when the solution spans multiple systems, introduces new patterns, or demands trade-off discussion before committing to specs.

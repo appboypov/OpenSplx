@@ -6,10 +6,10 @@ tags: [splx, release, documentation]
 ---
 <!-- PLX:START -->
 **Guardrails**
-- Reference @RELEASE.md template structure.
+- Reference @workspace/RELEASE.md template structure.
 - Preserve existing release configuration.
 - Use question tool to guide user through configuration options.
-- Write final selections to RELEASE.md Config section.
+- Write final selections to workspace/RELEASE.md Config section.
 
 **Monorepo Awareness**
 - Derive target package from the user's request context (mentioned package name, file paths, or current focus).
@@ -68,7 +68,7 @@ Node:      ![Node](https://img.shields.io/node/v/PACKAGE)
 **Steps**
 
 ## Part 1: Documentation Config
-1. Check if @RELEASE.md exists:
+1. Check if @workspace/RELEASE.md exists:
    - If not: create from template.
    - If exists: read current configuration.
 
@@ -97,10 +97,10 @@ Node:      ![Node](https://img.shields.io/node/v/PACKAGE)
    - If yes, present badge options and record selections.
    - Collect OWNER, REPO, PACKAGE values if needed.
 
-7. Write selections to RELEASE.md Documentation Config section.
+7. Write selections to workspace/RELEASE.md Documentation Config section.
 
 ## Part 2: Consistency Checklist Research
-8. Research and populate each Consistency Checklist section in @RELEASE.md:
+8. Research and populate each Consistency Checklist section in @workspace/RELEASE.md:
 
    **Primary Sources**
    - Search for entry points, main configs, core definitions

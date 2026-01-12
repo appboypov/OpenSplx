@@ -4,7 +4,7 @@ argument-hint: --id <id> --parent-type change|task|spec
 ---
 <!-- PLX:START -->
 **Guardrails**
-- Read @TESTING.md for test runner, coverage threshold, and test patterns.
+- Read @workspace/TESTING.md for test runner, coverage threshold, and test patterns.
 - Parse arguments for scope: --id and --parent-type flags.
 - Run tests based on scope or all tests if no scope provided.
 - Report results and coverage against configured threshold.
@@ -15,7 +15,7 @@ argument-hint: --id <id> --parent-type change|task|spec
    - `--id <id> --parent-type task`: run tests related to task scope.
    - `--id <id> --parent-type spec`: run tests related to spec.
    - No arguments: run all tests.
-2. Read @TESTING.md for configuration:
+2. Read @workspace/TESTING.md for configuration:
    - Test runner (vitest, jest, pytest, flutter_test, etc.).
    - Coverage threshold (70%, 80%, 90%).
    - Test patterns and file locations.
@@ -31,7 +31,7 @@ argument-hint: --id <id> --parent-type change|task|spec
 5. Report results:
    - List passed/failed tests.
    - Show coverage percentage.
-   - Compare coverage to threshold from TESTING.md.
+   - Compare coverage to threshold from workspace/TESTING.md.
    - Highlight any failures or coverage gaps.
 6. If tests fail or coverage is below threshold:
    - Summarize failures with file locations.
