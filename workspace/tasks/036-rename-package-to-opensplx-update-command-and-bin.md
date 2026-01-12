@@ -2,7 +2,7 @@
 status: done
 skill-level: medior
 parent-type: change
-parent-id: rename-package-to-opensplx
+parent-id: rename-package-to-OpenSplx
 ---
 
 # Task: Update Command and Bin File

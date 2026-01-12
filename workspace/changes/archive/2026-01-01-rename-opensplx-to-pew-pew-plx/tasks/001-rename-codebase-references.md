@@ -6,20 +6,20 @@ status: done
 
 ## End Goal
 
-All "OpenSplx" and "opensplx" references in the codebase are updated to use the new naming conventions.
+All "OpenSplx" and "OpenSplx" references in the codebase are updated to use the new naming conventions.
 
 ## Currently
 
-14 files contain "OpenSplx" or "opensplx" references including package.json, documentation, scripts, workflows, and archived changes.
+14 files contain "OpenSplx" or "OpenSplx" references including package.json, documentation, scripts, workflows, and archived changes.
 
 ## Should
 
-- Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_splx_pixel_*.svg`
+- Asset files renamed from `OpenSplx_pixel_*.svg` to `pew_pew_splx_pixel_*.svg`
 - package.json uses `@appboypov/OpenSplx` as name
 - All GitHub URLs point to `appboypov/OpenSplx`
 - All display text uses "OpenSplx"
 - Build and tests pass
-- No "opensplx" matches found via grep (excluding .git)
+- No "OpenSplx" matches found via grep (excluding .git)
 
 ## Constraints
 
@@ -29,14 +29,14 @@ All "OpenSplx" and "opensplx" references in the codebase are updated to use the 
 
 ## Acceptance Criteria
 
-- [ ] `grep -ri "opensplx" . --include="*.md" --include="*.json" --include="*.mjs" --include="*.yml"` returns no matches
+- [ ] `grep -ri "OpenSplx" . --include="*.md" --include="*.json" --include="*.mjs" --include="*.yml"` returns no matches
 - [ ] `pnpm run build` succeeds
 - [ ] `pnpm test` passes
 
 ## Implementation Checklist
 
-- [x] Rename `assets/opensplx_pixel_dark.svg` to `assets/pew_pew_splx_pixel_dark.svg`
-- [x] Rename `assets/opensplx_pixel_light.svg` to `assets/pew_pew_splx_pixel_light.svg`
+- [x] Rename `assets/OpenSplx_pixel_dark.svg` to `assets/pew_pew_splx_pixel_dark.svg`
+- [x] Rename `assets/OpenSplx_pixel_light.svg` to `assets/pew_pew_splx_pixel_light.svg`
 - [x] Update package.json (name, homepage, repository URL)
 - [x] Update README.md (links, badges, install command, asset paths)
 - [x] Update CHANGELOG.md (title, release notes)

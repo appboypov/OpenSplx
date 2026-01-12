@@ -10,7 +10,7 @@ The first version of `@appboypov/OpenSplx` is published to npm and installable b
 
 ## Currently
 
-Only `@appboypov/opensplx` exists on npm. The new package name has no published versions.
+Only `@appboypov/OpenSplx` exists on npm. The new package name has no published versions.
 
 ## Should
 

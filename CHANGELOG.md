@@ -348,9 +348,9 @@
 - **BREAKING**: Rebrand display name from "PLX" to "OpenSplx"
   - User-facing display names updated in CLI help, dashboard, slash commands
   - CLI command stays as `splx`, constants like `PLX_DIR_NAME` unchanged
-- **BREAKING**: Rename package from `@appboypov/opensplx` to `@appboypov/OpenSplx`
+- **BREAKING**: Rename package from `@appboypov/OpenSplx` to `@appboypov/OpenSplx`
   - GitHub repository URLs updated to `appboypov/OpenSplx`
-  - Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_splx_pixel_*.svg`
+  - Asset files renamed from `OpenSplx_pixel_*.svg` to `pew_pew_splx_pixel_*.svg`
 - ASCII banner updated to display "PEW PEW PLX"
 - README rewritten for OpenSplx as standalone project
 - Clarify backward compatibility test descriptions

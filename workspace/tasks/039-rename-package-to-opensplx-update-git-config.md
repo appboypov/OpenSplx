@@ -1,8 +1,8 @@
 ---
-status: to-do
+status: done
 skill-level: junior
 parent-type: change
-parent-id: rename-package-to-opensplx
+parent-id: rename-package-to-OpenSplx
 ---
 
 # Task: Update Git Configuration
@@ -27,16 +27,16 @@ Git repository configuration points to the renamed repository `appboypov/OpenSpl
 
 ## Acceptance Criteria
 
-- [ ] `.git/config` remote.origin.url is `git@github.com:appboypov/OpenSplx.git` or `https://github.com/appboypov/OpenSplx.git`
-- [ ] Other remotes (if any) are preserved
-- [ ] Git remote verification succeeds
+- [x] `.git/config` remote.origin.url is `git@github.com:appboypov/OpenSplx.git` or `https://github.com/appboypov/OpenSplx.git`
+- [x] Other remotes (if any) are preserved
+- [x] Git remote verification succeeds
 
 ## Implementation Checklist
 
-- [ ] 4.1 Read current `.git/config` to understand structure
-- [ ] 4.2 Update `remote "origin"` url to `git@github.com:appboypov/OpenSplx.git` (or https equivalent)
-- [ ] 4.3 Verify remote is accessible: `git remote -v`
-- [ ] 4.4 Test fetch: `git fetch origin` (dry run, don't actually fetch if not needed)
+- [x] 4.1 Read current `.git/config` to understand structure
+- [x] 4.2 Update `remote "origin"` url to `git@github.com:appboypov/OpenSplx.git` (or https equivalent)
+- [x] 4.3 Verify remote is accessible: `git remote -v`
+- [x] 4.4 Test fetch: `git fetch origin` (dry run, don't actually fetch if not needed)
 
 ## Notes
 

@@ -1,8 +1,8 @@
 ---
-status: in-progress
+status: done
 skill-level: medior
 parent-type: change
-parent-id: rename-package-to-opensplx
+parent-id: rename-package-to-OpenSplx
 ---
 
 # Task: Rename All Code References
@@ -35,30 +35,30 @@ All occurrences of "OpenSplx", "splx", and "Splx" in source code, templates, and
 
 ## Acceptance Criteria
 
-- [ ] All source files in `src/` updated
-- [ ] All template files in `src/core/templates/` updated
-- [ ] All documentation files (README.md, ARCHITECTURE.md, AGENTS.md, etc.) updated
-- [ ] Command name utilities (`src/utils/command-name.ts`) updated
-- [ ] All test files updated
-- [ ] No remaining references to "OpenSplx" or "splx" (except in historical context if needed)
-- [ ] Build succeeds after changes
-- [ ] Tests pass after changes
+- [x] All source files in `src/` updated
+- [x] All template files in `src/core/templates/` updated
+- [x] All documentation files (README.md, ARCHITECTURE.md, AGENTS.md, etc.) updated
+- [x] Command name utilities (`src/utils/command-name.ts`) updated
+- [x] All test files updated
+- [x] No remaining references to "Pew Pew Plx" or "plx" (except in historical context if needed)
+- [x] Build succeeds after changes
+- [x] Tests pass after changes
 
 ## Implementation Checklist
 
-- [ ] 3.1 Search for all occurrences of "OpenSplx" and replace with "OpenSplx"
-- [ ] 3.2 Search for all occurrences of "splx" (case-sensitive) and replace with "splx" in command contexts
-- [ ] 3.3 Search for all occurrences of "Splx" and replace with "OpenSplx" or "splx" as appropriate
-- [ ] 3.4 Update `src/utils/command-name.ts` to detect "splx" instead of "splx"
-- [ ] 3.5 Update all template files in `src/core/templates/`
-- [ ] 3.6 Update README.md
-- [ ] 3.7 Update ARCHITECTURE.md
-- [ ] 3.8 Update workspace/AGENTS.md
-- [ ] 3.9 Update all spec files that reference the command
-- [ ] 3.10 Update all test files
-- [ ] 3.11 Update package.json scripts if they reference "splx"
-- [ ] 3.12 Verify build succeeds
-- [ ] 3.13 Verify tests pass
+- [x] 3.1 Search for all occurrences of "Pew Pew Plx" and replace with "OpenSplx"
+- [x] 3.2 Search for all occurrences of "plx" (case-sensitive) and replace with "splx" in command contexts
+- [x] 3.3 Search for all occurrences of "Plx" and replace with "OpenSplx" or "splx" as appropriate
+- [x] 3.4 Update `src/utils/command-name.ts` to detect "splx" instead of "plx"
+- [x] 3.5 Update all template files in `src/core/templates/`
+- [x] 3.6 Update README.md
+- [x] 3.7 Update ARCHITECTURE.md
+- [x] 3.8 Update workspace/AGENTS.md
+- [x] 3.9 Update all spec files that reference the command
+- [x] 3.10 Update all test files
+- [x] 3.11 Update package.json scripts if they reference "plx"
+- [x] 3.12 Verify build succeeds
+- [x] 3.13 Verify tests pass
 
 ## Notes
 

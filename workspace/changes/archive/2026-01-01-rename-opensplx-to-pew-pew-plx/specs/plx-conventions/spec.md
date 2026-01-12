@@ -8,7 +8,7 @@ The project SHALL use consistent naming conventions across all artifacts and reg
 
 - **WHEN** the package is published to npm
 - **THEN** the package name SHALL be `@appboypov/OpenSplx`
-- **AND** the previous package `@appboypov/opensplx` SHALL be deprecated with migration instructions
+- **AND** the previous package `@appboypov/OpenSplx` SHALL be deprecated with migration instructions
 
 #### Scenario: Repository naming on GitHub
 

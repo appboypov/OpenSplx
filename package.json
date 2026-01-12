@@ -1,10 +1,10 @@
 {
-  "name": "@appboypov/opensplx",
+  "name": "@appboypov/OpenSplx",
   "version": "0.18.0",
   "description": "AI-native system for spec-driven development",
   "keywords": [
     "splx",
-    "opensplx",
+    "OpenSplx",
     "specs",
     "cli",
     "ai",

@@ -7,7 +7,7 @@ The package was originally named "OpenSplx" as a temporary fork name. We need to
 ## What Changes
 
 - **BREAKING**: CLI command renamed from `splx` to `splx`
-- **BREAKING**: Package name changed from `@appboypov/OpenSplx` to `@appboypov/opensplx`
+- **BREAKING**: Package name changed from `@appboypov/OpenSplx` to `@appboypov/OpenSplx`
 - **BREAKING**: Repository URL updated from `appboypov/OpenSplx` to `appboypov/OpenSplx`
 - All occurrences of "OpenSplx", "splx", and "Splx" renamed to "OpenSplx" and "splx" throughout:
   - Source code files

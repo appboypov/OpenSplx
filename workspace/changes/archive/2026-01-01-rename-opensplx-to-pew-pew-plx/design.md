@@ -2,7 +2,7 @@
 
 ## Overview
 
-This change completes the rebrand by updating all remaining "OpenSplx" / "opensplx" references to use the new identity:
+This change completes the rebrand by updating all remaining "OpenSplx" / "OpenSplx" references to use the new identity:
 - Package name: `@appboypov/OpenSplx`
 - Repository: `github.com/appboypov/OpenSplx`
 - Display name: "OpenSplx"
@@ -19,14 +19,14 @@ This change completes the rebrand by updating all remaining "OpenSplx" / "opensp
 | `ARCHITECTURE.md` | Title, descriptions, directory structure diagram |
 | `scripts/pack-version-check.mjs` | Log messages, binary path |
 | `.github/workflows/release-prepare.yml` | Repository condition |
-| `assets/opensplx_pixel_*.svg` | Rename files |
+| `assets/OpenSplx_pixel_*.svg` | Rename files |
 | 8 archived change files | GitHub URLs, display names |
 
 ### Asset File Renames
 
 ```
-assets/opensplx_pixel_dark.svg  → assets/pew_pew_splx_pixel_dark.svg
-assets/opensplx_pixel_light.svg → assets/pew_pew_splx_pixel_light.svg
+assets/OpenSplx_pixel_dark.svg  → assets/pew_pew_splx_pixel_dark.svg
+assets/OpenSplx_pixel_light.svg → assets/pew_pew_splx_pixel_light.svg
 ```
 
 Legacy OpenSpec assets can remain for historical reference:
@@ -46,7 +46,7 @@ Legacy OpenSpec assets can remain for historical reference:
 ### Phase 2: npm Migration
 1. Merge and push code changes
 2. Use Playwright to navigate npmjs.com
-3. Deprecate `@appboypov/opensplx` with message: "This package has been renamed to @appboypov/OpenSplx"
+3. Deprecate `@appboypov/OpenSplx` with message: "This package has been renamed to @appboypov/OpenSplx"
 4. Publish first version under new package name
 
 ### Phase 3: GitHub Rename
@@ -68,7 +68,7 @@ Legacy OpenSpec assets can remain for historical reference:
 
 - [ ] `pnpm run build` passes
 - [ ] `pnpm test` passes
-- [ ] `grep -ri "opensplx" .` returns no matches (excluding .git)
+- [ ] `grep -ri "OpenSplx" .` returns no matches (excluding .git)
 - [ ] README badges render correctly after npm publish
 - [ ] Old package shows deprecation warning
 - [ ] GitHub redirects work from old URL

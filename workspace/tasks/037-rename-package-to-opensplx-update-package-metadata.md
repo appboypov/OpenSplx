@@ -2,7 +2,7 @@
 status: done
 skill-level: junior
 parent-type: change
-parent-id: rename-package-to-opensplx
+parent-id: rename-package-to-OpenSplx
 ---
 
 # Task: Update Package Metadata
@@ -20,10 +20,10 @@ Package.json contains updated package name, repository URLs, and all metadata re
 
 ## Should
 
-- Package name is `@appboypov/opensplx`
+- Package name is `@appboypov/OpenSplx`
 - Repository URL is `appboypov/OpenSplx`
 - Author mentions "OpenSplx Contributors"
-- Keywords updated to "splx" and "opensplx"
+- Keywords updated to "splx" and "OpenSplx"
 
 ## Constraints
 
@@ -33,20 +33,20 @@ Package.json contains updated package name, repository URLs, and all metadata re
 
 ## Acceptance Criteria
 
-- [x] `package.json` name field is `@appboypov/opensplx`
+- [x] `package.json` name field is `@appboypov/OpenSplx`
 - [x] `package.json` repository.url is `https://github.com/appboypov/OpenSplx`
 - [x] `package.json` homepage is `https://github.com/appboypov/OpenSplx`
 - [x] `package.json` author field updated to "OpenSplx Contributors"
-- [x] `package.json` keywords updated to include "splx" and "opensplx"
+- [x] `package.json` keywords updated to include "splx" and "OpenSplx"
 - [x] All package metadata validated
 
 ## Implementation Checklist
 
-- [x] 2.1 Update `package.json` name to `@appboypov/opensplx`
+- [x] 2.1 Update `package.json` name to `@appboypov/OpenSplx`
 - [x] 2.2 Update `package.json` repository.url to `https://github.com/appboypov/OpenSplx`
 - [x] 2.3 Update `package.json` homepage to `https://github.com/appboypov/OpenSplx`
 - [x] 2.4 Update `package.json` author to "OpenSplx Contributors"
-- [x] 2.5 Update `package.json` keywords array (replace "splx" with "splx", add "opensplx")
+- [x] 2.5 Update `package.json` keywords array (replace "splx" with "splx", add "OpenSplx")
 - [x] 2.6 Verify all URLs are correct and accessible
 
 ## Notes

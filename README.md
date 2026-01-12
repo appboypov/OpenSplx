@@ -1,8 +1,8 @@
 <p align="center">OpenSpec-driven development for AI coding assistants.</p>
 <p align="center">
   <a href="https://github.com/Fission-AI/OpenSpec"><img alt="Fork of OpenSpec" src="https://img.shields.io/badge/Fork%20of-OpenSpec-blue?style=flat-square" /></a>
-  <a href="https://www.npmjs.com/package/@appboypov/opensplx"><img alt="npm version" src="https://img.shields.io/npm/v/@appboypov/opensplx?style=flat-square" /></a>
-  <a href="https://nodejs.org/"><img alt="node version" src="https://img.shields.io/node/v/@appboypov/opensplx?style=flat-square" /></a>
+  <a href="https://www.npmjs.com/package/@appboypov/OpenSplx"><img alt="npm version" src="https://img.shields.io/npm/v/@appboypov/OpenSplx?style=flat-square" /></a>
+  <a href="https://nodejs.org/"><img alt="node version" src="https://img.shields.io/node/v/@appboypov/OpenSplx?style=flat-square" /></a>
   <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" /></a>
 </p>
 
@@ -19,7 +19,7 @@ OpenSplx aligns humans and AI coding assistants with spec-driven development. Ag
 ## Installation
 
 ```bash
-npm install -g @appboypov/opensplx
+npm install -g @appboypov/OpenSplx
 splx --version
 ```
 

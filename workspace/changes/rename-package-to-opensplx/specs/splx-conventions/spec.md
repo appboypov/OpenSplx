@@ -2,12 +2,12 @@
 
 ### Requirement: Package Naming Convention
 
-The package SHALL be named `@appboypov/opensplx` and the CLI command SHALL be `splx`.
+The package SHALL be named `@appboypov/OpenSplx` and the CLI command SHALL be `splx`.
 
 #### Scenario: Package installation
 
 - **WHEN** installing the package
-- **THEN** use `npm install -g @appboypov/opensplx`
+- **THEN** use `npm install -g @appboypov/OpenSplx`
 - **AND** the command is available as `splx`
 
 #### Scenario: Repository references

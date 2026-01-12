@@ -2,7 +2,7 @@
 status: to-do
 skill-level: medior
 parent-type: change
-parent-id: rename-package-to-opensplx
+parent-id: rename-package-to-OpenSplx
 ---
 
 # Task: Verify and Test Rename
@@ -38,7 +38,7 @@ All changes are verified, tests pass, and the renamed package works correctly.
 - [ ] `pnpm build` succeeds
 - [ ] `splx --version` works
 - [ ] `splx init` works (test in temp directory)
-- [ ] `splx validate change --id rename-package-to-opensplx --strict` passes
+- [ ] `splx validate change --id rename-package-to-OpenSplx --strict` passes
 - [ ] No remaining "OpenSplx" or "splx" references in code (except historical)
 - [ ] Package.json is valid
 - [ ] Git config is correct
@@ -50,7 +50,7 @@ All changes are verified, tests pass, and the renamed package works correctly.
 - [ ] 7.2 Run `pnpm test` and verify all tests pass
 - [ ] 7.3 Test CLI: `splx --version` (after local install or build)
 - [ ] 7.4 Test CLI: `splx init` in a temporary directory
-- [ ] 7.5 Run `splx validate change --id rename-package-to-opensplx --strict` (using old command if still available, or update validation command)
+- [ ] 7.5 Run `splx validate change --id rename-package-to-OpenSplx --strict` (using old command if still available, or update validation command)
 - [ ] 7.6 Search for any remaining "OpenSplx" references (should be none except historical)
 - [ ] 7.7 Search for any remaining "splx" command references (should be none except in comments explaining the rename)
 - [ ] 7.8 Verify package.json is valid JSON

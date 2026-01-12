@@ -1,68 +1,45 @@
 ---
-status: to-do
+status: in-progress
 skill-level: senior
 parent-type: change
-parent-id: rename-package-to-opensplx
+parent-id: rename-package-to-OpenSplx
 ---
 
 # Task: Update NPM Package Page with Playwright
 
 ## End Goal
 
-The npm package page for `@appboypov/opensplx` is updated via Playwright automation as part of the release pipeline. The user is logged into all accounts.
+The npm package page for `@appboypov/OpenSplx` is updated manually. The user will handle this directly on npmjs.com.
 
 ## Currently
 
-- No automation exists for updating npm package pages
-- Package page updates are manual
+- Package page needs to be updated after publishing the new package
+- Package description and README may need updates
 
 ## Should
 
-- Playwright script automates npm package page updates
-- Script is integrated into release pipeline
-- Script handles authentication (user is already logged in)
-- Script updates package description, README, and other editable fields
+- User manually updates npm package page at https://www.npmjs.com/package/@appboypov/OpenSplx/edit
+- Package description reflects OpenSplx branding
+- README is synced from package
 
 ## Constraints
 
-- [ ] Must use Playwright for browser automation
-- [ ] Must handle npm login state (user is already logged in)
-- [ ] Must be idempotent (safe to run multiple times)
-- [ ] Must handle npm's UI structure
-- [ ] Must be part of release workflow
+- [ ] User will manually update via npmjs.com web interface
+- [ ] Must be done after package is published
 
 ## Acceptance Criteria
 
-- [ ] Playwright script exists for updating npm package page
-- [ ] Script navigates to npm package page
-- [ ] Script updates package description if needed
-- [ ] Script updates README content if needed
-- [ ] Script handles authentication (uses existing session)
-- [ ] Script is integrated into release pipeline (or documented for manual run)
-- [ ] Script is tested and works reliably
+- [ ] User manually updates npm package page at https://www.npmjs.com/package/@appboypov/OpenSplx/edit
+- [ ] Package description updated to reflect OpenSplx branding
+- [ ] README is synced/updated on npm package page
 
 ## Implementation Checklist
 
-- [ ] 6.1 Install Playwright if not already installed: `pnpm add -D playwright @playwright/test`
-- [ ] 6.2 Create script file: `scripts/update-npm-package-page.mjs` (or similar)
-- [ ] 6.3 Implement Playwright script to:
-  - [ ] Navigate to npm package page for `@appboypov/opensplx`
-  - [ ] Check if user is logged in (handle if not)
-  - [ ] Navigate to package edit/settings page
-  - [ ] Update package description
-  - [ ] Update README if needed
-  - [ ] Save changes
-- [ ] 6.4 Add error handling and logging
-- [ ] 6.5 Test script manually (user is logged in)
-- [ ] 6.6 Integrate into release pipeline or document manual execution
-- [ ] 6.7 Document script usage in README or release docs
+- [ ] 6.1 Navigate to https://www.npmjs.com/package/@appboypov/OpenSplx/edit (after package is published)
+- [ ] 6.2 Update package description if needed
+- [ ] 6.3 Verify README is synced from package
+- [ ] 6.4 Save changes
 
 ## Notes
 
-The user mentioned they are logged into all accounts, so the script should be able to use the existing browser session. Consider:
-- Using Playwright's persistent context to reuse login state
-- Or using Playwright's `--headed` mode for manual authentication if needed
-- npm package pages have specific URLs: `https://www.npmjs.com/package/@appboypov/opensplx`
-- Package edit page: `https://www.npmjs.com/package/@appboypov/opensplx/edit`
-
-The script should be idempotent and handle cases where the package page is already updated.
+This is a manual task to be done after publishing the new `@appboypov/OpenSplx` package to npm. The user will update the package page directly via the npmjs.com web interface.

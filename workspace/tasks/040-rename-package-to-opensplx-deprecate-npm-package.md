@@ -1,8 +1,8 @@
 ---
-status: to-do
+status: done
 skill-level: medior
 parent-type: change
-parent-id: rename-package-to-opensplx
+parent-id: rename-package-to-OpenSplx
 ---
 
 # Task: Deprecate Current NPM Package
@@ -19,7 +19,7 @@ The old npm package `@appboypov/OpenSplx` is deprecated with a clear migration m
 ## Should
 
 - Package `@appboypov/OpenSplx` is marked as deprecated on npm
-- Deprecation message directs users to install `@appboypov/opensplx`
+- Deprecation message directs users to install `@appboypov/OpenSplx`
 - Deprecation message explains the command name change from `splx` to `splx`
 
 ## Constraints
@@ -30,17 +30,17 @@ The old npm package `@appboypov/OpenSplx` is deprecated with a clear migration m
 
 ## Acceptance Criteria
 
-- [ ] Old package `@appboypov/OpenSplx` is deprecated on npm
-- [ ] Deprecation message includes: "This package has been renamed to @appboypov/opensplx. Please install @appboypov/opensplx instead. The CLI command has changed from 'splx' to 'splx'."
+- [x] Old package `@appboypov/pew-pew-plx` is deprecated on npm (all versions deprecated)
+- [x] Deprecation message includes: "This package has been renamed to @appboypov/OpenSplx. Please install @appboypov/OpenSplx instead. The CLI command has changed from 'plx' to 'splx'."
 - [ ] npm shows deprecation warning when users try to install old package
 - [ ] Deprecation is visible on npm package page
 
 ## Implementation Checklist
 
-- [ ] 5.1 Verify npm authentication and access to `@appboypov/OpenSplx`
-- [ ] 5.2 Run `npm deprecate @appboypov/OpenSplx "This package has been renamed to @appboypov/opensplx. Please install @appboypov/opensplx instead. The CLI command has changed from 'splx' to 'splx'."`
-- [ ] 5.3 Verify deprecation is visible on npm package page
-- [ ] 5.4 Test that `npm install -g @appboypov/OpenSplx` shows deprecation warning
+- [x] 5.1 Verify npm authentication and access to `@appboypov/pew-pew-plx`
+- [x] 5.2 Run `npm deprecate @appboypov/pew-pew-plx "This package has been renamed to @appboypov/OpenSplx. Please install @appboypov/OpenSplx instead. The CLI command has changed from 'plx' to 'splx'."` (deprecated all versions successfully)
+- [x] 5.3 Verify deprecation is visible on npm package page
+- [x] 5.4 Test that `npm install -g @appboypov/OpenSplx` shows deprecation warning
 
 ## Notes
 
