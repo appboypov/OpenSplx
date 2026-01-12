@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-Generated AGENTS.md files use "Pew Pew Plx" as the product name.
+Generated AGENTS.md files use "OpenSplx" as the product name.
 
 ## Currently
 
@@ -17,7 +17,7 @@ Templates generate:
 
 ## Should
 
-Templates generate "Pew Pew Plx" in titles and descriptions while keeping `plx` for CLI command references.
+Templates generate "OpenSplx" in titles and descriptions while keeping `plx` for CLI command references.
 
 ## Constraints
 
@@ -27,9 +27,9 @@ Templates generate "Pew Pew Plx" in titles and descriptions while keeping `plx` 
 
 ## Acceptance Criteria
 
-- [ ] Generated AGENTS.md title is "# Pew Pew Plx Instructions"
-- [ ] Template descriptions reference "Pew Pew Plx"
-- [ ] Command table descriptions use "Pew Pew Plx" for product, `plx` for commands
+- [ ] Generated AGENTS.md title is "# OpenSplx Instructions"
+- [ ] Template descriptions reference "OpenSplx"
+- [ ] Command table descriptions use "OpenSplx" for product, `plx` for commands
 
 ## Implementation Checklist
 

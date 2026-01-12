@@ -1,7 +1,7 @@
 ---
 name: /plx-plan-implementation
 id: plx-plan-implementation
-category: Pew Pew Plx
+category: OpenSplx
 description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
 ---
 <!-- PLX:START -->

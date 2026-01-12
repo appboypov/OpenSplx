@@ -9,7 +9,7 @@ parent-id: unify-slash-command-systems
 ARCHITECTURE.md reflects the unified slash command system.
 
 ## Currently
-- ARCHITECTURE.md mentions `PlxSlashCommandRegistry` as separate
+- ARCHITECTURE.md mentions `SplxSlashCommandRegistry` as separate
 - References "PLX Slash Commands" as fork-specific feature
 - Mentions `plx-<tool>.ts` files
 
@@ -23,7 +23,7 @@ ARCHITECTURE.md reflects the unified slash command system.
 - [ ] Remove references to deleted files
 
 ## Acceptance Criteria
-- [ ] ARCHITECTURE.md has no `PlxSlashCommandRegistry` references
+- [ ] ARCHITECTURE.md has no `SplxSlashCommandRegistry` references
 - [ ] Registry Pattern section describes single registry
 - [ ] Fork-specific features updated
 

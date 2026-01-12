@@ -81,7 +81,7 @@ The system SHALL create a REVIEW.md template at the project root during initiali
 
 ### Requirement: PLX Command Registry Updates
 
-The system SHALL register new PLX commands in the PlxSlashCommandRegistry.
+The system SHALL register new PLX commands in the SplxSlashCommandRegistry.
 
 #### Scenario: Registering new commands
 

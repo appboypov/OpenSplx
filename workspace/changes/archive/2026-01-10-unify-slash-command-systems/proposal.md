@@ -4,14 +4,14 @@
 
 The codebase has diverged from OpenSpec and maintains two separate slash command systems:
 - Regular system (`SlashCommandId`): 3 commands (`plan-proposal`, `implement`, `archive`)
-- PLX system (`PlxSlashCommandId`): 10 commands (`get-task`, `orchestrate`, etc.)
+- PLX system (`SplxSlashCommandId`): 10 commands (`get-task`, `orchestrate`, etc.)
 
 This creates 52 duplicate configurator files, inconsistent behavior, and implementation bugs (e.g., `plan-proposal` was incorrectly placed in the regular system instead of PLX). Since PLX is now the primary command, there's no need for separation.
 
 ## What Changes
 
-- **BREAKING**: Merge `PlxSlashCommandId` into `SlashCommandId` (single type with all 13 commands)
-- **BREAKING**: Merge `PlxSlashCommandRegistry` into `SlashCommandRegistry` (single registry)
+- **BREAKING**: Merge `SplxSlashCommandId` into `SlashCommandId` (single type with all 13 commands)
+- **BREAKING**: Merge `SplxSlashCommandRegistry` into `SlashCommandRegistry` (single registry)
 - Delete all `plx-*.ts` configurator files (~27 files)
 - Update `init.ts` and `update.ts` to use single registry
 - Simplify architecture documentation

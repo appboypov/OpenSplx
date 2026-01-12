@@ -1,7 +1,7 @@
 ---
 name: Refine Testing
 description: Create or update TESTING.md.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, testing, documentation]
 ---
 <!-- PLX:START -->

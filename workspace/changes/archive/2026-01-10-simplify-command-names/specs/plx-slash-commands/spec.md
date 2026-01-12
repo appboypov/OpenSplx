@@ -8,7 +8,7 @@ Each slash command file MUST include tool-appropriate frontmatter with name, des
 - **THEN** include YAML frontmatter with:
   - `name`: Title case of filename (e.g., `Refine Architecture` for `refine-architecture.md`)
   - `description`: Brief command purpose
-  - `category`: `Pew Pew Plx`
+  - `category`: `OpenSplx`
   - `tags`: Array including `plx` and relevant keywords
 
 #### Scenario: Command name derivation

@@ -180,7 +180,7 @@ The completion implementation SHALL follow clean architecture principles with Ty
 - **AND** implement methods:
   - `getChangeIds(): Promise<string[]>` - Discovers active change IDs
   - `getSpecIds(): Promise<string[]>` - Discovers spec IDs
-  - `isPlxProject(): boolean` - Checks if current directory is PLX-enabled
+  - `isSplxProject(): boolean` - Checks if current directory is PLX-enabled
 - **AND** implement caching with 2-second TTL using class properties
 
 #### Scenario: Command registry

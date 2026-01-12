@@ -1,7 +1,7 @@
 ---
 name: Prepare Release
 description: Prepare release by updating changelog, readme, and architecture documentation.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, release, documentation]
 ---
 <!-- PLX:START -->

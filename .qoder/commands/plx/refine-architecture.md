@@ -1,7 +1,7 @@
 ---
 name: Refine Architecture
 description: Create or update ARCHITECTURE.md with spec-ready component inventories.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, architecture, documentation]
 ---
 <!-- PLX:START -->

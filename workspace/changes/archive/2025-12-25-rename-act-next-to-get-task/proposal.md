@@ -7,7 +7,7 @@ The command `plx act next` uses ambiguous naming. "Act" implies performing an ac
 ## What Changes
 
 - **BREAKING**: Command `plx act next` renamed to `plx get task`
-- **BREAKING**: Type `PlxSlashCommandId` value `'act-next'` renamed to `'get-task'`
+- **BREAKING**: Type `SplxSlashCommandId` value `'act-next'` renamed to `'get-task'`
 - Enhanced `--did-complete-previous` to automatically mark all `## Implementation Checklist` checkboxes as `[x]`
 - New output shows completed task name and checkbox items when `--did-complete-previous` is used
 - All configurator files updated with new command ID

@@ -35,7 +35,7 @@ The `plx/proposal` command is renamed to `plx/plan-proposal` across all files, i
 
 ## Implementation Checklist
 - [x] 2.1 Rename `.claude/commands/plx/proposal.md` to `plan-proposal.md`
-- [x] 2.2 Update frontmatter name to "Pew Pew Plx: Plan Proposal"
+- [x] 2.2 Update frontmatter name to "OpenSplx: Plan Proposal"
 - [x] 2.3 Update `SlashCommandId` type in `src/core/templates/slash-command-templates.ts`
 - [x] 2.4 Update `slashCommandBodies` record key from `proposal` to `plan-proposal`
 - [x] 2.5 Update `src/core/configurators/slash/claude.ts` FILE_PATHS and FRONTMATTER

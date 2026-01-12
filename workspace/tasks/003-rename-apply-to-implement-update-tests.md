@@ -14,7 +14,7 @@ All tests pass with the renamed `implement` command.
 `test/core/init.test.ts` contains 50+ references to `apply` in:
 - File path assertions (e.g., `.claude/commands/plx/apply.md`)
 - Variable names (e.g., `applyPath`, `applyContent`, `wsApply`)
-- Content assertions (e.g., `'name: Pew Pew Plx: Apply'`, `'id: plx-apply'`)
+- Content assertions (e.g., `'name: OpenSplx: Apply'`, `'id: plx-apply'`)
 
 `test/utils/file-system.test.ts` has 2 references in path examples.
 

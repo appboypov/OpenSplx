@@ -8,7 +8,7 @@ The system SHALL provide a `plx/parse-feedback` slash command that instructs to 
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/parse-feedback.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Parse Feedback", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Parse Feedback", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: scanning tracked files, generating one task per marker
 - **AND** include steps for: running `plx parse feedback <name> --parent-id <id> --parent-type <type>`, reviewing generated tasks, addressing feedback, archiving when complete
@@ -22,7 +22,7 @@ The system SHALL provide a `plx/review` slash command that guides AI agents thro
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/review.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Review", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Review", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: asking what to review, using CLI to retrieve criteria, outputting language-aware feedback markers
 - **AND** include steps for: asking review target, searching if ambiguous, using `plx review change --id <id>` or `plx review spec --id <id>` or `plx review task --id <id>` to retrieve criteria, reviewing implementation, inserting feedback markers, summarizing findings
@@ -44,7 +44,7 @@ The `plx/get-task` slash command SHALL instruct agents to use the standardized C
 
 ### Requirement: PLX Command Registry Updates
 
-The system SHALL register new PLX commands in the PlxSlashCommandRegistry with standardized CLI patterns.
+The system SHALL register new PLX commands in the SplxSlashCommandRegistry with standardized CLI patterns.
 
 #### Scenario: Registering commands with standardized patterns
 
@@ -63,7 +63,7 @@ The system SHALL provide a `plx/archive` slash command that uses standardized en
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/archive.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Archive", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Archive", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include steps for: running `plx archive change --id <id>` or `plx archive review --id <id>`
 - **AND** NOT reference deprecated positional argument syntax
@@ -76,7 +76,7 @@ The system SHALL provide a `plx/create` slash command for entity creation using 
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/create.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Create", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Create", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include examples for:
   - `plx create task "Title"` for standalone task

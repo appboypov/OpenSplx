@@ -1,12 +1,12 @@
-# Change: Rebrand Display Name from "PLX" to "Pew Pew Plx"
+# Change: Rebrand Display Name from "PLX" to "OpenSplx"
 
 ## Why
 
-The recent openspec-to-plx rebrand established "PLX" as the technical identifier. Now we need a friendlier, more distinctive display name for user-facing text. "Pew Pew Plx" provides brand personality while keeping "plx" as the concise CLI command.
+The recent openspec-to-plx rebrand established "PLX" as the technical identifier. Now we need a friendlier, more distinctive display name for user-facing text. "OpenSplx" provides brand personality while keeping "plx" as the concise CLI command.
 
 ## What Changes
 
-- Update user-facing display names from "PLX" to "Pew Pew Plx"
+- Update user-facing display names from "PLX" to "OpenSplx"
 - Update CLI command descriptions
 - Update dashboard title
 - Update agent instruction templates

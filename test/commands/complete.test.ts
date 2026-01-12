@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('complete task command', () => {
   const projectRoot = process.cwd();
@@ -13,7 +13,7 @@ describe('complete task command', () => {
   const plxBin = path.join(projectRoot, 'bin', 'plx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
     await fs.mkdir(changesDir, { recursive: true });
     await fs.mkdir(tasksDir, { recursive: true });
   });
@@ -185,7 +185,7 @@ describe('complete change command', () => {
   beforeEach(async () => {
     // Clean up any leftover files from previous test runs
     await fs.rm(testDir, { recursive: true, force: true });
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
     await fs.mkdir(changesDir, { recursive: true });
     await fs.mkdir(tasksDir, { recursive: true });
   });
@@ -380,7 +380,7 @@ describe('complete review command', () => {
   const plxBin = path.join(projectRoot, 'bin', 'plx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
     await fs.mkdir(reviewsDir, { recursive: true });
     await fs.mkdir(tasksDir, { recursive: true });
   });
@@ -536,7 +536,7 @@ describe('complete spec command', () => {
   const plxBin = path.join(projectRoot, 'bin', 'plx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
     await fs.mkdir(specsDir, { recursive: true });
     await fs.mkdir(tasksDir, { recursive: true });
   });

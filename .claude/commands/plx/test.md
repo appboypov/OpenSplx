@@ -1,7 +1,7 @@
 ---
 name: Test
 description: Run tests based on scope (change, task, or spec) using TESTING.md configuration.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, testing, workflow]
 ---
 <!-- PLX:START -->

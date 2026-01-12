@@ -10,7 +10,7 @@ The system SHALL provide a `plx/orchestrate` slash command that guides AI agents
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/orchestrate.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Orchestrate", description "Orchestrate sub-agents to complete work collaboratively", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Orchestrate", description "Orchestrate sub-agents to complete work collaboratively", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 
 #### Scenario: Orchestrate command guardrails

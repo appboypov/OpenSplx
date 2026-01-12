@@ -1,7 +1,7 @@
 ---
 name: Complete Task
 description: Mark a task as done.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, task, workflow]
 ---
 <!-- PLX:START -->

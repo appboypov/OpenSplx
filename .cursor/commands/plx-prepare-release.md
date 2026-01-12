@@ -1,7 +1,7 @@
 ---
 name: /plx-prepare-release
 id: plx-prepare-release
-category: Pew Pew Plx
+category: OpenSplx
 description: Prepare release by updating changelog, readme, and architecture documentation.
 ---
 <!-- PLX:START -->

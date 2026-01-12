@@ -62,7 +62,7 @@ const toolsOptionDescription = `Configure AI tools non-interactively. Use "all",
 
 program
   .command('init [path]')
-  .description('Initialize Pew Pew Plx in your project')
+  .description('Initialize OpenSplx in your project')
   .option('--tools <tools>', toolsOptionDescription)
   .action(async (targetPath = '.', options?: { tools?: string }) => {
     try {
@@ -99,7 +99,7 @@ program
 
 program
   .command('update [path]')
-  .description('Update Pew Pew Plx instruction files')
+  .description('Update OpenSplx instruction files')
   .action(async (targetPath = '.') => {
     try {
       const resolvedPath = path.resolve(targetPath);
@@ -164,7 +164,7 @@ program
 // Change command with subcommands
 const changeCmd = program
   .command('change')
-  .description('Manage Pew Pew Plx change proposals');
+  .description('Manage OpenSplx change proposals');
 
 // Deprecation notice for noun-based commands
 changeCmd.hook('preAction', () => {
@@ -417,7 +417,7 @@ program
 // Completion command with subcommands
 const completionCmd = program
   .command('completion')
-  .description('Manage shell completions for Pew Pew Plx CLI');
+  .description('Manage shell completions for OpenSplx CLI');
 
 completionCmd
   .command('generate [shell]')

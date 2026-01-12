@@ -1,7 +1,7 @@
 ---
 name: Parse Feedback
 description: Parse feedback markers and generate review tasks.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, review, workflow]
 ---
 <!-- PLX:START -->

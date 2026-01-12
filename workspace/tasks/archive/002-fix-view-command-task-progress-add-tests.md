@@ -47,4 +47,4 @@ Tests verify:
 
 ## Notes
 
-Look at `test/test-utils.ts` for `createValidPlxWorkspace` helper if available.
+Look at `test/test-utils.ts` for `createValidSplxWorkspace` helper if available.

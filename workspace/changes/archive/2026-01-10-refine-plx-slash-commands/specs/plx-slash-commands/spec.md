@@ -24,7 +24,7 @@ The system SHALL provide a `plx/refine-release` slash command that creates or up
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/refine-release.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Refine Release", description "Create or update RELEASE.md", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Refine Release", description "Create or update RELEASE.md", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: referencing @RELEASE.md template structure, preserving existing configuration
 - **AND** include steps for: checking @RELEASE.md existence, creating if not exists, updating if exists
@@ -65,7 +65,7 @@ Slash commands that operate on capital-lettered markdown files SHALL use `@` not
 
 ### Requirement: PLX Command Registry Updates
 
-The system SHALL register PLX commands in the PlxSlashCommandRegistry.
+The system SHALL register PLX commands in the SplxSlashCommandRegistry.
 
 #### Scenario: Registering commands
 

@@ -1,7 +1,7 @@
 ---
 name: /plx-copy-next-task
 id: plx-copy-next-task
-category: Pew Pew Plx
+category: OpenSplx
 description: Copy next task or feedback block to clipboard for external agent handoff.
 ---
 <!-- PLX:START -->

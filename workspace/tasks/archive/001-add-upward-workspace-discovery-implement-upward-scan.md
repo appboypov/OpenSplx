@@ -41,7 +41,7 @@ PLX commands work when executed from any subdirectory within a project by scanni
 
 ## Implementation Checklist
 
-- [x] 1.1 Add `isValidPlxWorkspace(dir: string)` function to check for `workspace/AGENTS.md` with PLX signature
+- [x] 1.1 Add `isValidSplxWorkspace(dir: string)` function to check for `workspace/AGENTS.md` with PLX signature
 - [x] 1.2 Add `findProjectRoot(startDir: string)` function that scans upward
 - [x] 1.3 Implement upward traversal logic with workspace priority and `.git` fallback ceiling
 - [x] 1.4 Modify `getFilteredWorkspaces()` to call `findProjectRoot()` first

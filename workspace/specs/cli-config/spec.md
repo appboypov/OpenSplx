@@ -1,7 +1,7 @@
 # cli-config Specification
 
 ## Purpose
-Provide a user-friendly CLI interface for viewing and modifying global Pew Pew Plx configuration settings without manually editing JSON files.
+Provide a user-friendly CLI interface for viewing and modifying global OpenSplx configuration settings without manually editing JSON files.
 ## Requirements
 ### Requirement: Command Structure
 

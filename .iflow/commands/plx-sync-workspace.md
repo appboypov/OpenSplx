@@ -1,7 +1,7 @@
 ---
 name: /plx-sync-workspace
 id: plx-sync-workspace
-category: Pew Pew Plx
+category: OpenSplx
 description: Scan workspace state and suggest maintenance actions.
 ---
 <!-- PLX:START -->

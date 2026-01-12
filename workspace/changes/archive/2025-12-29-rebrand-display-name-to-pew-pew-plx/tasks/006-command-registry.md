@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-Shell completion registry uses "Pew Pew Plx" in command descriptions.
+Shell completion registry uses "OpenSplx" in command descriptions.
 
 ## Currently
 
@@ -16,7 +16,7 @@ Command registry contains descriptions like:
 
 ## Should
 
-Use "Pew Pew Plx" in all registry descriptions.
+Use "OpenSplx" in all registry descriptions.
 
 ## Constraints
 
@@ -26,7 +26,7 @@ Use "Pew Pew Plx" in all registry descriptions.
 
 ## Acceptance Criteria
 
-- [ ] All `description` fields in command registry use "Pew Pew Plx"
+- [ ] All `description` fields in command registry use "OpenSplx"
 - [ ] Shell completions reflect updated descriptions
 
 ## Implementation Checklist

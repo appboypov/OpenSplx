@@ -1,7 +1,7 @@
 ---
 name: Copy Next Task
 description: Copy next task or feedback block to clipboard for external agent handoff.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, orchestrate, workflow]
 ---
 <!-- PLX:START -->

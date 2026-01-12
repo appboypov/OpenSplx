@@ -8,7 +8,7 @@ The system SHALL provide a `plx/prepare-release` slash command that orchestrates
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/prepare-release.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Prepare Release", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Prepare Release", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: reading @RELEASE.md, executing steps sequentially, allowing user confirmation/skip per step, preserving existing content
 - **AND** include steps for: reading RELEASE.md, executing changelog update, executing readme update, executing architecture update, presenting summary
@@ -66,7 +66,7 @@ The system SHALL create a RELEASE.md template at the project root during initial
 
 ### Requirement: PLX Command Registry Updates for Prepare Release
 
-The system SHALL register the prepare-release command in the PlxSlashCommandRegistry.
+The system SHALL register the prepare-release command in the SplxSlashCommandRegistry.
 
 #### Scenario: Registering prepare-release command
 

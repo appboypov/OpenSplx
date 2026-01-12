@@ -1,6 +1,6 @@
 # Dev Container Setup
 
-This directory contains the VS Code dev container configuration for Pew Pew Plx development.
+This directory contains the VS Code dev container configuration for OpenSplx development.
 
 ## What's Included
 

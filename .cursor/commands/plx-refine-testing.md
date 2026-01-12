@@ -1,7 +1,7 @@
 ---
 name: /plx-refine-testing
 id: plx-refine-testing
-category: Pew Pew Plx
+category: OpenSplx
 description: Create or update TESTING.md.
 ---
 <!-- PLX:START -->

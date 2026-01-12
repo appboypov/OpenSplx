@@ -1,7 +1,7 @@
 ---
 name: /plx-prepare-compact
 id: plx-prepare-compact
-category: Pew Pew Plx
+category: OpenSplx
 description: Preserve session progress in PROGRESS.md for context continuity.
 ---
 <!-- PLX:START -->

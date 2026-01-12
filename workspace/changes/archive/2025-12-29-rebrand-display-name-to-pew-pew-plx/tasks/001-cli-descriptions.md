@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-All CLI command `.description()` calls display "Pew Pew Plx" instead of "PLX".
+All CLI command `.description()` calls display "OpenSplx" instead of "PLX".
 
 ## Currently
 
@@ -17,7 +17,7 @@ CLI commands use "PLX" in their descriptions:
 
 ## Should
 
-Display "Pew Pew Plx" in user-facing descriptions while keeping `plx` in command usage examples.
+Display "OpenSplx" in user-facing descriptions while keeping `plx` in command usage examples.
 
 ## Constraints
 
@@ -27,9 +27,9 @@ Display "Pew Pew Plx" in user-facing descriptions while keeping `plx` in command
 
 ## Acceptance Criteria
 
-- [ ] All command descriptions in `src/cli/index.ts` use "Pew Pew Plx"
-- [ ] Command descriptions in `src/commands/*.ts` use "Pew Pew Plx"
-- [ ] Error messages referencing the CLI use "Pew Pew Plx" for the product, `plx` for commands
+- [ ] All command descriptions in `src/cli/index.ts` use "OpenSplx"
+- [ ] Command descriptions in `src/commands/*.ts` use "OpenSplx"
+- [ ] Error messages referencing the CLI use "OpenSplx" for the product, `plx` for commands
 
 ## Implementation Checklist
 
@@ -44,5 +44,5 @@ Display "Pew Pew Plx" in user-facing descriptions while keeping `plx` in command
 ## Notes
 
 Pattern to apply:
-- "PLX" as a product name → "Pew Pew Plx"
+- "PLX" as a product name → "OpenSplx"
 - "`plx`" as a command → stays as "`plx`"

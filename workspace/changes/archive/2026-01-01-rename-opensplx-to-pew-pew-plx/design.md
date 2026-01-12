@@ -1,11 +1,11 @@
-# Design: Rename OpenSplx to Pew Pew Plx
+# Design: Rename OpenSplx to OpenSplx
 
 ## Overview
 
 This change completes the rebrand by updating all remaining "OpenSplx" / "opensplx" references to use the new identity:
 - Package name: `@appboypov/pew-pew-plx`
 - Repository: `github.com/appboypov/pew-pew-plx`
-- Display name: "Pew Pew Plx"
+- Display name: "OpenSplx"
 
 ## Scope Analysis
 
@@ -61,7 +61,7 @@ Legacy OpenSpec assets can remain for historical reference:
 |---------|--------|-------|
 | npm package | kebab-case | `@appboypov/pew-pew-plx` |
 | GitHub repo | kebab-case | `pew-pew-plx` |
-| Display name | Title Case | "Pew Pew Plx" |
+| Display name | Title Case | "OpenSplx" |
 | Asset files | snake_case | `pew_pew_plx_pixel_*.svg` |
 
 ## Verification Checklist

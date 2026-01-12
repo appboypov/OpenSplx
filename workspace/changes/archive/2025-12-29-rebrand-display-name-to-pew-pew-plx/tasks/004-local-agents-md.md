@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-This project's agent instruction files use "Pew Pew Plx" branding.
+This project's agent instruction files use "OpenSplx" branding.
 
 ## Currently
 
@@ -15,7 +15,7 @@ This project's agent instruction files use "Pew Pew Plx" branding.
 
 ## Should
 
-Use "Pew Pew Plx" in titles and descriptions.
+Use "OpenSplx" in titles and descriptions.
 
 ## Constraints
 
@@ -24,8 +24,8 @@ Use "Pew Pew Plx" in titles and descriptions.
 
 ## Acceptance Criteria
 
-- [ ] `workspace/AGENTS.md` title is "# Pew Pew Plx Instructions"
-- [ ] `AGENTS.md` (root) title is "# Pew Pew Plx Instructions"
+- [ ] `workspace/AGENTS.md` title is "# OpenSplx Instructions"
+- [ ] `AGENTS.md` (root) title is "# OpenSplx Instructions"
 - [ ] All product name references updated
 
 ## Implementation Checklist

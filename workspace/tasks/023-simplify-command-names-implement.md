@@ -8,16 +8,16 @@ parent-id: simplify-command-names
 # Task: Update frontmatter names in slash command configurators
 
 ## End Goal
-All slash command frontmatter uses simple title case names derived from filenames, without the `Pew Pew Plx: ` prefix.
+All slash command frontmatter uses simple title case names derived from filenames, without the `OpenSplx: ` prefix.
 
 ## Currently
-Commands have names like `Pew Pew Plx: Refine Architecture` which is redundant since the category already groups them.
+Commands have names like `OpenSplx: Refine Architecture` which is redundant since the category already groups them.
 
 ## Should
 Commands have names like `Refine Architecture` - clean title case of the filename.
 
 ## Constraints
-- [ ] Category must remain `Pew Pew Plx` (this groups commands in UI)
+- [ ] Category must remain `OpenSplx` (this groups commands in UI)
 - [ ] Tags must still include `plx`
 - [ ] Descriptions remain unchanged
 

@@ -1,6 +1,6 @@
-# Pew Pew Plx Architecture
+# OpenSplx Architecture
 
-Pew Pew Plx is a fork of [OpenSpec](https://github.com/Fission-AI/OpenSpec) that provides an AI-native system for spec-driven development. This document describes the project architecture for feature planning and development.
+OpenSplx is a fork of [OpenSpec](https://github.com/Fission-AI/OpenSpec) that provides an AI-native system for spec-driven development. This document describes the project architecture for feature planning and development.
 
 ## Technology Stack
 
@@ -473,7 +473,7 @@ test/
 ├── utils/            # Utility function tests
 ├── helpers/          # Test utilities
 ├── fixtures/         # Test data
-└── test-utils.ts     # Shared test utilities (createValidPlxWorkspace, etc.)
+└── test-utils.ts     # Shared test utilities (createValidSplxWorkspace, etc.)
 ```
 
 Run tests:
@@ -496,7 +496,7 @@ Build output goes to `dist/` with:
 
 ## Task Management System
 
-Pew Pew Plx includes a task management system for tracking implementation progress across all entities.
+OpenSplx includes a task management system for tracking implementation progress across all entities.
 
 ### Task File Structure
 
@@ -692,7 +692,7 @@ Task status utilities in `src/utils/task-status.ts`:
 
 ## Multi-Workspace Support
 
-Pew Pew Plx supports monorepo and multi-project setups through automatic workspace discovery.
+OpenSplx supports monorepo and multi-project setups through automatic workspace discovery.
 
 ### Workspace Discovery
 
@@ -710,7 +710,7 @@ When running any command, PLX uses a two-phase discovery process:
 - Skip directories: `node_modules`, `.git`, `dist`, `build`, `.next`, `__pycache__`, `venv`, `coverage`, `.cache`
 
 Key functions in `src/utils/workspace-discovery.ts`:
-- `isValidPlxWorkspace(dir)` - Check if directory contains valid PLX workspace
+- `isValidSplxWorkspace(dir)` - Check if directory contains valid PLX workspace
 - `findProjectRoot(startDir)` - Scan upward to find project root
 - `discoverWorkspaces(root)` - Scan downward for multi-workspace support
 
@@ -771,7 +771,7 @@ Single-workspace projects work identically to before:
 
 ### Review System
 
-Pew Pew Plx provides a structured review workflow for validating implementations against specifications, changes, and tasks.
+OpenSplx provides a structured review workflow for validating implementations against specifications, changes, and tasks.
 
 #### Review Command
 
@@ -892,9 +892,9 @@ status: to-do
 - Tasks can be retrieved via `plx get task` and managed with complete/undo commands
 - Reviews can be archived: `plx archive review --id <review-name>`
 
-## Fork-Specific Features (Pew Pew Plx)
+## Fork-Specific Features (OpenSplx)
 
-Pew Pew Plx provides:
+OpenSplx provides:
 
 1. **PLX Command**: The CLI uses `plx` as the command name
 2. **Dynamic Command Name**: CLI detects invocation name and uses it in output messages, help text, and shell completions via `src/utils/command-name.ts`

@@ -1,7 +1,7 @@
 ---
 name: Refine Review
 description: Create or update REVIEW.md.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, review, documentation]
 ---
 <!-- PLX:START -->

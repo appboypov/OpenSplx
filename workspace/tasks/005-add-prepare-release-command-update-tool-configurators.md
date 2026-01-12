@@ -52,7 +52,7 @@ Add prepare-release entries to each configurator following their specific format
 
 - Must follow each tool's existing format exactly
 - Description: "Prepare release by updating changelog, readme, and architecture documentation."
-- Category: Pew Pew Plx
+- Category: OpenSplx
 - Tags: [plx, release, documentation]
 
 ## Acceptance Criteria

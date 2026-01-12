@@ -10,7 +10,7 @@ The system SHALL provide a separate PLX slash command infrastructure that coexis
 #### Scenario: PLX command registry exists independently
 
 - **WHEN** the PLX slash command system is initialized
-- **THEN** provide a `PlxSlashCommandRegistry` that is separate from `SlashCommandRegistry`
+- **THEN** provide a `SplxSlashCommandRegistry` that is separate from `SlashCommandRegistry`
 - **AND** support the same tool configurator pattern as PLX commands
 - **AND** use the PLX marker pattern (`<!-- PLX:START -->` / `<!-- PLX:END -->`) for managed content
 
@@ -72,7 +72,7 @@ The system SHALL provide a `plx/compact` slash command that instructs AI agents 
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/compact.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Compact", description "Preserve session progress to PROGRESS.md for context handoff", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Compact", description "Preserve session progress to PROGRESS.md for context handoff", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for saving files, creating PROGRESS.md in project root, including sufficient detail for continuation, updating .gitignore, and handling existing PROGRESS.md files
 
@@ -95,7 +95,7 @@ The system SHALL provide a `plx/review` slash command that guides AI agents thro
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/review.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Review", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Review", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: asking what to review, using CLI to retrieve criteria, outputting language-aware feedback markers
 - **AND** include steps for: asking review target, searching if ambiguous, retrieving constraints/acceptance criteria/requirements, reviewing implementation, inserting feedback markers, summarizing findings
@@ -108,7 +108,7 @@ The system SHALL provide a `plx/refine-architecture` slash command that produces
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/refine-architecture.md`
-- **AND** include frontmatter with name "Refine Architecture", description "Create or update ARCHITECTURE.md with spec-ready component inventories.", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "Refine Architecture", description "Create or update ARCHITECTURE.md with spec-ready component inventories.", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails requiring spec-ready reference, complete component inventories, user content preservation, and completeness validation
 - **AND** include context retrieval section with codebase-retrieval tool instructions
@@ -140,7 +140,7 @@ The system SHALL provide a `plx/refine-review` slash command that creates or upd
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/refine-review.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Refine Review", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Refine Review", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using REVIEW.md template structure, preserving existing guidelines
 - **AND** include steps for: checking REVIEW.md existence, creating if not exists, updating if exists
@@ -153,7 +153,7 @@ The system SHALL provide a `plx/parse-feedback` slash command that instructs to 
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/parse-feedback.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Parse Feedback", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Parse Feedback", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: scanning tracked files, generating one task per marker
 - **AND** include steps for: running `plx parse feedback <name>`, reviewing generated tasks, addressing feedback, archiving when complete
@@ -185,7 +185,7 @@ The system SHALL create a REVIEW.md template at the project root during initiali
 
 ### Requirement: PLX Command Registry Updates
 
-The system SHALL register new PLX commands in the PlxSlashCommandRegistry.
+The system SHALL register new PLX commands in the SplxSlashCommandRegistry.
 
 #### Scenario: Registering new commands
 
@@ -202,7 +202,7 @@ The system SHALL provide a `plx/orchestrate` slash command that guides AI agents
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/orchestrate.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Orchestrate", description "Orchestrate sub-agents to complete work collaboratively", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Orchestrate", description "Orchestrate sub-agents to complete work collaboratively", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 
 #### Scenario: Orchestrate command guardrails
@@ -246,7 +246,7 @@ The system SHALL provide a `plx/plan-request` slash command that clarifies user 
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/plan-request.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Plan Request", description "Clarify user intent through iterative questions to create request.md", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Plan Request", description "Clarify user intent through iterative questions to create request.md", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 
 #### Scenario: Plan-request uses Activity XML template pattern
@@ -278,7 +278,7 @@ The system SHALL provide a `plx/plan-proposal` slash command that scaffolds chan
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/plan-proposal.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Plan Proposal", description "Scaffold a new Pew Pew Plx change and validate strictly. Consumes request.md when present.", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Plan Proposal", description "Scaffold a new OpenSplx change and validate strictly. Consumes request.md when present.", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 
 #### Scenario: Plan-proposal detects and consumes request.md
@@ -303,7 +303,7 @@ The system SHALL provide a `plx/sync-workspace` slash command that guides AI age
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/sync-workspace.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Sync Workspace", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Sync Workspace", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: sub-agent usage based on complexity, action selection via question tool or numbered list
 - **AND** include steps for: parsing optional target argument, scanning workspace state, assessing items, suggesting actions, presenting selections, executing selected actions, reporting summary
@@ -330,7 +330,7 @@ The system SHALL provide a `plx/complete-task` slash command that marks a task a
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/complete-task.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Complete Task", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Complete Task", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include step to run `plx complete task --id <task-id>` using the provided argument
 
@@ -342,7 +342,7 @@ The system SHALL provide a `plx/undo-task` slash command that reverts a task to 
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/undo-task.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Undo Task", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Undo Task", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include step to run `plx undo task --id <task-id>` using the provided argument
 
@@ -410,7 +410,7 @@ The system SHALL provide a `plx/refine-release` slash command that creates or up
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/refine-release.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Refine Release", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Refine Release", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using RELEASE.md template structure, preserving existing configuration
 - **AND** include steps for: checking RELEASE.md existence, creating if not exists with defaults, updating if exists
@@ -513,7 +513,7 @@ The system SHALL provide a `plx/refine-testing` slash command that creates or up
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/refine-testing.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Refine Testing", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Refine Testing", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using TESTING.md template structure, preserving existing configuration
 - **AND** include steps for: checking TESTING.md existence, creating if not exists, updating if exists
@@ -526,7 +526,7 @@ The system SHALL provide a `plx/test` slash command that runs testing workflow f
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/test.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Test", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Test", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: reading TESTING.md configuration, running tests for specified scope
 - **AND** include steps for: parsing arguments (--change-id, --task-id, --spec-id), reading TESTING.md, running tests, reporting results

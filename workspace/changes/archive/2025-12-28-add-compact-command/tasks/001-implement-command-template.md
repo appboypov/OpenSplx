@@ -14,7 +14,7 @@ Only three PLX slash commands exist: `init-architecture`, `update-architecture`,
 
 ## Should
 
-- `PlxSlashCommandId` type includes `'compact'`
+- `SplxSlashCommandId` type includes `'compact'`
 - `plxSlashCommandBodies` object includes the compact command body
 - `ALL_PLX_COMMANDS` array includes `'compact'`
 - All 20 configurators have FILE_PATHS and FRONTMATTER entries for compact
@@ -34,7 +34,7 @@ Only three PLX slash commands exist: `init-architecture`, `update-architecture`,
 
 ## Implementation Checklist
 
-- [x] 1.1 Add `'compact'` to `PlxSlashCommandId` type in `src/core/templates/plx-slash-command-templates.ts`
+- [x] 1.1 Add `'compact'` to `SplxSlashCommandId` type in `src/core/templates/plx-slash-command-templates.ts`
 - [x] 1.2 Add `compactGuardrails` constant with 5 guardrail bullets
 - [x] 1.3 Add `compactSteps` constant with 4 numbered steps
 - [x] 1.4 Add `'compact'` entry to `plxSlashCommandBodies` object

@@ -66,7 +66,7 @@ More content after.`;
     // Check console output
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated AI tool files: CLAUDE.md');
@@ -100,7 +100,7 @@ More notes here.`;
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated AI tool files: QWEN.md');
@@ -115,9 +115,9 @@ More notes here.`;
     );
     await fs.mkdir(path.dirname(proposalPath), { recursive: true });
     const initialContent = `---
-name: Pew Pew Plx: Proposal
+name: OpenSplx: Proposal
 description: Old description
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, change]
 ---
 <!-- PLX:START -->
@@ -139,7 +139,7 @@ Old slash content
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -176,7 +176,7 @@ Old body
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -272,7 +272,7 @@ More rules after.`;
     // Check console output
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated AI tool files: CLINE.md');
@@ -297,7 +297,7 @@ More rules after.`;
       '.clinerules/workflows/plx-plan-proposal.md'
     );
     await fs.mkdir(path.dirname(proposalPath), { recursive: true });
-    const initialContent = `# Pew Pew Plx: Proposal
+    const initialContent = `# OpenSplx: Proposal
 
 Scaffold a new PLX change and validate strictly.
 
@@ -311,7 +311,7 @@ Old slash content
     await updateCommand.execute(testDir);
 
     const updated = await fs.readFile(proposalPath, 'utf-8');
-    expect(updated).toContain('# Pew Pew Plx: Proposal');
+    expect(updated).toContain('# OpenSplx: Proposal');
     expect(updated).toContain('**Guardrails**');
     expect(updated).toContain(
       'Validate with `plx validate change --id <id> --strict`'
@@ -320,7 +320,7 @@ Old slash content
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -353,7 +353,7 @@ Old body
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -389,7 +389,7 @@ Old body
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -895,9 +895,9 @@ Old body
     );
     await fs.mkdir(path.dirname(codeBuddyPath), { recursive: true });
     const initialContent = `---
-name: Pew Pew Plx: Proposal
+name: OpenSplx: Proposal
 description: Old description
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, change]
 ---
 <!-- PLX:START -->
@@ -919,7 +919,7 @@ Old slash content
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -939,9 +939,9 @@ Old slash content
     await fs.writeFile(
       codeBuddyImplement,
       `---
-name: Pew Pew Plx: Implement
+name: OpenSplx: Implement
 description: Old description
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, implement]
 ---
 <!-- PLX:START -->
@@ -972,9 +972,9 @@ Old body
     );
     await fs.mkdir(path.dirname(crushPath), { recursive: true });
     const initialContent = `---
-name: Pew Pew Plx: Proposal
+name: OpenSplx: Proposal
 description: Old description
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, change]
 ---
 <!-- PLX:START -->
@@ -996,7 +996,7 @@ Old slash content
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -1016,9 +1016,9 @@ Old slash content
     await fs.writeFile(
       crushImplement,
       `---
-name: Pew Pew Plx: Implement
+name: OpenSplx: Implement
 description: Old description
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, implement]
 ---
 <!-- PLX:START -->
@@ -1073,7 +1073,7 @@ Old body
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -1089,9 +1089,9 @@ Old body
     );
     await fs.mkdir(path.dirname(qoderPath), { recursive: true });
     const initialContent = `---
-name: Pew Pew Plx: Proposal
+name: OpenSplx: Proposal
 description: Old description
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, change]
 ---
 <!-- PLX:START -->
@@ -1113,7 +1113,7 @@ Old slash content
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -1128,7 +1128,7 @@ Old slash content
       '.roo/commands/plx-plan-proposal.md'
     );
     await fs.mkdir(path.dirname(rooPath), { recursive: true });
-    const initialContent = `# Pew Pew Plx: Proposal
+    const initialContent = `# OpenSplx: Proposal
 
 Old description
 
@@ -1143,7 +1143,7 @@ Old body
 
     const updated = await fs.readFile(rooPath, 'utf-8');
     // For RooCode, the header is Markdown, preserve it and update only managed block
-    expect(updated).toContain('# Pew Pew Plx: Proposal');
+    expect(updated).toContain('# OpenSplx: Proposal');
     expect(updated).toContain('**Guardrails**');
     expect(updated).toContain(
       'Validate with `plx validate change --id <id> --strict`'
@@ -1152,7 +1152,7 @@ Old body
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated slash commands:');
@@ -1171,7 +1171,7 @@ Old body
     await fs.mkdir(path.dirname(rooImplement), { recursive: true });
     await fs.writeFile(
       rooImplement,
-      `# Pew Pew Plx: Implement
+      `# OpenSplx: Implement
 
 <!-- PLX:START -->
 Old body
@@ -1240,9 +1240,9 @@ Old
     await fs.writeFile(
       qoderImplement,
       `---
-name: Pew Pew Plx: Implement
+name: OpenSplx: Implement
 description: Old description
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, implement]
 ---
 <!-- PLX:START -->
@@ -1297,7 +1297,7 @@ More instructions after.`;
     // Check console output
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated AI tool files: COSTRICT.md');
@@ -1363,7 +1363,7 @@ More instructions after.`;
     expect(errorSpy).toHaveBeenCalled();
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Failed to update: COSTRICT.md');
@@ -1427,7 +1427,7 @@ More instructions after.`;
     // Should only update PLX instructions
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     consoleSpy.mockRestore();
@@ -1451,7 +1451,7 @@ More instructions after.`;
     // Should report updating with new format
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Updated AI tool files: CLAUDE.md');
@@ -1467,9 +1467,9 @@ More instructions after.`;
     await fs.writeFile(
       proposalPath,
       `---
-name: Pew Pew Plx: Proposal
+name: OpenSplx: Proposal
 description: Existing file
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, change]
 ---
 <!-- PLX:START -->
@@ -1520,7 +1520,7 @@ Old content
     expect(fileExists).toBe(true);
 
     const content = await fs.readFile(agentsPath, 'utf-8');
-    expect(content).toContain('# Pew Pew Plx Instructions');
+    expect(content).toContain('# OpenSplx Instructions');
   });
 
   it('should create root AGENTS.md with managed block when missing', async () => {
@@ -1555,7 +1555,7 @@ Old content
 
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md, AGENTS.md)'
+      'Updated OpenSplx instructions (workspace/AGENTS.md, AGENTS.md)'
     );
     expect(logMessage).not.toContain('AGENTS.md (created)');
 
@@ -1611,7 +1611,7 @@ Old content
     expect(errorSpy).toHaveBeenCalled();
     const [logMessage] = consoleSpy.mock.calls[0];
     expect(logMessage).toContain(
-      'Updated Pew Pew Plx instructions (workspace/AGENTS.md'
+      'Updated OpenSplx instructions (workspace/AGENTS.md'
     );
     expect(logMessage).toContain('AGENTS.md (created)');
     expect(logMessage).toContain('Failed to update: CLAUDE.md');

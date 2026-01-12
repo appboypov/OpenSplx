@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('change show (interactive behavior)', () => {
   const projectRoot = process.cwd();
@@ -12,7 +12,7 @@ describe('change show (interactive behavior)', () => {
 
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
     await fs.mkdir(changesDir, { recursive: true });
     const content = `# Change: Demo\n\n## Why\n\n## What Changes\n- x`;
     await fs.mkdir(path.join(changesDir, 'demo'), { recursive: true });

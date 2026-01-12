@@ -18,7 +18,7 @@ import { TemplateManager } from './templates/index.js';
 import { ToolRegistry } from './configurators/registry.js';
 import { SlashCommandRegistry } from './configurators/slash/registry.js';
 import {
-  PlxConfig,
+  SplxConfig,
   AI_TOOLS,
   PLX_DIR_NAME,
   AIToolOption,
@@ -295,11 +295,11 @@ const toolSelectionWizard = createPrompt<string[], ToolWizardConfig>(
 
     if (step === 'intro') {
       const introHeadline = config.extendMode
-        ? 'Extend your Pew Pew Plx tooling'
-        : 'Configure your Pew Pew Plx tooling';
+        ? 'Extend your OpenSplx tooling'
+        : 'Configure your OpenSplx tooling';
       const introBody = config.extendMode
         ? 'We detected an existing setup. We will help you refresh or add integrations.'
-        : "Let's get your AI assistants connected so they understand Pew Pew Plx.";
+        : "Let's get your AI assistants connected so they understand OpenSplx.";
 
       lines.push(PALETTE.white(introHeadline));
       lines.push(PALETTE.midGray(introBody));
@@ -438,18 +438,18 @@ export class InitCommand {
     // Step 1: Create directory structure
     if (!extendMode) {
       const structureSpinner = this.startSpinner(
-        'Creating Pew Pew Plx structure...'
+        'Creating OpenSplx structure...'
       );
       await this.createDirectoryStructure(workspacePath);
       await this.generateFiles(projectPath, workspacePath, config);
       structureSpinner.stopAndPersist({
         symbol: PALETTE.white('▌'),
-        text: PALETTE.white('Pew Pew Plx structure created'),
+        text: PALETTE.white('OpenSplx structure created'),
       });
     } else {
       ora({ stream: process.stdout }).info(
         PALETTE.midGray(
-          'Pew Pew Plx already initialized. Checking for missing files...'
+          'OpenSplx already initialized. Checking for missing files...'
         )
       );
       await this.createDirectoryStructure(workspacePath);
@@ -496,7 +496,7 @@ export class InitCommand {
   private async getConfiguration(
     existingTools: Record<string, boolean>,
     extendMode: boolean
-  ): Promise<PlxConfig> {
+  ): Promise<SplxConfig> {
     const selectedTools = await this.getSelectedTools(existingTools, extendMode);
     return { aiTools: selectedTools };
   }
@@ -742,7 +742,7 @@ export class InitCommand {
   private async generateFiles(
     projectPath: string,
     workspacePath: string,
-    config: PlxConfig
+    config: SplxConfig
   ): Promise<void> {
     await this.writeTemplateFiles(projectPath, workspacePath, config, false);
   }
@@ -750,7 +750,7 @@ export class InitCommand {
   private async ensureTemplateFiles(
     projectPath: string,
     workspacePath: string,
-    config: PlxConfig
+    config: SplxConfig
   ): Promise<void> {
     await this.writeTemplateFiles(projectPath, workspacePath, config, true);
   }
@@ -758,7 +758,7 @@ export class InitCommand {
   private async writeTemplateFiles(
     projectPath: string,
     workspacePath: string,
-    config: PlxConfig,
+    config: SplxConfig,
     skipExisting: boolean
   ): Promise<void> {
     const templates = TemplateManager.getTemplates();
@@ -856,8 +856,8 @@ export class InitCommand {
   ): void {
     console.log(); // Empty line for spacing
     const successHeadline = extendMode
-      ? 'Pew Pew Plx tool configuration updated!'
-      : 'Pew Pew Plx initialized successfully!';
+      ? 'OpenSplx tool configuration updated!'
+      : 'OpenSplx initialized successfully!';
     ora().succeed(PALETTE.white(successHeadline));
 
     console.log();
@@ -947,12 +947,12 @@ export class InitCommand {
       )
     );
     console.log(
-      PALETTE.lightGray('    Pew Pew Plx change proposal for this feature"\n')
+      PALETTE.lightGray('    OpenSplx change proposal for this feature"\n')
     );
-    console.log(PALETTE.white('3. Learn the Pew Pew Plx workflow:'));
+    console.log(PALETTE.white('3. Learn the OpenSplx workflow:'));
     console.log(
       PALETTE.lightGray(
-        '   "Please explain the Pew Pew Plx workflow from workspace/AGENTS.md'
+        '   "Please explain the OpenSplx workflow from workspace/AGENTS.md'
       )
     );
     console.log(
@@ -1014,7 +1014,7 @@ export class InitCommand {
       console.log(rowStyles[index](row.replace(/\s+$/u, '')));
     });
     console.log();
-    console.log(PALETTE.white('Welcome to Pew Pew Plx!'));
+    console.log(PALETTE.white('Welcome to OpenSplx!'));
     console.log();
   }
 

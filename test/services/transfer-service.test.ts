@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 import { TransferService } from '../../src/services/transfer-service.js';
 
 describe('TransferService', () => {
@@ -27,7 +27,7 @@ describe('TransferService', () => {
 
   describe('setSourceWorkspace', () => {
     it('sets a valid source workspace', async () => {
-      await createValidPlxWorkspace(sourceDir);
+      await createValidSplxWorkspace(sourceDir);
       const service = await TransferService.create();
 
       await service.setSourceWorkspace(sourceDir);
@@ -47,7 +47,7 @@ describe('TransferService', () => {
 
   describe('setTargetWorkspace', () => {
     it('sets target workspace when it exists', async () => {
-      await createValidPlxWorkspace(targetDir);
+      await createValidSplxWorkspace(targetDir);
       const service = await TransferService.create();
 
       const result = await service.setTargetWorkspace(targetDir);
@@ -72,8 +72,8 @@ describe('TransferService', () => {
     let service: TransferService;
 
     beforeEach(async () => {
-      await createValidPlxWorkspace(sourceDir);
-      await createValidPlxWorkspace(targetDir);
+      await createValidSplxWorkspace(sourceDir);
+      await createValidSplxWorkspace(targetDir);
       service = await TransferService.create();
       await service.setSourceWorkspace(sourceDir);
       await service.setTargetWorkspace(targetDir);
@@ -292,8 +292,8 @@ describe('TransferService', () => {
     let service: TransferService;
 
     beforeEach(async () => {
-      await createValidPlxWorkspace(sourceDir);
-      await createValidPlxWorkspace(targetDir);
+      await createValidSplxWorkspace(sourceDir);
+      await createValidSplxWorkspace(targetDir);
       service = await TransferService.create();
       await service.setSourceWorkspace(sourceDir);
       await service.setTargetWorkspace(targetDir);
@@ -338,8 +338,8 @@ describe('TransferService', () => {
     let service: TransferService;
 
     beforeEach(async () => {
-      await createValidPlxWorkspace(sourceDir);
-      await createValidPlxWorkspace(targetDir);
+      await createValidSplxWorkspace(sourceDir);
+      await createValidSplxWorkspace(targetDir);
       service = await TransferService.create();
       await service.setSourceWorkspace(sourceDir);
       await service.setTargetWorkspace(targetDir);
@@ -409,7 +409,7 @@ describe('TransferService', () => {
     let service: TransferService;
 
     beforeEach(async () => {
-      await createValidPlxWorkspace(sourceDir);
+      await createValidSplxWorkspace(sourceDir);
       service = await TransferService.create();
       await service.setSourceWorkspace(sourceDir);
     });
@@ -465,7 +465,7 @@ describe('TransferService', () => {
     let service: TransferService;
 
     beforeEach(async () => {
-      await createValidPlxWorkspace(sourceDir);
+      await createValidSplxWorkspace(sourceDir);
       service = await TransferService.create();
       await service.setSourceWorkspace(sourceDir);
     });
@@ -510,8 +510,8 @@ describe('TransferService', () => {
     let service: TransferService;
 
     beforeEach(async () => {
-      await createValidPlxWorkspace(sourceDir);
-      await createValidPlxWorkspace(targetDir);
+      await createValidSplxWorkspace(sourceDir);
+      await createValidSplxWorkspace(targetDir);
       service = await TransferService.create();
       await service.setSourceWorkspace(sourceDir);
       await service.setTargetWorkspace(targetDir);
@@ -666,7 +666,7 @@ parent-id: old-id
     let service: TransferService;
 
     beforeEach(async () => {
-      await createValidPlxWorkspace(sourceDir);
+      await createValidSplxWorkspace(sourceDir);
       service = await TransferService.create();
       await service.setSourceWorkspace(sourceDir);
     });
@@ -681,7 +681,7 @@ parent-id: old-id
     let service: TransferService;
 
     beforeEach(async () => {
-      await createValidPlxWorkspace(sourceDir);
+      await createValidSplxWorkspace(sourceDir);
       await fs.mkdir(targetDir, { recursive: true });
       service = await TransferService.create();
       await service.setSourceWorkspace(sourceDir);

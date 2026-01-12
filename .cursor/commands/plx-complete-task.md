@@ -1,7 +1,7 @@
 ---
 name: /plx-complete-task
 id: plx-complete-task
-category: Pew Pew Plx
+category: OpenSplx
 description: Mark a task as done.
 ---
 <!-- PLX:START -->

@@ -19,7 +19,7 @@ The project SHALL use consistent naming conventions across all artifacts and reg
 #### Scenario: Display name usage
 
 - **WHEN** displaying the project name in documentation or UI
-- **THEN** the display name SHALL be "Pew Pew Plx"
+- **THEN** the display name SHALL be "OpenSplx"
 - **AND** asset files SHALL use snake_case prefix `pew_pew_plx_`
 
 #### Scenario: CLI command naming

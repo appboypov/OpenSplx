@@ -4,7 +4,7 @@ import { ParentType, PLX_DIR_NAME, TASKS_DIR_NAME, AI_TOOLS, PLX_MARKERS } from 
 import {
   DiscoveredWorkspace,
   discoverWorkspaces,
-  isValidPlxWorkspace,
+  isValidSplxWorkspace,
 } from '../utils/workspace-discovery.js';
 import {
   discoverTasks,
@@ -107,7 +107,7 @@ export class TransferService {
    */
   async setTargetWorkspace(targetPath: string): Promise<{ requiresInit: boolean }> {
     const resolvedPath = path.resolve(targetPath);
-    const isValid = await isValidPlxWorkspace(resolvedPath);
+    const isValid = await isValidSplxWorkspace(resolvedPath);
 
     if (isValid) {
       const workspaces = await discoverWorkspaces(resolvedPath);
@@ -160,7 +160,7 @@ export class TransferService {
       throw new Error('Entity ID cannot be empty');
     }
 
-    const requiresInit = !(await isValidPlxWorkspace(this.targetProjectRoot));
+    const requiresInit = !(await isValidSplxWorkspace(this.targetProjectRoot));
     const resolvedTargetName = targetName || entityId;
 
     const plan: TransferPlan = {
@@ -532,7 +532,7 @@ export class TransferService {
   private async resolveWorkspace(workspacePath: string): Promise<SourceWorkspaceInfo | null> {
     const resolvedPath = path.resolve(workspacePath);
 
-    if (await isValidPlxWorkspace(resolvedPath)) {
+    if (await isValidSplxWorkspace(resolvedPath)) {
       const workspaces = await discoverWorkspaces(resolvedPath);
       const workspace = workspaces.find(w => w.isRoot);
       if (workspace) {

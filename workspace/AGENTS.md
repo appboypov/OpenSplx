@@ -1,6 +1,6 @@
-# Pew Pew Plx Instructions
+# OpenSplx Instructions
 
-Instructions for AI coding assistants using Pew Pew Plx for spec-driven development.
+Instructions for AI coding assistants using OpenSplx for spec-driven development.
 
 ## TL;DR Quick Checklist
 
@@ -146,7 +146,7 @@ plx validate all                # Validate everything
 plx archive change --id <change-id> [--yes|-y]   # Archive after deployment (add --yes for non-interactive runs)
 
 # Project management
-plx init [path]           # Initialize Pew Pew Plx
+plx init [path]           # Initialize OpenSplx
 plx update [path]         # Update instruction files
 
 # Bulk validation mode

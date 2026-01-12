@@ -50,4 +50,4 @@ Tests exist for `plx paste request` in `test/commands/paste.test.ts`. New subcom
 
 ## Notes
 
-Follow existing test patterns. Use `createValidPlxWorkspace` helper if available, or create minimal workspace structure for tests.
+Follow existing test patterns. Use `createValidSplxWorkspace` helper if available, or create minimal workspace structure for tests.

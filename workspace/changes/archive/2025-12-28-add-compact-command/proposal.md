@@ -13,7 +13,7 @@ When an AI agent's context window runs out during a chat session, all progress, 
 
 ## What Changes
 
-- Add `'compact'` to `PlxSlashCommandId` type union
+- Add `'compact'` to `SplxSlashCommandId` type union
 - Add compact command body with guardrails and steps to `plxSlashCommandBodies`
 - Add `'compact'` to `ALL_PLX_COMMANDS` array
 - Update all 20 tool configurators with FILE_PATHS and FRONTMATTER entries for compact

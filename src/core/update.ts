@@ -56,7 +56,7 @@ export class UpdateCommand {
 
     // 1. Check workspace directory exists (after migration which may have created it)
     if (!await FileSystemUtils.directoryExists(workspacePath)) {
-      throw new Error(`No Pew Pew Plx workspace directory found. Run 'plx init' first.`);
+      throw new Error(`No OpenSplx workspace directory found. Run 'plx init' first.`);
     }
 
     // 2. Update AGENTS.md (full replacement)
@@ -173,7 +173,7 @@ export class UpdateCommand {
     }
 
     summaryParts.push(
-      `Updated Pew Pew Plx instructions (${instructionFiles.join(', ')})`
+      `Updated OpenSplx instructions (${instructionFiles.join(', ')})`
     );
 
     const aiToolFiles = updatedFiles.filter((file) => file !== 'AGENTS.md');

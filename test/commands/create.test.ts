@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('create command', () => {
   const projectRoot = process.cwd();
@@ -10,7 +10,7 @@ describe('create command', () => {
   const plxBin = path.join(projectRoot, 'bin', 'plx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {

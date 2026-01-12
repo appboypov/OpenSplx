@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-Slash command display names and categories show "Pew Pew Plx".
+Slash command display names and categories show "OpenSplx".
 
 ## Currently
 
@@ -17,7 +17,7 @@ Claude and Cursor slash commands use:
 
 ## Should
 
-Display "Pew Pew Plx" in slash command names and categories.
+Display "OpenSplx" in slash command names and categories.
 
 ## Constraints
 
@@ -27,8 +27,8 @@ Display "Pew Pew Plx" in slash command names and categories.
 
 ## Acceptance Criteria
 
-- [ ] Claude slash commands named "Pew Pew Plx: Init Architecture", etc.
-- [ ] Cursor commands use category "Pew Pew Plx"
+- [ ] Claude slash commands named "OpenSplx: Init Architecture", etc.
+- [ ] Cursor commands use category "OpenSplx"
 - [ ] All configurator-generated descriptions updated
 
 ## Implementation Checklist

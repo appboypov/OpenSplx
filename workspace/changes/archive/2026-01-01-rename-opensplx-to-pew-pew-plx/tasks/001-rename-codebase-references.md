@@ -17,7 +17,7 @@ All "OpenSplx" and "opensplx" references in the codebase are updated to use the 
 - Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_plx_pixel_*.svg`
 - package.json uses `@appboypov/pew-pew-plx` as name
 - All GitHub URLs point to `appboypov/pew-pew-plx`
-- All display text uses "Pew Pew Plx"
+- All display text uses "OpenSplx"
 - Build and tests pass
 - No "opensplx" matches found via grep (excluding .git)
 

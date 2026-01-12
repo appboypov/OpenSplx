@@ -39,4 +39,4 @@ All tests pass with the unified slash command system.
 - [x] 6.6 Run `npm test` and fix any failures
 
 ## Notes
-Search for `PlxSlashCommand` and `plx-` to find all references.
+Search for `SplxSlashCommand` and `plx-` to find all references.

@@ -1,7 +1,7 @@
 ---
 name: /plx-test
 id: plx-test
-category: Pew Pew Plx
+category: OpenSplx
 description: Run tests based on scope (change, task, or spec) using TESTING.md configuration.
 ---
 <!-- PLX:START -->

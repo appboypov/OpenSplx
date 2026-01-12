@@ -19,7 +19,7 @@ Update the PLX slash command template system to generate `act-next` command for 
 
 ## Acceptance Criteria
 
-- [x] `act-next` added to `PlxSlashCommandId` type
+- [x] `act-next` added to `SplxSlashCommandId` type
 - [x] Body content added to `plxSlashCommandBodies`
 - [x] All plx-*.ts configurators updated with FILE_PATHS and FRONTMATTER
 - [x] `plx update` generates the command file
@@ -27,7 +27,7 @@ Update the PLX slash command template system to generate `act-next` command for 
 ## Implementation Checklist
 
 - [x] 6.1 Update `src/core/templates/plx-slash-command-templates.ts`:
-  - Add `'act-next'` to `PlxSlashCommandId` type
+  - Add `'act-next'` to `SplxSlashCommandId` type
   - Add body content to `plxSlashCommandBodies`
 - [x] 6.2 Update `src/core/configurators/slash/plx-claude.ts` with FILE_PATHS and FRONTMATTER
 - [x] 6.3 Update `src/core/configurators/slash/plx-cline.ts`

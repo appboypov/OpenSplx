@@ -1,21 +1,22 @@
 {
-  "name": "@appboypov/pew-pew-plx",
+  "name": "@appboypov/opensplx",
   "version": "0.18.0",
   "description": "AI-native system for spec-driven development",
   "keywords": [
-    "plx",
+    "splx",
+    "opensplx",
     "specs",
     "cli",
     "ai",
     "development"
   ],
-  "homepage": "https://github.com/appboypov/pew-pew-plx",
+  "homepage": "https://github.com/appboypov/OpenSplx",
   "repository": {
     "type": "git",
-    "url": "https://github.com/appboypov/pew-pew-plx"
+    "url": "https://github.com/appboypov/OpenSplx"
   },
   "license": "MIT",
-  "author": "Pew Pew Plx Contributors",
+  "author": "OpenSplx Contributors",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -27,7 +28,7 @@
     }
   },
   "bin": {
-    "plx": "./bin/plx.js"
+    "splx": "./bin/splx.js"
   },
   "files": [
     "dist",
@@ -41,7 +42,7 @@
     "lint": "eslint src/",
     "build": "node build.js",
     "dev": "tsc --watch",
-    "dev:cli": "pnpm build && node bin/plx.js",
+    "dev:cli": "pnpm build && node bin/splx.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",

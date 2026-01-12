@@ -1,7 +1,7 @@
 ---
 name: Undo Task
 description: Revert a task to to-do.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, task, workflow]
 ---
 <!-- PLX:START -->

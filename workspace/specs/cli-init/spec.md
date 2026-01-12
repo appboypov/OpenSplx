@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The `plx init` command SHALL create a complete workspace directory structure in any project, enabling immediate adoption of Pew Pew Plx conventions with support for multiple AI coding assistants.
+The `plx init` command SHALL create a complete workspace directory structure in any project, enabling immediate adoption of OpenSplx conventions with support for multiple AI coding assistants.
 ## Requirements
 ### Requirement: Progress Indicators
 
@@ -13,15 +13,15 @@ The command SHALL display progress indicators during initialization to provide c
 - **WHEN** executing initialization steps
 - **THEN** validate environment silently in background (no output unless error)
 - **AND** display progress with ora spinners:
-  - Show spinner: "⠋ Creating Pew Pew Plx structure..."
-  - Then success: "✔ Pew Pew Plx structure created"
+  - Show spinner: "⠋ Creating OpenSplx structure..."
+  - Then success: "✔ OpenSplx structure created"
   - Show spinner: "⠋ Configuring AI tools..."
   - Then success: "✔ AI tools configured"
 
 ### Requirement: Directory Creation
 The command SHALL create the complete workspace directory structure with all required directories and files.
 
-#### Scenario: Creating Pew Pew Plx structure
+#### Scenario: Creating OpenSplx structure
 - **WHEN** `plx init` is executed
 - **THEN** create the following directory structure:
 ```
@@ -36,12 +36,12 @@ workspace/
 The command SHALL generate required template files with appropriate content for immediate use.
 
 #### Scenario: Generating template files
-- **WHEN** initializing Pew Pew Plx
-- **THEN** generate `workspace/AGENTS.md` containing complete Pew Pew Plx instructions for AI assistants
+- **WHEN** initializing OpenSplx
+- **THEN** generate `workspace/AGENTS.md` containing complete OpenSplx instructions for AI assistants
 - **AND** generate `ARCHITECTURE.md` at the project root with template content for users to populate
 
 ### Requirement: AI Tool Configuration
-The command SHALL configure AI coding assistants with Pew Pew Plx instructions using a grouped selection experience so teams can enable native integrations while always provisioning guidance for other assistants.
+The command SHALL configure AI coding assistants with OpenSplx instructions using a grouped selection experience so teams can enable native integrations while always provisioning guidance for other assistants.
 
 #### Scenario: Prompting for AI tool selection
 - **WHEN** run interactively
@@ -55,7 +55,7 @@ The command SHALL configure AI coding assistants with Pew Pew Plx instructions u
 
 ### Requirement: AI Tool Configuration Details
 
-The command SHALL properly configure selected AI tools with Pew Pew Plx-specific instructions using a marker system.
+The command SHALL properly configure selected AI tools with OpenSplx-specific instructions using a marker system.
 
 #### Scenario: Configuring Claude Code
 
@@ -87,9 +87,9 @@ The command SHALL properly configure selected AI tools with Pew Pew Plx-specific
 - **THEN** create new file with stub instructions wrapped in markers so the full workflow stays in `workspace/AGENTS.md`:
 ```markdown
 <!-- PLX:START -->
-# Pew Pew Plx Instructions
+# OpenSplx Instructions
 
-This project uses Pew Pew Plx to manage AI assistant workflows.
+This project uses OpenSplx to manage AI assistant workflows.
 
 - Full guidance lives in '@/workspace/AGENTS.md'.
 - Keep this managed block so 'plx update' can refresh the instructions.
@@ -111,7 +111,7 @@ The command SHALL perform safety checks to prevent overwriting existing structur
 
 #### Scenario: Detecting existing initialization
 - **WHEN** the `workspace/` directory already exists
-- **THEN** inform the user that Pew Pew Plx is already initialized, skip recreating the base structure, and enter an extend mode
+- **THEN** inform the user that OpenSplx is already initialized, skip recreating the base structure, and enter an extend mode
 - **AND** continue to the AI tool selection step so additional tools can be configured
 - **AND** display the existing-initialization error message only when the user declines to add any AI tools
 
@@ -121,7 +121,7 @@ The command SHALL provide clear, actionable next steps upon successful initializ
 
 #### Scenario: Displaying success message
 - **WHEN** initialization completes successfully
-- **THEN** include prompt: "Please explain the Pew Pew Plx workflow from workspace/AGENTS.md and how I should work with you on this project"
+- **THEN** include prompt: "Please explain the OpenSplx workflow from workspace/AGENTS.md and how I should work with you on this project"
 - **AND** include prompt: "Please read ARCHITECTURE.md and help me fill it out with details about my project, tech stack, and conventions"
 
 ### Requirement: Exit Codes
@@ -143,7 +143,7 @@ The command SHALL use consistent exit codes to indicate different failure modes.
 #### Scenario: Configuring an extra tool after initial setup
 - **GIVEN** a `workspace/` directory already exists and at least one AI tool file is present
 - **WHEN** the user runs `plx init` and selects a different supported AI tool
-- **THEN** generate that tool's configuration files with Pew Pew Plx markers the same way as during first-time initialization
+- **THEN** generate that tool's configuration files with OpenSplx markers the same way as during first-time initialization
 - **AND** leave existing tool configuration files unchanged except for managed sections that need refreshing
 - **AND** exit with code 0 and display a success summary highlighting the newly added tool files
 
@@ -159,7 +159,7 @@ The command SHALL use consistent exit codes to indicate different failure modes.
 `plx init` SHALL treat extend mode without new native tool selections as a successful refresh.
 
 #### Scenario: Allowing empty extend runs
-- **WHEN** Pew Pew Plx is already initialized and the user selects no additional natively supported tools
+- **WHEN** OpenSplx is already initialized and the user selects no additional natively supported tools
 - **THEN** complete successfully while refreshing the root `AGENTS.md` stub
 - **AND** exit with code 0
 
@@ -172,7 +172,7 @@ The init command SHALL generate slash command files for supported editors using 
 - **THEN** create `.clinerules/workflows/plx-proposal.md`, `.clinerules/workflows/plx-implement.md`, and `.clinerules/workflows/plx-archive.md`
 - **AND** populate each file from shared templates so command text matches other tools
 - **AND** include Cline-specific Markdown heading frontmatter
-- **AND** each template includes instructions for the relevant Pew Pew Plx workflow stage
+- **AND** each template includes instructions for the relevant OpenSplx workflow stage
 
 ### Requirement: Non-Interactive Mode
 The command SHALL support non-interactive operation through command-line options for automation and CI/CD use cases.
@@ -201,7 +201,7 @@ The command SHALL support non-interactive operation through command-line options
 - **THEN** show the `--tools` option description with the valid values derived from the AI tool registry
 
 ### Requirement: Root instruction stub
-`plx init` SHALL always scaffold the root-level `AGENTS.md` hand-off so every teammate finds the primary Pew Pew Plx instructions.
+`plx init` SHALL always scaffold the root-level `AGENTS.md` hand-off so every teammate finds the primary OpenSplx instructions.
 
 #### Scenario: Creating root `AGENTS.md`
 - **GIVEN** the project may or may not already contain an `AGENTS.md` file
@@ -212,7 +212,7 @@ The command SHALL support non-interactive operation through command-line options
 
 ### Requirement: PLX Slash Command Configuration
 
-The init command SHALL generate PLX slash command files for supported editors alongside Pew Pew Plx slash commands.
+The init command SHALL generate PLX slash command files for supported editors alongside OpenSplx slash commands.
 
 #### Scenario: Generating PLX slash commands for Claude Code
 

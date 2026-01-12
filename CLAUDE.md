@@ -1,5 +1,5 @@
 <!-- PLX:START -->
-# Pew Pew Plx Instructions
+# OpenSplx Instructions
 
 These instructions are for AI assistants working in this project.
 
@@ -18,7 +18,7 @@ Use `/workspace/AGENTS.md` to learn:
 ### Project Setup
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| `plx init [path]` | Initialize Pew Pew Plx | New project setup |
+| `plx init [path]` | Initialize OpenSplx | New project setup |
 | `plx init --tools <list>` | Initialize with specific AI tools | Non-interactive setup |
 | `plx update [path]` | Refresh instruction files | After CLI updates |
 
@@ -104,7 +104,7 @@ Keep this managed block so 'plx update' can refresh the instructions.
 
 <!-- PLX:END -->
 
-# Pew Pew Plx Fork Configuration
+# OpenSplx Fork Configuration
 
 This is a fork of `Fission-AI/OpenSpec`. The git remotes are configured as:
 - `origin` → `appboypov/pew-pew-plx` (this fork, PRs go here)

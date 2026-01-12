@@ -2,7 +2,7 @@ import path from 'path';
 
 /**
  * Detect the CLI command name from the invocation path.
- * Returns 'plx' as the command name.
+ * Returns 'splx' as the command name.
  */
 export function getCommandName(): string {
   const scriptPath = process.argv[1] || '';
@@ -12,7 +12,7 @@ export function getCommandName(): string {
   const normalizedScriptName = rawScriptName
     .toLowerCase()
     .replace(/\.(js|cjs|mjs|ts|cmd|exe|bat)$/, '');
-  return normalizedScriptName === 'plx' ? 'plx' : 'plx';
+  return normalizedScriptName === 'splx' ? 'splx' : 'splx';
 }
 
 /**

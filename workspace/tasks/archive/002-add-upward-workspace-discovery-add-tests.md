@@ -16,7 +16,7 @@ Comprehensive test coverage for the new upward scanning functionality.
 
 ## Should
 
-- Unit tests for `isValidPlxWorkspace()` function
+- Unit tests for `isValidSplxWorkspace()` function
 - Unit tests for `findProjectRoot()` function
 - Integration tests for `getFilteredWorkspaces()` with upward scanning
 - Edge case coverage for all boundary conditions
@@ -39,10 +39,10 @@ Comprehensive test coverage for the new upward scanning functionality.
 ## Implementation Checklist
 
 - [x] 2.1 Add test file `test/utils/workspace-discovery-upward.test.ts`
-- [x] 2.2 Add tests for `isValidPlxWorkspace()` with valid workspace
-- [x] 2.3 Add tests for `isValidPlxWorkspace()` with missing `workspace/` directory
-- [x] 2.4 Add tests for `isValidPlxWorkspace()` with `workspace/` but no `AGENTS.md`
-- [x] 2.5 Add tests for `isValidPlxWorkspace()` with `AGENTS.md` but no PLX signature
+- [x] 2.2 Add tests for `isValidSplxWorkspace()` with valid workspace
+- [x] 2.3 Add tests for `isValidSplxWorkspace()` with missing `workspace/` directory
+- [x] 2.4 Add tests for `isValidSplxWorkspace()` with `workspace/` but no `AGENTS.md`
+- [x] 2.5 Add tests for `isValidSplxWorkspace()` with `AGENTS.md` but no PLX signature
 - [x] 2.6 Add tests for `findProjectRoot()` finding workspace in parent
 - [x] 2.7 Add tests for `findProjectRoot()` stopping at `.git` boundary
 - [x] 2.8 Add tests for `findProjectRoot()` with CWD as valid workspace

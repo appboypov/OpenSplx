@@ -15,7 +15,7 @@ PLX commands include: init-architecture, update-architecture, get-task, compact,
 ## Should
 
 Modify `/src/core/templates/plx-slash-command-templates.ts`:
-- Add 'review', 'refine-architecture', 'refine-review', 'parse-feedback' to PlxSlashCommandId
+- Add 'review', 'refine-architecture', 'refine-review', 'parse-feedback' to SplxSlashCommandId
 - Add template bodies for each new command
 
 Update all PLX configurators in `/src/core/configurators/slash/`:
@@ -30,7 +30,7 @@ Update all PLX configurators in `/src/core/configurators/slash/`:
 
 ## Acceptance Criteria
 
-- [ ] PlxSlashCommandId includes all 4 new command IDs
+- [ ] SplxSlashCommandId includes all 4 new command IDs
 - [ ] Template bodies defined for all 4 commands
 - [ ] plx-claude.ts has paths and frontmatter for new commands
 - [ ] All other plx-*.ts configurators updated
@@ -39,7 +39,7 @@ Update all PLX configurators in `/src/core/configurators/slash/`:
 
 ## Implementation Checklist
 
-- [x] Add new IDs to PlxSlashCommandId type
+- [x] Add new IDs to SplxSlashCommandId type
 - [x] Add plx/review template body
 - [x] Add plx/refine-architecture template body
 - [x] Add plx/refine-review template body

@@ -10,7 +10,7 @@ The system SHALL provide a `plx/implement` slash command that instructs AI agent
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/implement.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Implement", description "Implement an approved PLX change and keep tasks in sync.", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Implement", description "Implement an approved PLX change and keep tasks in sync.", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails focusing on straightforward implementations and tight scoping
 - **AND** include steps for: running `plx get task` to retrieve next prioritized task, working through Implementation Checklist, marking items complete, running implement again for next task

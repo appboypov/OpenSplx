@@ -1,4 +1,4 @@
-# Pew Pew Plx Changelog
+# OpenSplx Changelog
 
 ## 0.18.0 - 2026-01-10
 
@@ -48,7 +48,7 @@
 
 ### Changed
 
-- **Simplified slash command names**: Removed "Pew Pew Plx: " prefix from all 18 command names for cleaner display (e.g., "Pew Pew Plx: Refine Architecture" → "Refine Architecture")
+- **Simplified slash command names**: Removed "OpenSplx: " prefix from all 18 command names for cleaner display (e.g., "OpenSplx: Refine Architecture" → "Refine Architecture")
 - **Enhanced `/plx:refine-architecture` command**: Produces spec-ready documentation with complete component inventories
   - Guardrails require spec-ready reference enabling architects to create specs without opening the codebase
   - New Context Retrieval section instructs use of Auggie MCP, Codebase Retrieval, or similar semantic search tools
@@ -174,9 +174,9 @@
   - Automatically scans upward to find project root containing `workspace/AGENTS.md`
   - `.git` boundary stops upward scan if no workspace found
   - After finding project root, runs existing downward scan for multi-workspace support
-- `isValidPlxWorkspace()` function to validate PLX workspace directories
+- `isValidSplxWorkspace()` function to validate PLX workspace directories
 - `findProjectRoot()` function to locate project root from any subdirectory
-- Test utility `createValidPlxWorkspace()` for consistent test fixture creation
+- Test utility `createValidSplxWorkspace()` for consistent test fixture creation
 - **TESTING.md template**: New config-style testing configuration file (~21 lines)
   - Created during `plx init` and `plx update` (same pattern as REVIEW.md)
   - Configures test types, coverage thresholds, test runner, and file patterns
@@ -244,7 +244,7 @@
   - `SlashCommandId` type updated from `'proposal'` to `'plan-proposal'`
 - **BREAKING**: Unified dual slash command systems into single registry
   - `SlashCommandRegistry` now generates all commands via `generateAll()`
-  - Removed redundant `PlxSlashCommandConfigurator` classes
+  - Removed redundant `SplxSlashCommandConfigurator` classes
   - Configurators now use shared templates from `slash-command-templates.ts`
 - `/plx:implement` command now processes entire change by default
   - Iterates through all remaining tasks instead of single task
@@ -345,14 +345,14 @@
   - Markers changed from `<!-- OPENSPEC:START/END -->` to `<!-- PLX:START/END -->`
   - Global config moved from `~/.openspec/` to `~/.plx/`
   - Environment variables renamed: `OPENSPEC_CONCURRENCY` → `PLX_CONCURRENCY`, `OPEN_SPEC_INTERACTIVE` → `PLX_INTERACTIVE`
-- **BREAKING**: Rebrand display name from "PLX" to "Pew Pew Plx"
+- **BREAKING**: Rebrand display name from "PLX" to "OpenSplx"
   - User-facing display names updated in CLI help, dashboard, slash commands
   - CLI command stays as `plx`, constants like `PLX_DIR_NAME` unchanged
 - **BREAKING**: Rename package from `@appboypov/opensplx` to `@appboypov/pew-pew-plx`
   - GitHub repository URLs updated to `appboypov/pew-pew-plx`
   - Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_plx_pixel_*.svg`
 - ASCII banner updated to display "PEW PEW PLX"
-- README rewritten for Pew Pew Plx as standalone project
+- README rewritten for OpenSplx as standalone project
 - Clarify backward compatibility test descriptions
 
 ### Added
@@ -423,7 +423,7 @@
 ### Changed
 
 - **BREAKING**: Renamed `plx act next` command to `plx get task`
-- **BREAKING**: Renamed `PlxSlashCommandId` value `'act-next'` to `'get-task'`
+- **BREAKING**: Renamed `SplxSlashCommandId` value `'act-next'` to `'get-task'`
 - `--did-complete-previous` now automatically marks all `## Implementation Checklist` checkboxes as complete
 - Completed task info (name + completed checkbox items) is output when using `--did-complete-previous`
 
@@ -472,7 +472,7 @@
 
 ## 0.1.0 - 2024-12-24
 
-Initial release of Pew Pew Plx fork.
+Initial release of OpenSplx fork.
 
 ### Added
 
@@ -483,7 +483,7 @@ Initial release of Pew Pew Plx fork.
 
 ### Changed
 
-- Rebrand fork as Pew Pew Plx while maintaining upstream compatibility
+- Rebrand fork as OpenSplx while maintaining upstream compatibility
 - Archive workflow suggests refreshing architecture documentation after spec updates
 
 ---

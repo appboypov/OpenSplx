@@ -55,4 +55,4 @@ All changes pass validation, tests exist and pass, and the workflow is manually 
 
 ## Notes
 
-Use `createValidPlxWorkspace` helper from test-utils.ts to set up test fixtures.
+Use `createValidSplxWorkspace` helper from test-utils.ts to set up test fixtures.

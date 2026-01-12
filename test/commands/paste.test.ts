@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { platform } from 'os';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 const isMacOS = platform() === 'darwin';
 
@@ -14,7 +14,7 @@ describe.skipIf(!isMacOS)('paste request command', () => {
   const plxBin = path.join(projectRoot, 'bin', 'plx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -162,7 +162,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
   const plxBin = path.join(projectRoot, 'bin', 'plx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -448,7 +448,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
   const plxBin = path.join(projectRoot, 'bin', 'plx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -654,7 +654,7 @@ describe.skipIf(!isMacOS)('paste spec command', () => {
   const plxBin = path.join(projectRoot, 'bin', 'plx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {

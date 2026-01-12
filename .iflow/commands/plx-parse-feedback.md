@@ -1,7 +1,7 @@
 ---
 name: /plx-parse-feedback
 id: plx-parse-feedback
-category: Pew Pew Plx
+category: OpenSplx
 description: Parse feedback markers and generate review tasks.
 ---
 <!-- PLX:START -->

@@ -8,7 +8,7 @@ The system SHALL provide a `plx/refine-testing` slash command that creates or up
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/refine-testing.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Refine Testing", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Refine Testing", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using TESTING.md template structure, preserving existing configuration
 - **AND** include steps for: checking TESTING.md existence, creating if not exists, updating if exists
@@ -21,7 +21,7 @@ The system SHALL provide a `plx/test` slash command that runs testing workflow f
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/test.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Test", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Test", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: reading TESTING.md configuration, running tests for specified scope
 - **AND** include steps for: parsing arguments (--change-id, --task-id, --spec-id), reading TESTING.md, running tests, reporting results
@@ -60,7 +60,7 @@ The system SHALL provide a `plx/refine-release` slash command that creates or up
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/refine-release.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Refine Release", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Refine Release", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using RELEASE.md template structure, preserving existing configuration
 - **AND** include steps for: checking RELEASE.md existence, creating if not exists with defaults, updating if exists
@@ -68,7 +68,7 @@ The system SHALL provide a `plx/refine-release` slash command that creates or up
 
 ### Requirement: PLX Command Registry Updates
 
-The system SHALL register new PLX commands in the PlxSlashCommandRegistry.
+The system SHALL register new PLX commands in the SplxSlashCommandRegistry.
 
 #### Scenario: Registering new commands
 

@@ -32,7 +32,7 @@ patterns: ["**/*.test.ts", "**/*.spec.ts"]
 ### Test Utilities
 - `test/helpers/` — shared test helpers
 - `createChange()`, `createSpec()` fixtures
-- `createValidPlxWorkspace()` for workspace setup
+- `createValidSplxWorkspace()` for workspace setup
 
 ### Test Data
 - Inline fixtures in test files

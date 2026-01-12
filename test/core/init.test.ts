@@ -94,7 +94,7 @@ describe('InitCommand', () => {
         path.join(workspacePath, 'AGENTS.md'),
         'utf-8'
       );
-      expect(agentsContent).toContain('Pew Pew Plx Instructions');
+      expect(agentsContent).toContain('OpenSplx Instructions');
 
       const architectureContent = await fs.readFile(
         path.join(workspacePath, 'ARCHITECTURE.md'),
@@ -807,7 +807,7 @@ describe('InitCommand', () => {
         testDir,
         initCommand,
         'workspace/AGENTS.md',
-        'Pew Pew Plx Instructions'
+        'OpenSplx Instructions'
       );
     });
 
@@ -837,7 +837,7 @@ describe('InitCommand', () => {
 
       const content = await fs.readFile(agentsPath, 'utf-8');
       expect(content).toBe(customContent);
-      expect(content).not.toContain('Pew Pew Plx Instructions');
+      expect(content).not.toContain('OpenSplx Instructions');
     });
 
     it('should handle non-existent target directory', async () => {
@@ -1120,7 +1120,7 @@ describe('InitCommand', () => {
       expect(proposalContent).toContain('---');
       expect(proposalContent).toContain('name: Plan Proposal');
       expect(proposalContent).toContain('description: Scaffold a new change and validate strictly.');
-      expect(proposalContent).toContain('category: Pew Pew Plx');
+      expect(proposalContent).toContain('category: OpenSplx');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
 
@@ -1207,7 +1207,7 @@ describe('InitCommand', () => {
       expect(proposalContent).toContain('---');
       expect(proposalContent).toContain('name: Plan Proposal');
       expect(proposalContent).toContain('description: Scaffold a new change and validate strictly.');
-      expect(proposalContent).toContain('category: Pew Pew Plx');
+      expect(proposalContent).toContain('category: OpenSplx');
       expect(proposalContent).toContain('tags: [plx, change]');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
@@ -1216,14 +1216,14 @@ describe('InitCommand', () => {
       expect(implementContent).toContain('---');
       expect(implementContent).toContain('name: Implement');
       expect(implementContent).toContain('description: Implement an approved change and keep tasks in sync.');
-      expect(implementContent).toContain('category: Pew Pew Plx');
+      expect(implementContent).toContain('category: OpenSplx');
       expect(implementContent).toContain('tags: [plx, implement]');
 
       const archiveContent = await fs.readFile(crushArchive, 'utf-8');
       expect(archiveContent).toContain('---');
       expect(archiveContent).toContain('name: Archive');
       expect(archiveContent).toContain('description: Archive a deployed change and update specs.');
-      expect(archiveContent).toContain('category: Pew Pew Plx');
+      expect(archiveContent).toContain('category: OpenSplx');
       expect(archiveContent).toContain('tags: [plx, archive]');
       expect(archiveContent).toContain('plx archive change --id <id> --yes');
     });
@@ -1351,7 +1351,7 @@ describe('InitCommand', () => {
       expect(proposalContent).toContain('---');
       expect(proposalContent).toContain('name: Plan Proposal');
       expect(proposalContent).toContain('description: Scaffold a new change and validate strictly.');
-      expect(proposalContent).toContain('category: Pew Pew Plx');
+      expect(proposalContent).toContain('category: OpenSplx');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
 

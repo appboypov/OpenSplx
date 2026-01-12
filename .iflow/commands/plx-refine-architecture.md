@@ -1,7 +1,7 @@
 ---
 name: /plx-refine-architecture
 id: plx-refine-architecture
-category: Pew Pew Plx
+category: OpenSplx
 description: Create or update ARCHITECTURE.md with spec-ready component inventories.
 ---
 <!-- PLX:START -->

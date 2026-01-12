@@ -1,7 +1,7 @@
 ---
 name: Plan Request
 description: Clarify user intent through iterative yes/no questions before proposal creation.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, change, planning]
 ---
 <!-- PLX:START -->

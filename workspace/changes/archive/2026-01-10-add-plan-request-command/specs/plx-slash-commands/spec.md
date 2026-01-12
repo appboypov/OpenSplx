@@ -10,7 +10,7 @@ The system SHALL provide a `plx/plan-request` slash command that clarifies user 
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/plan-request.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Plan Request", description "Clarify user intent through iterative questions to create request.md", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Plan Request", description "Clarify user intent through iterative questions to create request.md", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 
 #### Scenario: Plan-request uses Activity XML template pattern
@@ -42,7 +42,7 @@ The system SHALL provide a `plx/plan-proposal` slash command that scaffolds chan
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/plan-proposal.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Plan Proposal", description "Scaffold a new Pew Pew Plx change and validate strictly. Consumes request.md when present.", category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Plan Proposal", description "Scaffold a new OpenSplx change and validate strictly. Consumes request.md when present.", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 
 #### Scenario: Plan-proposal detects and consumes request.md
@@ -79,7 +79,7 @@ The system SHALL provide a `plx/plan-proposal` slash command that scaffolds chan
 
 ### Requirement: PLX Command Registry Updates
 
-The system SHALL register new PLX commands in the PlxSlashCommandRegistry.
+The system SHALL register new PLX commands in the SplxSlashCommandRegistry.
 
 #### Scenario: Registering new commands
 

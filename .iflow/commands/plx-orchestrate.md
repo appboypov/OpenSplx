@@ -1,7 +1,7 @@
 ---
 name: /plx-orchestrate
 id: plx-orchestrate
-category: Pew Pew Plx
+category: OpenSplx
 description: Orchestrate sub-agents to complete work collaboratively.
 ---
 <!-- PLX:START -->

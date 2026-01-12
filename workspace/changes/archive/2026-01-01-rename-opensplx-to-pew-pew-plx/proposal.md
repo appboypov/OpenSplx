@@ -1,15 +1,15 @@
-# Change: Rename OpenSplx to Pew Pew Plx
+# Change: Rename OpenSplx to OpenSplx
 
 ## Why
 
-The project display name was rebranded to "Pew Pew Plx" but the package name, repository references, and asset files still use "OpenSplx" / "opensplx". This creates inconsistency between the user-facing display name and the technical identifiers.
+The project display name was rebranded to "OpenSplx" but the package name, repository references, and asset files still use "OpenSplx" / "opensplx". This creates inconsistency between the user-facing display name and the technical identifiers.
 
 ## What Changes
 
 - **Package name**: `@appboypov/opensplx` to `@appboypov/pew-pew-plx`
 - **GitHub repository**: References updated from `appboypov/OpenSplx` to `appboypov/pew-pew-plx`
 - **Asset files**: Rename `opensplx_pixel_*.svg` to `pew_pew_plx_pixel_*.svg`
-- **Documentation**: Update all "OpenSplx" display text to "Pew Pew Plx"
+- **Documentation**: Update all "OpenSplx" display text to "OpenSplx"
 - **Archived changes**: Update historical references for consistency
 - **npm registry**: Deprecate old package, publish under new name
 - **GitHub repository**: Rename repository to match new identity

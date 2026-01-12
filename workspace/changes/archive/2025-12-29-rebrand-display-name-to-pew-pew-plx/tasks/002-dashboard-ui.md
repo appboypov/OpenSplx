@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-Dashboard title and UI success/progress messages display "Pew Pew Plx".
+Dashboard title and UI success/progress messages display "OpenSplx".
 
 ## Currently
 
@@ -16,7 +16,7 @@ Dashboard title and UI success/progress messages display "Pew Pew Plx".
 
 ## Should
 
-Display "Pew Pew Plx" in all user-visible console output.
+Display "OpenSplx" in all user-visible console output.
 
 ## Constraints
 
@@ -25,16 +25,16 @@ Display "Pew Pew Plx" in all user-visible console output.
 
 ## Acceptance Criteria
 
-- [ ] Dashboard title shows "Pew Pew Plx Dashboard"
-- [ ] Success messages reference "Pew Pew Plx"
-- [ ] User prompts reference "Pew Pew Plx tooling"
+- [ ] Dashboard title shows "OpenSplx Dashboard"
+- [ ] Success messages reference "OpenSplx"
+- [ ] User prompts reference "OpenSplx tooling"
 
 ## Implementation Checklist
 
-- [x] Update `src/core/view.ts:16` - "PLX Dashboard" → "Pew Pew Plx Dashboard"
+- [x] Update `src/core/view.ts:16` - "PLX Dashboard" → "OpenSplx Dashboard"
 - [x] Update `src/core/update.ts` - success message
 - [x] Update `src/core/init.ts` - user prompts ("Extend your PLX tooling", etc.)
 
 ## Notes
 
-The dashboard is the most visible user touchpoint - this is where "Pew Pew Plx" branding has highest impact.
+The dashboard is the most visible user touchpoint - this is where "OpenSplx" branding has highest impact.

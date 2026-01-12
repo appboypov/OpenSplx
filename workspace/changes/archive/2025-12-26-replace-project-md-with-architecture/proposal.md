@@ -2,7 +2,7 @@
 
 ## Why
 
-Pew Pew Plx implemented `ARCHITECTURE.md` as the project documentation standard via `/plx/init-architecture` and `/plx/update-architecture` commands. However, the codebase still references `project.md` throughout:
+OpenSplx implemented `ARCHITECTURE.md` as the project documentation standard via `/plx/init-architecture` and `/plx/update-architecture` commands. However, the codebase still references `project.md` throughout:
 
 - Agent instructions tell AI to "read `workspace/project.md`"
 - Slash command templates reference `project.md`

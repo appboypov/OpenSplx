@@ -80,5 +80,5 @@ All tool configurators update their `apply` path to `implement`:
 
 Update all tests in `test/core/init.test.ts` that reference:
 - File paths containing `apply`
-- Content assertions like `'name: Pew Pew Plx: Apply'`
+- Content assertions like `'name: OpenSplx: Apply'`
 - Variable names like `applyPath`, `applyContent`

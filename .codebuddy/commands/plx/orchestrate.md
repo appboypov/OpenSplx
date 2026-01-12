@@ -1,7 +1,7 @@
 ---
 name: Orchestrate
 description: Orchestrate sub-agents to complete work collaboratively.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, orchestrate, sub-agents]
 ---
 <!-- PLX:START -->

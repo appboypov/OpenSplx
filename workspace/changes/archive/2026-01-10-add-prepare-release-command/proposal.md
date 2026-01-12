@@ -14,7 +14,7 @@ A `plx/prepare-release` slash command that orchestrates release preparation by g
 
 ## Should
 
-- Create a new `plx/prepare-release` slash command registered in PlxSlashCommandRegistry
+- Create a new `plx/prepare-release` slash command registered in SplxSlashCommandRegistry
 - Command follows the concise pattern (guardrails + steps) referencing `@RELEASE.md`
 - Create `RELEASE.md` root file containing detailed Activity XML instructions for:
   - **Changelog update**: Source selection (git commits, branch diff, manual), version bump suggestion, format selection (keep-a-changelog, simple-list, github-release), audience targeting, emoji level configuration
@@ -26,7 +26,7 @@ A `plx/prepare-release` slash command that orchestrates release preparation by g
 
 ## Constraints
 
-- Must follow existing PlxSlashCommandRegistry pattern
+- Must follow existing SplxSlashCommandRegistry pattern
 - Must use TemplateManager for template access
 - Must respect existing file marker system (PLX:START/PLX:END)
 - Command body must be concise (~10-15 lines) like other PLX commands

@@ -6,13 +6,13 @@
 
 ## 2. PLX Configurator Infrastructure
 
-- [x] 2.1 Create `src/core/configurators/slash/plx-base.ts` with PlxSlashCommandConfigurator base class
+- [x] 2.1 Create `src/core/configurators/slash/plx-base.ts` with SplxSlashCommandConfigurator base class
 - [x] 2.2 Create `src/core/configurators/slash/plx-claude.ts` with Claude Code PLX configurator
-- [x] 2.3 Create `src/core/configurators/slash/plx-registry.ts` with PlxSlashCommandRegistry
+- [x] 2.3 Create `src/core/configurators/slash/plx-registry.ts` with SplxSlashCommandRegistry
 
 ## 3. Init Workflow Integration
 
-- [x] 3.1 Modify `src/core/init.ts` to import PlxSlashCommandRegistry
+- [x] 3.1 Modify `src/core/init.ts` to import SplxSlashCommandRegistry
 - [x] 3.2 Add PLX configurator call in configureAITools loop
 - [x] 3.3 PLX commands generated after PLX commands for each tool
 

@@ -33,7 +33,7 @@ No `plan-request` command exists. Intent clarification happens ad-hoc during pro
 
 ## Implementation Checklist
 - [x] 1.1 Create `.claude/commands/plx/plan-request.md` file
-- [x] 1.2 Add frontmatter with name "Pew Pew Plx: Plan Request"
+- [x] 1.2 Add frontmatter with name "OpenSplx: Plan Request"
 - [x] 1.3 Add Activity XML template with Intent Analyst role
 - [x] 1.4 Add EndGoal with AcceptanceCriteria and Constraints
 - [x] 1.5 Add BehavioralInstructions (AskActUpdateRepeat, SimpleQuestions, BrutalHonesty, NoAmbiguity)

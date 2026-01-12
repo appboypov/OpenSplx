@@ -1,6 +1,6 @@
 ## Context
 
-The Pew Pew Plx fork introduced a separate "PLX slash command" system alongside the original "regular slash command" system. This dual architecture was intended to keep fork-specific commands separate from core OpenSpec commands. However:
+The OpenSplx fork introduced a separate "PLX slash command" system alongside the original "regular slash command" system. This dual architecture was intended to keep fork-specific commands separate from core OpenSpec commands. However:
 
 1. PLX is now the primary identity - separation no longer adds value
 2. The dual system causes confusion and implementation bugs
@@ -21,9 +21,9 @@ The Pew Pew Plx fork introduced a separate "PLX slash command" system alongside 
 
 ## Decisions
 
-**Decision: Keep regular file names, drop "Plx" prefix**
+**Decision: Keep regular file names, drop "Splx" prefix**
 - Keep: `SlashCommandId`, `base.ts`, `claude.ts`, `registry.ts`
-- Delete: `PlxSlashCommandId`, `plx-base.ts`, `plx-claude.ts`, `plx-registry.ts`
+- Delete: `SplxSlashCommandId`, `plx-base.ts`, `plx-claude.ts`, `plx-registry.ts`
 - Rationale: Simpler naming, replaces current regular files with expanded versions
 
 **Decision: Merge command bodies into single record**

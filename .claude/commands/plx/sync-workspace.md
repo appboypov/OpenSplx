@@ -1,7 +1,7 @@
 ---
 name: Sync Workspace
 description: Scan workspace state and suggest maintenance actions.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, workspace, maintenance]
 ---
 <!-- PLX:START -->

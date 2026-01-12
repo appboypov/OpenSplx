@@ -11,13 +11,13 @@ The `plx-slash-command-templates.ts` file includes the prepare-release command t
 
 ## Currently
 
-- `PlxSlashCommandId` type includes 8 command IDs
+- `SplxSlashCommandId` type includes 8 command IDs
 - `plxSlashCommandBodies` record has entries for 8 commands
 - No prepare-release command exists
 
 ## Should
 
-- Add `'prepare-release'` to `PlxSlashCommandId` type union
+- Add `'prepare-release'` to `SplxSlashCommandId` type union
 - Add `prepareReleaseGuardrails` constant
 - Add `prepareReleaseSteps` constant
 - Add `'prepare-release'` entry to `plxSlashCommandBodies` record
@@ -30,7 +30,7 @@ The `plx-slash-command-templates.ts` file includes the prepare-release command t
 
 ## Acceptance Criteria
 
-- [x] `'prepare-release'` added to `PlxSlashCommandId` type
+- [x] `'prepare-release'` added to `SplxSlashCommandId` type
 - [x] `prepareReleaseGuardrails` constant defined
 - [x] `prepareReleaseSteps` constant defined
 - [x] `'prepare-release'` entry added to `plxSlashCommandBodies`
@@ -38,7 +38,7 @@ The `plx-slash-command-templates.ts` file includes the prepare-release command t
 
 ## Implementation Checklist
 
-- [x] Add `| 'prepare-release'` to `PlxSlashCommandId` type union
+- [x] Add `| 'prepare-release'` to `SplxSlashCommandId` type union
 - [x] Create `prepareReleaseGuardrails` constant with:
   - [x] Read @RELEASE.md instruction
   - [x] Sequential execution instruction

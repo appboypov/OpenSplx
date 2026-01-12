@@ -9,7 +9,7 @@ parent-id: unify-slash-command-systems
 `init.ts` and `update.ts` use only the unified `SlashCommandRegistry`.
 
 ## Currently
-- `init.ts` calls both `SlashCommandRegistry` and `PlxSlashCommandRegistry`
+- `init.ts` calls both `SlashCommandRegistry` and `SplxSlashCommandRegistry`
 - `update.ts` calls both registries with conditional PLX updates
 - Both use different parameters for generateAll
 
@@ -19,7 +19,7 @@ parent-id: unify-slash-command-systems
 - Single `generateAll(projectPath)` call per tool
 
 ## Constraints
-- [ ] Remove all `PlxSlashCommandRegistry` imports and usages
+- [ ] Remove all `SplxSlashCommandRegistry` imports and usages
 - [ ] Simplify update logic (no conditional PLX updates)
 - [ ] Update method calls to new signature (no workspaceDir)
 
@@ -29,10 +29,10 @@ parent-id: unify-slash-command-systems
 - [ ] Both files compile without errors
 
 ## Implementation Checklist
-- [x] 5.1 Update `init.ts` to remove `PlxSlashCommandRegistry` import
+- [x] 5.1 Update `init.ts` to remove `SplxSlashCommandRegistry` import
 - [x] 5.2 Update `init.ts` to remove PLX registry generateAll call
 - [x] 5.3 Update `init.ts` to use new `generateAll(projectPath)` signature
-- [x] 5.4 Update `update.ts` to remove `PlxSlashCommandRegistry` import
+- [x] 5.4 Update `update.ts` to remove `SplxSlashCommandRegistry` import
 - [x] 5.5 Update `update.ts` to remove conditional PLX update logic
 - [x] 5.6 Update `update.ts` to use new signature
 

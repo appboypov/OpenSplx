@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('transfer command', () => {
   const projectRoot = process.cwd();
@@ -13,8 +13,8 @@ describe('transfer command', () => {
 
   beforeEach(async () => {
     await fs.mkdir(testDir, { recursive: true });
-    await createValidPlxWorkspace(sourceDir);
-    await createValidPlxWorkspace(targetDir);
+    await createValidSplxWorkspace(sourceDir);
+    await createValidSplxWorkspace(targetDir);
   });
 
   afterEach(async () => {
@@ -389,8 +389,8 @@ describe('transfer command', () => {
       const packageADir = path.join(monorepoDir, 'packages', 'package-a');
       const packageBDir = path.join(monorepoDir, 'packages', 'package-b');
 
-      await createValidPlxWorkspace(packageADir);
-      await createValidPlxWorkspace(packageBDir);
+      await createValidSplxWorkspace(packageADir);
+      await createValidSplxWorkspace(packageBDir);
 
       // Create change in package A
       const changeDir = path.join(packageADir, 'workspace', 'changes', 'shared-feature');

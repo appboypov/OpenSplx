@@ -7,7 +7,7 @@ The system SHALL provide a separate PLX slash command infrastructure that coexis
 #### Scenario: PLX command registry exists independently
 
 - **WHEN** the PLX slash command system is initialized
-- **THEN** provide a `PlxSlashCommandRegistry` that is separate from `SlashCommandRegistry`
+- **THEN** provide a `SplxSlashCommandRegistry` that is separate from `SlashCommandRegistry`
 - **AND** support the same tool configurator pattern as PLX commands
 - **AND** use the same PLX marker pattern (`<!-- PLX:START -->` / `<!-- PLX:END -->`) for managed content
 

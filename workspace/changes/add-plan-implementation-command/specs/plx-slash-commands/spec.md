@@ -8,7 +8,7 @@ The system SHALL provide a `/plx:plan-implementation` slash command that orchest
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/plx/plan-implementation.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Plan Implementation", description, category "Pew Pew Plx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Plan Implementation", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: running `plx create progress`, outputting task blocks to chat, verifying agent work
 - **AND** include steps for: generating PROGRESS.md, outputting first task block, entering review loop, verifying completions, providing feedback, advancing to next task

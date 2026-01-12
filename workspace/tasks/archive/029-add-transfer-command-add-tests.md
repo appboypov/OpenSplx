@@ -54,6 +54,6 @@ No tests exist for transfer functionality.
 
 ## Notes
 
-- Use createValidPlxWorkspace from test-utils.ts
+- Use createValidSplxWorkspace from test-utils.ts
 - Mock file system operations for unit tests
 - Use temp directories for integration tests

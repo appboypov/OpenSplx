@@ -9,12 +9,12 @@ parent-id: refine-plx-slash-commands
 The `plx-slash-command-templates.ts` file contains updated type definitions, template bodies, and @ file references.
 
 ## Currently
-- `PlxSlashCommandId` includes `init-architecture` and `update-architecture`
+- `SplxSlashCommandId` includes `init-architecture` and `update-architecture`
 - No `refine-release` command exists
 - Commands reference files without `@` notation
 
 ## Should
-- `PlxSlashCommandId` excludes `init-architecture` and `update-architecture`
+- `SplxSlashCommandId` excludes `init-architecture` and `update-architecture`
 - `refine-release` command with guardrails and steps
 - Commands use `@` notation for file references
 
@@ -24,7 +24,7 @@ The `plx-slash-command-templates.ts` file contains updated type definitions, tem
 - [x] TypeScript must compile without errors
 
 ## Acceptance Criteria
-- [x] `PlxSlashCommandId` type has 8 values (removed 2, added 1)
+- [x] `SplxSlashCommandId` type has 8 values (removed 2, added 1)
 - [x] `baseGuardrails`, `initArchitectureSteps`, `updateArchitectureSteps` constants removed
 - [x] `refineReleaseGuardrails` and `refineReleaseSteps` constants added
 - [x] `plxSlashCommandBodies` record updated with correct entries
@@ -34,7 +34,7 @@ The `plx-slash-command-templates.ts` file contains updated type definitions, tem
 - [x] `prepare-release` command body contains `@README.md`, `@CHANGELOG.md`, `@ARCHITECTURE.md`
 
 ## Implementation Checklist
-- [x] Remove `init-architecture` and `update-architecture` from `PlxSlashCommandId` type
+- [x] Remove `init-architecture` and `update-architecture` from `SplxSlashCommandId` type
 - [x] Remove `baseGuardrails` constant
 - [x] Remove `initArchitectureSteps` constant
 - [x] Remove `updateArchitectureSteps` constant

@@ -28,8 +28,8 @@ describe('getCommandName', () => {
       expect(getCommandName()).toBe('plx');
     });
 
-    it('should return plx for Plx (mixed case)', () => {
-      process.argv = ['node', '/path/to/Plx.js'];
+    it('should return plx for Splx (mixed case)', () => {
+      process.argv = ['node', '/path/to/Splx.js'];
       expect(getCommandName()).toBe('plx');
     });
   });

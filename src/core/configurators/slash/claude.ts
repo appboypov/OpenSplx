@@ -30,133 +30,133 @@ const FRONTMATTER: Record<SlashCommandId, string> = {
   'archive': `---
 name: Archive
 description: Archive a deployed change and update specs.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, archive]
 ---`,
   'complete-task': `---
 name: Complete Task
 description: Mark a task as done.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, task, workflow]
 ---`,
   'copy-next-task': `---
 name: Copy Next Task
 description: Copy next task or feedback block to clipboard for external agent handoff.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, orchestrate, workflow]
 ---`,
   'copy-review-request': `---
 name: Copy Review Request
 description: Copy review request block with REVIEW.md guidelines to clipboard for external agent.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, review, workflow]
 ---`,
   'copy-test-request': `---
 name: Copy Test Request
 description: Copy test request block with TESTING.md configuration to clipboard for external agent.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, testing, workflow]
 ---`,
   'get-task': `---
 name: Get Task
 description: Select and display the next prioritized task to work on.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, task, workflow]
 ---`,
   'implement': `---
 name: Implement
 description: Implement an approved change and keep tasks in sync.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, implement]
 ---`,
   'orchestrate': `---
 name: Orchestrate
 description: Orchestrate sub-agents to complete work collaboratively.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, orchestrate, sub-agents]
 ---`,
   'parse-feedback': `---
 name: Parse Feedback
 description: Parse feedback markers and generate review tasks.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, review, workflow]
 ---`,
   'plan-implementation': `---
 name: Plan Implementation
 description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, orchestrate, workflow]
 ---`,
   'plan-proposal': `---
 name: Plan Proposal
 description: Scaffold a new change and validate strictly. Consumes request.md when present.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, change]
 ---`,
   'plan-request': `---
 name: Plan Request
 description: Clarify user intent through iterative yes/no questions before proposal creation.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, change, planning]
 ---`,
   'prepare-compact': `---
 name: Prepare Compact
 description: Preserve session progress in PROGRESS.md for context continuity.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, context, session]
 ---`,
   'prepare-release': `---
 name: Prepare Release
 description: Prepare release by updating changelog, readme, and architecture documentation.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, release, documentation]
 ---`,
   'refine-architecture': `---
 name: Refine Architecture
 description: Create or update ARCHITECTURE.md with spec-ready component inventories.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, architecture, documentation]
 ---`,
   'refine-release': `---
 name: Refine Release
 description: Create or update RELEASE.md.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, release, documentation]
 ---`,
   'refine-review': `---
 name: Refine Review
 description: Create or update REVIEW.md.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, review, documentation]
 ---`,
   'refine-testing': `---
 name: Refine Testing
 description: Create or update TESTING.md.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, testing, documentation]
 ---`,
   'review': `---
 name: Review
 description: Review implementations against specs, changes, or tasks.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, review, workflow]
 ---`,
   'sync-workspace': `---
 name: Sync Workspace
 description: Scan workspace state and suggest maintenance actions.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, workspace, maintenance]
 ---`,
   'test': `---
 name: Test
 description: Run tests based on scope (change, task, or spec) using TESTING.md configuration.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, testing, workflow]
 ---`,
   'undo-task': `---
 name: Undo Task
 description: Revert a task to to-do.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, task, workflow]
 ---`
 };

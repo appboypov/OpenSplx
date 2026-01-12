@@ -1,7 +1,7 @@
 ---
 name: /plx-undo-task
 id: plx-undo-task
-category: Pew Pew Plx
+category: OpenSplx
 description: Revert a task to to-do.
 ---
 <!-- PLX:START -->

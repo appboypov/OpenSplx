@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('migrate tasks command', () => {
   const projectRoot = process.cwd();
@@ -10,7 +10,7 @@ describe('migrate tasks command', () => {
   const plxBin = path.join(projectRoot, 'bin', 'plx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -296,7 +296,7 @@ describe('migrate tasks command', () => {
       const packageBDir = path.join(testDir, 'packages', 'package-b');
 
       // Set up workspace A
-      await createValidPlxWorkspace(packageADir);
+      await createValidSplxWorkspace(packageADir);
       const changeADir = path.join(packageADir, 'workspace', 'changes', 'feature-a');
       const tasksADir = path.join(changeADir, 'tasks');
       await fs.mkdir(tasksADir, { recursive: true });
@@ -306,7 +306,7 @@ describe('migrate tasks command', () => {
       );
 
       // Set up workspace B
-      await createValidPlxWorkspace(packageBDir);
+      await createValidSplxWorkspace(packageBDir);
       const changeBDir = path.join(packageBDir, 'workspace', 'changes', 'feature-b');
       const tasksBDir = path.join(changeBDir, 'tasks');
       await fs.mkdir(tasksBDir, { recursive: true });

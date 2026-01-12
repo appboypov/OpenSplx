@@ -1,7 +1,7 @@
 ---
 name: /plx-refine-release
 id: plx-refine-release
-category: Pew Pew Plx
+category: OpenSplx
 description: Create or update RELEASE.md.
 ---
 <!-- PLX:START -->

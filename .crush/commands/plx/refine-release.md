@@ -1,7 +1,7 @@
 ---
 name: Refine Release
 description: Create or update RELEASE.md.
-category: Pew Pew Plx
+category: OpenSplx
 tags: [plx, release, documentation]
 ---
 <!-- PLX:START -->

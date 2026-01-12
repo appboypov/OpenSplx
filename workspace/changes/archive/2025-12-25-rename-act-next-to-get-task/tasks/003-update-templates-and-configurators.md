@@ -10,13 +10,13 @@ All template and configurator files reference `get-task` instead of `act-next`.
 
 ## Currently
 
-- `PlxSlashCommandId` type includes `'act-next'`
+- `SplxSlashCommandId` type includes `'act-next'`
 - Template variables named `actNextGuardrails` and `actNextSteps`
 - 20 configurator files in `src/core/configurators/slash/` reference `'act-next'`
 
 ## Should
 
-- `PlxSlashCommandId` type includes `'get-task'`
+- `SplxSlashCommandId` type includes `'get-task'`
 - Template variables renamed to `getTaskGuardrails` and `getTaskSteps`
 - All configurator files reference `'get-task'`
 - Step instructions use `plx get task` command
@@ -34,7 +34,7 @@ All template and configurator files reference `get-task` instead of `act-next`.
 
 ## Implementation Checklist
 
-- [x] 3.1 Update `PlxSlashCommandId` type in `src/core/templates/plx-slash-command-templates.ts`
+- [x] 3.1 Update `SplxSlashCommandId` type in `src/core/templates/plx-slash-command-templates.ts`
 - [x] 3.2 Rename `actNextGuardrails` to `getTaskGuardrails`
 - [x] 3.3 Rename `actNextSteps` to `getTaskSteps`
 - [x] 3.4 Update step instructions to use `plx get task`

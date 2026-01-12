@@ -179,4 +179,4 @@ Developers need a quick way to:
 - Understand the overall project evolution status
 - Get a bird's-eye view without opening multiple files
 
-This command provides that visibility with minimal effort, following Pew Pew Plx's philosophy of simplicity and clarity.
+This command provides that visibility with minimal effort, following OpenSplx's philosophy of simplicity and clarity.

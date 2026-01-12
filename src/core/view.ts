@@ -33,7 +33,7 @@ export class ViewCommand {
       process.exit(1);
     }
 
-    console.log(chalk.bold('\nPew Pew Plx Dashboard\n'));
+    console.log(chalk.bold('\nOpenSplx Dashboard\n'));
     console.log('═'.repeat(60));
 
     // Get changes and specs data across all workspaces

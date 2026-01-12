@@ -1,6 +1,6 @@
 ## Context
 
-Pew Pew Plx is a fork of PLX that adds PLX-specific functionality. PLX commands must coexist with PLX commands without modifying PLX's core workflow, ensuring upstream sync compatibility.
+OpenSplx is a fork of PLX that adds PLX-specific functionality. PLX commands must coexist with PLX commands without modifying PLX's core workflow, ensuring upstream sync compatibility.
 
 The architecture documentation feature enables technical agents and engineers to design features based solely on the architecture document, without needing to research the codebase first.
 
@@ -21,7 +21,7 @@ The architecture documentation feature enables technical agents and engineers to
 
 ### Separate PLX Registry
 
-**Decision:** Create a parallel `PlxSlashCommandRegistry` rather than extending `SlashCommandRegistry`.
+**Decision:** Create a parallel `SplxSlashCommandRegistry` rather than extending `SlashCommandRegistry`.
 
 **Rationale:** Keeps PLX functionality cleanly separated from PLX core, allowing upstream sync without conflicts. The existing `SlashCommandId` type is specific to PLX commands (proposal, apply, archive), and PLX commands are conceptually different.
 

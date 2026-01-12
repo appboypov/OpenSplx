@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-Existing slash command files in this project use "Pew Pew Plx" display names.
+Existing slash command files in this project use "OpenSplx" display names.
 
 ## Currently
 
@@ -14,7 +14,7 @@ Files in `.cursor/commands/` and `.claude/commands/plx/` have content referencin
 
 ## Should
 
-Update display names within the command content to "Pew Pew Plx".
+Update display names within the command content to "OpenSplx".
 
 ## Constraints
 
@@ -26,7 +26,7 @@ Update display names within the command content to "Pew Pew Plx".
 
 - [ ] All `.cursor/commands/plx-*.md` files updated
 - [ ] All `.claude/commands/plx/*.md` files updated
-- [ ] Display names show "Pew Pew Plx"
+- [ ] Display names show "OpenSplx"
 
 ## Implementation Checklist
 

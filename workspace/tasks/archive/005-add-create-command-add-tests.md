@@ -51,6 +51,6 @@ No tests exist for create command as it does not yet exist.
 
 ## Notes
 
-- Use `createValidPlxWorkspace` helper for setting up test fixtures
+- Use `createValidSplxWorkspace` helper for setting up test fixtures
 - Test both JSON and standard output modes
 - Consider testing multi-workspace scenarios if applicable
