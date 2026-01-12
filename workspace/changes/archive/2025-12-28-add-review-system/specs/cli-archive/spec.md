@@ -8,7 +8,7 @@ The archive command SHALL support archiving reviews in addition to changes.
 
 #### Scenario: Archiving a review
 
-- **WHEN** `plx archive <id>` is executed and id matches a review
+- **WHEN** `splx archive <id>` is executed and id matches a review
 - **THEN** verify all tasks in `reviews/<id>/tasks/` have status: done
 - **AND** if incomplete tasks found, prompt for confirmation
 - **AND** process spec updates if `reviews/<id>/specs/` exists
@@ -42,7 +42,7 @@ The archive command SHALL auto-detect whether the ID refers to a change or revie
 
 #### Scenario: Auto-detecting entity type
 
-- **WHEN** `plx archive <id>` is executed
+- **WHEN** `splx archive <id>` is executed
 - **THEN** check if id exists in `workspace/changes/` → archive as change
 - **AND** check if id exists in `workspace/reviews/` → archive as review
 - **AND** if found in neither, display error: "No change or review found with id '<id>'"
@@ -55,6 +55,6 @@ The archive command SHALL auto-detect whether the ID refers to a change or revie
 
 #### Scenario: Explicit type flag
 
-- **WHEN** `plx archive <id> --type review` is executed
+- **WHEN** `splx archive <id> --type review` is executed
 - **THEN** look only in `workspace/reviews/` for the id
 - **AND** skip change directory check

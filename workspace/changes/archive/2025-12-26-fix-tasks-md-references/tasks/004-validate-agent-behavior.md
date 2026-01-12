@@ -31,7 +31,7 @@ An agent following the updated instructions creates the correct structure when s
 
 - [x] 4.1 Read updated AGENTS.md task creation section
 - [x] 4.2 Verify happy path script creates `tasks/` directory
-- [x] 4.3 Run `plx validate --strict` on entire project
+- [x] 4.3 Run `splx validate --strict` on entire project
 - [x] 4.4 Create test change and verify: tasks/ directory created, 3+ files, correct template
 
 ## Notes

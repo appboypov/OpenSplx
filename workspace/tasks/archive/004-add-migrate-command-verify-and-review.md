@@ -36,9 +36,9 @@ Verified, working implementation that passes all checks and is ready for integra
 - [ ] `pnpm lint` passes with no errors
 - [ ] `pnpm build` completes successfully
 - [ ] `pnpm test` passes all tests
-- [ ] Manual test: `plx migrate tasks --dry-run` works on test workspace
-- [ ] Manual test: `plx migrate tasks` successfully migrates tasks
-- [ ] Manual test: `plx migrate tasks --json` outputs valid JSON
+- [ ] Manual test: `splx migrate tasks --dry-run` works on test workspace
+- [ ] Manual test: `splx migrate tasks` successfully migrates tasks
+- [ ] Manual test: `splx migrate tasks --json` outputs valid JSON
 - [ ] Code review: implementation follows project conventions
 
 ## Implementation Checklist
@@ -47,8 +47,8 @@ Verified, working implementation that passes all checks and is ready for integra
 - [x] 4.2 Run `pnpm build` and verify success
 - [x] 4.3 Run `pnpm test` and verify all tests pass
 - [x] 4.4 Create test workspace with nested tasks
-- [x] 4.5 Run `plx migrate tasks --dry-run` and verify output
-- [x] 4.6 Run `plx migrate tasks` and verify migration
+- [x] 4.5 Run `splx migrate tasks --dry-run` and verify output
+- [x] 4.6 Run `splx migrate tasks` and verify migration
 - [x] 4.7 Verify migrated files have correct format
 - [x] 4.8 Review code for convention adherence
 

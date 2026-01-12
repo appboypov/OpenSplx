@@ -51,8 +51,8 @@ Completions support:
 - [ ] Deprecated commands removed from completion
 - [ ] Subcommand completion works for all verb commands
 - [ ] Flag completion includes `--id`, `--parent-id`, `--parent-type`
-- [ ] `plx completion generate zsh` outputs valid script
-- [ ] `plx completion install zsh` successfully installs
+- [ ] `splx completion generate zsh` outputs valid script
+- [ ] `splx completion install zsh` successfully installs
 
 ## Implementation Checklist
 

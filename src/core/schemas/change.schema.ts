@@ -39,7 +39,7 @@ export const ChangeSchema = z.object({
   trackedIssues: z.array(TrackedIssueSchema).optional(),
   metadata: z.object({
     version: z.string().default('1.0.0'),
-    format: z.literal('plx-change'),
+    format: z.literal('splx-change'),
     sourcePath: z.string().optional(),
   }).optional(),
 });

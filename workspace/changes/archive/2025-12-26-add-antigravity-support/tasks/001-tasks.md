@@ -1,10 +1,10 @@
 ## 1. CLI init support
 - [x] 1.1 Surface Antigravity in the native-tool picker (interactive + `--tools`) so it toggles alongside other IDEs.
-- [x] 1.2 Generate `.agent/workflows/plx-proposal.md`, `plx-apply.md`, and `plx-archive.md` with YAML frontmatter restricted to a single `description` field for each stage and wrap the body in PLX markers.
+- [x] 1.2 Generate `.agent/workflows/splx-proposal.md`, `splx-apply.md`, and `splx-archive.md` with YAML frontmatter restricted to a single `description` field for each stage and wrap the body in PLX markers.
 - [x] 1.3 Confirm workspace scaffolding covers missing directory creation and re-run scenarios so repeated init refreshes the managed block.
 
 ## 2. CLI update support
-- [x] 2.1 Detect existing Antigravity workflow files during `plx update` and refresh only the managed body, skipping creation when files are missing.
+- [x] 2.1 Detect existing Antigravity workflow files during `splx update` and refresh only the managed body, skipping creation when files are missing.
 - [x] 2.2 Ensure update logic preserves the `description` frontmatter block exactly as written by init, including case and spacing, and refreshes body templates alongside other tools.
 
 ## 3. Templates and tests

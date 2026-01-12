@@ -1,4 +1,4 @@
-# refine-plx-slash-commands
+# refine-splx-slash-commands
 
 ## Why
 
@@ -30,36 +30,36 @@ The PLX slash command system needs refinement:
 ### Files Modified (22 total)
 
 **Template Definitions:**
-- `src/core/templates/plx-slash-command-templates.ts`
+- `src/core/templates/splx-slash-command-templates.ts`
 
 **Command Registry:**
-- `src/core/configurators/slash/plx-base.ts`
+- `src/core/configurators/slash/splx-base.ts`
 
 **Tool Configurators (19 files):**
-- `src/core/configurators/slash/plx-claude.ts`
-- `src/core/configurators/slash/plx-cursor.ts`
-- `src/core/configurators/slash/plx-factory.ts`
-- `src/core/configurators/slash/plx-codebuddy.ts`
-- `src/core/configurators/slash/plx-qoder.ts`
-- `src/core/configurators/slash/plx-windsurf.ts`
-- `src/core/configurators/slash/plx-kilocode.ts`
-- `src/core/configurators/slash/plx-opencode.ts`
-- `src/core/configurators/slash/plx-codex.ts`
-- `src/core/configurators/slash/plx-github-copilot.ts`
-- `src/core/configurators/slash/plx-amazon-q.ts`
-- `src/core/configurators/slash/plx-auggie.ts`
-- `src/core/configurators/slash/plx-cline.ts`
-- `src/core/configurators/slash/plx-crush.ts`
-- `src/core/configurators/slash/plx-costrict.ts`
-- `src/core/configurators/slash/plx-qwen.ts`
-- `src/core/configurators/slash/plx-roocode.ts`
-- `src/core/configurators/slash/plx-antigravity.ts`
-- `src/core/configurators/slash/plx-iflow.ts`
+- `src/core/configurators/slash/splx-claude.ts`
+- `src/core/configurators/slash/splx-cursor.ts`
+- `src/core/configurators/slash/splx-factory.ts`
+- `src/core/configurators/slash/splx-codebuddy.ts`
+- `src/core/configurators/slash/splx-qoder.ts`
+- `src/core/configurators/slash/splx-windsurf.ts`
+- `src/core/configurators/slash/splx-kilocode.ts`
+- `src/core/configurators/slash/splx-opencode.ts`
+- `src/core/configurators/slash/splx-codex.ts`
+- `src/core/configurators/slash/splx-github-copilot.ts`
+- `src/core/configurators/slash/splx-amazon-q.ts`
+- `src/core/configurators/slash/splx-auggie.ts`
+- `src/core/configurators/slash/splx-cline.ts`
+- `src/core/configurators/slash/splx-crush.ts`
+- `src/core/configurators/slash/splx-costrict.ts`
+- `src/core/configurators/slash/splx-qwen.ts`
+- `src/core/configurators/slash/splx-roocode.ts`
+- `src/core/configurators/slash/splx-antigravity.ts`
+- `src/core/configurators/slash/splx-iflow.ts`
 
 **Tests:**
-- `test/core/templates/plx-slash-command-templates.test.ts`
+- `test/core/templates/splx-slash-command-templates.test.ts`
 
 ## Out of Scope
 
 - Updating ARCHITECTURE.md documentation (separate task after implementation)
-- Regenerating existing project command files (users run `plx update`)
+- Regenerating existing project command files (users run `splx update`)

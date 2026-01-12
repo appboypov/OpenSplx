@@ -6,15 +6,15 @@ parent-id: add-plan-request-command
 # Task: Rename proposal to plan-proposal
 
 ## End Goal
-The `plx/proposal` command is renamed to `plx/plan-proposal` across all files, including the command file, templates, configurators, and tests.
+The `splx/proposal` command is renamed to `splx/plan-proposal` across all files, including the command file, templates, configurators, and tests.
 
 ## Currently
-- Command exists as `.claude/commands/plx/proposal.md`
+- Command exists as `.claude/commands/splx/proposal.md`
 - `SlashCommandId` type includes `'proposal'`
 - All configurators reference `proposal` in FILE_PATHS and FRONTMATTER
 
 ## Should
-- Command exists as `.claude/commands/plx/plan-proposal.md`
+- Command exists as `.claude/commands/splx/plan-proposal.md`
 - `SlashCommandId` type includes `'plan-proposal'`
 - All configurators reference `plan-proposal` consistently
 - Tests pass with updated references
@@ -26,7 +26,7 @@ The `plx/proposal` command is renamed to `plx/plan-proposal` across all files, i
 - [ ] Update test files
 
 ## Acceptance Criteria
-- [ ] `.claude/commands/plx/plan-proposal.md` exists with updated frontmatter
+- [ ] `.claude/commands/splx/plan-proposal.md` exists with updated frontmatter
 - [ ] `SlashCommandId` type is updated in `slash-command-templates.ts`
 - [ ] `slashCommandBodies` record key is updated
 - [ ] All configurators updated (claude, cursor, windsurf, etc.)
@@ -34,7 +34,7 @@ The `plx/proposal` command is renamed to `plx/plan-proposal` across all files, i
 - [ ] All tests pass
 
 ## Implementation Checklist
-- [x] 2.1 Rename `.claude/commands/plx/proposal.md` to `plan-proposal.md`
+- [x] 2.1 Rename `.claude/commands/splx/proposal.md` to `plan-proposal.md`
 - [x] 2.2 Update frontmatter name to "OpenSplx: Plan Proposal"
 - [x] 2.3 Update `SlashCommandId` type in `src/core/templates/slash-command-templates.ts`
 - [x] 2.4 Update `slashCommandBodies` record key from `proposal` to `plan-proposal`
@@ -56,4 +56,4 @@ The `plx/proposal` command is renamed to `plx/plan-proposal` across all files, i
 
 ## Notes
 - Use `rg proposal src/core/configurators/slash` to find all configurator references
-- The rename affects file paths like `plx-proposal.md` in tool-specific formats
+- The rename affects file paths like `splx-proposal.md` in tool-specific formats

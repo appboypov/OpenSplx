@@ -14,9 +14,9 @@ All "OpenSplx" and "opensplx" references in the codebase are updated to use the 
 
 ## Should
 
-- Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_plx_pixel_*.svg`
-- package.json uses `@appboypov/pew-pew-plx` as name
-- All GitHub URLs point to `appboypov/pew-pew-plx`
+- Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_splx_pixel_*.svg`
+- package.json uses `@appboypov/pew-pew-splx` as name
+- All GitHub URLs point to `appboypov/pew-pew-splx`
 - All display text uses "OpenSplx"
 - Build and tests pass
 - No "opensplx" matches found via grep (excluding .git)
@@ -35,8 +35,8 @@ All "OpenSplx" and "opensplx" references in the codebase are updated to use the 
 
 ## Implementation Checklist
 
-- [x] Rename `assets/opensplx_pixel_dark.svg` to `assets/pew_pew_plx_pixel_dark.svg`
-- [x] Rename `assets/opensplx_pixel_light.svg` to `assets/pew_pew_plx_pixel_light.svg`
+- [x] Rename `assets/opensplx_pixel_dark.svg` to `assets/pew_pew_splx_pixel_dark.svg`
+- [x] Rename `assets/opensplx_pixel_light.svg` to `assets/pew_pew_splx_pixel_light.svg`
 - [x] Update package.json (name, homepage, repository URL)
 - [x] Update README.md (links, badges, install command, asset paths)
 - [x] Update CHANGELOG.md (title, release notes)
@@ -59,9 +59,9 @@ Files to update:
 - .github/workflows/release-prepare.yml
 - workspace/changes/archive/2025-12-25-add-task-directory-structure/proposal.md
 - workspace/changes/archive/2025-12-25-add-task-directory-structure/design.md
-- workspace/changes/archive/2025-12-25-add-plx-architecture-commands/design.md
+- workspace/changes/archive/2025-12-25-add-splx-architecture-commands/design.md
 - workspace/changes/archive/2025-12-26-add-prioritized-next-task/proposal.md
 - workspace/changes/archive/2025-12-26-fix-tasks-md-references/proposal.md
 - workspace/changes/archive/2025-12-26-fix-act-next-filtering/tasks/003-verify-behavior.md
 - workspace/changes/archive/2025-12-26-replace-project-md-with-architecture/proposal.md
-- workspace/changes/archive/2025-12-29-rebrand-openspec-to-plx/proposal.md
+- workspace/changes/archive/2025-12-29-rebrand-openspec-to-splx/proposal.md

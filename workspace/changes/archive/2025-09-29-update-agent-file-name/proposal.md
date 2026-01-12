@@ -5,7 +5,7 @@ The agent instructions live in `workspace/README.md`, which clashes with convent
 
 ## Solution
 Rename the agent instruction file to `workspace/AGENTS.md` and update PLX tooling to use the new filename:
-- `plx init` generates `AGENTS.md` instead of `README.md`
+- `splx init` generates `AGENTS.md` instead of `README.md`
 - Templates and code reference `AGENTS.md`
 - Specifications and documentation are updated accordingly
 
@@ -24,6 +24,6 @@ Rename the agent instruction file to `workspace/AGENTS.md` and update PLX toolin
 - Tooling may miss lingering references to the old filename
 
 ## Success Metrics
-- `plx init` creates `workspace/AGENTS.md`
-- `plx update` refreshes `AGENTS.md`
+- `splx init` creates `workspace/AGENTS.md`
+- `splx update` refreshes `AGENTS.md`
 - All specs reference `workspace/AGENTS.md`

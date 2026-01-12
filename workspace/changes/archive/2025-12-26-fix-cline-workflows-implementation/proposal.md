@@ -5,9 +5,9 @@ The Cline implementation was architecturally incorrect. According to Cline's off
 - Update ClineSlashCommandConfigurator to use `.clinerules/workflows/` paths instead of `.clinerules/` paths
 - Update all tests to expect the correct workflow file locations
 - Update README.md documentation to reflect workflows instead of rules
-- **BREAKING**: Existing Cline users will need to re-run `plx init` to get the corrected workflow files
+- **BREAKING**: Existing Cline users will need to re-run `splx init` to get the corrected workflow files
 
 ## Impact
 - Affected specs: cli-init (corrected Cline workflow paths)
 - Affected code: `src/core/configurators/slash/cline.ts`, test files, README.md
-- Modified files: `.clinerules/workflows/plx-*.md` (moved from `.clinerules/plx-*.md`)
+- Modified files: `.clinerules/workflows/splx-*.md` (moved from `.clinerules/splx-*.md`)

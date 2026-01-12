@@ -39,7 +39,7 @@ describe('InitCommand', () => {
   let prevCodexHome: string | undefined;
 
   beforeEach(async () => {
-    testDir = path.join(os.tmpdir(), `plx-init-test-${Date.now()}`);
+    testDir = path.join(os.tmpdir(), `splx-init-test-${Date.now()}`);
     await fs.mkdir(testDir, { recursive: true });
     selectionQueue = [];
     mockPrompt.mockReset();
@@ -114,7 +114,7 @@ describe('InitCommand', () => {
       const content = await fs.readFile(claudePath, 'utf-8');
       expect(content).toContain('<!-- PLX:START -->');
       expect(content).toContain("/workspace/AGENTS.md");
-      expect(content).toContain('plx update');
+      expect(content).toContain('splx update');
       expect(content).toContain('<!-- PLX:END -->');
     });
 
@@ -131,7 +131,7 @@ describe('InitCommand', () => {
       const updatedContent = await fs.readFile(claudePath, 'utf-8');
       expect(updatedContent).toContain('<!-- PLX:START -->');
       expect(updatedContent).toContain("/workspace/AGENTS.md");
-      expect(updatedContent).toContain('plx update');
+      expect(updatedContent).toContain('splx update');
       expect(updatedContent).toContain('<!-- PLX:END -->');
       expect(updatedContent).toContain('Custom instructions here');
     });
@@ -147,7 +147,7 @@ describe('InitCommand', () => {
       const content = await fs.readFile(clinePath, 'utf-8');
       expect(content).toContain('<!-- PLX:START -->');
       expect(content).toContain("/workspace/AGENTS.md");
-      expect(content).toContain('plx update');
+      expect(content).toContain('splx update');
       expect(content).toContain('<!-- PLX:END -->');
     });
 
@@ -164,7 +164,7 @@ describe('InitCommand', () => {
       const updatedContent = await fs.readFile(clinePath, 'utf-8');
       expect(updatedContent).toContain('<!-- PLX:START -->');
       expect(updatedContent).toContain("/workspace/AGENTS.md");
-      expect(updatedContent).toContain('plx update');
+      expect(updatedContent).toContain('splx update');
       expect(updatedContent).toContain('<!-- PLX:END -->');
       expect(updatedContent).toContain('Custom Cline instructions here');
     });
@@ -176,15 +176,15 @@ describe('InitCommand', () => {
 
       const wsProposal = path.join(
         testDir,
-        '.windsurf/workflows/plx-plan-proposal.md'
+        '.windsurf/workflows/splx-plan-proposal.md'
       );
       const wsImplement = path.join(
         testDir,
-        '.windsurf/workflows/plx-implement.md'
+        '.windsurf/workflows/splx-implement.md'
       );
       const wsArchive = path.join(
         testDir,
-        '.windsurf/workflows/plx-archive.md'
+        '.windsurf/workflows/splx-archive.md'
       );
 
       expect(await fileExists(wsProposal)).toBe(true);
@@ -209,7 +209,7 @@ describe('InitCommand', () => {
       expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
       expect(archiveContent).toContain('auto_execution_mode: 3');
       expect(archiveContent).toContain('<!-- PLX:START -->');
-      expect(archiveContent).toContain('Run `plx archive change --id <id> --yes`');
+      expect(archiveContent).toContain('Run `splx archive change --id <id> --yes`');
     });
 
     it('should create Antigravity workflows when Antigravity is selected', async () => {
@@ -219,15 +219,15 @@ describe('InitCommand', () => {
 
       const agProposal = path.join(
         testDir,
-        '.agent/workflows/plx-plan-proposal.md'
+        '.agent/workflows/splx-plan-proposal.md'
       );
       const agImplement = path.join(
         testDir,
-        '.agent/workflows/plx-implement.md'
+        '.agent/workflows/splx-implement.md'
       );
       const agArchive = path.join(
         testDir,
-        '.agent/workflows/plx-archive.md'
+        '.agent/workflows/splx-archive.md'
       );
 
       expect(await fileExists(agProposal)).toBe(true);
@@ -251,7 +251,7 @@ describe('InitCommand', () => {
       expect(archiveContent).toContain('---');
       expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
       expect(archiveContent).toContain('<!-- PLX:START -->');
-      expect(archiveContent).toContain('Run `plx archive change --id <id> --yes`');
+      expect(archiveContent).toContain('Run `splx archive change --id <id> --yes`');
       expect(archiveContent).not.toContain('auto_execution_mode');
     });
 
@@ -266,7 +266,7 @@ describe('InitCommand', () => {
       const content = await fs.readFile(rootAgentsPath, 'utf-8');
       expect(content).toContain('<!-- PLX:START -->');
       expect(content).toContain("/workspace/AGENTS.md");
-      expect(content).toContain('plx update');
+      expect(content).toContain('splx update');
       expect(content).toContain('<!-- PLX:END -->');
 
       const claudeExists = await fileExists(path.join(testDir, 'CLAUDE.md'));
@@ -280,15 +280,15 @@ describe('InitCommand', () => {
 
       const claudeProposal = path.join(
         testDir,
-        '.claude/commands/plx/plan-proposal.md'
+        '.claude/commands/splx/plan-proposal.md'
       );
       const claudeImplement = path.join(
         testDir,
-        '.claude/commands/plx/implement.md'
+        '.claude/commands/splx/implement.md'
       );
       const claudeArchive = path.join(
         testDir,
-        '.claude/commands/plx/archive.md'
+        '.claude/commands/splx/archive.md'
       );
 
       expect(await fileExists(claudeProposal)).toBe(true);
@@ -308,7 +308,7 @@ describe('InitCommand', () => {
 
       const archiveContent = await fs.readFile(claudeArchive, 'utf-8');
       expect(archiveContent).toContain('name: Archive');
-      expect(archiveContent).toContain('plx archive change --id <id>');
+      expect(archiveContent).toContain('splx archive change --id <id>');
       expect(archiveContent).toContain(
         '`--skip-specs` only for tooling-only work'
       );
@@ -321,11 +321,11 @@ describe('InitCommand', () => {
 
       const planProposal = path.join(
         testDir,
-        '.claude/commands/plx/plan-proposal.md'
+        '.claude/commands/splx/plan-proposal.md'
       );
       const planRequest = path.join(
         testDir,
-        '.claude/commands/plx/plan-request.md'
+        '.claude/commands/splx/plan-request.md'
       );
 
       expect(await fileExists(planProposal)).toBe(true);
@@ -349,15 +349,15 @@ describe('InitCommand', () => {
 
       const cursorProposal = path.join(
         testDir,
-        '.cursor/commands/plx-plan-proposal.md'
+        '.cursor/commands/splx-plan-proposal.md'
       );
       const cursorImplement = path.join(
         testDir,
-        '.cursor/commands/plx-implement.md'
+        '.cursor/commands/splx-implement.md'
       );
       const cursorArchive = path.join(
         testDir,
-        '.cursor/commands/plx-archive.md'
+        '.cursor/commands/splx-archive.md'
       );
 
       expect(await fileExists(cursorProposal)).toBe(true);
@@ -365,15 +365,15 @@ describe('InitCommand', () => {
       expect(await fileExists(cursorArchive)).toBe(true);
 
       const proposalContent = await fs.readFile(cursorProposal, 'utf-8');
-      expect(proposalContent).toContain('name: /plx-plan-proposal');
+      expect(proposalContent).toContain('name: /splx-plan-proposal');
       expect(proposalContent).toContain('<!-- PLX:END -->');
 
       const implementContent = await fs.readFile(cursorImplement, 'utf-8');
-      expect(implementContent).toContain('id: plx-implement');
+      expect(implementContent).toContain('id: splx-implement');
 
       const archiveContent = await fs.readFile(cursorArchive, 'utf-8');
-      expect(archiveContent).toContain('name: /plx-archive');
-      expect(archiveContent).toContain('plx get specs');
+      expect(archiveContent).toContain('name: /splx-archive');
+      expect(archiveContent).toContain('splx get specs');
     });
 
     it('should create Gemini CLI TOML files when selected', async () => {
@@ -383,15 +383,15 @@ describe('InitCommand', () => {
 
       const geminiProposal = path.join(
         testDir,
-        '.gemini/commands/plx/plan-proposal.toml'
+        '.gemini/commands/splx/plan-proposal.toml'
       );
       const geminiImplement = path.join(
         testDir,
-        '.gemini/commands/plx/implement.toml'
+        '.gemini/commands/splx/implement.toml'
       );
       const geminiArchive = path.join(
         testDir,
-        '.gemini/commands/plx/archive.toml'
+        '.gemini/commands/splx/archive.toml'
       );
 
       expect(await fileExists(geminiProposal)).toBe(true);
@@ -410,7 +410,7 @@ describe('InitCommand', () => {
 
       const geminiProposal = path.join(
         testDir,
-        '.gemini/commands/plx/plan-proposal.toml'
+        '.gemini/commands/splx/plan-proposal.toml'
       );
 
       // Modify the file to simulate user customization
@@ -438,15 +438,15 @@ describe('InitCommand', () => {
 
       const iflowProposal = path.join(
         testDir,
-        '.iflow/commands/plx-plan-proposal.md'
+        '.iflow/commands/splx-plan-proposal.md'
       );
       const iflowImplement = path.join(
         testDir,
-        '.iflow/commands/plx-implement.md'
+        '.iflow/commands/splx-implement.md'
       );
       const iflowArchive = path.join(
         testDir,
-        '.iflow/commands/plx-archive.md'
+        '.iflow/commands/splx-archive.md'
       );
 
       expect(await fileExists(iflowProposal)).toBe(true);
@@ -464,7 +464,7 @@ describe('InitCommand', () => {
 
       const archiveContent = await fs.readFile(iflowArchive, 'utf-8');
       expect(archiveContent).toContain('description: Archive a deployed change and update specs.');
-      expect(archiveContent).toContain('plx archive change --id <id>');
+      expect(archiveContent).toContain('splx archive change --id <id>');
     });
 
     it('should update existing IFLOW.md with markers', async () => {
@@ -479,7 +479,7 @@ describe('InitCommand', () => {
       const updatedContent = await fs.readFile(iflowPath, 'utf-8');
       expect(updatedContent).toContain('<!-- PLX:START -->');
       expect(updatedContent).toContain("/workspace/AGENTS.md");
-      expect(updatedContent).toContain('plx update');
+      expect(updatedContent).toContain('splx update');
       expect(updatedContent).toContain('<!-- PLX:END -->');
       expect(updatedContent).toContain('Custom instructions here');
     });
@@ -491,15 +491,15 @@ describe('InitCommand', () => {
 
       const openCodeProposal = path.join(
         testDir,
-        '.opencode/command/plx-plan-proposal.md'
+        '.opencode/command/splx-plan-proposal.md'
       );
       const openCodeImplement = path.join(
         testDir,
-        '.opencode/command/plx-implement.md'
+        '.opencode/command/splx-implement.md'
       );
       const openCodeArchive = path.join(
         testDir,
-        '.opencode/command/plx-archive.md'
+        '.opencode/command/splx-archive.md'
       );
 
       expect(await fileExists(openCodeProposal)).toBe(true);
@@ -524,7 +524,7 @@ describe('InitCommand', () => {
       expect(archiveContent).toContain(
         'description: Archive a deployed PLX change and update specs.'
       );
-      expect(archiveContent).toContain('plx get specs');
+      expect(archiveContent).toContain('splx get specs');
     });
 
     it('should create Qwen configuration and slash command files with templates', async () => {
@@ -535,15 +535,15 @@ describe('InitCommand', () => {
       const qwenConfigPath = path.join(testDir, 'QWEN.md');
       const proposalPath = path.join(
         testDir,
-        '.qwen/commands/plx-plan-proposal.toml'
+        '.qwen/commands/splx-plan-proposal.toml'
       );
       const implementPath = path.join(
         testDir,
-        '.qwen/commands/plx-implement.toml'
+        '.qwen/commands/splx-implement.toml'
       );
       const archivePath = path.join(
         testDir,
-        '.qwen/commands/plx-archive.toml'
+        '.qwen/commands/splx-archive.toml'
       );
 
       expect(await fileExists(qwenConfigPath)).toBe(true);
@@ -572,7 +572,7 @@ describe('InitCommand', () => {
       const updatedContent = await fs.readFile(qwenPath, 'utf-8');
       expect(updatedContent).toContain('<!-- PLX:START -->');
       expect(updatedContent).toContain("/workspace/AGENTS.md");
-      expect(updatedContent).toContain('plx update');
+      expect(updatedContent).toContain('splx update');
       expect(updatedContent).toContain('<!-- PLX:END -->');
       expect(updatedContent).toContain('Custom instructions here');
     });
@@ -584,15 +584,15 @@ describe('InitCommand', () => {
 
       const clineProposal = path.join(
         testDir,
-        '.clinerules/workflows/plx-plan-proposal.md'
+        '.clinerules/workflows/splx-plan-proposal.md'
       );
       const clineImplement = path.join(
         testDir,
-        '.clinerules/workflows/plx-implement.md'
+        '.clinerules/workflows/splx-implement.md'
       );
       const clineArchive = path.join(
         testDir,
-        '.clinerules/workflows/plx-archive.md'
+        '.clinerules/workflows/splx-archive.md'
       );
 
       expect(await fileExists(clineProposal)).toBe(true);
@@ -612,7 +612,7 @@ describe('InitCommand', () => {
       const archiveContent = await fs.readFile(clineArchive, 'utf-8');
       expect(archiveContent).toContain('# PLX: Archive');
       expect(archiveContent).toContain('Archive a deployed PLX change and update specs.');
-      expect(archiveContent).toContain('plx archive change --id <id>');
+      expect(archiveContent).toContain('splx archive change --id <id>');
     });
 
     it('should create Factory slash command files with templates', async () => {
@@ -622,15 +622,15 @@ describe('InitCommand', () => {
 
       const factoryProposal = path.join(
         testDir,
-        '.factory/commands/plx-plan-proposal.md'
+        '.factory/commands/splx-plan-proposal.md'
       );
       const factoryImplement = path.join(
         testDir,
-        '.factory/commands/plx-implement.md'
+        '.factory/commands/splx-implement.md'
       );
       const factoryArchive = path.join(
         testDir,
-        '.factory/commands/plx-archive.md'
+        '.factory/commands/splx-archive.md'
       );
 
       expect(await fileExists(factoryProposal)).toBe(true);
@@ -659,7 +659,7 @@ describe('InitCommand', () => {
       const archiveContent = await fs.readFile(factoryArchive, 'utf-8');
       expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
       expect(archiveContent).toContain('argument-hint: change-id');
-      expect(archiveContent).toContain('plx archive change --id <id> --yes');
+      expect(archiveContent).toContain('splx archive change --id <id> --yes');
       expect(
         /<!-- PLX:START -->([\s\S]*?)<!-- PLX:END -->/u.exec(
           archiveContent
@@ -674,15 +674,15 @@ describe('InitCommand', () => {
 
       const proposalPath = path.join(
         testDir,
-        '.codex/prompts/plx-plan-proposal.md'
+        '.codex/prompts/splx-plan-proposal.md'
       );
       const implementPath = path.join(
         testDir,
-        '.codex/prompts/plx-implement.md'
+        '.codex/prompts/splx-implement.md'
       );
       const archivePath = path.join(
         testDir,
-        '.codex/prompts/plx-archive.md'
+        '.codex/prompts/splx-archive.md'
       );
 
       expect(await fileExists(proposalPath)).toBe(true);
@@ -705,7 +705,7 @@ describe('InitCommand', () => {
       expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
       expect(archiveContent).toContain('argument-hint: change-id');
       expect(archiveContent).toContain('$ARGUMENTS');
-      expect(archiveContent).toContain('plx archive change --id <id> --yes');
+      expect(archiveContent).toContain('splx archive change --id <id> --yes');
     });
 
     it('should create Kilo Code workflows with templates', async () => {
@@ -715,15 +715,15 @@ describe('InitCommand', () => {
 
       const proposalPath = path.join(
         testDir,
-        '.kilocode/workflows/plx-plan-proposal.md'
+        '.kilocode/workflows/splx-plan-proposal.md'
       );
       const implementPath = path.join(
         testDir,
-        '.kilocode/workflows/plx-implement.md'
+        '.kilocode/workflows/splx-implement.md'
       );
       const archivePath = path.join(
         testDir,
-        '.kilocode/workflows/plx-archive.md'
+        '.kilocode/workflows/splx-archive.md'
       );
 
       expect(await fileExists(proposalPath)).toBe(true);
@@ -739,7 +739,7 @@ describe('InitCommand', () => {
       expect(implementContent).not.toContain('---\n');
 
       const archiveContent = await fs.readFile(archivePath, 'utf-8');
-      expect(archiveContent).toContain('plx get specs');
+      expect(archiveContent).toContain('splx get specs');
       expect(archiveContent).not.toContain('---\n');
     });
 
@@ -750,15 +750,15 @@ describe('InitCommand', () => {
 
       const proposalPath = path.join(
         testDir,
-        '.github/prompts/plx-plan-proposal.prompt.md'
+        '.github/prompts/splx-plan-proposal.prompt.md'
       );
       const implementPath = path.join(
         testDir,
-        '.github/prompts/plx-implement.prompt.md'
+        '.github/prompts/splx-implement.prompt.md'
       );
       const archivePath = path.join(
         testDir,
-        '.github/prompts/plx-archive.prompt.md'
+        '.github/prompts/splx-archive.prompt.md'
       );
 
       expect(await fileExists(proposalPath)).toBe(true);
@@ -781,7 +781,7 @@ describe('InitCommand', () => {
       expect(archiveContent).toContain('---');
       expect(archiveContent).toContain('description: Archive a deployed PLX change and update specs.');
       expect(archiveContent).toContain('$ARGUMENTS');
-      expect(archiveContent).toContain('plx archive change --id <id> --yes');
+      expect(archiveContent).toContain('splx archive change --id <id> --yes');
     });
 
     it('should add new tool when PLX already exists', async () => {
@@ -791,7 +791,7 @@ describe('InitCommand', () => {
 
       const cursorProposal = path.join(
         testDir,
-        '.cursor/commands/plx-plan-proposal.md'
+        '.cursor/commands/splx-plan-proposal.md'
       );
       expect(await fileExists(cursorProposal)).toBe(true);
     });
@@ -1000,15 +1000,15 @@ describe('InitCommand', () => {
 
       const proposalPath = path.join(
         testDir,
-        '.amazonq/prompts/plx-plan-proposal.md'
+        '.amazonq/prompts/splx-plan-proposal.md'
       );
       const implementPath = path.join(
         testDir,
-        '.amazonq/prompts/plx-implement.md'
+        '.amazonq/prompts/splx-implement.md'
       );
       const archivePath = path.join(
         testDir,
-        '.amazonq/prompts/plx-archive.md'
+        '.amazonq/prompts/splx-archive.md'
       );
 
       expect(await fileExists(proposalPath)).toBe(true);
@@ -1048,15 +1048,15 @@ describe('InitCommand', () => {
 
       const auggieProposal = path.join(
         testDir,
-        '.augment/commands/plx-plan-proposal.md'
+        '.augment/commands/splx-plan-proposal.md'
       );
       const auggieImplement = path.join(
         testDir,
-        '.augment/commands/plx-implement.md'
+        '.augment/commands/splx-implement.md'
       );
       const auggieArchive = path.join(
         testDir,
-        '.augment/commands/plx-archive.md'
+        '.augment/commands/splx-archive.md'
       );
 
       expect(await fileExists(auggieProposal)).toBe(true);
@@ -1079,7 +1079,7 @@ describe('InitCommand', () => {
       expect(archiveContent).toContain('---');
       expect(archiveContent).toContain('description: Archive a deployed change and update specs.');
       expect(archiveContent).toContain('argument-hint: change-id');
-      expect(archiveContent).toContain('plx archive change --id <id> --yes');
+      expect(archiveContent).toContain('splx archive change --id <id> --yes');
     });
 
     it('should mark Auggie as already configured during extend mode', async () => {
@@ -1101,15 +1101,15 @@ describe('InitCommand', () => {
 
       const codeBuddyProposal = path.join(
         testDir,
-        '.codebuddy/commands/plx/plan-proposal.md'
+        '.codebuddy/commands/splx/plan-proposal.md'
       );
       const codeBuddyImplement = path.join(
         testDir,
-        '.codebuddy/commands/plx/implement.md'
+        '.codebuddy/commands/splx/implement.md'
       );
       const codeBuddyArchive = path.join(
         testDir,
-        '.codebuddy/commands/plx/archive.md'
+        '.codebuddy/commands/splx/archive.md'
       );
 
       expect(await fileExists(codeBuddyProposal)).toBe(true);
@@ -1133,7 +1133,7 @@ describe('InitCommand', () => {
       expect(archiveContent).toContain('---');
       expect(archiveContent).toContain('name: Archive');
       expect(archiveContent).toContain('description: Archive a deployed change and update specs.');
-      expect(archiveContent).toContain('plx archive change --id <id> --yes');
+      expect(archiveContent).toContain('splx archive change --id <id> --yes');
     });
 
     it('should mark CodeBuddy as already configured during extend mode', async () => {
@@ -1159,7 +1159,7 @@ describe('InitCommand', () => {
       const content = await fs.readFile(codeBuddyPath, 'utf-8');
       expect(content).toContain('<!-- PLX:START -->');
       expect(content).toContain("/workspace/AGENTS.md");
-      expect(content).toContain('plx update');
+      expect(content).toContain('splx update');
       expect(content).toContain('<!-- PLX:END -->');
     });
 
@@ -1176,7 +1176,7 @@ describe('InitCommand', () => {
       const updatedContent = await fs.readFile(codeBuddyPath, 'utf-8');
       expect(updatedContent).toContain('<!-- PLX:START -->');
       expect(updatedContent).toContain("/workspace/AGENTS.md");
-      expect(updatedContent).toContain('plx update');
+      expect(updatedContent).toContain('splx update');
       expect(updatedContent).toContain('<!-- PLX:END -->');
       expect(updatedContent).toContain('Custom instructions here');
     });
@@ -1188,15 +1188,15 @@ describe('InitCommand', () => {
 
       const crushProposal = path.join(
         testDir,
-        '.crush/commands/plx/plan-proposal.md'
+        '.crush/commands/splx/plan-proposal.md'
       );
       const crushImplement = path.join(
         testDir,
-        '.crush/commands/plx/implement.md'
+        '.crush/commands/splx/implement.md'
       );
       const crushArchive = path.join(
         testDir,
-        '.crush/commands/plx/archive.md'
+        '.crush/commands/splx/archive.md'
       );
 
       expect(await fileExists(crushProposal)).toBe(true);
@@ -1208,7 +1208,7 @@ describe('InitCommand', () => {
       expect(proposalContent).toContain('name: Plan Proposal');
       expect(proposalContent).toContain('description: Scaffold a new change and validate strictly.');
       expect(proposalContent).toContain('category: OpenSplx');
-      expect(proposalContent).toContain('tags: [plx, change]');
+      expect(proposalContent).toContain('tags: [splx, change]');
       expect(proposalContent).toContain('<!-- PLX:START -->');
       expect(proposalContent).toContain('**Guardrails**');
 
@@ -1217,15 +1217,15 @@ describe('InitCommand', () => {
       expect(implementContent).toContain('name: Implement');
       expect(implementContent).toContain('description: Implement an approved change and keep tasks in sync.');
       expect(implementContent).toContain('category: OpenSplx');
-      expect(implementContent).toContain('tags: [plx, implement]');
+      expect(implementContent).toContain('tags: [splx, implement]');
 
       const archiveContent = await fs.readFile(crushArchive, 'utf-8');
       expect(archiveContent).toContain('---');
       expect(archiveContent).toContain('name: Archive');
       expect(archiveContent).toContain('description: Archive a deployed change and update specs.');
       expect(archiveContent).toContain('category: OpenSplx');
-      expect(archiveContent).toContain('tags: [plx, archive]');
-      expect(archiveContent).toContain('plx archive change --id <id> --yes');
+      expect(archiveContent).toContain('tags: [splx, archive]');
+      expect(archiveContent).toContain('splx archive change --id <id> --yes');
     });
 
     it('should mark Crush as already configured during extend mode', async () => {
@@ -1247,15 +1247,15 @@ describe('InitCommand', () => {
 
       const costrictProposal = path.join(
         testDir,
-        '.cospec/plx/commands/plx-plan-proposal.md'
+        '.cospec/splx/commands/splx-plan-proposal.md'
       );
       const costrictImplement = path.join(
         testDir,
-        '.cospec/plx/commands/plx-implement.md'
+        '.cospec/splx/commands/splx-implement.md'
       );
       const costrictArchive = path.join(
         testDir,
-        '.cospec/plx/commands/plx-archive.md'
+        '.cospec/splx/commands/splx-archive.md'
       );
 
       expect(await fileExists(costrictProposal)).toBe(true);
@@ -1286,15 +1286,15 @@ describe('InitCommand', () => {
 
       const rooProposal = path.join(
         testDir,
-        '.roo/commands/plx-plan-proposal.md'
+        '.roo/commands/splx-plan-proposal.md'
       );
       const rooImplement = path.join(
         testDir,
-        '.roo/commands/plx-implement.md'
+        '.roo/commands/splx-implement.md'
       );
       const rooArchive = path.join(
         testDir,
-        '.roo/commands/plx-archive.md'
+        '.roo/commands/splx-archive.md'
       );
 
       expect(await fileExists(rooProposal)).toBe(true);
@@ -1310,7 +1310,7 @@ describe('InitCommand', () => {
 
       const archiveContent = await fs.readFile(rooArchive, 'utf-8');
       expect(archiveContent).toContain('# PLX: Archive');
-      expect(archiveContent).toContain('plx archive change --id <id> --yes');
+      expect(archiveContent).toContain('splx archive change --id <id> --yes');
     });
 
     it('should mark RooCode as already configured during extend mode', async () => {
@@ -1332,15 +1332,15 @@ describe('InitCommand', () => {
 
       const qoderProposal = path.join(
         testDir,
-        '.qoder/commands/plx/plan-proposal.md'
+        '.qoder/commands/splx/plan-proposal.md'
       );
       const qoderImplement = path.join(
         testDir,
-        '.qoder/commands/plx/implement.md'
+        '.qoder/commands/splx/implement.md'
       );
       const qoderArchive = path.join(
         testDir,
-        '.qoder/commands/plx/archive.md'
+        '.qoder/commands/splx/archive.md'
       );
 
       expect(await fileExists(qoderProposal)).toBe(true);
@@ -1364,7 +1364,7 @@ describe('InitCommand', () => {
       expect(archiveContent).toContain('---');
       expect(archiveContent).toContain('name: Archive');
       expect(archiveContent).toContain('description: Archive a deployed change and update specs.');
-      expect(archiveContent).toContain('plx archive change --id <id> --yes');
+      expect(archiveContent).toContain('splx archive change --id <id> --yes');
     });
 
     it('should mark Qoder as already configured during extend mode', async () => {
@@ -1390,7 +1390,7 @@ describe('InitCommand', () => {
       const content = await fs.readFile(costrictPath, 'utf-8');
       expect(content).toContain('<!-- PLX:START -->');
       expect(content).toContain("/workspace/AGENTS.md");
-      expect(content).toContain('plx update');
+      expect(content).toContain('splx update');
       expect(content).toContain('<!-- PLX:END -->');
     });
 
@@ -1405,7 +1405,7 @@ describe('InitCommand', () => {
       const content = await fs.readFile(qoderPath, 'utf-8');
       expect(content).toContain('<!-- PLX:START -->');
       expect(content).toContain("/workspace/AGENTS.md");
-      expect(content).toContain('plx update');
+      expect(content).toContain('splx update');
       expect(content).toContain('<!-- PLX:END -->');
     });
     it('should update existing COSTRICT.md with markers', async () => {
@@ -1437,7 +1437,7 @@ describe('InitCommand', () => {
       const updatedContent = await fs.readFile(qoderPath, 'utf-8');
       expect(updatedContent).toContain('<!-- PLX:START -->');
       expect(updatedContent).toContain("/workspace/AGENTS.md");
-      expect(updatedContent).toContain('plx update');
+      expect(updatedContent).toContain('splx update');
       expect(updatedContent).toContain('<!-- PLX:END -->');
       expect(updatedContent).toContain('Custom instructions here');
     });
@@ -1453,11 +1453,11 @@ describe('InitCommand', () => {
       const claudePath = path.join(testDir, 'CLAUDE.md');
       const cursorProposal = path.join(
         testDir,
-        '.cursor/commands/plx-plan-proposal.md'
+        '.cursor/commands/splx-plan-proposal.md'
       );
       const windsurfProposal = path.join(
         testDir,
-        '.windsurf/workflows/plx-plan-proposal.md'
+        '.windsurf/workflows/splx-plan-proposal.md'
       );
 
       expect(await fileExists(claudePath)).toBe(true);
@@ -1473,11 +1473,11 @@ describe('InitCommand', () => {
       const claudePath = path.join(testDir, 'CLAUDE.md');
       const cursorProposal = path.join(
         testDir,
-        '.cursor/commands/plx-plan-proposal.md'
+        '.cursor/commands/splx-plan-proposal.md'
       );
       const windsurfProposal = path.join(
         testDir,
-        '.windsurf/workflows/plx-plan-proposal.md'
+        '.windsurf/workflows/splx-plan-proposal.md'
       );
 
       expect(await fileExists(claudePath)).toBe(true);
@@ -1493,7 +1493,7 @@ describe('InitCommand', () => {
       const claudePath = path.join(testDir, 'CLAUDE.md');
       const cursorProposal = path.join(
         testDir,
-        '.cursor/commands/plx-plan-proposal.md'
+        '.cursor/commands/splx-plan-proposal.md'
       );
 
       // Should still create AGENTS.md but no tool-specific files
@@ -1519,7 +1519,7 @@ describe('InitCommand', () => {
       const claudePath = path.join(testDir, 'CLAUDE.md');
       const cursorProposal = path.join(
         testDir,
-        '.cursor/commands/plx-plan-proposal.md'
+        '.cursor/commands/splx-plan-proposal.md'
       );
 
       expect(await fileExists(claudePath)).toBe(true);
@@ -1537,7 +1537,7 @@ describe('InitCommand', () => {
 
   describe('already configured detection', () => {
     it('should NOT show tools as already configured in fresh project with existing CLAUDE.md', async () => {
-      // Simulate user having their own CLAUDE.md before running plx init
+      // Simulate user having their own CLAUDE.md before running splx init
       const claudePath = path.join(testDir, 'CLAUDE.md');
       await fs.writeFile(claudePath, '# My Custom Claude Instructions\n');
 
@@ -1598,7 +1598,7 @@ describe('InitCommand', () => {
       const codexPromptsDir = path.join(testDir, '.codex/prompts');
       await fs.mkdir(codexPromptsDir, { recursive: true });
       await fs.writeFile(
-        path.join(codexPromptsDir, 'plx-plan-proposal.md'),
+        path.join(codexPromptsDir, 'splx-plan-proposal.md'),
         '# Existing prompt\n'
       );
 
@@ -1628,7 +1628,7 @@ describe('InitCommand', () => {
         async (filePath: any, ...args: any[]) => {
           if (
             typeof filePath === 'string' &&
-            filePath.includes('.plx-test-')
+            filePath.includes('.splx-test-')
           ) {
             throw new Error('EACCES: permission denied');
           }

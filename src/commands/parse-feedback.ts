@@ -77,20 +77,20 @@ export class ParseFeedbackCommand {
     // Emit deprecation warnings for legacy flags
     if (options.changeId) {
       emitDeprecationWarning(
-        'plx parse feedback --change-id <id>',
-        'plx parse feedback --parent-id <id> --parent-type change'
+        'splx parse feedback --change-id <id>',
+        'splx parse feedback --parent-id <id> --parent-type change'
       );
     }
     if (options.specId) {
       emitDeprecationWarning(
-        'plx parse feedback --spec-id <id>',
-        'plx parse feedback --parent-id <id> --parent-type spec'
+        'splx parse feedback --spec-id <id>',
+        'splx parse feedback --parent-id <id> --parent-type spec'
       );
     }
     if (options.taskId) {
       emitDeprecationWarning(
-        'plx parse feedback --task-id <id>',
-        'plx parse feedback --parent-id <id> --parent-type task'
+        'splx parse feedback --task-id <id>',
+        'splx parse feedback --parent-id <id> --parent-type task'
       );
     }
 
@@ -173,7 +173,7 @@ export class ParseFeedbackCommand {
           );
         } else {
           ora().fail('Review name is required');
-          console.log(chalk.dim('  Usage: plx parse feedback <review-name> --parent-id <id> --parent-type change|spec|task'));
+          console.log(chalk.dim('  Usage: splx parse feedback <review-name> --parent-id <id> --parent-type change|spec|task'));
         }
         process.exitCode = 1;
         return;
@@ -321,9 +321,9 @@ export class ParseFeedbackCommand {
           }
           console.log();
           console.log(chalk.dim('  To assign these markers, use:'));
-          console.log(chalk.dim('    plx parse feedback <review-name> --parent-id <id> --parent-type <type>'));
+          console.log(chalk.dim('    splx parse feedback <review-name> --parent-id <id> --parent-type <type>'));
           console.log(chalk.dim('  Or with auto-detection:'));
-          console.log(chalk.dim('    plx parse feedback <review-name> --parent-id <id>'));
+          console.log(chalk.dim('    splx parse feedback <review-name> --parent-id <id>'));
         }
         process.exitCode = 1;
         return;
@@ -438,12 +438,12 @@ export class ParseFeedbackCommand {
       console.log(chalk.dim(`Total tasks: ${totalTasks}`));
       console.log();
       console.log(chalk.cyan('Next steps:'));
-      console.log(chalk.dim('  1. Work on tasks: plx get task'));
+      console.log(chalk.dim('  1. Work on tasks: splx get task'));
       console.log(chalk.dim('  2. Address feedback and remove markers'));
       if (results.length === 1) {
-        console.log(chalk.dim(`  3. Archive when complete: plx archive review --id ${results[0].reviewId}`));
+        console.log(chalk.dim(`  3. Archive when complete: splx archive review --id ${results[0].reviewId}`));
       } else {
-        console.log(chalk.dim('  3. Archive when complete: plx archive review --id <review-id>'));
+        console.log(chalk.dim('  3. Archive when complete: splx archive review --id <review-id>'));
       }
     }
   }

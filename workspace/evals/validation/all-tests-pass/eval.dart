@@ -1,7 +1,7 @@
 import 'dart:io';
 import '../../eval_base.dart';
 
-/// Project-specific eval that runs `npm test` (vitest) for pew-pew-plx.
+/// Project-specific eval that runs `npm test` (vitest) for pew-pew-splx.
 class AllTestsPassEval extends BaseEval {
   @override
   Map<String, TestFunction> get tests => {

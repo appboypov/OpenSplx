@@ -11,7 +11,7 @@ describe('change validate (interactive behavior)', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-change-validate-tmp');
   const changesDir = path.join(testDir, 'workspace', 'changes');
-  const bin = path.join(projectRoot, 'bin', 'plx.js');
+  const bin = path.join(projectRoot, 'bin', 'splx.js');
 
 
   beforeEach(async () => {
@@ -39,7 +39,7 @@ describe('change validate (interactive behavior)', () => {
       expect(err).toBeDefined();
       expect(err.status).not.toBe(0);
       expect(err.stderr.toString()).toContain('Available IDs:');
-      expect(err.stderr.toString()).toContain('plx change list');
+      expect(err.stderr.toString()).toContain('splx change list');
     } finally {
       process.chdir(originalCwd);
       process.env = originalEnv;

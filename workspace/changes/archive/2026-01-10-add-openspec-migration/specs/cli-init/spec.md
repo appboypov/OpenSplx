@@ -6,7 +6,7 @@ The init command SHALL automatically migrate legacy OpenSpec project structures 
 
 #### Scenario: Migrating before init
 
-- **WHEN** `plx init` is run
+- **WHEN** `splx init` is run
 - **AND** an `openspec/` directory exists
 - **AND** no `workspace/` directory exists
 - **THEN** rename `openspec/` to `workspace/`
@@ -15,14 +15,14 @@ The init command SHALL automatically migrate legacy OpenSpec project structures 
 
 #### Scenario: Migrating markers during init
 
-- **WHEN** `plx init` is run
+- **WHEN** `splx init` is run
 - **AND** files contain `<!-- OPENSPEC:START/END -->` markers
 - **THEN** replace all occurrences with `<!-- PLX:START/END -->` markers
 - **AND** log count of files updated
 
 #### Scenario: Both directories exist on init
 
-- **WHEN** `plx init` is run
+- **WHEN** `splx init` is run
 - **AND** both `openspec/` and `workspace/` directories exist
 - **THEN** skip directory migration
 - **AND** log warning about both directories existing

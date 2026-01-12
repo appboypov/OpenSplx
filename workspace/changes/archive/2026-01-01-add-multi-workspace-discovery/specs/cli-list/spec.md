@@ -4,7 +4,7 @@
 The command SHALL discover and aggregate items from all workspace directories found recursively from the current working directory.
 
 #### Scenario: Discover workspaces in monorepo
-- **WHEN** `plx list` is executed from a directory containing multiple projects with workspace/ directories
+- **WHEN** `splx list` is executed from a directory containing multiple projects with workspace/ directories
 - **THEN** recursively scan for workspace/ directories up to 5 levels deep
 - **AND** skip directories: node_modules, .git, dist, build, .next, __pycache__, venv, coverage, .cache
 - **AND** include root-level workspace/ if present
@@ -24,7 +24,7 @@ The command SHALL discover and aggregate items from all workspace directories fo
 The command SHALL support a `--workspace` flag to filter operations to a specific workspace.
 
 #### Scenario: Filter to specific workspace
-- **WHEN** `plx list --workspace project-a` is executed
+- **WHEN** `splx list --workspace project-a` is executed
 - **THEN** only show items from the workspace in project-a/workspace/
 - **AND** do not prefix items with project name
 

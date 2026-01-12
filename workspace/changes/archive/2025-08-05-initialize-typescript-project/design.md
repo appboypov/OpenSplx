@@ -15,7 +15,7 @@
 
 ### Package Structure
 ```
-plx
+splx
 ├── bin/            # CLI entry point
 ├── dist/           # Compiled JavaScript
 ├── src/            # TypeScript source

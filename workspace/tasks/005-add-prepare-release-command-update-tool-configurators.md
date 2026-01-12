@@ -19,41 +19,41 @@ All 20 tool-specific PLX configurators include FILE_PATHS and FRONTMATTER entrie
 Add prepare-release entries to each configurator following their specific format:
 
 **Standard YAML frontmatter:**
-- plx-claude.ts
-- plx-codebuddy.ts
-- plx-crush.ts
-- plx-qoder.ts
+- splx-claude.ts
+- splx-codebuddy.ts
+- splx-crush.ts
+- splx-qoder.ts
 
 **Name/ID format:**
-- plx-cursor.ts
-- plx-iflow.ts
+- splx-cursor.ts
+- splx-iflow.ts
 
 **With $ARGUMENTS placeholder:**
-- plx-factory.ts
-- plx-opencode.ts
-- plx-codex.ts
-- plx-github-copilot.ts
-- plx-amazon-q.ts
-- plx-auggie.ts
-- plx-costrict.ts
-- plx-kilocode.ts
+- splx-factory.ts
+- splx-opencode.ts
+- splx-codex.ts
+- splx-github-copilot.ts
+- splx-amazon-q.ts
+- splx-auggie.ts
+- splx-costrict.ts
+- splx-kilocode.ts
 
 **TOML format (description-only):**
-- plx-windsurf.ts
-- plx-gemini.ts
-- plx-qwen.ts
-- plx-antigravity.ts
+- splx-windsurf.ts
+- splx-gemini.ts
+- splx-qwen.ts
+- splx-antigravity.ts
 
 **Simple markdown format:**
-- plx-cline.ts
-- plx-roocode.ts
+- splx-cline.ts
+- splx-roocode.ts
 
 ## Constraints
 
 - Must follow each tool's existing format exactly
 - Description: "Prepare release by updating changelog, readme, and architecture documentation."
 - Category: OpenSplx
-- Tags: [plx, release, documentation]
+- Tags: [splx, release, documentation]
 
 ## Acceptance Criteria
 
@@ -64,30 +64,30 @@ Add prepare-release entries to each configurator following their specific format
 
 ## Implementation Checklist
 
-- [x] Update plx-claude.ts
-- [x] Update plx-codebuddy.ts
-- [x] Update plx-crush.ts
-- [x] Update plx-qoder.ts
-- [x] Update plx-cursor.ts
-- [x] Update plx-iflow.ts
-- [x] Update plx-factory.ts
-- [x] Update plx-opencode.ts
-- [x] Update plx-codex.ts
-- [x] Update plx-github-copilot.ts
-- [x] Update plx-amazon-q.ts
-- [x] Update plx-auggie.ts
-- [x] Update plx-costrict.ts
-- [x] Update plx-kilocode.ts
-- [x] Update plx-windsurf.ts
-- [x] Update plx-gemini.ts
-- [x] Update plx-qwen.ts
-- [x] Update plx-antigravity.ts
-- [x] Update plx-cline.ts
-- [x] Update plx-roocode.ts
+- [x] Update splx-claude.ts
+- [x] Update splx-codebuddy.ts
+- [x] Update splx-crush.ts
+- [x] Update splx-qoder.ts
+- [x] Update splx-cursor.ts
+- [x] Update splx-iflow.ts
+- [x] Update splx-factory.ts
+- [x] Update splx-opencode.ts
+- [x] Update splx-codex.ts
+- [x] Update splx-github-copilot.ts
+- [x] Update splx-amazon-q.ts
+- [x] Update splx-auggie.ts
+- [x] Update splx-costrict.ts
+- [x] Update splx-kilocode.ts
+- [x] Update splx-windsurf.ts
+- [x] Update splx-gemini.ts
+- [x] Update splx-qwen.ts
+- [x] Update splx-antigravity.ts
+- [x] Update splx-cline.ts
+- [x] Update splx-roocode.ts
 - [x] Verify TypeScript compilation
 
 ## Notes
 
-Location: `src/core/configurators/slash/plx-*.ts`
+Location: `src/core/configurators/slash/splx-*.ts`
 
 Reference existing entries for the exact format each tool uses.

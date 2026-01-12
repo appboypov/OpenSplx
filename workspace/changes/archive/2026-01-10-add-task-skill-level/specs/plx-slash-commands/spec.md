@@ -2,11 +2,11 @@
 
 ### Requirement: Orchestrate Model Selection
 
-The plx/orchestrate slash command SHALL instruct agents to select sub-agent models based on task skill level.
+The splx/orchestrate slash command SHALL instruct agents to select sub-agent models based on task skill level.
 
 #### Scenario: Model selection guidance in orchestrate
 
-- **WHEN** the plx/orchestrate slash command is generated
+- **WHEN** the splx/orchestrate slash command is generated
 - **THEN** include guidance for selecting sub-agent model based on task skill level
 - **AND** include the Claude model mapping: junior→haiku, medior→sonnet, senior→opus
 - **AND** include fallback guidance: if skill level is missing, agent determines model based on task complexity
@@ -19,11 +19,11 @@ The plx/orchestrate slash command SHALL instruct agents to select sub-agent mode
 
 ### Requirement: Plan Proposal Skill Level Assignment
 
-The plx/plan-proposal slash command SHALL instruct agents to auto-assign skill levels to generated tasks.
+The splx/plan-proposal slash command SHALL instruct agents to auto-assign skill levels to generated tasks.
 
 #### Scenario: Skill level heuristics in plan-proposal
 
-- **WHEN** the plx/plan-proposal slash command is generated
+- **WHEN** the splx/plan-proposal slash command is generated
 - **THEN** include instruction to assign skill level to each generated task
 - **AND** include heuristics for assignment:
   - junior: documentation, simple config, minor refactoring

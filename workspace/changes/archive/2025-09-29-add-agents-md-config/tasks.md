@@ -1,11 +1,11 @@
 # Implementation Tasks
 
 ## 1. Extend Init Workflow
-- [x] 1.1 Add an "AGENTS.md standard" option to the `plx init` tool-selection prompt, respecting the existing UI conventions.
+- [x] 1.1 Add an "AGENTS.md standard" option to the `splx init` tool-selection prompt, respecting the existing UI conventions.
 - [x] 1.2 Generate or refresh a root-level `AGENTS.md` file using the PLX markers when that option is selected, sourcing content from the canonical template.
 
 ## 2. Enhance Update Command
-- [x] 2.1 Ensure `plx update` writes the root `AGENTS.md` from the latest template (creating it if missing) alongside `workspace/AGENTS.md`.
+- [x] 2.1 Ensure `splx update` writes the root `AGENTS.md` from the latest template (creating it if missing) alongside `workspace/AGENTS.md`.
 - [x] 2.2 Update success messaging and logging to reflect creation vs refresh of the AGENTS standard file.
 
 ## 3. Shared Template Handling
@@ -14,4 +14,4 @@
 
 ## 4. Documentation
 - [x] 4.1 Update CLI specs and user-facing docs to describe AGENTS standard support.
-- [x] 4.2 Run `plx validate add-agents-md-config --strict` and document any notable behavior changes.
+- [x] 4.2 Run `splx validate add-agents-md-config --strict` and document any notable behavior changes.

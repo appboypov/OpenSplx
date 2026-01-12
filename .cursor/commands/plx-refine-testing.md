@@ -1,6 +1,6 @@
 ---
-name: /plx-refine-testing
-id: plx-refine-testing
+name: /splx-refine-testing
+id: splx-refine-testing
 category: OpenSplx
 description: Create or update TESTING.md.
 ---
@@ -119,5 +119,5 @@ description: Create or update TESTING.md.
 
 ## Part 3: Confirm
 9. Present summary of configuration and populated scope.
-10. Explain how `/plx:test` will use these settings.
+10. Explain how `/splx:test` will use these settings.
 <!-- PLX:END -->

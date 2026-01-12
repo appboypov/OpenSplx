@@ -26,9 +26,9 @@ All tests pass and behavior matches spec requirements.
 ## Implementation Checklist
 
 - [x] 5.1 Run `npm test` and verify all tests pass
-- [x] 5.2 Manual test: run `plx get task` with active changes
-- [x] 5.3 Manual test: run `plx get task --did-complete-previous`
-- [x] 5.4 Manual test: run `plx get task --json`
+- [x] 5.2 Manual test: run `splx get task` with active changes
+- [x] 5.3 Manual test: run `splx get task --did-complete-previous`
+- [x] 5.4 Manual test: run `splx get task --json`
 - [x] 5.5 Manual test: verify behavior with no active changes
 - [x] 5.6 Update any failing tests or fix implementation bugs
 

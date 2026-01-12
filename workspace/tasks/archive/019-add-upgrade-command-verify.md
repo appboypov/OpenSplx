@@ -21,7 +21,7 @@ All validation passes and manual testing confirms correct behavior.
 
 ## Constraints
 
-- [ ] Must pass `plx validate change --id add-upgrade-command --strict`
+- [ ] Must pass `splx validate change --id add-upgrade-command --strict`
 - [ ] Must pass `pnpm test`
 - [ ] Must pass `pnpm lint`
 
@@ -34,12 +34,12 @@ All validation passes and manual testing confirms correct behavior.
 
 ## Implementation Checklist
 
-- [x] 3.1 Run `plx validate change --id add-upgrade-command --strict`
+- [x] 3.1 Run `splx validate change --id add-upgrade-command --strict`
 - [x] 3.2 Run `pnpm test` and verify all tests pass
 - [x] 3.3 Run `pnpm lint` and fix any issues
 - [x] 3.4 Run `pnpm build` to verify compilation
-- [x] 3.5 Manually test `plx upgrade --check` to verify version check
-- [x] 3.6 Verify help text is clear (`plx upgrade --help`)
+- [x] 3.5 Manually test `splx upgrade --check` to verify version check
+- [x] 3.6 Verify help text is clear (`splx upgrade --help`)
 
 ## Notes
 

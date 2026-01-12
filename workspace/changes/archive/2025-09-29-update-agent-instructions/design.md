@@ -24,10 +24,10 @@ This structure helps agents understand the lifecycle and their role at each stag
 
 ### CLI Documentation Updates
 - **Comprehensive command coverage** - All 9 primary commands documented
-- **`plx list` prominence** - Essential for discovering changes and specs
+- **`splx list` prominence** - Essential for discovering changes and specs
 - **Interactive mode documentation** - How agents can use prompts effectively
 - **Complete flag documentation** - All options like --json, --type, --skip-specs
-- **Deprecation cleanup** - Remove noun-first patterns (plx change show)
+- **Deprecation cleanup** - Remove noun-first patterns (splx change show)
 
 ### Agent-Specific Enhancements
 Based on industry best practices for coding agents (Claude Code, Cursor, etc.):
@@ -41,7 +41,7 @@ Based on industry best practices for coding agents (Claude Code, Cursor, etc.):
 
 **Spec Discovery Workflow**
 - Always check existing specs before creating new ones
-- Use `plx list --specs` to discover current capabilities
+- Use `splx list --specs` to discover current capabilities
 - Prefer modifying existing specs over creating duplicates
 - Prevents fragmentation and maintains coherent architecture
 

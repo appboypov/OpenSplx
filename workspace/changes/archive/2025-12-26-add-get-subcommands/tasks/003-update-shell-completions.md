@@ -27,10 +27,10 @@ The `get` command with all subcommands and flags is included in shell autocomple
 
 ## Acceptance Criteria
 
-- [x] `plx get <TAB>` shows task, change, spec, tasks
-- [x] `plx get task --<TAB>` shows all task flags
-- [x] `plx get change --id <TAB>` shows available change IDs
-- [x] `plx get spec --id <TAB>` shows available spec IDs
+- [x] `splx get <TAB>` shows task, change, spec, tasks
+- [x] `splx get task --<TAB>` shows all task flags
+- [x] `splx get change --id <TAB>` shows available change IDs
+- [x] `splx get spec --id <TAB>` shows available spec IDs
 - [x] Completion scripts regenerate correctly
 
 ## Implementation Checklist
@@ -40,8 +40,8 @@ The `get` command with all subcommands and flags is included in shell autocomple
 - [x] 3.3 Add `change` subcommand with flags
 - [x] 3.4 Add `spec` subcommand with flags
 - [x] 3.5 Add `tasks` subcommand with flags
-- [x] 3.6 Test with `plx completion generate zsh`
-- [x] 3.7 Test with `plx completion generate bash` (bash not yet supported)
+- [x] 3.6 Test with `splx completion generate zsh`
+- [x] 3.7 Test with `splx completion generate bash` (bash not yet supported)
 
 ## Notes
 

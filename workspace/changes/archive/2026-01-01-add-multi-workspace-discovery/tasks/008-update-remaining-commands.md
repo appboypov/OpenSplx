@@ -23,10 +23,10 @@ Update each command:
 - [ ] Use consistent prefix format across all commands
 
 ## Acceptance Criteria
-- [ ] `plx change show add-feature` works with prefix in multi-workspace
-- [ ] `plx view` shows aggregated dashboard from all workspaces
-- [ ] `plx review --change-id X` resolves across workspaces
-- [ ] `plx paste request` uses appropriate workspace
+- [ ] `splx change show add-feature` works with prefix in multi-workspace
+- [ ] `splx view` shows aggregated dashboard from all workspaces
+- [ ] `splx review --change-id X` resolves across workspaces
+- [ ] `splx paste request` uses appropriate workspace
 
 ## Implementation Checklist
 - [ ] 8.1 Update ChangeCommand.show to handle workspace prefix

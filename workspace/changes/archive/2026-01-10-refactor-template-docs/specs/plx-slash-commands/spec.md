@@ -2,12 +2,12 @@
 
 ### Requirement: Refine Testing Command
 
-The system SHALL provide a `plx/refine-testing` slash command that creates or updates TESTING.md with test configuration options.
+The system SHALL provide a `splx/refine-testing` slash command that creates or updates TESTING.md with test configuration options.
 
 #### Scenario: Generating refine-testing command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-testing.md`
+- **THEN** create `.claude/commands/splx/refine-testing.md`
 - **AND** include frontmatter with name "OpenSplx: Refine Testing", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using TESTING.md template structure, preserving existing configuration
@@ -15,12 +15,12 @@ The system SHALL provide a `plx/refine-testing` slash command that creates or up
 
 ### Requirement: Test Command
 
-The system SHALL provide a `plx/test` slash command that runs testing workflow for specified scope.
+The system SHALL provide a `splx/test` slash command that runs testing workflow for specified scope.
 
 #### Scenario: Generating test command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/test.md`
+- **THEN** create `.claude/commands/splx/test.md`
 - **AND** include frontmatter with name "OpenSplx: Test", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: reading TESTING.md configuration, running tests for specified scope
@@ -38,14 +38,14 @@ The system SHALL create a TESTING.md template at the project root during initial
 
 #### Scenario: Creating TESTING.md during init
 
-- **WHEN** `plx init` is executed
+- **WHEN** `splx init` is executed
 - **THEN** check if TESTING.md exists at project root
 - **AND** if not exists, create TESTING.md with config-style content
 - **AND** include sections: Purpose, Test Types, Coverage, Test Patterns, Test Checklist
 
 #### Scenario: Creating TESTING.md during update
 
-- **WHEN** `plx update` is executed
+- **WHEN** `splx update` is executed
 - **THEN** check if TESTING.md exists at project root
 - **AND** if not exists, create TESTING.md with config-style content
 - **AND** do not overwrite existing TESTING.md
@@ -54,12 +54,12 @@ The system SHALL create a TESTING.md template at the project root during initial
 
 ### Requirement: Refine Release Command
 
-The system SHALL provide a `plx/refine-release` slash command that creates or updates RELEASE.md with comprehensive option documentation.
+The system SHALL provide a `splx/refine-release` slash command that creates or updates RELEASE.md with comprehensive option documentation.
 
 #### Scenario: Generating refine-release command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-release.md`
+- **THEN** create `.claude/commands/splx/refine-release.md`
 - **AND** include frontmatter with name "OpenSplx: Refine Release", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using RELEASE.md template structure, preserving existing configuration

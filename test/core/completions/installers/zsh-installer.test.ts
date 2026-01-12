@@ -11,7 +11,7 @@ describe('ZshInstaller', () => {
 
   beforeEach(async () => {
     // Create a temporary home directory for testing
-    testHomeDir = path.join(os.tmpdir(), `plx-zsh-test-${randomUUID()}`);
+    testHomeDir = path.join(os.tmpdir(), `splx-zsh-test-${randomUUID()}`);
     await fs.mkdir(testHomeDir, { recursive: true });
     installer = new ZshInstaller(testHomeDir);
   });
@@ -55,37 +55,37 @@ describe('ZshInstaller', () => {
       const result = await installer.getInstallationPath();
 
       expect(result.isOhMyZsh).toBe(true);
-      expect(result.path).toBe(path.join(testHomeDir, '.oh-my-zsh', 'custom', 'completions', '_plx'));
+      expect(result.path).toBe(path.join(testHomeDir, '.oh-my-zsh', 'custom', 'completions', '_splx'));
     });
 
     it('should return standard Zsh path when Oh My Zsh is not installed', async () => {
       const result = await installer.getInstallationPath();
 
       expect(result.isOhMyZsh).toBe(false);
-      expect(result.path).toBe(path.join(testHomeDir, '.zsh', 'completions', '_plx'));
+      expect(result.path).toBe(path.join(testHomeDir, '.zsh', 'completions', '_splx'));
     });
 
     it('should use custom commandName in installation path', async () => {
-      const result = await installer.getInstallationPath('plx');
+      const result = await installer.getInstallationPath('splx');
 
       expect(result.isOhMyZsh).toBe(false);
-      expect(result.path).toBe(path.join(testHomeDir, '.zsh', 'completions', '_plx'));
+      expect(result.path).toBe(path.join(testHomeDir, '.zsh', 'completions', '_splx'));
     });
 
     it('should use custom commandName with Oh My Zsh path', async () => {
       const ohMyZshPath = path.join(testHomeDir, '.oh-my-zsh');
       await fs.mkdir(ohMyZshPath, { recursive: true });
 
-      const result = await installer.getInstallationPath('plx');
+      const result = await installer.getInstallationPath('splx');
 
       expect(result.isOhMyZsh).toBe(true);
-      expect(result.path).toBe(path.join(testHomeDir, '.oh-my-zsh', 'custom', 'completions', '_plx'));
+      expect(result.path).toBe(path.join(testHomeDir, '.oh-my-zsh', 'custom', 'completions', '_splx'));
     });
 
-    it('should default to plx when no commandName provided', async () => {
+    it('should default to splx when no commandName provided', async () => {
       const result = await installer.getInstallationPath();
 
-      expect(result.path).toContain('_plx');
+      expect(result.path).toContain('_splx');
     });
   });
 
@@ -122,7 +122,7 @@ describe('ZshInstaller', () => {
   });
 
   describe('install', () => {
-    const testScript = '#compdef plx\n_plx() {\n  echo "test"\n}\n';
+    const testScript = '#compdef splx\n_splx() {\n  echo "test"\n}\n';
 
     it('should install to Oh My Zsh path when Oh My Zsh is present', async () => {
       // Create .oh-my-zsh directory
@@ -133,7 +133,7 @@ describe('ZshInstaller', () => {
 
       expect(result.success).toBe(true);
       expect(result.isOhMyZsh).toBe(true);
-      expect(result.installedPath).toBe(path.join(ohMyZshPath, 'custom', 'completions', '_plx'));
+      expect(result.installedPath).toBe(path.join(ohMyZshPath, 'custom', 'completions', '_splx'));
       expect(result.message).toContain('Oh My Zsh');
 
       // Verify file was created with correct content
@@ -146,7 +146,7 @@ describe('ZshInstaller', () => {
 
       expect(result.success).toBe(true);
       expect(result.isOhMyZsh).toBe(false);
-      expect(result.installedPath).toBe(path.join(testHomeDir, '.zsh', 'completions', '_plx'));
+      expect(result.installedPath).toBe(path.join(testHomeDir, '.zsh', 'completions', '_splx'));
 
       // Verify file was created
       const content = await fs.readFile(result.installedPath!, 'utf-8');
@@ -165,7 +165,7 @@ describe('ZshInstaller', () => {
     });
 
     it('should backup existing file before overwriting', async () => {
-      const targetPath = path.join(testHomeDir, '.zsh', 'completions', '_plx');
+      const targetPath = path.join(testHomeDir, '.zsh', 'completions', '_splx');
       await fs.mkdir(path.dirname(targetPath), { recursive: true });
       await fs.writeFile(targetPath, 'old script');
 
@@ -246,51 +246,51 @@ describe('ZshInstaller', () => {
       expect(secondResult.instructions!.join(' ')).toContain('already installed');
     });
 
-    it('should install to plx path when commandName is plx', async () => {
-      const plxScript = '#compdef plx\n_plx() {\n  echo "plx"\n}\n';
-      const result = await installer.install(plxScript, 'plx');
+    it('should install to splx path when commandName is splx', async () => {
+      const splxScript = '#compdef splx\n_splx() {\n  echo "splx"\n}\n';
+      const result = await installer.install(splxScript, 'splx');
 
       expect(result.success).toBe(true);
-      expect(result.installedPath).toBe(path.join(testHomeDir, '.zsh', 'completions', '_plx'));
+      expect(result.installedPath).toBe(path.join(testHomeDir, '.zsh', 'completions', '_splx'));
 
       // Verify file was created with correct content
       const content = await fs.readFile(result.installedPath!, 'utf-8');
-      expect(content).toBe(plxScript);
+      expect(content).toBe(splxScript);
     });
 
-    it('should install plx completion script', async () => {
-      const plxScript = '#compdef plx\n_plx() {}\n';
+    it('should install splx completion script', async () => {
+      const splxScript = '#compdef splx\n_splx() {}\n';
 
-      // Install plx
-      const plxResult = await installer.install(plxScript, 'plx');
-      expect(plxResult.success).toBe(true);
-      expect(plxResult.installedPath).toContain('_plx');
+      // Install splx
+      const splxResult = await installer.install(splxScript, 'splx');
+      expect(splxResult.success).toBe(true);
+      expect(splxResult.installedPath).toContain('_splx');
 
       // Verify file exists
-      const plxContent = await fs.readFile(plxResult.installedPath!, 'utf-8');
-      expect(plxContent).toBe(plxScript);
+      const splxContent = await fs.readFile(splxResult.installedPath!, 'utf-8');
+      expect(splxContent).toBe(splxScript);
     });
 
-    it('should install plx to Oh My Zsh path when Oh My Zsh is present', async () => {
+    it('should install splx to Oh My Zsh path when Oh My Zsh is present', async () => {
       const ohMyZshPath = path.join(testHomeDir, '.oh-my-zsh');
       await fs.mkdir(ohMyZshPath, { recursive: true });
 
-      const plxScript = '#compdef plx\n_plx() {}\n';
-      const result = await installer.install(plxScript, 'plx');
+      const splxScript = '#compdef splx\n_splx() {}\n';
+      const result = await installer.install(splxScript, 'splx');
 
       expect(result.success).toBe(true);
       expect(result.isOhMyZsh).toBe(true);
-      expect(result.installedPath).toBe(path.join(ohMyZshPath, 'custom', 'completions', '_plx'));
+      expect(result.installedPath).toBe(path.join(ohMyZshPath, 'custom', 'completions', '_splx'));
     });
 
     it('should update completion when content differs', async () => {
       // First installation
-      const firstScript = '#compdef plx\n_plx() {\n  echo "version 1"\n}\n';
+      const firstScript = '#compdef splx\n_splx() {\n  echo "version 1"\n}\n';
       const firstResult = await installer.install(firstScript);
       expect(firstResult.success).toBe(true);
 
       // Second installation with different script
-      const secondScript = '#compdef plx\n_plx() {\n  echo "version 2"\n}\n';
+      const secondScript = '#compdef splx\n_splx() {\n  echo "version 2"\n}\n';
       const secondResult = await installer.install(secondScript);
 
       expect(secondResult.success).toBe(true);
@@ -309,7 +309,7 @@ describe('ZshInstaller', () => {
 
     it('should handle paths with spaces in .zshrc config', async () => {
       // Create a test home directory with spaces
-      const testHomeDirWithSpaces = path.join(os.tmpdir(), `plx zsh test ${randomUUID()}`);
+      const testHomeDirWithSpaces = path.join(os.tmpdir(), `splx zsh test ${randomUUID()}`);
       await fs.mkdir(testHomeDirWithSpaces, { recursive: true });
       const installerWithSpaces = new ZshInstaller(testHomeDirWithSpaces);
 
@@ -334,7 +334,7 @@ describe('ZshInstaller', () => {
   });
 
   describe('uninstall', () => {
-    const testScript = '#compdef plx\n_plx() {}\n';
+    const testScript = '#compdef splx\n_splx() {}\n';
 
     it('should remove installed completion script', async () => {
       // Install first
@@ -372,12 +372,12 @@ describe('ZshInstaller', () => {
       const result = await installer.uninstall();
 
       expect(result.success).toBe(true);
-      expect(result.message).toContain(path.join('.oh-my-zsh', 'custom', 'completions', '_plx'));
+      expect(result.message).toContain(path.join('.oh-my-zsh', 'custom', 'completions', '_splx'));
     });
   });
 
   describe('isInstalled', () => {
-    const testScript = '#compdef plx\n_plx() {}\n';
+    const testScript = '#compdef splx\n_splx() {}\n';
 
     it('should return false when not installed', async () => {
       const isInstalled = await installer.isInstalled();
@@ -403,7 +403,7 @@ describe('ZshInstaller', () => {
   });
 
   describe('getInstallationInfo', () => {
-    const testScript = '#compdef plx\n_plx() {}\n';
+    const testScript = '#compdef splx\n_splx() {}\n';
 
     it('should return not installed when script does not exist', async () => {
       const info = await installer.getInstallationInfo();
@@ -420,7 +420,7 @@ describe('ZshInstaller', () => {
 
       expect(info.installed).toBe(true);
       expect(info.path).toBeDefined();
-      expect(info.path).toContain('_plx');
+      expect(info.path).toContain('_splx');
       expect(info.isOhMyZsh).toBe(false);
     });
 
@@ -673,7 +673,7 @@ describe('ZshInstaller', () => {
   });
 
   describe('install with .zshrc auto-configuration', () => {
-    const testScript = '#compdef plx\n_plx() {}\n';
+    const testScript = '#compdef splx\n_splx() {}\n';
 
     it('should auto-configure .zshrc for standard Zsh', async () => {
       const result = await installer.install(testScript);
@@ -750,7 +750,7 @@ describe('ZshInstaller', () => {
   });
 
   describe('uninstall with .zshrc cleanup', () => {
-    const testScript = '#compdef plx\n_plx() {}\n';
+    const testScript = '#compdef splx\n_splx() {}\n';
 
     it('should remove .zshrc config when uninstalling', async () => {
       // Install first (which creates .zshrc config)

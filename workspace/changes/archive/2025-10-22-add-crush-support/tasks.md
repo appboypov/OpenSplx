@@ -4,4 +4,4 @@
 - [x] 1.3 Create Crush-specific frontmatter for proposal, apply, archive commands
 - [x] 1.4 Register Crush configurator in slash/registry.ts
 - [x] 1.5 Add Crush to available tools in cli-init command
-- [x] 1.6 Test integration with plx init --tool crush
+- [x] 1.6 Test integration with splx init --tool crush

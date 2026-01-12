@@ -33,7 +33,7 @@ Implementation tasks are in progress or pending.
 - [ ] `pnpm build` succeeds without errors
 - [ ] `pnpm test` passes all tests
 - [ ] `pnpm lint` passes without warnings
-- [ ] `plx validate add-create-command --strict` passes
+- [ ] `splx validate add-create-command --strict` passes
 - [ ] Manual testing confirms all scenarios work
 
 ## Implementation Checklist
@@ -41,12 +41,12 @@ Implementation tasks are in progress or pending.
 - [x] 7.1 Run `pnpm build` and fix any errors
 - [x] 7.2 Run `pnpm test` and fix any failures
 - [x] 7.3 Run `pnpm lint` and fix any warnings
-- [x] 7.4 Run `plx validate add-create-command --strict`
-- [x] 7.5 Test `plx create task "Test"` manually
-- [x] 7.6 Test `plx create task "Test" --parent-id <existing-change>` manually
-- [x] 7.7 Test `plx create change "Test Change"` manually
-- [x] 7.8 Test `plx create spec "Test Spec"` manually
-- [x] 7.9 Test `plx create request "Test Request"` manually
+- [x] 7.4 Run `splx validate add-create-command --strict`
+- [x] 7.5 Test `splx create task "Test"` manually
+- [x] 7.6 Test `splx create task "Test" --parent-id <existing-change>` manually
+- [x] 7.7 Test `splx create change "Test Change"` manually
+- [x] 7.8 Test `splx create spec "Test Spec"` manually
+- [x] 7.9 Test `splx create request "Test Request"` manually
 - [x] 7.10 Verify JSON output for each subcommand
 
 ## Notes

@@ -8,11 +8,11 @@ parent-id: add-create-command
 
 ## End Goal
 
-A `CreateCommand` class exists that handles `plx create {entity}` subcommands for task, change, spec, and request entities.
+A `CreateCommand` class exists that handles `splx create {entity}` subcommands for task, change, spec, and request entities.
 
 ## Currently
 
-No `plx create` command exists. Entity creation happens manually or via other commands.
+No `splx create` command exists. Entity creation happens manually or via other commands.
 
 ## Should
 
@@ -33,12 +33,12 @@ No `plx create` command exists. Entity creation happens manually or via other co
 
 ## Acceptance Criteria
 
-- [ ] `plx create task "Title"` creates standalone task file
-- [ ] `plx create task "Title" --parent-id <id>` creates parented task
-- [ ] `plx create task "Title" --parent-id <id> --parent-type change` creates task with explicit parent type
-- [ ] `plx create change "Name"` scaffolds change directory with proposal.md, tasks/, specs/
-- [ ] `plx create spec "Name"` scaffolds spec directory with spec.md
-- [ ] `plx create request "Description"` creates change directory with request.md
+- [ ] `splx create task "Title"` creates standalone task file
+- [ ] `splx create task "Title" --parent-id <id>` creates parented task
+- [ ] `splx create task "Title" --parent-id <id> --parent-type change` creates task with explicit parent type
+- [ ] `splx create change "Name"` scaffolds change directory with proposal.md, tasks/, specs/
+- [ ] `splx create spec "Name"` scaffolds spec directory with spec.md
+- [ ] `splx create request "Description"` creates change directory with request.md
 - [ ] All subcommands display success message with created paths
 - [ ] `--json` flag outputs machine-readable JSON
 

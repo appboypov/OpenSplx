@@ -24,7 +24,7 @@ Today’s process requires maintainers to merge the Changesets PR, cut a tag, an
 - Permissions: ensure `contents: write` and `pull-requests: write` for opening/updating the version PR; `packages: read` optional.
 
 ## Rollback and Hotfixes
-- Rollback: revert the release PR merge (which reverts version bumps/changelog); if a tag or GitHub release was created, delete the tag and release; deprecate the npm version if necessary (`npm deprecate @fission-ai/plx@x.y.z 'reason'`).
+- Rollback: revert the release PR merge (which reverts version bumps/changelog); if a tag or GitHub release was created, delete the tag and release; deprecate the npm version if necessary (`npm deprecate @fission-ai/splx@x.y.z 'reason'`).
 - Hotfix (urgent, no pending changesets): create a changeset for the fix and merge the release PR; in emergencies, run a manual bump/publish but reconcile with Changesets by adding a follow-up changeset to align versions.
 
 ## Required Secrets

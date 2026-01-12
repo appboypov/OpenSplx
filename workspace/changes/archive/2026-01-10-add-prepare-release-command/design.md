@@ -2,7 +2,7 @@
 
 ## Overview
 
-This design describes the implementation of the `plx/prepare-release` slash command and accompanying `RELEASE.md` root file.
+This design describes the implementation of the `splx/prepare-release` slash command and accompanying `RELEASE.md` root file.
 
 ## Architecture Decision
 
@@ -14,7 +14,7 @@ The prepare-release feature uses a two-tier structure:
 2. **Root File (RELEASE.md)**: Detailed Activity XML with full interactive workflow instructions
 
 This mirrors the existing pattern used by the review command:
-- `plx/review.md` (slash command) → references `REVIEW.md` (root file)
+- `splx/review.md` (slash command) → references `REVIEW.md` (root file)
 
 ### Rationale
 
@@ -25,7 +25,7 @@ This mirrors the existing pattern used by the review command:
 ## Data Flow
 
 ```
-User invokes: /plx/prepare-release
+User invokes: /splx/prepare-release
     ↓
 AI reads prepare-release.md command body
     ↓
@@ -73,9 +73,9 @@ Present summary of all changes made
 | File | Change |
 |------|--------|
 | `src/core/templates/index.ts` | Export `getReleaseTemplate()` |
-| `src/core/templates/plx-slash-command-templates.ts` | Add `'prepare-release'` type and body |
-| `src/core/configurators/slash/plx-base.ts` | Add to `ALL_PLX_COMMANDS` |
-| `src/core/configurators/slash/plx-*.ts` (20 files) | Add FILE_PATHS and FRONTMATTER entries |
+| `src/core/templates/splx-slash-command-templates.ts` | Add `'prepare-release'` type and body |
+| `src/core/configurators/slash/splx-base.ts` | Add to `ALL_PLX_COMMANDS` |
+| `src/core/configurators/slash/splx-*.ts` (20 files) | Add FILE_PATHS and FRONTMATTER entries |
 | `src/core/init.ts` | Create RELEASE.md during init |
 | `src/core/update.ts` | Create RELEASE.md during update |
 
@@ -124,6 +124,6 @@ Tool categories and their formats:
 
 1. Template tests: Verify RELEASE.md template generates correctly
 2. Command tests: Verify prepare-release command body contains expected content
-3. Init tests: Verify RELEASE.md created during `plx init`
-4. Update tests: Verify RELEASE.md created during `plx update` (if missing)
+3. Init tests: Verify RELEASE.md created during `splx init`
+4. Update tests: Verify RELEASE.md created during `splx update` (if missing)
 5. Integration: Verify command generates for all 20 AI tools

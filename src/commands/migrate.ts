@@ -56,7 +56,7 @@ export class MigrateCommand {
       if (options.json) {
         console.log(JSON.stringify({ error: 'No workspace found' }));
       } else {
-        ora().fail('No workspace found. Run plx init first.');
+        ora().fail('No workspace found. Run splx init first.');
       }
       process.exitCode = 1;
       return;

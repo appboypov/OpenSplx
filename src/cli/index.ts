@@ -168,7 +168,7 @@ const changeCmd = program
 
 // Deprecation notice for noun-based commands
 changeCmd.hook('preAction', () => {
-  console.error('Warning: The "plx change ..." commands are deprecated. Prefer verb-first commands (e.g., "plx get changes", "plx validate changes").');
+  console.error('Warning: The "splx change ..." commands are deprecated. Prefer verb-first commands (e.g., "splx get changes", "splx validate changes").');
 });
 
 changeCmd
@@ -180,7 +180,7 @@ changeCmd
   .option('--no-interactive', 'Disable interactive prompts')
   .action(async (changeName?: string, options?: { json?: boolean; requirementsOnly?: boolean; deltasOnly?: boolean; noInteractive?: boolean }) => {
     try {
-      emitDeprecationWarning('plx change show <id>', 'plx get change --id <id>');
+      emitDeprecationWarning('splx change show <id>', 'splx get change --id <id>');
       const changeCommand = new ChangeCommand();
       await changeCommand.show(changeName, options);
     } catch (error) {
@@ -191,12 +191,12 @@ changeCmd
 
 changeCmd
   .command('list')
-  .description('List all active changes (DEPRECATED: use "plx get changes" instead)')
+  .description('List all active changes (DEPRECATED: use "splx get changes" instead)')
   .option('--json', 'Output as JSON')
   .option('--long', 'Show id and title with counts')
   .action(async (options?: { json?: boolean; long?: boolean }) => {
     try {
-      emitDeprecationWarning('plx change list', 'plx get changes');
+      emitDeprecationWarning('splx change list', 'splx get changes');
       const changeCommand = new ChangeCommand();
       await changeCommand.list(options);
     } catch (error) {
@@ -213,7 +213,7 @@ changeCmd
   .option('--no-interactive', 'Disable interactive prompts')
   .action(async (changeName?: string, options?: { strict?: boolean; json?: boolean; noInteractive?: boolean }) => {
     try {
-      emitDeprecationWarning('plx change validate <id>', 'plx validate change --id <id>');
+      emitDeprecationWarning('splx change validate <id>', 'splx validate change --id <id>');
       const changeCommand = new ChangeCommand();
       await changeCommand.validate(changeName, options);
       if (typeof process.exitCode === 'number' && process.exitCode !== 0) {
@@ -236,10 +236,10 @@ const archiveCmd = program
   .action(async (itemName?: string, options?: { yes?: boolean; skipSpecs?: boolean; noValidate?: boolean; validate?: boolean; type?: string }) => {
     try {
       if (itemName) {
-        emitDeprecationWarning('plx archive <id>', 'plx archive change --id <id> or plx archive review --id <id>');
+        emitDeprecationWarning('splx archive <id>', 'splx archive change --id <id> or splx archive review --id <id>');
       }
       if (options?.type) {
-        emitDeprecationWarning('plx archive --type <type>', 'plx archive change --id <id> or plx archive review --id <id>');
+        emitDeprecationWarning('splx archive --type <type>', 'splx archive change --id <id> or splx archive review --id <id>');
       }
       const archiveCommand = new ArchiveCommand();
       const entityType = options?.type as 'change' | 'review' | undefined;
@@ -788,22 +788,22 @@ parseCmd
 const reviewCmd = program
   .command('review')
   .description('Output review context for a change, spec, or task')
-  .option('--change-id <id>', 'Review a change (DEPRECATED: use "plx review change --id <id>")')
-  .option('--spec-id <id>', 'Review a spec (DEPRECATED: use "plx review spec --id <id>")')
-  .option('--task-id <id>', 'Review a task (DEPRECATED: use "plx review task --id <id>")')
+  .option('--change-id <id>', 'Review a change (DEPRECATED: use "splx review change --id <id>")')
+  .option('--spec-id <id>', 'Review a spec (DEPRECATED: use "splx review spec --id <id>")')
+  .option('--task-id <id>', 'Review a task (DEPRECATED: use "splx review task --id <id>")')
   .option('--json', 'Output as JSON')
   .option('--no-interactive', 'Disable interactive prompts')
   .action(async (options?: { changeId?: string; specId?: string; taskId?: string; json?: boolean; noInteractive?: boolean; interactive?: boolean }) => {
     try {
       // Emit deprecation warnings for legacy flags
       if (options?.changeId) {
-        emitDeprecationWarning('plx review --change-id <id>', 'plx review change --id <id>');
+        emitDeprecationWarning('splx review --change-id <id>', 'splx review change --id <id>');
       }
       if (options?.specId) {
-        emitDeprecationWarning('plx review --spec-id <id>', 'plx review spec --id <id>');
+        emitDeprecationWarning('splx review --spec-id <id>', 'splx review spec --id <id>');
       }
       if (options?.taskId) {
-        emitDeprecationWarning('plx review --task-id <id>', 'plx review task --id <id>');
+        emitDeprecationWarning('splx review --task-id <id>', 'splx review task --id <id>');
       }
 
       const command = new ReviewCommand();

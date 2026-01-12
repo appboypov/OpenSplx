@@ -18,15 +18,15 @@ Tests in `test/`:
 - `services/` - Service tests
 - `utils/` - Utility function tests
 - `cli-e2e/` - End-to-end CLI tests
-- Tests reference `plx list`, `plx show`, nested task paths
+- Tests reference `splx list`, `splx show`, nested task paths
 
 ## Should
 
 Tests:
-- Use new command patterns (`plx get changes`, `plx get change --id <id>`, etc.)
+- Use new command patterns (`splx get changes`, `splx get change --id <id>`, etc.)
 - Reference centralized `workspace/tasks/` storage
-- Test new `plx create`, `plx paste` commands
-- Test `plx migrate tasks` command
+- Test new `splx create`, `splx paste` commands
+- Test `splx migrate tasks` command
 - Use `--parent-id`, `--parent-type` flags
 - Remove tests for deprecated commands or update them
 

@@ -6,13 +6,13 @@
 The command SHALL scan and analyze either active changes or specs based on the selected mode.
 
 #### Scenario: Scanning for changes (default)
-- **WHEN** `plx list` is executed without flags
+- **WHEN** `splx list` is executed without flags
 - **THEN** scan the `workspace/changes/` directory for change directories
 - **AND** exclude the `archive/` subdirectory from results
 - **AND** parse each change's `tasks.md` file to count task completion
 
 #### Scenario: Scanning for specs
-- **WHEN** `plx list --specs` is executed
+- **WHEN** `splx list --specs` is executed
 - **THEN** scan the `workspace/specs/` directory for capabilities
 - **AND** read each capability's `spec.md`
 - **AND** parse requirements to compute requirement counts

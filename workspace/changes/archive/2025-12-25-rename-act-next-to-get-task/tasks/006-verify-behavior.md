@@ -27,9 +27,9 @@ N/A - verification task.
 
 - [x] `pnpm test` passes all tests
 - [x] `pnpm build` completes without errors
-- [x] `plx get task` returns expected output
-- [x] `plx get task --did-complete-previous` completes checkboxes correctly
-- [x] `plx get task --json` returns valid JSON with completedTask field
+- [x] `splx get task` returns expected output
+- [x] `splx get task --did-complete-previous` completes checkboxes correctly
+- [x] `splx get task --json` returns valid JSON with completedTask field
 
 ## Implementation Checklist
 
@@ -37,10 +37,10 @@ N/A - verification task.
 - [x] 6.2 Run `pnpm test` and verify all tests pass
 - [x] 6.3 Run `pnpm lint` and fix any lint errors
 - [x] 6.4 Manual test: create test change with task containing Implementation Checklist
-- [x] 6.5 Manual test: run `plx get task` and verify output
-- [x] 6.6 Manual test: run `plx get task --did-complete-previous` and verify checkboxes marked
+- [x] 6.5 Manual test: run `splx get task` and verify output
+- [x] 6.6 Manual test: run `splx get task --did-complete-previous` and verify checkboxes marked
 - [x] 6.7 Manual test: verify Constraints/Acceptance Criteria checkboxes unchanged
-- [x] 6.8 Manual test: run `plx get task --json` and verify JSON structure
+- [x] 6.8 Manual test: run `splx get task --json` and verify JSON structure
 
 ## Notes
 

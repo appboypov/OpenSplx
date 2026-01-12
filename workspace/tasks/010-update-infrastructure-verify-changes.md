@@ -38,7 +38,7 @@ Verification confirms:
 
 ## Acceptance Criteria
 
-- [ ] `plx validate --all --strict` passes
+- [ ] `splx validate --all --strict` passes
 - [ ] `pnpm test` passes with no failures
 - [ ] `pnpm lint` passes
 - [ ] `pnpm build` succeeds
@@ -46,7 +46,7 @@ Verification confirms:
 
 ## Implementation Checklist
 
-- [x] 10.1 Run `plx validate --all --strict` and fix any issues
+- [x] 10.1 Run `splx validate --all --strict` and fix any issues
 - [x] 10.2 Run `pnpm test` and verify all tests pass
 - [x] 10.3 Run `pnpm lint` and fix any lint errors
 - [x] 10.4 Run `pnpm build` and verify clean build
@@ -55,7 +55,7 @@ Verification confirms:
 - [x] 10.7 Verify slash command patterns match CLI commands
 - [x] 10.8 Verify help text matches documentation
 - [x] 10.9 Test shell completion generation
-- [x] 10.10 Run `plx init --tools claude` in temp directory and verify output
+- [x] 10.10 Run `splx init --tools claude` in temp directory and verify output
 - [x] 10.11 Test key workflows manually (get task, complete, create)
 - [x] 10.12 Document any inconsistencies found and create follow-up tasks
 

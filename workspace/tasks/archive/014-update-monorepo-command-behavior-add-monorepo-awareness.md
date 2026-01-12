@@ -46,15 +46,15 @@ Commands should:
 ## Implementation Checklist
 
 - [x] 2.1 Create a monorepo awareness snippet/guardrail block to reuse across commands
-- [x] 2.2 Update `.claude/commands/plx/plan-proposal.md` with monorepo awareness
-- [x] 2.3 Update `.claude/commands/plx/plan-request.md` with monorepo awareness
-- [x] 2.4 Update `.claude/commands/plx/prepare-release.md` with monorepo awareness
-- [x] 2.5 Update `.claude/commands/plx/review.md` with monorepo awareness
-- [x] 2.6 Update `.claude/commands/plx/parse-feedback.md` with monorepo awareness
-- [x] 2.7 Update `.claude/commands/plx/refine-architecture.md` with monorepo awareness
-- [x] 2.8 Update `.claude/commands/plx/refine-release.md` with monorepo awareness
-- [x] 2.9 Update `.claude/commands/plx/refine-review.md` with monorepo awareness
-- [x] 2.10 Update `.claude/commands/plx/refine-testing.md` with monorepo awareness
+- [x] 2.2 Update `.claude/commands/splx/plan-proposal.md` with monorepo awareness
+- [x] 2.3 Update `.claude/commands/splx/plan-request.md` with monorepo awareness
+- [x] 2.4 Update `.claude/commands/splx/prepare-release.md` with monorepo awareness
+- [x] 2.5 Update `.claude/commands/splx/review.md` with monorepo awareness
+- [x] 2.6 Update `.claude/commands/splx/parse-feedback.md` with monorepo awareness
+- [x] 2.7 Update `.claude/commands/splx/refine-architecture.md` with monorepo awareness
+- [x] 2.8 Update `.claude/commands/splx/refine-release.md` with monorepo awareness
+- [x] 2.9 Update `.claude/commands/splx/refine-review.md` with monorepo awareness
+- [x] 2.10 Update `.claude/commands/splx/refine-testing.md` with monorepo awareness
 - [x] 2.11 Verify all commands read correctly
 
 ## Notes

@@ -2,7 +2,7 @@
 name: Get Task
 description: Select and display the next prioritized task to work on.
 category: OpenSplx
-tags: [plx, task, workflow]
+tags: [splx, task, workflow]
 ---
 <!-- PLX:START -->
 **Guardrails**
@@ -11,8 +11,8 @@ tags: [plx, task, workflow]
 - Preserve existing task file content when updating status.
 
 **Steps**
-1. Run `plx get task` to get the highest-priority task (auto-transitions to in-progress).
+1. Run `splx get task` to get the highest-priority task (auto-transitions to in-progress).
 2. Execute the task following its Implementation Checklist.
-3. When all checklist items are complete, run `plx complete task --id <task-id>` to mark the task as done.
+3. When all checklist items are complete, run `splx complete task --id <task-id>` to mark the task as done.
 4. **Stop and await user confirmation** before proceeding to the next task.
 <!-- PLX:END -->

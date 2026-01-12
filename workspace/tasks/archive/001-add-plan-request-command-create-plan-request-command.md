@@ -3,16 +3,16 @@ status: done
 parent-type: change
 parent-id: add-plan-request-command
 ---
-# Task: Create plx/plan-request.md command
+# Task: Create splx/plan-request.md command
 
 ## End Goal
-A new `plx/plan-request` slash command exists in `.claude/commands/plx/` that clarifies user intent through iterative yes/no questions.
+A new `splx/plan-request` slash command exists in `.claude/commands/splx/` that clarifies user intent through iterative yes/no questions.
 
 ## Currently
 No `plan-request` command exists. Intent clarification happens ad-hoc during proposal creation.
 
 ## Should
-- `.claude/commands/plx/plan-request.md` exists with Activity XML template structure
+- `.claude/commands/splx/plan-request.md` exists with Activity XML template structure
 - Command uses Intent Analyst role with AskActUpdateRepeat loop
 - Command creates `workspace/changes/{change-id}/request.md` early and updates incrementally
 - Command ends when user confirms 100% intent capture
@@ -24,7 +24,7 @@ No `plan-request` command exists. Intent clarification happens ad-hoc during pro
 - [ ] Include standard PLX guardrails (no code, gather clarifications, refer to AGENTS.md)
 
 ## Acceptance Criteria
-- [ ] Command file exists at `.claude/commands/plx/plan-request.md`
+- [ ] Command file exists at `.claude/commands/splx/plan-request.md`
 - [ ] Frontmatter includes name, description, category, and tags
 - [ ] Activity XML template includes Intent Analyst role
 - [ ] AskActUpdateRepeat behavioral instruction is present
@@ -32,7 +32,7 @@ No `plan-request` command exists. Intent clarification happens ad-hoc during pro
 - [ ] Workflow creates request.md with required sections
 
 ## Implementation Checklist
-- [x] 1.1 Create `.claude/commands/plx/plan-request.md` file
+- [x] 1.1 Create `.claude/commands/splx/plan-request.md` file
 - [x] 1.2 Add frontmatter with name "OpenSplx: Plan Request"
 - [x] 1.3 Add Activity XML template with Intent Analyst role
 - [x] 1.4 Add EndGoal with AcceptanceCriteria and Constraints

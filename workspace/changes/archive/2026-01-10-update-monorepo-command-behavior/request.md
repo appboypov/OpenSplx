@@ -9,16 +9,16 @@
 
 ## Current Understanding
 
-These are changes to **Claude Code slash commands** (`.claude/commands/plx/*`), NOT PLX CLI commands.
+These are changes to **Claude Code slash commands** (`.claude/commands/splx/*`), NOT PLX CLI commands.
 
-### Change 1: Prepare-Release Changelog Behavior (`/plx/prepare-release`)
+### Change 1: Prepare-Release Changelog Behavior (`/splx/prepare-release`)
 - Remove "Unreleased" section usage in changelogs
 - Always use the actual next version number instead
 - Suggest larger version bumps when changes warrant it (e.g., breaking changes → major)
 - Use `date` command to get the correct release date
 
 ### Change 2: Monorepo-Aware Slash Command Execution
-- Slash commands (`/plx/plan-proposal`, `/plx/prepare-release`, etc.) should respect monorepo structure
+- Slash commands (`/splx/plan-proposal`, `/splx/prepare-release`, etc.) should respect monorepo structure
 - Proposals/changes should go in the relevant package's workspace folder, not the monorepo root
 - Root workspace only for root-level changes
 - When multiple packages exist, commands operate on the package the user is focused on
@@ -41,25 +41,25 @@ These are changes to **Claude Code slash commands** (`.claude/commands/plx/*`), 
 
 ## Final Intent
 
-Update Claude Code slash commands (`.claude/commands/plx/*`) with two changes:
+Update Claude Code slash commands (`.claude/commands/splx/*`) with two changes:
 
 ### 1. Prepare-Release Changelog Improvements
-Update `/plx/prepare-release` to:
+Update `/splx/prepare-release` to:
 - Never use "Unreleased" in changelogs - always determine and use the concrete next version number
 - Run the `date` command to get the accurate release date
 - Suggest appropriate version bumps based on: breaking changes → major, feat → minor, fix → patch, BREAKING footer → major, plus AI judgment on overall change scope
 
 ### 2. Monorepo-Aware Slash Commands
 Update all artifact-creating slash commands to be monorepo-aware:
-- `/plx/plan-proposal`
-- `/plx/plan-request`
-- `/plx/prepare-release`
-- `/plx/review`
-- `/plx/parse-feedback`
-- `/plx/refine-architecture`
-- `/plx/refine-release`
-- `/plx/refine-review`
-- `/plx/refine-testing`
+- `/splx/plan-proposal`
+- `/splx/plan-request`
+- `/splx/prepare-release`
+- `/splx/review`
+- `/splx/parse-feedback`
+- `/splx/refine-architecture`
+- `/splx/refine-release`
+- `/splx/refine-review`
+- `/splx/refine-testing`
 
 Each command should:
 - Derive target package from user's request context

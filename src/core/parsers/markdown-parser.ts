@@ -247,7 +247,7 @@ export class MarkdownParser {
       requirements,
       metadata: {
         version: '1.0.0',
-        format: 'plx',
+        format: 'splx',
       },
     };
   }
@@ -274,7 +274,7 @@ export class MarkdownParser {
       deltas,
       metadata: {
         version: '1.0.0',
-        format: 'plx-change',
+        format: 'splx-change',
       },
     };
   }

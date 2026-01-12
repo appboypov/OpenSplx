@@ -21,9 +21,9 @@ $ARGUMENTS
    - Coverage threshold (70%, 80%, 90%).
    - Test patterns and file locations.
 3. Determine test scope based on arguments:
-   - If `--parent-type change`: use `plx get change --id <id> --json` to get changed files, derive test files.
-   - If `--parent-type task`: use `plx get task --id <id>` to get task scope, derive test files.
-   - If `--parent-type spec`: use `plx get spec --id <id>` to get spec scope, derive test files.
+   - If `--parent-type change`: use `splx get change --id <id> --json` to get changed files, derive test files.
+   - If `--parent-type task`: use `splx get task --id <id>` to get task scope, derive test files.
+   - If `--parent-type spec`: use `splx get spec --id <id>` to get spec scope, derive test files.
    - If no scope: run full test suite.
 4. Execute tests using configured runner:
    - Run scoped tests if arguments provided.

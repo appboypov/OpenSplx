@@ -18,11 +18,11 @@ Integration tests cover all new command patterns and verify deprecation behavior
 
 ## Should
 
-- Integration tests for `plx get changes`, `plx get specs`, `plx get reviews`
-- Integration tests for `plx validate change --id`, `plx validate changes`
-- Integration tests for `plx archive change --id`, `plx archive review --id`
-- Integration tests for `plx review change --id`, `plx review spec --id`
-- Integration tests for `plx parse feedback` with new flags
+- Integration tests for `splx get changes`, `splx get specs`, `splx get reviews`
+- Integration tests for `splx validate change --id`, `splx validate changes`
+- Integration tests for `splx archive change --id`, `splx archive review --id`
+- Integration tests for `splx review change --id`, `splx review spec --id`
+- Integration tests for `splx parse feedback` with new flags
 - Tests verify deprecation warnings are emitted to stderr
 - Tests verify parity between new and deprecated commands
 
@@ -34,13 +34,13 @@ Integration tests cover all new command patterns and verify deprecation behavior
 
 ## Acceptance Criteria
 
-- [ ] Test for `plx get changes` output format
-- [ ] Test for `plx get specs` output format
-- [ ] Test for `plx get reviews` output format
-- [ ] Test for `plx validate change --id` behavior
-- [ ] Test for `plx validate changes` behavior
-- [ ] Test for `plx archive change --id` behavior
-- [ ] Test for `plx review change --id` behavior
+- [ ] Test for `splx get changes` output format
+- [ ] Test for `splx get specs` output format
+- [ ] Test for `splx get reviews` output format
+- [ ] Test for `splx validate change --id` behavior
+- [ ] Test for `splx validate changes` behavior
+- [ ] Test for `splx archive change --id` behavior
+- [ ] Test for `splx review change --id` behavior
 - [ ] Test for deprecation warnings on stderr
 - [ ] Test for `--no-deprecation-warnings` flag
 - [ ] Test for `--parent-type` ambiguity error

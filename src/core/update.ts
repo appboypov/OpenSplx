@@ -24,7 +24,7 @@ export class UpdateCommand {
         parts.push(`Updated markers in ${migrationResult.markerFilesUpdated} file${migrationResult.markerFilesUpdated === 1 ? '' : 's'}`);
       }
       if (migrationResult.globalConfigMigrated) {
-        parts.push('Migrated global config ~/.openspec/ → ~/.plx/');
+        parts.push('Migrated global config ~/.openspec/ → ~/.splx/');
       }
       if (migrationResult.globalToolFilesUpdated > 0) {
         parts.push(`Updated markers in ${migrationResult.globalToolFilesUpdated} global tool file${migrationResult.globalToolFilesUpdated === 1 ? '' : 's'}`);
@@ -56,7 +56,7 @@ export class UpdateCommand {
 
     // 1. Check workspace directory exists (after migration which may have created it)
     if (!await FileSystemUtils.directoryExists(workspacePath)) {
-      throw new Error(`No OpenSplx workspace directory found. Run 'plx init' first.`);
+      throw new Error(`No OpenSplx workspace directory found. Run 'splx init' first.`);
     }
 
     // 2. Update AGENTS.md (full replacement)

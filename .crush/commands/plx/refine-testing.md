@@ -2,7 +2,7 @@
 name: Refine Testing
 description: Create or update TESTING.md.
 category: OpenSplx
-tags: [plx, testing, documentation]
+tags: [splx, testing, documentation]
 ---
 <!-- PLX:START -->
 **Guardrails**
@@ -119,5 +119,5 @@ tags: [plx, testing, documentation]
 
 ## Part 3: Confirm
 9. Present summary of configuration and populated scope.
-10. Explain how `/plx:test` will use these settings.
+10. Explain how `/splx:test` will use these settings.
 <!-- PLX:END -->

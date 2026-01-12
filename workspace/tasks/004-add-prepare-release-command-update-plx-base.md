@@ -36,4 +36,4 @@ The `ALL_PLX_COMMANDS` array includes `'prepare-release'`.
 
 ## Notes
 
-Location: `src/core/configurators/slash/plx-base.ts`
+Location: `src/core/configurators/slash/splx-base.ts`

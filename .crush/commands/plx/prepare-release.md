@@ -2,7 +2,7 @@
 name: Prepare Release
 description: Prepare release by updating changelog, readme, and architecture documentation.
 category: OpenSplx
-tags: [plx, release, documentation]
+tags: [splx, release, documentation]
 ---
 <!-- PLX:START -->
 **Guardrails**

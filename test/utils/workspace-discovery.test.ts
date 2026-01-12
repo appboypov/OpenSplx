@@ -18,7 +18,7 @@ describe('workspace-discovery', () => {
   let tempDir: string;
 
   beforeEach(async () => {
-    tempDir = path.join(os.tmpdir(), `plx-workspace-test-${Date.now()}`);
+    tempDir = path.join(os.tmpdir(), `splx-workspace-test-${Date.now()}`);
     await fs.mkdir(tempDir, { recursive: true });
   });
 

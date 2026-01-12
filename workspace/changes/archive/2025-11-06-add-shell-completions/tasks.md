@@ -17,8 +17,8 @@
 - [x] Test Zsh generator output (`test/core/completions/generators/zsh-generator.test.ts`)
 - [x] Create `src/core/completions/installers/zsh-installer.ts` with Oh My Zsh and standard Zsh support
 - [x] Implement Oh My Zsh detection (`$ZSH` env var or `~/.oh-my-zsh/` directory)
-- [x] Implement installation to `~/.oh-my-zsh/custom/completions/_plx` for Oh My Zsh
-- [x] Implement fallback installation to `~/.zsh/completions/_plx` with `fpath` updates
+- [x] Implement installation to `~/.oh-my-zsh/custom/completions/_splx` for Oh My Zsh
+- [x] Implement fallback installation to `~/.zsh/completions/_splx` with `fpath` updates
 - [x] Test Zsh installer logic with mocked file system (`test/core/completions/installers/zsh-installer.test.ts`)
 
 ## Phase 3: CLI Command Implementation
@@ -36,7 +36,7 @@
 
 - [x] Create factory pattern in `src/core/completions/factory.ts` to instantiate Zsh generator/installer (extensible for future shells)
 - [x] Add `completion` command to command registry for self-referential completion
-- [x] Implement dynamic completion helper functions in Zsh generator (`_plx_complete_changes`, `_plx_complete_specs`, `_plx_complete_items`)
+- [x] Implement dynamic completion helper functions in Zsh generator (`_splx_complete_changes`, `_splx_complete_specs`, `_splx_complete_items`)
 - [x] Add 'shell' positional type for completion command arguments
 - [x] Test completion generation with dynamic helpers
 - [x] Test completion install/uninstall flow
@@ -51,7 +51,7 @@
 - [ ] Test dynamic change/spec ID completion in real PLX projects
 - [ ] Verify completion cache behavior (2-second TTL)
 - [ ] Test behavior outside PLX projects (should skip dynamic completions)
-- [x] Update `plx --help` output to include completion command (automatically done via Commander)
+- [x] Update `splx --help` output to include completion command (automatically done via Commander)
 
 ## Phase 5: Edge Cases & Error Handling
 

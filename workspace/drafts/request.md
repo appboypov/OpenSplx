@@ -28,8 +28,8 @@ Tasks are stored inside their parent entity folders:
 
 - [ ] Tasks are created in `workspace/tasks/` regardless of parent type
 - [ ] Task frontmatter includes parent-type and parent-id fields
-- [ ] `plx get task` retrieves tasks filtered by parent when applicable
-- [ ] `plx get tasks --change-id <id>` returns tasks linked to that change
+- [ ] `splx get task` retrieves tasks filtered by parent when applicable
+- [ ] `splx get tasks --change-id <id>` returns tasks linked to that change
 - [ ] Task completion and undo commands work with centralized storage
 - [ ] Progress tracking aggregates correctly per parent entity
 
@@ -57,7 +57,7 @@ sequenceDiagram
     participant System as 🧠 System
     participant Storage as 🎨 Storage
 
-    User->>System: plx get tasks --change-id feature-x
+    User->>System: splx get tasks --change-id feature-x
     System->>Storage: Scan workspace/tasks/
     Storage-->>System: Return all task files
     System->>System: Filter tasks where parent-id = feature-x
@@ -72,7 +72,7 @@ sequenceDiagram
     participant System as 🧠 System
     participant Storage as 🎨 Storage
 
-    User->>System: plx get task
+    User->>System: splx get task
     System->>Storage: Read all tasks from workspace/tasks/
     Storage-->>System: Return task files with frontmatter
     System->>System: Group tasks by parent, calculate priorities
@@ -92,10 +92,10 @@ sequenceDiagram
 
 ## Pull requests
 
-- [#66 🧱 Refactor task storage to use centralized workspace/tasks/ folder with parent linking](https://github.com/appboypov/pew-pew-plx/issues/66)
+- [#66 🧱 Refactor task storage to use centralized workspace/tasks/ folder with parent linking](https://github.com/appboypov/pew-pew-splx/issues/66)
 
 ## Comments
 
 - GitHub integration:
 
-  This comment thread is synced to a corresponding [GitHub issue](https://github.com/appboypov/pew-pew-plx/issues/66). All replies are displayed in both locations.
+  This comment thread is synced to a corresponding [GitHub issue](https://github.com/appboypov/pew-pew-splx/issues/66). All replies are displayed in both locations.

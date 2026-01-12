@@ -35,7 +35,7 @@ REVIEW.md is 28 lines (minimal config). Need to verify refine-review command con
 - [x] 5.1 Read REVIEW.md and verify under 50 lines with config sections
 - [x] 5.2 Read refine-review command and assess option documentation completeness
 - [x] 5.3 If refine-review lacks detail, update refineReviewGuardrails/Steps in slash-command-templates.ts
-- [x] 5.4 Run `plx update` if changes made
+- [x] 5.4 Run `splx update` if changes made
 - [x] 5.5 Document findings (already correct OR changes made)
 
 ## Notes

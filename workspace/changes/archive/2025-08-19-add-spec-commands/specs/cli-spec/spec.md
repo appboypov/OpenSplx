@@ -6,27 +6,27 @@ The system SHALL provide a `spec` command with subcommands for displaying, listi
 
 #### Scenario: Show spec as JSON
 
-- **WHEN** executing `plx spec show init --json`
+- **WHEN** executing `splx spec show init --json`
 - **THEN** parse the markdown spec file
 - **AND** extract headings and content hierarchically
 - **AND** output valid JSON to stdout
 
 #### Scenario: List all specs
 
-- **WHEN** executing `plx spec list`
+- **WHEN** executing `splx spec list`
 - **THEN** scan the workspace/specs directory
 - **AND** return list of all available capabilities
 - **AND** support JSON output with `--json` flag
 
 #### Scenario: Filter spec content
 
-- **WHEN** executing `plx spec show init --requirements`
+- **WHEN** executing `splx spec show init --requirements`
 - **THEN** display only requirement names and SHALL statements
 - **AND** exclude scenario content
 
 #### Scenario: Validate spec structure
 
-- **WHEN** executing `plx spec validate init`
+- **WHEN** executing `splx spec validate init`
 - **THEN** parse the spec file
 - **AND** validate against Zod schema
 - **AND** report any structural issues

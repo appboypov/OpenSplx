@@ -7,7 +7,7 @@ describe('change command deprecation warnings', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-change-deprecation-tmp');
   const changesDir = path.join(testDir, 'changes');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await fs.mkdir(changesDir, { recursive: true });
@@ -41,14 +41,14 @@ The system SHALL implement feature A
     await fs.rm(testDir, { recursive: true, force: true });
   });
 
-  describe('plx change show', () => {
+  describe('splx change show', () => {
     it('should emit deprecation warning', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} change show test-change 2>&1`, {
+          output = execSync(`node ${splxBin} change show test-change 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {
@@ -58,8 +58,8 @@ The system SHALL implement feature A
           }
         }
 
-        expect(output).toContain("Deprecation: 'plx change show <id>' is deprecated");
-        expect(output).toContain("Use 'plx get change --id <id>' instead");
+        expect(output).toContain("Deprecation: 'splx change show <id>' is deprecated");
+        expect(output).toContain("Use 'splx get change --id <id>' instead");
       } finally {
         process.chdir(originalCwd);
       }
@@ -71,7 +71,7 @@ The system SHALL implement feature A
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} --no-deprecation-warnings change show test-change 2>&1`, {
+          output = execSync(`node ${splxBin} --no-deprecation-warnings change show test-change 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {
@@ -88,17 +88,17 @@ The system SHALL implement feature A
     });
   });
 
-  describe('plx change list', () => {
+  describe('splx change list', () => {
     it('should emit deprecation warning', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} change list 2>&1`, {
+        const output = execSync(`node ${splxBin} change list 2>&1`, {
           encoding: 'utf-8'
         });
 
-        expect(output).toContain("Deprecation: 'plx change list' is deprecated");
-        expect(output).toContain("Use 'plx get changes' instead");
+        expect(output).toContain("Deprecation: 'splx change list' is deprecated");
+        expect(output).toContain("Use 'splx get changes' instead");
       } finally {
         process.chdir(originalCwd);
       }
@@ -108,7 +108,7 @@ The system SHALL implement feature A
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} --no-deprecation-warnings change list 2>&1`, {
+        const output = execSync(`node ${splxBin} --no-deprecation-warnings change list 2>&1`, {
           encoding: 'utf-8'
         });
 
@@ -119,14 +119,14 @@ The system SHALL implement feature A
     });
   });
 
-  describe('plx change validate', () => {
+  describe('splx change validate', () => {
     it('should emit deprecation warning', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} change validate test-change 2>&1`, {
+          output = execSync(`node ${splxBin} change validate test-change 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {
@@ -136,8 +136,8 @@ The system SHALL implement feature A
           }
         }
 
-        expect(output).toContain("Deprecation: 'plx change validate <id>' is deprecated");
-        expect(output).toContain("Use 'plx validate change --id <id>' instead");
+        expect(output).toContain("Deprecation: 'splx change validate <id>' is deprecated");
+        expect(output).toContain("Use 'splx validate change --id <id>' instead");
       } finally {
         process.chdir(originalCwd);
       }
@@ -149,7 +149,7 @@ The system SHALL implement feature A
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} --no-deprecation-warnings change validate test-change 2>&1`, {
+          output = execSync(`node ${splxBin} --no-deprecation-warnings change validate test-change 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {

@@ -36,10 +36,10 @@ All template docs follow consistent pattern:
 
 ## Implementation Checklist
 
-- [x] 6.1 Run `plx validate refactor-template-docs --strict`
+- [x] 6.1 Run `splx validate refactor-template-docs --strict`
 - [x] 6.2 Verify line counts: RELEASE.md, REVIEW.md, TESTING.md
 - [x] 6.3 Verify command bodies contain expected documentation
-- [x] 6.4 Verify .claude/commands/plx/ contains all new commands
+- [x] 6.4 Verify .claude/commands/splx/ contains all new commands
 - [x] 6.5 Run `pnpm test` to ensure no regressions
 - [x] 6.6 Run `pnpm build` to verify compilation
 

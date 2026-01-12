@@ -19,7 +19,7 @@ describe('centralized-task-discovery', () => {
   beforeEach(async () => {
     tempDir = path.join(
       os.tmpdir(),
-      `plx-centralized-task-test-${Date.now()}`
+      `splx-centralized-task-test-${Date.now()}`
     );
     await fs.mkdir(tempDir, { recursive: true });
 

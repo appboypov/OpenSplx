@@ -16,7 +16,7 @@ N/A - verification task.
 
 - All tests pass
 - All acceptance criteria from PLX-15 are met
-- Both `plx` and `plx` CLI names work
+- Both `splx` and `splx` CLI names work
 
 ## Constraints
 
@@ -40,16 +40,16 @@ N/A - verification task.
 - [x] 5.1 Run `pnpm build` and verify no TypeScript errors
 - [x] 5.2 Run `pnpm test` and verify all tests pass
 - [x] 5.3 Run `pnpm lint` and fix any lint errors
-- [x] 5.4 Manual test: `plx get task --id <id>`
-- [x] 5.5 Manual test: `plx get task --constraints`
-- [x] 5.6 Manual test: `plx get task --constraints --acceptance-criteria`
-- [x] 5.7 Manual test: `plx get change --id <id>`
-- [x] 5.8 Manual test: `plx get spec --id <id>`
-- [x] 5.9 Manual test: `plx get tasks`
-- [x] 5.10 Manual test: `plx get tasks --id <change-id>`
+- [x] 5.4 Manual test: `splx get task --id <id>`
+- [x] 5.5 Manual test: `splx get task --constraints`
+- [x] 5.6 Manual test: `splx get task --constraints --acceptance-criteria`
+- [x] 5.7 Manual test: `splx get change --id <id>`
+- [x] 5.8 Manual test: `splx get spec --id <id>`
+- [x] 5.9 Manual test: `splx get tasks`
+- [x] 5.10 Manual test: `splx get tasks --id <change-id>`
 - [x] 5.11 Verify shell completions work
 - [x] 5.12 Verify AGENTS.md includes new commands
 
 ## Notes
 
-Test with both `plx` and `plx` CLI names to ensure alias works.
+Test with both `splx` and `splx` CLI names to ensure alias works.

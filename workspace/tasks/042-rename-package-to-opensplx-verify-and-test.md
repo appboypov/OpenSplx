@@ -38,8 +38,8 @@ All changes are verified, tests pass, and the renamed package works correctly.
 - [ ] `pnpm build` succeeds
 - [ ] `splx --version` works
 - [ ] `splx init` works (test in temp directory)
-- [ ] `plx validate change --id rename-package-to-opensplx --strict` passes
-- [ ] No remaining "OpenSplx" or "plx" references in code (except historical)
+- [ ] `splx validate change --id rename-package-to-opensplx --strict` passes
+- [ ] No remaining "OpenSplx" or "splx" references in code (except historical)
 - [ ] Package.json is valid
 - [ ] Git config is correct
 - [ ] Documentation is consistent
@@ -50,9 +50,9 @@ All changes are verified, tests pass, and the renamed package works correctly.
 - [ ] 7.2 Run `pnpm test` and verify all tests pass
 - [ ] 7.3 Test CLI: `splx --version` (after local install or build)
 - [ ] 7.4 Test CLI: `splx init` in a temporary directory
-- [ ] 7.5 Run `plx validate change --id rename-package-to-opensplx --strict` (using old command if still available, or update validation command)
+- [ ] 7.5 Run `splx validate change --id rename-package-to-opensplx --strict` (using old command if still available, or update validation command)
 - [ ] 7.6 Search for any remaining "OpenSplx" references (should be none except historical)
-- [ ] 7.7 Search for any remaining "plx" command references (should be none except in comments explaining the rename)
+- [ ] 7.7 Search for any remaining "splx" command references (should be none except in comments explaining the rename)
 - [ ] 7.8 Verify package.json is valid JSON
 - [ ] 7.9 Verify git config remote URL is correct
 - [ ] 7.10 Review all documentation for consistency

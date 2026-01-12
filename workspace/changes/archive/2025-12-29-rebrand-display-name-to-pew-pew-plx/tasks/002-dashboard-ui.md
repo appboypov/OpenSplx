@@ -21,7 +21,7 @@ Display "OpenSplx" in all user-visible console output.
 ## Constraints
 
 - [ ] Keep console styling (chalk colors, ora spinners) unchanged
-- [ ] Command references in prompts stay as `plx`
+- [ ] Command references in prompts stay as `splx`
 
 ## Acceptance Criteria
 

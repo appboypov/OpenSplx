@@ -12,7 +12,7 @@ PLX commands work when executed from any subdirectory within a project by scanni
 ## Currently
 
 - `discoverWorkspaces()` only scans downward from CWD
-- Running `plx get task` from `/project/src/components/` fails with "No PLX workspace found"
+- Running `splx get task` from `/project/src/components/` fails with "No PLX workspace found"
 - Agents working in subdirectories cannot use PLX commands
 
 ## Should
@@ -33,8 +33,8 @@ PLX commands work when executed from any subdirectory within a project by scanni
 
 ## Acceptance Criteria
 
-- [ ] `plx list` works from any subdirectory within a PLX project
-- [ ] `plx get task` works from any subdirectory within a PLX project
+- [ ] `splx list` works from any subdirectory within a PLX project
+- [ ] `splx get task` works from any subdirectory within a PLX project
 - [ ] Running from non-PLX directory still returns appropriate error
 - [ ] Running from project root works identically to current behavior
 - [ ] Upward scan stops at `.git` if no workspace found before it

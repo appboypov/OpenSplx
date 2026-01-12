@@ -6,9 +6,9 @@
 - PLX already ships shared command bodies for proposal/apply/archive and uses markers so commands stay up to date. Extending the same templates to Windsurf keeps behaviour consistent with Claude, Cursor, and OpenCode without inventing new content flows.
 
 ## What Changes
-- Add Windsurf to the CLI tool picker (`plx init`) and the slash-command registry so selecting it scaffolds `.windsurf/workflows/plx-proposal.md`, `plx-apply.md`, and `plx-archive.md` with marker-managed bodies.
+- Add Windsurf to the CLI tool picker (`splx init`) and the slash-command registry so selecting it scaffolds `.windsurf/workflows/splx-proposal.md`, `splx-apply.md`, and `splx-archive.md` with marker-managed bodies.
 - Shape each Windsurf workflow with a short heading/description plus the existing PLX guardrails/steps wrapped in markers, ensuring the total payload remains well below the 12,000 character limit.
-- Ensure `plx update` refreshes existing Windsurf workflows (and only those that already exist) in-place, mirroring current behaviour for other editors.
+- Ensure `splx update` refreshes existing Windsurf workflows (and only those that already exist) in-place, mirroring current behaviour for other editors.
 - Extend unit tests for init/update to cover Windsurf generation and updates, and update the README/tooling docs to advertise Windsurf support.
 
 ## Impact

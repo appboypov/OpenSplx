@@ -34,12 +34,12 @@ All changes from this proposal are verified to work correctly with consistent be
 
 ## Acceptance Criteria
 
-- [ ] `plx get changes` output matches `plx list` (minus deprecation warning)
-- [ ] `plx get specs` output matches `plx list --specs` (minus deprecation warning)
-- [ ] `plx get reviews` output matches `plx list --reviews` (minus deprecation warning)
-- [ ] `plx validate change --id X` output matches `plx validate X`
-- [ ] `plx archive change --id X` behavior matches `plx archive X`
-- [ ] `plx review change --id X` output matches `plx review --change-id X`
+- [ ] `splx get changes` output matches `splx list` (minus deprecation warning)
+- [ ] `splx get specs` output matches `splx list --specs` (minus deprecation warning)
+- [ ] `splx get reviews` output matches `splx list --reviews` (minus deprecation warning)
+- [ ] `splx validate change --id X` output matches `splx validate X`
+- [ ] `splx archive change --id X` behavior matches `splx archive X`
+- [ ] `splx review change --id X` output matches `splx review --change-id X`
 - [ ] All JSON outputs are valid JSON
 - [ ] Deprecation warnings go to stderr only
 - [ ] Multi-workspace filtering works with new commands
@@ -47,9 +47,9 @@ All changes from this proposal are verified to work correctly with consistent be
 ## Implementation Checklist
 
 - [x] 11.1 Run full test suite and verify all tests pass
-- [x] 11.2 Manual verification of `plx get changes` vs `plx list`
-- [x] 11.3 Manual verification of `plx get specs` vs `plx list --specs`
-- [x] 11.4 Manual verification of `plx get reviews` vs `plx list --reviews`
+- [x] 11.2 Manual verification of `splx get changes` vs `splx list`
+- [x] 11.3 Manual verification of `splx get specs` vs `splx list --specs`
+- [x] 11.4 Manual verification of `splx get reviews` vs `splx list --reviews`
 - [x] 11.5 Manual verification of validate command variants
 - [x] 11.6 Manual verification of archive command variants
 - [x] 11.7 Manual verification of review command variants

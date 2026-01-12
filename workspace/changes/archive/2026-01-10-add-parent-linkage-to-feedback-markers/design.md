@@ -160,7 +160,7 @@ groupMarkersByParent(markers: FeedbackMarker[]): MarkerGroups {
 When markers have different parents:
 
 ```
-$ plx parse feedback my-review
+$ splx parse feedback my-review
 
 ✓ Created 3 reviews:
   - my-review-change-1 (change:add-auth) - 5 tasks
@@ -197,6 +197,6 @@ Total: 8 markers found, 8 tasks created
 | `src/services/feedback-scanner.ts` | Updated interface, grouping method, remove specImpact |
 | `src/core/schemas/review.schema.ts` | Remove specImpact from ReviewTaskSchema |
 | `src/commands/parse-feedback.ts` | Grouping logic, multi-review, unassigned handling |
-| `src/core/templates/plx-slash-command-templates.ts` | Updated review/parse-feedback instructions |
-| `.claude/commands/plx/review.md` | Updated marker format documentation |
+| `src/core/templates/splx-slash-command-templates.ts` | Updated review/parse-feedback instructions |
+| `.claude/commands/splx/review.md` | Updated marker format documentation |
 | Tests | Update for new format |

@@ -6,7 +6,7 @@ The CLI SHALL warn in strict mode when tasks are missing the `skill-level` field
 
 #### Scenario: Warning for missing skill level in strict mode
 
-- **WHEN** user runs `plx validate <change-id> --strict`
+- **WHEN** user runs `splx validate <change-id> --strict`
 - **AND** a task file exists without a `skill-level` field in frontmatter
 - **THEN** the system SHALL emit a WARNING (not ERROR)
 - **AND** the warning message SHALL indicate which task is missing skill level
@@ -14,7 +14,7 @@ The CLI SHALL warn in strict mode when tasks are missing the `skill-level` field
 
 #### Scenario: No warning in non-strict mode
 
-- **WHEN** user runs `plx validate <change-id>` (without --strict)
+- **WHEN** user runs `splx validate <change-id>` (without --strict)
 - **AND** a task file exists without a `skill-level` field
 - **THEN** no warning SHALL be emitted for missing skill level
 

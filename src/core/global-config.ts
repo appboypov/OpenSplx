@@ -3,7 +3,7 @@ import * as path from 'node:path';
 import * as os from 'node:os';
 
 // Constants
-export const GLOBAL_CONFIG_DIR_NAME = 'plx';
+export const GLOBAL_CONFIG_DIR_NAME = 'splx';
 export const GLOBAL_CONFIG_FILE_NAME = 'config.json';
 
 // TypeScript interfaces
@@ -18,9 +18,9 @@ const DEFAULT_CONFIG: GlobalConfig = {
 /**
  * Gets the global configuration directory path following XDG Base Directory Specification.
  *
- * - All platforms: $XDG_CONFIG_HOME/plx/ if XDG_CONFIG_HOME is set
- * - Unix/macOS fallback: ~/.config/plx/
- * - Windows fallback: %APPDATA%/plx/
+ * - All platforms: $XDG_CONFIG_HOME/splx/ if XDG_CONFIG_HOME is set
+ * - Unix/macOS fallback: ~/.config/splx/
+ * - Windows fallback: %APPDATA%/splx/
  */
 export function getGlobalConfigDir(): string {
   // XDG_CONFIG_HOME takes precedence on all platforms when explicitly set

@@ -12,7 +12,7 @@ All paste subcommands (`task`, `change`, `spec`) support `--json` flag for machi
 
 ## Currently
 
-Only `plx paste request` supports `--json` output. The new subcommands need the same capability.
+Only `splx paste request` supports `--json` output. The new subcommands need the same capability.
 
 ## Should
 
@@ -23,15 +23,15 @@ Only `plx paste request` supports `--json` output. The new subcommands need the 
 
 ## Constraints
 
-- [ ] JSON output format consistent with existing `plx paste request --json`
+- [ ] JSON output format consistent with existing `splx paste request --json`
 - [ ] Use `console.log(JSON.stringify(..., null, 2))` for formatted output
 - [ ] Set `process.exitCode = 1` on error (not `process.exit(1)`) for proper JSON output
 
 ## Acceptance Criteria
 
-- [ ] `plx paste task --json` outputs valid JSON with path and entityType
-- [ ] `plx paste change --json` outputs valid JSON with changeName
-- [ ] `plx paste spec --json` outputs valid JSON with specName
+- [ ] `splx paste task --json` outputs valid JSON with path and entityType
+- [ ] `splx paste change --json` outputs valid JSON with changeName
+- [ ] `splx paste spec --json` outputs valid JSON with specName
 - [ ] Error cases output JSON with error field
 - [ ] Exit code is 1 on error, 0 on success
 

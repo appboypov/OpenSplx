@@ -1,13 +1,13 @@
 ## Why
 - GitHub Copilot supports custom slash commands through markdown files in `.github/prompts/<name>.prompt.md`. Each file includes YAML frontmatter with a `description` label and uses `$ARGUMENTS` to capture user input. This format allows teams to expose curated workflows directly in Copilot's chat interface.
 - Teams already rely on PLX to manage slash-command configurations for Claude Code, Cursor, OpenCode, Codex, Kilo Code, and Windsurf. Excluding GitHub Copilot forces developers to manually maintain PLX prompts in `.github/prompts/`, which leads to drift and undermines PLX's "single source of truth" promise.
-- GitHub Copilot discovers prompts from the repository's `.github/prompts/` directory, making it straightforward to version control and share across the team. Adding automated generation and refresh through `plx init` and `plx update` eliminates manual synchronization and keeps PLX instructions consistent across all AI assistants.
+- GitHub Copilot discovers prompts from the repository's `.github/prompts/` directory, making it straightforward to version control and share across the team. Adding automated generation and refresh through `splx init` and `splx update` eliminates manual synchronization and keeps PLX instructions consistent across all AI assistants.
 
 ## What Changes
-- Add GitHub Copilot to the `plx init` tool picker with "already configured" detection similar to other editors, wiring an implementation that writes managed Markdown prompt files to `.github/prompts/` with PLX marker blocks.
-- Generate three GitHub Copilot prompt files—`plx-proposal.prompt.md`, `plx-apply.prompt.md`, and `plx-archive.prompt.md`—whose content mirrors shared slash-command templates while conforming to Copilot's frontmatter and `$ARGUMENTS` placeholder convention.
+- Add GitHub Copilot to the `splx init` tool picker with "already configured" detection similar to other editors, wiring an implementation that writes managed Markdown prompt files to `.github/prompts/` with PLX marker blocks.
+- Generate three GitHub Copilot prompt files—`splx-proposal.prompt.md`, `splx-apply.prompt.md`, and `splx-archive.prompt.md`—whose content mirrors shared slash-command templates while conforming to Copilot's frontmatter and `$ARGUMENTS` placeholder convention.
 - Document GitHub Copilot's repository-based discovery and that PLX writes prompts to `.github/prompts/` with managed blocks.
-- Teach `plx update` to refresh existing GitHub Copilot prompts in-place (only when they already exist) in the repository's `.github/prompts/` directory.
+- Teach `splx update` to refresh existing GitHub Copilot prompts in-place (only when they already exist) in the repository's `.github/prompts/` directory.
 - Document GitHub Copilot support alongside other slash-command integrations and add test coverage that exercises init/update behavior for `.github/prompts/` files.
 
 ## Impact

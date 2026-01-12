@@ -5,7 +5,7 @@ The archive command moves completed changes from the active changes directory to
 
 ## Command Syntax
 ```bash
-plx archive [change-name] [--yes|-y]
+splx archive [change-name] [--yes|-y]
 ```
 
 Options:
@@ -82,13 +82,13 @@ Before moving the change to archive, the command SHALL apply delta changes to ma
 #### Scenario: Applying delta changes
 
 - **WHEN** archiving a change with delta-based specs
-- **THEN** parse and apply delta changes as defined in plx-conventions
+- **THEN** parse and apply delta changes as defined in splx-conventions
 - **AND** validate all operations before applying
 
 #### Scenario: Validating delta changes
 
 - **WHEN** processing delta changes
-- **THEN** perform validations as specified in plx-conventions
+- **THEN** perform validations as specified in splx-conventions
 - **AND** if validation fails, show specific errors and abort
 
 #### Scenario: Conflict detection
@@ -152,7 +152,7 @@ The archive command SHALL support a `--skip-specs` flag that skips all spec upda
 
 #### Scenario: Skipping spec updates with flag
 
-- **WHEN** executing `plx archive <change> --skip-specs`
+- **WHEN** executing `splx archive <change> --skip-specs`
 - **THEN** skip spec discovery and update confirmation
 - **AND** proceed directly to moving the change to archive
 - **AND** display a message indicating specs were skipped
@@ -180,7 +180,7 @@ The command SHALL provide clear feedback about delta operations and tracked issu
   - Number of requirements modified
   - Number of requirements removed
   - Number of requirements renamed
-- **AND** use standard output symbols (+ ~ - →) as defined in plx-conventions:
+- **AND** use standard output symbols (+ ~ - →) as defined in splx-conventions:
   ```
   Applying changes to specs/user-auth/spec.md:
     + 2 added
@@ -206,14 +206,14 @@ The archive command SHALL validate changes before applying them to ensure data i
 
 #### Scenario: Pre-archive validation
 
-- **WHEN** executing `plx archive change-name`
+- **WHEN** executing `splx archive change-name`
 - **THEN** validate the change structure first
 - **AND** only proceed if validation passes
 - **AND** show validation errors if it fails
 
 #### Scenario: Force archive without validation
 
-- **WHEN** executing `plx archive change-name --no-validate`
+- **WHEN** executing `splx archive change-name --no-validate`
 - **THEN** skip validation (unsafe mode)
 - **AND** show warning about skipping validation
 
@@ -224,8 +224,8 @@ The archive command SHALL suggest refreshing architecture documentation after ap
 #### Scenario: Displaying architecture update suggestion
 
 - **GIVEN** an active change with spec updates
-- **WHEN** the user runs `plx archive <change-name>` and specs are updated
-- **THEN** display a tip message: "Tip: Run /plx/update-architecture to refresh your architecture documentation."
+- **WHEN** the user runs `splx archive <change-name>` and specs are updated
+- **THEN** display a tip message: "Tip: Run /splx/update-architecture to refresh your architecture documentation."
 - **AND** display the suggestion in gray/muted color to indicate it is informational, not required
 - **AND** continue with archive workflow without requiring any action on the suggestion
 
@@ -235,7 +235,7 @@ The archive command SHALL support archiving reviews in addition to changes.
 
 #### Scenario: Archiving a review
 
-- **WHEN** `plx archive <id>` is executed and id matches a review
+- **WHEN** `splx archive <id>` is executed and id matches a review
 - **THEN** verify all tasks in `reviews/<id>/tasks/` have status: done
 - **AND** if incomplete tasks found, prompt for confirmation
 - **AND** process spec updates if `reviews/<id>/specs/` exists
@@ -269,7 +269,7 @@ The archive command SHALL auto-detect whether the ID refers to a change or revie
 
 #### Scenario: Auto-detecting entity type
 
-- **WHEN** `plx archive <id>` is executed
+- **WHEN** `splx archive <id>` is executed
 - **THEN** check if id exists in `workspace/changes/` → archive as change
 - **AND** check if id exists in `workspace/reviews/` → archive as review
 - **AND** if found in neither, display error: "No change or review found with id '<id>'"
@@ -282,7 +282,7 @@ The archive command SHALL auto-detect whether the ID refers to a change or revie
 
 #### Scenario: Explicit type flag
 
-- **WHEN** `plx archive <id> --type review` is executed
+- **WHEN** `splx archive <id> --type review` is executed
 - **THEN** look only in `workspace/reviews/` for the id
 - **AND** skip change directory check
 
@@ -292,45 +292,45 @@ The archive command SHALL support entity subcommands for explicit type specifica
 
 #### Scenario: Archive specific change
 
-- **WHEN** `plx archive change --id <id>` is executed
+- **WHEN** `splx archive change --id <id>` is executed
 - **THEN** archive the specified change
 - **AND** follow existing archive process (task check, spec updates, move to archive)
 
 #### Scenario: Archive specific review
 
-- **WHEN** `plx archive review --id <id>` is executed
+- **WHEN** `splx archive review --id <id>` is executed
 - **THEN** archive the specified review
 - **AND** follow existing review archive process
 
 #### Scenario: Archive change with options
 
-- **WHEN** `plx archive change --id <id> --yes` is executed
+- **WHEN** `splx archive change --id <id> --yes` is executed
 - **THEN** skip confirmation prompts
 - **AND** proceed with archive
 
 #### Scenario: Archive change skipping specs
 
-- **WHEN** `plx archive change --id <id> --skip-specs` is executed
+- **WHEN** `splx archive change --id <id> --skip-specs` is executed
 - **THEN** skip spec update phase
 - **AND** proceed with archive
 
 #### Scenario: Change not found via subcommand
 
-- **WHEN** `plx archive change --id nonexistent` is executed
+- **WHEN** `splx archive change --id nonexistent` is executed
 - **AND** no change matches the ID
 - **THEN** display error: "Change 'nonexistent' not found"
 - **AND** exit with non-zero status
 
 #### Scenario: Review not found via subcommand
 
-- **WHEN** `plx archive review --id nonexistent` is executed
+- **WHEN** `splx archive review --id nonexistent` is executed
 - **AND** no review matches the ID
 - **THEN** display error: "Review 'nonexistent' not found"
 - **AND** exit with non-zero status
 
 #### Scenario: Interactive selection with subcommand
 
-- **WHEN** `plx archive change` is executed without `--id`
+- **WHEN** `splx archive change` is executed without `--id`
 - **THEN** display interactive list of available changes
 - **AND** allow user to select one to archive
 
@@ -340,19 +340,19 @@ The archive command SHALL emit deprecation warnings for legacy syntax.
 
 #### Scenario: Deprecation warning on positional argument
 
-- **WHEN** `plx archive <id>` is executed (without subcommand)
-- **THEN** emit warning to stderr: "Deprecation: 'plx archive <id>' is deprecated. Use 'plx archive <type> --id <id>' instead."
+- **WHEN** `splx archive <id>` is executed (without subcommand)
+- **THEN** emit warning to stderr: "Deprecation: 'splx archive <id>' is deprecated. Use 'splx archive <type> --id <id>' instead."
 - **AND** continue with normal archive operation
 
 #### Scenario: Deprecation warning on --type flag
 
-- **WHEN** `plx archive <id> --type review` is executed
-- **THEN** emit warning to stderr: "Deprecation: '--type' flag is deprecated. Use 'plx archive review --id <id>' instead."
+- **WHEN** `splx archive <id> --type review` is executed
+- **THEN** emit warning to stderr: "Deprecation: '--type' flag is deprecated. Use 'splx archive review --id <id>' instead."
 - **AND** continue with normal archive operation
 
 #### Scenario: Suppressing deprecation warnings
 
-- **WHEN** `plx archive <id> --no-deprecation-warnings` is executed
+- **WHEN** `splx archive <id> --no-deprecation-warnings` is executed
 - **THEN** do not emit deprecation warning
 - **AND** continue with normal archive operation
 

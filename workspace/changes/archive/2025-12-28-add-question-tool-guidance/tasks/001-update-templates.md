@@ -37,4 +37,4 @@ Templates instruct AI assistants to use their available question tools for gathe
 
 ## Notes
 
-PLX-specific templates (`plx-slash-command-templates.ts`) do not need changes as they are task-execution focused and rarely require clarification questions.
+PLX-specific templates (`splx-slash-command-templates.ts`) do not need changes as they are task-execution focused and rarely require clarification questions.

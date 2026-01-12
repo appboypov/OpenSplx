@@ -3,8 +3,8 @@
 ## Overview
 
 This change completes the rebrand by updating all remaining "OpenSplx" / "opensplx" references to use the new identity:
-- Package name: `@appboypov/pew-pew-plx`
-- Repository: `github.com/appboypov/pew-pew-plx`
+- Package name: `@appboypov/pew-pew-splx`
+- Repository: `github.com/appboypov/pew-pew-splx`
 - Display name: "OpenSplx"
 
 ## Scope Analysis
@@ -25,8 +25,8 @@ This change completes the rebrand by updating all remaining "OpenSplx" / "opensp
 ### Asset File Renames
 
 ```
-assets/opensplx_pixel_dark.svg  → assets/pew_pew_plx_pixel_dark.svg
-assets/opensplx_pixel_light.svg → assets/pew_pew_plx_pixel_light.svg
+assets/opensplx_pixel_dark.svg  → assets/pew_pew_splx_pixel_dark.svg
+assets/opensplx_pixel_light.svg → assets/pew_pew_splx_pixel_light.svg
 ```
 
 Legacy OpenSpec assets can remain for historical reference:
@@ -46,12 +46,12 @@ Legacy OpenSpec assets can remain for historical reference:
 ### Phase 2: npm Migration
 1. Merge and push code changes
 2. Use Playwright to navigate npmjs.com
-3. Deprecate `@appboypov/opensplx` with message: "This package has been renamed to @appboypov/pew-pew-plx"
+3. Deprecate `@appboypov/opensplx` with message: "This package has been renamed to @appboypov/pew-pew-splx"
 4. Publish first version under new package name
 
 ### Phase 3: GitHub Rename
 1. Use Playwright to navigate github.com settings
-2. Rename repository from `OpenSplx` to `pew-pew-plx`
+2. Rename repository from `OpenSplx` to `pew-pew-splx`
 3. GitHub automatically maintains redirects
 4. Update local git remote (optional)
 
@@ -59,10 +59,10 @@ Legacy OpenSpec assets can remain for historical reference:
 
 | Context | Format | Value |
 |---------|--------|-------|
-| npm package | kebab-case | `@appboypov/pew-pew-plx` |
-| GitHub repo | kebab-case | `pew-pew-plx` |
+| npm package | kebab-case | `@appboypov/pew-pew-splx` |
+| GitHub repo | kebab-case | `pew-pew-splx` |
 | Display name | Title Case | "OpenSplx" |
-| Asset files | snake_case | `pew_pew_plx_pixel_*.svg` |
+| Asset files | snake_case | `pew_pew_splx_pixel_*.svg` |
 
 ## Verification Checklist
 

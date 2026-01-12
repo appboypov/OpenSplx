@@ -7,7 +7,7 @@ describe('spec show (interactive behavior)', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-spec-show-tmp');
   const specsDir = path.join(testDir, 'workspace', 'specs');
-  const bin = path.join(projectRoot, 'bin', 'plx.js');
+  const bin = path.join(projectRoot, 'bin', 'splx.js');
 
 
   beforeEach(async () => {

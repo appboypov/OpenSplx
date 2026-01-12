@@ -21,7 +21,7 @@ AGENTS.md documents `get task` commands but has no `complete` or `undo` commands
 ## Constraints
 
 - [ ] Follow existing documentation patterns in AGENTS.md
-- [ ] Follow slash command format from existing `.claude/commands/plx/` files
+- [ ] Follow slash command format from existing `.claude/commands/splx/` files
 
 ## Acceptance Criteria
 
@@ -32,9 +32,9 @@ AGENTS.md documents `get task` commands but has no `complete` or `undo` commands
 ## Implementation Checklist
 
 - [x] 5.1 Update `workspace/AGENTS.md` CLI Commands section with complete/undo commands
-- [x] 5.2 Create `.claude/commands/plx/complete-task.md` slash command
-- [x] 5.3 Create `.claude/commands/plx/undo-task.md` slash command
-- [x] 5.4 Update `.claude/commands/plx/get-task.md` with auto-transition info
+- [x] 5.2 Create `.claude/commands/splx/complete-task.md` slash command
+- [x] 5.3 Create `.claude/commands/splx/undo-task.md` slash command
+- [x] 5.4 Update `.claude/commands/splx/get-task.md` with auto-transition info
 
 ## Notes
 

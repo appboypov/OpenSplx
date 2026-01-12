@@ -2,12 +2,12 @@
 
 ### Requirement: Prepare Release Command
 
-The system SHALL provide a `plx/prepare-release` slash command that orchestrates release preparation by guiding AI agents through updating changelog, readme, and architecture documentation.
+The system SHALL provide a `splx/prepare-release` slash command that orchestrates release preparation by guiding AI agents through updating changelog, readme, and architecture documentation.
 
 #### Scenario: Generating prepare-release command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/prepare-release.md`
+- **THEN** create `.claude/commands/splx/prepare-release.md`
 - **AND** include frontmatter with name "OpenSplx: Prepare Release", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: reading @RELEASE.md, executing steps sequentially, allowing user confirmation/skip per step, preserving existing content
@@ -19,14 +19,14 @@ The system SHALL create a RELEASE.md template at the project root during initial
 
 #### Scenario: Creating RELEASE.md during init
 
-- **WHEN** `plx init` is executed
+- **WHEN** `splx init` is executed
 - **THEN** check if RELEASE.md exists at project root
 - **AND** if not exists, create RELEASE.md with release preparation workflow content
 - **AND** include sections: Purpose, Changelog Update Activity, Readme Update Activity, Architecture Update Activity, Release Checklist
 
 #### Scenario: Creating RELEASE.md during update
 
-- **WHEN** `plx update` is executed
+- **WHEN** `splx update` is executed
 - **THEN** check if RELEASE.md exists at project root
 - **AND** if not exists, create RELEASE.md with release preparation workflow content
 - **AND** do not overwrite existing RELEASE.md

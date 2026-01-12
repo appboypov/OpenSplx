@@ -10,7 +10,7 @@ describe('undo task command', () => {
   const workspaceDir = path.join(testDir, 'workspace');
   const changesDir = path.join(workspaceDir, 'changes');
   const tasksDir = path.join(workspaceDir, 'tasks');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -48,7 +48,7 @@ status: done
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo task --id 001-my-task --json`,
+        `node ${splxBin} undo task --id 001-my-task --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -86,7 +86,7 @@ status: done
       process.chdir(testDir);
       try {
         execSync(
-          `node ${plxBin} undo task --id nonexistent --json`,
+          `node ${splxBin} undo task --id nonexistent --json`,
           { encoding: 'utf-8' }
         );
       } catch (error: any) {
@@ -123,7 +123,7 @@ status: to-do
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo task --id 001-todo-task --json`,
+        `node ${splxBin} undo task --id 001-todo-task --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -161,7 +161,7 @@ parent-id: test-change
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo task --id 001-test-change-my-task --json`,
+        `node ${splxBin} undo task --id 001-test-change-my-task --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -180,7 +180,7 @@ describe('undo change command', () => {
   const workspaceDir = path.join(testDir, 'workspace');
   const changesDir = path.join(workspaceDir, 'changes');
   const tasksDir = path.join(workspaceDir, 'tasks');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -233,7 +233,7 @@ parent-id: test-change
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo change --id test-change --json`,
+        `node ${splxBin} undo change --id test-change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -299,7 +299,7 @@ parent-id: test-change
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo change --id test-change --json`,
+        `node ${splxBin} undo change --id test-change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -317,7 +317,7 @@ parent-id: test-change
       process.chdir(testDir);
       try {
         execSync(
-          `node ${plxBin} undo change --id nonexistent --json`,
+          `node ${splxBin} undo change --id nonexistent --json`,
           { encoding: 'utf-8' }
         );
       } catch (error: any) {
@@ -356,7 +356,7 @@ parent-id: test-change
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo change --id test-change --json`,
+        `node ${splxBin} undo change --id test-change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -395,7 +395,7 @@ parent-id: test-change
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo change --id test-change --json`,
+        `node ${splxBin} undo change --id test-change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -416,7 +416,7 @@ describe('undo review command', () => {
   const workspaceDir = path.join(testDir, 'workspace');
   const reviewsDir = path.join(workspaceDir, 'reviews');
   const tasksDir = path.join(workspaceDir, 'tasks');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -469,7 +469,7 @@ parent-id: test-review
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo review --id test-review --json`,
+        `node ${splxBin} undo review --id test-review --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -535,7 +535,7 @@ parent-id: test-review
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo review --id test-review --json`,
+        `node ${splxBin} undo review --id test-review --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -553,7 +553,7 @@ parent-id: test-review
       process.chdir(testDir);
       try {
         execSync(
-          `node ${plxBin} undo review --id nonexistent --json`,
+          `node ${splxBin} undo review --id nonexistent --json`,
           { encoding: 'utf-8' }
         );
       } catch (error: any) {
@@ -572,7 +572,7 @@ describe('undo spec command', () => {
   const workspaceDir = path.join(testDir, 'workspace');
   const specsDir = path.join(workspaceDir, 'specs');
   const tasksDir = path.join(workspaceDir, 'tasks');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -624,7 +624,7 @@ parent-id: test-spec
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo spec --id test-spec --json`,
+        `node ${splxBin} undo spec --id test-spec --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -661,7 +661,7 @@ parent-id: test-spec
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo spec --id empty-spec --json`,
+        `node ${splxBin} undo spec --id empty-spec --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -714,7 +714,7 @@ parent-id: test-spec
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} undo spec --id test-spec --json`,
+        `node ${splxBin} undo spec --id test-spec --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -732,7 +732,7 @@ parent-id: test-spec
       process.chdir(testDir);
       try {
         execSync(
-          `node ${plxBin} undo spec --id nonexistent --json`,
+          `node ${splxBin} undo spec --id nonexistent --json`,
           { encoding: 'utf-8' }
         );
       } catch (error: any) {

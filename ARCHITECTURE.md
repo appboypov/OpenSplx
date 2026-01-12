@@ -26,9 +26,9 @@ OpenSplx is a fork of [OpenSpec](https://github.com/Fission-AI/OpenSpec) that pr
 ## Project Structure
 
 ```
-pew-pew-plx/
+pew-pew-splx/
 ├── bin/                    # CLI entry points
-│   └── plx.js              # CLI entry (plx command)
+│   └── splx.js              # CLI entry (splx command)
 ├── src/
 │   ├── index.ts            # Library exports (core + cli)
 │   ├── cli/
@@ -106,7 +106,7 @@ pew-pew-plx/
 The CLI uses the **Command Pattern** via Commander.js. Commands are registered in `src/cli/index.ts` and delegate to dedicated command classes:
 
 ```
-CLI Entry (bin/plx.js)
+CLI Entry (bin/splx.js)
     ↓
 Commander Program (src/cli/index.ts)
     ↓
@@ -202,8 +202,8 @@ tracked-issues:
 ```
 
 Tracked issues are:
-- Displayed in `plx get changes` output alongside change names
-- Included in `plx get change --id <id> --json` output
+- Displayed in `splx get changes` output alongside change names
+- Included in `splx get change --id <id> --json` output
 - Reported when archiving changes
 
 ### Service Layer
@@ -277,7 +277,7 @@ Managed content here...
 ### Initialization Flow
 
 ```
-User runs: plx init
+User runs: splx init
     ↓
 InitCommand.execute()
     ↓
@@ -295,7 +295,7 @@ Write AGENTS.md root stub
 ### Validation Flow
 
 ```
-User runs: plx validate change --id <id>  (or plx validate spec --id <id>)
+User runs: splx validate change --id <id>  (or splx validate spec --id <id>)
     ↓
 ValidateCommand.execute()
     ↓
@@ -316,7 +316,7 @@ For each item:
 ### Archive Flow
 
 ```
-User runs: plx archive change --id <id>
+User runs: splx archive change --id <id>
     ↓
 ArchiveCommand.execute()
     ↓
@@ -341,7 +341,7 @@ Archive linked tasks to workspace/tasks/archive/
 
 ### Global Configuration
 
-Location: `~/.config/plx/config.json` (XDG-compliant, respects `XDG_CONFIG_HOME`)
+Location: `~/.config/splx/config.json` (XDG-compliant, respects `XDG_CONFIG_HOME`)
 
 ```json
 {
@@ -349,7 +349,7 @@ Location: `~/.config/plx/config.json` (XDG-compliant, respects `XDG_CONFIG_HOME`
 }
 ```
 
-Managed via `plx config` subcommands:
+Managed via `splx config` subcommands:
 - `config path` - Show config file location
 - `config list [--json]` - Show all settings
 - `config get <key>` - Get specific value (raw, scriptable)
@@ -374,7 +374,7 @@ PLX creates/updates these files in a project:
 | `.claude/commands/` | Claude Code slash commands |
 | Various tool configs | Tool-specific configuration files |
 
-The `plx init` command generates template files in the `workspace/` directory with technology stack, folder structure, and architectural patterns.
+The `splx init` command generates template files in the `workspace/` directory with technology stack, folder structure, and architectural patterns.
 
 ### AI Tool Support
 
@@ -385,13 +385,13 @@ Tools are defined in `src/core/config.ts` with availability flags. Currently sup
 | Amazon Q Developer | `.amazonq/rules/` | `.amazonq/prompts/` |
 | Antigravity | `.antigravity/rules/` | `.antigravity/prompts/` |
 | Auggie (CLI) | `.auggie/rules/` | `.auggie/prompts/` |
-| Claude Code | `.claude/settings.local.json` | `.claude/commands/plx/` |
+| Claude Code | `.claude/settings.local.json` | `.claude/commands/splx/` |
 | Cline | `.clinerules` | `.clinerules/workflows/` |
 | Codex | N/A | `~/.codex/prompts/` (global) |
 | CodeBuddy Code | `.codebuddy/rules/` | `.codebuddy/prompts/` |
 | CoStrict | `.costrict/` | `.costrict/prompts/` |
 | Crush | `.crush/rules/` | `.crush/prompts/` |
-| Cursor | `.cursor/rules/plx.mdc` | `.cursor/prompts/` |
+| Cursor | `.cursor/rules/splx.mdc` | `.cursor/prompts/` |
 | Factory Droid | `.factory/rules/` | `.factory/prompts/` |
 | Gemini CLI | `.gemini/` | `.gemini/prompts/` |
 | GitHub Copilot | `.github/copilot-instructions.md` | `.github/prompts/` |
@@ -447,9 +447,9 @@ if (!options.noInteractive) {
 The CLI supports shell completions for tab-completion of commands and arguments:
 
 ```bash
-plx completion install [shell]   # Install completions
-plx completion generate [shell]  # Output script to stdout
-plx completion uninstall [shell] # Remove completions
+splx completion install [shell]   # Install completions
+splx completion generate [shell]  # Output script to stdout
+splx completion uninstall [shell] # Remove completions
 ```
 
 Shell auto-detection uses `$SHELL` environment variable. Currently supports: `zsh`.
@@ -552,8 +552,8 @@ The optional `skill-level` field guides AI agents in selecting appropriate model
 | `senior` | Advanced (opus) | Complex, architectural decisions |
 
 Skill levels are:
-- Displayed as color-coded badges in `plx get task` output
-- Shown in the Skill column of `plx get tasks` tables
+- Displayed as color-coded badges in `splx get task` output
+- Shown in the Skill column of `splx get tasks` tables
 - Included in JSON output as `skillLevel` field
 - Validated in strict mode (warning when missing or invalid)
 
@@ -571,7 +571,7 @@ Checkboxes under `## Constraints` and `## Acceptance Criteria` sections are excl
 
 ### Change Prioritization
 
-The `plx get task` command selects the highest-priority change using:
+The `splx get task` command selects the highest-priority change using:
 
 1. **Completion Percentage** (highest first): Changes closer to completion get priority
 2. **Creation Date** (oldest first): Tiebreaker when percentages are equal
@@ -598,7 +598,7 @@ The `get` command provides subcommands for retrieving project artifacts:
 
 **Get Task Flow:**
 ```
-User runs: plx get task
+User runs: splx get task
     ↓
 discoverTasks() → scan workspace/tasks/ for all tasks with parent linking
     ↓
@@ -660,7 +660,7 @@ The CLI provides explicit commands for task/entity completion and undo:
 
 **Complete Task Flow:**
 ```
-User runs: plx complete task --id <task-id>
+User runs: splx complete task --id <task-id>
     ↓
 ItemRetrievalService.getTaskById() → find task in workspace/tasks/
     ↓
@@ -673,7 +673,7 @@ Output result (JSON includes completedItems array)
 
 **Undo Task Flow:**
 ```
-User runs: plx undo task --id <task-id>
+User runs: splx undo task --id <task-id>
     ↓
 ItemRetrievalService.getTaskById() → find task in workspace/tasks/
     ↓
@@ -730,9 +730,9 @@ interface DiscoveredWorkspace {
 The global `--workspace <name>` flag filters operations to a specific workspace:
 
 ```bash
-plx get changes --workspace project-a         # List only project-a changes
-plx validate all --workspace project-a      # Validate only project-a
-plx get task --workspace project-a            # Get task from project-a only
+splx get changes --workspace project-a         # List only project-a changes
+splx validate all --workspace project-a      # Validate only project-a
+splx get task --workspace project-a            # Get task from project-a only
 ```
 
 ### Item Prefixing
@@ -746,7 +746,7 @@ Commands accept both prefixed and unprefixed IDs. When unprefixed and multiple m
 ### Workspace Discovery Flow
 
 ```
-User runs: plx get changes (from any subdirectory)
+User runs: splx get changes (from any subdirectory)
     ↓
 findProjectRoot(cwd) → scan upward for workspace/AGENTS.md
     ↓
@@ -775,18 +775,18 @@ OpenSplx provides a structured review workflow for validating implementations ag
 
 #### Review Command
 
-The `plx review` command generates review context for changes, specs, or tasks:
+The `splx review` command generates review context for changes, specs, or tasks:
 
 ```bash
-plx review create --parent-id <id> --parent-type <type>   # Create review entity
-plx review get --id <id>                                   # Get review by ID
-plx review complete --id <id>                              # Complete review tasks
-plx review archive --id <id>                               # Archive completed review
+splx review create --parent-id <id> --parent-type <type>   # Create review entity
+splx review get --id <id>                                   # Get review by ID
+splx review complete --id <id>                              # Complete review tasks
+splx review archive --id <id>                               # Archive completed review
 ```
 
 **Review Creation Flow:**
 ```
-User runs: plx review create --parent-id <id> --parent-type change
+User runs: splx review create --parent-id <id> --parent-type change
     ↓
 ReviewCommand.execute()
     ↓
@@ -806,15 +806,15 @@ Display review context with next steps
 
 #### Parse Feedback Command
 
-The `plx parse feedback` command scans the codebase for feedback markers and generates review tasks:
+The `splx parse feedback` command scans the codebase for feedback markers and generates review tasks:
 
 ```bash
-plx parse feedback <review-name> --parent-id <id> --parent-type <type>
+splx parse feedback <review-name> --parent-id <id> --parent-type <type>
 ```
 
 **Parse Feedback Flow:**
 ```
-User runs: plx parse feedback <name> --parent-id <id> --parent-type change
+User runs: splx parse feedback <name> --parent-id <id> --parent-type change
     ↓
 ParseFeedbackCommand.execute()
     ↓
@@ -889,40 +889,40 @@ status: to-do
 
 - Reviews are linked to their parent (change, spec, or task) via metadata
 - Generated tasks are stored centrally with parent linking
-- Tasks can be retrieved via `plx get task` and managed with complete/undo commands
-- Reviews can be archived: `plx archive review --id <review-name>`
+- Tasks can be retrieved via `splx get task` and managed with complete/undo commands
+- Reviews can be archived: `splx archive review --id <review-name>`
 
 ## Fork-Specific Features (OpenSplx)
 
 OpenSplx provides:
 
-1. **PLX Command**: The CLI uses `plx` as the command name
+1. **PLX Command**: The CLI uses `splx` as the command name
 2. **Dynamic Command Name**: CLI detects invocation name and uses it in output messages, help text, and shell completions via `src/utils/command-name.ts`
 3. **Centralized Task Storage**: Tasks stored in `workspace/tasks/` with parent linking via frontmatter and filenames
 4. **Parent Linking System**: Tasks link to parent entities (changes, specs, reviews) via `parent-type` and `parent-id` fields
-5. **Task Migration**: `plx migrate tasks` migrates legacy `tasks/` directories to centralized storage
-6. **Entity-Based Commands**: Unified command structure (`plx <entity> <action>`) for changes, specs, tasks, reviews, requests
-7. **Slash Commands**: Commands in `.claude/commands/plx/`
-   - `/plx/plan-request` - Clarify intent via iterative yes/no questions before proposal
-   - `/plx/plan-proposal` - Scaffold change proposal (auto-consumes request.md)
-   - `/plx/plan-implementation` - Generate workspace/PROGRESS.md for multi-agent task handoff
-   - `/plx/get-task` - Get next prioritized task and execute workflow
-   - `/plx/copy-next-task` - Copy next task or feedback block to clipboard for external agent handoff
-   - `/plx/copy-review-request` - Copy review request with workspace/REVIEW.md guidelines to clipboard for external agent
-   - `/plx/copy-test-request` - Copy test request with workspace/TESTING.md configuration to clipboard for external agent
-   - `/plx/complete-task` - Mark task as done
-   - `/plx/undo-task` - Revert task to to-do
-   - `/plx/implement` - Implement tasks with guided workflow (processes entire change)
-   - `/plx/orchestrate` - Coordinate sub-agents for multi-task work
-   - `/plx/refine-architecture` - Create or update workspace/ARCHITECTURE.md with spec-ready component inventories
-   - `/plx/review` - Review implementations against specs/changes/tasks
-   - `/plx/parse-feedback` - Parse feedback markers and generate review tasks
-   - `/plx/refine-review` - Create or update workspace/REVIEW.md template
-   - `/plx/prepare-release` - Guided release preparation workflow
-   - `/plx/refine-release` - Create or update workspace/RELEASE.md template
-   - `/plx/refine-testing` - Create or update workspace/TESTING.md template
-   - `/plx/test` - Run tests based on scope (change, task, or spec)
-   - `/plx/prepare-compact` - Preserve session progress in workspace/PROGRESS.md
+5. **Task Migration**: `splx migrate tasks` migrates legacy `tasks/` directories to centralized storage
+6. **Entity-Based Commands**: Unified command structure (`splx <entity> <action>`) for changes, specs, tasks, reviews, requests
+7. **Slash Commands**: Commands in `.claude/commands/splx/`
+   - `/splx/plan-request` - Clarify intent via iterative yes/no questions before proposal
+   - `/splx/plan-proposal` - Scaffold change proposal (auto-consumes request.md)
+   - `/splx/plan-implementation` - Generate workspace/PROGRESS.md for multi-agent task handoff
+   - `/splx/get-task` - Get next prioritized task and execute workflow
+   - `/splx/copy-next-task` - Copy next task or feedback block to clipboard for external agent handoff
+   - `/splx/copy-review-request` - Copy review request with workspace/REVIEW.md guidelines to clipboard for external agent
+   - `/splx/copy-test-request` - Copy test request with workspace/TESTING.md configuration to clipboard for external agent
+   - `/splx/complete-task` - Mark task as done
+   - `/splx/undo-task` - Revert task to to-do
+   - `/splx/implement` - Implement tasks with guided workflow (processes entire change)
+   - `/splx/orchestrate` - Coordinate sub-agents for multi-task work
+   - `/splx/refine-architecture` - Create or update workspace/ARCHITECTURE.md with spec-ready component inventories
+   - `/splx/review` - Review implementations against specs/changes/tasks
+   - `/splx/parse-feedback` - Parse feedback markers and generate review tasks
+   - `/splx/refine-review` - Create or update workspace/REVIEW.md template
+   - `/splx/prepare-release` - Guided release preparation workflow
+   - `/splx/refine-release` - Create or update workspace/RELEASE.md template
+   - `/splx/refine-testing` - Create or update workspace/TESTING.md template
+   - `/splx/test` - Run tests based on scope (change, task, or spec)
+   - `/splx/prepare-compact` - Preserve session progress in workspace/PROGRESS.md
 8. **Extended Templates**: Architecture template generation
 9. **Get Command**: Extended with subcommands for all entities (`get task`, `get change`, `get spec`, `get review`, `get tasks`, `get changes`, `get specs`, `get reviews`) and content filtering (`--constraints`, `--acceptance-criteria`)
 10. **Automatic Task Completion**: Detects when in-progress task has all Implementation Checklist items checked and auto-advances to next task
@@ -930,13 +930,13 @@ OpenSplx provides:
 12. **Complete/Undo Commands**: Explicit commands for task/entity completion and undo with `--id`, `--parent-id`, and `--parent-type` flags
 13. **Services Layer**: Domain services for item retrieval, content filtering, and feedback scanning
 14. **Review System**: Structured review workflow with feedback markers and centralized task storage
-15. **Paste Command**: Create entities from clipboard (`plx paste task/change/spec/request`) with cross-platform clipboard support (macOS, Windows, Linux)
-16. **Create Command**: Unified entity creation (`plx create task/change/spec/request/review`) with parent linking support
+15. **Paste Command**: Create entities from clipboard (`splx paste task/change/spec/request`) with cross-platform clipboard support (macOS, Windows, Linux)
+16. **Create Command**: Unified entity creation (`splx create task/change/spec/request/review`) with parent linking support
 17. **Monorepo-Aware Slash Commands**: Artifact-creating commands detect monorepo context
     - Derives target package from user request context (mentioned package name, file paths, or current focus)
     - Creates artifacts in the relevant package's workspace folder (e.g., `packages/foo/workspace/`)
     - Follows each package's AGENTS.md instructions if present
-    - Affected commands: `/plx:plan-proposal`, `/plx:plan-request`, `/plx:prepare-release`, `/plx:review`, `/plx:parse-feedback`, `/plx:refine-architecture`, `/plx:refine-release`, `/plx:refine-review`, `/plx:refine-testing`
+    - Affected commands: `/splx:plan-proposal`, `/splx:plan-request`, `/splx:prepare-release`, `/splx:review`, `/splx:parse-feedback`, `/splx:refine-architecture`, `/splx:refine-release`, `/splx:refine-review`, `/splx:refine-testing`
 
 ## Extending the System
 

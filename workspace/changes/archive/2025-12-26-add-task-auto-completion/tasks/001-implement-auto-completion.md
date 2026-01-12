@@ -6,12 +6,12 @@ status: done
 
 ## End Goal
 
-The `plx get task` command automatically detects when the current in-progress task is fully complete and advances to the next task.
+The `splx get task` command automatically detects when the current in-progress task is fully complete and advances to the next task.
 
 ## Currently
 
-- `plx get task` displays the in-progress task regardless of checklist state
-- Users must manually run `plx get task --did-complete-previous` to mark a task done
+- `splx get task` displays the in-progress task regardless of checklist state
+- Users must manually run `splx get task --did-complete-previous` to mark a task done
 - The `countTasksFromContent()` function exists to count checklist items
 
 ## Should

@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-The CLI command `plx get task` is renamed to `plx get task` with all internal references updated.
+The CLI command `splx get task` is renamed to `splx get task` with all internal references updated.
 
 ## Currently
 
@@ -29,9 +29,9 @@ The CLI command `plx get task` is renamed to `plx get task` with all internal re
 
 ## Acceptance Criteria
 
-- [x] `plx get task` returns the next prioritized task
-- [x] `plx get task --did-complete-previous` completes checkboxes and advances
-- [x] `plx get task --json` outputs valid JSON with `completedTask` field when applicable
+- [x] `splx get task` returns the next prioritized task
+- [x] `splx get task --did-complete-previous` completes checkboxes and advances
+- [x] `splx get task --json` outputs valid JSON with `completedTask` field when applicable
 - [x] Text output shows completed task name and checkbox items
 
 ## Implementation Checklist

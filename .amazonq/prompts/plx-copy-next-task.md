@@ -26,12 +26,12 @@ Determine which scenario applies:
    - If pending feedback: copy the most recent feedback block.
    - If no feedback: copy the next uncompleted task block from PROGRESS.md.
 
-2. **New conversation (no context)**: Run `plx get task` to retrieve the highest-priority task.
+2. **New conversation (no context)**: Run `splx get task` to retrieve the highest-priority task.
    - Generate a task block from the task content.
 
 3. **Existing conversation with context**: Analyze conversation history.
    - If a task was just reviewed with issues: generate a feedback block.
-   - If a task was completed: get next task via `plx get task --did-complete-previous`.
+   - If a task was completed: get next task via `splx get task --did-complete-previous`.
    - If unclear: ask user what to copy.
 
 **Steps**
@@ -59,7 +59,7 @@ Determine which scenario applies:
    **If copying next task (no pending feedback):**
    a. Get task content:
       - From PROGRESS.md if it exists and has uncompleted tasks
-      - Otherwise via `plx get task` (or `plx get task --did-complete-previous` if previous completed)
+      - Otherwise via `splx get task` (or `splx get task --did-complete-previous` if previous completed)
    b. Generate task block:
    ```markdown
    ## Task: <task-name>
@@ -78,7 +78,7 @@ Determine which scenario applies:
    Focus on the Constraints and Acceptance Criteria sections.
    When complete, mark the task as done:
    \`\`\`bash
-   plx complete task --id <task-id>
+   splx complete task --id <task-id>
    \`\`\`
    ```
 
@@ -90,8 +90,8 @@ Determine which scenario applies:
 4. Confirm to user what was copied and the task/feedback ID.
 
 **Reference**
-- Use `plx get task` to retrieve highest-priority task when no context exists.
-- Use `plx get task --did-complete-previous` after completing a task.
-- Use `plx get change --id <change-id>` to get proposal context.
+- Use `splx get task` to retrieve highest-priority task when no context exists.
+- Use `splx get task --did-complete-previous` after completing a task.
+- Use `splx get change --id <change-id>` to get proposal context.
 - Read PROGRESS.md if it exists to find next uncompleted task block.
 <!-- PLX:END -->

@@ -32,7 +32,7 @@ $ARGUMENTS
 1. Parse `$ARGUMENTS` to extract change-id.
 2. Generate progress file:
    ```bash
-   plx create progress --change-id <change-id>
+   splx create progress --change-id <change-id>
    ```
 3. Read the generated PROGRESS.md and identify the first non-completed task.
 4. Output the first task block to chat. Format:
@@ -53,7 +53,7 @@ $ARGUMENTS
    Focus on the Constraints and Acceptance Criteria sections.
    When complete, mark the task as done:
    \`\`\`bash
-   plx complete task --id <task-id>
+   splx complete task --id <task-id>
    \`\`\`
    ```
 5. Wait for external agent to complete the task and return with results.
@@ -80,15 +80,15 @@ $ARGUMENTS
    Address the issues above. When complete, return with updated results.
    ```
 8. If all checks pass:
-   - Mark task complete: `plx complete task --id <task-id>`
-   - Regenerate progress: `plx create progress --change-id <change-id>`
+   - Mark task complete: `splx complete task --id <task-id>`
+   - Regenerate progress: `splx create progress --change-id <change-id>`
    - If more tasks remain, output next task block (return to step 4)
 9. When all tasks are complete:
-   - Run final validation: `plx validate change --id <change-id> --strict`
+   - Run final validation: `splx validate change --id <change-id> --strict`
    - Report completion summary with all tasks marked done.
 
 **Reference**
-- Use `plx get change --id <change-id>` for proposal context.
-- Use `plx get tasks --parent-id <change-id> --parent-type change` to see all tasks.
-- Use `plx create progress --change-id <id>` to regenerate progress file.
+- Use `splx get change --id <change-id>` for proposal context.
+- Use `splx get tasks --parent-id <change-id> --parent-type change` to see all tasks.
+- Use `splx create progress --change-id <id>` to regenerate progress file.
 <!-- PLX:END -->

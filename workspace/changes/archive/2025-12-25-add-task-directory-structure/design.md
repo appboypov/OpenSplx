@@ -2,7 +2,7 @@
 
 **Title**: Split tasks.md into individual task files with token-based scoping
 **Linear**: [PLX-9](https://linear.app/de-app-specialist/issue/PLX-9)
-**GitHub**: [#13](https://github.com/appboypov/pew-pew-plx/issues/13)
+**GitHub**: [#13](https://github.com/appboypov/pew-pew-splx/issues/13)
 **Complexity**: 8 (Complex)
 
 This change addresses the limitation of storing all tasks in a single `tasks.md` file. When tasks are large or numerous, the entire file must be loaded into AI conversation context, potentially exceeding token limits and making it difficult to work on individual tasks in isolation.
@@ -416,18 +416,18 @@ Feature: List command shows aggregate task progress
 Feature: End-to-end task directory workflow
 
   Scenario: Create, work, and archive change with task directory
-    Given I run "plx init" in a new project
+    Given I run "splx init" in a new project
     And I create change "add-feature" with tasks/ directory containing:
       | 001-implement.md | 3 tasks |
       | 002-review.md | 2 tasks |
       | 003-test.md | 2 tasks |
-    When I run "plx list"
+    When I run "splx list"
     Then I see "add-feature" with "0/7 tasks"
     When I mark all tasks in 001-implement.md complete
-    And I run "plx list"
+    And I run "splx list"
     Then I see "add-feature" with "3/7 tasks"
     When I mark all remaining tasks complete
-    And I run "plx archive add-feature -y"
+    And I run "splx archive add-feature -y"
     Then change is archived with all task files preserved
     And archive contains tasks/ directory with 3 files
 ```
@@ -440,7 +440,7 @@ Feature: Auto-migration of legacy tasks.md
   Scenario: Legacy change with tasks.md is auto-migrated
     Given existing change "legacy-change" has tasks.md with 5 tasks
     And "legacy-change" has no tasks/ directory
-    When I run "plx list"
+    When I run "splx list"
     Then I see "Migrated tasks.md → tasks/001-tasks.md"
     And tasks/ directory is created with 001-tasks.md
     And tasks.md is deleted

@@ -2,7 +2,7 @@
 
 ## Why
 
-When AI agents execute `plx` commands from subdirectories (e.g., `/project/src/components/`), the CLI fails to find the workspace because it only scans downward from CWD. This makes PLX unusable when agents are working in nested directories, which is a common pattern.
+When AI agents execute `splx` commands from subdirectories (e.g., `/project/src/components/`), the CLI fails to find the workspace because it only scans downward from CWD. This makes PLX unusable when agents are working in nested directories, which is a common pattern.
 
 ## What Changes
 

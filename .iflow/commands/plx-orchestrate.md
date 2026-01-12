@@ -1,6 +1,6 @@
 ---
-name: /plx-orchestrate
-id: plx-orchestrate
+name: /splx-orchestrate
+id: splx-orchestrate
 category: OpenSplx
 description: Orchestrate sub-agents to complete work collaboratively.
 ---
@@ -28,11 +28,11 @@ description: Orchestrate sub-agents to complete work collaboratively.
 
 **Steps**
 1. Understand the work scope:
-   - For changes: run `plx get tasks` to see all tasks.
+   - For changes: run `splx get tasks` to see all tasks.
    - For reviews: identify review aspects (architecture, scope, testing, etc.).
    - For other work: enumerate the discrete units of work.
 2. For each unit of work:
-   a. Get detailed context (`plx get task --id <id>` or equivalent).
+   a. Get detailed context (`splx get task --id <id>` or equivalent).
    b. Spawn a sub-agent with clear, scoped instructions; select model based on task skill-level (junior→haiku, medior→sonnet, senior→opus).
    c. Wait for sub-agent to complete work.
 3. Review sub-agent output:
@@ -45,15 +45,15 @@ description: Orchestrate sub-agents to complete work collaboratively.
    - Request revision with clear guidance.
    - Repeat review until satisfactory.
 5. If approved:
-   - For tasks: mark complete with `plx complete task --id <id>`.
+   - For tasks: mark complete with `splx complete task --id <id>`.
    - For reviews: consolidate feedback.
    - Proceed to next unit of work.
 6. Continue until all work is complete.
-7. Final validation: run `plx validate` if applicable.
+7. Final validation: run `splx validate` if applicable.
 
 **Reference**
-- Use `plx get change --id <change-id>` for proposal context.
-- Use `plx get changes` to see all changes and progress.
-- Use `plx review` for review context.
-- Use `plx parse feedback` to convert review feedback to tasks.
+- Use `splx get change --id <change-id>` for proposal context.
+- Use `splx get changes` to see all changes and progress.
+- Use `splx review` for review context.
+- Use `splx parse feedback` to convert review feedback to tasks.
 <!-- PLX:END -->

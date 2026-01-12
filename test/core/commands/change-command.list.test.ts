@@ -13,7 +13,7 @@ describe('ChangeCommand.list', () => {
   beforeAll(async () => {
     cmd = new ChangeCommand();
     originalCwd = process.cwd();
-    tempRoot = path.join(os.tmpdir(), `plx-change-command-list-${Date.now()}`);
+    tempRoot = path.join(os.tmpdir(), `splx-change-command-list-${Date.now()}`);
     await createValidSplxWorkspace(tempRoot);
     const changeDir = path.join(tempRoot, 'workspace', 'changes', 'demo');
     await fs.mkdir(changeDir, { recursive: true });
@@ -85,7 +85,7 @@ describe('ChangeCommand.list issue display format', () => {
   beforeAll(async () => {
     cmd = new ChangeCommand();
     originalCwd = process.cwd();
-    tempRoot = path.join(os.tmpdir(), `plx-change-command-issue-${Date.now()}`);
+    tempRoot = path.join(os.tmpdir(), `splx-change-command-issue-${Date.now()}`);
     await createValidSplxWorkspace(tempRoot);
     const changeDir = path.join(tempRoot, 'workspace', 'changes', 'with-issue');
     await fs.mkdir(changeDir, { recursive: true });

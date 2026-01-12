@@ -8,11 +8,11 @@ parent-id: extend-paste-command
 
 ## End Goal
 
-The paste command uses the same entity templates as the `plx create` command to ensure consistent file structures.
+The paste command uses the same entity templates as the `splx create` command to ensure consistent file structures.
 
 ## Currently
 
-The `plx paste request` command writes raw clipboard content without templating. The new subcommands need structured templates.
+The `splx paste request` command writes raw clipboard content without templating. The new subcommands need structured templates.
 
 ## Should
 
@@ -24,7 +24,7 @@ The `plx paste request` command writes raw clipboard content without templating.
 
 ## Constraints
 
-- [ ] Templates MUST match output of `plx create` command (when available)
+- [ ] Templates MUST match output of `splx create` command (when available)
 - [ ] If `add-create-command` is not complete, create minimal templates that can be updated later
 - [ ] Templates exported from a shared location in `src/core/templates/`
 - [ ] Follow existing template patterns (string interpolation, not complex templating)
@@ -35,7 +35,7 @@ The `plx paste request` command writes raw clipboard content without templating.
 - [ ] Change template produces valid proposal.md with scaffolded sections
 - [ ] Spec template produces valid spec.md with requirement placeholder
 - [ ] Clipboard content correctly inserted into designated section
-- [ ] Templates match `plx create` output structure
+- [ ] Templates match `splx create` output structure
 
 ## Implementation Checklist
 
@@ -49,4 +49,4 @@ The `plx paste request` command writes raw clipboard content without templating.
 
 ## Notes
 
-The template system should be designed for reuse by both `plx create` and `plx paste` commands. Template functions accept an options object with content to inject.
+The template system should be designed for reuse by both `splx create` and `splx paste` commands. Template functions accept an options object with content to inject.

@@ -72,26 +72,26 @@ async function installCompletions(shell) {
 
     // Check if shell is supported
     if (!CompletionFactory.isSupported(shell)) {
-      console.log(`\nTip: Run 'plx completion install' for shell completions`);
+      console.log(`\nTip: Run 'splx completion install' for shell completions`);
       return;
     }
 
     const generator = CompletionFactory.createGenerator(shell);
     const installer = CompletionFactory.createInstaller(shell);
 
-    // Install completions for plx command
-    const script = generator.generate(COMMAND_REGISTRY, 'plx');
-    const result = await installer.install(script, 'plx');
+    // Install completions for splx command
+    const script = generator.generate(COMMAND_REGISTRY, 'splx');
+    const result = await installer.install(script, 'splx');
 
     if (result.success) {
-      console.log(`Shell completions installed for plx`);
+      console.log(`Shell completions installed for splx`);
       console.log(`  Restart shell: exec zsh`);
     } else {
-      console.log(`\nTip: Run 'plx completion install' for shell completions`);
+      console.log(`\nTip: Run 'splx completion install' for shell completions`);
     }
   } catch (error) {
     // Fail gracefully - show tip for manual install
-    console.log(`\nTip: Run 'plx completion install' for shell completions`);
+    console.log(`\nTip: Run 'splx completion install' for shell completions`);
   }
 }
 
@@ -115,7 +115,7 @@ async function main() {
     // Detect shell
     const shell = await detectShell();
     if (!shell) {
-      console.log(`\nTip: Run 'plx completion install' for shell completions`);
+      console.log(`\nTip: Run 'splx completion install' for shell completions`);
       return;
     }
 
@@ -124,7 +124,7 @@ async function main() {
   } catch (error) {
     // Fail gracefully - never break npm install
     // Show tip for manual install
-    console.log(`\nTip: Run 'plx completion install' for shell completions`);
+    console.log(`\nTip: Run 'splx completion install' for shell completions`);
   }
 }
 

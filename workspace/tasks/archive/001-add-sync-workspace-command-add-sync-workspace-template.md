@@ -7,7 +7,7 @@ parent-id: add-sync-workspace-command
 
 ## End Goal
 
-The `sync-workspace` slash command template exists in the template system and generates properly when `plx init` or `plx update` runs.
+The `sync-workspace` slash command template exists in the template system and generates properly when `splx init` or `splx update` runs.
 
 ## Currently
 
@@ -33,7 +33,7 @@ The slash command system includes `sync-workspace` with:
 - [ ] `ALL_COMMANDS` array includes `'sync-workspace'`
 - [ ] Template body contains guardrails for sub-agent usage and action selection
 - [ ] Template body contains steps for scan, assess, suggest, select, execute, report workflow
-- [ ] Running `plx update` generates `.claude/commands/plx/sync-workspace.md`
+- [ ] Running `splx update` generates `.claude/commands/splx/sync-workspace.md`
 
 ## Implementation Checklist
 
@@ -48,7 +48,7 @@ The slash command system includes `sync-workspace` with:
 
 The command template instructs the AI agent to:
 1. Parse optional `$ARGUMENTS` for targeted scope
-2. Scan workspace state using `plx list`, `plx get tasks`
+2. Scan workspace state using `splx list`, `splx get tasks`
 3. Use sub-agents for complex assessments when context is heavy
 4. Suggest maintenance actions (archive, create tasks, update proposals, validate)
 5. Present suggestions via question tool (multi-select) or numbered list

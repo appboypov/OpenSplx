@@ -52,7 +52,7 @@ export class ChangeParser extends MarkdownParser {
       ...(trackedIssues && trackedIssues.length > 0 ? { trackedIssues } : {}),
       metadata: {
         version: '1.0.0',
-        format: 'plx-change',
+        format: 'splx-change',
       },
     };
   }

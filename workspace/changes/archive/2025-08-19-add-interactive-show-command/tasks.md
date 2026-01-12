@@ -20,7 +20,7 @@
 - [x] Change `spec show` subcommand to accept optional ID (`show [spec-id]`), add `--no-interactive`, and pass to spec show implementation.
 
 Acceptance:
-- `plx show` exists and prints a helpful hint in non-interactive contexts when no args.
+- `splx show` exists and prints a helpful hint in non-interactive contexts when no args.
 - Unknown flags for other types do not crash parsing; they are warned/ignored appropriately.
 
 ---
@@ -34,9 +34,9 @@ Acceptance:
     - Delegate to type-specific show implementation.
   - Non-interactive path when `!itemName`:
     - Print hint with examples:
-      - `plx show <item>`
-      - `plx change show`
-      - `plx spec show`
+      - `splx show <item>`
+      - `splx change show`
+      - `splx spec show`
     - Exit with code 1.
   - Direct item path when `itemName` is provided:
     - Type override via `--type` takes precedence.
@@ -51,8 +51,8 @@ Acceptance:
   - Warn and ignore irrelevant flags for the resolved type.
 
 Acceptance:
-- `plx show <change-id> --json --deltas-only` matches `plx change show <id> --json --deltas-only` output.
-- `plx show <spec-id> --json --requirements` matches `plx spec show <id> --json --requirements` output.
+- `splx show <change-id> --json --deltas-only` matches `splx change show <id> --json --deltas-only` output.
+- `splx show <spec-id> --json --requirements` matches `splx spec show <id> --json --requirements` output.
 - Ambiguity and not-found behaviors match the `cli-show` spec.
 
 ---
@@ -72,14 +72,14 @@ Acceptance:
 ## 4) Backwards-compatible interactive in subcommands
 - [x] `src/commands/change.ts` → extend `show(changeName?: string, options?: { json?: boolean; requirementsOnly?: boolean; deltasOnly?: boolean; noInteractive?: boolean })`:
   - When `!changeName` and interactive enabled: prompt from `getActiveChangeIds()` and show the selected change.
-  - Non-interactive fallback: keep current behavior (print available IDs + `plx change list` hint, set `process.exitCode = 1`).
+  - Non-interactive fallback: keep current behavior (print available IDs + `splx change list` hint, set `process.exitCode = 1`).
 - [x] `src/commands/spec.ts` → `SpecCommand.show` as above:
   - When `!specId` and interactive enabled: prompt from `getSpecIds()` and show the selected spec.
   - Non-interactive fallback: print the same error as existing behavior for missing `<spec-id>` and set non-zero exit code.
 
 Acceptance:
-- `plx change show` in non-interactive prints list hint and exits non-zero.
-- `plx spec show` in non-interactive prints missing-arg error and exits non-zero.
+- `splx change show` in non-interactive prints list hint and exits non-zero.
+- `splx spec show` in non-interactive prints missing-arg error and exits non-zero.
 
 ---
 
@@ -94,7 +94,7 @@ Acceptance:
 
 ## 6) Hints, warnings, and messages
 - [x] Top-level `show` hint (non-interactive no-arg):
-  - Lines include: `plx show <item>`, `plx change show`, `plx spec show`, and "Or run in an interactive terminal.".
+  - Lines include: `splx show <item>`, `splx change show`, `splx spec show`, and "Or run in an interactive terminal.".
 - [x] Ambiguity message suggests `--type change|spec` and the subcommands.
 - [x] Not-found suggests nearest matches (up to 5).
 - [x] Irrelevant flag warnings for the resolved type (printed to stderr, no crash).
@@ -114,9 +114,9 @@ Add tests mirroring existing patterns (non-TTY simulation via `OPEN_SPEC_INTERAC
   - Not-found case → nearest-match suggestions.
   - Pass-through flags: change `--json --deltas-only`, spec `--json --requirements`.
 - [x] `test/commands/change.interactive-show.test.ts` (non-interactive fallback)
-  - Ensure `plx change show` without args prints available IDs + list hint and non-zero exit.
+  - Ensure `splx change show` without args prints available IDs + list hint and non-zero exit.
 - [x] `test/commands/spec.interactive-show.test.ts` (non-interactive fallback)
-  - Ensure `plx spec show` without args prints missing-arg error and non-zero exit.
+  - Ensure `splx spec show` without args prints missing-arg error and non-zero exit.
 
 Acceptance:
 - All new tests pass after build; no regressions in existing tests.

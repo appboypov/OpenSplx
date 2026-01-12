@@ -37,5 +37,5 @@ All instruction files consistently reference the `tasks/` directory structure.
 
 ## Notes
 
-- The source template (`agents-template.ts`) generates `AGENTS.md` via `plx update`
+- The source template (`agents-template.ts`) generates `AGENTS.md` via `splx update`
 - Both files must be updated to fix current and future projects

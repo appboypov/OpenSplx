@@ -24,7 +24,7 @@ The command SHALL support non-interactive operation through command-line options
 - **THEN** exit with code 1 and display available values (`all`, `none`, or the supported tool IDs)
 
 #### Scenario: Help text lists available tool IDs
-- **WHEN** displaying CLI help for `plx init`
+- **WHEN** displaying CLI help for `splx init`
 - **THEN** show the `--tools` option description with the valid values derived from the AI tool registry
 
 ## MODIFIED Requirements

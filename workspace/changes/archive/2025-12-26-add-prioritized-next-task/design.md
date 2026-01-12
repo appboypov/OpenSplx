@@ -69,11 +69,11 @@ Alternatives considered:
 ### Decision: Command Structure
 
 ```bash
-plx get task [--did-complete-previous] [--json]
-plx act next [--did-complete-previous] [--json]
+splx get task [--did-complete-previous] [--json]
+splx act next [--did-complete-previous] [--json]
 ```
 
-The `act` parent command groups workflow actions. The `next` subcommand follows the pattern of other grouped commands like `plx change show`.
+The `act` parent command groups workflow actions. The `next` subcommand follows the pattern of other grouped commands like `splx change show`.
 
 ## Risks / Trade-offs
 

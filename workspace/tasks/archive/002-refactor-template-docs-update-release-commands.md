@@ -37,7 +37,7 @@ refine-release command contains all option documentation. prepare-release reads 
 - [x] 2.2 Update refineReleaseSteps to guide through all configuration options
 - [x] 2.3 Update prepareReleaseGuardrails to work with minimal config
 - [x] 2.4 Update prepareReleaseSteps to apply defaults when config sections are missing
-- [x] 2.5 Run `plx update` to regenerate all tool configurator files
+- [x] 2.5 Run `splx update` to regenerate all tool configurator files
 - [x] 2.6 Verify refine-release command contains format/style/badge documentation
 
 ## Notes

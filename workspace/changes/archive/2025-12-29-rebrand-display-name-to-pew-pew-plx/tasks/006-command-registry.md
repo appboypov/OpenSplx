@@ -20,7 +20,7 @@ Use "OpenSplx" in all registry descriptions.
 
 ## Constraints
 
-- [ ] Command names stay as `plx`
+- [ ] Command names stay as `splx`
 - [ ] Flag definitions unchanged
 - [ ] Only description text changes
 

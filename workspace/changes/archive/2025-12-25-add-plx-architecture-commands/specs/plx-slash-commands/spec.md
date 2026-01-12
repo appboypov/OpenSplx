@@ -13,12 +13,12 @@ The system SHALL provide a separate PLX slash command infrastructure that coexis
 
 ### Requirement: Init Architecture Command
 
-The system SHALL provide a `plx/init-architecture` slash command that instructs AI agents to generate comprehensive architecture documentation.
+The system SHALL provide a `splx/init-architecture` slash command that instructs AI agents to generate comprehensive architecture documentation.
 
 #### Scenario: Generating init-architecture command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/init-architecture.md`
+- **THEN** create `.claude/commands/splx/init-architecture.md`
 - **AND** include frontmatter with name "PLX: Init Architecture", description, category "PLX", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails focusing on practical, usable documentation
@@ -26,12 +26,12 @@ The system SHALL provide a `plx/init-architecture` slash command that instructs 
 
 ### Requirement: Update Architecture Command
 
-The system SHALL provide a `plx/update-architecture` slash command that instructs AI agents to refresh existing architecture documentation.
+The system SHALL provide a `splx/update-architecture` slash command that instructs AI agents to refresh existing architecture documentation.
 
 #### Scenario: Generating update-architecture command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/update-architecture.md`
+- **THEN** create `.claude/commands/splx/update-architecture.md`
 - **AND** include frontmatter with name "PLX: Update Architecture", description, category "PLX", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails focusing on practical, usable documentation
@@ -61,6 +61,6 @@ The system SHALL update PLX command content within markers when running init in 
 #### Scenario: Refreshing PLX commands on re-init
 
 - **GIVEN** an existing project with PLX commands at "./test-project"
-- **WHEN** the user runs `plx init ./test-project` again
+- **WHEN** the user runs `splx init ./test-project` again
 - **THEN** update PLX command content within PLX markers
 - **AND** preserve any content outside the markers

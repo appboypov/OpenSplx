@@ -487,7 +487,7 @@ export class TransferService {
 
   /**
    * Initializes the target workspace with the given tools.
-   * Uses the same logic as `plx init --tools <tools>`.
+   * Uses the same logic as `splx init --tools <tools>`.
    */
   async initializeTargetWorkspace(toolIds: string[]): Promise<void> {
     if (!this.targetProjectRoot) {

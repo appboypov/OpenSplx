@@ -1,6 +1,6 @@
 ---
-name: /plx-prepare-release
-id: plx-prepare-release
+name: /splx-prepare-release
+id: splx-prepare-release
 category: OpenSplx
 description: Prepare release by updating changelog, readme, and architecture documentation.
 ---

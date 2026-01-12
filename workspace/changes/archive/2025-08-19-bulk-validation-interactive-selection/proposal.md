@@ -11,7 +11,7 @@ Currently, users must validate changes and specs individually by specifying each
 - Add new top-level `validate` command with intuitive flags (--all, --changes, --specs)
 - Enhance existing `change validate` and `spec validate` to support interactive selection (backwards compatibility)
 - Interactive selection by default when no arguments provided
-- Support direct item validation: `plx validate <item>` with automatic type detection
+- Support direct item validation: `splx validate <item>` with automatic type detection
 
 ## Impact
 

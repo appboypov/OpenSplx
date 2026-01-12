@@ -37,16 +37,16 @@ Centralizing tasks in `workspace/tasks/` with optional parent linking enables:
 - Follows existing upward/downward workspace discovery pattern
 
 **Task Retrieval Logic Updates**
-- `plx get task` searches `workspace/tasks/` instead of nested folders
+- `splx get task` searches `workspace/tasks/` instead of nested folders
 - Prioritization considers parent entity completion status
 - Filtering by `--parent-id` and `--parent-type` flags (assumes `standardize-cli-pattern` complete)
 
 **Task Management Updates**
-- `plx complete task` and `plx undo task` operate on centralized storage
+- `splx complete task` and `splx undo task` operate on centralized storage
 - Change/review completion aggregates by parent-id linkage
 
 ## Impact
 
-- **Affected specs**: `plx-conventions`, `cli-get-task`, `cli-complete`, `cli-undo`, `docs-agent-instructions`
+- **Affected specs**: `splx-conventions`, `cli-get-task`, `cli-complete`, `cli-undo`, `docs-agent-instructions`
 - **Affected code**: Task discovery utilities, item retrieval service, task progress tracking, task status utilities, workspace discovery
 - **Breaking**: Yes - existing projects require migration (handled by separate `add-migrate-command` proposal)

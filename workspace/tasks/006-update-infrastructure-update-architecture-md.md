@@ -14,7 +14,7 @@ ARCHITECTURE.md accurately documents the new directory structure, CLI command pa
 
 ARCHITECTURE.md documents:
 - Nested task storage in `changes/<name>/tasks/` and `reviews/<name>/tasks/`
-- Old CLI command patterns (`plx list`, `plx show`, etc.)
+- Old CLI command patterns (`splx list`, `splx show`, etc.)
 - Entity-specific flag patterns
 - Old command flow diagrams
 
@@ -22,11 +22,11 @@ ARCHITECTURE.md documents:
 
 ARCHITECTURE.md documents:
 - Centralized task storage in `workspace/tasks/` and `workspace/tasks/archive/`
-- New CLI command patterns (`plx get changes`, `plx get change --id <id>`, etc.)
+- New CLI command patterns (`splx get changes`, `splx get change --id <id>`, etc.)
 - Standardized `--id`, `--parent-id`, `--parent-type` patterns
 - Updated command flow diagrams
-- New `plx create` and `plx paste` commands
-- `plx migrate tasks` command
+- New `splx create` and `splx paste` commands
+- `splx migrate tasks` command
 - Updated data structures for task parent linking
 
 ## Constraints
@@ -58,9 +58,9 @@ ARCHITECTURE.md documents:
 - [x] 6.9 Update Complete and Undo Commands section
 - [x] 6.10 Update Review System section with new command patterns
 - [x] 6.11 Update Fork-Specific Features section command list
-- [x] 6.12 Add documentation for plx create command
-- [x] 6.13 Add documentation for plx paste extensions
-- [x] 6.14 Add documentation for plx migrate tasks command
+- [x] 6.12 Add documentation for splx create command
+- [x] 6.13 Add documentation for splx paste extensions
+- [x] 6.14 Add documentation for splx migrate tasks command
 - [x] 6.15 Update all inline command examples throughout document
 
 ## Notes

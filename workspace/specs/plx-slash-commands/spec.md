@@ -1,7 +1,7 @@
-# plx-slash-commands Specification
+# splx-slash-commands Specification
 
 ## Purpose
-TBD - created by archiving change add-plx-architecture-commands. Update Purpose after archive.
+TBD - created by archiving change add-splx-architecture-commands. Update Purpose after archive.
 ## Requirements
 ### Requirement: PLX Slash Command Infrastructure
 
@@ -38,63 +38,63 @@ The system SHALL update PLX command content within markers when running init in 
 #### Scenario: Refreshing PLX commands on re-init
 
 - **GIVEN** an existing project with PLX commands at "./test-project"
-- **WHEN** the user runs `plx init ./test-project` again
+- **WHEN** the user runs `splx init ./test-project` again
 - **THEN** update PLX command content within PLX markers
 - **AND** preserve any content outside the markers
 
 ### Requirement: Act Next Actionable Filtering
 
-The system SHALL filter out non-actionable changes when selecting the next task via `plx act next`.
+The system SHALL filter out non-actionable changes when selecting the next task via `splx act next`.
 
 #### Scenario: Skipping changes with all checkboxes complete
 
 - **WHEN** a change has all implementation checkboxes marked as complete (`- [x]`)
-- **THEN** the `plx act next` command SHALL skip that change
+- **THEN** the `splx act next` command SHALL skip that change
 - **AND** select a change with incomplete checkboxes instead
 
 #### Scenario: Skipping changes with no checkboxes
 
 - **WHEN** a change has zero implementation checkboxes in its task files
-- **THEN** the `plx act next` command SHALL skip that change
+- **THEN** the `splx act next` command SHALL skip that change
 - **AND** select a change with incomplete checkboxes instead
 
 #### Scenario: Returning null when no actionable changes exist
 
 - **WHEN** all active changes are either complete or have no checkboxes
-- **THEN** the `plx act next` command SHALL return null
+- **THEN** the `splx act next` command SHALL return null
 - **AND** display "No active changes found" message
 
 ### Requirement: Compact Context Preservation Command
 
-The system SHALL provide a `plx/compact` slash command that instructs AI agents to preserve session state for continuation across context-limited chat sessions.
+The system SHALL provide a `splx/compact` slash command that instructs AI agents to preserve session state for continuation across context-limited chat sessions.
 
 #### Scenario: Generating compact command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/compact.md`
+- **THEN** create `.claude/commands/splx/compact.md`
 - **AND** include frontmatter with name "OpenSplx: Compact", description "Preserve session progress to PROGRESS.md for context handoff", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for saving files, creating PROGRESS.md in project root, including sufficient detail for continuation, updating .gitignore, and handling existing PROGRESS.md files
 
 ### Requirement: Get Task Stop Behavior
 
-The `plx/get-task` slash command SHALL instruct agents to stop after completing the retrieved task and await user confirmation before proceeding.
+The `splx/get-task` slash command SHALL instruct agents to stop after completing the retrieved task and await user confirmation before proceeding.
 
 #### Scenario: Get-task command includes stop instruction
 
-- **WHEN** the `plx/get-task` slash command is generated
+- **WHEN** the `splx/get-task` slash command is generated
 - **THEN** include a step instructing agents to stop after task completion
 - **AND** include instruction to await user confirmation before proceeding to the next task
 - **AND** NOT include instruction to automatically get the next task after completion
 
 ### Requirement: Review Command
 
-The system SHALL provide a `plx/review` slash command that guides AI agents through reviewing implementations against specifications.
+The system SHALL provide a `splx/review` slash command that guides AI agents through reviewing implementations against specifications.
 
 #### Scenario: Generating review command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/review.md`
+- **THEN** create `.claude/commands/splx/review.md`
 - **AND** include frontmatter with name "OpenSplx: Review", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: asking what to review, using CLI to retrieve criteria, outputting language-aware feedback markers
@@ -102,12 +102,12 @@ The system SHALL provide a `plx/review` slash command that guides AI agents thro
 
 ### Requirement: Refine Architecture Command
 
-The system SHALL provide a `plx/refine-architecture` slash command that produces spec-ready architecture documentation with complete component inventories.
+The system SHALL provide a `splx/refine-architecture` slash command that produces spec-ready architecture documentation with complete component inventories.
 
 #### Scenario: Generating refine-architecture command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-architecture.md`
+- **THEN** create `.claude/commands/splx/refine-architecture.md`
 - **AND** include frontmatter with name "Refine Architecture", description "Create or update ARCHITECTURE.md with spec-ready component inventories.", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails requiring spec-ready reference, complete component inventories, user content preservation, and completeness validation
@@ -117,7 +117,7 @@ The system SHALL provide a `plx/refine-architecture` slash command that produces
 
 #### Scenario: Context retrieval instructs use of codebase tools
 
-- **WHEN** the `plx/refine-architecture` command body is generated
+- **WHEN** the `splx/refine-architecture` command body is generated
 - **THEN** include Context Retrieval section
 - **AND** instruct use of `mcp__auggie-mcp__codebase-retrieval` or equivalent tools
 - **AND** list component discovery queries for DTOs, services, APIs, views, view models, routing, enums
@@ -126,7 +126,7 @@ The system SHALL provide a `plx/refine-architecture` slash command that produces
 
 #### Scenario: Template structure defines component inventory categories
 
-- **WHEN** the `plx/refine-architecture` command body is generated
+- **WHEN** the `splx/refine-architecture` command body is generated
 - **THEN** include Template Structure section
 - **AND** reference `workspace/templates/ARCHITECTURE.template.md` as canonical template
 - **AND** list required sections: Technology Stack, Project Structure, Component Inventory, Architecture Patterns, Data Flow, Dependency Graph, Configuration, Testing Structure
@@ -134,12 +134,12 @@ The system SHALL provide a `plx/refine-architecture` slash command that produces
 
 ### Requirement: Refine Review Command
 
-The system SHALL provide a `plx/refine-review` slash command that creates or updates REVIEW.md template.
+The system SHALL provide a `splx/refine-review` slash command that creates or updates REVIEW.md template.
 
 #### Scenario: Generating refine-review command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-review.md`
+- **THEN** create `.claude/commands/splx/refine-review.md`
 - **AND** include frontmatter with name "OpenSplx: Refine Review", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using REVIEW.md template structure, preserving existing guidelines
@@ -147,16 +147,16 @@ The system SHALL provide a `plx/refine-review` slash command that creates or upd
 
 ### Requirement: Parse Feedback Command
 
-The system SHALL provide a `plx/parse-feedback` slash command that instructs to run the CLI parse feedback command.
+The system SHALL provide a `splx/parse-feedback` slash command that instructs to run the CLI parse feedback command.
 
 #### Scenario: Generating parse-feedback command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/parse-feedback.md`
+- **THEN** create `.claude/commands/splx/parse-feedback.md`
 - **AND** include frontmatter with name "OpenSplx: Parse Feedback", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: scanning tracked files, generating one task per marker
-- **AND** include steps for: running `plx parse feedback <name>`, reviewing generated tasks, addressing feedback, archiving when complete
+- **AND** include steps for: running `splx parse feedback <name>`, reviewing generated tasks, addressing feedback, archiving when complete
 
 ### Requirement: REVIEW.md Template
 
@@ -164,14 +164,14 @@ The system SHALL create a REVIEW.md template at the project root during initiali
 
 #### Scenario: Creating REVIEW.md during init
 
-- **WHEN** `plx init` is executed
+- **WHEN** `splx init` is executed
 - **THEN** check if REVIEW.md exists at project root
 - **AND** if not exists, create REVIEW.md with meta-template content
 - **AND** include sections: Purpose, Review Types, Feedback Format, Review Checklist
 
 #### Scenario: Creating REVIEW.md during update
 
-- **WHEN** `plx update` is executed
+- **WHEN** `splx update` is executed
 - **THEN** check if REVIEW.md exists at project root
 - **AND** if not exists, create REVIEW.md with meta-template content
 - **AND** do not overwrite existing REVIEW.md
@@ -196,12 +196,12 @@ The system SHALL register new PLX commands in the SplxSlashCommandRegistry.
 
 ### Requirement: Orchestrate Command
 
-The system SHALL provide a `plx/orchestrate` slash command that guides AI agents through sub-agent orchestration for completing multi-task work collaboratively.
+The system SHALL provide a `splx/orchestrate` slash command that guides AI agents through sub-agent orchestration for completing multi-task work collaboratively.
 
 #### Scenario: Generating orchestrate command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/orchestrate.md`
+- **THEN** create `.claude/commands/splx/orchestrate.md`
 - **AND** include frontmatter with name "OpenSplx: Orchestrate", description "Orchestrate sub-agents to complete work collaboratively", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 
@@ -221,44 +221,44 @@ The system SHALL provide a `plx/orchestrate` slash command that guides AI agents
 
 - **WHEN** the orchestrate command is invoked
 - **THEN** include steps for:
-  1. Understanding work scope (run `plx get tasks` for changes, identify review aspects for reviews, enumerate discrete units for other work)
+  1. Understanding work scope (run `splx get tasks` for changes, identify review aspects for reviews, enumerate discrete units for other work)
   2. For each unit of work: get detailed context, spawn a sub-agent with clear instructions, wait for completion
   3. Reviewing sub-agent output for scope adherence, convention alignment, TracelessChanges compliance, and quality
   4. If issues found: provide specific feedback and request revision
   5. If approved: mark complete and proceed to next unit
   6. Continue until all work complete
-  7. Final validation with `plx validate` if applicable
+  7. Final validation with `splx validate` if applicable
 
 #### Scenario: Orchestrate command reference section
 
 - **WHEN** the orchestrate command is generated
 - **THEN** include reference section with:
-  - `plx show <change-id>` for proposal context
-  - `plx list` for changes and progress
-  - `plx review` for review context
-  - `plx parse feedback` for converting review feedback to tasks
+  - `splx show <change-id>` for proposal context
+  - `splx list` for changes and progress
+  - `splx review` for review context
+  - `splx parse feedback` for converting review feedback to tasks
 
 ### Requirement: Plan Request Command
 
-The system SHALL provide a `plx/plan-request` slash command that clarifies user intent through iterative yes/no questions before proposal creation.
+The system SHALL provide a `splx/plan-request` slash command that clarifies user intent through iterative yes/no questions before proposal creation.
 
 #### Scenario: Generating plan-request command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/plan-request.md`
+- **THEN** create `.claude/commands/splx/plan-request.md`
 - **AND** include frontmatter with name "OpenSplx: Plan Request", description "Clarify user intent through iterative questions to create request.md", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 
 #### Scenario: Plan-request uses Activity XML template pattern
 
-- **WHEN** the `plx/plan-request` command is executed
+- **WHEN** the `splx/plan-request` command is executed
 - **THEN** use the Activity XML template pattern with Intent Analyst role
 - **AND** include AskActUpdateRepeat behavioral instruction for iterative questioning
 - **AND** use SimpleQuestions format with yes/no options plus "Not sure" and "Skip" alternatives
 
 #### Scenario: Plan-request creates request.md early
 
-- **WHEN** the `plx/plan-request` command determines a change-id
+- **WHEN** the `splx/plan-request` command determines a change-id
 - **THEN** create `workspace/changes/{change-id}/` directory
 - **AND** create `request.md` with sections: Source Input, Current Understanding, Identified Ambiguities, Decisions, Final Intent
 - **AND** update request.md after each clarification question
@@ -268,41 +268,41 @@ The system SHALL provide a `plx/plan-request` slash command that clarifies user 
 - **WHEN** all ambiguities are resolved
 - **THEN** present final clarified intent to user
 - **AND** ask user to confirm intent is 100% captured
-- **AND** if confirmed, populate Final Intent section and instruct to run `plx/plan-proposal`
+- **AND** if confirmed, populate Final Intent section and instruct to run `splx/plan-proposal`
 
 ### Requirement: Plan Proposal Command
 
-The system SHALL provide a `plx/plan-proposal` slash command that scaffolds change proposals and auto-detects existing `request.md` files.
+The system SHALL provide a `splx/plan-proposal` slash command that scaffolds change proposals and auto-detects existing `request.md` files.
 
 #### Scenario: Generating plan-proposal command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/plan-proposal.md`
+- **THEN** create `.claude/commands/splx/plan-proposal.md`
 - **AND** include frontmatter with name "OpenSplx: Plan Proposal", description "Scaffold a new OpenSplx change and validate strictly. Consumes request.md when present.", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 
 #### Scenario: Plan-proposal detects and consumes request.md
 
-- **WHEN** the `plx/plan-proposal` command is executed with a change-id argument
+- **WHEN** the `splx/plan-proposal` command is executed with a change-id argument
 - **AND** `workspace/changes/{change-id}/request.md` exists
 - **THEN** use the Final Intent section as primary input for the proposal
 - **AND** incorporate Decisions section into proposal context
 
 #### Scenario: Plan-proposal scaffolds proposal structure
 
-- **WHEN** the `plx/plan-proposal` command is executed
+- **WHEN** the `splx/plan-proposal` command is executed
 - **THEN** scaffold `proposal.md`, `tasks/` directory, and `design.md` (when needed)
 - **AND** map change into concrete capabilities with spec deltas
-- **AND** validate with `plx validate <id> --strict`
+- **AND** validate with `splx validate <id> --strict`
 
 ### Requirement: Sync Workspace Command
 
-The system SHALL provide a `plx/sync-workspace` slash command that guides AI agents through workspace maintenance.
+The system SHALL provide a `splx/sync-workspace` slash command that guides AI agents through workspace maintenance.
 
 #### Scenario: Generating sync-workspace command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/sync-workspace.md`
+- **THEN** create `.claude/commands/splx/sync-workspace.md`
 - **AND** include frontmatter with name "OpenSplx: Sync Workspace", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: sub-agent usage based on complexity, action selection via question tool or numbered list
@@ -310,49 +310,49 @@ The system SHALL provide a `plx/sync-workspace` slash command that guides AI age
 
 #### Scenario: Global workspace sync
 
-- **WHEN** the user runs `/plx/sync-workspace` without arguments
+- **WHEN** the user runs `/splx/sync-workspace` without arguments
 - **THEN** the command SHALL instruct the agent to scan all open changes, open tasks, and completed-but-not-archived changes
 - **AND** assess each item for maintenance needs
 - **AND** suggest actions such as archive, create tasks, update proposals, validate and fix
 
 #### Scenario: Targeted sync
 
-- **WHEN** the user runs `/plx/sync-workspace <change-id|task-id>`
+- **WHEN** the user runs `/splx/sync-workspace <change-id|task-id>`
 - **THEN** the command SHALL instruct the agent to focus on the specified item
 - **AND** assess only that item for maintenance needs
 - **AND** suggest actions specific to that item
 
 ### Requirement: Complete Task Command
 
-The system SHALL provide a `plx/complete-task` slash command that marks a task as done.
+The system SHALL provide a `splx/complete-task` slash command that marks a task as done.
 
 #### Scenario: Generating complete-task command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/complete-task.md`
+- **THEN** create `.claude/commands/splx/complete-task.md`
 - **AND** include frontmatter with name "OpenSplx: Complete Task", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
-- **AND** include step to run `plx complete task --id <task-id>` using the provided argument
+- **AND** include step to run `splx complete task --id <task-id>` using the provided argument
 
 ### Requirement: Undo Task Command
 
-The system SHALL provide a `plx/undo-task` slash command that reverts a task to to-do status.
+The system SHALL provide a `splx/undo-task` slash command that reverts a task to to-do status.
 
 #### Scenario: Generating undo-task command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/undo-task.md`
+- **THEN** create `.claude/commands/splx/undo-task.md`
 - **AND** include frontmatter with name "OpenSplx: Undo Task", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
-- **AND** include step to run `plx undo task --id <task-id>` using the provided argument
+- **AND** include step to run `splx undo task --id <task-id>` using the provided argument
 
 ### Requirement: Orchestrate Model Selection
 
-The plx/orchestrate slash command SHALL instruct agents to select sub-agent models based on task skill level.
+The splx/orchestrate slash command SHALL instruct agents to select sub-agent models based on task skill level.
 
 #### Scenario: Model selection guidance in orchestrate
 
-- **WHEN** the plx/orchestrate slash command is generated
+- **WHEN** the splx/orchestrate slash command is generated
 - **THEN** include guidance for selecting sub-agent model based on task skill level
 - **AND** include the Claude model mapping: junior→haiku, medior→sonnet, senior→opus
 - **AND** include fallback guidance: if skill level is missing, agent determines model based on task complexity
@@ -365,11 +365,11 @@ The plx/orchestrate slash command SHALL instruct agents to select sub-agent mode
 
 ### Requirement: Plan Proposal Skill Level Assignment
 
-The plx/plan-proposal slash command SHALL instruct agents to auto-assign skill levels to generated tasks.
+The splx/plan-proposal slash command SHALL instruct agents to auto-assign skill levels to generated tasks.
 
 #### Scenario: Skill level heuristics in plan-proposal
 
-- **WHEN** the plx/plan-proposal slash command is generated
+- **WHEN** the splx/plan-proposal slash command is generated
 - **THEN** include instruction to assign skill level to each generated task
 - **AND** include heuristics for assignment:
   - junior: documentation, simple config, minor refactoring
@@ -384,14 +384,14 @@ The plx/plan-proposal slash command SHALL instruct agents to auto-assign skill l
 
 ### Requirement: Implement Command Change-Focused Scope
 
-The `/plx:implement` slash command SHALL implement all tasks in a change by default, only focusing on a single task when a task ID is explicitly provided.
+The `/splx:implement` slash command SHALL implement all tasks in a change by default, only focusing on a single task when a task ID is explicitly provided.
 
 #### Scenario: Default behavior implements entire change
 
 - **WHEN** the implement command is invoked without a task ID argument
-- **THEN** retrieve all tasks for the highest-priority change using `plx get tasks`
+- **THEN** retrieve all tasks for the highest-priority change using `splx get tasks`
 - **AND** work through each task's Implementation Checklist sequentially
-- **AND** mark each task complete with `plx complete task --id <task-id>`
+- **AND** mark each task complete with `splx complete task --id <task-id>`
 - **AND** stop when all tasks in the change are complete
 
 #### Scenario: Task ID argument limits scope to single task
@@ -399,17 +399,17 @@ The `/plx:implement` slash command SHALL implement all tasks in a change by defa
 - **WHEN** the implement command is invoked with a task ID argument
 - **THEN** retrieve only that specific task
 - **AND** work through that task's Implementation Checklist
-- **AND** mark the task complete with `plx complete task --id <task-id>`
+- **AND** mark the task complete with `splx complete task --id <task-id>`
 - **AND** stop after completing that single task
 
 ### Requirement: Refine Release Command
 
-The system SHALL provide a `plx/refine-release` slash command that creates or updates RELEASE.md with comprehensive option documentation.
+The system SHALL provide a `splx/refine-release` slash command that creates or updates RELEASE.md with comprehensive option documentation.
 
 #### Scenario: Generating refine-release command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-release.md`
+- **THEN** create `.claude/commands/splx/refine-release.md`
 - **AND** include frontmatter with name "OpenSplx: Refine Release", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using RELEASE.md template structure, preserving existing configuration
@@ -422,27 +422,27 @@ Slash commands that operate on capital-lettered markdown files SHALL use `@` not
 
 #### Scenario: Review command references REVIEW.md
 
-- **WHEN** the `plx/review` slash command body is generated
+- **WHEN** the `splx/review` slash command body is generated
 - **THEN** include `@REVIEW.md` notation in the command body
 - **AND** reference the file in the appropriate step or guardrail
 
 #### Scenario: Refine-review command references REVIEW.md
 
-- **WHEN** the `plx/refine-review` slash command body is generated
+- **WHEN** the `splx/refine-review` slash command body is generated
 - **THEN** include `@REVIEW.md` notation in guardrails and steps
 - **AND** use format "Reference @REVIEW.md template structure" in guardrails
 - **AND** use format "Check if @REVIEW.md exists" in steps
 
 #### Scenario: Refine-architecture command references ARCHITECTURE.md
 
-- **WHEN** the `plx/refine-architecture` slash command body is generated
+- **WHEN** the `splx/refine-architecture` slash command body is generated
 - **THEN** include `@ARCHITECTURE.md` notation in guardrails and steps
 - **AND** use format "Reference @ARCHITECTURE.md template structure" in guardrails
 - **AND** use format "Check if @ARCHITECTURE.md exists" in steps
 
 #### Scenario: Prepare-release command references multiple files
 
-- **WHEN** the `plx/prepare-release` slash command body is generated
+- **WHEN** the `splx/prepare-release` slash command body is generated
 - **THEN** include `@RELEASE.md` notation (already present)
 - **AND** include `@README.md` notation for readme update step
 - **AND** include `@CHANGELOG.md` notation for changelog update step
@@ -450,7 +450,7 @@ Slash commands that operate on capital-lettered markdown files SHALL use `@` not
 
 ### Requirement: Prepare Release Version Handling
 
-The `/plx/prepare-release` slash command SHALL enforce concrete version numbers and accurate dates in changelog entries.
+The `/splx/prepare-release` slash command SHALL enforce concrete version numbers and accurate dates in changelog entries.
 
 #### Scenario: Never use Unreleased placeholder
 
@@ -507,12 +507,12 @@ All artifact-creating PLX slash commands SHALL support monorepo project structur
 
 ### Requirement: Refine Testing Command
 
-The system SHALL provide a `plx/refine-testing` slash command that creates or updates TESTING.md with test configuration options.
+The system SHALL provide a `splx/refine-testing` slash command that creates or updates TESTING.md with test configuration options.
 
 #### Scenario: Generating refine-testing command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-testing.md`
+- **THEN** create `.claude/commands/splx/refine-testing.md`
 - **AND** include frontmatter with name "OpenSplx: Refine Testing", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using TESTING.md template structure, preserving existing configuration
@@ -520,12 +520,12 @@ The system SHALL provide a `plx/refine-testing` slash command that creates or up
 
 ### Requirement: Test Command
 
-The system SHALL provide a `plx/test` slash command that runs testing workflow for specified scope.
+The system SHALL provide a `splx/test` slash command that runs testing workflow for specified scope.
 
 #### Scenario: Generating test command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/test.md`
+- **THEN** create `.claude/commands/splx/test.md`
 - **AND** include frontmatter with name "OpenSplx: Test", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: reading TESTING.md configuration, running tests for specified scope
@@ -543,14 +543,14 @@ The system SHALL create a TESTING.md template at the project root during initial
 
 #### Scenario: Creating TESTING.md during init
 
-- **WHEN** `plx init` is executed
+- **WHEN** `splx init` is executed
 - **THEN** check if TESTING.md exists at project root
 - **AND** if not exists, create TESTING.md with config-style content
 - **AND** include sections: Purpose, Test Types, Coverage, Test Patterns, Test Checklist
 
 #### Scenario: Creating TESTING.md during update
 
-- **WHEN** `plx update` is executed
+- **WHEN** `splx update` is executed
 - **THEN** check if TESTING.md exists at project root
 - **AND** if not exists, create TESTING.md with config-style content
 - **AND** do not overwrite existing TESTING.md

@@ -9,9 +9,9 @@
 Developers use different coding agents and editors. Having consistent slash commands across tools for the PLX workflow reduces friction and ensures a standard way to trigger the workflow. Supporting both Claude Code and Cursor now lays a foundation for future agents that introduce slash command features.
 
 ## Proposal
-1. During `plx init`, when a user selects a supported tool, generate slash command configuration for three PLX workflow stages:
+1. During `splx init`, when a user selects a supported tool, generate slash command configuration for three PLX workflow stages:
    - Claude (namespaced): `/workspace/proposal`, `/workspace/apply`, `/workspace/archive`.
-   - Cursor (flat, prefixed): `/plx-proposal`, `/plx-apply`, `/plx-archive`.
+   - Cursor (flat, prefixed): `/splx-proposal`, `/splx-apply`, `/splx-archive`.
    - Semantics:
      - Create – scaffold a change (ID, `proposal.md`, `tasks.md`, delta specs); validate strictly.
      - Apply – implement an approved change; complete tasks; validate strictly.
@@ -19,15 +19,15 @@ Developers use different coding agents and editors. Having consistent slash comm
    - Each command file MUST embed concise, step-by-step instructions sourced from `workspace/README.md` (see Template Content section).
 2. Store slash command files per tool:
    - Claude Code: `.claude/commands/workspace/{proposal,apply,archive}.md`
-   - Cursor: `.cursor/commands/{plx-proposal,plx-apply,plx-archive}.md`
+   - Cursor: `.cursor/commands/{splx-proposal,splx-apply,splx-archive}.md`
    - Ensure nested directories are created.
 3. Command file format and metadata:
    - Use Markdown with optional YAML frontmatter for tool metadata (name/title, description, category/tags) when supported by the tool.
    - Place PLX markers around the body only, never inside frontmatter.
-   - Keep the visible slash name, file name, and any frontmatter `name`/`id` consistently aligned (e.g., `proposal`, `plx-proposal`).
-   - Namespacing: categorize these under “PLX” and prefer unique IDs (e.g., `plx-proposal`) to avoid collisions.
+   - Keep the visible slash name, file name, and any frontmatter `name`/`id` consistently aligned (e.g., `proposal`, `splx-proposal`).
+   - Namespacing: categorize these under “PLX” and prefer unique IDs (e.g., `splx-proposal`) to avoid collisions.
 4. Centralize templates: define command bodies once and reuse across tools; apply minimal per-tool wrappers (frontmatter, categories, filenames).
-5. During `plx update`, refresh only existing slash command files (per-file basis) within markers; do not create missing files or new tools.
+5. During `splx update`, refresh only existing slash command files (per-file basis) within markers; do not create missing files or new tools.
 
 ## Design Ideas
 - Introduce `SlashCommandConfigurator` to manage multiple files per tool.
@@ -50,8 +50,8 @@ Developers use different coding agents and editors. Having consistent slash comm
 
 ### Command Naming & UX
 - Claude Code: use namespacing in the slash itself for readability and grouping: `/workspace/proposal`, `/workspace/apply`, `/workspace/archive`.
-- Cursor: use flat names with an `plx-` prefix: `/plx-proposal`, `/plx-apply`, `/plx-archive`. Group via `category: PLX` when supported.
-- Consistency: align file names, visible slash names, and any frontmatter `id` (e.g., `id: plx-apply`).
+- Cursor: use flat names with an `splx-` prefix: `/splx-proposal`, `/splx-apply`, `/splx-archive`. Group via `category: PLX` when supported.
+- Consistency: align file names, visible slash names, and any frontmatter `id` (e.g., `id: splx-apply`).
 - Migration: do not rename existing commands during `update`; apply new naming only on `init` (or via an explicit migrate step).
 
 ## Open Questions
@@ -70,7 +70,7 @@ Developers use different coding agents and editors. Having consistent slash comm
 
 ## Future Work
 - Support additional editors/agents that expose slash command APIs.
-- Allow users to customize command names and categories during `plx init`.
+- Allow users to customize command names and categories during `splx init`.
 - Provide a dedicated command to regenerate slash commands without running full `update`.
 
 ## File Format Examples
@@ -82,7 +82,7 @@ The following examples illustrate expected structure. If a tool does not support
 name: PLX: Proposal
 description: Scaffold a new PLX change and validate strictly.
 category: PLX
-tags: [plx, change]
+tags: [splx, change]
 ---
 <!-- PLX:START -->
 ...command body from shared template...
@@ -91,11 +91,11 @@ tags: [plx, change]
 
 Slash invocation: `/workspace/proposal` (namespaced)
 
-### Cursor: `.cursor/commands/plx-proposal.md`
+### Cursor: `.cursor/commands/splx-proposal.md`
 ```markdown
 ---
-name: /plx-proposal
-id: plx-proposal
+name: /splx-proposal
+id: splx-proposal
 category: PLX
 description: Scaffold a new PLX change and validate strictly.
 ---
@@ -104,13 +104,13 @@ description: Scaffold a new PLX change and validate strictly.
 <!-- PLX:END -->
 ```
 
-Slash invocation: `/plx-proposal` (flat, prefixed)
+Slash invocation: `/splx-proposal` (flat, prefixed)
 
 ## Template Content
 Templates should be brief, actionable, and sourced from `workspace/README.md` to avoid duplication. Each command body includes:
 - Guardrails: ask as many as necessary clarifying questions if needed; follow minimal-complexity rules; use `pnpm` for Node projects.
 - Step list tailored to the workflow stage (proposal, apply, archive), including strict validation commands.
-- Pointers to `plx show`, `plx list`, and troubleshooting tips when validation fails.
+- Pointers to `splx show`, `splx list`, and troubleshooting tips when validation fails.
 
 ## Testing Strategy
 - Golden snapshots for generated files per tool (frontmatter + markers + body).

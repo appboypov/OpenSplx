@@ -16,7 +16,7 @@ Validation does not check for skill-level field in task frontmatter.
 
 ## Should
 
-- `plx validate <change-id> --strict` emits WARNING for tasks missing skill-level
+- `splx validate <change-id> --strict` emits WARNING for tasks missing skill-level
 - Non-strict mode does not emit this warning
 - Invalid skill-level values (not junior/medior/senior) also emit WARNING
 

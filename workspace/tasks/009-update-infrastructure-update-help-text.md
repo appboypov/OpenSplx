@@ -35,9 +35,9 @@ Help text:
 
 ## Acceptance Criteria
 
-- [ ] `plx --help` shows new command structure
-- [ ] `plx get --help` shows all subcommands
-- [ ] `plx create --help` shows all subcommands
+- [ ] `splx --help` shows new command structure
+- [ ] `splx get --help` shows all subcommands
+- [ ] `splx create --help` shows all subcommands
 - [ ] Flag descriptions match actual behavior
 - [ ] No deprecated command references in help output
 
@@ -55,8 +55,8 @@ Help text:
 - [x] 9.10 Add migrate command help
 - [x] 9.11 Update global options help (--parent-id, --parent-type)
 - [x] 9.12 Remove help for deprecated commands
-- [x] 9.13 Verify help output with `plx <command> --help`
+- [x] 9.13 Verify help output with `splx <command> --help`
 
 ## Notes
 
-Help text is the first documentation users see. Ensure it matches behavior exactly. Run `plx --help` after changes to verify output formatting.
+Help text is the first documentation users see. Ensure it matches behavior exactly. Run `splx --help` after changes to verify output formatting.

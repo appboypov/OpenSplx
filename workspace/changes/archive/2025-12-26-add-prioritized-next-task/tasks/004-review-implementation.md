@@ -36,7 +36,7 @@ All code is reviewed for:
 - [x] 4.3 Verify task-status.ts exports and functionality
 - [x] 4.4 Verify change-prioritization.ts exports and functionality
 - [x] 4.5 Verify act command registration and help text
-- [x] 4.6 Test command manually: `plx get task --help`
+- [x] 4.6 Test command manually: `splx get task --help`
 
 ## Notes
 

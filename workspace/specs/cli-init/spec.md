@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The `plx init` command SHALL create a complete workspace directory structure in any project, enabling immediate adoption of OpenSplx conventions with support for multiple AI coding assistants.
+The `splx init` command SHALL create a complete workspace directory structure in any project, enabling immediate adoption of OpenSplx conventions with support for multiple AI coding assistants.
 ## Requirements
 ### Requirement: Progress Indicators
 
@@ -22,7 +22,7 @@ The command SHALL display progress indicators during initialization to provide c
 The command SHALL create the complete workspace directory structure with all required directories and files.
 
 #### Scenario: Creating OpenSplx structure
-- **WHEN** `plx init` is executed
+- **WHEN** `splx init` is executed
 - **THEN** create the following directory structure:
 ```
 workspace/
@@ -92,7 +92,7 @@ The command SHALL properly configure selected AI tools with OpenSplx-specific in
 This project uses OpenSplx to manage AI assistant workflows.
 
 - Full guidance lives in '@/workspace/AGENTS.md'.
-- Keep this managed block so 'plx update' can refresh the instructions.
+- Keep this managed block so 'splx update' can refresh the instructions.
 <!-- PLX:END -->
 ```
 
@@ -138,17 +138,17 @@ The command SHALL use consistent exit codes to indicate different failure modes.
   - 3: User cancelled operation (reserved for future use)
 
 ### Requirement: Additional AI Tool Initialization
-`plx init` SHALL allow users to add configuration files for new AI coding assistants after the initial setup.
+`splx init` SHALL allow users to add configuration files for new AI coding assistants after the initial setup.
 
 #### Scenario: Configuring an extra tool after initial setup
 - **GIVEN** a `workspace/` directory already exists and at least one AI tool file is present
-- **WHEN** the user runs `plx init` and selects a different supported AI tool
+- **WHEN** the user runs `splx init` and selects a different supported AI tool
 - **THEN** generate that tool's configuration files with OpenSplx markers the same way as during first-time initialization
 - **AND** leave existing tool configuration files unchanged except for managed sections that need refreshing
 - **AND** exit with code 0 and display a success summary highlighting the newly added tool files
 
 ### Requirement: Success Output Enhancements
-`plx init` SHALL summarize tool actions when initialization or extend mode completes.
+`splx init` SHALL summarize tool actions when initialization or extend mode completes.
 
 #### Scenario: Showing tool summary
 - **WHEN** the command completes successfully
@@ -156,7 +156,7 @@ The command SHALL use consistent exit codes to indicate different failure modes.
 - **AND** personalize the "Next steps" header using the names of the selected tools, defaulting to a generic label when none remain
 
 ### Requirement: Exit Code Adjustments
-`plx init` SHALL treat extend mode without new native tool selections as a successful refresh.
+`splx init` SHALL treat extend mode without new native tool selections as a successful refresh.
 
 #### Scenario: Allowing empty extend runs
 - **WHEN** OpenSplx is already initialized and the user selects no additional natively supported tools
@@ -169,7 +169,7 @@ The init command SHALL generate slash command files for supported editors using 
 
 #### Scenario: Generating slash commands for Cline
 - **WHEN** the user selects Cline during initialization
-- **THEN** create `.clinerules/workflows/plx-proposal.md`, `.clinerules/workflows/plx-implement.md`, and `.clinerules/workflows/plx-archive.md`
+- **THEN** create `.clinerules/workflows/splx-proposal.md`, `.clinerules/workflows/splx-implement.md`, and `.clinerules/workflows/splx-archive.md`
 - **AND** populate each file from shared templates so command text matches other tools
 - **AND** include Cline-specific Markdown heading frontmatter
 - **AND** each template includes instructions for the relevant OpenSplx workflow stage
@@ -197,11 +197,11 @@ The command SHALL support non-interactive operation through command-line options
 - **THEN** exit with code 1 and display available values (`all`, `none`, or the supported tool IDs)
 
 #### Scenario: Help text lists available tool IDs
-- **WHEN** displaying CLI help for `plx init`
+- **WHEN** displaying CLI help for `splx init`
 - **THEN** show the `--tools` option description with the valid values derived from the AI tool registry
 
 ### Requirement: Root instruction stub
-`plx init` SHALL always scaffold the root-level `AGENTS.md` hand-off so every teammate finds the primary OpenSplx instructions.
+`splx init` SHALL always scaffold the root-level `AGENTS.md` hand-off so every teammate finds the primary OpenSplx instructions.
 
 #### Scenario: Creating root `AGENTS.md`
 - **GIVEN** the project may or may not already contain an `AGENTS.md` file
@@ -217,9 +217,9 @@ The init command SHALL generate PLX slash command files for supported editors al
 #### Scenario: Generating PLX slash commands for Claude Code
 
 - **WHEN** the user selects Claude Code during initialization
-- **THEN** create `.claude/commands/plx/init-architecture.md` and `.claude/commands/plx/update-architecture.md`
+- **THEN** create `.claude/commands/splx/init-architecture.md` and `.claude/commands/splx/update-architecture.md`
 - **AND** populate each file from PLX-specific templates with appropriate frontmatter
-- **AND** wrap the command body in PLX markers so `plx update` can refresh the content
+- **AND** wrap the command body in PLX markers so `splx update` can refresh the content
 - **AND** each template includes guardrails and steps for architecture documentation generation
 
 #### Scenario: PLX commands not generated for unsupported tools
@@ -231,7 +231,7 @@ The init command SHALL generate PLX slash command files for supported editors al
 #### Scenario: PLX commands refreshed on re-init
 
 - **GIVEN** an existing project with PLX commands
-- **WHEN** the user runs `plx init` again
+- **WHEN** the user runs `splx init` again
 - **THEN** update PLX command content within PLX markers
 - **AND** preserve any content outside the markers
 
@@ -241,7 +241,7 @@ The init command SHALL automatically migrate legacy OpenSpec project structures 
 
 #### Scenario: Migrating before init
 
-- **WHEN** `plx init` is run
+- **WHEN** `splx init` is run
 - **AND** an `openspec/` directory exists
 - **AND** no `workspace/` directory exists
 - **THEN** rename `openspec/` to `workspace/`
@@ -250,14 +250,14 @@ The init command SHALL automatically migrate legacy OpenSpec project structures 
 
 #### Scenario: Migrating markers during init
 
-- **WHEN** `plx init` is run
+- **WHEN** `splx init` is run
 - **AND** files contain `<!-- OPENSPEC:START/END -->` markers
 - **THEN** replace all occurrences with `<!-- PLX:START/END -->` markers
 - **AND** log count of files updated
 
 #### Scenario: Both directories exist on init
 
-- **WHEN** `plx init` is run
+- **WHEN** `splx init` is run
 - **AND** both `openspec/` and `workspace/` directories exist
 - **THEN** skip directory migration
 - **AND** log warning about both directories existing

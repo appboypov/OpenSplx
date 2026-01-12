@@ -58,7 +58,7 @@ function main() {
     tgzPath = path.resolve(filename);
     log(`Created: ${tgzPath}`);
 
-    work = mkdtempSync(path.join(tmpdir(), 'plx-pack-check-'));
+    work = mkdtempSync(path.join(tmpdir(), 'splx-pack-check-'));
     log(`Temp dir: ${work}`);
 
     // Make a tiny project

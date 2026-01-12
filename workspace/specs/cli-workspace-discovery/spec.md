@@ -9,21 +9,21 @@ The CLI SHALL scan upward from the current working directory to find the project
 
 #### Scenario: Valid workspace found in ancestor directory
 
-- **WHEN** executing any `plx` command from a subdirectory (e.g., `/project/src/components/`)
+- **WHEN** executing any `splx` command from a subdirectory (e.g., `/project/src/components/`)
 - **AND** an ancestor directory contains a valid PLX workspace
 - **THEN** locate the first valid PLX workspace going upward
 - **AND** use that directory as the project root for subsequent operations
 
 #### Scenario: CWD is already valid workspace
 
-- **WHEN** executing any `plx` command from the project root
+- **WHEN** executing any `splx` command from the project root
 - **AND** CWD contains a valid PLX workspace
 - **THEN** skip upward scanning
 - **AND** use CWD as the project root
 
 #### Scenario: No workspace found with git boundary
 
-- **WHEN** executing any `plx` command from a subdirectory
+- **WHEN** executing any `splx` command from a subdirectory
 - **AND** no valid PLX workspace exists in any ancestor
 - **AND** a `.git` directory is encountered
 - **THEN** stop upward scanning at the `.git` parent directory
@@ -31,7 +31,7 @@ The CLI SHALL scan upward from the current working directory to find the project
 
 #### Scenario: No workspace found without git boundary
 
-- **WHEN** executing any `plx` command from a directory
+- **WHEN** executing any `splx` command from a directory
 - **AND** no valid PLX workspace exists in any ancestor
 - **AND** no `.git` directory is encountered
 - **THEN** scan up to filesystem root
@@ -66,7 +66,7 @@ After finding the project root via upward scan, the CLI SHALL perform downward s
 
 #### Scenario: Upward then downward scan
 
-- **WHEN** executing any `plx` command from a subdirectory
+- **WHEN** executing any `splx` command from a subdirectory
 - **AND** upward scan locates project root
 - **THEN** use project root as base for downward multi-workspace scanning
 - **AND** apply existing workspace filter logic if `--workspace` flag provided

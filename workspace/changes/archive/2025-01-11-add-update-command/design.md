@@ -13,7 +13,7 @@
 - Use existing template utilities
   - `readmeTemplate` from `src/core/templates/readme-template.ts` for `workspace/README.md`
   - `TemplateManager.getClaudeTemplate()` for `CLAUDE.md`
-- Directory name is fixed to `plx` (from `WORKSPACE_DIR_NAME`)
+- Directory name is fixed to `splx` (from `WORKSPACE_DIR_NAME`)
 
 ### File Operations
 - Use async utilities for consistency
@@ -33,7 +33,7 @@ export class UpdateCommand {
 
     // 1. Check workspace directory exists
     if (!await FileSystemUtils.directoryExists(workspacePath)) {
-      throw new Error(`No PLX directory found. Run 'plx init' first.`);
+      throw new Error(`No PLX directory found. Run 'splx init' first.`);
     }
 
     // 2. Update README.md (full replacement)
@@ -72,15 +72,15 @@ export class UpdateCommand {
 ## Error Handling
 
 Only handle critical errors:
-- Missing `plx` directory → throw error handled by CLI to present a friendly message
+- Missing `splx` directory → throw error handled by CLI to present a friendly message
 - File write failures → let errors bubble up to CLI
 
 ## Testing Strategy
 
 Manual smoke tests are sufficient initially:
-1. Run `plx init` in a test project
+1. Run `splx init` in a test project
 2. Modify both files (including custom content around markers in `CLAUDE.md`)
-3. Run `plx update`
+3. Run `splx update`
 4. Verify `workspace/README.md` fully replaced; `CLAUDE.md` PLX block updated without altering user content outside markers
 5. Run the command twice to verify idempotency and no duplicate markers
-6. Test with missing `plx` directory (expect failure)
+6. Test with missing `splx` directory (expect failure)

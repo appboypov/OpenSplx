@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-Add `plx undo task` and `plx undo change` CLI commands.
+Add `splx undo task` and `splx undo change` CLI commands.
 
 ## Currently
 
@@ -14,8 +14,8 @@ No undo functionality exists. Once a task is marked done, there's no CLI way to 
 
 ## Should
 
-- `plx undo task --id <task-id>` reverts task to to-do and unchecks Implementation Checklist items
-- `plx undo change --id <change-id>` reverts all tasks in a change to to-do
+- `splx undo task --id <task-id>` reverts task to to-do and unchecks Implementation Checklist items
+- `splx undo change --id <change-id>` reverts all tasks in a change to to-do
 - Both support `--json` output
 
 ## Constraints
@@ -26,10 +26,10 @@ No undo functionality exists. Once a task is marked done, there's no CLI way to 
 
 ## Acceptance Criteria
 
-- [ ] `plx undo task --id X` reverts task X to to-do
+- [ ] `splx undo task --id X` reverts task X to to-do
 - [ ] Implementation Checklist items are unchecked when undoing
 - [ ] Constraints and Acceptance Criteria remain unchanged
-- [ ] `plx undo change --id X` reverts all tasks in change X
+- [ ] `splx undo change --id X` reverts all tasks in change X
 - [ ] Already to-do tasks are skipped with a note
 - [ ] JSON output includes uncheckedItems array
 

@@ -1,4 +1,4 @@
-# Change: Add plx create command for entity creation
+# Change: Add splx create command for entity creation
 
 ## Why
 
@@ -6,12 +6,12 @@ Provide a unified command for creating PLX entities (tasks, changes, specs, requ
 
 ## What Changes
 
-- **ADDED** `plx create` command with subcommands for each entity type
-- **ADDED** `plx create task "Title"` - create standalone task
-- **ADDED** `plx create task "Title" --parent-id <id>` - create parented task (requires `--parent-type` if ambiguous)
-- **ADDED** `plx create change "Name"` - scaffold change proposal directory structure
-- **ADDED** `plx create spec "Name"` - scaffold spec directory structure
-- **ADDED** `plx create request "Description"` - create request file in change directory
+- **ADDED** `splx create` command with subcommands for each entity type
+- **ADDED** `splx create task "Title"` - create standalone task
+- **ADDED** `splx create task "Title" --parent-id <id>` - create parented task (requires `--parent-type` if ambiguous)
+- **ADDED** `splx create change "Name"` - scaffold change proposal directory structure
+- **ADDED** `splx create spec "Name"` - scaffold spec directory structure
+- **ADDED** `splx create request "Description"` - create request file in change directory
 - **ADDED** Entity templates for task, change, spec, and request scaffolding
 - **ADDED** `CreateCommand` class in `src/commands/create.ts`
 

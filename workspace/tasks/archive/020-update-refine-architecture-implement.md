@@ -37,7 +37,7 @@ The command has:
 - [ ] `refineArchitectureSteps` contains 7 numbered steps
 - [ ] `refineArchitectureTemplateStructure` constant exists with section definitions
 - [ ] `slashCommandBodies['refine-architecture']` combines all sections
-- [ ] Running `plx update` regenerates all tool command files with new content
+- [ ] Running `splx update` regenerates all tool command files with new content
 
 ## Implementation Checklist
 
@@ -47,7 +47,7 @@ The command has:
 - [x] 1.4 Add `refineArchitectureTemplateStructure` constant with sections and categories
 - [x] 1.5 Update `slashCommandBodies['refine-architecture']` to combine all sections
 - [x] 1.6 Run `pnpm build` to verify TypeScript compiles
-- [x] 1.7 Run `plx update` to regenerate tool command files
+- [x] 1.7 Run `splx update` to regenerate tool command files
 
 ## Notes
 

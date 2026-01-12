@@ -32,10 +32,10 @@ argument-hint: (optional context)
    - UPDATE: Record decision in request.md Decisions section.
    - REPEAT: Continue until no ambiguities remain.
 5. When user confirms intent is 100% captured, populate Final Intent section.
-6. Direct user to run `plx/plan-proposal <change-id>` to create the formal proposal.
+6. Direct user to run `splx/plan-proposal <change-id>` to create the formal proposal.
 
 **Reference**
-- Run `plx/plan-proposal <change-id>` after this command to scaffold the proposal.
+- Run `splx/plan-proposal <change-id>` after this command to scaffold the proposal.
 - The plan-proposal command auto-detects and consumes request.md when present.
 
 $ARGUMENTS

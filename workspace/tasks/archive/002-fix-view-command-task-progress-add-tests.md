@@ -9,7 +9,7 @@ parent-id: fix-view-command-task-progress
 
 ## End Goal
 
-Test coverage validates that `plx view` correctly uses centralized task storage for change progress calculation.
+Test coverage validates that `splx view` correctly uses centralized task storage for change progress calculation.
 
 ## Currently
 

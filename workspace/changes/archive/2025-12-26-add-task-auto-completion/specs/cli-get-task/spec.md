@@ -6,7 +6,7 @@ The CLI SHALL automatically detect when an in-progress task is fully complete an
 
 #### Scenario: Auto-complete in-progress task with all checklist items done
 
-- **WHEN** user runs `plx get task`
+- **WHEN** user runs `splx get task`
 - **AND** the current in-progress task has all Implementation Checklist items checked
 - **AND** the task has at least one checklist item
 - **THEN** the system updates the in-progress task status to `done`
@@ -17,21 +17,21 @@ The CLI SHALL automatically detect when an in-progress task is fully complete an
 
 #### Scenario: No auto-completion for partially complete task
 
-- **WHEN** user runs `plx get task`
+- **WHEN** user runs `splx get task`
 - **AND** the current in-progress task has unchecked Implementation Checklist items
 - **THEN** the system displays the in-progress task normally with change documents
 - **AND** the task status remains `in-progress`
 
 #### Scenario: No auto-completion for task with zero checklist items
 
-- **WHEN** user runs `plx get task`
+- **WHEN** user runs `splx get task`
 - **AND** the current in-progress task has no Implementation Checklist items
 - **THEN** the system displays the in-progress task normally with change documents
 - **AND** the task status remains `in-progress`
 
 #### Scenario: Auto-completion when no more tasks remain
 
-- **WHEN** user runs `plx get task`
+- **WHEN** user runs `splx get task`
 - **AND** the current in-progress task has all Implementation Checklist items checked
 - **AND** no other to-do tasks exist in the change
 - **THEN** the system updates the task status to `done`
@@ -39,6 +39,6 @@ The CLI SHALL automatically detect when an in-progress task is fully complete an
 
 #### Scenario: JSON output includes auto-completed task info
 
-- **WHEN** user runs `plx get task --json`
+- **WHEN** user runs `splx get task --json`
 - **AND** a task was auto-completed
 - **THEN** the JSON output includes `autoCompletedTask` object with `name` string

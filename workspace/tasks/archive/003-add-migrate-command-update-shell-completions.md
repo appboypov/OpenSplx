@@ -8,7 +8,7 @@ parent-id: add-migrate-command
 
 ## End Goal
 
-Shell tab completion support for the new `plx migrate tasks` command.
+Shell tab completion support for the new `splx migrate tasks` command.
 
 ## Currently
 
@@ -29,9 +29,9 @@ Shell tab completion support for the new `plx migrate tasks` command.
 
 ## Acceptance Criteria
 
-- [ ] `plx migrate <TAB>` shows `tasks` as completion
-- [ ] `plx migrate tasks --<TAB>` shows available flags
-- [ ] Completions work after `plx completion install`
+- [ ] `splx migrate <TAB>` shows `tasks` as completion
+- [ ] `splx migrate tasks --<TAB>` shows available flags
+- [ ] Completions work after `splx completion install`
 
 ## Implementation Checklist
 

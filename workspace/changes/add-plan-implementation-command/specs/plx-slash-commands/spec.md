@@ -2,21 +2,21 @@
 
 ### Requirement: Plan Implementation Command
 
-The system SHALL provide a `/plx:plan-implementation` slash command that orchestrates multi-agent task handoff with verification loops.
+The system SHALL provide a `/splx:plan-implementation` slash command that orchestrates multi-agent task handoff with verification loops.
 
 #### Scenario: Generating plan-implementation command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/plan-implementation.md`
+- **THEN** create `.claude/commands/splx/plan-implementation.md`
 - **AND** include frontmatter with name "OpenSplx: Plan Implementation", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
-- **AND** include guardrails for: running `plx create progress`, outputting task blocks to chat, verifying agent work
+- **AND** include guardrails for: running `splx create progress`, outputting task blocks to chat, verifying agent work
 - **AND** include steps for: generating PROGRESS.md, outputting first task block, entering review loop, verifying completions, providing feedback, advancing to next task
 
 #### Scenario: Plan-implementation command accepts change-id argument
 
 - **WHEN** the plan-implementation command is invoked with a change-id argument
-- **THEN** pass the change-id to `plx create progress --change-id <id>`
+- **THEN** pass the change-id to `splx create progress --change-id <id>`
 - **AND** generate PROGRESS.md for that specific change
 
 #### Scenario: Task block format is self-contained
@@ -25,7 +25,7 @@ The system SHALL provide a `/plx:plan-implementation` slash command that orchest
 - **THEN** include task title, end goal, constraints, acceptance criteria, and implementation checklist
 - **AND** include relevant proposal context (why, what changes)
 - **AND** instruct agent to focus ONLY on this task
-- **AND** instruct agent to run `plx complete task --id <task-id>` when done
+- **AND** instruct agent to run `splx complete task --id <task-id>` when done
 - **AND** NOT mention PROGRESS.md in agent instructions
 
 #### Scenario: Review loop waits for user confirmation
@@ -57,7 +57,7 @@ The system SHALL provide a `/plx:plan-implementation` slash command that orchest
 #### Scenario: Task completion advances workflow
 
 - **WHEN** verification passes
-- **THEN** mark task complete with `plx complete task --id <task-id>`
+- **THEN** mark task complete with `splx complete task --id <task-id>`
 - **AND** output next task block to chat
 - **AND** continue until all tasks are complete
 
@@ -66,4 +66,4 @@ The system SHALL provide a `/plx:plan-implementation` slash command that orchest
 - **WHEN** the last task passes verification
 - **THEN** mark task complete
 - **AND** display completion summary
-- **AND** suggest running `plx validate change --id <change-id>` for final check
+- **AND** suggest running `splx validate change --id <change-id>` for final check

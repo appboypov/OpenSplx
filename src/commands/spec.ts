@@ -74,7 +74,7 @@ export class SpecCommand {
         overview: parsed.overview,
         requirementCount: filtered.requirements.length,
         requirements: filtered.requirements,
-        metadata: parsed.metadata ?? { version: '1.0.0', format: 'plx' as const },
+        metadata: parsed.metadata ?? { version: '1.0.0', format: 'splx' as const },
       };
       console.log(JSON.stringify(output, null, 2));
       return;
@@ -90,7 +90,7 @@ export function registerSpecCommand(rootProgram: typeof program) {
 
   // Deprecation notice for noun-based commands
   specCommand.hook('preAction', () => {
-    console.error('Warning: The "plx spec ..." commands are deprecated. Prefer verb-first commands (e.g., "plx get spec --id <id>", "plx validate spec --id <id>").');
+    console.error('Warning: The "splx spec ..." commands are deprecated. Prefer verb-first commands (e.g., "splx get spec --id <id>", "splx validate spec --id <id>").');
   });
 
   specCommand
@@ -103,7 +103,7 @@ export function registerSpecCommand(rootProgram: typeof program) {
     .option('--no-interactive', 'Disable interactive prompts')
     .action(async (specId: string | undefined, options: ShowOptions & { noInteractive?: boolean }) => {
       try {
-        emitDeprecationWarning('plx spec show <id>', 'plx get spec --id <id>');
+        emitDeprecationWarning('splx spec show <id>', 'splx get spec --id <id>');
         const cmd = new SpecCommand();
         await cmd.show(specId, options as any);
       } catch (error) {
@@ -119,7 +119,7 @@ export function registerSpecCommand(rootProgram: typeof program) {
     .option('--long', 'Show id and title with counts')
     .action((options: { json?: boolean; long?: boolean }) => {
       try {
-        emitDeprecationWarning('plx spec list', 'plx get specs');
+        emitDeprecationWarning('splx spec list', 'splx get specs');
         if (!existsSync(SPECS_DIR)) {
           console.log('No items found');
           return;
@@ -180,7 +180,7 @@ export function registerSpecCommand(rootProgram: typeof program) {
     .option('--no-interactive', 'Disable interactive prompts')
     .action(async (specId: string | undefined, options: { strict?: boolean; json?: boolean; noInteractive?: boolean }) => {
       try {
-        emitDeprecationWarning('plx spec validate <id>', 'plx validate spec --id <id>');
+        emitDeprecationWarning('splx spec validate <id>', 'splx validate spec --id <id>');
         if (!specId) {
           const canPrompt = isInteractive(options);
           const specIds = await getSpecIds();

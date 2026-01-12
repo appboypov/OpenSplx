@@ -6,7 +6,7 @@ Users need a way to update their local PLX instructions (README.md and CLAUDE.md
 
 ## What Changes
 
-- Add new `plx update` CLI command that updates PLX instructions
+- Add new `splx update` CLI command that updates PLX instructions
 - Replace `workspace/README.md` with the latest template
   - Safe because this file is fully PLX-managed
 - Update only the PLX-managed block in `CLAUDE.md` using markers
@@ -26,4 +26,4 @@ Users need a way to update their local PLX instructions (README.md and CLAUDE.md
 
 ## Out of Scope
 
-- No `.workspace/config.json` is introduced by this change. The default directory name `plx` is used.
+- No `.workspace/config.json` is introduced by this change. The default directory name `splx` is used.

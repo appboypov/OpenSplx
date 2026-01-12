@@ -17,7 +17,7 @@ describe('parent-prioritization', () => {
   beforeEach(async () => {
     tempDir = path.join(
       os.tmpdir(),
-      `plx-change-prioritization-test-${Date.now()}`
+      `splx-change-prioritization-test-${Date.now()}`
     );
     await fs.mkdir(tempDir, { recursive: true });
   });

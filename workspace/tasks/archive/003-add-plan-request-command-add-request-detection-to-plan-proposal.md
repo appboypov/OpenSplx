@@ -6,7 +6,7 @@ parent-id: add-plan-request-command
 # Task: Add request.md detection to plan-proposal
 
 ## End Goal
-The `plx/plan-proposal` command auto-detects and consumes `request.md` when present in the change folder.
+The `splx/plan-proposal` command auto-detects and consumes `request.md` when present in the change folder.
 
 ## Currently
 The proposal command starts fresh without checking for prior intent clarification.
@@ -33,8 +33,8 @@ The proposal command starts fresh without checking for prior intent clarificatio
 - [x] 3.3 Include instruction to read `workspace/changes/<id>/request.md` if exists
 - [x] 3.4 Include instruction to use Final Intent as primary input
 - [x] 3.5 Include instruction to incorporate Decisions section
-- [x] 3.6 Add reference note about running `plx/plan-request` first
+- [x] 3.6 Add reference note about running `splx/plan-request` first
 
 ## Notes
-- The plan-proposal command file is at `.claude/commands/plx/plan-proposal.md` after the rename
+- The plan-proposal command file is at `.claude/commands/splx/plan-proposal.md` after the rename
 - Step 0 should be inserted before the existing Step 1

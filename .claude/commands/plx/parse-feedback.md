@@ -2,7 +2,7 @@
 name: Parse Feedback
 description: Parse feedback markers and generate review tasks.
 category: OpenSplx
-tags: [plx, review, workflow]
+tags: [splx, review, workflow]
 ---
 <!-- PLX:START -->
 **Guardrails**
@@ -19,7 +19,7 @@ tags: [plx, review, workflow]
 - Follow each package's AGENTS.md instructions if present.
 
 **Steps**
-1. Run `plx parse feedback <name> --parent-id <id> --parent-type change|spec|task` (or omit flags if markers include parent linkage: `{type}:{id} |`).
+1. Run `splx parse feedback <name> --parent-id <id> --parent-type change|spec|task` (or omit flags if markers include parent linkage: `{type}:{id} |`).
 2. Review generated tasks.
 3. Address feedback.
 4. Archive when complete.

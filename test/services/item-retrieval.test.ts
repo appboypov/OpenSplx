@@ -12,7 +12,7 @@ describe('ItemRetrievalService', () => {
   let service: ItemRetrievalService;
 
   beforeEach(async () => {
-    tempDir = path.join(os.tmpdir(), `plx-item-retrieval-test-${Date.now()}`);
+    tempDir = path.join(os.tmpdir(), `splx-item-retrieval-test-${Date.now()}`);
     await fs.mkdir(tempDir, { recursive: true });
 
     // Create workspace structure with centralized tasks directory

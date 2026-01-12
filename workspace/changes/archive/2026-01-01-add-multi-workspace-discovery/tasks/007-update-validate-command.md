@@ -5,7 +5,7 @@ status: to-do
 # Task: Update validate command for multi-workspace
 
 ## End Goal
-The `plx validate` command in `src/commands/validate.ts` discovers and validates items from all workspaces, respecting the --workspace filter.
+The `splx validate` command in `src/commands/validate.ts` discovers and validates items from all workspaces, respecting the --workspace filter.
 
 ## Currently
 Command only looks at single workspace for --all, --changes, --specs flags.
@@ -25,11 +25,11 @@ Update command to:
 - [ ] JSON output includes workspace context
 
 ## Acceptance Criteria
-- [ ] `plx validate --all` validates all workspaces
-- [ ] `plx validate --changes` validates changes from all workspaces
-- [ ] `plx validate --specs` validates specs from all workspaces
-- [ ] `plx validate --workspace project-a --all` validates only project-a
-- [ ] `plx validate project-a/add-feature` validates specific item
+- [ ] `splx validate --all` validates all workspaces
+- [ ] `splx validate --changes` validates changes from all workspaces
+- [ ] `splx validate --specs` validates specs from all workspaces
+- [ ] `splx validate --workspace project-a --all` validates only project-a
+- [ ] `splx validate project-a/add-feature` validates specific item
 
 ## Implementation Checklist
 - [ ] 7.1 Import workspace discovery utilities

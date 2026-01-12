@@ -13,14 +13,14 @@ The root `CLAUDE.md` file contains accurate command tables reflecting the new st
 ## Currently
 
 CLAUDE.md contains:
-- Command tables with `plx list`, `plx list --specs`
-- References to `plx show`
+- Command tables with `splx list`, `splx list --specs`
+- References to `splx show`
 - Entity-specific flags pattern
 
 ## Should
 
 CLAUDE.md contains:
-- Command tables with `plx get changes`, `plx get specs`, `plx get reviews`
+- Command tables with `splx get changes`, `splx get specs`, `splx get reviews`
 - No references to deprecated commands
 - Updated flag documentation for `--id`, `--parent-id`, `--parent-type`
 - Updated examples using new command patterns

@@ -2,7 +2,7 @@
 
 ## Purpose
 This file configures testing workflow for the project.
-Run `/plx:refine-testing` to populate project-specific test scope.
+Run `/splx:refine-testing` to populate project-specific test scope.
 
 ## Test Config
 ```yaml

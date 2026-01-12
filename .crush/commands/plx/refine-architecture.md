@@ -2,7 +2,7 @@
 name: Refine Architecture
 description: Create or update ARCHITECTURE.md with spec-ready component inventories.
 category: OpenSplx
-tags: [plx, architecture, documentation]
+tags: [splx, architecture, documentation]
 ---
 <!-- PLX:START -->
 **Guardrails**

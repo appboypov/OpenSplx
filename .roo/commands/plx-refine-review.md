@@ -121,5 +121,5 @@ Create or update REVIEW.md.
 
 ## Part 3: Confirm
 8. Present summary of configuration and populated scope.
-9. Explain how `/plx:review` will use these settings.
+9. Explain how `/splx:review` will use these settings.
 <!-- PLX:END -->

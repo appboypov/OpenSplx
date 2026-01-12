@@ -38,7 +38,7 @@ No documentation exists for transfer functionality.
 - [x] 5.1 Add transfer commands to AGENTS.md CLI Commands section
 - [x] 5.2 Add TransferService to ARCHITECTURE.md Service Layer section
 - [x] 5.3 Add transfer to CLAUDE.md Task Management table
-- [x] 5.4 Run `plx update` to regenerate managed content
+- [x] 5.4 Run `splx update` to regenerate managed content
 
 ## Notes
 

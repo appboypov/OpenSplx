@@ -17,11 +17,11 @@ Templates generate:
 
 ## Should
 
-Templates generate "OpenSplx" in titles and descriptions while keeping `plx` for CLI command references.
+Templates generate "OpenSplx" in titles and descriptions while keeping `splx` for CLI command references.
 
 ## Constraints
 
-- [ ] CLI command examples in templates stay as `plx init`, `plx list`, etc.
+- [ ] CLI command examples in templates stay as `splx init`, `splx list`, etc.
 - [ ] File markers stay as `<!-- PLX:START -->`
 - [ ] Directory references stay as `workspace/`
 
@@ -29,7 +29,7 @@ Templates generate "OpenSplx" in titles and descriptions while keeping `plx` for
 
 - [ ] Generated AGENTS.md title is "# OpenSplx Instructions"
 - [ ] Template descriptions reference "OpenSplx"
-- [ ] Command table descriptions use "OpenSplx" for product, `plx` for commands
+- [ ] Command table descriptions use "OpenSplx" for product, `splx` for commands
 
 ## Implementation Checklist
 
@@ -39,4 +39,4 @@ Templates generate "OpenSplx" in titles and descriptions while keeping `plx` for
 
 ## Notes
 
-These templates affect all new and updated user projects via `plx init` and `plx update`.
+These templates affect all new and updated user projects via `splx init` and `splx update`.

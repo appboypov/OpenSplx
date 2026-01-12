@@ -28,8 +28,8 @@ All core modules use PLX terminology in user-facing messages and directory paths
 
 ## Acceptance Criteria
 
-- [x] `plx list` shows workspace directory in paths
-- [x] `plx init` mentions PLX in success messages
+- [x] `splx list` shows workspace directory in paths
+- [x] `splx init` mentions PLX in success messages
 - [x] Error messages reference PLX, not OpenSpec
 
 ## Implementation Checklist

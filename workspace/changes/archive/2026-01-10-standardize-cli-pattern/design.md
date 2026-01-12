@@ -1,16 +1,16 @@
 ## Context
 
 The PLX CLI has grown organically with inconsistent command patterns:
-- `plx list` vs `plx change list` vs `plx get tasks`
-- `plx show <item>` vs `plx change show <item>` vs `plx get change --id <item>`
+- `splx list` vs `splx change list` vs `splx get tasks`
+- `splx show <item>` vs `splx change show <item>` vs `splx get change --id <item>`
 - Entity-specific flags (`--change-id`, `--spec-id`) vs generic flags (`--id`, `--parent-id`)
 
-This change establishes a consistent `plx {verb} {entity}` pattern with clear singular/plural semantics as the foundation for future CLI extensions.
+This change establishes a consistent `splx {verb} {entity}` pattern with clear singular/plural semantics as the foundation for future CLI extensions.
 
 ## Goals / Non-Goals
 
 **Goals:**
-- Establish consistent `plx {verb} {entity}` command pattern
+- Establish consistent `splx {verb} {entity}` command pattern
 - Use singular for specific item retrieval, plural for listing
 - Unify filtering with `--id`, `--parent-id`, `--parent-type`
 - Deprecate redundant commands with clear migration path
@@ -19,9 +19,9 @@ This change establishes a consistent `plx {verb} {entity}` pattern with clear si
 **Non-Goals:**
 - Add new entity types (out of scope)
 - Implement centralized task storage (separate proposal)
-- Add `plx create` command (separate proposal)
-- Extend `plx paste` command (separate proposal)
-- Extend `plx complete`/`plx undo` (separate proposal)
+- Add `splx create` command (separate proposal)
+- Extend `splx paste` command (separate proposal)
+- Extend `splx complete`/`splx undo` (separate proposal)
 
 ## Decisions
 
@@ -31,12 +31,12 @@ Commands use singular entity names for specific item operations and plural for l
 
 | Command | Purpose |
 |---------|---------|
-| `plx get task --id <id>` | Get specific task |
-| `plx get tasks` | List all tasks |
-| `plx get change --id <id>` | Get specific change |
-| `plx get changes` | List all changes |
-| `plx validate change --id <id>` | Validate specific change |
-| `plx validate changes` | Validate all changes |
+| `splx get task --id <id>` | Get specific task |
+| `splx get tasks` | List all tasks |
+| `splx get change --id <id>` | Get specific change |
+| `splx get changes` | List all changes |
+| `splx validate change --id <id>` | Validate specific change |
+| `splx validate changes` | Validate all changes |
 
 **Rationale:** This pattern is intuitive and mirrors common CLI conventions (e.g., `kubectl get pod` vs `kubectl get pods`).
 
@@ -49,14 +49,14 @@ Replace entity-specific flags with generic names:
 
 **Before:**
 ```bash
-plx review --change-id add-feature
-plx parse feedback "name" --change-id add-feature
+splx review --change-id add-feature
+splx parse feedback "name" --change-id add-feature
 ```
 
 **After:**
 ```bash
-plx review change --id add-feature
-plx parse feedback "name" --parent-id add-feature --parent-type change
+splx review change --id add-feature
+splx parse feedback "name" --parent-id add-feature --parent-type change
 ```
 
 **Rationale:** Generic flags reduce API surface area and make commands more composable. The entity type is determined from the positional argument.
@@ -76,28 +76,28 @@ When `--parent-id` is provided without `--parent-type`:
 Deprecated commands continue to work but emit warnings:
 
 ```
-Warning: 'plx list' is deprecated. Use 'plx get changes' instead.
+Warning: 'splx list' is deprecated. Use 'splx get changes' instead.
 ```
 
 Commands deprecated in this change:
-- `plx list` → `plx get changes`, `plx get specs`, `plx get reviews`
-- `plx show` → `plx get change --id`, `plx get spec --id`
-- `plx change` parent → subcommands under `plx get`/`plx validate`
-- `plx spec` parent → subcommands under `plx get`/`plx validate`
+- `splx list` → `splx get changes`, `splx get specs`, `splx get reviews`
+- `splx show` → `splx get change --id`, `splx get spec --id`
+- `splx change` parent → subcommands under `splx get`/`splx validate`
+- `splx spec` parent → subcommands under `splx get`/`splx validate`
 - `--change-id`, `--spec-id`, `--task-id` flags → `--id`, `--parent-id`
 
 **Rationale:** Soft deprecation allows users to migrate gradually while providing clear guidance.
 
 ### Decision 5: Show Options Migration
 
-The `plx show` command has entity-specific options that migrate to `plx get`:
+The `splx show` command has entity-specific options that migrate to `splx get`:
 
 | Old Command | New Command |
 |-------------|-------------|
-| `plx show <change> --deltas-only` | `plx get change --id <change> --deltas-only` |
-| `plx show <spec> --requirements` | `plx get spec --id <spec> --requirements` |
-| `plx show <spec> --no-scenarios` | `plx get spec --id <spec> --no-scenarios` |
-| `plx show <spec> -r <req-id>` | `plx get spec --id <spec> -r <req-id>` |
+| `splx show <change> --deltas-only` | `splx get change --id <change> --deltas-only` |
+| `splx show <spec> --requirements` | `splx get spec --id <spec> --requirements` |
+| `splx show <spec> --no-scenarios` | `splx get spec --id <spec> --no-scenarios` |
+| `splx show <spec> -r <req-id>` | `splx get spec --id <spec> -r <req-id>` |
 
 **Rationale:** These filtering options are useful and should be preserved under the new command structure.
 
@@ -107,8 +107,8 @@ The archive command uses the same pattern:
 
 | Old Command | New Command |
 |-------------|-------------|
-| `plx archive <change-name>` | `plx archive change --id <change-name>` |
-| `plx archive <review-name> --type review` | `plx archive review --id <review-name>` |
+| `splx archive <change-name>` | `splx archive change --id <change-name>` |
+| `splx archive <review-name> --type review` | `splx archive review --id <review-name>` |
 
 **Rationale:** Explicit entity type removes ambiguity and aligns with the overall pattern.
 
@@ -118,9 +118,9 @@ The review command becomes entity-based:
 
 | Old Command | New Command |
 |-------------|-------------|
-| `plx review --change-id <id>` | `plx review change --id <id>` |
-| `plx review --spec-id <id>` | `plx review spec --id <id>` |
-| `plx review --task-id <id>` | `plx review task --id <id>` |
+| `splx review --change-id <id>` | `splx review change --id <id>` |
+| `splx review --spec-id <id>` | `splx review spec --id <id>` |
+| `splx review --task-id <id>` | `splx review task --id <id>` |
 
 **Rationale:** Aligns with the verb-entity pattern used throughout the CLI.
 
@@ -130,8 +130,8 @@ The parse feedback command uses parent flags:
 
 | Old Command | New Command |
 |-------------|-------------|
-| `plx parse feedback "name" --change-id <id>` | `plx parse feedback "name" --parent-id <id> --parent-type change` |
-| `plx parse feedback "name" --spec-id <id>` | `plx parse feedback "name" --parent-id <id> --parent-type spec` |
+| `splx parse feedback "name" --change-id <id>` | `splx parse feedback "name" --parent-id <id> --parent-type change` |
+| `splx parse feedback "name" --spec-id <id>` | `splx parse feedback "name" --parent-id <id> --parent-type spec` |
 
 **Rationale:** Generic parent flags allow flexibility for future parent types.
 

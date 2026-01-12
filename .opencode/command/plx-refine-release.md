@@ -155,5 +155,5 @@ Node:      ![Node](https://img.shields.io/node/v/PACKAGE)
 
 ## Part 3: Confirm
 10. Present summary of configuration and populated checklist.
-11. Explain how `/plx:prepare-release` will use this configuration.
+11. Explain how `/splx:prepare-release` will use this configuration.
 <!-- PLX:END -->

@@ -2,11 +2,11 @@
 
 ## Source Input
 
-> I want to create a command called plx/sync-workspace - which goes over all current open changes, all current open tasks, all completed changes - and assess their current state using sub agents - then suggest actions to take (update changes, archive changes, create new tasks if applicable) etc etc. then user chooses what to do and the agent executes those actions. It's kind of a maintenance thing. It should also be able to take an argument for a specific change or task - if none given it should do a global sync check on the workspace.
+> I want to create a command called splx/sync-workspace - which goes over all current open changes, all current open tasks, all completed changes - and assess their current state using sub agents - then suggest actions to take (update changes, archive changes, create new tasks if applicable) etc etc. then user chooses what to do and the agent executes those actions. It's kind of a maintenance thing. It should also be able to take an argument for a specific change or task - if none given it should do a global sync check on the workspace.
 
 ## Current Understanding
 
-A Claude Code slash command (`/plx/sync-workspace`) that performs workspace maintenance by:
+A Claude Code slash command (`/splx/sync-workspace`) that performs workspace maintenance by:
 
 1. **Scanning workspace state**: Reviews open changes, open tasks, and completed changes
 2. **Assessment via sub-agents**: Uses sub-agents to analyze the current state of each item
@@ -45,11 +45,11 @@ A Claude Code slash command (`/plx/sync-workspace`) that performs workspace main
 
 ## Final Intent
 
-Create a Claude Code slash command `/plx/sync-workspace` that performs workspace maintenance:
+Create a Claude Code slash command `/splx/sync-workspace` that performs workspace maintenance:
 
 **Invocation:**
-- `/plx/sync-workspace` - Global sync check on entire workspace
-- `/plx/sync-workspace <change-id|task-id>` - Targeted sync check on specific item
+- `/splx/sync-workspace` - Global sync check on entire workspace
+- `/splx/sync-workspace <change-id|task-id>` - Targeted sync check on specific item
 
 **Workflow:**
 1. **Scan** workspace state:

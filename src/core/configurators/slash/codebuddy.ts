@@ -2,28 +2,28 @@ import { SlashCommandConfigurator } from './base.js';
 import { SlashCommandId } from '../../templates/index.js';
 
 const FILE_PATHS: Record<SlashCommandId, string> = {
-  'archive': '.codebuddy/commands/plx/archive.md',
-  'complete-task': '.codebuddy/commands/plx/complete-task.md',
-  'copy-next-task': '.codebuddy/commands/plx/copy-next-task.md',
-  'copy-review-request': '.codebuddy/commands/plx/copy-review-request.md',
-  'copy-test-request': '.codebuddy/commands/plx/copy-test-request.md',
-  'get-task': '.codebuddy/commands/plx/get-task.md',
-  'implement': '.codebuddy/commands/plx/implement.md',
-  'orchestrate': '.codebuddy/commands/plx/orchestrate.md',
-  'parse-feedback': '.codebuddy/commands/plx/parse-feedback.md',
-  'plan-implementation': '.codebuddy/commands/plx/plan-implementation.md',
-  'plan-proposal': '.codebuddy/commands/plx/plan-proposal.md',
-  'plan-request': '.codebuddy/commands/plx/plan-request.md',
-  'prepare-compact': '.codebuddy/commands/plx/prepare-compact.md',
-  'prepare-release': '.codebuddy/commands/plx/prepare-release.md',
-  'refine-architecture': '.codebuddy/commands/plx/refine-architecture.md',
-  'refine-release': '.codebuddy/commands/plx/refine-release.md',
-  'refine-review': '.codebuddy/commands/plx/refine-review.md',
-  'refine-testing': '.codebuddy/commands/plx/refine-testing.md',
-  'review': '.codebuddy/commands/plx/review.md',
-  'sync-workspace': '.codebuddy/commands/plx/sync-workspace.md',
-  'test': '.codebuddy/commands/plx/test.md',
-  'undo-task': '.codebuddy/commands/plx/undo-task.md'
+  'archive': '.codebuddy/commands/splx/archive.md',
+  'complete-task': '.codebuddy/commands/splx/complete-task.md',
+  'copy-next-task': '.codebuddy/commands/splx/copy-next-task.md',
+  'copy-review-request': '.codebuddy/commands/splx/copy-review-request.md',
+  'copy-test-request': '.codebuddy/commands/splx/copy-test-request.md',
+  'get-task': '.codebuddy/commands/splx/get-task.md',
+  'implement': '.codebuddy/commands/splx/implement.md',
+  'orchestrate': '.codebuddy/commands/splx/orchestrate.md',
+  'parse-feedback': '.codebuddy/commands/splx/parse-feedback.md',
+  'plan-implementation': '.codebuddy/commands/splx/plan-implementation.md',
+  'plan-proposal': '.codebuddy/commands/splx/plan-proposal.md',
+  'plan-request': '.codebuddy/commands/splx/plan-request.md',
+  'prepare-compact': '.codebuddy/commands/splx/prepare-compact.md',
+  'prepare-release': '.codebuddy/commands/splx/prepare-release.md',
+  'refine-architecture': '.codebuddy/commands/splx/refine-architecture.md',
+  'refine-release': '.codebuddy/commands/splx/refine-release.md',
+  'refine-review': '.codebuddy/commands/splx/refine-review.md',
+  'refine-testing': '.codebuddy/commands/splx/refine-testing.md',
+  'review': '.codebuddy/commands/splx/review.md',
+  'sync-workspace': '.codebuddy/commands/splx/sync-workspace.md',
+  'test': '.codebuddy/commands/splx/test.md',
+  'undo-task': '.codebuddy/commands/splx/undo-task.md'
 };
 
 const FRONTMATTER: Record<SlashCommandId, string> = {
@@ -31,133 +31,133 @@ const FRONTMATTER: Record<SlashCommandId, string> = {
 name: Archive
 description: Archive a deployed change and update specs.
 category: OpenSplx
-tags: [plx, archive]
+tags: [splx, archive]
 ---`,
   'complete-task': `---
 name: Complete Task
 description: Mark a task as done.
 category: OpenSplx
-tags: [plx, task, workflow]
+tags: [splx, task, workflow]
 ---`,
   'copy-next-task': `---
 name: Copy Next Task
 description: Copy next task or feedback block to clipboard for external agent handoff.
 category: OpenSplx
-tags: [plx, orchestrate, workflow]
+tags: [splx, orchestrate, workflow]
 ---`,
   'copy-review-request': `---
 name: Copy Review Request
 description: Copy review request block with REVIEW.md guidelines to clipboard for external agent.
 category: OpenSplx
-tags: [plx, review, workflow]
+tags: [splx, review, workflow]
 ---`,
   'copy-test-request': `---
 name: Copy Test Request
 description: Copy test request block with TESTING.md configuration to clipboard for external agent.
 category: OpenSplx
-tags: [plx, testing, workflow]
+tags: [splx, testing, workflow]
 ---`,
   'get-task': `---
 name: Get Task
 description: Select and display the next prioritized task to work on.
 category: OpenSplx
-tags: [plx, task, workflow]
+tags: [splx, task, workflow]
 ---`,
   'implement': `---
 name: Implement
 description: Implement an approved change and keep tasks in sync.
 category: OpenSplx
-tags: [plx, implement]
+tags: [splx, implement]
 ---`,
   'orchestrate': `---
 name: Orchestrate
 description: Orchestrate sub-agents to complete work collaboratively.
 category: OpenSplx
-tags: [plx, orchestrate, sub-agents]
+tags: [splx, orchestrate, sub-agents]
 ---`,
   'parse-feedback': `---
 name: Parse Feedback
 description: Parse feedback markers and generate review tasks.
 category: OpenSplx
-tags: [plx, review, workflow]
+tags: [splx, review, workflow]
 ---`,
   'plan-implementation': `---
 name: Plan Implementation
 description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
 category: OpenSplx
-tags: [plx, orchestrate, workflow]
+tags: [splx, orchestrate, workflow]
 ---`,
   'plan-proposal': `---
 name: Plan Proposal
 description: Scaffold a new change and validate strictly. Consumes request.md when present.
 category: OpenSplx
-tags: [plx, change]
+tags: [splx, change]
 ---`,
   'plan-request': `---
 name: Plan Request
 description: Clarify user intent through iterative yes/no questions before proposal creation.
 category: OpenSplx
-tags: [plx, change, planning]
+tags: [splx, change, planning]
 ---`,
   'prepare-compact': `---
 name: Prepare Compact
 description: Preserve session progress in PROGRESS.md for context continuity.
 category: OpenSplx
-tags: [plx, context, session]
+tags: [splx, context, session]
 ---`,
   'prepare-release': `---
 name: Prepare Release
 description: Prepare release by updating changelog, readme, and architecture documentation.
 category: OpenSplx
-tags: [plx, release, documentation]
+tags: [splx, release, documentation]
 ---`,
   'refine-architecture': `---
 name: Refine Architecture
 description: Create or update ARCHITECTURE.md with spec-ready component inventories.
 category: OpenSplx
-tags: [plx, architecture, documentation]
+tags: [splx, architecture, documentation]
 ---`,
   'refine-release': `---
 name: Refine Release
 description: Create or update RELEASE.md.
 category: OpenSplx
-tags: [plx, release, documentation]
+tags: [splx, release, documentation]
 ---`,
   'refine-review': `---
 name: Refine Review
 description: Create or update REVIEW.md.
 category: OpenSplx
-tags: [plx, review, documentation]
+tags: [splx, review, documentation]
 ---`,
   'refine-testing': `---
 name: Refine Testing
 description: Create or update TESTING.md.
 category: OpenSplx
-tags: [plx, testing, documentation]
+tags: [splx, testing, documentation]
 ---`,
   'review': `---
 name: Review
 description: Review implementations against specs, changes, or tasks.
 category: OpenSplx
-tags: [plx, review, workflow]
+tags: [splx, review, workflow]
 ---`,
   'sync-workspace': `---
 name: Sync Workspace
 description: Scan workspace state and suggest maintenance actions.
 category: OpenSplx
-tags: [plx, workspace, maintenance]
+tags: [splx, workspace, maintenance]
 ---`,
   'test': `---
 name: Test
 description: Run tests based on scope (change, task, or spec) using TESTING.md configuration.
 category: OpenSplx
-tags: [plx, testing, workflow]
+tags: [splx, testing, workflow]
 ---`,
   'undo-task': `---
 name: Undo Task
 description: Revert a task to to-do.
 category: OpenSplx
-tags: [plx, task, workflow]
+tags: [splx, task, workflow]
 ---`
 };
 

@@ -35,7 +35,7 @@ Every aspect of the task directory documentation is complete and consistent acro
 - [x] 3.3 Run `rg "tasks\.md" src/core/templates/slash-command-templates.ts` - verify only apply command has it
 - [x] 3.4 Verify "minimum 3 files" or equivalent is present in AGENTS.md
 - [x] 3.5 Verify task file template section exists with all required sections
-- [x] 3.6 Run `plx update` and verify no diff in AGENTS.md
+- [x] 3.6 Run `splx update` and verify no diff in AGENTS.md
 
 ## Notes
 

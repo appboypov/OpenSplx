@@ -10,8 +10,8 @@ As a developer using PLX, I want to update the PLX instructions in my project wh
 
 The update command SHALL update PLX instruction files to the latest templates.
 
-WHEN a user runs `plx update` THEN the command SHALL:
-- Check if the `plx` directory exists
+WHEN a user runs `splx update` THEN the command SHALL:
+- Check if the `splx` directory exists
 - Replace `workspace/README.md` with the latest template (complete replacement)
 - Update the PLX-managed block in `CLAUDE.md` using markers
   - Preserve user content outside markers
@@ -21,10 +21,10 @@ WHEN a user runs `plx update` THEN the command SHALL:
 ### Prerequisites
 
 The command SHALL require:
-- An existing `plx` directory (created by `plx init`)
+- An existing `splx` directory (created by `splx init`)
 
-IF the `plx` directory does not exist THEN:
-- Display error: "No PLX directory found. Run 'plx init' first."
+IF the `splx` directory does not exist THEN:
+- Display error: "No PLX directory found. Run 'splx init' first."
 - Exit with code 1
 
 ### File Handling
@@ -32,7 +32,7 @@ IF the `plx` directory does not exist THEN:
 The update command SHALL:
 - Completely replace `workspace/README.md` with the latest template
 - Update only the PLX-managed block in `CLAUDE.md` using markers
-- Use the default directory name `plx`
+- Use the default directory name `splx`
 - Be idempotent (repeated runs have no additional effect)
 
 ## Edge Cases
@@ -44,7 +44,7 @@ IF file write fails THEN let the error bubble up naturally with file path.
 IF CLAUDE.md doesn't exist THEN create it with the template content.
 
 ### Custom Directory Name
-Not supported in this change. The default directory name `plx` SHALL be used.
+Not supported in this change. The default directory name `splx` SHALL be used.
 
 ## Success Criteria
 

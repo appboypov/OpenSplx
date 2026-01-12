@@ -2,12 +2,12 @@
 
 ### Requirement: Compact Context Preservation Command
 
-The system SHALL provide a `plx/compact` slash command that instructs AI agents to preserve session state for continuation across context-limited chat sessions.
+The system SHALL provide a `splx/compact` slash command that instructs AI agents to preserve session state for continuation across context-limited chat sessions.
 
 #### Scenario: Generating compact command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/compact.md`
+- **THEN** create `.claude/commands/splx/compact.md`
 - **AND** include frontmatter with name "PLX: Compact", description "Preserve session progress to PROGRESS.md for context handoff", category "PLX", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for saving files, creating PROGRESS.md in project root, including sufficient detail for continuation, updating .gitignore, and handling existing PROGRESS.md files

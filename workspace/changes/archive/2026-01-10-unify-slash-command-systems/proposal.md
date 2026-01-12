@@ -12,20 +12,20 @@ This creates 52 duplicate configurator files, inconsistent behavior, and impleme
 
 - **BREAKING**: Merge `SplxSlashCommandId` into `SlashCommandId` (single type with all 13 commands)
 - **BREAKING**: Merge `SplxSlashCommandRegistry` into `SlashCommandRegistry` (single registry)
-- Delete all `plx-*.ts` configurator files (~27 files)
+- Delete all `splx-*.ts` configurator files (~27 files)
 - Update `init.ts` and `update.ts` to use single registry
 - Simplify architecture documentation
 
 ## Impact
 
-- Affected specs: `plx-slash-commands`
+- Affected specs: `splx-slash-commands`
 - Affected code:
   - `src/core/templates/slash-command-templates.ts` (merge types and bodies)
-  - `src/core/templates/plx-slash-command-templates.ts` (DELETE)
+  - `src/core/templates/splx-slash-command-templates.ts` (DELETE)
   - `src/core/configurators/slash/base.ts` (expand to all commands)
-  - `src/core/configurators/slash/plx-base.ts` (DELETE)
+  - `src/core/configurators/slash/splx-base.ts` (DELETE)
   - `src/core/configurators/slash/*.ts` (23 files - add commands)
-  - `src/core/configurators/slash/plx-*.ts` (27 files - DELETE)
+  - `src/core/configurators/slash/splx-*.ts` (27 files - DELETE)
   - `src/core/init.ts` (remove PLX registry usage)
   - `src/core/update.ts` (remove PLX registry usage)
-  - `test/core/configurators/slash/plx-parity.test.ts` (DELETE)
+  - `test/core/configurators/slash/splx-parity.test.ts` (DELETE)

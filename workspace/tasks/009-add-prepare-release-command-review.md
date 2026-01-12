@@ -35,7 +35,7 @@ Implementation reviewed for correctness, completeness, and adherence to project 
 - [x] TypeScript compilation succeeds
 - [x] Linting passes
 - [x] All tests pass (1017 tests)
-- [x] `plx validate --all` passes (24 items)
+- [x] `splx validate --all` passes (24 items)
 - [x] Manual verification of command generation for at least one tool
 
 ## Implementation Checklist
@@ -43,11 +43,11 @@ Implementation reviewed for correctness, completeness, and adherence to project 
 - [x] Run `pnpm build` to verify compilation
 - [x] Run `pnpm lint` to verify linting
 - [x] Run `pnpm test` to verify all tests pass
-- [x] Run `plx validate --all` to verify specs
+- [x] Run `splx validate --all` to verify specs
 - [x] Review template content for accuracy
 - [x] Review command body content for correctness
-- [x] Manually test `plx init` creates RELEASE.md
-- [x] Manually test `plx update` creates RELEASE.md (if missing)
+- [x] Manually test `splx init` creates RELEASE.md
+- [x] Manually test `splx update` creates RELEASE.md (if missing)
 - [x] Verify generated command files for at least Claude tool
 
 ## Notes

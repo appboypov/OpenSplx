@@ -2,7 +2,7 @@
 
 ## Why
 
-The recent openspec-to-plx rebrand established "PLX" as the technical identifier. Now we need a friendlier, more distinctive display name for user-facing text. "OpenSplx" provides brand personality while keeping "plx" as the concise CLI command.
+The recent openspec-to-splx rebrand established "PLX" as the technical identifier. Now we need a friendlier, more distinctive display name for user-facing text. "OpenSplx" provides brand personality while keeping "splx" as the concise CLI command.
 
 ## What Changes
 
@@ -16,14 +16,14 @@ The recent openspec-to-plx rebrand established "PLX" as the technical identifier
 
 ## Non-Changes (Preserved As-Is)
 
-- CLI command: `plx` (stays lowercase)
-- Binary name: `bin/plx.js`
-- Package.json bin entry: `"plx"`
+- CLI command: `splx` (stays lowercase)
+- Binary name: `bin/splx.js`
+- Package.json bin entry: `"splx"`
 - Markers: `<!-- PLX:START -->` / `<!-- PLX:END -->`
 - Internal constants: `PLX_DIR_NAME`, `PLX_MARKERS`, etc.
 - Environment variables: `PLX_CONCURRENCY`
-- Directory structure: `workspace/`, `.plx/`
-- File paths: `.claude/commands/plx/`
+- Directory structure: `workspace/`, `.splx/`
+- File paths: `.claude/commands/splx/`
 
 ## Impact
 
@@ -34,7 +34,7 @@ The recent openspec-to-plx rebrand established "PLX" as the technical identifier
 
 ## Constraints
 
-1. CLI command references in documentation must stay as `plx` (the command)
+1. CLI command references in documentation must stay as `splx` (the command)
 2. Markers and constants are technical identifiers - do not change
-3. Slash command filenames stay as `plx-*.md` (only display names change)
+3. Slash command filenames stay as `splx-*.md` (only display names change)
 4. Tests must pass after all changes

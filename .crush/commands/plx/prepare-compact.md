@@ -2,7 +2,7 @@
 name: Prepare Compact
 description: Preserve session progress in PROGRESS.md for context continuity.
 category: OpenSplx
-tags: [plx, context, session]
+tags: [splx, context, session]
 ---
 <!-- PLX:START -->
 **Guardrails**

@@ -8,7 +8,7 @@ As a developer using PLX, I want to update the PLX instructions in my project wh
 The update command SHALL update PLX instruction files to the latest templates in a team-friendly manner.
 
 #### Scenario: Running update command
-- **WHEN** a user runs `plx update`
+- **WHEN** a user runs `splx update`
 - **THEN** replace `workspace/AGENTS.md` with the latest template
 - **AND** if a root-level stub (`AGENTS.md`/`CLAUDE.md`) exists, refresh it so it points to `@/workspace/AGENTS.md`
 
@@ -18,9 +18,9 @@ The command SHALL require an existing PLX structure before allowing updates.
 
 #### Scenario: Checking prerequisites
 
-- **GIVEN** the command requires an existing `workspace` directory (created by `plx init`)
+- **GIVEN** the command requires an existing `workspace` directory (created by `splx init`)
 - **WHEN** the `workspace` directory does not exist
-- **THEN** display error: "No PLX directory found. Run 'plx init' first."
+- **THEN** display error: "No PLX directory found. Run 'splx init' first."
 - **AND** exit with code 1
 
 ### Requirement: File Handling
@@ -53,7 +53,7 @@ The update command SHALL always update the core PLX files and display an ASCII-s
 The update command SHALL refresh existing slash command files for configured tools without creating new ones, and ensure the OpenCode archive command accepts change ID arguments.
 
 #### Scenario: Updating slash commands for Antigravity
-- **WHEN** `.agent/workflows/` contains `plx-proposal.md`, `plx-implement.md`, and `plx-archive.md`
+- **WHEN** `.agent/workflows/` contains `splx-proposal.md`, `splx-implement.md`, and `splx-archive.md`
 - **THEN** refresh the PLX-managed portion of each file so the workflow copy matches other tools while preserving the existing single-field `description` frontmatter
 - **AND** skip creating any missing workflow files during update, mirroring the behavior for Windsurf and other IDEs
 
@@ -61,28 +61,28 @@ The update command SHALL refresh existing slash command files for configured too
 The update command SHALL generate PLX architecture commands for tools that have existing regular slash commands.
 
 #### Scenario: Generating PLX commands when regular slash commands exist
-- **WHEN** a tool has existing regular slash commands (e.g., `.claude/commands/plx/proposal.md`)
-- **AND** the user runs `plx update`
-- **THEN** generate all PLX commands for that tool (e.g., `.claude/commands/plx/init-architecture.md`, `.claude/commands/plx/update-architecture.md`)
+- **WHEN** a tool has existing regular slash commands (e.g., `.claude/commands/splx/proposal.md`)
+- **AND** the user runs `splx update`
+- **THEN** generate all PLX commands for that tool (e.g., `.claude/commands/splx/init-architecture.md`, `.claude/commands/splx/update-architecture.md`)
 - **AND** include them in the updated slash commands output
 
 #### Scenario: PLX commands not generated when no regular slash commands exist
 - **WHEN** a tool has no existing regular slash commands
-- **AND** the user runs `plx update`
+- **AND** the user runs `splx update`
 - **THEN** do not generate PLX commands for that tool
 
 ### Requirement: Archive Command Argument Support
 The archive slash command template SHALL support optional change ID arguments for tools that support `$ARGUMENTS` placeholder.
 
 #### Scenario: Archive command with change ID argument
-- **WHEN** a user invokes `/plx:archive <change-id>` with a change ID
-- **THEN** the template SHALL instruct the AI to validate the provided change ID against `plx get changes`
+- **WHEN** a user invokes `/splx:archive <change-id>` with a change ID
+- **THEN** the template SHALL instruct the AI to validate the provided change ID against `splx get changes`
 - **AND** use the provided change ID for archiving if valid
 - **AND** fail fast if the provided change ID doesn't match an archivable change
 
 #### Scenario: Archive command without argument (backward compatibility)
-- **WHEN** a user invokes `/plx:archive` without providing a change ID
-- **THEN** the template SHALL instruct the AI to identify the change ID from context or by running `plx get changes`
+- **WHEN** a user invokes `/splx:archive` without providing a change ID
+- **THEN** the template SHALL instruct the AI to identify the change ID from context or by running `splx get changes`
 - **AND** proceed with the existing behavior (maintaining backward compatibility)
 
 #### Scenario: OpenCode archive template generation
@@ -97,7 +97,7 @@ The update command SHALL automatically migrate legacy OpenSpec project structure
 
 #### Scenario: Migrating openspec directory
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** an `openspec/` directory exists
 - **AND** no `workspace/` directory exists
 - **THEN** rename `openspec/` to `workspace/`
@@ -105,22 +105,22 @@ The update command SHALL automatically migrate legacy OpenSpec project structure
 
 #### Scenario: Migrating markers in files
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** files contain `<!-- OPENSPEC:START/END -->` markers
 - **THEN** replace all occurrences with `<!-- PLX:START/END -->` markers
 - **AND** log count of files updated
 
 #### Scenario: Migrating global config
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** `~/.openspec/` directory exists
-- **AND** `~/.plx/` directory does not exist
-- **THEN** rename `~/.openspec/` to `~/.plx/`
-- **AND** log "Migrated global config ~/.openspec/ → ~/.plx/"
+- **AND** `~/.splx/` directory does not exist
+- **THEN** rename `~/.openspec/` to `~/.splx/`
+- **AND** log "Migrated global config ~/.openspec/ → ~/.splx/"
 
 #### Scenario: Both directories exist
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** both `openspec/` and `workspace/` directories exist
 - **THEN** skip directory migration
 - **AND** log warning about both directories existing
@@ -128,7 +128,7 @@ The update command SHALL automatically migrate legacy OpenSpec project structure
 
 #### Scenario: No OpenSpec artifacts
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** no `openspec/` directory exists
 - **AND** no files contain `<!-- OPENSPEC:START/END -->` markers
 - **THEN** proceed silently with normal update (no migration messages)

@@ -40,19 +40,19 @@ Manual testing confirms:
 
 ## Implementation Checklist
 
-- [x] 11.1 Test `plx get changes` lists all changes
-- [x] 11.2 Test `plx get change --id <id>` displays change
-- [x] 11.3 Test `plx get tasks` lists all tasks
-- [x] 11.4 Test `plx get task --parent-id <id>` filters by parent
-- [x] 11.5 Test `plx create task "Title"` creates standalone task
-- [x] 11.6 Test `plx create task "Title" --parent-id <id>` creates parented task
-- [x] 11.7 Test `plx paste task` creates task from clipboard
-- [x] 11.8 Test `plx validate change --id <id>` validates single change
-- [x] 11.9 Test `plx validate changes` validates all changes
-- [x] 11.10 Test `plx archive change --id <id>` archives with entity syntax
-- [x] 11.11 Test `plx review change --id <id>` uses new syntax
-- [x] 11.12 Test `plx parse feedback "name" --parent-id <id> --parent-type change`
-- [x] 11.13 Test `plx migrate tasks` migrates nested tasks
+- [x] 11.1 Test `splx get changes` lists all changes
+- [x] 11.2 Test `splx get change --id <id>` displays change
+- [x] 11.3 Test `splx get tasks` lists all tasks
+- [x] 11.4 Test `splx get task --parent-id <id>` filters by parent
+- [x] 11.5 Test `splx create task "Title"` creates standalone task
+- [x] 11.6 Test `splx create task "Title" --parent-id <id>` creates parented task
+- [x] 11.7 Test `splx paste task` creates task from clipboard
+- [x] 11.8 Test `splx validate change --id <id>` validates single change
+- [x] 11.9 Test `splx validate changes` validates all changes
+- [x] 11.10 Test `splx archive change --id <id>` archives with entity syntax
+- [x] 11.11 Test `splx review change --id <id>` uses new syntax
+- [x] 11.12 Test `splx parse feedback "name" --parent-id <id> --parent-type change`
+- [x] 11.13 Test `splx migrate tasks` migrates nested tasks
 - [x] 11.14 Verify slash commands in Claude Code (if available)
 - [x] 11.15 Verify shell completions with Tab key
 

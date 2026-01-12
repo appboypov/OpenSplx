@@ -6,14 +6,14 @@ Projects need a simple way to adopt PLX conventions. Currently, users must manua
 
 ## What Changes
 
-- Add `plx init` CLI command that creates the complete PLX directory structure
+- Add `splx init` CLI command that creates the complete PLX directory structure
 - Generate template files (README.md with AI instructions, project.md template)
 - Interactive prompt to select which AI tools to configure (Claude Code initially, others marked as "coming soon")
 - Support for multiple AI coding assistants with extensible plugin architecture
 - Smart file updates using content markers to preserve existing configurations
 - Custom directory naming with `--dir` flag
 - Validation to prevent overwriting existing PLX structures
-- Clear error messages with helpful guidance (e.g., suggesting 'plx update' for existing structures)
+- Clear error messages with helpful guidance (e.g., suggesting 'splx update' for existing structures)
 - Display actionable next steps after successful initialization
 
 ### Breaking Changes

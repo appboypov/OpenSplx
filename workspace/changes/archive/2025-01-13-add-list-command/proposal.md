@@ -6,7 +6,7 @@ Developers need visibility into available changes and their status to understand
 
 ## What Changes
 
-- Add `plx list` command that displays all changes in the changes/ directory
+- Add `splx list` command that displays all changes in the changes/ directory
 - Show each change name with task completion count (e.g., "add-auth: 3/5 tasks")
 - Display completion status indicator (✓ for fully complete, progress for partial)
 - Skip the archive/ subdirectory to focus on active changes

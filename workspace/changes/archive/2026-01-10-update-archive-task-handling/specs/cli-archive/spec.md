@@ -78,6 +78,6 @@ Tasks linked to archived parents SHALL be moved to a centralized archive locatio
 
 ### Requirement: Auto-migration before check
 
-**Reason**: Legacy `tasks.md` migration is no longer relevant with centralized task storage. Migration handled by separate `plx migrate tasks` command.
+**Reason**: Legacy `tasks.md` migration is no longer relevant with centralized task storage. Migration handled by separate `splx migrate tasks` command.
 
-**Migration**: Projects must run `plx migrate tasks` before using archive with centralized storage.
+**Migration**: Projects must run `splx migrate tasks` before using archive with centralized storage.

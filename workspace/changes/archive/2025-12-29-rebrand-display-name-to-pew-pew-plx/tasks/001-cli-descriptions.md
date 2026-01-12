@@ -17,19 +17,19 @@ CLI commands use "PLX" in their descriptions:
 
 ## Should
 
-Display "OpenSplx" in user-facing descriptions while keeping `plx` in command usage examples.
+Display "OpenSplx" in user-facing descriptions while keeping `splx` in command usage examples.
 
 ## Constraints
 
-- [ ] CLI command name stays as `plx` (lowercase)
+- [ ] CLI command name stays as `splx` (lowercase)
 - [ ] Only change `.description()` text, not command names or flags
-- [ ] Keep command usage examples using `plx` (e.g., "Run 'plx init' first")
+- [ ] Keep command usage examples using `splx` (e.g., "Run 'splx init' first")
 
 ## Acceptance Criteria
 
 - [ ] All command descriptions in `src/cli/index.ts` use "OpenSplx"
 - [ ] Command descriptions in `src/commands/*.ts` use "OpenSplx"
-- [ ] Error messages referencing the CLI use "OpenSplx" for the product, `plx` for commands
+- [ ] Error messages referencing the CLI use "OpenSplx" for the product, `splx` for commands
 
 ## Implementation Checklist
 
@@ -45,4 +45,4 @@ Display "OpenSplx" in user-facing descriptions while keeping `plx` in command us
 
 Pattern to apply:
 - "PLX" as a product name → "OpenSplx"
-- "`plx`" as a command → stays as "`plx`"
+- "`splx`" as a command → stays as "`splx`"

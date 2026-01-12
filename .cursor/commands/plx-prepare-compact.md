@@ -1,6 +1,6 @@
 ---
-name: /plx-prepare-compact
-id: plx-prepare-compact
+name: /splx-prepare-compact
+id: splx-prepare-compact
 category: OpenSplx
 description: Preserve session progress in PROGRESS.md for context continuity.
 ---

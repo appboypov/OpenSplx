@@ -1,6 +1,6 @@
 ---
-name: /plx-refine-architecture
-id: plx-refine-architecture
+name: /splx-refine-architecture
+id: splx-refine-architecture
 category: OpenSplx
 description: Create or update ARCHITECTURE.md with spec-ready component inventories.
 ---

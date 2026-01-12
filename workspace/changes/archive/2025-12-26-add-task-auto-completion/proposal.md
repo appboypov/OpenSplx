@@ -2,14 +2,14 @@
 tracked-issues:
   - tracker: linear
     id: PLX-18
-    url: https://linear.app/de-app-specialist/issue/PLX-18/improve-plx-get-task-to-auto-complete-finished-tasks-and-show-next
+    url: https://linear.app/de-app-specialist/issue/PLX-18/improve-splx-get-task-to-auto-complete-finished-tasks-and-show-next
 ---
 
 # Change: Add automatic task completion detection
 
 ## Why
 
-The `plx get task` command requires manual intervention with the `--did-complete-previous` flag to mark a task as done and advance to the next one. Users who have already checked all Implementation Checklist items must still remember to use the flag. Automatic detection of completed tasks reduces friction and keeps the workflow moving.
+The `splx get task` command requires manual intervention with the `--did-complete-previous` flag to mark a task as done and advance to the next one. Users who have already checked all Implementation Checklist items must still remember to use the flag. Automatic detection of completed tasks reduces friction and keeps the workflow moving.
 
 ## What Changes
 

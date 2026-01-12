@@ -398,7 +398,7 @@ export class InitCommand {
         parts.push(`Updated markers in ${migrationResult.markerFilesUpdated} file${migrationResult.markerFilesUpdated === 1 ? '' : 's'}`);
       }
       if (migrationResult.globalConfigMigrated) {
-        parts.push('Migrated global config ~/.openspec/ → ~/.plx/');
+        parts.push('Migrated global config ~/.openspec/ → ~/.splx/');
       }
       console.log(chalk.green('Migrated legacy OpenSpec project:'), parts.join(', '));
     }
@@ -901,7 +901,7 @@ export class InitCommand {
     console.log();
     console.log(
       PALETTE.midGray(
-        'Use `plx update` to refresh shared PLX instructions in the future.'
+        'Use `splx update` to refresh shared PLX instructions in the future.'
       )
     );
 
@@ -916,7 +916,7 @@ export class InitCommand {
       );
       console.log(
         PALETTE.midGray(
-          'to ensure the new /plx commands appear in your command palette.'
+          'to ensure the new /splx commands appear in your command palette.'
         )
       );
     }

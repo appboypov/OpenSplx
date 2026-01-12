@@ -9,7 +9,7 @@ describe('FileSystemUtils', () => {
   let testDir: string;
 
   beforeEach(async () => {
-    testDir = path.join(os.tmpdir(), `plx-test-${randomUUID()}`);
+    testDir = path.join(os.tmpdir(), `splx-test-${randomUUID()}`);
     await fs.mkdir(testDir, { recursive: true });
   });
 
@@ -165,46 +165,46 @@ describe('FileSystemUtils', () => {
     it('should join POSIX-style paths', () => {
       const result = FileSystemUtils.joinPath(
         '/tmp/project',
-        '.claude/commands/plx/proposal.md'
+        '.claude/commands/splx/proposal.md'
       );
-      expect(result).toBe('/tmp/project/.claude/commands/plx/proposal.md');
+      expect(result).toBe('/tmp/project/.claude/commands/splx/proposal.md');
     });
 
     it('should join Linux home directory paths', () => {
       const result = FileSystemUtils.joinPath(
-        '/home/dev/workspace/plx',
+        '/home/dev/workspace/splx',
         '.cursor/commands/install.md'
       );
-      expect(result).toBe('/home/dev/workspace/plx/.cursor/commands/install.md');
+      expect(result).toBe('/home/dev/workspace/splx/.cursor/commands/install.md');
     });
 
     it('should join Windows drive-letter paths with backslashes', () => {
       const result = FileSystemUtils.joinPath(
         'C:\\Users\\dev\\project',
-        '.claude/commands/plx/proposal.md'
+        '.claude/commands/splx/proposal.md'
       );
       expect(result).toBe(
-        'C:\\Users\\dev\\project\\.claude\\commands\\plx\\proposal.md'
+        'C:\\Users\\dev\\project\\.claude\\commands\\splx\\proposal.md'
       );
     });
 
     it('should join Windows paths that use forward slashes', () => {
       const result = FileSystemUtils.joinPath(
         'D:/workspace/app',
-        '.cursor/commands/plx-implement.md'
+        '.cursor/commands/splx-implement.md'
       );
       expect(result).toBe(
-        'D:\\workspace\\app\\.cursor\\commands\\plx-implement.md'
+        'D:\\workspace\\app\\.cursor\\commands\\splx-implement.md'
       );
     });
 
     it('should join UNC-style Windows paths', () => {
       const result = FileSystemUtils.joinPath(
         '\\server\\share\\repo',
-        '.windsurf/workflows/plx-archive.md'
+        '.windsurf/workflows/splx-archive.md'
       );
       expect(result).toBe(
-        '\\server\\share\\repo\\.windsurf\\workflows\\plx-archive.md'
+        '\\server\\share\\repo\\.windsurf\\workflows\\splx-archive.md'
       );
     });
   });

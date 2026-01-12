@@ -8,12 +8,12 @@ The system SHALL provide a `view` command that displays a dashboard overview of 
 
 #### Scenario: Basic dashboard display
 
-- **WHEN** user runs `plx view`
+- **WHEN** user runs `splx view`
 - **THEN** system displays a formatted dashboard with sections for summary, active changes, completed changes, and specifications
 
 #### Scenario: No PLX directory
 
-- **WHEN** user runs `plx view` in a directory without PLX
+- **WHEN** user runs `splx view` in a directory without PLX
 - **THEN** system displays error message "✗ No workspace directory found"
 
 ### Requirement: Summary Section

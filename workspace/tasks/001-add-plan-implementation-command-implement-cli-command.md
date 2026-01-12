@@ -5,21 +5,21 @@ parent-type: change
 parent-id: add-plan-implementation-command
 ---
 
-# Task: Implement CLI Command (plx create progress)
+# Task: Implement CLI Command (splx create progress)
 
 ## End Goal
 
-The CLI command `plx create progress --change-id <id>` exists and generates PROGRESS.md at project root with all non-completed tasks embedded.
+The CLI command `splx create progress --change-id <id>` exists and generates PROGRESS.md at project root with all non-completed tasks embedded.
 
 ## Currently
 
-- `plx create` supports `task`, `change`, `spec`, and `request` subcommands
+- `splx create` supports `task`, `change`, `spec`, and `request` subcommands
 - No mechanism to generate PROGRESS.md with embedded task content
 - Multi-agent handoffs require manual context copying
 
 ## Should
 
-- New `plx create progress --change-id <id>` subcommand
+- New `splx create progress --change-id <id>` subcommand
 - Generates PROGRESS.md at project root
 - Includes only non-completed tasks (to-do, in-progress)
 - Each task section contains:
@@ -27,7 +27,7 @@ The CLI command `plx create progress --change-id <id>` exists and generates PROG
   - Full task content embedded
   - Relevant proposal context
   - Agent pickup instructions (no PROGRESS.md mention)
-  - `plx complete task --id <task-id>` at end
+  - `splx complete task --id <task-id>` at end
 
 ## Constraints
 
@@ -38,7 +38,7 @@ The CLI command `plx create progress --change-id <id>` exists and generates PROG
 
 ## Acceptance Criteria
 
-- [ ] Running `plx create progress --change-id <id>` creates PROGRESS.md
+- [ ] Running `splx create progress --change-id <id>` creates PROGRESS.md
 - [ ] Tasks with status `done` are excluded
 - [ ] Each task block is self-contained with full context
 - [ ] Agent instructions do not mention PROGRESS.md

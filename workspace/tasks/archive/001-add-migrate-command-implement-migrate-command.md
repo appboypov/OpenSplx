@@ -8,7 +8,7 @@ parent-id: add-migrate-command
 
 ## End Goal
 
-A working `plx migrate tasks` command that moves all existing nested tasks from `workspace/changes/*/tasks/` and `workspace/reviews/*/tasks/` to the centralized `workspace/tasks/` location with proper filename and frontmatter updates.
+A working `splx migrate tasks` command that moves all existing nested tasks from `workspace/changes/*/tasks/` and `workspace/reviews/*/tasks/` to the centralized `workspace/tasks/` location with proper filename and frontmatter updates.
 
 ## Currently
 
@@ -20,7 +20,7 @@ A working `plx migrate tasks` command that moves all existing nested tasks from 
 ## Should
 
 - New `migrate` command registered in CLI under `src/commands/migrate.ts`
-- `plx migrate tasks` subcommand implemented
+- `splx migrate tasks` subcommand implemented
 - Command scans both `workspace/changes/*/tasks/` and `workspace/reviews/*/tasks/`
 - For each task file found:
   - Reads current content
@@ -46,7 +46,7 @@ A working `plx migrate tasks` command that moves all existing nested tasks from 
 
 ## Acceptance Criteria
 
-- [ ] `plx migrate tasks` successfully moves all nested tasks to centralized location
+- [ ] `splx migrate tasks` successfully moves all nested tasks to centralized location
 - [ ] Migrated files have correct new filename format: `NNN-<parent-id>-<name>.md`
 - [ ] Migrated files have `parent-type` and `parent-id` in frontmatter
 - [ ] Original task files are removed after successful migration

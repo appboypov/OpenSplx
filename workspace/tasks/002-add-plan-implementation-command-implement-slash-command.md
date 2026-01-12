@@ -5,11 +5,11 @@ parent-type: change
 parent-id: add-plan-implementation-command
 ---
 
-# Task: Implement Slash Command (/plx:plan-implementation)
+# Task: Implement Slash Command (/splx:plan-implementation)
 
 ## End Goal
 
-The `/plx:plan-implementation` slash command exists for all supported AI tools and guides orchestrators through the multi-agent handoff workflow.
+The `/splx:plan-implementation` slash command exists for all supported AI tools and guides orchestrators through the multi-agent handoff workflow.
 
 ## Currently
 
@@ -19,9 +19,9 @@ The `/plx:plan-implementation` slash command exists for all supported AI tools a
 
 ## Should
 
-- New `/plx:plan-implementation` slash command in all tool configurators
+- New `/splx:plan-implementation` slash command in all tool configurators
 - Takes change-id as argument
-- Calls `plx create progress --change-id <id>` to generate PROGRESS.md
+- Calls `splx create progress --change-id <id>` to generate PROGRESS.md
 - Outputs first task block to chat for immediate copy
 - Guides orchestrator through review loop workflow
 
@@ -34,7 +34,7 @@ The `/plx:plan-implementation` slash command exists for all supported AI tools a
 
 ## Acceptance Criteria
 
-- [ ] Command exists in `.claude/commands/plx/plan-implementation.md`
+- [ ] Command exists in `.claude/commands/splx/plan-implementation.md`
 - [ ] Command generated for all supported AI tools during init/update
 - [ ] Frontmatter includes correct name, description, category, tags
 - [ ] Body wrapped in PLX markers
@@ -52,9 +52,9 @@ The `/plx:plan-implementation` slash command exists for all supported AI tools a
 - [x] 2.5 Define feedback block template format
 - [x] 2.6 Define verification checklist (scope, traceless, conventions, tests, AC)
 - [x] 2.7 Add frontmatter generation for plan-implementation
-- [x] 2.8 Run `plx update` to generate commands for all tools
+- [x] 2.8 Run `splx update` to generate commands for all tools
 - [x] 2.9 Verify command exists in Claude Code commands
 
 ## Notes
 
-Reference `/plx:orchestrate` and `/plx:implement` for patterns. The key difference is this command outputs to chat for manual copy, not in-process agent spawning.
+Reference `/splx:orchestrate` and `/splx:implement` for patterns. The key difference is this command outputs to chat for manual copy, not in-process agent spawning.

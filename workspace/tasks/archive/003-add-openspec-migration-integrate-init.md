@@ -7,11 +7,11 @@ parent-id: add-openspec-migration
 
 ## End Goal
 
-`plx init` automatically migrates OpenSpec projects before initializing.
+`splx init` automatically migrates OpenSpec projects before initializing.
 
 ## Currently
 
-`plx init` checks for `workspace/` directory to determine extend mode. Does not recognize `openspec/` as existing project.
+`splx init` checks for `workspace/` directory to determine extend mode. Does not recognize `openspec/` as existing project.
 
 ## Should
 
@@ -25,9 +25,9 @@ Call migration at the start of init flow. After migration, `openspec/` becomes `
 
 ## Acceptance Criteria
 
-- [ ] Running `plx init` on OpenSpec project migrates then enters extend mode
-- [ ] Running `plx init` on fresh project works unchanged
-- [ ] Running `plx init` on PLX project works unchanged
+- [ ] Running `splx init` on OpenSpec project migrates then enters extend mode
+- [ ] Running `splx init` on fresh project works unchanged
+- [ ] Running `splx init` on PLX project works unchanged
 - [ ] Migration messages appear before init messages
 
 ## Implementation Checklist

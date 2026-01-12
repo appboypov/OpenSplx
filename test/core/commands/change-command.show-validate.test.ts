@@ -14,7 +14,7 @@ describe('ChangeCommand.show/validate', () => {
   beforeAll(async () => {
     cmd = new ChangeCommand();
     originalCwd = process.cwd();
-    tempRoot = path.join(os.tmpdir(), `plx-change-command-${Date.now()}`);
+    tempRoot = path.join(os.tmpdir(), `splx-change-command-${Date.now()}`);
     await createValidSplxWorkspace(tempRoot);
     const changesDir = path.join(tempRoot, 'workspace', 'changes', 'sample-change');
     await fs.mkdir(changesDir, { recursive: true });

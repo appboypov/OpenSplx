@@ -15,7 +15,7 @@ describe('ListCommand', () => {
 
   beforeEach(async () => {
     // Create temp directory
-    tempDir = path.join(os.tmpdir(), `plx-list-test-${Date.now()}`);
+    tempDir = path.join(os.tmpdir(), `splx-list-test-${Date.now()}`);
     await fs.mkdir(tempDir, { recursive: true });
 
     // Store original env
@@ -371,7 +371,7 @@ tracked-issues:
   });
 
   describe('deprecation warnings', () => {
-    it('should emit deprecation warning for plx list (changes)', async () => {
+    it('should emit deprecation warning for splx list (changes)', async () => {
       await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       await fs.mkdir(changesDir, { recursive: true });
@@ -380,12 +380,12 @@ tracked-issues:
       await listCommand.execute(tempDir, 'changes');
 
       expect(errorOutput.some(line =>
-        line.includes("Deprecation: 'plx list' is deprecated") &&
-        line.includes('plx get changes')
+        line.includes("Deprecation: 'splx list' is deprecated") &&
+        line.includes('splx get changes')
       )).toBe(true);
     });
 
-    it('should emit deprecation warning for plx list --specs', async () => {
+    it('should emit deprecation warning for splx list --specs', async () => {
       await createValidSplxWorkspace(tempDir);
       const specsDir = path.join(tempDir, 'workspace', 'specs');
       await fs.mkdir(specsDir, { recursive: true });
@@ -394,12 +394,12 @@ tracked-issues:
       await listCommand.execute(tempDir, 'specs');
 
       expect(errorOutput.some(line =>
-        line.includes("Deprecation: 'plx list --specs' is deprecated") &&
-        line.includes('plx get specs')
+        line.includes("Deprecation: 'splx list --specs' is deprecated") &&
+        line.includes('splx get specs')
       )).toBe(true);
     });
 
-    it('should emit deprecation warning for plx list --reviews', async () => {
+    it('should emit deprecation warning for splx list --reviews', async () => {
       await createValidSplxWorkspace(tempDir);
       const reviewsDir = path.join(tempDir, 'workspace', 'reviews');
       await fs.mkdir(reviewsDir, { recursive: true });
@@ -408,8 +408,8 @@ tracked-issues:
       await listCommand.execute(tempDir, 'reviews');
 
       expect(errorOutput.some(line =>
-        line.includes("Deprecation: 'plx list --reviews' is deprecated") &&
-        line.includes('plx get reviews')
+        line.includes("Deprecation: 'splx list --reviews' is deprecated") &&
+        line.includes('splx get reviews')
       )).toBe(true);
     });
 

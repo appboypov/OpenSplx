@@ -2,7 +2,7 @@
 
 ## End Goal
 
-A `plx/prepare-release` slash command that orchestrates release preparation by guiding AI agents through updating changelog, readme, and architecture documentation in sequence, with full interactive configuration via a `RELEASE.md` root file.
+A `splx/prepare-release` slash command that orchestrates release preparation by guiding AI agents through updating changelog, readme, and architecture documentation in sequence, with full interactive configuration via a `RELEASE.md` root file.
 
 ## Currently
 
@@ -14,13 +14,13 @@ A `plx/prepare-release` slash command that orchestrates release preparation by g
 
 ## Should
 
-- Create a new `plx/prepare-release` slash command registered in SplxSlashCommandRegistry
+- Create a new `splx/prepare-release` slash command registered in SplxSlashCommandRegistry
 - Command follows the concise pattern (guardrails + steps) referencing `@RELEASE.md`
 - Create `RELEASE.md` root file containing detailed Activity XML instructions for:
   - **Changelog update**: Source selection (git commits, branch diff, manual), version bump suggestion, format selection (keep-a-changelog, simple-list, github-release), audience targeting, emoji level configuration
   - **Readme update**: Style selection (minimal, standard, comprehensive, CLI tool, library/package), section configuration, badge configuration, audience targeting
   - **Architecture update**: Refresh ARCHITECTURE.md based on current codebase state
-- RELEASE.md created during `plx init` and `plx update` (if not exists)
+- RELEASE.md created during `splx init` and `splx update` (if not exists)
 - Each release step is interactive via AskUserQuestion
 - User can confirm or skip each step in the workflow
 
@@ -34,7 +34,7 @@ A `plx/prepare-release` slash command that orchestrates release preparation by g
 
 ## Affected Specs
 
-- `plx-slash-commands` (MODIFIED)
+- `splx-slash-commands` (MODIFIED)
 
 ## Task Overview
 

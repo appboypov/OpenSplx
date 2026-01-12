@@ -33,14 +33,14 @@ Shell completions are updated to include all new subcommands and flags from the 
 
 ## Acceptance Criteria
 
-- [ ] `plx get <TAB>` shows: task, tasks, change, changes, spec, specs, review, reviews
-- [ ] `plx get changes <TAB>` shows available flags
-- [ ] `plx get tasks --parent-type <TAB>` shows: change, review, spec
-- [ ] `plx validate <TAB>` shows: change, changes, spec, specs
-- [ ] `plx archive <TAB>` shows: change, review
-- [ ] `plx review <TAB>` shows: change, spec, task, list, show
-- [ ] Dynamic ID completions work for `plx get change --id <TAB>`
-- [ ] Dynamic ID completions work for `plx archive change --id <TAB>`
+- [ ] `splx get <TAB>` shows: task, tasks, change, changes, spec, specs, review, reviews
+- [ ] `splx get changes <TAB>` shows available flags
+- [ ] `splx get tasks --parent-type <TAB>` shows: change, review, spec
+- [ ] `splx validate <TAB>` shows: change, changes, spec, specs
+- [ ] `splx archive <TAB>` shows: change, review
+- [ ] `splx review <TAB>` shows: change, spec, task, list, show
+- [ ] Dynamic ID completions work for `splx get change --id <TAB>`
+- [ ] Dynamic ID completions work for `splx archive change --id <TAB>`
 
 ## Implementation Checklist
 

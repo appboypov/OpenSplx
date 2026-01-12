@@ -2,8 +2,8 @@
 
 ## Purpose
 This file configures release preparation and pre-release consistency verification.
-Run `/plx:refine-release` to populate project-specific checklists.
-Run `/plx:prepare-release` to execute release preparation.
+Run `/splx:refine-release` to populate project-specific checklists.
+Run `/splx:prepare-release` to execute release preparation.
 
 ## Documentation Config
 ```yaml
@@ -27,12 +27,12 @@ emoji_level: none
 - 600+ provider slash command files across 20 AI tool directories
 - `.claude/`, `.cursor/`, `.gemini/`, `.qwen/`, `.amazonq/`, `.github/prompts/`, etc.
 
-Regeneration command: `pnpm build && plx update`
+Regeneration command: `pnpm build && splx update`
 
 ### Shared Values
 - Version in `package.json`
-- Project name `@appboypov/pew-pew-plx`
-- CLI binary name `plx`
+- Project name `@appboypov/pew-pew-splx`
+- CLI binary name `splx`
 
 ### Behavioral Contracts
 - `workspace/specs/cli-*/spec.md` — 21 spec files defining CLI behavior
@@ -58,8 +58,8 @@ Regeneration command: `pnpm build && plx update`
 - TOML format for Qwen/Gemini, Markdown for others
 
 ### Cleanup
-- Delete renamed files (e.g., `plx-proposal.md` when renamed to `plx-plan-proposal.md`)
-- Check `.cospec/plx/commands/` for orphaned files
+- Delete renamed files (e.g., `splx-proposal.md` when renamed to `splx-plan-proposal.md`)
+- Check `.cospec/splx/commands/` for orphaned files
 
 ### Verification
 ```bash
@@ -70,7 +70,7 @@ grep -rn "OLD_PATTERN" --include="*.md" --include="*.ts" --include="*.toml" .
 pnpm test
 
 # Validate workspace
-plx validate all --strict
+splx validate all --strict
 ```
 
 ## Release Checklist

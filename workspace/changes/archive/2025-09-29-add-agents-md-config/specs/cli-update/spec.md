@@ -4,9 +4,9 @@ The update command SHALL update PLX instruction files to the latest templates in
 
 #### Scenario: Running update command
 
-- **WHEN** a user runs `plx update`
+- **WHEN** a user runs `splx update`
 - **THEN** the command SHALL:
-  - Check if the `plx` directory exists
+  - Check if the `splx` directory exists
   - Replace `workspace/AGENTS.md` with the latest template (complete replacement)
   - Create or refresh a root-level `AGENTS.md` file using the managed marker block (create if missing)
   - Update **only existing** AI tool configuration files (e.g., CLAUDE.md)
@@ -25,7 +25,7 @@ The update command SHALL handle file updates in a predictable and safe manner wh
 - **THEN** completely replace `workspace/AGENTS.md` with the latest template
 - **AND** create or update the root-level `AGENTS.md` using the PLX markers
 - **AND** update only the PLX-managed blocks in **existing** AI tool files using markers
-- **AND** use the default directory name `plx`
+- **AND** use the default directory name `splx`
 - **AND** be idempotent (repeated runs have no additional effect)
 - **AND** respect team members' AI tool choices by not creating additional tool files beyond the root `AGENTS.md`
 

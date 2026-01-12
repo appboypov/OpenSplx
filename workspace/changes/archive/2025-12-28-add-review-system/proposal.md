@@ -20,17 +20,17 @@ There is no dedicated workflow for validating implementations against specificat
 
 ### New Slash Commands
 
-1. **plx/review** - Guides users through reviewing implementations against specs/changes/tasks
-2. **plx/refine-architecture** - Combines init-architecture + update-architecture into single command
-3. **plx/refine-review** - Creates/updates REVIEW.md template at project root
-4. **plx/parse-feedback** - Instructs to run CLI command for parsing feedback markers
+1. **splx/review** - Guides users through reviewing implementations against specs/changes/tasks
+2. **splx/refine-architecture** - Combines init-architecture + update-architecture into single command
+3. **splx/refine-review** - Creates/updates REVIEW.md template at project root
+4. **splx/parse-feedback** - Instructs to run CLI command for parsing feedback markers
 
 ### New CLI Commands
 
-1. **plx review --change-id <id>** - Output review context for a change
-2. **plx review --spec-id <id>** - Output review context for a spec
-3. **plx review --task-id <id>** - Output review context for a task
-4. **plx parse feedback [review-name] --change-id <id>** - Scans codebase for feedback markers, generates review tasks linked to parent
+1. **splx review --change-id <id>** - Output review context for a change
+2. **splx review --spec-id <id>** - Output review context for a spec
+3. **splx review --task-id <id>** - Output review context for a task
+4. **splx parse feedback [review-name] --change-id <id>** - Scans codebase for feedback markers, generates review tasks linked to parent
 
 ### New Entity: Reviews
 
@@ -52,7 +52,7 @@ workspace/reviews/
 
 ### New Template: REVIEW.md
 
-Created at project root during `plx init` or `plx update` (if not exists). Contains meta-instructions for writing project-specific review guidelines.
+Created at project root during `splx init` or `splx update` (if not exists). Contains meta-instructions for writing project-specific review guidelines.
 
 ### Feedback Marker System
 
@@ -75,14 +75,14 @@ When archiving a review:
 
 ### cli-review (NEW)
 
-New spec for `plx review` CLI command:
-- `plx review --change-id <id>` - Output review context for a change
-- `plx review --spec-id <id>` - Output review context for a spec
-- `plx review --task-id <id>` - Output review context for a task
+New spec for `splx review` CLI command:
+- `splx review --change-id <id>` - Output review context for a change
+- `splx review --spec-id <id>` - Output review context for a spec
+- `splx review --task-id <id>` - Output review context for a task
 
 ### cli-parse-feedback (NEW)
 
-New spec for `plx parse feedback` CLI command:
+New spec for `splx parse feedback` CLI command:
 - Scan codebase for `#FEEDBACK #TODO |` markers
 - Support language-aware comment detection
 - Generate review entity with tasks
@@ -96,10 +96,10 @@ Add `--reviews` flag to list active reviews.
 
 Extend archive command to support review entity type alongside changes.
 
-### plx-slash-commands (MODIFIED)
+### splx-slash-commands (MODIFIED)
 
 Add new PLX slash commands:
-- `plx/review`
-- `plx/refine-architecture`
-- `plx/refine-review`
-- `plx/parse-feedback`
+- `splx/review`
+- `splx/refine-architecture`
+- `splx/refine-review`
+- `splx/parse-feedback`

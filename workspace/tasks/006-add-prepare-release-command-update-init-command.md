@@ -7,7 +7,7 @@ parent-id: add-prepare-release-command
 
 ## End Goal
 
-`plx init` creates RELEASE.md at the project root during initialization.
+`splx init` creates RELEASE.md at the project root during initialization.
 
 ## Currently
 
@@ -29,7 +29,7 @@ parent-id: add-prepare-release-command
 
 ## Acceptance Criteria
 
-- [x] RELEASE.md created during `plx init`
+- [x] RELEASE.md created during `splx init`
 - [x] RELEASE.md not overwritten when `skipExisting` is true and file exists
 - [x] TypeScript compiles without errors
 

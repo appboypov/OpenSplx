@@ -17,44 +17,44 @@ describe('emitDeprecationWarning', () => {
   });
 
   it('should emit deprecation warning to stderr by default', () => {
-    emitDeprecationWarning('plx list', 'plx get changes');
+    emitDeprecationWarning('splx list', 'splx get changes');
 
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      "Deprecation: 'plx list' is deprecated. Use 'plx get changes' instead."
+      "Deprecation: 'splx list' is deprecated. Use 'splx get changes' instead."
     );
   });
 
   it('should suppress warning when PLX_NO_DEPRECATION_WARNINGS is set', () => {
     process.env.PLX_NO_DEPRECATION_WARNINGS = '1';
-    emitDeprecationWarning('plx list', 'plx get changes');
+    emitDeprecationWarning('splx list', 'splx get changes');
 
     expect(consoleErrorSpy).not.toHaveBeenCalled();
   });
 
   it('should emit different messages for different commands', () => {
-    emitDeprecationWarning('plx list --specs', 'plx get specs');
+    emitDeprecationWarning('splx list --specs', 'splx get specs');
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      "Deprecation: 'plx list --specs' is deprecated. Use 'plx get specs' instead."
+      "Deprecation: 'splx list --specs' is deprecated. Use 'splx get specs' instead."
     );
 
     consoleErrorSpy.mockClear();
 
-    emitDeprecationWarning('plx show', 'plx get change --id <item>');
+    emitDeprecationWarning('splx show', 'splx get change --id <item>');
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      "Deprecation: 'plx show' is deprecated. Use 'plx get change --id <item>' instead."
+      "Deprecation: 'splx show' is deprecated. Use 'splx get change --id <item>' instead."
     );
   });
 
   it('should not suppress warnings when PLX_NO_DEPRECATION_WARNINGS is 0', () => {
     process.env.PLX_NO_DEPRECATION_WARNINGS = '0';
-    emitDeprecationWarning('plx list', 'plx get changes');
+    emitDeprecationWarning('splx list', 'splx get changes');
 
     expect(consoleErrorSpy).toHaveBeenCalled();
   });
 
   it('should not suppress warnings when PLX_NO_DEPRECATION_WARNINGS is empty', () => {
     process.env.PLX_NO_DEPRECATION_WARNINGS = '';
-    emitDeprecationWarning('plx list', 'plx get changes');
+    emitDeprecationWarning('splx list', 'splx get changes');
 
     expect(consoleErrorSpy).toHaveBeenCalled();
   });

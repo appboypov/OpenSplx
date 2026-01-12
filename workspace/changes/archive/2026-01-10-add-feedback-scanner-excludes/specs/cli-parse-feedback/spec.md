@@ -34,12 +34,12 @@ The command SHALL respect project ignore patterns when scanning.
 
 #### Scenario: Custom exclude patterns via CLI
 
-- **WHEN** `plx parse feedback <name> --exclude "src/legacy/,*.old.ts"` is executed
+- **WHEN** `splx parse feedback <name> --exclude "src/legacy/,*.old.ts"` is executed
 - **THEN** additionally exclude paths matching the comma-separated patterns
 
 #### Scenario: Disabling default excludes via CLI
 
-- **WHEN** `plx parse feedback <name> --no-default-excludes` is executed
+- **WHEN** `splx parse feedback <name> --no-default-excludes` is executed
 - **THEN** only apply .gitignore and ALWAYS_EXCLUDED patterns
 - **AND** scan test files, documentation, and AI tool directories
 

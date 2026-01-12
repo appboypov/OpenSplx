@@ -9,7 +9,7 @@ describe('top-level show command', () => {
   const testDir = path.join(projectRoot, 'test-show-command-tmp');
   const changesDir = path.join(testDir, 'workspace', 'changes');
   const specsDir = path.join(testDir, 'workspace', 'specs');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
 
   beforeEach(async () => {
@@ -38,14 +38,14 @@ describe('top-level show command', () => {
       process.env.PLX_INTERACTIVE = '0';
       let err: any;
       try {
-        execSync(`node ${plxBin} show`, { encoding: 'utf-8' });
+        execSync(`node ${splxBin} show`, { encoding: 'utf-8' });
       } catch (e) { err = e; }
       expect(err).toBeDefined();
       expect(err.status).not.toBe(0);
       const stderr = err.stderr.toString();
       expect(stderr).toContain('Nothing to show.');
-      expect(stderr).toContain('plx get change --id <id>');
-      expect(stderr).toContain('plx get spec --id <id>');
+      expect(stderr).toContain('splx get change --id <id>');
+      expect(stderr).toContain('splx get spec --id <id>');
     } finally {
       process.chdir(originalCwd);
       process.env = originalEnv;
@@ -56,7 +56,7 @@ describe('top-level show command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} show demo --json`, { encoding: 'utf-8' });
+      const output = execSync(`node ${splxBin} show demo --json`, { encoding: 'utf-8' });
       const json = JSON.parse(output);
       expect(json.id).toBe('demo');
       expect(Array.isArray(json.deltas)).toBe(true);
@@ -69,7 +69,7 @@ describe('top-level show command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} show auth --json --requirements`, { encoding: 'utf-8' });
+      const output = execSync(`node ${splxBin} show auth --json --requirements`, { encoding: 'utf-8' });
       const json = JSON.parse(output);
       expect(json.id).toBe('auth');
       expect(Array.isArray(json.requirements)).toBe(true);
@@ -90,7 +90,7 @@ describe('top-level show command', () => {
       process.chdir(testDir);
       let err: any;
       try {
-        execSync(`node ${plxBin} show foo`, { encoding: 'utf-8' });
+        execSync(`node ${splxBin} show foo`, { encoding: 'utf-8' });
       } catch (e) { err = e; }
       expect(err).toBeDefined();
       expect(err.status).not.toBe(0);
@@ -108,7 +108,7 @@ describe('top-level show command', () => {
       process.chdir(testDir);
       let err: any;
       try {
-        execSync(`node ${plxBin} show unknown-item`, { encoding: 'utf-8' });
+        execSync(`node ${splxBin} show unknown-item`, { encoding: 'utf-8' });
       } catch (e) { err = e; }
       expect(err).toBeDefined();
       expect(err.status).not.toBe(0);
@@ -124,9 +124,9 @@ describe('top-level show command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} show demo --json 2>&1`, { encoding: 'utf-8' });
-      expect(output).toContain("Deprecation: 'plx show' is deprecated");
-      expect(output).toContain('plx get change --id <item> or plx get spec --id <item>');
+      const output = execSync(`node ${splxBin} show demo --json 2>&1`, { encoding: 'utf-8' });
+      expect(output).toContain("Deprecation: 'splx show' is deprecated");
+      expect(output).toContain('splx get change --id <item> or splx get spec --id <item>');
     } finally {
       process.chdir(originalCwd);
     }
@@ -136,9 +136,9 @@ describe('top-level show command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} show auth --json 2>&1`, { encoding: 'utf-8' });
-      expect(output).toContain("Deprecation: 'plx show' is deprecated");
-      expect(output).toContain('plx get change --id <item> or plx get spec --id <item>');
+      const output = execSync(`node ${splxBin} show auth --json 2>&1`, { encoding: 'utf-8' });
+      expect(output).toContain("Deprecation: 'splx show' is deprecated");
+      expect(output).toContain('splx get change --id <item> or splx get spec --id <item>');
     } finally {
       process.chdir(originalCwd);
     }
@@ -148,8 +148,8 @@ describe('top-level show command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} show demo --json --no-deprecation-warnings 2>&1`, { encoding: 'utf-8' });
-      expect(output).not.toContain("Deprecation: 'plx show' is deprecated");
+      const output = execSync(`node ${splxBin} show demo --json --no-deprecation-warnings 2>&1`, { encoding: 'utf-8' });
+      expect(output).not.toContain("Deprecation: 'splx show' is deprecated");
     } finally {
       process.chdir(originalCwd);
     }
@@ -159,7 +159,7 @@ describe('top-level show command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const fullOutput = execSync(`node ${plxBin} show demo --json 2>&1`, { encoding: 'utf-8' });
+      const fullOutput = execSync(`node ${splxBin} show demo --json 2>&1`, { encoding: 'utf-8' });
       const lines = fullOutput.split('\n');
 
       // Find and extract just the JSON part (starts with {)

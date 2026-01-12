@@ -4,12 +4,12 @@ Instructions for AI coding assistants using OpenSplx for spec-driven development
 
 ## TL;DR Quick Checklist
 
-- Search existing work: `plx get specs --long`, `plx get changes` (use `rg` only for full-text search)
+- Search existing work: `splx get specs --long`, `splx get changes` (use `rg` only for full-text search)
 - Decide scope: new capability vs modify existing capability
 - Pick a unique `change-id`: kebab-case, verb-led (`add-`, `update-`, `remove-`, `refactor-`)
 - Scaffold: `proposal.md`, `tasks/` directory, `design.md` (only if needed), and delta specs per affected capability
 - Write deltas: use `## ADDED|MODIFIED|REMOVED|RENAMED Requirements`; include at least one `#### Scenario:` per requirement
-- Validate: `plx validate change --id <change-id> --strict` and fix issues
+- Validate: `splx validate change --id <change-id> --strict` and fix issues
 - Request approval: Do not start implementation until proposal is approved
 
 ## Three-Stage Workflow
@@ -41,23 +41,23 @@ Skip proposal for:
 - Tests for existing behavior
 
 **Slash Commands**
-- `plx/plan-request` - Clarify ambiguous requirements through iterative yes/no questions before scaffolding
-- `plx/plan-proposal` - Scaffold `proposal.md`, task files in `workspace/tasks/`, `design.md`, and spec deltas. Consumes request.md when present.
+- `splx/plan-request` - Clarify ambiguous requirements through iterative yes/no questions before scaffolding
+- `splx/plan-proposal` - Scaffold `proposal.md`, task files in `workspace/tasks/`, `design.md`, and spec deltas. Consumes request.md when present.
 
 **Workflow**
-1. Review `ARCHITECTURE.md`, `plx get changes`, and `plx get specs` to understand current context.
-2. If requirements are ambiguous, run `plx/plan-request` to clarify intent first.
+1. Review `ARCHITECTURE.md`, `splx get changes`, and `splx get specs` to understand current context.
+2. If requirements are ambiguous, run `splx/plan-request` to clarify intent first.
 3. Choose a unique verb-led `change-id` and scaffold `proposal.md`, task files in `workspace/tasks/`, optional `design.md`, and spec deltas under `workspace/changes/<id>/`.
 4. Draft spec deltas using `## ADDED|MODIFIED|REMOVED Requirements` with at least one `#### Scenario:` per requirement.
-5. Run `plx validate change --id <id> --strict` and resolve any issues before sharing the proposal.
+5. Run `splx validate change --id <id> --strict` and resolve any issues before sharing the proposal.
 
 ### Stage 2: Implementing Changes
 Track these steps as TODOs and complete them one by one.
 1. **Read proposal.md** - Understand what's being built
 2. **Read design.md** (if exists) - Review technical decisions
-3. **Get next task** - Run `plx get task` to retrieve the next task (auto-transitions to in-progress)
+3. **Get next task** - Run `splx get task` to retrieve the next task (auto-transitions to in-progress)
 4. **Implement task** - Work through the Implementation Checklist
-5. **Complete task** - Run `plx complete task --id <id>` to mark the task as done
+5. **Complete task** - Run `splx complete task --id <id>` to mark the task as done
 6. **Stop and await user confirmation** - Do not proceed to the next task until the user requests it
 7. **Approval gate** - Do not start implementation until the proposal is reviewed and approved
 
@@ -65,8 +65,8 @@ Track these steps as TODOs and complete them one by one.
 After deployment, create separate PR to:
 - Move `changes/[name]/` → `changes/archive/YYYY-MM-DD-[name]/`
 - Update `specs/` if capabilities changed
-- Use `plx archive change --id <change-id> --skip-specs --yes` for tooling-only changes (always pass the change ID explicitly)
-- Run `plx validate all --strict` to confirm the archived change passes checks
+- Use `splx archive change --id <change-id> --skip-specs --yes` for tooling-only changes (always pass the change ID explicitly)
+- Run `splx validate all --strict` to confirm the archived change passes checks
 
 ## Before Any Task
 
@@ -74,21 +74,21 @@ After deployment, create separate PR to:
 - [ ] Read relevant specs in `specs/[capability]/spec.md`
 - [ ] Check pending changes in `changes/` for conflicts
 - [ ] Read `ARCHITECTURE.md` for project context and conventions
-- [ ] Run `plx get changes` to see active changes
-- [ ] Run `plx get specs` to see existing capabilities
+- [ ] Run `splx get changes` to see active changes
+- [ ] Run `splx get specs` to see existing capabilities
 
 **Before Creating Specs:**
 - Always check if capability already exists
 - Prefer modifying existing specs over creating duplicates
-- Use `plx get spec --id [spec]` to review current state
+- Use `splx get spec --id [spec]` to review current state
 - If request is ambiguous, gather as many as necessary clarifications (using your question tool if available) before scaffolding
 
 ### Search Guidance
-- Enumerate specs: `plx get specs --long` (or `--json` for scripts)
-- Enumerate changes: `plx get changes` (or `plx get changes --json`)
+- Enumerate specs: `splx get specs --long` (or `--json` for scripts)
+- Enumerate changes: `splx get changes` (or `splx get changes --json`)
 - Show details:
-  - Spec: `plx get spec --id <spec-id>` (use `--json` for filters)
-  - Change: `plx get change --id <change-id> --json --deltas-only`
+  - Spec: `splx get spec --id <spec-id>` (use `--json` for filters)
+  - Change: `splx get change --id <change-id> --json --deltas-only`
 - Full-text search (use ripgrep): `rg -n "Requirement:|Scenario:" workspace/specs`
 
 ## External Issue Tracking
@@ -134,68 +134,68 @@ Use available tools to interact with issue trackers. If no tools available for a
 
 ```bash
 # Essential commands
-plx get changes           # List active changes
-plx get specs             # List specifications
-plx get change --id [id]  # Display change
-plx get spec --id [id]    # Display spec
-plx validate change --id <id>  # Validate specific change
-plx validate spec --id <id>     # Validate specific spec
-plx validate changes            # Validate all changes
-plx validate specs              # Validate all specs
-plx validate all                # Validate everything
-plx archive change --id <change-id> [--yes|-y]   # Archive after deployment (add --yes for non-interactive runs)
+splx get changes           # List active changes
+splx get specs             # List specifications
+splx get change --id [id]  # Display change
+splx get spec --id [id]    # Display spec
+splx validate change --id <id>  # Validate specific change
+splx validate spec --id <id>     # Validate specific spec
+splx validate changes            # Validate all changes
+splx validate specs              # Validate all specs
+splx validate all                # Validate everything
+splx archive change --id <change-id> [--yes|-y]   # Archive after deployment (add --yes for non-interactive runs)
 
 # Project management
-plx init [path]           # Initialize OpenSplx
-plx update [path]         # Update instruction files
+splx init [path]           # Initialize OpenSplx
+splx update [path]         # Update instruction files
 
 # Bulk validation mode
-plx validate              # Bulk validation mode
+splx validate              # Bulk validation mode
 
 # Debugging
-plx get change --id [change] --json --deltas-only
-plx validate change --id <change-id> --strict
+splx get change --id [change] --json --deltas-only
+splx validate change --id <change-id> --strict
 
 # Create project artifacts
-plx create task "Title" --parent-id <id> --parent-type <change|review>  # Create task linked to change or review
-plx create change "Name"                      # Create new change proposal
-plx create spec "Name"                        # Create new specification
-plx create request "Description"              # Create new request
+splx create task "Title" --parent-id <id> --parent-type <change|review>  # Create task linked to change or review
+splx create change "Name"                      # Create new change proposal
+splx create spec "Name"                        # Create new specification
+splx create request "Description"              # Create new request
 
 # Retrieve tasks and items
-plx get task                          # Get next task from highest-priority change
-plx get task --id <task-id>           # Get specific task by ID
-plx get task --did-complete-previous  # Complete current task and get next
-plx get task --constraints            # Show only Constraints section
-plx get task --acceptance-criteria    # Show only Acceptance Criteria section
-plx get change --id <change-id>       # Retrieve change by ID
-plx get spec --id <spec-id>           # Retrieve spec by ID
-plx get tasks                                         # List all open tasks
-plx get tasks --parent-id <change-id> --parent-type change  # List tasks for specific change
+splx get task                          # Get next task from highest-priority change
+splx get task --id <task-id>           # Get specific task by ID
+splx get task --did-complete-previous  # Complete current task and get next
+splx get task --constraints            # Show only Constraints section
+splx get task --acceptance-criteria    # Show only Acceptance Criteria section
+splx get change --id <change-id>       # Retrieve change by ID
+splx get spec --id <spec-id>           # Retrieve spec by ID
+splx get tasks                                         # List all open tasks
+splx get tasks --parent-id <change-id> --parent-type change  # List tasks for specific change
 
 # Complete tasks and changes
-plx complete task --id <task-id>      # Mark task as done, check Implementation Checklist items
-plx complete change --id <change-id>  # Complete all tasks in a change
+splx complete task --id <task-id>      # Mark task as done, check Implementation Checklist items
+splx complete change --id <change-id>  # Complete all tasks in a change
 
 # Undo task/change completion
-plx undo task --id <task-id>          # Revert task to to-do, uncheck Implementation Checklist items
-plx undo change --id <change-id>      # Revert all tasks in a change to to-do
+splx undo task --id <task-id>          # Revert task to to-do, uncheck Implementation Checklist items
+splx undo change --id <change-id>      # Revert all tasks in a change to to-do
 
 # Review
-plx get reviews                       # List all active reviews
-plx get review --id <review-id>       # Retrieve specific review
-plx review change --id <change-id>    # Review a change proposal
-plx review spec --id <spec-id>        # Review a specification
-plx review task --id <task-id>        # Review a task
+splx get reviews                       # List all active reviews
+splx get review --id <review-id>       # Retrieve specific review
+splx review change --id <change-id>    # Review a change proposal
+splx review spec --id <spec-id>        # Review a specification
+splx review task --id <task-id>        # Review a task
 
 # Parse feedback
-plx parse feedback <name> --parent-id <id> --parent-type change|spec|task  # Parse feedback into tasks
+splx parse feedback <name> --parent-id <id> --parent-type change|spec|task  # Parse feedback into tasks
 
 # Archive
-plx archive change --id <change-id>             # Archive after deployment
-plx archive change --id <id> --yes             # Archive without prompts
-plx archive change --id <id> --skip-specs --yes # Archive tooling-only changes
-plx archive review --id <review-id>            # Archive completed review
+splx archive change --id <change-id>             # Archive after deployment
+splx archive change --id <id> --yes             # Archive without prompts
+splx archive change --id <id> --skip-specs --yes # Archive tooling-only changes
+splx archive review --id <review-id>            # Archive completed review
 ```
 
 ### Command Flags
@@ -362,8 +362,8 @@ For non-Claude models, the agent determines an equivalent model or ignores the f
 
 **Usage:**
 - Add `skill-level` to task frontmatter during proposal creation
-- `plx validate change --id <id> --strict` warns when skill-level is missing
-- Skill level appears in `plx get task` output
+- `splx validate change --id <id> --strict` warns when skill-level is missing
+- Skill level appears in `splx get task` output
 
 5. **Create design.md when needed:**
 Create `design.md` if any of the following apply; otherwise omit it:
@@ -461,27 +461,27 @@ Example for RENAMED:
 
 **Silent scenario parsing failures**
 - Exact format required: `#### Scenario: Name`
-- Debug with: `plx get change --id [change] --json --deltas-only`
+- Debug with: `splx get change --id [change] --json --deltas-only`
 
 ### Validation Tips
 
 ```bash
 # Always use strict mode for comprehensive checks
-plx validate change --id <change-id> --strict
+splx validate change --id <change-id> --strict
 
 # Debug delta parsing
-plx get change --id [change] --json | jq '.deltas'
+splx get change --id [change] --json | jq '.deltas'
 
 # Check specific requirement
-plx get spec --id [spec] --json -r 1
+splx get spec --id [spec] --json -r 1
 ```
 
 ## Happy Path Script
 
 ```bash
 # 1) Explore current state
-plx get specs --long
-plx get changes
+splx get specs --long
+splx get changes
 # Optional full-text search:
 # rg -n "Requirement:|Scenario:" workspace/specs
 # rg -n "^#|Requirement:" workspace/changes
@@ -504,7 +504,7 @@ Users MUST provide a second factor during login.
 EOF
 
 # 4) Validate
-plx validate change --id $CHANGE --strict
+splx validate change --id $CHANGE --strict
 ```
 
 ## Multi-Capability Example
@@ -580,7 +580,7 @@ Only add complexity with:
 ## Error Recovery
 
 ### Change Conflicts
-1. Run `plx get changes` to see active changes
+1. Run `splx get changes` to see active changes
 2. Check for overlapping specs
 3. Coordinate with change owners
 4. Consider combining proposals
@@ -612,11 +612,11 @@ Only add complexity with:
 
 ### CLI Essentials
 ```bash
-plx get changes            # What's in progress?
-plx get change --id [item] # View change details
-plx get spec --id [item]   # View spec details
-plx validate change --id <id> --strict  # Is it correct?
-plx archive change --id <change-id> [--yes|-y]  # Mark complete (add --yes for automation)
+splx get changes            # What's in progress?
+splx get change --id [item] # View change details
+splx get spec --id [item]   # View spec details
+splx validate change --id <id> --strict  # Is it correct?
+splx archive change --id <change-id> [--yes|-y]  # Mark complete (add --yes for automation)
 ```
 
 Remember: Specs are truth. Changes are proposals. Keep them in sync.

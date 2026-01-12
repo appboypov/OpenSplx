@@ -2,38 +2,38 @@
 
 ## Why
 
-The PLX CLI has inconsistent command patterns across different operations. Some commands use `plx {noun} {verb}` (e.g., `plx change show`), others use `plx {verb}` with type flags (e.g., `plx list --specs`), and there are multiple ways to achieve the same outcome (e.g., `plx list`, `plx change list`, `plx show`). This inconsistency increases cognitive load and makes the CLI harder to learn.
+The PLX CLI has inconsistent command patterns across different operations. Some commands use `splx {noun} {verb}` (e.g., `splx change show`), others use `splx {verb}` with type flags (e.g., `splx list --specs`), and there are multiple ways to achieve the same outcome (e.g., `splx list`, `splx change list`, `splx show`). This inconsistency increases cognitive load and makes the CLI harder to learn.
 
 ## What Changes
 
-- **Standardize `plx get` command** with singular/plural entity distinction:
-  - `plx get task --id <id>` (singular: specific lookup)
-  - `plx get tasks` (plural: list all)
-  - `plx get tasks --parent-id <id>` (plural with filter)
+- **Standardize `splx get` command** with singular/plural entity distinction:
+  - `splx get task --id <id>` (singular: specific lookup)
+  - `splx get tasks` (plural: list all)
+  - `splx get tasks --parent-id <id>` (plural with filter)
   - Same pattern for `change`/`changes`, `spec`/`specs`, `review`/`reviews`
-- **Add `--parent-type` flag** to `plx get tasks` for filtering by parent type (optional, searches all if omitted)
-- **Merge `plx show` options into `plx get change`**: `--deltas-only`, `--requirements`, `--no-scenarios`, `-r <id>`
+- **Add `--parent-type` flag** to `splx get tasks` for filtering by parent type (optional, searches all if omitted)
+- **Merge `splx show` options into `splx get change`**: `--deltas-only`, `--requirements`, `--no-scenarios`, `-r <id>`
 - **Deprecate commands**:
-  - `plx list` (replaced by `plx get changes`, `plx get specs`, `plx get reviews`)
-  - `plx show` (replaced by `plx get change`, `plx get spec`, `plx get review`)
-  - `plx change` parent command (subcommands move to `plx get change`, `plx validate change`)
-  - `plx spec` parent command (subcommands move to `plx get spec`, `plx validate spec`)
-- **Standardize `plx validate`**:
-  - `plx validate change --id <id>` (singular: specific validation)
-  - `plx validate changes` (plural: validate all)
+  - `splx list` (replaced by `splx get changes`, `splx get specs`, `splx get reviews`)
+  - `splx show` (replaced by `splx get change`, `splx get spec`, `splx get review`)
+  - `splx change` parent command (subcommands move to `splx get change`, `splx validate change`)
+  - `splx spec` parent command (subcommands move to `splx get spec`, `splx validate spec`)
+- **Standardize `splx validate`**:
+  - `splx validate change --id <id>` (singular: specific validation)
+  - `splx validate changes` (plural: validate all)
   - Same pattern for specs
-- **Standardize `plx archive`**:
-  - `plx archive change --id <id>`
-  - `plx archive review --id <id>`
-- **Standardize `plx review`**:
-  - `plx review change --id <id>` (review a change)
-  - `plx review spec --id <id>` (review a spec)
-  - `plx review task --id <id>` (review a task)
+- **Standardize `splx archive`**:
+  - `splx archive change --id <id>`
+  - `splx archive review --id <id>`
+- **Standardize `splx review`**:
+  - `splx review change --id <id>` (review a change)
+  - `splx review spec --id <id>` (review a spec)
+  - `splx review task --id <id>` (review a task)
   - Deprecate `--change-id`, `--spec-id`, `--task-id` flags
-- **Standardize `plx parse feedback`**:
-  - `plx parse feedback "name" --parent-id <id> --parent-type change|spec|task`
+- **Standardize `splx parse feedback`**:
+  - `splx parse feedback "name" --parent-id <id> --parent-type change|spec|task`
   - Deprecate `--change-id`, `--spec-id`, `--task-id` flags
-- **Keep `plx view` unchanged** (interactive dashboard has different purpose)
+- **Keep `splx view` unchanged** (interactive dashboard has different purpose)
 
 ## Impact
 

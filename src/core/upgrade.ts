@@ -10,7 +10,7 @@ interface UpgradeOptions {
 }
 
 export class UpgradeCommand {
-  private readonly packageName = '@appboypov/pew-pew-plx';
+  private readonly packageName = '@appboypov/pew-pew-splx';
 
   async execute(options: UpgradeOptions = {}): Promise<void> {
     const latestVersion = await this.fetchLatestVersion();

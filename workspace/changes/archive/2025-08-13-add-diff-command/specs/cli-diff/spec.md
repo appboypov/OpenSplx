@@ -2,25 +2,25 @@
 
 ## Purpose
 
-The `plx diff` command provides developers with a visual comparison between proposed spec changes and the current deployed specs.
+The `splx diff` command provides developers with a visual comparison between proposed spec changes and the current deployed specs.
 
 ## Command Syntax
 
 ```bash
-plx diff [change-name]
+splx diff [change-name]
 ```
 
 ## Behavior
 
 ### Without Arguments
 
-WHEN running `plx diff` without arguments
+WHEN running `splx diff` without arguments
 THEN list all available changes in the `changes/` directory (excluding archive)
 AND prompt user to select a change
 
 ### With Change Name
 
-WHEN running `plx diff <change-name>`
+WHEN running `splx diff <change-name>`
 THEN compare all spec files in `changes/<change-name>/specs/` with corresponding files in `specs/`
 
 ### Diff Output
@@ -56,7 +56,7 @@ WHEN changes directory doesn't exist THEN display "No PLX changes directory foun
 
 ```bash
 # View diff for specific change
-$ plx diff add-auth-feature
+$ splx diff add-auth-feature
 
 --- specs/user-auth/spec.md
 +++ changes/add-auth-feature/specs/user-auth/spec.md
@@ -68,7 +68,7 @@ $ plx diff add-auth-feature
  WHEN credentials are valid THEN issue JWT token.
 
 # List all changes and select
-$ plx diff
+$ splx diff
 Available changes:
   1. add-auth-feature
   2. update-payment-flow

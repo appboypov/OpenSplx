@@ -13,7 +13,7 @@ The command SHALL configure AI coding assistants with PLX instructions using a g
 - **AND** change the base prompt copy in extend mode to "Which natively supported AI tools would you like to add or refresh?"
 
 ### Requirement: Exit Code Adjustments
-`plx init` SHALL treat extend mode without new native tool selections as a successful refresh.
+`splx init` SHALL treat extend mode without new native tool selections as a successful refresh.
 
 #### Scenario: Allowing empty extend runs
 - **WHEN** PLX is already initialized and the user selects no additional natively supported tools
@@ -22,7 +22,7 @@ The command SHALL configure AI coding assistants with PLX instructions using a g
 
 ## ADDED Requirements
 ### Requirement: Root instruction stub
-`plx init` SHALL always scaffold the root-level `AGENTS.md` hand-off so every teammate finds the primary PLX instructions.
+`splx init` SHALL always scaffold the root-level `AGENTS.md` hand-off so every teammate finds the primary PLX instructions.
 
 #### Scenario: Creating root `AGENTS.md`
 - **GIVEN** the project may or may not already contain an `AGENTS.md` file

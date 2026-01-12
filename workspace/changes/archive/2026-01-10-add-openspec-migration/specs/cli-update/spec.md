@@ -6,7 +6,7 @@ The update command SHALL automatically migrate legacy OpenSpec project structure
 
 #### Scenario: Migrating openspec directory
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** an `openspec/` directory exists
 - **AND** no `workspace/` directory exists
 - **THEN** rename `openspec/` to `workspace/`
@@ -14,22 +14,22 @@ The update command SHALL automatically migrate legacy OpenSpec project structure
 
 #### Scenario: Migrating markers in files
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** files contain `<!-- OPENSPEC:START/END -->` markers
 - **THEN** replace all occurrences with `<!-- PLX:START/END -->` markers
 - **AND** log count of files updated
 
 #### Scenario: Migrating global config
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** `~/.openspec/` directory exists
-- **AND** `~/.plx/` directory does not exist
-- **THEN** rename `~/.openspec/` to `~/.plx/`
-- **AND** log "Migrated global config ~/.openspec/ → ~/.plx/"
+- **AND** `~/.splx/` directory does not exist
+- **THEN** rename `~/.openspec/` to `~/.splx/`
+- **AND** log "Migrated global config ~/.openspec/ → ~/.splx/"
 
 #### Scenario: Both directories exist
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** both `openspec/` and `workspace/` directories exist
 - **THEN** skip directory migration
 - **AND** log warning about both directories existing
@@ -37,7 +37,7 @@ The update command SHALL automatically migrate legacy OpenSpec project structure
 
 #### Scenario: No OpenSpec artifacts
 
-- **WHEN** `plx update` is run
+- **WHEN** `splx update` is run
 - **AND** no `openspec/` directory exists
 - **AND** no files contain `<!-- OPENSPEC:START/END -->` markers
 - **THEN** proceed silently with normal update (no migration messages)

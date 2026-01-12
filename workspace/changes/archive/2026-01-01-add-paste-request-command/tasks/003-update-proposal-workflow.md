@@ -15,7 +15,7 @@ The proposal workflow recognises `drafts/request.md` and moves it to the change 
 
 ## Should
 
-- `.claude/commands/plx/proposal.md` checks for `drafts/request.md` and moves it
+- `.claude/commands/splx/proposal.md` checks for `drafts/request.md` and moves it
 - `workspace/AGENTS.md` documents `request.md` in directory structure and file purposes
 
 ## Constraints
@@ -33,7 +33,7 @@ The proposal workflow recognises `drafts/request.md` and moves it to the change 
 
 ## Implementation Checklist
 
-- [ ] Add "Input Sources" section to `.claude/commands/plx/proposal.md`
+- [ ] Add "Input Sources" section to `.claude/commands/splx/proposal.md`
 - [ ] Add step 0 to check and move `drafts/request.md`
 - [ ] Update directory structure in `workspace/AGENTS.md` to include `request.md`
 - [ ] Update "File Purposes" section in `workspace/AGENTS.md`

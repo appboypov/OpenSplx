@@ -37,7 +37,7 @@ AI agents reading the instructions know:
 - [x] 2.3 Document that Constraints and Acceptance Criteria checkboxes are ignored in progress counting
 - [x] 2.4 Document numbering convention (NNN-kebab-case-name.md)
 - [x] 2.5 Update agents-template.ts with same additions
-- [x] 2.6 Run `plx update` to regenerate AGENTS.md from template
+- [x] 2.6 Run `splx update` to regenerate AGENTS.md from template
 
 ## Notes
 

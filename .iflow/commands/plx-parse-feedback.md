@@ -1,6 +1,6 @@
 ---
-name: /plx-parse-feedback
-id: plx-parse-feedback
+name: /splx-parse-feedback
+id: splx-parse-feedback
 category: OpenSplx
 description: Parse feedback markers and generate review tasks.
 ---
@@ -19,7 +19,7 @@ description: Parse feedback markers and generate review tasks.
 - Follow each package's AGENTS.md instructions if present.
 
 **Steps**
-1. Run `plx parse feedback <name> --parent-id <id> --parent-type change|spec|task` (or omit flags if markers include parent linkage: `{type}:{id} |`).
+1. Run `splx parse feedback <name> --parent-id <id> --parent-type change|spec|task` (or omit flags if markers include parent linkage: `{type}:{id} |`).
 2. Review generated tasks.
 3. Address feedback.
 4. Archive when complete.

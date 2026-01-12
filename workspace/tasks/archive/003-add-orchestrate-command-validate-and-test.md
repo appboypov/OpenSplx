@@ -17,7 +17,7 @@ Command implementation complete but not validated or tested.
 
 - Run build to verify TypeScript compilation
 - Run tests to verify no regressions
-- Run `plx update .` to generate command files
+- Run `splx update .` to generate command files
 - Verify generated files exist and have correct content
 - Reply to cursor bot comments confirming fix
 
@@ -31,17 +31,17 @@ Command implementation complete but not validated or tested.
 
 - [ ] `npm run build` succeeds
 - [ ] `npm test` passes (all 1087+ tests)
-- [ ] `.claude/commands/plx/orchestrate.md` generated with correct content
-- [ ] `.cursor/commands/plx-orchestrate.md` generated with correct content
+- [ ] `.claude/commands/splx/orchestrate.md` generated with correct content
+- [ ] `.cursor/commands/splx-orchestrate.md` generated with correct content
 - [ ] Command content includes guardrails, steps, and reference sections
 
 ## Implementation Checklist
 
 - [x] Run `npm run build` and verify success
 - [x] Run `npm test` and verify all tests pass
-- [x] Run `plx update .` to generate command files
-- [x] Verify `.claude/commands/plx/orchestrate.md` exists
-- [x] Verify `.cursor/commands/plx-orchestrate.md` exists
+- [x] Run `splx update .` to generate command files
+- [x] Verify `.claude/commands/splx/orchestrate.md` exists
+- [x] Verify `.cursor/commands/splx-orchestrate.md` exists
 - [x] Review generated content for completeness
 - [x] Commit and push changes
 - [x] Reply to relevant PR comments

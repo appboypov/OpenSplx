@@ -32,14 +32,14 @@ Configurators generate 8 PLX slash commands. Orchestrate command not included.
 - [ ] `SplxClaudeSlashCommandConfigurator.FRONTMATTER` includes orchestrate entry
 - [ ] `SplxCursorSlashCommandConfigurator.FILE_PATHS` includes orchestrate mapping
 - [ ] `SplxCursorSlashCommandConfigurator.FRONTMATTER` includes orchestrate entry
-- [ ] `plx update .` generates orchestrate command files
+- [ ] `splx update .` generates orchestrate command files
 
 ## Implementation Checklist
 
-- [x] Update `src/core/configurators/slash/plx-claude.ts` FILE_PATHS
-- [x] Update `src/core/configurators/slash/plx-claude.ts` FRONTMATTER
-- [x] Update `src/core/configurators/slash/plx-cursor.ts` FILE_PATHS
-- [x] Update `src/core/configurators/slash/plx-cursor.ts` FRONTMATTER
+- [x] Update `src/core/configurators/slash/splx-claude.ts` FILE_PATHS
+- [x] Update `src/core/configurators/slash/splx-claude.ts` FRONTMATTER
+- [x] Update `src/core/configurators/slash/splx-cursor.ts` FILE_PATHS
+- [x] Update `src/core/configurators/slash/splx-cursor.ts` FRONTMATTER
 - [x] Update all other configurators (required for TypeScript compilation)
 
 ## Notes
@@ -48,4 +48,4 @@ Frontmatter should include:
 - name: "OpenSplx: Orchestrate"
 - description: "Orchestrate sub-agents to complete work collaboratively"
 - category: "OpenSplx"
-- tags: [plx, orchestrate, sub-agents]
+- tags: [splx, orchestrate, sub-agents]

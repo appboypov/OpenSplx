@@ -2,7 +2,7 @@
 name: Plan Request
 description: Clarify user intent through iterative yes/no questions before proposal creation.
 category: OpenSplx
-tags: [plx, change, planning]
+tags: [splx, change, planning]
 ---
 <!-- PLX:START -->
 **Context**
@@ -34,9 +34,9 @@ tags: [plx, change, planning]
    - UPDATE: Record decision in request.md Decisions section.
    - REPEAT: Continue until no ambiguities remain.
 5. When user confirms intent is 100% captured, populate Final Intent section.
-6. Direct user to run `plx/plan-proposal <change-id>` to create the formal proposal.
+6. Direct user to run `splx/plan-proposal <change-id>` to create the formal proposal.
 
 **Reference**
-- Run `plx/plan-proposal <change-id>` after this command to scaffold the proposal.
+- Run `splx/plan-proposal <change-id>` after this command to scaffold the proposal.
 - The plan-proposal command auto-detects and consumes request.md when present.
 <!-- PLX:END -->

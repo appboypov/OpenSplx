@@ -8,15 +8,15 @@ parent-id: extend-paste-command
 
 ## End Goal
 
-The `plx paste change` command creates a change proposal directory structure from clipboard content.
+The `splx paste change` command creates a change proposal directory structure from clipboard content.
 
 ## Currently
 
-The `PasteCommand` class only supports `plx paste request`. There is no way to scaffold a change proposal from clipboard content.
+The `PasteCommand` class only supports `splx paste request`. There is no way to scaffold a change proposal from clipboard content.
 
 ## Should
 
-- `plx paste change` creates change directory in `workspace/changes/`
+- `splx paste change` creates change directory in `workspace/changes/`
 - Directory structure includes `proposal.md`, `tasks/`, `specs/`
 - Clipboard content populates `## Why` section of proposal.md
 - Change name derived from first line of clipboard (kebab-case)
@@ -25,13 +25,13 @@ The `PasteCommand` class only supports `plx paste request`. There is no way to s
 
 ## Constraints
 
-- [ ] Change directory structure matches `plx create change` output (assumes `add-create-command` complete)
+- [ ] Change directory structure matches `splx create change` output (assumes `add-create-command` complete)
 - [ ] Name derivation produces valid kebab-case identifiers
 - [ ] Follow existing workspace discovery patterns for target directory
 
 ## Acceptance Criteria
 
-- [ ] `plx paste change` creates complete change directory structure
+- [ ] `splx paste change` creates complete change directory structure
 - [ ] Clipboard content appears in `## Why` section
 - [ ] Change name correctly derived and prefixed
 - [ ] Duplicate names get numeric suffix (-2, -3, etc.)

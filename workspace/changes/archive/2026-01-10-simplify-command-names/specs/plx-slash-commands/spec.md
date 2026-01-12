@@ -9,7 +9,7 @@ Each slash command file MUST include tool-appropriate frontmatter with name, des
   - `name`: Title case of filename (e.g., `Refine Architecture` for `refine-architecture.md`)
   - `description`: Brief command purpose
   - `category`: `OpenSplx`
-  - `tags`: Array including `plx` and relevant keywords
+  - `tags`: Array including `splx` and relevant keywords
 
 #### Scenario: Command name derivation
 - **WHEN** deriving the command name from filename

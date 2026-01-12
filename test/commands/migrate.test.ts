@@ -7,7 +7,7 @@ import { createValidSplxWorkspace } from '../test-utils.js';
 describe('migrate tasks command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-migrate-cmd-tmp');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -32,7 +32,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -83,7 +83,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -116,7 +116,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --dry-run --json`,
+          `node ${splxBin} migrate tasks --dry-run --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -154,7 +154,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -191,7 +191,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -220,7 +220,7 @@ describe('migrate tasks command', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        execSync(`node ${plxBin} migrate tasks --json`, { encoding: 'utf-8' });
+        execSync(`node ${splxBin} migrate tasks --json`, { encoding: 'utf-8' });
 
         const centralTasksDir = path.join(testDir, 'workspace', 'tasks');
         const newTask = path.join(centralTasksDir, '001-my-feature-implement.md');
@@ -246,7 +246,7 @@ describe('migrate tasks command', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        execSync(`node ${plxBin} migrate tasks --json`, { encoding: 'utf-8' });
+        execSync(`node ${splxBin} migrate tasks --json`, { encoding: 'utf-8' });
 
         const centralTasksDir = path.join(testDir, 'workspace', 'tasks');
         const newTask = path.join(centralTasksDir, '001-my-feature-implement.md');
@@ -275,7 +275,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -320,7 +320,7 @@ describe('migrate tasks command', () => {
         // Migrate workspace A
         process.chdir(packageADir);
         const outputA = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const resultA = JSON.parse(outputA);
@@ -338,7 +338,7 @@ describe('migrate tasks command', () => {
         // Migrate workspace B
         process.chdir(packageBDir);
         const outputB = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const resultB = JSON.parse(outputB);
@@ -381,7 +381,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);

@@ -2,7 +2,7 @@
 
 ### Requirement: Prepare Release Version Handling
 
-The `/plx/prepare-release` slash command SHALL enforce concrete version numbers and accurate dates in changelog entries.
+The `/splx/prepare-release` slash command SHALL enforce concrete version numbers and accurate dates in changelog entries.
 
 #### Scenario: Never use Unreleased placeholder
 

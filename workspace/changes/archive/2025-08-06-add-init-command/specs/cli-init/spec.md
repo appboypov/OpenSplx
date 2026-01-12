@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The `plx init` command SHALL create a complete PLX directory structure in any project, enabling immediate adoption of PLX conventions with support for multiple AI coding assistants.
+The `splx init` command SHALL create a complete PLX directory structure in any project, enabling immediate adoption of PLX conventions with support for multiple AI coding assistants.
 
 ## Behavior
 
@@ -18,7 +18,7 @@ AND display progress with ora spinners:
 
 ### Directory Creation
 
-WHEN `plx init` is executed
+WHEN `splx init` is executed
 THEN create the following directory structure:
 ```
 workspace/
@@ -97,7 +97,7 @@ User navigation:
 
 WHEN `workspace/` directory already exists
 THEN display error with ora fail indicator:
-"✖ Error: PLX seems to already be initialized. Use 'plx update' to update the structure."
+"✖ Error: PLX seems to already be initialized. Use 'splx update' to update the structure."
 
 WHEN checking initialization feasibility
 THEN verify write permissions in the target directory silently

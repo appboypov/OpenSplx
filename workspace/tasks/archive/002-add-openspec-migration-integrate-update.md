@@ -7,11 +7,11 @@ parent-id: add-openspec-migration
 
 ## End Goal
 
-`plx update` automatically migrates OpenSpec projects before updating.
+`splx update` automatically migrates OpenSpec projects before updating.
 
 ## Currently
 
-`plx update` requires `workspace/` directory to exist. Fails with error if only `openspec/` exists.
+`splx update` requires `workspace/` directory to exist. Fails with error if only `openspec/` exists.
 
 ## Should
 
@@ -25,8 +25,8 @@ Call migration at the start of `execute()` before checking for workspace directo
 
 ## Acceptance Criteria
 
-- [ ] Running `plx update` on OpenSpec project migrates then updates
-- [ ] Running `plx update` on PLX project works unchanged
+- [ ] Running `splx update` on OpenSpec project migrates then updates
+- [ ] Running `splx update` on PLX project works unchanged
 - [ ] Migration messages appear before update messages
 
 ## Implementation Checklist

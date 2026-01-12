@@ -41,7 +41,7 @@ export class SpecFilterService {
       scenarios: includeScenarios ? req.scenarios : [],
     }));
 
-    const metadata = spec.metadata ?? { version: '1.0.0', format: 'plx' as const };
+    const metadata = spec.metadata ?? { version: '1.0.0', format: 'splx' as const };
 
     return {
       name: spec.name,

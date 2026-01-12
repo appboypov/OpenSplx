@@ -1,15 +1,15 @@
-# plx-slash-commands Delta
+# splx-slash-commands Delta
 
 ## MODIFIED Requirements
 
 ### Requirement: Init Architecture Command
 
-The system SHALL provide a `plx/init-architecture` slash command that instructs AI agents to generate comprehensive architecture documentation.
+The system SHALL provide a `splx/init-architecture` slash command that instructs AI agents to generate comprehensive architecture documentation.
 
 #### Scenario: Generating init-architecture command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/init-architecture.md`
+- **THEN** create `.claude/commands/splx/init-architecture.md`
 - **AND** include frontmatter with name "OpenSplx: Init Architecture", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails focusing on practical, usable documentation
@@ -17,12 +17,12 @@ The system SHALL provide a `plx/init-architecture` slash command that instructs 
 
 ### Requirement: Update Architecture Command
 
-The system SHALL provide a `plx/update-architecture` slash command that instructs AI agents to refresh existing architecture documentation.
+The system SHALL provide a `splx/update-architecture` slash command that instructs AI agents to refresh existing architecture documentation.
 
 #### Scenario: Generating update-architecture command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/update-architecture.md`
+- **THEN** create `.claude/commands/splx/update-architecture.md`
 - **AND** include frontmatter with name "OpenSplx: Update Architecture", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails focusing on practical, usable documentation
@@ -30,24 +30,24 @@ The system SHALL provide a `plx/update-architecture` slash command that instruct
 
 ### Requirement: Compact Context Preservation Command
 
-The system SHALL provide a `plx/compact` slash command that instructs AI agents to preserve session state for continuation across context-limited chat sessions.
+The system SHALL provide a `splx/compact` slash command that instructs AI agents to preserve session state for continuation across context-limited chat sessions.
 
 #### Scenario: Generating compact command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/compact.md`
+- **THEN** create `.claude/commands/splx/compact.md`
 - **AND** include frontmatter with name "OpenSplx: Compact", description "Preserve session progress to PROGRESS.md for context handoff", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for saving files, creating PROGRESS.md in project root, including sufficient detail for continuation, updating .gitignore, and handling existing PROGRESS.md files
 
 ### Requirement: Review Command
 
-The system SHALL provide a `plx/review` slash command that guides AI agents through reviewing implementations against specifications.
+The system SHALL provide a `splx/review` slash command that guides AI agents through reviewing implementations against specifications.
 
 #### Scenario: Generating review command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/review.md`
+- **THEN** create `.claude/commands/splx/review.md`
 - **AND** include frontmatter with name "OpenSplx: Review", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: asking what to review, using CLI to retrieve criteria, outputting language-aware feedback markers
@@ -55,12 +55,12 @@ The system SHALL provide a `plx/review` slash command that guides AI agents thro
 
 ### Requirement: Refine Architecture Command
 
-The system SHALL provide a `plx/refine-architecture` slash command that combines init and update architecture functionality.
+The system SHALL provide a `splx/refine-architecture` slash command that combines init and update architecture functionality.
 
 #### Scenario: Generating refine-architecture command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-architecture.md`
+- **THEN** create `.claude/commands/splx/refine-architecture.md`
 - **AND** include frontmatter with name "OpenSplx: Refine Architecture", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: practical documentation, preserving user content
@@ -68,12 +68,12 @@ The system SHALL provide a `plx/refine-architecture` slash command that combines
 
 ### Requirement: Refine Review Command
 
-The system SHALL provide a `plx/refine-review` slash command that creates or updates REVIEW.md template.
+The system SHALL provide a `splx/refine-review` slash command that creates or updates REVIEW.md template.
 
 #### Scenario: Generating refine-review command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-review.md`
+- **THEN** create `.claude/commands/splx/refine-review.md`
 - **AND** include frontmatter with name "OpenSplx: Refine Review", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using REVIEW.md template structure, preserving existing guidelines
@@ -81,13 +81,13 @@ The system SHALL provide a `plx/refine-review` slash command that creates or upd
 
 ### Requirement: Parse Feedback Command
 
-The system SHALL provide a `plx/parse-feedback` slash command that instructs to run the CLI parse feedback command.
+The system SHALL provide a `splx/parse-feedback` slash command that instructs to run the CLI parse feedback command.
 
 #### Scenario: Generating parse-feedback command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/parse-feedback.md`
+- **THEN** create `.claude/commands/splx/parse-feedback.md`
 - **AND** include frontmatter with name "OpenSplx: Parse Feedback", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: scanning tracked files, generating one task per marker
-- **AND** include steps for: running `plx parse feedback <name>`, reviewing generated tasks, addressing feedback, archiving when complete
+- **AND** include steps for: running `splx parse feedback <name>`, reviewing generated tasks, addressing feedback, archiving when complete

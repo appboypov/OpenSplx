@@ -5,7 +5,7 @@ tracked-issues:
     url: https://linear.app/de-app-specialist/issue/PLX-9
   - tracker: github
     id: "13"
-    url: https://github.com/appboypov/pew-pew-plx/issues/13
+    url: https://github.com/appboypov/pew-pew-splx/issues/13
 ---
 
 ## Why
@@ -25,7 +25,7 @@ Tasks for PLX changes are stored in a single `tasks.md` file. This creates probl
 
 ## Impact
 
-- Affected specs: `plx-conventions`, `docs-agent-instructions`, `cli-list`, `cli-archive`
+- Affected specs: `splx-conventions`, `docs-agent-instructions`, `cli-list`, `cli-archive`
 - Affected code:
   - `src/utils/task-progress.ts` (extend for directory support)
   - `src/utils/task-migration.ts` (new)

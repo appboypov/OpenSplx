@@ -177,7 +177,7 @@ status: to-do
     let tempDir: string;
 
     beforeEach(async () => {
-      tempDir = path.join(os.tmpdir(), `plx-task-status-test-${Date.now()}`);
+      tempDir = path.join(os.tmpdir(), `splx-task-status-test-${Date.now()}`);
       await fs.mkdir(tempDir, { recursive: true });
     });
 
@@ -337,7 +337,7 @@ status: in-progress
     let tempDir: string;
 
     beforeEach(async () => {
-      tempDir = path.join(os.tmpdir(), `plx-complete-test-${Date.now()}`);
+      tempDir = path.join(os.tmpdir(), `splx-complete-test-${Date.now()}`);
       await fs.mkdir(tempDir, { recursive: true });
     });
 
@@ -491,7 +491,7 @@ Some notes`;
     let tempDir: string;
 
     beforeEach(async () => {
-      tempDir = path.join(os.tmpdir(), `plx-undo-test-${Date.now()}`);
+      tempDir = path.join(os.tmpdir(), `splx-undo-test-${Date.now()}`);
       await fs.mkdir(tempDir, { recursive: true });
     });
 
@@ -645,7 +645,7 @@ skill-level:   medior
     let tempDir: string;
 
     beforeEach(async () => {
-      tempDir = path.join(os.tmpdir(), `plx-skill-level-test-${Date.now()}`);
+      tempDir = path.join(os.tmpdir(), `splx-skill-level-test-${Date.now()}`);
       await fs.mkdir(tempDir, { recursive: true });
     });
 

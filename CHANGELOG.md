@@ -5,11 +5,11 @@
 ### Added
 
 - **Plan-implementation workflow for multi-agent handoff**: New commands for orchestrating work across sub-agents
-  - `plx create progress --change-id <id>` generates PROGRESS.md with embedded task blocks for external agent handoff
-  - `/plx:plan-implementation` slash command orchestrates the workflow with verification loops
+  - `splx create progress --change-id <id>` generates PROGRESS.md with embedded task blocks for external agent handoff
+  - `/splx:plan-implementation` slash command orchestrates the workflow with verification loops
   - Task blocks are self-contained for copy-paste to external agents without context dependencies
   - Feedback blocks allow iterative refinement until tasks pass review
-- **Copy-next-task slash command**: `/plx:copy-next-task` copies the next task or feedback block to clipboard
+- **Copy-next-task slash command**: `/splx:copy-next-task` copies the next task or feedback block to clipboard
   - Context-aware: detects plan-implementation workflow, new conversation, or existing conversation
   - Generates task blocks with proposal context for fresh sub-agents
   - Generates feedback blocks when issues are found during review
@@ -21,7 +21,7 @@
 
 ### Added
 
-- **Transfer command for multi-workspace workflows**: New `plx transfer` command moves PLX entities between workspaces in monorepo setups
+- **Transfer command for multi-workspace workflows**: New `splx transfer` command moves PLX entities between workspaces in monorepo setups
   - Subcommands: `change`, `spec`, `task`, `review`, `request`
   - Cascade logic: change→tasks, spec→changes→tasks, review→tasks
   - Task renumbering continues from target's highest sequence number
@@ -37,7 +37,7 @@
 
 ### Fixed
 
-- **`plx update` now updates frontmatter in slash command files**: Previously only body content between PLX markers was updated, leaving frontmatter (descriptions, names, hints) unchanged
+- **`splx update` now updates frontmatter in slash command files**: Previously only body content between PLX markers was updated, leaving frontmatter (descriptions, names, hints) unchanged
   - Frontmatter is now regenerated from source definitions during update
   - User customizations outside PLX markers (before start marker or after end marker) are preserved
   - TOML-based configurators (Qwen, Gemini) also regenerate full content including description field
@@ -49,7 +49,7 @@
 ### Changed
 
 - **Simplified slash command names**: Removed "OpenSplx: " prefix from all 18 command names for cleaner display (e.g., "OpenSplx: Refine Architecture" → "Refine Architecture")
-- **Enhanced `/plx:refine-architecture` command**: Produces spec-ready documentation with complete component inventories
+- **Enhanced `/splx:refine-architecture` command**: Produces spec-ready documentation with complete component inventories
   - Guardrails require spec-ready reference enabling architects to create specs without opening the codebase
   - New Context Retrieval section instructs use of Auggie MCP, Codebase Retrieval, or similar semantic search tools
   - Expanded from 3 to 7 detailed steps: Discover, Check, Create/Load, Populate Inventories, Map Dependencies, Validate Completeness, Write
@@ -62,7 +62,7 @@
 
 ### Added
 
-- **CLI self-upgrade command**: New `plx upgrade` command to update the CLI binary
+- **CLI self-upgrade command**: New `splx upgrade` command to update the CLI binary
   - Checks npm registry for latest version
   - Detects and uses appropriate package manager (pnpm or npm)
   - `--check` flag shows version comparison without installing
@@ -78,7 +78,7 @@
   - Derives target package from user request context (mentioned package name, file paths, or current focus)
   - Creates artifacts in the relevant package's workspace folder
   - Follows each package's AGENTS.md instructions if present
-  - Affected commands: `/plx:plan-proposal`, `/plx:plan-request`, `/plx:prepare-release`, `/plx:review`, `/plx:parse-feedback`, `/plx:refine-architecture`, `/plx:refine-release`, `/plx:refine-review`, `/plx:refine-testing`
+  - Affected commands: `/splx:plan-proposal`, `/splx:plan-request`, `/splx:prepare-release`, `/splx:review`, `/splx:parse-feedback`, `/splx:refine-architecture`, `/splx:refine-release`, `/splx:refine-review`, `/splx:refine-testing`
 - **Improved prepare-release workflow**: Added version determination and date handling
   - Enforces concrete version numbers (no "Unreleased" in changelog entries)
   - Uses `date` command for accurate release dates
@@ -90,10 +90,10 @@
 
 ### Fixed
 
-- `plx get task` now uses centralized task storage for prioritization
+- `splx get task` now uses centralized task storage for prioritization
   - Previously looked in deprecated `workspace/changes/{id}/tasks/` location
   - Now correctly discovers tasks from `workspace/tasks/` with parent linking
-  - Aligns with `plx get changes` behavior introduced in 0.13.0
+  - Aligns with `splx get changes` behavior introduced in 0.13.0
 
 ---
 
@@ -129,11 +129,11 @@
 ### Changed
 
 - **CLI error messages updated**: All command usage hints now show correct verb-first syntax
-  - `plx review` hints: `plx review change --id <id>` instead of `--change-id`
-  - `plx parse feedback` hints: `--parent-id <id> --parent-type change|spec|task`
-  - `plx validate` hints: `plx validate all/changes/specs` instead of `--all/--changes/--specs`
-  - `plx archive` errors: reference `plx get changes` instead of `plx list`
-- **Deprecation warnings updated**: `plx change` and `plx spec` commands show correct replacement syntax
+  - `splx review` hints: `splx review change --id <id>` instead of `--change-id`
+  - `splx parse feedback` hints: `--parent-id <id> --parent-type change|spec|task`
+  - `splx validate` hints: `splx validate all/changes/specs` instead of `--all/--changes/--specs`
+  - `splx archive` errors: reference `splx get changes` instead of `splx list`
+- **Deprecation warnings updated**: `splx change` and `splx spec` commands show correct replacement syntax
 - **AGENTS.md template updated**: CLI reference reflects centralized task storage and parent linking
 - **RELEASE.md template restructured**: Config-style format with Consistency Checklist sections
 - **REVIEW.md template restructured**: Config-style format with Review Scope sections
@@ -141,7 +141,7 @@
 
 ### Fixed
 
-- CLI help text in `show.ts` removed references to deprecated `plx show <item>` syntax
+- CLI help text in `show.ts` removed references to deprecated `splx show <item>` syntax
 - Workspace prefix error messages in `validate.ts` use correct `--id` flag syntax
 
 ---
@@ -156,7 +156,7 @@
   - Included in `--json` output as `skillLevel` field
   - Strict mode validation warns when skill-level is missing or invalid
 - **AGENTS.md template updated**: Task template now documents skill-level field and model mapping
-- **Slash command guidance**: `/plx:orchestrate` and `/plx:plan-proposal` include model selection hints
+- **Slash command guidance**: `/splx:orchestrate` and `/splx:plan-proposal` include model selection hints
 
 ### Fixed
 
@@ -178,13 +178,13 @@
 - `findProjectRoot()` function to locate project root from any subdirectory
 - Test utility `createValidSplxWorkspace()` for consistent test fixture creation
 - **TESTING.md template**: New config-style testing configuration file (~21 lines)
-  - Created during `plx init` and `plx update` (same pattern as REVIEW.md)
+  - Created during `splx init` and `splx update` (same pattern as REVIEW.md)
   - Configures test types, coverage thresholds, test runner, and file patterns
-- **`/plx:refine-testing` slash command**: Guide users through testing configuration
+- **`/splx:refine-testing` slash command**: Guide users through testing configuration
   - Test types: unit, integration, e2e, snapshot, performance
   - Coverage thresholds: 70%, 80%, 90%
   - Test runners: vitest, jest, mocha, pytest, flutter_test
-- **`/plx:test` slash command**: Run tests based on scope using TESTING.md configuration
+- **`/splx:test` slash command**: Run tests based on scope using TESTING.md configuration
   - Accepts `--change-id`, `--task-id`, `--spec-id` arguments (same pattern as review)
   - Reads TESTING.md for runner, coverage threshold, and patterns
 
@@ -192,18 +192,18 @@
 
 - **RELEASE.md slimmed**: Reduced from 481 to 33 lines
   - Now a config-style file with defaults only
-  - Verbose documentation moved to `/plx:refine-release` command
-- **`/plx:refine-release` enhanced**: Now contains comprehensive option documentation
+  - Verbose documentation moved to `/splx:refine-release` command
+- **`/splx:refine-release` enhanced**: Now contains comprehensive option documentation
   - Format options: keep-a-changelog, simple-list, github-release
   - Style options: minimal, standard, comprehensive, cli-tool, library
   - Audience, emoji, and badge configuration guidance
-- **`/plx:refine-review` enhanced**: Expanded from 16 to 68 lines
+- **`/splx:refine-review` enhanced**: Expanded from 16 to 68 lines
   - Review type options: implementation, architecture, security, performance, accessibility
   - Feedback format and checklist customization documentation
 
 ### Fixed
 
-- `plx update` now only generates slash commands for configured tools
+- `splx update` now only generates slash commands for configured tools
   - Previously generated commands for all 20+ registered tools regardless of configuration
   - Now checks if tool has at least one existing slash command file before generating
 
@@ -213,7 +213,7 @@
 
 ### Added
 
-- Context file references added to `/plx:orchestrate` command
+- Context file references added to `/splx:orchestrate` command
   - `@ARCHITECTURE.md` and `@workspace/AGENTS.md` automatically included (matching plan-proposal and plan-request)
 
 ### Fixed
@@ -227,11 +227,11 @@
 
 ### Added
 
-- `/plx:plan-request` slash command for intent clarification
+- `/splx:plan-request` slash command for intent clarification
   - Iterative yes/no questions to capture user intent before proposal scaffolding
   - Creates `workspace/changes/{change-id}/request.md` with structured sections
   - Activity XML template with Intent Analyst role and AskActUpdateRepeat loop
-- `/plx:plan-proposal` auto-detects and consumes `request.md` when present
+- `/splx:plan-proposal` auto-detects and consumes `request.md` when present
   - Step 0 checks for existing request context from `plan-request` workflow
   - Uses Final Intent section as primary input for proposal generation
 - Context file references added to planning commands
@@ -239,14 +239,14 @@
 
 ### Changed
 
-- **BREAKING**: Renamed `/plx:proposal` slash command to `/plx:plan-proposal`
+- **BREAKING**: Renamed `/splx:proposal` slash command to `/splx:plan-proposal`
   - All 21 tool configurators updated with new file paths and frontmatter
   - `SlashCommandId` type updated from `'proposal'` to `'plan-proposal'`
 - **BREAKING**: Unified dual slash command systems into single registry
   - `SlashCommandRegistry` now generates all commands via `generateAll()`
   - Removed redundant `SplxSlashCommandConfigurator` classes
   - Configurators now use shared templates from `slash-command-templates.ts`
-- `/plx:implement` command now processes entire change by default
+- `/splx:implement` command now processes entire change by default
   - Iterates through all remaining tasks instead of single task
   - Maintains per-task review and confirmation workflow
 
@@ -267,7 +267,7 @@
   - Single-workspace projects work unchanged (no prefixes shown)
   - Ambiguity detection when unprefixed IDs match multiple workspaces
   - Case-insensitive workspace prefix matching
-- `/plx:orchestrate` slash command for sub-agent coordination
+- `/splx:orchestrate` slash command for sub-agent coordination
   - Structured workflow for delegating work to sub-agents
   - Enforces quality gates, scope adherence, and TracelessChanges principles
   - Sequential execution with one sub-agent per task
@@ -285,7 +285,7 @@
 
 ### Added
 
-- `plx paste request` command: Capture clipboard content as a new change proposal draft
+- `splx paste request` command: Capture clipboard content as a new change proposal draft
   - Supports pasting markdown, text, and structured content directly into a change request
   - Creates proposal.md with clipboard content wrapped in appropriate sections
 
@@ -303,17 +303,17 @@
 
 ### Added
 
-- Review task retrieval: `plx get tasks --id <review-id>` and `plx get task --id <review-id>/<task-id>` now work with reviews
+- Review task retrieval: `splx get tasks --id <review-id>` and `splx get task --id <review-id>/<task-id>` now work with reviews
 - Parent linkage for feedback markers: markers can specify parent type and ID inline
 
 ### Changed
 
-- Renamed `/plx:apply` slash command to `/plx:implement` with enhanced task workflow integration
+- Renamed `/splx:apply` slash command to `/splx:implement` with enhanced task workflow integration
 
 ### Fixed
 
 - `ItemRetrievalService` now searches `workspace/reviews` for task retrieval (previously only searched `workspace/changes`)
-- `ListCommand` path resolution: `plx list` now works correctly when invoked with relative paths
+- `ListCommand` path resolution: `splx list` now works correctly when invoked with relative paths
 
 ---
 
@@ -321,13 +321,13 @@
 
 ### Added
 
-- `/plx:prepare-release` slash command for guided release preparation workflow
-- `/plx:refine-release` slash command for updating RELEASE.md template
+- `/splx:prepare-release` slash command for guided release preparation workflow
+- `/splx:refine-release` slash command for updating RELEASE.md template
 
 ### Changed
 
 - Slash commands now use `@` file references for better context loading
-- Removed deprecated `/plx:init-architecture` and `/plx:update-architecture` commands (use `/plx:refine-architecture` instead)
+- Removed deprecated `/splx:init-architecture` and `/splx:update-architecture` commands (use `/splx:refine-architecture` instead)
 
 ### Fixed
 
@@ -340,29 +340,29 @@
 ### Changed
 
 - **BREAKING**: Rebrand from OpenSpec to PLX across entire codebase
-  - CLI command changed from `openspec` to `plx`
+  - CLI command changed from `openspec` to `splx`
   - Project directory renamed from `openspec/` to `workspace/`
   - Markers changed from `<!-- OPENSPEC:START/END -->` to `<!-- PLX:START/END -->`
-  - Global config moved from `~/.openspec/` to `~/.plx/`
+  - Global config moved from `~/.openspec/` to `~/.splx/`
   - Environment variables renamed: `OPENSPEC_CONCURRENCY` → `PLX_CONCURRENCY`, `OPEN_SPEC_INTERACTIVE` → `PLX_INTERACTIVE`
 - **BREAKING**: Rebrand display name from "PLX" to "OpenSplx"
   - User-facing display names updated in CLI help, dashboard, slash commands
-  - CLI command stays as `plx`, constants like `PLX_DIR_NAME` unchanged
-- **BREAKING**: Rename package from `@appboypov/opensplx` to `@appboypov/pew-pew-plx`
-  - GitHub repository URLs updated to `appboypov/pew-pew-plx`
-  - Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_plx_pixel_*.svg`
+  - CLI command stays as `splx`, constants like `PLX_DIR_NAME` unchanged
+- **BREAKING**: Rename package from `@appboypov/opensplx` to `@appboypov/pew-pew-splx`
+  - GitHub repository URLs updated to `appboypov/pew-pew-splx`
+  - Asset files renamed from `opensplx_pixel_*.svg` to `pew_pew_splx_pixel_*.svg`
 - ASCII banner updated to display "PEW PEW PLX"
 - README rewritten for OpenSplx as standalone project
 - Clarify backward compatibility test descriptions
 
 ### Added
 
-- Automatic OpenSpec to PLX migration on `plx update` or `plx init`
+- Automatic OpenSpec to PLX migration on `splx update` or `splx init`
   - Renames `openspec/` directory to `workspace/`
   - Converts `<!-- OPENSPEC:START/END -->` markers to `<!-- PLX:START/END -->`
-  - Migrates `~/.openspec/` config to `~/.plx/`
+  - Migrates `~/.openspec/` config to `~/.splx/`
   - Merges `openspec/` contents into `workspace/` when both directories exist
-- Architecture documentation commands: `plx/refine-architecture`, `plx/refine-review`, `plx/parse-feedback`
+- Architecture documentation commands: `splx/refine-architecture`, `splx/refine-review`, `splx/parse-feedback`
 
 ### Fixed
 
@@ -375,10 +375,10 @@
 ### Added
 
 - **Review system**: Complete review workflow for validating implementations against specs/changes/tasks
-  - `plx review --change-id|--spec-id|--task-id <id>` - Output review context for a parent entity
-  - `plx parse feedback [review-name] --change-id|--spec-id|--task-id <id>` - Scan codebase for feedback markers and generate review tasks
-  - `plx list --reviews` - List active reviews
-  - `plx archive <review-id> --type review` - Archive completed reviews with optional spec updates
+  - `splx review --change-id|--spec-id|--task-id <id>` - Output review context for a parent entity
+  - `splx parse feedback [review-name] --change-id|--spec-id|--task-id <id>` - Scan codebase for feedback markers and generate review tasks
+  - `splx list --reviews` - List active reviews
+  - `splx archive <review-id> --type review` - Archive completed reviews with optional spec updates
 - **Feedback marker system**: Language-aware inline markers for 40+ file extensions
   - C-style: `// #FEEDBACK #TODO | feedback`
   - Python/Shell: `# #FEEDBACK #TODO | feedback`
@@ -386,7 +386,7 @@
   - HTML/XML/Markdown: `<!-- #FEEDBACK #TODO | feedback -->`
   - Spec-impacting: `(spec:<spec-id>)` suffix for spec updates on archive
 - **Review entity type**: New entity in `workspace/reviews/` with parent linkage, task generation, and archiving with spec updates
-- **PLX slash commands**: `plx/review`, `plx/refine-architecture`, `plx/refine-review`, `plx/parse-feedback`
+- **PLX slash commands**: `splx/review`, `splx/refine-architecture`, `splx/refine-review`, `splx/parse-feedback`
 - **Complete and undo commands**: New CLI commands for explicit task/change management
   - `complete task --id <task-id>` - Mark task as done, check all Implementation Checklist items
   - `complete change --id <change-id>` - Complete all tasks in a change
@@ -394,7 +394,7 @@
   - `undo change --id <change-id>` - Revert all tasks in a change to to-do
 - **Auto-transition on retrieval**: `get task` and `get task --id` now auto-transition to-do tasks to in-progress when retrieved
   - Includes `transitionedToInProgress` field in JSON output
-- **Automatic task completion detection**: `plx get task` now auto-detects when the current in-progress task has all Implementation Checklist items checked
+- **Automatic task completion detection**: `splx get task` now auto-detects when the current in-progress task has all Implementation Checklist items checked
   - Automatically marks task as `done` and advances to next `to-do` task
   - Skips change documents on auto-completion (same behavior as `--did-complete-previous`)
   - Includes `autoCompletedTask` field in JSON output
@@ -422,7 +422,7 @@
 
 ### Changed
 
-- **BREAKING**: Renamed `plx act next` command to `plx get task`
+- **BREAKING**: Renamed `splx act next` command to `splx get task`
 - **BREAKING**: Renamed `SplxSlashCommandId` value `'act-next'` to `'get-task'`
 - `--did-complete-previous` now automatically marks all `## Implementation Checklist` checkboxes as complete
 - Completed task info (name + completed checkbox items) is output when using `--did-complete-previous`
@@ -433,13 +433,13 @@
 
 ### Added
 
-- **Act next command**: New `plx act next` CLI command for prioritized task selection across active changes
+- **Act next command**: New `splx act next` CLI command for prioritized task selection across active changes
   - Prioritizes changes by completion percentage (highest first)
   - Uses proposal.md birthtime as tiebreaker when percentages equal
   - Task status tracking via YAML frontmatter (`to-do`, `in-progress`, `done`)
   - `--did-complete-previous` flag for automatic status transitions
   - `--json` flag for machine-readable output
-- **PLX act-next slash command**: Add `plx/act-next` slash command to all 20 supported tool configurators
+- **PLX act-next slash command**: Add `splx/act-next` slash command to all 20 supported tool configurators
 
 ### Changed
 
@@ -476,9 +476,9 @@ Initial release of OpenSplx fork.
 
 ### Added
 
-- **PLX command alias**: `plx` as an alias for `openspec` command
-- **PLX architecture commands**: `plx/init-architecture` and `plx/update-architecture` slash commands for all 20 supported tools
-- **PLX commands on update**: Running `plx update` generates PLX commands for tools with existing OpenSpec slash commands
+- **PLX command alias**: `splx` as an alias for `openspec` command
+- **PLX architecture commands**: `splx/init-architecture` and `splx/update-architecture` slash commands for all 20 supported tools
+- **PLX commands on update**: Running `splx update` generates PLX commands for tools with existing OpenSpec slash commands
 - **External issue tracking**: Support `tracker` and `id` fields in proposal frontmatter for Linear, GitHub, etc.
 
 ### Changed

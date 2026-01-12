@@ -2,7 +2,7 @@
 
 ## Why
 
-The `plx act next` command selects completed changes because it prioritizes by highest completion percentage. This causes the command to return changes with 100% complete checkboxes (or 0 total checkboxes) instead of changes with actual work remaining.
+The `splx act next` command selects completed changes because it prioritizes by highest completion percentage. This causes the command to return changes with 100% complete checkboxes (or 0 total checkboxes) instead of changes with actual work remaining.
 
 ## What Changes
 
@@ -12,5 +12,5 @@ The `plx act next` command selects completed changes because it prioritizes by h
 
 ## Impact
 
-- Affected specs: plx-slash-commands
+- Affected specs: splx-slash-commands
 - Affected code: `src/utils/change-prioritization.ts`, test files

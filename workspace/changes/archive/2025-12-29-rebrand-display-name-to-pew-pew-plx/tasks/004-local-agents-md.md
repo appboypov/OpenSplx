@@ -19,7 +19,7 @@ Use "OpenSplx" in titles and descriptions.
 
 ## Constraints
 
-- [ ] Command references stay as `plx`
+- [ ] Command references stay as `splx`
 - [ ] Markers stay as `<!-- PLX:START -->`
 
 ## Acceptance Criteria

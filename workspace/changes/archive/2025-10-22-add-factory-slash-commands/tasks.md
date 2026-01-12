@@ -3,7 +3,7 @@
 - [x] 1.2 Surface Factory in interactive prompts and non-interactive `--tools` parsing alongside existing slash-command integrations.
 
 ## 2. Slash command templates
-- [x] 2.1 Create shared templates for Factory's `plx-proposal`, `plx-apply`, and `plx-archive` custom commands following Factory's CLI format.
+- [x] 2.1 Create shared templates for Factory's `splx-proposal`, `splx-apply`, and `splx-archive` custom commands following Factory's CLI format.
 - [x] 2.2 Wire the templates into init/update so generation happens on create and refresh respects PLX markers.
 
 ## 3. Verification

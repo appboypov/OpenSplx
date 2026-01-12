@@ -16,7 +16,7 @@ Multiple files have been modified across the codebase.
 
 Review all changes for:
 - Consistent use of "OpenSplx" (display name)
-- Preserved use of "plx" (CLI command)
+- Preserved use of "splx" (CLI command)
 - No unintended changes to markers, constants, or paths
 
 ## Constraints
@@ -27,7 +27,7 @@ Review all changes for:
 ## Acceptance Criteria
 
 - [ ] All "PLX" display names replaced with "OpenSplx"
-- [ ] All "plx" CLI references preserved
+- [ ] All "splx" CLI references preserved
 - [ ] Markers `<!-- PLX:START -->` unchanged
 - [ ] Constants like `PLX_DIR_NAME` unchanged
 - [ ] No typos or formatting issues

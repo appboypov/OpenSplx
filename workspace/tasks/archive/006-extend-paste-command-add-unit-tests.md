@@ -12,14 +12,14 @@ Comprehensive test coverage for all new paste subcommands: `task`, `change`, `sp
 
 ## Currently
 
-Tests exist for `plx paste request` in `test/commands/paste.test.ts`. New subcommands need similar coverage.
+Tests exist for `splx paste request` in `test/commands/paste.test.ts`. New subcommands need similar coverage.
 
 ## Should
 
-- Test `plx paste task` creates task with correct structure
-- Test `plx paste task --parent-id` creates parented task with frontmatter
-- Test `plx paste change` creates change directory structure
-- Test `plx paste spec` creates spec directory with spec.md
+- Test `splx paste task` creates task with correct structure
+- Test `splx paste task --parent-id` creates parented task with frontmatter
+- Test `splx paste change` creates change directory structure
+- Test `splx paste spec` creates spec directory with spec.md
 - Test JSON output format for all subcommands
 - Test error cases: empty clipboard, invalid parent, duplicate spec
 

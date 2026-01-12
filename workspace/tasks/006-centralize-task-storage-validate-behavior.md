@@ -37,9 +37,9 @@ Tests validate the new centralized task structure and all associated behavior.
   - Archive path exclusion
 - [x] 6.4 Manual testing checklist:
   - [x] Create a parented task file manually in `workspace/tasks/`
-  - [x] Run `plx get task` and verify it's found
-  - [x] Run `plx complete task --id <id>` and verify completion
-  - [x] Run `plx undo task --id <id>` and verify undo
+  - [x] Run `splx get task` and verify it's found
+  - [x] Run `splx complete task --id <id>` and verify completion
+  - [x] Run `splx undo task --id <id>` and verify undo
   - [x] Test with multiple parent types (change, review, spec)
 
 ## Notes

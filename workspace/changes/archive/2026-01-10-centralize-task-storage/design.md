@@ -22,7 +22,7 @@ Stakeholders: AI agents using PLX, developers managing task workflows, CLI maint
 
 **Non-Goals:**
 - Changing the CLI command structure (handled by `standardize-cli-pattern`)
-- Adding `plx create task` command (handled by `add-create-command`)
+- Adding `splx create task` command (handled by `add-create-command`)
 - Migration tooling (handled by `add-migrate-command`)
 - Archive command behavior changes (handled by `update-archive-task-handling`)
 

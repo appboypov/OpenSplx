@@ -26,19 +26,19 @@ All tool-specific command files contain the new guardrails, context retrieval, s
 
 ## Acceptance Criteria
 
-- [ ] `.claude/commands/plx/refine-architecture.md` contains "spec-ready reference" in guardrails
-- [ ] `.claude/commands/plx/refine-architecture.md` contains "Context Retrieval" section
-- [ ] `.claude/commands/plx/refine-architecture.md` contains 7 numbered steps
-- [ ] `.claude/commands/plx/refine-architecture.md` contains "Template Structure" section
-- [ ] `.cursor/commands/plx-refine-architecture.md` contains matching content
-- [ ] `.gemini/commands/plx/refine-architecture.toml` contains matching content
+- [ ] `.claude/commands/splx/refine-architecture.md` contains "spec-ready reference" in guardrails
+- [ ] `.claude/commands/splx/refine-architecture.md` contains "Context Retrieval" section
+- [ ] `.claude/commands/splx/refine-architecture.md` contains 7 numbered steps
+- [ ] `.claude/commands/splx/refine-architecture.md` contains "Template Structure" section
+- [ ] `.cursor/commands/splx-refine-architecture.md` contains matching content
+- [ ] `.gemini/commands/splx/refine-architecture.toml` contains matching content
 
 ## Implementation Checklist
 
-- [x] 2.1 Run `plx update` to regenerate all commands
-- [x] 2.2 Verify `.claude/commands/plx/refine-architecture.md` has new content
-- [x] 2.3 Verify `.cursor/commands/plx-refine-architecture.md` has new content
-- [x] 2.4 Verify `.gemini/commands/plx/refine-architecture.toml` has new content
+- [x] 2.1 Run `splx update` to regenerate all commands
+- [x] 2.2 Verify `.claude/commands/splx/refine-architecture.md` has new content
+- [x] 2.3 Verify `.cursor/commands/splx-refine-architecture.md` has new content
+- [x] 2.4 Verify `.gemini/commands/splx/refine-architecture.toml` has new content
 - [x] 2.5 Verify PLX markers are present in all files
 - [x] 2.6 Run `pnpm test` to ensure no regressions
 

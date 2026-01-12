@@ -8,22 +8,22 @@ parent-id: standardize-cli-pattern
 
 ## End Goal
 
-The `plx list` and `plx show` commands emit deprecation warnings directing users to the new `plx get` equivalents.
+The `splx list` and `splx show` commands emit deprecation warnings directing users to the new `splx get` equivalents.
 
 ## Currently
 
-- `plx list` lists changes without warnings
-- `plx list --specs` lists specs without warnings
-- `plx list --reviews` lists reviews without warnings
-- `plx show <item>` displays item without warnings
+- `splx list` lists changes without warnings
+- `splx list --specs` lists specs without warnings
+- `splx list --reviews` lists reviews without warnings
+- `splx show <item>` displays item without warnings
 - No deprecation messaging exists
 
 ## Should
 
-- `plx list` warns: "Deprecation: 'plx list' is deprecated. Use 'plx get changes' instead."
-- `plx list --specs` warns: "Deprecation: 'plx list --specs' is deprecated. Use 'plx get specs' instead."
-- `plx list --reviews` warns: "Deprecation: 'plx list --reviews' is deprecated. Use 'plx get reviews' instead."
-- `plx show <item>` warns: "Deprecation: 'plx show' is deprecated. Use 'plx get <type> --id <item>' instead."
+- `splx list` warns: "Deprecation: 'splx list' is deprecated. Use 'splx get changes' instead."
+- `splx list --specs` warns: "Deprecation: 'splx list --specs' is deprecated. Use 'splx get specs' instead."
+- `splx list --reviews` warns: "Deprecation: 'splx list --reviews' is deprecated. Use 'splx get reviews' instead."
+- `splx show <item>` warns: "Deprecation: 'splx show' is deprecated. Use 'splx get <type> --id <item>' instead."
 - Warnings go to stderr, not stdout (for script compatibility)
 - Warnings appear once per invocation, not repeated
 - `--quiet` or `--no-deprecation-warnings` suppresses warnings
@@ -36,10 +36,10 @@ The `plx list` and `plx show` commands emit deprecation warnings directing users
 
 ## Acceptance Criteria
 
-- [ ] `plx list` shows deprecation warning on stderr
-- [ ] `plx list --specs` shows appropriate deprecation warning
-- [ ] `plx list --reviews` shows appropriate deprecation warning
-- [ ] `plx show <item>` shows deprecation warning
+- [ ] `splx list` shows deprecation warning on stderr
+- [ ] `splx list --specs` shows appropriate deprecation warning
+- [ ] `splx list --reviews` shows appropriate deprecation warning
+- [ ] `splx show <item>` shows deprecation warning
 - [ ] JSON output remains valid (warnings on stderr only)
 - [ ] Deprecated commands produce identical results to before
 - [ ] Warnings include specific replacement command
@@ -47,8 +47,8 @@ The `plx list` and `plx show` commands emit deprecation warnings directing users
 ## Implementation Checklist
 
 - [x] 4.1 Create deprecation warning utility in `src/utils/`
-- [x] 4.2 Add deprecation warning to `plx list` command
-- [x] 4.3 Add deprecation warning to `plx show` command
+- [x] 4.2 Add deprecation warning to `splx list` command
+- [x] 4.3 Add deprecation warning to `splx show` command
 - [x] 4.4 Ensure warnings go to stderr
 - [x] 4.5 Add global `--no-deprecation-warnings` flag
 - [x] 4.6 Add unit tests for deprecation warning output

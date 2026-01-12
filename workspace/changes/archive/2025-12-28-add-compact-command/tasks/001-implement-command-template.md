@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-The `/plx/compact` slash command is defined in the template system and available for all supported AI tools.
+The `/splx/compact` slash command is defined in the template system and available for all supported AI tools.
 
 ## Currently
 
@@ -15,7 +15,7 @@ Only three PLX slash commands exist: `init-architecture`, `update-architecture`,
 ## Should
 
 - `SplxSlashCommandId` type includes `'compact'`
-- `plxSlashCommandBodies` object includes the compact command body
+- `splxSlashCommandBodies` object includes the compact command body
 - `ALL_PLX_COMMANDS` array includes `'compact'`
 - All 20 configurators have FILE_PATHS and FRONTMATTER entries for compact
 
@@ -27,39 +27,39 @@ Only three PLX slash commands exist: `init-architecture`, `update-architecture`,
 
 ## Acceptance Criteria
 
-- [x] Running `plx init` generates compact.md for each supported tool
+- [x] Running `splx init` generates compact.md for each supported tool
 - [x] Generated command file has valid frontmatter
 - [x] Command body instructs agent to create PROGRESS.md
 - [x] Command body instructs agent to update .gitignore
 
 ## Implementation Checklist
 
-- [x] 1.1 Add `'compact'` to `SplxSlashCommandId` type in `src/core/templates/plx-slash-command-templates.ts`
+- [x] 1.1 Add `'compact'` to `SplxSlashCommandId` type in `src/core/templates/splx-slash-command-templates.ts`
 - [x] 1.2 Add `compactGuardrails` constant with 5 guardrail bullets
 - [x] 1.3 Add `compactSteps` constant with 4 numbered steps
-- [x] 1.4 Add `'compact'` entry to `plxSlashCommandBodies` object
-- [x] 1.5 Add `'compact'` to `ALL_PLX_COMMANDS` array in `src/core/configurators/slash/plx-base.ts`
-- [x] 1.6 Add FILE_PATHS entry in `plx-claude.ts`
-- [x] 1.7 Add FRONTMATTER entry in `plx-claude.ts`
-- [x] 1.8 Add FILE_PATHS and FRONTMATTER entries in `plx-cursor.ts`
-- [x] 1.9 Add FILE_PATHS and FRONTMATTER entries in `plx-windsurf.ts`
-- [x] 1.10 Add FILE_PATHS and FRONTMATTER entries in `plx-cline.ts`
-- [x] 1.11 Add FILE_PATHS and FRONTMATTER entries in `plx-codebuddy.ts`
-- [x] 1.12 Add FILE_PATHS and FRONTMATTER entries in `plx-qoder.ts`
-- [x] 1.13 Add FILE_PATHS and FRONTMATTER entries in `plx-kilocode.ts`
-- [x] 1.14 Add FILE_PATHS and FRONTMATTER entries in `plx-opencode.ts`
-- [x] 1.15 Add FILE_PATHS and FRONTMATTER entries in `plx-codex.ts`
-- [x] 1.16 Add FILE_PATHS and FRONTMATTER entries in `plx-github-copilot.ts`
-- [x] 1.17 Add FILE_PATHS and FRONTMATTER entries in `plx-amazon-q.ts`
-- [x] 1.18 Add FILE_PATHS and FRONTMATTER entries in `plx-factory.ts`
-- [x] 1.19 Add FILE_PATHS and FRONTMATTER entries in `plx-gemini.ts`
-- [x] 1.20 Add FILE_PATHS and FRONTMATTER entries in `plx-auggie.ts`
-- [x] 1.21 Add FILE_PATHS and FRONTMATTER entries in `plx-crush.ts`
-- [x] 1.22 Add FILE_PATHS and FRONTMATTER entries in `plx-costrict.ts`
-- [x] 1.23 Add FILE_PATHS and FRONTMATTER entries in `plx-qwen.ts`
-- [x] 1.24 Add FILE_PATHS and FRONTMATTER entries in `plx-roocode.ts`
-- [x] 1.25 Add FILE_PATHS and FRONTMATTER entries in `plx-antigravity.ts`
-- [x] 1.26 Add FILE_PATHS and FRONTMATTER entries in `plx-iflow.ts`
+- [x] 1.4 Add `'compact'` entry to `splxSlashCommandBodies` object
+- [x] 1.5 Add `'compact'` to `ALL_PLX_COMMANDS` array in `src/core/configurators/slash/splx-base.ts`
+- [x] 1.6 Add FILE_PATHS entry in `splx-claude.ts`
+- [x] 1.7 Add FRONTMATTER entry in `splx-claude.ts`
+- [x] 1.8 Add FILE_PATHS and FRONTMATTER entries in `splx-cursor.ts`
+- [x] 1.9 Add FILE_PATHS and FRONTMATTER entries in `splx-windsurf.ts`
+- [x] 1.10 Add FILE_PATHS and FRONTMATTER entries in `splx-cline.ts`
+- [x] 1.11 Add FILE_PATHS and FRONTMATTER entries in `splx-codebuddy.ts`
+- [x] 1.12 Add FILE_PATHS and FRONTMATTER entries in `splx-qoder.ts`
+- [x] 1.13 Add FILE_PATHS and FRONTMATTER entries in `splx-kilocode.ts`
+- [x] 1.14 Add FILE_PATHS and FRONTMATTER entries in `splx-opencode.ts`
+- [x] 1.15 Add FILE_PATHS and FRONTMATTER entries in `splx-codex.ts`
+- [x] 1.16 Add FILE_PATHS and FRONTMATTER entries in `splx-github-copilot.ts`
+- [x] 1.17 Add FILE_PATHS and FRONTMATTER entries in `splx-amazon-q.ts`
+- [x] 1.18 Add FILE_PATHS and FRONTMATTER entries in `splx-factory.ts`
+- [x] 1.19 Add FILE_PATHS and FRONTMATTER entries in `splx-gemini.ts`
+- [x] 1.20 Add FILE_PATHS and FRONTMATTER entries in `splx-auggie.ts`
+- [x] 1.21 Add FILE_PATHS and FRONTMATTER entries in `splx-crush.ts`
+- [x] 1.22 Add FILE_PATHS and FRONTMATTER entries in `splx-costrict.ts`
+- [x] 1.23 Add FILE_PATHS and FRONTMATTER entries in `splx-qwen.ts`
+- [x] 1.24 Add FILE_PATHS and FRONTMATTER entries in `splx-roocode.ts`
+- [x] 1.25 Add FILE_PATHS and FRONTMATTER entries in `splx-antigravity.ts`
+- [x] 1.26 Add FILE_PATHS and FRONTMATTER entries in `splx-iflow.ts`
 
 ## Notes
 

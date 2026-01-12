@@ -2,7 +2,7 @@ export const reviewTemplate = (): string => `# Review Guidelines
 
 ## Purpose
 This file defines how code reviews should be conducted in this project.
-Run \`/plx:refine-review\` to populate project-specific review scope.
+Run \`/splx:refine-review\` to populate project-specific review scope.
 
 ## Review Config
 \`\`\`yaml

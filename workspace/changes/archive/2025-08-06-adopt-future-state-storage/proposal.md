@@ -9,16 +9,16 @@ The current approach of storing spec changes as diff files (`.spec.md.diff`) cre
 - Change from storing diffs (`patches/[capability]/spec.md.diff`) to storing complete future state (`specs/[capability]/spec.md`)
 - Update all documentation to reflect new storage format
 - Migrate existing `add-init-command` change to new format
-- Add new `plx-conventions` capability to document these conventions
+- Add new `splx-conventions` capability to document these conventions
 
 
 
 ## Impact
 
-- Affected specs: New `plx-conventions` capability
+- Affected specs: New `splx-conventions` capability
 - Affected code: 
   - workspace/README.md (lines 85-108)
   - docs/PRD.md (lines 376-382, 778-783)
-  - docs/plx-walkthrough.md (lines 58-62, 112-126)
+  - docs/splx-walkthrough.md (lines 58-62, 112-126)
   - workspace/changes/add-init-command/ (migration needed)
 

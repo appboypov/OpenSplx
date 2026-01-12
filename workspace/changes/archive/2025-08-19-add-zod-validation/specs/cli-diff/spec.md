@@ -6,7 +6,7 @@ The diff command SHALL validate change structure before displaying differences.
 
 #### Scenario: Validate before diff
 
-- **WHEN** executing `plx diff change-name`
+- **WHEN** executing `splx diff change-name`
 - **THEN** validate change structure
 - **AND** show validation warnings if present
 - **AND** continue with diff display

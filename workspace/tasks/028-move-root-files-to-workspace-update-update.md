@@ -8,7 +8,7 @@ parent-id: move-root-files-to-workspace
 # Task: Update update command with migration and new paths
 
 ## End Goal
-`plx update` runs root files migration and creates missing template files in `workspace/` instead of project root.
+`splx update` runs root files migration and creates missing template files in `workspace/` instead of project root.
 
 ## Currently
 `src/core/update.ts`:
@@ -28,8 +28,8 @@ parent-id: move-root-files-to-workspace
 - [ ] Template file creation uses workspace path
 
 ## Acceptance Criteria
-- [ ] `plx update` migrates root files to workspace when they exist
-- [ ] `plx update` creates missing template files in workspace
+- [ ] `splx update` migrates root files to workspace when they exist
+- [ ] `splx update` creates missing template files in workspace
 - [ ] Migration logs show which files were migrated
 - [ ] No output when no migration is needed
 

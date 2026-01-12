@@ -2,7 +2,7 @@
 
 ## Purpose
 This file defines how code reviews should be conducted in this project.
-Run `/plx:refine-review` to populate project-specific review scope.
+Run `/splx:refine-review` to populate project-specific review scope.
 
 ## Review Config
 ```yaml
@@ -29,7 +29,7 @@ checklist_level: standard
 - ESLint config: `.eslintrc.json`
 - TypeScript strict mode: `tsconfig.json`
 - File naming: kebab-case for files, PascalCase for classes
-- Command structure: verb-entity pattern (`plx get change`, `plx validate spec`)
+- Command structure: verb-entity pattern (`splx get change`, `splx validate spec`)
 - Test files: `*.test.ts` colocated in `test/` mirror of `src/`
 
 ### Critical Paths

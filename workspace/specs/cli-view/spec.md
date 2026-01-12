@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The `plx view` command provides a comprehensive dashboard view of the OpenSplx project state, displaying specifications, changes, and progress metrics in a unified, visually appealing format to help developers quickly understand project status.
+The `splx view` command provides a comprehensive dashboard view of the OpenSplx project state, displaying specifications, changes, and progress metrics in a unified, visually appealing format to help developers quickly understand project status.
 ## Requirements
 ### Requirement: Dashboard Display
 
@@ -10,12 +10,12 @@ The system SHALL provide a `view` command that displays a dashboard overview of 
 
 #### Scenario: Basic dashboard display
 
-- **WHEN** user runs `plx view`
+- **WHEN** user runs `splx view`
 - **THEN** system displays a formatted dashboard with sections for summary, active changes, completed changes, and specifications
 
 #### Scenario: No workspace directory
 
-- **WHEN** user runs `plx view` in a directory without OpenSplx
+- **WHEN** user runs `splx view` in a directory without OpenSplx
 - **THEN** system displays error message "No workspace directory found"
 
 ### Requirement: Summary Section

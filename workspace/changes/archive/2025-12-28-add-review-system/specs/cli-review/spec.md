@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The `plx review` command provides subcommands for managing code reviews as a trackable entity alongside changes and specs.
+The `splx review` command provides subcommands for managing code reviews as a trackable entity alongside changes and specs.
 
 ## ADDED Requirements
 
@@ -12,14 +12,14 @@ The command SHALL list all active reviews in the project.
 
 #### Scenario: Listing active reviews
 
-- **WHEN** `plx review list` is executed
+- **WHEN** `splx review list` is executed
 - **THEN** scan the `workspace/reviews/` directory for review directories
 - **AND** exclude the `archive/` subdirectory from results
 - **AND** display each review with name, target type, target ID, and task progress
 
 #### Scenario: JSON output for review list
 
-- **WHEN** `plx review list --json` is executed
+- **WHEN** `splx review list --json` is executed
 - **THEN** output a JSON array of review objects
 - **AND** each object includes: id, status, targetType, targetId, reviewedAt, taskProgress
 
@@ -34,7 +34,7 @@ The command SHALL display details of a specific review.
 
 #### Scenario: Showing review details
 
-- **WHEN** `plx review show <review-id>` is executed
+- **WHEN** `splx review show <review-id>` is executed
 - **THEN** read the review.md from `workspace/reviews/<review-id>/`
 - **AND** display: status, target type, target ID, reviewed date, scope, findings summary
 - **AND** list tasks with their status and spec-impact
@@ -47,7 +47,7 @@ The command SHALL display details of a specific review.
 
 #### Scenario: JSON output for review show
 
-- **WHEN** `plx review show <review-id> --json` is executed
+- **WHEN** `splx review show <review-id> --json` is executed
 - **THEN** output a JSON object with full review details
 - **AND** include tasks array with status and specImpact fields
 

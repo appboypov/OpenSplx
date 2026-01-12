@@ -2,14 +2,14 @@
 
 ### Requirement: Documentation Branding
 
-All agent instruction documentation SHALL reference "OpenSplx" instead of "OpenSplx" and use `splx` command instead of `plx`.
+All agent instruction documentation SHALL reference "OpenSplx" instead of "OpenSplx" and use `splx` command instead of `splx`.
 
 #### Scenario: AGENTS.md content
 
 - **WHEN** generating or updating `workspace/AGENTS.md`
 - **THEN** all references to "OpenSplx" are replaced with "OpenSplx"
-- **AND** all command examples use `splx` instead of `plx`
-- **AND** all package references use `@appboypov/opensplx` instead of `@appboypov/pew-pew-plx`
+- **AND** all command examples use `splx` instead of `splx`
+- **AND** all package references use `@appboypov/opensplx` instead of `@appboypov/pew-pew-splx`
 
 #### Scenario: README.md content
 

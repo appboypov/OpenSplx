@@ -6,7 +6,7 @@ The centralized task storage refactor (PLX-44) introduces a new task storage str
 
 ## What Changes
 
-- **BREAKING**: Add `plx migrate tasks` command that:
+- **BREAKING**: Add `splx migrate tasks` command that:
   - Scans `workspace/changes/*/tasks/` for existing task files
   - Scans `workspace/reviews/*/tasks/` for existing task files
   - Moves each task file to `workspace/tasks/`

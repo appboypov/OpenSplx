@@ -8,7 +8,7 @@ parent-id: extend-complete-undo
 
 ## End Goal
 
-Users can run `plx complete review --id <id>` and `plx complete spec --id <id>` to complete all tasks associated with a review or spec.
+Users can run `splx complete review --id <id>` and `splx complete spec --id <id>` to complete all tasks associated with a review or spec.
 
 ## Currently
 
@@ -36,8 +36,8 @@ Users can run `plx complete review --id <id>` and `plx complete spec --id <id>` 
 
 ## Acceptance Criteria
 
-- [x] `plx complete review --id <id>` completes all tasks in the review
-- [x] `plx complete spec --id <id>` completes all tasks linked to the spec
+- [x] `splx complete review --id <id>` completes all tasks in the review
+- [x] `splx complete spec --id <id>` completes all tasks linked to the spec
 - [x] Already-done tasks are skipped with appropriate message
 - [x] Non-existent entities produce error with exit code 1
 - [x] `--json` flag produces valid JSON output

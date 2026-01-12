@@ -4,7 +4,7 @@
 The update command SHALL update PLX instruction files to the latest templates in a team-friendly manner.
 
 #### Scenario: Running update command
-- **WHEN** a user runs `plx update`
+- **WHEN** a user runs `splx update`
 - **THEN** replace `workspace/AGENTS.md` with the latest template
 
 ### Requirement: File Handling

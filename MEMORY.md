@@ -16,6 +16,6 @@ Long-term context for AI assistants working on this project.
 ## Project Context
 
 - This is a fork of OpenSpec (`Fission-AI/OpenSpec`)
-- CLI command: `plx`
-- Package: `appboypov/pew-pew-plx`
+- CLI command: `splx`
+- Package: `appboypov/pew-pew-splx`
 - Monorepo-aware with multi-workspace support

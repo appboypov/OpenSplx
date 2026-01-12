@@ -2,7 +2,7 @@
 
 ## End Goal
 
-Test coverage verifies that `getPrioritizedChange()` correctly filters out non-actionable changes and that `plx act next` command behaves correctly with the new filtering.
+Test coverage verifies that `getPrioritizedChange()` correctly filters out non-actionable changes and that `splx act next` command behaves correctly with the new filtering.
 
 ## Currently
 

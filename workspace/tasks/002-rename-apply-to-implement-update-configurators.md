@@ -21,7 +21,7 @@ Each tool configurator defines a `PATHS` object with `apply: '<path>'` entries p
 
 ## Constraints
 
-- Preserve tool-specific path patterns (some use `/plx/`, some use `-plx-`, some use `.toml`)
+- Preserve tool-specific path patterns (some use `/splx/`, some use `-splx-`, some use `.toml`)
 - Maintain consistent naming per tool conventions
 
 ## Acceptance Criteria
@@ -32,26 +32,26 @@ Each tool configurator defines a `PATHS` object with `apply: '<path>'` entries p
 
 ## Implementation Checklist
 
-- [x] Update `src/core/configurators/slash/amazon-q.ts` - PATHS.apply → PATHS.implement, path: `.amazonq/prompts/plx-apply.md` → `.amazonq/prompts/plx-implement.md`
-- [x] Update `src/core/configurators/slash/antigravity.ts` - PATHS.apply → PATHS.implement, path: `.agent/workflows/plx-apply.md` → `.agent/workflows/plx-implement.md`
-- [x] Update `src/core/configurators/slash/auggie.ts` - PATHS.apply → PATHS.implement, path: `.augment/commands/plx-apply.md` → `.augment/commands/plx-implement.md`
-- [x] Update `src/core/configurators/slash/claude.ts` - PATHS.apply → PATHS.implement, path: `.claude/commands/plx/apply.md` → `.claude/commands/plx/implement.md`, frontmatter name/tags
-- [x] Update `src/core/configurators/slash/cline.ts` - PATHS.apply → PATHS.implement, path: `.clinerules/workflows/plx-apply.md` → `.clinerules/workflows/plx-implement.md`
-- [x] Update `src/core/configurators/slash/codebuddy.ts` - PATHS.apply → PATHS.implement, path: `.codebuddy/commands/plx/apply.md` → `.codebuddy/commands/plx/implement.md`, frontmatter
-- [x] Update `src/core/configurators/slash/codex.ts` - PATHS.apply → PATHS.implement, path: `.codex/prompts/plx-apply.md` → `.codex/prompts/plx-implement.md`
-- [x] Update `src/core/configurators/slash/costrict.ts` - PATHS.apply → PATHS.implement, path: `.cospec/plx/commands/plx-apply.md` → `.cospec/plx/commands/plx-implement.md`
-- [x] Update `src/core/configurators/slash/crush.ts` - PATHS.apply → PATHS.implement, path: `.crush/commands/plx/apply.md` → `.crush/commands/plx/implement.md`, frontmatter
-- [x] Update `src/core/configurators/slash/cursor.ts` - PATHS.apply → PATHS.implement, path: `.cursor/commands/plx-apply.md` → `.cursor/commands/plx-implement.md`, frontmatter id
-- [x] Update `src/core/configurators/slash/factory.ts` - PATHS.apply → PATHS.implement, path: `.factory/commands/plx-apply.md` → `.factory/commands/plx-implement.md`
-- [x] Update `src/core/configurators/slash/gemini.ts` - PATHS.apply → PATHS.implement, path: `.gemini/commands/plx/apply.toml` → `.gemini/commands/plx/implement.toml`
-- [x] Update `src/core/configurators/slash/github-copilot.ts` - PATHS.apply → PATHS.implement, path: `.github/prompts/plx-apply.prompt.md` → `.github/prompts/plx-implement.prompt.md`
-- [x] Update `src/core/configurators/slash/iflow.ts` - PATHS.apply → PATHS.implement, path: `.iflow/commands/plx-apply.md` → `.iflow/commands/plx-implement.md`, frontmatter id
-- [x] Update `src/core/configurators/slash/kilocode.ts` - PATHS.apply → PATHS.implement, path: `.kilocode/workflows/plx-apply.md` → `.kilocode/workflows/plx-implement.md`
-- [x] Update `src/core/configurators/slash/opencode.ts` - PATHS.apply → PATHS.implement, path: `.opencode/command/plx-apply.md` → `.opencode/command/plx-implement.md`
-- [x] Update `src/core/configurators/slash/qoder.ts` - PATHS.apply → PATHS.implement, path: `.qoder/commands/plx/apply.md` → `.qoder/commands/plx/implement.md`, frontmatter
-- [x] Update `src/core/configurators/slash/qwen.ts` - PATHS.apply → PATHS.implement, path: `.qwen/commands/plx-apply.toml` → `.qwen/commands/plx-implement.toml`
-- [x] Update `src/core/configurators/slash/roocode.ts` - PATHS.apply → PATHS.implement, path: `.roo/commands/plx-apply.md` → `.roo/commands/plx-implement.md`
-- [x] Update `src/core/configurators/slash/windsurf.ts` - PATHS.apply → PATHS.implement, path: `.windsurf/workflows/plx-apply.md` → `.windsurf/workflows/plx-implement.md`
+- [x] Update `src/core/configurators/slash/amazon-q.ts` - PATHS.apply → PATHS.implement, path: `.amazonq/prompts/splx-apply.md` → `.amazonq/prompts/splx-implement.md`
+- [x] Update `src/core/configurators/slash/antigravity.ts` - PATHS.apply → PATHS.implement, path: `.agent/workflows/splx-apply.md` → `.agent/workflows/splx-implement.md`
+- [x] Update `src/core/configurators/slash/auggie.ts` - PATHS.apply → PATHS.implement, path: `.augment/commands/splx-apply.md` → `.augment/commands/splx-implement.md`
+- [x] Update `src/core/configurators/slash/claude.ts` - PATHS.apply → PATHS.implement, path: `.claude/commands/splx/apply.md` → `.claude/commands/splx/implement.md`, frontmatter name/tags
+- [x] Update `src/core/configurators/slash/cline.ts` - PATHS.apply → PATHS.implement, path: `.clinerules/workflows/splx-apply.md` → `.clinerules/workflows/splx-implement.md`
+- [x] Update `src/core/configurators/slash/codebuddy.ts` - PATHS.apply → PATHS.implement, path: `.codebuddy/commands/splx/apply.md` → `.codebuddy/commands/splx/implement.md`, frontmatter
+- [x] Update `src/core/configurators/slash/codex.ts` - PATHS.apply → PATHS.implement, path: `.codex/prompts/splx-apply.md` → `.codex/prompts/splx-implement.md`
+- [x] Update `src/core/configurators/slash/costrict.ts` - PATHS.apply → PATHS.implement, path: `.cospec/splx/commands/splx-apply.md` → `.cospec/splx/commands/splx-implement.md`
+- [x] Update `src/core/configurators/slash/crush.ts` - PATHS.apply → PATHS.implement, path: `.crush/commands/splx/apply.md` → `.crush/commands/splx/implement.md`, frontmatter
+- [x] Update `src/core/configurators/slash/cursor.ts` - PATHS.apply → PATHS.implement, path: `.cursor/commands/splx-apply.md` → `.cursor/commands/splx-implement.md`, frontmatter id
+- [x] Update `src/core/configurators/slash/factory.ts` - PATHS.apply → PATHS.implement, path: `.factory/commands/splx-apply.md` → `.factory/commands/splx-implement.md`
+- [x] Update `src/core/configurators/slash/gemini.ts` - PATHS.apply → PATHS.implement, path: `.gemini/commands/splx/apply.toml` → `.gemini/commands/splx/implement.toml`
+- [x] Update `src/core/configurators/slash/github-copilot.ts` - PATHS.apply → PATHS.implement, path: `.github/prompts/splx-apply.prompt.md` → `.github/prompts/splx-implement.prompt.md`
+- [x] Update `src/core/configurators/slash/iflow.ts` - PATHS.apply → PATHS.implement, path: `.iflow/commands/splx-apply.md` → `.iflow/commands/splx-implement.md`, frontmatter id
+- [x] Update `src/core/configurators/slash/kilocode.ts` - PATHS.apply → PATHS.implement, path: `.kilocode/workflows/splx-apply.md` → `.kilocode/workflows/splx-implement.md`
+- [x] Update `src/core/configurators/slash/opencode.ts` - PATHS.apply → PATHS.implement, path: `.opencode/command/splx-apply.md` → `.opencode/command/splx-implement.md`
+- [x] Update `src/core/configurators/slash/qoder.ts` - PATHS.apply → PATHS.implement, path: `.qoder/commands/splx/apply.md` → `.qoder/commands/splx/implement.md`, frontmatter
+- [x] Update `src/core/configurators/slash/qwen.ts` - PATHS.apply → PATHS.implement, path: `.qwen/commands/splx-apply.toml` → `.qwen/commands/splx-implement.toml`
+- [x] Update `src/core/configurators/slash/roocode.ts` - PATHS.apply → PATHS.implement, path: `.roo/commands/splx-apply.md` → `.roo/commands/splx-implement.md`
+- [x] Update `src/core/configurators/slash/windsurf.ts` - PATHS.apply → PATHS.implement, path: `.windsurf/workflows/splx-apply.md` → `.windsurf/workflows/splx-implement.md`
 
 ## Notes
 

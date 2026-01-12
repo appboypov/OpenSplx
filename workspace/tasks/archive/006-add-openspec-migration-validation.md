@@ -27,16 +27,16 @@ Run full validation suite.
 - [ ] `pnpm lint` passes
 - [ ] `pnpm build` succeeds
 - [ ] `pnpm test` passes
-- [ ] `plx validate --all` passes
+- [ ] `splx validate --all` passes
 
 ## Implementation Checklist
 
 - [x] Run `pnpm lint` and fix issues
 - [x] Run `pnpm build` and verify success
 - [x] Run `pnpm test` and fix failures
-- [x] Run `plx validate --all` and resolve issues
-- [x] Manual test: run `plx update` on mock OpenSpec project
-- [x] Manual test: run `plx init` on mock OpenSpec project
+- [x] Run `splx validate --all` and resolve issues
+- [x] Manual test: run `splx update` on mock OpenSpec project
+- [x] Manual test: run `splx init` on mock OpenSpec project
 
 ## Notes
 

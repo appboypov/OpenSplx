@@ -30,7 +30,7 @@ All code changes are reviewed against the proposal and spec deltas.
 - [x] 3.1 Verify FeedbackScannerService excludes defaults correctly
 - [x] 3.2 Verify CLI options pass to service correctly
 - [x] 3.3 Verify tests cover all scenarios in spec
-- [x] 3.4 Run `plx validate change --id add-feedback-scanner-excludes --strict`
+- [x] 3.4 Run `splx validate change --id add-feedback-scanner-excludes --strict`
 - [x] 3.5 Run full test suite and confirm no failures
 
 ## Notes

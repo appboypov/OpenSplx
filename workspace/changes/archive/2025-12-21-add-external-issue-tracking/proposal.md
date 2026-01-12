@@ -7,7 +7,7 @@ When external issues (Linear, GitHub, Jira, etc.) are provided with a proposal, 
 ## What Changes
 
 - Add YAML frontmatter support to proposal.md for storing tracked issue references
-- Display issue identifiers in CLI output (`plx list`, `plx show`, `plx archive`)
+- Display issue identifiers in CLI output (`splx list`, `splx show`, `splx archive`)
 - Add "External Issue Tracking" section to AGENTS.md with guidance for detecting, storing, and updating external issues
 
 ## Impact

@@ -16,7 +16,7 @@ After implementing the centralized task storage and CLI standardization changes 
 
 ## Impact
 
-- Affected specs: `docs-agent-instructions`, `plx-slash-commands`
+- Affected specs: `docs-agent-instructions`, `splx-slash-commands`
 - Affected code: All configurators, templates, completions, test files
 - Affected files: AGENTS.md, CLAUDE.md, ARCHITECTURE.md, all slash commands
 - **No breaking changes beyond what previous proposals already introduced**

@@ -9,7 +9,7 @@ parent-id: update-monorepo-command-behavior
 
 ## End Goal
 
-The `/plx/prepare-release` slash command explicitly instructs AI agents to never use "Unreleased" in changelogs, always determine concrete version numbers, run `date` command for accurate release dates, and suggest appropriate version bumps.
+The `/splx/prepare-release` slash command explicitly instructs AI agents to never use "Unreleased" in changelogs, always determine concrete version numbers, run `date` command for accurate release dates, and suggest appropriate version bumps.
 
 ## Currently
 
@@ -40,7 +40,7 @@ The command should include explicit guardrails and steps for:
 
 ## Implementation Checklist
 
-- [x] 1.1 Read current `.claude/commands/plx/prepare-release.md`
+- [x] 1.1 Read current `.claude/commands/splx/prepare-release.md`
 - [x] 1.2 Add guardrail: "Never use 'Unreleased' in changelog - always determine concrete next version"
 - [x] 1.3 Add guardrail: "Run `date` command to get accurate release date"
 - [x] 1.4 Add version bump suggestion guidance in changelog update step

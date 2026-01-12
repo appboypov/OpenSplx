@@ -35,7 +35,7 @@ After making the changes, the build and tests need verification.
 - [x] Run `pnpm build` and fix any TypeScript errors
 - [x] Run `pnpm lint` and fix any lint issues
 - [x] Run `pnpm test` and fix any failing tests
-- [x] Run `plx validate --all` to validate specs
+- [x] Run `splx validate --all` to validate specs
 
 ## Notes
 

@@ -9,7 +9,7 @@ describe('get task command', () => {
   const testDir = path.join(projectRoot, 'test-get-command-tmp');
   const changesDir = path.join(testDir, 'workspace', 'changes');
   const centralTasksDir = path.join(testDir, 'workspace', 'tasks');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -26,7 +26,7 @@ describe('get task command', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task 2>&1`, {
+        const output = execSync(`node ${splxBin} get task 2>&1`, {
           encoding: 'utf-8',
         });
         expect(output).toContain('No active changes found');
@@ -66,7 +66,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task`, {
+        const output = execSync(`node ${splxBin} get task`, {
           encoding: 'utf-8',
         });
         expect(output).toContain('Proposal: test-change');
@@ -106,7 +106,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task 2>&1`, {
+        const output = execSync(`node ${splxBin} get task 2>&1`, {
           encoding: 'utf-8',
         });
         expect(output).toContain('No active changes found');
@@ -144,7 +144,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task --json`, {
+        const output = execSync(`node ${splxBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -166,7 +166,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task --json`, {
+        const output = execSync(`node ${splxBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -220,7 +220,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --did-complete-previous`,
+          `node ${splxBin} get task --did-complete-previous`,
           { encoding: 'utf-8' }
         );
 
@@ -277,7 +277,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --did-complete-previous 2>&1`,
+          `node ${splxBin} get task --did-complete-previous 2>&1`,
           { encoding: 'utf-8' }
         );
         expect(output).toContain('No in-progress task found');
@@ -344,7 +344,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         execSync(
-          `node ${plxBin} get task --did-complete-previous`,
+          `node ${splxBin} get task --did-complete-previous`,
           { encoding: 'utf-8' }
         );
 
@@ -409,7 +409,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --did-complete-previous --json`,
+          `node ${splxBin} get task --did-complete-previous --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -465,7 +465,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --did-complete-previous`,
+          `node ${splxBin} get task --did-complete-previous`,
           { encoding: 'utf-8' }
         );
 
@@ -525,7 +525,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task`, {
+        const output = execSync(`node ${splxBin} get task`, {
           encoding: 'utf-8',
         });
 
@@ -585,7 +585,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task`, {
+        const output = execSync(`node ${splxBin} get task`, {
           encoding: 'utf-8',
         });
 
@@ -652,7 +652,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task`, {
+        const output = execSync(`node ${splxBin} get task`, {
           encoding: 'utf-8',
         });
 
@@ -731,7 +731,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task`, {
+        const output = execSync(`node ${splxBin} get task`, {
           encoding: 'utf-8',
         });
 
@@ -800,7 +800,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task --json`, {
+        const output = execSync(`node ${splxBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -837,7 +837,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task --json`, { encoding: 'utf-8' });
+        const output = execSync(`node ${splxBin} get task --json`, { encoding: 'utf-8' });
         const json = JSON.parse(output);
 
         expect(json.autoCompletedTask).toBeDefined();
@@ -860,7 +860,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task 2>&1`, { encoding: 'utf-8' });
+        const output = execSync(`node ${splxBin} get task 2>&1`, { encoding: 'utf-8' });
         expect(output).toContain('Auto-completed task');
         expect(output).toContain('All tasks complete');
       } finally {
@@ -900,7 +900,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         // Use 2>&1 to capture both stdout and stderr (ora outputs to stderr)
-        const output = execSync(`node ${plxBin} get task 2>&1`, {
+        const output = execSync(`node ${splxBin} get task 2>&1`, {
           encoding: 'utf-8',
         });
 
@@ -970,7 +970,7 @@ parent-id: actionable-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task --json`, {
+        const output = execSync(`node ${splxBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -1009,7 +1009,7 @@ parent-id: actionable-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task --json`, {
+        const output = execSync(`node ${splxBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -1073,7 +1073,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task --json`, {
+        const output = execSync(`node ${splxBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -1123,7 +1123,7 @@ status: to-do
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --id 002-second-task`,
+          `node ${splxBin} get task --id 002-second-task`,
           { encoding: 'utf-8' }
         );
         expect(output).toContain('Task 2: 002-second-task');
@@ -1148,7 +1148,7 @@ status: to-do
         process.chdir(testDir);
         try {
           execSync(
-            `node ${plxBin} get task --id nonexistent --json`,
+            `node ${splxBin} get task --id nonexistent --json`,
             { encoding: 'utf-8' }
           );
         } catch (error: any) {
@@ -1187,7 +1187,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --id 001-test-change-my-task --json`,
+          `node ${splxBin} get task --id 001-test-change-my-task --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -1227,7 +1227,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task --json`, {
+        const output = execSync(`node ${splxBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -1271,7 +1271,7 @@ status: to-do
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --id 001-my-task --json`,
+          `node ${splxBin} get task --id 001-my-task --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -1317,7 +1317,7 @@ parent-id: test-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get task --json`, {
+        const output = execSync(`node ${splxBin} get task --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -1355,7 +1355,7 @@ status: in-progress
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --id 001-task --json`,
+          `node ${splxBin} get task --id 001-task --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -1405,7 +1405,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --constraints`,
+          `node ${splxBin} get task --constraints`,
           { encoding: 'utf-8' }
         );
         expect(output).toContain('Constraints');
@@ -1452,7 +1452,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --acceptance-criteria`,
+          `node ${splxBin} get task --acceptance-criteria`,
           { encoding: 'utf-8' }
         );
         expect(output).toContain('Acceptance Criteria');
@@ -1498,7 +1498,7 @@ parent-id: test-change
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --constraints --acceptance-criteria`,
+          `node ${splxBin} get task --constraints --acceptance-criteria`,
           { encoding: 'utf-8' }
         );
         expect(output).toContain('Constraints');
@@ -1539,7 +1539,7 @@ status: to-do
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get task --id 001-task --constraints`,
+          `node ${splxBin} get task --id 001-task --constraints`,
           { encoding: 'utf-8' }
         );
         expect(output).toContain('Only this');
@@ -1555,7 +1555,7 @@ describe('get change command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-get-change-tmp');
   const changesDir = path.join(testDir, 'workspace', 'changes');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -1588,7 +1588,7 @@ describe('get change command', () => {
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get change --id my-change`,
+        `node ${splxBin} get change --id my-change`,
         { encoding: 'utf-8' }
       );
       expect(output).toContain('Proposal: my-change');
@@ -1607,7 +1607,7 @@ describe('get change command', () => {
       process.chdir(testDir);
       try {
         execSync(
-          `node ${plxBin} get change --id nonexistent --json`,
+          `node ${splxBin} get change --id nonexistent --json`,
           { encoding: 'utf-8' }
         );
       } catch (error: any) {
@@ -1637,7 +1637,7 @@ describe('get change command', () => {
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get change --id test-change --json`,
+        `node ${splxBin} get change --id test-change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -1670,7 +1670,7 @@ Users can log in`
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get change --id test-change --json --deltas-only`,
+        `node ${splxBin} get change --id test-change --json --deltas-only`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -1689,7 +1689,7 @@ describe('get spec command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-get-spec-tmp');
   const specsDir = path.join(testDir, 'workspace', 'specs');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -1713,7 +1713,7 @@ describe('get spec command', () => {
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get spec --id user-auth`,
+        `node ${splxBin} get spec --id user-auth`,
         { encoding: 'utf-8' }
       );
       expect(output).toContain('Spec: user-auth');
@@ -1730,7 +1730,7 @@ describe('get spec command', () => {
       process.chdir(testDir);
       try {
         execSync(
-          `node ${plxBin} get spec --id nonexistent --json`,
+          `node ${splxBin} get spec --id nonexistent --json`,
           { encoding: 'utf-8' }
         );
       } catch (error: any) {
@@ -1755,7 +1755,7 @@ describe('get spec command', () => {
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get spec --id test-spec --json`,
+        `node ${splxBin} get spec --id test-spec --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -1788,7 +1788,7 @@ When user enters valid credentials`
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get spec --id test-spec --json --requirements`,
+        `node ${splxBin} get spec --id test-spec --json --requirements`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -1823,7 +1823,7 @@ When user enters valid credentials`
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get spec --id test-spec --json --no-scenarios`,
+        `node ${splxBin} get spec --id test-spec --json --no-scenarios`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -1858,7 +1858,7 @@ Second requirement`
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get spec --id test-spec --json -r 2`,
+        `node ${splxBin} get spec --id test-spec --json -r 2`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -1876,7 +1876,7 @@ describe('get tasks command', () => {
   const testDir = path.join(projectRoot, 'test-get-tasks-tmp');
   const changesDir = path.join(testDir, 'workspace', 'changes');
   const centralTasksDir = path.join(testDir, 'workspace', 'tasks');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -1934,7 +1934,7 @@ parent-id: change-two
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get tasks --json`, {
+      const output = execSync(`node ${splxBin} get tasks --json`, {
         encoding: 'utf-8',
       });
       const json = JSON.parse(output);
@@ -1978,7 +1978,7 @@ parent-id: my-change
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get tasks --parent-id my-change --json`,
+        `node ${splxBin} get tasks --parent-id my-change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -2010,7 +2010,7 @@ parent-id: complete-change
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get tasks --json`, {
+      const output = execSync(`node ${splxBin} get tasks --json`, {
         encoding: 'utf-8',
       });
       const json = JSON.parse(output);
@@ -2041,7 +2041,7 @@ parent-id: test-change
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get tasks`, {
+      const output = execSync(`node ${splxBin} get tasks`, {
         encoding: 'utf-8',
       });
       expect(output).toContain('Open Tasks');
@@ -2080,7 +2080,7 @@ status: to-do
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get tasks --json`, {
+        const output = execSync(`node ${splxBin} get tasks --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(output);
@@ -2118,7 +2118,7 @@ parent-id: my-change
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        const output = execSync(`node ${plxBin} get tasks`, {
+        const output = execSync(`node ${splxBin} get tasks`, {
           encoding: 'utf-8',
         });
 
@@ -2154,7 +2154,7 @@ status: in-progress
         process.chdir(testDir);
 
         // Get the task ID from get tasks
-        const listOutput = execSync(`node ${plxBin} get tasks --json`, {
+        const listOutput = execSync(`node ${splxBin} get tasks --json`, {
           encoding: 'utf-8',
         });
         const json = JSON.parse(listOutput);
@@ -2162,7 +2162,7 @@ status: in-progress
 
         // The ID should be usable with complete command
         const completeOutput = execSync(
-          `node ${plxBin} complete task --id ${taskId} --json`,
+          `node ${splxBin} complete task --id ${taskId} --json`,
           { encoding: 'utf-8' }
         );
         const completeJson = JSON.parse(completeOutput);
@@ -2198,7 +2198,7 @@ status: done
 
         // The task ID should work with undo command
         const undoOutput = execSync(
-          `node ${plxBin} undo task --id 001-undoable-task --json`,
+          `node ${splxBin} undo task --id 001-undoable-task --json`,
           { encoding: 'utf-8' }
         );
         const undoJson = JSON.parse(undoOutput);
@@ -2240,7 +2240,7 @@ parent-id: specific-change
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} get tasks --parent-id specific-change --json`,
+          `node ${splxBin} get tasks --parent-id specific-change --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -2260,7 +2260,7 @@ describe('get changes command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-get-changes-tmp');
   const changesDir = path.join(testDir, 'workspace', 'changes');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -2275,7 +2275,7 @@ describe('get changes command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get changes 2>&1`, {
+      const output = execSync(`node ${splxBin} get changes 2>&1`, {
         encoding: 'utf-8',
       });
       expect(output).toContain('No active changes found');
@@ -2320,7 +2320,7 @@ status: to-do
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get changes`, {
+      const output = execSync(`node ${splxBin} get changes`, {
         encoding: 'utf-8',
       });
       expect(output).toContain('Changes:');
@@ -2360,7 +2360,7 @@ parent-id: test-change
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get changes --json`, {
+      const output = execSync(`node ${splxBin} get changes --json`, {
         encoding: 'utf-8',
       });
       const json = JSON.parse(output);
@@ -2398,7 +2398,7 @@ Test
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get changes --json`, {
+      const output = execSync(`node ${splxBin} get changes --json`, {
         encoding: 'utf-8',
       });
       const json = JSON.parse(output);
@@ -2413,7 +2413,7 @@ describe('get specs command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-get-specs-tmp');
   const specsDir = path.join(testDir, 'workspace', 'specs');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -2428,7 +2428,7 @@ describe('get specs command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get specs 2>&1`, {
+      const output = execSync(`node ${splxBin} get specs 2>&1`, {
         encoding: 'utf-8',
       });
       expect(output).toContain('No specs found');
@@ -2455,7 +2455,7 @@ describe('get specs command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get specs`, {
+      const output = execSync(`node ${splxBin} get specs`, {
         encoding: 'utf-8',
       });
       expect(output).toContain('Specs:');
@@ -2477,7 +2477,7 @@ describe('get specs command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get specs --json`, {
+      const output = execSync(`node ${splxBin} get specs --json`, {
         encoding: 'utf-8',
       });
       const json = JSON.parse(output);
@@ -2494,7 +2494,7 @@ describe('get reviews command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-get-reviews-tmp');
   const reviewsDir = path.join(testDir, 'workspace', 'reviews');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -2509,7 +2509,7 @@ describe('get reviews command', () => {
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get reviews 2>&1`, {
+      const output = execSync(`node ${splxBin} get reviews 2>&1`, {
         encoding: 'utf-8',
       });
       expect(output).toContain('No active reviews found');
@@ -2544,7 +2544,7 @@ status: to-do
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get reviews`, {
+      const output = execSync(`node ${splxBin} get reviews`, {
         encoding: 'utf-8',
       });
       expect(output).toContain('Reviews:');
@@ -2583,7 +2583,7 @@ status: done
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get reviews --json`, {
+      const output = execSync(`node ${splxBin} get reviews --json`, {
         encoding: 'utf-8',
       });
       const json = JSON.parse(output);
@@ -2601,7 +2601,7 @@ describe('get review command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-get-review-tmp');
   const reviewsDir = path.join(testDir, 'workspace', 'reviews');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await createValidSplxWorkspace(testDir);
@@ -2632,7 +2632,7 @@ Some review content here.`
     const originalCwd = process.cwd();
     try {
       process.chdir(testDir);
-      const output = execSync(`node ${plxBin} get review --id my-review`, {
+      const output = execSync(`node ${splxBin} get review --id my-review`, {
         encoding: 'utf-8',
       });
       expect(output).toContain('Review: my-review');
@@ -2648,7 +2648,7 @@ Some review content here.`
     try {
       process.chdir(testDir);
       try {
-        execSync(`node ${plxBin} get review --id nonexistent --json`, {
+        execSync(`node ${splxBin} get review --id nonexistent --json`, {
           encoding: 'utf-8',
         });
       } catch (error: any) {
@@ -2681,7 +2681,7 @@ Content for JSON output.`
     try {
       process.chdir(testDir);
       const output = execSync(
-        `node ${plxBin} get review --id json-test-review --json`,
+        `node ${splxBin} get review --id json-test-review --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);

@@ -8,20 +8,20 @@ parent-id: standardize-cli-pattern
 
 ## End Goal
 
-The `plx archive` command uses entity subcommands with `--id` flag for consistent pattern.
+The `splx archive` command uses entity subcommands with `--id` flag for consistent pattern.
 
 ## Currently
 
-- `plx archive <id>` archives with auto-detection (change or review)
-- `plx archive <id> --type review` explicitly archives a review
+- `splx archive <id>` archives with auto-detection (change or review)
+- `splx archive <id> --type review` explicitly archives a review
 - Interactive selection when no ID provided
 
 ## Should
 
-- `plx archive change --id <id>` archives specific change
-- `plx archive review --id <id>` archives specific review
-- Legacy `plx archive <id>` continues with deprecation warning
-- Legacy `plx archive <id> --type <type>` continues with deprecation warning
+- `splx archive change --id <id>` archives specific change
+- `splx archive review --id <id>` archives specific review
+- Legacy `splx archive <id>` continues with deprecation warning
+- Legacy `splx archive <id> --type <type>` continues with deprecation warning
 - Interactive selection prompts for entity type, then ID
 - All existing options work: `--yes`, `--skip-specs`, `--no-validate`
 
@@ -33,12 +33,12 @@ The `plx archive` command uses entity subcommands with `--id` flag for consisten
 
 ## Acceptance Criteria
 
-- [ ] `plx archive change --id <id>` archives change with same behavior
-- [ ] `plx archive review --id <id>` archives review with same behavior
-- [ ] `plx archive change --id <id> --yes` skips confirmation
-- [ ] `plx archive change --id <id> --skip-specs` skips spec updates
-- [ ] `plx archive <id>` warns and works (deprecated)
-- [ ] `plx archive <id> --type review` warns and works (deprecated)
+- [ ] `splx archive change --id <id>` archives change with same behavior
+- [ ] `splx archive review --id <id>` archives review with same behavior
+- [ ] `splx archive change --id <id> --yes` skips confirmation
+- [ ] `splx archive change --id <id> --skip-specs` skips spec updates
+- [ ] `splx archive <id>` warns and works (deprecated)
+- [ ] `splx archive <id> --type review` warns and works (deprecated)
 - [ ] Interactive mode asks for entity type first
 - [ ] Shell completions include new subcommands
 

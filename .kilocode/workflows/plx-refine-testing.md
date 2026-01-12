@@ -113,5 +113,5 @@
 
 ## Part 3: Confirm
 9. Present summary of configuration and populated scope.
-10. Explain how `/plx:test` will use these settings.
+10. Explain how `/splx:test` will use these settings.
 <!-- PLX:END -->

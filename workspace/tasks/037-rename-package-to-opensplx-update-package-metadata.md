@@ -13,10 +13,10 @@ Package.json contains updated package name, repository URLs, and all metadata re
 
 ## Currently
 
-- Package name is `@appboypov/pew-pew-plx`
-- Repository URL is `appboypov/pew-pew-plx`
+- Package name is `@appboypov/pew-pew-splx`
+- Repository URL is `appboypov/pew-pew-splx`
 - Author mentions "OpenSplx Contributors"
-- Keywords include "plx"
+- Keywords include "splx"
 
 ## Should
 
@@ -46,7 +46,7 @@ Package.json contains updated package name, repository URLs, and all metadata re
 - [x] 2.2 Update `package.json` repository.url to `https://github.com/appboypov/OpenSplx`
 - [x] 2.3 Update `package.json` homepage to `https://github.com/appboypov/OpenSplx`
 - [x] 2.4 Update `package.json` author to "OpenSplx Contributors"
-- [x] 2.5 Update `package.json` keywords array (replace "plx" with "splx", add "opensplx")
+- [x] 2.5 Update `package.json` keywords array (replace "splx" with "splx", add "opensplx")
 - [x] 2.6 Verify all URLs are correct and accessible
 
 ## Notes

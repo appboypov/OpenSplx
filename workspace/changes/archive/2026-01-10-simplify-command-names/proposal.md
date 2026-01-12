@@ -19,6 +19,6 @@ name: Refine Architecture
 ```
 
 ## Impact
-- Affected specs: plx-slash-commands
+- Affected specs: splx-slash-commands
 - Affected code: `src/core/configurators/slash/` (claude.ts, codebuddy.ts, crush.ts, qoder.ts)
 - All 18 commands across 4 configurators with explicit frontmatter names

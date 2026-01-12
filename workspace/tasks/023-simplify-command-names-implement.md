@@ -18,14 +18,14 @@ Commands have names like `Refine Architecture` - clean title case of the filenam
 
 ## Constraints
 - [ ] Category must remain `OpenSplx` (this groups commands in UI)
-- [ ] Tags must still include `plx`
+- [ ] Tags must still include `splx`
 - [ ] Descriptions remain unchanged
 
 ## Acceptance Criteria
 - [ ] All 18 commands use title case names without prefix
 - [ ] Names match filename pattern: `get-task.md` → `Get Task`
 - [ ] Build succeeds
-- [ ] `plx update` regenerates command files with new names
+- [ ] `splx update` regenerates command files with new names
 
 ## Implementation Checklist
 - [x] 1.1 Update `src/core/configurators/slash/claude.ts` - change all 18 `name:` values
@@ -33,8 +33,8 @@ Commands have names like `Refine Architecture` - clean title case of the filenam
 - [x] 1.3 Update `src/core/configurators/slash/crush.ts` - change all `name:` values
 - [x] 1.4 Update `src/core/configurators/slash/qoder.ts` - change all `name:` values
 - [x] 1.5 Run `pnpm build` and verify success
-- [x] 1.6 Run `plx update` to regenerate command files
-- [x] 1.7 Verify `.claude/commands/plx/implement.md` has `name: Implement`
+- [x] 1.6 Run `splx update` to regenerate command files
+- [x] 1.7 Verify `.claude/commands/splx/implement.md` has `name: Implement`
 
 ## Notes
 Other configurators (cursor, gemini, etc.) use different naming patterns that don't need changes.

@@ -28,9 +28,9 @@ The `global-config` spec defines how PLX reads/writes `config.json`, but users c
 
 **Examples:**
 ```bash
-plx config get featureFlags              # Returns object
-plx config get featureFlags.experimental # Returns nested value
-plx config set featureFlags.newFlag true
+splx config get featureFlags              # Returns object
+splx config get featureFlags.experimental # Returns nested value
+splx config set featureFlags.newFlag true
 ```
 
 ### Type Coercion: Auto-detect with `--string` Override
@@ -55,7 +55,7 @@ plx config set featureFlags.newFlag true
 **Decision:** `get` prints raw value only. `list` prints YAML-like format by default, JSON with `--json`.
 
 **Rationale:**
-- Raw output enables piping: `VAR=$(plx config get key)`
+- Raw output enables piping: `VAR=$(splx config get key)`
 - YAML-like is human-readable for inspection
 - JSON for automation/scripting
 

@@ -115,7 +115,7 @@ describe('ReviewCommand', () => {
     it('outputs usage help when parent missing', async () => {
       await command.execute({ noInteractive: true });
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining('plx review change --id')
+        expect.stringContaining('splx review change --id')
       );
     });
 
@@ -247,7 +247,7 @@ describe('ReviewCommand', () => {
         expect.stringContaining('No REVIEW.md found')
       );
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining('plx refine-review')
+        expect.stringContaining('splx refine-review')
       );
     });
 
@@ -263,7 +263,7 @@ describe('ReviewCommand', () => {
         expect.stringContaining('#FEEDBACK #TODO')
       );
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining('plx parse feedback')
+        expect.stringContaining('splx parse feedback')
       );
     });
   });

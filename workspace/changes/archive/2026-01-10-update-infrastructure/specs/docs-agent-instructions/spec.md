@@ -7,7 +7,7 @@ The AI instructions SHALL begin with a quick-reference section that surfaces req
 - **WHEN** `workspace/AGENTS.md` is regenerated or updated
 - **THEN** the first substantive section after the title SHALL provide copy-ready headings for `proposal.md`, `tasks/` directory structure (now in `workspace/tasks/`), spec deltas, and scenario formatting
 - **AND** link each template to the corresponding workflow step for deeper reading
-- **AND** reference the standardized CLI pattern `plx {verb} {entity} --id/--parent-id`
+- **AND** reference the standardized CLI pattern `splx {verb} {entity} --id/--parent-id`
 
 ### Requirement: Task Directory Structure
 `workspace/AGENTS.md` SHALL document that tasks are stored in a centralized `workspace/tasks/` directory with parent linking instead of nested in change/review directories.
@@ -53,32 +53,32 @@ The AI instructions SHALL begin with a quick-reference section that surfaces req
 - **AND** find documentation that checkboxes under `## Acceptance Criteria` are ignored
 
 ### Requirement: CLI Command Documentation
-`workspace/AGENTS.md` SHALL document the standardized CLI command pattern using `plx {verb} {entity}` syntax with consistent flags.
+`workspace/AGENTS.md` SHALL document the standardized CLI command pattern using `splx {verb} {entity}` syntax with consistent flags.
 
 #### Scenario: Documenting standardized CLI pattern
 - **WHEN** an agent reads the CLI Commands section
-- **THEN** find commands following the `plx {verb} {entity}` pattern
+- **THEN** find commands following the `splx {verb} {entity}` pattern
 - **AND** find `--id <id>` flag for specific entity lookup
 - **AND** find `--parent-id <id>` flag for parent filtering
 - **AND** find `--parent-type <type>` flag for disambiguating parent type
-- **AND** NOT find deprecated commands (`plx list`, `plx show`, `plx change`, `plx spec`)
+- **AND** NOT find deprecated commands (`splx list`, `splx show`, `splx change`, `splx spec`)
 
 #### Scenario: Documenting get command variants
 - **WHEN** an agent reads how to retrieve entities
-- **THEN** find `plx get task --id <id>` for specific task
-- **AND** find `plx get tasks` for listing all open tasks
-- **AND** find `plx get tasks --parent-id <id>` for tasks of specific parent
-- **AND** find `plx get changes` for listing all changes
-- **AND** find `plx get change --id <id>` for specific change
+- **THEN** find `splx get task --id <id>` for specific task
+- **AND** find `splx get tasks` for listing all open tasks
+- **AND** find `splx get tasks --parent-id <id>` for tasks of specific parent
+- **AND** find `splx get changes` for listing all changes
+- **AND** find `splx get change --id <id>` for specific change
 - **AND** find same pattern for specs and reviews
 
 #### Scenario: Documenting create command
 - **WHEN** an agent reads how to create entities
-- **THEN** find `plx create task "Title"` for standalone task
-- **AND** find `plx create task "Title" --parent-id <id>` for parented task
-- **AND** find `plx create change "Name"` for change proposal
-- **AND** find `plx create spec "Name"` for spec
-- **AND** find `plx create request "Description"` for request
+- **THEN** find `splx create task "Title"` for standalone task
+- **AND** find `splx create task "Title" --parent-id <id>` for parented task
+- **AND** find `splx create change "Name"` for change proposal
+- **AND** find `splx create spec "Name"` for spec
+- **AND** find `splx create request "Description"` for request
 
 ## ADDED Requirements
 
@@ -102,11 +102,11 @@ The AI instructions SHALL begin with a quick-reference section that surfaces req
 - **AND** find that standalone tasks have no parent-type or parent-id
 
 ### Requirement: Migration Command Documentation
-`workspace/AGENTS.md` SHALL document the `plx migrate tasks` command for existing projects.
+`workspace/AGENTS.md` SHALL document the `splx migrate tasks` command for existing projects.
 
 #### Scenario: Documenting migration command
 - **WHEN** an agent encounters an existing project with nested tasks
-- **THEN** find documentation for `plx migrate tasks` command
+- **THEN** find documentation for `splx migrate tasks` command
 - **AND** find that migration moves tasks from nested to centralized storage
 - **AND** find that migration renames files to include parent-id prefix
 - **AND** find that migration adds parent-type and parent-id frontmatter

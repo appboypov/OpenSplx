@@ -11,13 +11,13 @@ All tests pass with renamed command and new checkbox completion functionality.
 ## Currently
 
 - Tests in `test/commands/act.test.ts` test `act next` command
-- Tests invoke CLI with `plx get task`
+- Tests invoke CLI with `splx get task`
 - Test descriptions reference "act next"
 
 ## Should
 
 - Tests in `test/commands/get.test.ts` test `get task` command
-- Tests invoke CLI with `plx get task`
+- Tests invoke CLI with `splx get task`
 - Test descriptions reference "get task"
 - New tests for checkbox completion behavior
 
@@ -44,7 +44,7 @@ All tests pass with renamed command and new checkbox completion functionality.
 - [x] 4.7 Add test: `--did-complete-previous` does NOT modify Acceptance Criteria checkboxes
 - [x] 4.8 Add test: JSON output includes `completedTask` with name and completedItems
 - [x] 4.9 Add test: text output shows completed task info
-- [x] 4.10 Update `test/core/templates/plx-slash-command-templates.test.ts` for `'get-task'` ID
+- [x] 4.10 Update `test/core/templates/splx-slash-command-templates.test.ts` for `'get-task'` ID
 
 ## Notes
 

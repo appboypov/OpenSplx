@@ -158,7 +158,7 @@ export class CreateCommand {
       .join('\n');
 
     throw new Error(
-      `Parent ID '${parentId}' matches multiple types:\n${matchDescriptions}\nUse --parent-type to specify: plx create task "Title" --parent-id ${parentId} --parent-type change`
+      `Parent ID '${parentId}' matches multiple types:\n${matchDescriptions}\nUse --parent-type to specify: splx create task "Title" --parent-id ${parentId} --parent-type change`
     );
   }
 
@@ -169,7 +169,7 @@ export class CreateCommand {
       if (options.json) {
         console.log(JSON.stringify({ error: 'No workspace found' }));
       } else {
-        ora().fail('No workspace found. Run plx init first.');
+        ora().fail('No workspace found. Run splx init first.');
       }
       process.exitCode = 1;
       return;
@@ -303,7 +303,7 @@ export class CreateCommand {
       if (options.json) {
         console.log(JSON.stringify({ error: 'No workspace found' }));
       } else {
-        ora().fail('No workspace found. Run plx init first.');
+        ora().fail('No workspace found. Run splx init first.');
       }
       process.exitCode = 1;
       return;
@@ -357,7 +357,7 @@ export class CreateCommand {
       if (options.json) {
         console.log(JSON.stringify({ error: 'No workspace found' }));
       } else {
-        ora().fail('No workspace found. Run plx init first.');
+        ora().fail('No workspace found. Run splx init first.');
       }
       process.exitCode = 1;
       return;
@@ -407,7 +407,7 @@ export class CreateCommand {
       if (options.json) {
         console.log(JSON.stringify({ error: 'No workspace found' }));
       } else {
-        ora().fail('No workspace found. Run plx init first.');
+        ora().fail('No workspace found. Run splx init first.');
       }
       process.exitCode = 1;
       return;
@@ -457,7 +457,7 @@ export class CreateCommand {
       if (options.json) {
         console.log(JSON.stringify({ error: 'No workspace found' }));
       } else {
-        ora().fail('No workspace found. Run plx init first.');
+        ora().fail('No workspace found. Run splx init first.');
       }
       process.exitCode = 1;
       return;
@@ -597,7 +597,7 @@ export class CreateCommand {
       lines.push('When complete, mark the task as done:');
       lines.push('');
       lines.push('```bash');
-      lines.push(`plx complete task --id ${t.taskId}`);
+      lines.push(`splx complete task --id ${t.taskId}`);
       lines.push('```');
       lines.push('');
       lines.push('---');

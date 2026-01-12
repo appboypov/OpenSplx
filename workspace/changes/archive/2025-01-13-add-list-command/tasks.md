@@ -6,7 +6,7 @@
   - [x] 1.1.2 Implement task counting from tasks.md files
   - [x] 1.1.3 Format output as simple table
 - [x] 1.2 Add list command to CLI in `src/cli/index.ts`
-  - [x] 1.2.1 Register `plx list` command
+  - [x] 1.2.1 Register `splx list` command
   - [x] 1.2.2 Connect to list.ts implementation
 
 ## 2. Error Handling

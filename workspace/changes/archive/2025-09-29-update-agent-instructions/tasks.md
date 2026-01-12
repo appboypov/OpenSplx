@@ -15,12 +15,12 @@
 - [x] 2.5 Add explicit Stage 2 implementation steps (read → implement → mark complete)
 
 ## 3. Update CLI Documentation
-- [x] 3.1 Document `plx list` and `plx list --specs` commands
-- [x] 3.2 Document `plx show` with all flags and interactive mode
-- [x] 3.3 Document `plx diff [change]` for viewing spec differences
-- [x] 3.4 Document `plx archive` with --skip-specs option
-- [x] 3.5 Document `plx validate` with --strict and batch modes
-- [x] 3.6 Document `plx init` and `plx update` commands
+- [x] 3.1 Document `splx list` and `splx list --specs` commands
+- [x] 3.2 Document `splx show` with all flags and interactive mode
+- [x] 3.3 Document `splx diff [change]` for viewing spec differences
+- [x] 3.4 Document `splx archive` with --skip-specs option
+- [x] 3.5 Document `splx validate` with --strict and batch modes
+- [x] 3.6 Document `splx init` and `splx update` commands
 - [x] 3.7 Remove all deprecated noun-first command references
 - [x] 3.8 Add concrete usage examples for each command variation
 - [x] 3.9 Document all flags: --json, --type, --no-interactive, etc.
@@ -61,7 +61,7 @@
 
 ## 8. Testing and Validation
 - [x] 8.1 Test all documented CLI commands for accuracy
-- [x] 8.2 Run `plx init` to verify CLAUDE.md generation
+- [x] 8.2 Run `splx init` to verify CLAUDE.md generation
 - [x] 8.3 Validate instruction clarity with example scenarios
 - [x] 8.4 Ensure no critical information was lost in streamlining
 - [x] 8.5 Verify decision trees eliminate ambiguity

@@ -5,17 +5,17 @@ TBD - created by archiving change add-upgrade-command. Update Purpose after arch
 ## Requirements
 ### Requirement: Upgrade Command
 
-The `plx upgrade` command SHALL update the CLI binary to the latest published version.
+The `splx upgrade` command SHALL update the CLI binary to the latest published version.
 
 #### Scenario: Running upgrade when update available
-- **WHEN** user runs `plx upgrade`
+- **WHEN** user runs `splx upgrade`
 - **AND** a newer version is available on npm
 - **THEN** display current and latest versions
 - **AND** execute the appropriate package manager command to update globally
 - **AND** display success message with new version
 
 #### Scenario: Running upgrade when already latest
-- **WHEN** user runs `plx upgrade`
+- **WHEN** user runs `splx upgrade`
 - **AND** the installed version matches the latest on npm
 - **THEN** display message indicating already up to date
 - **AND** exit with code 0
@@ -26,7 +26,7 @@ The upgrade command SHALL check versions against the npm registry before attempt
 
 #### Scenario: Checking version
 - **WHEN** the command starts
-- **THEN** fetch latest version from npm registry for `@appboypov/pew-pew-plx`
+- **THEN** fetch latest version from npm registry for `@appboypov/pew-pew-splx`
 - **AND** compare against locally installed version from package.json
 
 #### Scenario: Network failure during version check
@@ -39,13 +39,13 @@ The upgrade command SHALL check versions against the npm registry before attempt
 The command SHALL support a `--check` flag to only report version status without installing.
 
 #### Scenario: Check flag with update available
-- **WHEN** user runs `plx upgrade --check`
+- **WHEN** user runs `splx upgrade --check`
 - **AND** a newer version is available
 - **THEN** display current version and available version
 - **AND** exit with code 0 without installing
 
 #### Scenario: Check flag when up to date
-- **WHEN** user runs `plx upgrade --check`
+- **WHEN** user runs `splx upgrade --check`
 - **AND** the installed version matches latest
 - **THEN** display message indicating already up to date
 - **AND** exit with code 0
@@ -62,18 +62,18 @@ The command SHALL detect and use the appropriate package manager (npm or pnpm).
 
 #### Scenario: Package manager execution
 - **WHEN** running the package manager command
-- **THEN** execute `<pm> install -g @appboypov/pew-pew-plx@latest`
+- **THEN** execute `<pm> install -g @appboypov/pew-pew-splx@latest`
 - **AND** stream output to the terminal
 - **AND** report success or failure based on exit code
 
 ### Requirement: Clear Distinction from Update
 
-The upgrade command SHALL clearly communicate its purpose vs `plx update`.
+The upgrade command SHALL clearly communicate its purpose vs `splx update`.
 
 #### Scenario: Help text clarity
-- **WHEN** user runs `plx upgrade --help`
+- **WHEN** user runs `splx upgrade --help`
 - **THEN** display description: "Upgrade the PLX CLI to the latest version"
-- **AND** note that this differs from `plx update` which refreshes project files
+- **AND** note that this differs from `splx update` which refreshes project files
 
 #### Scenario: Upgrade output messaging
 - **WHEN** displaying upgrade progress

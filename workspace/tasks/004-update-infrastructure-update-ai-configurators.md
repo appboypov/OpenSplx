@@ -13,7 +13,7 @@ All 20+ AI tool configurators generate instructions and slash commands using the
 ## Currently
 
 Configurators in `src/core/configurators/`:
-- Generate instructions referencing `plx list`, `plx show`
+- Generate instructions referencing `splx list`, `splx show`
 - Generate slash commands with old flag patterns
 - Reference nested task storage paths
 
@@ -24,7 +24,7 @@ Slash configurators in `src/core/configurators/slash/`:
 ## Should
 
 Configurators:
-- Generate instructions referencing `plx get changes`, `plx get change --id <id>`
+- Generate instructions referencing `splx get changes`, `splx get change --id <id>`
 - Generate slash commands with `--id`, `--parent-id`, `--parent-type` patterns
 - Reference centralized `workspace/tasks/` storage
 
@@ -39,7 +39,7 @@ Configurators:
 
 - [ ] All configurators in `src/core/configurators/` use new CLI patterns
 - [ ] All slash configurators in `src/core/configurators/slash/` use new CLI patterns
-- [ ] `plx init` generates correct instructions for all supported tools
+- [ ] `splx init` generates correct instructions for all supported tools
 - [ ] No deprecated command references in generated output
 
 ## Implementation Checklist
@@ -79,4 +79,4 @@ Configurators:
 
 ## Notes
 
-This is a large task touching many files. Consider splitting work by configurator category (main vs slash) if needed. Test with `plx init --tools claude` to verify output.
+This is a large task touching many files. Consider splitting work by configurator category (main vs slash) if needed. Test with `splx init --tools claude` to verify output.

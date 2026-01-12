@@ -1,13 +1,13 @@
 ## Why
 - Codex (the VS Code extension formerly known as Codeium Chat) exposes "slash commands" by reading Markdown prompt files from `~/.codex/prompts/`. Each file name becomes the `/command` users can run, with YAML frontmatter for metadata (`description`, `argument-hint`) and `$ARGUMENTS` to capture user input. The workflow screenshot shared by Kevin Kern ("Codex problem analyzer") shows the format PLX should target so teams can invoke curated workflows straight from the chat palette.
 - Teams already rely on PLX to manage the slash-command surface area for Claude, Cursor, OpenCode, Kilo Code, and Windsurf. Leaving Codex out forces them to manually copy/paste PLX guardrails into `~/.codex/prompts/*.md`, which drifts quickly and undermines the "single source of truth" promise of the CLI.
-- Codex commands live outside the repository (under the user's home directory), so shipping an automated configurator that both scaffolds the prompts and keeps them refreshed via `plx update` eliminates error-prone manual steps and keeps PLX instructions synchronized across assistants.
+- Codex commands live outside the repository (under the user's home directory), so shipping an automated configurator that both scaffolds the prompts and keeps them refreshed via `splx update` eliminates error-prone manual steps and keeps PLX instructions synchronized across assistants.
 
 ## What Changes
-- Add Codex to the `plx init` tool picker with the same "already configured" detection we use for other editors, wiring an implementation that writes managed Markdown prompts directly to Codex's global directory (`~/.codex/prompts` or `$CODEX_HOME/prompts`) with PLX marker blocks.
-- Produce three Codex prompt files—`plx-proposal.md`, `plx-apply.md`, and `plx-archive.md`—whose content mirrors the shared slash-command templates while using YAML frontmatter (`description` and `argument-hint` fields) and `$ARGUMENTS` to capture all arguments as a single string (matching the GitHub Copilot pattern and official Codex specification).
+- Add Codex to the `splx init` tool picker with the same "already configured" detection we use for other editors, wiring an implementation that writes managed Markdown prompts directly to Codex's global directory (`~/.codex/prompts` or `$CODEX_HOME/prompts`) with PLX marker blocks.
+- Produce three Codex prompt files—`splx-proposal.md`, `splx-apply.md`, and `splx-archive.md`—whose content mirrors the shared slash-command templates while using YAML frontmatter (`description` and `argument-hint` fields) and `$ARGUMENTS` to capture all arguments as a single string (matching the GitHub Copilot pattern and official Codex specification).
 - Document Codex's global-only discovery and that PLX writes prompts directly to `~/.codex/prompts` (or `$CODEX_HOME/prompts`).
-- Teach `plx update` to refresh existing Codex prompts in-place (and only when they already exist) in the global directory, updating both frontmatter and body.
+- Teach `splx update` to refresh existing Codex prompts in-place (and only when they already exist) in the global directory, updating both frontmatter and body.
 - Document Codex support alongside other slash-command integrations and add regression coverage that exercises init/update behaviour against a temporary global prompts directory via `CODEX_HOME`.
 
 ## Impact
