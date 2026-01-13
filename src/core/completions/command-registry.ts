@@ -816,6 +816,17 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
           COMMON_FLAGS.json,
         ],
       },
+      {
+        name: 'plx-to-splx',
+        description: 'Migrate PLX naming to SPLX naming',
+        flags: [
+          {
+            name: 'dry-run',
+            description: 'Preview changes without executing',
+          },
+          COMMON_FLAGS.json,
+        ],
+      },
     ],
   },
   {

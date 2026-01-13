@@ -7,6 +7,13 @@ import { FileSystemUtils } from '../utils/file-system.js';
 import { buildTaskFilename, parseTaskFilename } from '../utils/task-file-parser.js';
 import { MarkdownParser } from '../core/parsers/markdown-parser.js';
 import { TASKS_DIR_NAME } from '../core/config.js';
+import {
+  migratePlxToSplx,
+  detectPlxArtifacts,
+  type PlxToSplxOptions,
+  type MigrationResult as PlxToSplxMigrationResult,
+  type MigrationSummary as PlxToSplxMigrationSummary,
+} from '../utils/plx-to-splx-migration.js';
 
 interface MigrateTasksOptions {
   dryRun?: boolean;
@@ -275,6 +282,129 @@ export class MigrateCommand {
     } catch {
       // Directory might not be empty or already deleted
     }
+  }
+
+  async plxToSplx(options: PlxToSplxOptions = {}): Promise<void> {
+    const workspaces = await getFilteredWorkspaces(process.cwd());
+
+    if (workspaces.length === 0) {
+      if (options.json) {
+        console.log(JSON.stringify({ error: 'No workspace found' }));
+      } else {
+        ora().fail('No workspace found. Run splx init first.');
+      }
+      process.exitCode = 1;
+      return;
+    }
+
+    const result: PlxToSplxMigrationResult = {
+      success: true,
+      workspaces: [],
+      summary: {
+        totalDirectories: 0,
+        totalFiles: 0,
+        totalContentUpdates: 0,
+        totalSkipped: 0,
+        totalErrors: 0,
+      },
+    };
+
+    if (!options.json) {
+      console.log(chalk.bold('\nMigrating PLX to SPLX...\n'));
+    }
+
+    let hasAnyArtifacts = false;
+
+    for (const workspace of workspaces) {
+      const detection = await detectPlxArtifacts(workspace.path);
+      
+      if (!detection.hasClaudeCommandsDir && !detection.hasFilePatterns && !detection.hasInstructionFiles) {
+        if (!options.json) {
+          console.log(chalk.dim(`Workspace: ${path.relative(process.cwd(), workspace.path)}`));
+          console.log(chalk.dim('  No PLX artifacts found'));
+        }
+        continue;
+      }
+
+      hasAnyArtifacts = true;
+      const workspaceResult = await migratePlxToSplx(workspace.path, options);
+      result.workspaces.push(workspaceResult);
+
+      result.summary.totalDirectories += workspaceResult.directories.length;
+      result.summary.totalFiles += workspaceResult.files.length;
+      result.summary.totalContentUpdates += workspaceResult.contentUpdates.length;
+      result.summary.totalSkipped += workspaceResult.skipped.length;
+      result.summary.totalErrors += workspaceResult.errors.length;
+
+      if (!options.json) {
+        console.log(chalk.dim(`Workspace: ${workspaceResult.path}`));
+        
+        for (const dir of workspaceResult.directories) {
+          console.log(chalk.green(`  ✓ Directory: ${dir.from} → ${dir.to}`));
+        }
+        
+        for (const file of workspaceResult.files) {
+          console.log(chalk.green(`  ✓ File: ${file.from} → ${file.to}`));
+        }
+        
+        for (const update of workspaceResult.contentUpdates) {
+          console.log(chalk.blue(`  ✓ Updated: ${update.path} (${update.replacements} replacement${update.replacements !== 1 ? 's' : ''})`));
+        }
+
+        for (const skipped of workspaceResult.skipped) {
+          console.log(chalk.yellow(`  ⊘ Skipped: ${skipped.path}`) + chalk.dim(` (${skipped.reason})`));
+        }
+
+        for (const error of workspaceResult.errors) {
+          console.log(chalk.red(`  ✗ Error: ${error.path}`) + chalk.dim(` (${error.error})`));
+        }
+      }
+    }
+
+    if (!hasAnyArtifacts) {
+      if (options.json) {
+        console.log(JSON.stringify({ message: 'No PLX artifacts found to migrate' }));
+      } else {
+        console.log(chalk.dim('\nNo PLX artifacts found to migrate.\n'));
+      }
+      return;
+    }
+
+    if (result.summary.totalErrors > 0) {
+      result.success = false;
+    }
+
+    if (options.json) {
+      console.log(JSON.stringify(result, null, 2));
+    } else {
+      this.printPlxToSplxSummary(result);
+    }
+
+    if (!result.success) {
+      process.exitCode = 1;
+    }
+  }
+
+  private printPlxToSplxSummary(result: PlxToSplxMigrationResult): void {
+    console.log();
+    console.log(chalk.bold('Migration complete:'));
+    console.log(chalk.green(`  Directories renamed: ${result.summary.totalDirectories}`));
+    console.log(chalk.green(`  Files renamed: ${result.summary.totalFiles}`));
+    console.log(chalk.blue(`  Files updated: ${result.summary.totalContentUpdates}`));
+
+    if (result.summary.totalSkipped > 0) {
+      console.log(chalk.yellow(`  Skipped: ${result.summary.totalSkipped}`));
+    } else {
+      console.log(chalk.dim(`  Skipped: ${result.summary.totalSkipped}`));
+    }
+
+    if (result.summary.totalErrors > 0) {
+      console.log(chalk.red(`  Errors: ${result.summary.totalErrors}`));
+    } else {
+      console.log(chalk.dim(`  Errors: ${result.summary.totalErrors}`));
+    }
+
+    console.log();
   }
 
   private printConsoleSummary(result: MigrationResult): void {

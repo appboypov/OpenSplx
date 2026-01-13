@@ -1049,6 +1049,22 @@ migrateCmd
     }
   });
 
+migrateCmd
+  .command('plx-to-splx')
+  .description('Migrate PLX naming to SPLX naming')
+  .option('--dry-run', 'Preview changes without executing')
+  .option('--json', 'Output results as JSON')
+  .action(async (options?: { dryRun?: boolean; json?: boolean }) => {
+    try {
+      const migrateCommand = new MigrateCommand();
+      await migrateCommand.plxToSplx(options);
+    } catch (error) {
+      console.log();
+      ora().fail(`Error: ${(error as Error).message}`);
+      process.exit(1);
+    }
+  });
+
 // Transfer command with subcommands
 const transferCmd = program
   .command('transfer')
