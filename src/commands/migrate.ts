@@ -12,7 +12,6 @@ import {
   detectPlxArtifacts,
   type PlxToSplxOptions,
   type MigrationResult as PlxToSplxMigrationResult,
-  type MigrationSummary as PlxToSplxMigrationSummary,
 } from '../utils/plx-to-splx-migration.js';
 
 interface MigrateTasksOptions {
@@ -287,15 +286,10 @@ export class MigrateCommand {
   async plxToSplx(options: PlxToSplxOptions = {}): Promise<void> {
     const workspaces = await getFilteredWorkspaces(process.cwd());
 
-    if (workspaces.length === 0) {
-      if (options.json) {
-        console.log(JSON.stringify({ error: 'No workspace found' }));
-      } else {
-        ora().fail('No workspace found. Run splx init first.');
-      }
-      process.exitCode = 1;
-      return;
-    }
+    // If no workspaces found, check for plx artifacts at root level
+    const projectPaths = workspaces.length > 0
+      ? workspaces.map(w => w.path)
+      : [process.cwd()];
 
     const result: PlxToSplxMigrationResult = {
       success: true,
@@ -306,6 +300,7 @@ export class MigrateCommand {
         totalContentUpdates: 0,
         totalSkipped: 0,
         totalErrors: 0,
+        byTool: {},
       },
     };
 
@@ -315,19 +310,19 @@ export class MigrateCommand {
 
     let hasAnyArtifacts = false;
 
-    for (const workspace of workspaces) {
-      const detection = await detectPlxArtifacts(workspace.path);
-      
+    for (const projectPath of projectPaths) {
+      const detection = await detectPlxArtifacts(projectPath);
+
       if (!detection.hasClaudeCommandsDir && !detection.hasFilePatterns && !detection.hasInstructionFiles) {
         if (!options.json) {
-          console.log(chalk.dim(`Workspace: ${path.relative(process.cwd(), workspace.path)}`));
+          console.log(chalk.dim(`Project: ${path.relative(process.cwd(), projectPath) || '.'}`));
           console.log(chalk.dim('  No PLX artifacts found'));
         }
         continue;
       }
 
       hasAnyArtifacts = true;
-      const workspaceResult = await migratePlxToSplx(workspace.path, options);
+      const workspaceResult = await migratePlxToSplx(projectPath, options);
       result.workspaces.push(workspaceResult);
 
       result.summary.totalDirectories += workspaceResult.directories.length;
@@ -336,19 +331,43 @@ export class MigrateCommand {
       result.summary.totalSkipped += workspaceResult.skipped.length;
       result.summary.totalErrors += workspaceResult.errors.length;
 
+      // Aggregate per-tool counts
+      for (const dir of workspaceResult.directories) {
+        if (!result.summary.byTool[dir.tool]) {
+          result.summary.byTool[dir.tool] = { directories: 0, files: 0 };
+        }
+        result.summary.byTool[dir.tool].directories++;
+      }
+      for (const file of workspaceResult.files) {
+        if (!result.summary.byTool[file.tool]) {
+          result.summary.byTool[file.tool] = { directories: 0, files: 0 };
+        }
+        result.summary.byTool[file.tool].files++;
+      }
+
       if (!options.json) {
         console.log(chalk.dim(`Workspace: ${workspaceResult.path}`));
-        
+
         for (const dir of workspaceResult.directories) {
-          console.log(chalk.green(`  ✓ Directory: ${dir.from} → ${dir.to}`));
+          const prefix = options.dryRun ? 'Would rename' : 'Renamed';
+          console.log(chalk.green(`  ✓ [${dir.tool}] ${prefix} directory: ${dir.from} → ${dir.to}`));
         }
-        
+
         for (const file of workspaceResult.files) {
-          console.log(chalk.green(`  ✓ File: ${file.from} → ${file.to}`));
+          const prefix = options.dryRun ? 'Would rename' : 'Renamed';
+          console.log(chalk.green(`  ✓ [${file.tool}] ${prefix} file: ${file.from} → ${file.to}`));
         }
-        
+
         for (const update of workspaceResult.contentUpdates) {
-          console.log(chalk.blue(`  ✓ Updated: ${update.path} (${update.replacements} replacement${update.replacements !== 1 ? 's' : ''})`));
+          const prefix = options.dryRun ? 'Would update' : 'Updated';
+          console.log(chalk.blue(`  ✓ ${prefix}: ${update.path} (${update.replacements} replacement${update.replacements !== 1 ? 's' : ''})`));
+          if (options.dryRun && update.changes && update.changes.length > 0) {
+            for (const change of update.changes) {
+              console.log(chalk.dim(`      Line ${change.line}:`));
+              console.log(chalk.red(`        - ${change.before}`));
+              console.log(chalk.green(`        + ${change.after}`));
+            }
+          }
         }
 
         for (const skipped of workspaceResult.skipped) {
@@ -363,7 +382,20 @@ export class MigrateCommand {
 
     if (!hasAnyArtifacts) {
       if (options.json) {
-        console.log(JSON.stringify({ message: 'No PLX artifacts found to migrate' }));
+        // Return consistent structure with empty results
+        console.log(JSON.stringify({
+          success: true,
+          workspaces: [],
+          summary: {
+            totalDirectories: 0,
+            totalFiles: 0,
+            totalContentUpdates: 0,
+            totalSkipped: 0,
+            totalErrors: 0,
+            byTool: {},
+          },
+          message: 'No PLX artifacts found to migrate',
+        }, null, 2));
       } else {
         console.log(chalk.dim('\nNo PLX artifacts found to migrate.\n'));
       }
@@ -402,6 +434,24 @@ export class MigrateCommand {
       console.log(chalk.red(`  Errors: ${result.summary.totalErrors}`));
     } else {
       console.log(chalk.dim(`  Errors: ${result.summary.totalErrors}`));
+    }
+
+    // Show per-tool breakdown if there are any results
+    const tools = Object.keys(result.summary.byTool);
+    if (tools.length > 0) {
+      console.log();
+      console.log(chalk.bold('By tool:'));
+      for (const tool of tools) {
+        const counts = result.summary.byTool[tool];
+        const parts: string[] = [];
+        if (counts.directories > 0) {
+          parts.push(`${counts.directories} dir${counts.directories !== 1 ? 's' : ''}`);
+        }
+        if (counts.files > 0) {
+          parts.push(`${counts.files} file${counts.files !== 1 ? 's' : ''}`);
+        }
+        console.log(chalk.dim(`  ${tool}: ${parts.join(', ')}`));
+      }
     }
 
     console.log();

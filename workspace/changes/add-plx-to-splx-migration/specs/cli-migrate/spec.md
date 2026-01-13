@@ -52,11 +52,21 @@ The CLI SHALL support a `--json` flag for plx-to-splx migration results.
 
 - **WHEN** user runs `splx migrate plx-to-splx --json`
 - **THEN** the output is valid JSON containing:
-  - `renamedDirectories`: array of renamed directories with from/to paths
-  - `renamedFiles`: array of renamed files with from/to paths
-  - `updatedFiles`: array of files with content changes
-  - `errors`: array of errors with file and message
   - `success`: boolean overall status
+  - `workspaces`: array of workspace results, each containing:
+    - `path`: workspace path
+    - `directories`: array of renamed directories with from/to/tool
+    - `files`: array of renamed files with from/to/tool
+    - `contentUpdates`: array of files with content changes and replacement count
+    - `skipped`: array of skipped items with path and reason
+    - `errors`: array of errors with path and message
+  - `summary`: object containing:
+    - `totalDirectories`: count of renamed directories
+    - `totalFiles`: count of renamed files
+    - `totalContentUpdates`: count of updated files
+    - `totalSkipped`: count of skipped items
+    - `totalErrors`: count of errors
+    - `byTool`: per-tool breakdown of directories and files
 
 ### Requirement: PLX Migration Report
 

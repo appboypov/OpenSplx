@@ -11,16 +11,25 @@ export interface PlxToSplxOptions {
 export interface RenamedDirectory {
   from: string;
   to: string;
+  tool: string;
 }
 
 export interface RenamedFile {
   from: string;
   to: string;
+  tool: string;
+}
+
+export interface ContentChange {
+  line: number;
+  before: string;
+  after: string;
 }
 
 export interface UpdatedFile {
   path: string;
   replacements: number;
+  changes?: ContentChange[];
 }
 
 export interface SkippedItem {
@@ -42,12 +51,18 @@ export interface WorkspaceMigrationResult {
   errors: MigrationError[];
 }
 
+export interface ToolMigrationCounts {
+  directories: number;
+  files: number;
+}
+
 export interface MigrationSummary {
   totalDirectories: number;
   totalFiles: number;
   totalContentUpdates: number;
   totalSkipped: number;
   totalErrors: number;
+  byTool: Record<string, ToolMigrationCounts>;
 }
 
 export interface MigrationResult {
@@ -58,15 +73,19 @@ export interface MigrationResult {
 
 /**
  * AI tool directory patterns to migrate
- * Format: { toolDir: { subdir: 'file-pattern' } }
+ * Format: { toolDir: { name, subdirs: { subdir: filePattern } } }
  */
-const AI_TOOL_PATTERNS: Record<string, Record<string, string>> = {
-  '.cursor': { 'commands': 'plx-*.md' },
-  '.amazonq': { 'prompts': 'plx-*.md' },
-  '.augment': { 'commands': 'plx-*.md' },
-  '.clinerules': { 'workflows': 'plx-*.md' },
-  '.codebuddy': { 'prompts': 'plx-*.md' },
-  '.agent': { 'workflows': 'plx-*.md' },
+const AI_TOOL_PATTERNS: Record<string, { name: string; subdirs: Record<string, string> }> = {
+  '.claude': { name: 'Claude Code', subdirs: {} },
+  '.cursor': { name: 'Cursor', subdirs: { 'commands': 'plx-*.md' } },
+  '.amazonq': { name: 'Amazon Q', subdirs: { 'prompts': 'plx-*.md' } },
+  '.augment': { name: 'Augment', subdirs: { 'commands': 'plx-*.md' } },
+  '.clinerules': { name: 'Cline', subdirs: { 'workflows': 'plx-*.md' } },
+  '.codebuddy': { name: 'CodeBuddy', subdirs: { 'prompts': 'plx-*.md' } },
+  '.agent': { name: 'Agent', subdirs: { 'workflows': 'plx-*.md' } },
+  '.windsurf': { name: 'Windsurf', subdirs: { 'workflows': 'plx-*.md' } },
+  '.qwen': { name: 'Qwen Code', subdirs: { 'commands': 'plx-*.toml' } },
+  '.github': { name: 'GitHub Copilot', subdirs: { 'prompts': 'plx-*.prompt.md' } },
 };
 
 /**
@@ -94,49 +113,90 @@ function getRelativePath(filePath: string): string {
 }
 
 /**
- * Counts unique replacements in content by applying patterns sequentially
- * and tracking what was actually replaced
+ * Matches files against a pattern like "plx-*.md" or "plx-*.toml"
+ * Returns matched files and their extension for proper renaming
  */
-function countReplacements(content: string, patterns: RegExp[]): number {
-  let count = 0;
-  let workingContent = content;
+function matchPlxFiles(files: string[], pattern: string): Array<{ file: string; ext: string }> {
+  // Pattern format: "plx-*.ext" or "plx-*.suffix.ext"
+  // Extract the extension part after "plx-*"
+  const extMatch = pattern.match(/^plx-\*(.+)$/);
+  if (!extMatch) return [];
 
-  for (const pattern of patterns) {
-    const matches = workingContent.match(pattern);
-    if (matches) {
-      count += matches.length;
-      // Apply replacement to avoid double-counting overlapping patterns
-      workingContent = workingContent.replace(pattern, (match) => {
-        return match.replace(/plx/g, 'splx');
-      });
-    }
-  }
-
-  return count;
+  const ext = extMatch[1]; // e.g., ".md", ".toml", ".prompt.md"
+  return files
+    .filter(f => f.startsWith('plx-') && f.endsWith(ext))
+    .map(file => ({ file, ext }));
 }
 
 /**
  * Replaces plx references with splx in content, being context-aware
  */
-function replacePlxReferences(content: string): { updated: string; count: number } {
+function replacePlxReferences(
+  content: string,
+  trackChanges = false
+): { updated: string; count: number; changes: ContentChange[] } {
   // Patterns that are safe to replace (command references, file paths, etc.)
-  const safePatterns: Array<{ pattern: RegExp; replacement: (match: string) => string }> = [
+  // Using string replacements with $1, $2, etc. for capture groups
+  const safePatterns: Array<{ pattern: RegExp; replacement: string }> = [
     // `plx command` or `plx-command`
-    { pattern: /`plx([\s-])/g, replacement: (m) => m.replace('plx', 'splx') },
+    { pattern: /`plx([\s-])/g, replacement: '`splx$1' },
     // /plx command or /plx-command
-    { pattern: /\/plx([\s-])/g, replacement: (m) => m.replace('plx', 'splx') },
+    { pattern: /\/plx([\s-])/g, replacement: '/splx$1' },
     // plx command-name (word boundary before, space or dash after)
-    { pattern: /\bplx\s+([a-z-]+)/g, replacement: () => 'splx $1' },
+    { pattern: /\bplx\s+([a-z-]+)/g, replacement: 'splx $1' },
     // .claude/commands/plx/ paths
-    { pattern: /\.claude\/commands\/plx\//g, replacement: () => '.claude/commands/splx/' },
+    { pattern: /\.claude\/commands\/plx\//g, replacement: '.claude/commands/splx/' },
     // plx-*.md file references
-    { pattern: /plx-([a-z-]+)\.md/g, replacement: () => 'splx-$1.md' },
+    { pattern: /plx-([a-z-]+)\.md/g, replacement: 'splx-$1.md' },
     // `plx` standalone in backticks
-    { pattern: /`plx`/g, replacement: () => '`splx`' },
+    { pattern: /`plx`/g, replacement: '`splx`' },
     // /plx at end of line or followed by non-word
-    { pattern: /\/plx\b/g, replacement: () => '/splx' },
+    { pattern: /\/plx\b/g, replacement: '/splx' },
+    // | plx in markdown tables
+    { pattern: /\|\s*plx\s+/g, replacement: '| splx ' },
+    // Frontmatter tags: [plx, ...] or tags: [... plx ...]
+    { pattern: /(\btags:\s*\[.*?)\bplx\b(.*?\])/g, replacement: '$1splx$2' },
+    // Frontmatter single value: command: plx or type: plx
+    { pattern: /^((?:command|type|tool):\s*)plx(\s*)$/gm, replacement: '$1splx$2' },
   ];
 
+  const changes: ContentChange[] = [];
+
+  if (trackChanges) {
+    // Process line by line to track changes
+    const lines = content.split('\n');
+    const updatedLines: string[] = [];
+    let totalCount = 0;
+
+    for (let i = 0; i < lines.length; i++) {
+      let line = lines[i];
+      const originalLine = line;
+
+      for (const { pattern, replacement } of safePatterns) {
+        // Reset regex state for each line
+        pattern.lastIndex = 0;
+        const matches = line.match(pattern);
+        if (matches) {
+          totalCount += matches.length;
+          line = line.replace(pattern, replacement);
+        }
+      }
+
+      if (line !== originalLine) {
+        changes.push({
+          line: i + 1,
+          before: originalLine.trim(),
+          after: line.trim(),
+        });
+      }
+
+      updatedLines.push(line);
+    }
+
+    return { updated: updatedLines.join('\n'), count: totalCount, changes };
+  }
+
+  // Fast path: no change tracking needed
   let updated = content;
   let totalCount = 0;
 
@@ -148,7 +208,7 @@ function replacePlxReferences(content: string): { updated: string; count: number
     }
   }
 
-  return { updated, count: totalCount };
+  return { updated, count: totalCount, changes };
 }
 
 /**
@@ -163,13 +223,13 @@ export async function detectPlxArtifacts(projectPath: string): Promise<{
   const hasClaudeCommandsDir = await FileSystemUtils.directoryExists(claudePlxDir);
 
   let hasFilePatterns = false;
-  for (const [toolDir, subdirs] of Object.entries(AI_TOOL_PATTERNS)) {
-    for (const [subdir] of Object.entries(subdirs)) {
+  for (const [toolDir, toolConfig] of Object.entries(AI_TOOL_PATTERNS)) {
+    for (const [subdir, pattern] of Object.entries(toolConfig.subdirs)) {
       const fullDir = path.join(projectPath, toolDir, subdir);
       if (await FileSystemUtils.directoryExists(fullDir)) {
         try {
           const files = await fs.readdir(fullDir);
-          const plxFiles = files.filter(f => f.startsWith('plx-') && f.endsWith('.md'));
+          const plxFiles = matchPlxFiles(files, pattern);
           if (plxFiles.length > 0) {
             hasFilePatterns = true;
             break;
@@ -185,7 +245,7 @@ export async function detectPlxArtifacts(projectPath: string): Promise<{
   let hasInstructionFiles = false;
   // Check both root and workspace directories
   const checkPaths = [projectPath, path.join(projectPath, PLX_DIR_NAME)];
-  
+
   for (const basePath of checkPaths) {
     for (const fileName of INSTRUCTION_FILES) {
       const filePath = path.join(basePath, fileName);
@@ -212,7 +272,7 @@ export async function detectPlxArtifacts(projectPath: string): Promise<{
 }
 
 /**
- * Migrates PLX artifacts to SPLX in a workspace
+ * Migrates PLX artifacts to SPLX in a project directory
  */
 export async function migratePlxToSplx(
   workspacePath: string,
@@ -227,19 +287,12 @@ export async function migratePlxToSplx(
     errors: [],
   };
 
-  // Validate workspace path
   const workspaceDir = path.join(workspacePath, PLX_DIR_NAME);
-  if (!(await FileSystemUtils.directoryExists(workspaceDir))) {
-    result.errors.push({
-      path: getRelativePath(workspacePath),
-      error: 'Not a valid workspace (workspace/ directory not found)',
-    });
-    return result;
-  }
 
   // 1. Migrate .claude/commands/plx/ directory
   const claudePlxDir = path.join(workspacePath, '.claude', 'commands', 'plx');
   const claudeSplxDir = path.join(workspacePath, '.claude', 'commands', 'splx');
+  const claudeToolName = AI_TOOL_PATTERNS['.claude'].name;
 
   if (await FileSystemUtils.directoryExists(claudePlxDir)) {
     if (await FileSystemUtils.directoryExists(claudeSplxDir)) {
@@ -255,6 +308,7 @@ export async function migratePlxToSplx(
         result.directories.push({
           from: getRelativePath(claudePlxDir),
           to: getRelativePath(claudeSplxDir),
+          tool: claudeToolName,
         });
       } catch (error) {
         result.errors.push({
@@ -266,8 +320,8 @@ export async function migratePlxToSplx(
   }
 
   // 2. Migrate file patterns in other AI tool directories
-  for (const [toolDir, subdirs] of Object.entries(AI_TOOL_PATTERNS)) {
-    for (const [subdir] of Object.entries(subdirs)) {
+  for (const [toolDir, toolConfig] of Object.entries(AI_TOOL_PATTERNS)) {
+    for (const [subdir, pattern] of Object.entries(toolConfig.subdirs)) {
       const fullDir = path.join(workspacePath, toolDir, subdir);
       if (!(await FileSystemUtils.directoryExists(fullDir))) {
         continue;
@@ -284,9 +338,9 @@ export async function migratePlxToSplx(
         continue;
       }
 
-      const plxFiles = files.filter(f => f.startsWith('plx-') && f.endsWith('.md'));
+      const plxFiles = matchPlxFiles(files, pattern);
 
-      for (const plxFile of plxFiles) {
+      for (const { file: plxFile } of plxFiles) {
         const fromPath = path.join(fullDir, plxFile);
         const splxFile = plxFile.replace(/^plx-/, 'splx-');
         const toPath = path.join(fullDir, splxFile);
@@ -308,6 +362,7 @@ export async function migratePlxToSplx(
           result.files.push({
             from: fromRelative,
             to: getRelativePath(toPath),
+            tool: toolConfig.name,
           });
         } catch (error) {
           result.errors.push({
@@ -319,11 +374,11 @@ export async function migratePlxToSplx(
     }
   }
 
-  // 3. Update content references in instruction files (root and workspace)
-  const instructionPaths = [
-    workspacePath, // Root directory
-    workspaceDir, // Workspace directory
-  ];
+  // 3. Update content references in instruction files (root and workspace if exists)
+  const instructionPaths = [workspacePath];
+  if (await FileSystemUtils.directoryExists(workspaceDir)) {
+    instructionPaths.push(workspaceDir);
+  }
 
   for (const basePath of instructionPaths) {
     for (const fileName of INSTRUCTION_FILES) {
@@ -334,7 +389,10 @@ export async function migratePlxToSplx(
 
       try {
         const content = await FileSystemUtils.readFile(filePath);
-        const { updated: updatedContent, count: replacements } = replacePlxReferences(content);
+        const { updated: updatedContent, count: replacements, changes } = replacePlxReferences(
+          content,
+          options.dryRun
+        );
 
         if (updatedContent !== content && replacements > 0) {
           if (!options.dryRun) {
@@ -344,6 +402,7 @@ export async function migratePlxToSplx(
           result.contentUpdates.push({
             path: getRelativePath(filePath),
             replacements,
+            changes: options.dryRun ? changes : undefined,
           });
         }
       } catch (error) {
@@ -355,39 +414,41 @@ export async function migratePlxToSplx(
     }
   }
 
-  // 4. Update content in migrated Claude commands directory
-  // After directory rename, update files in the splx directory
-  const claudeCommandsDirToCheck = options.dryRun ? claudePlxDir : claudeSplxDir;
-  
-  if (await FileSystemUtils.directoryExists(claudeCommandsDirToCheck)) {
+  // 4. Update content in Claude commands directory
+  // In dry-run: check original plx/ directory
+  // In actual: check renamed splx/ directory (same files, new location)
+  const claudeCommandsDir = options.dryRun ? claudePlxDir : claudeSplxDir;
+
+  if (await FileSystemUtils.directoryExists(claudeCommandsDir)) {
     let files: string[] = [];
     try {
-      files = await fs.readdir(claudeCommandsDirToCheck);
+      files = await fs.readdir(claudeCommandsDir);
     } catch (error) {
       result.errors.push({
-        path: getRelativePath(claudeCommandsDirToCheck),
+        path: getRelativePath(claudeCommandsDir),
         error: `Cannot read directory: ${(error as Error).message}`,
       });
     }
 
     for (const file of files.filter(f => f.endsWith('.md'))) {
-      const filePath = path.join(claudeCommandsDirToCheck, file);
-      const targetPath = path.join(claudeSplxDir, file);
+      const filePath = path.join(claudeCommandsDir, file);
 
       try {
         const content = await FileSystemUtils.readFile(filePath);
-        const { updated: updatedContent, count: replacements } = replacePlxReferences(content);
+        const { updated: updatedContent, count: replacements, changes } = replacePlxReferences(
+          content,
+          options.dryRun
+        );
 
         if (updatedContent !== content && replacements > 0) {
           if (!options.dryRun) {
-            // Ensure target directory exists (it should after rename, but be safe)
-            await FileSystemUtils.createDirectory(path.dirname(targetPath));
-            await FileSystemUtils.writeFile(targetPath, updatedContent);
+            await FileSystemUtils.writeFile(filePath, updatedContent);
           }
 
           result.contentUpdates.push({
             path: getRelativePath(filePath),
             replacements,
+            changes: options.dryRun ? changes : undefined,
           });
         }
       } catch (error) {
@@ -409,7 +470,10 @@ export async function migratePlxToSplx(
     if (await FileSystemUtils.fileExists(targetPath)) {
       try {
         const content = await FileSystemUtils.readFile(targetPath);
-        const { updated: updatedContent, count: replacements } = replacePlxReferences(content);
+        const { updated: updatedContent, count: replacements, changes } = replacePlxReferences(
+          content,
+          options.dryRun
+        );
 
         if (updatedContent !== content && replacements > 0) {
           if (!options.dryRun) {
@@ -419,6 +483,7 @@ export async function migratePlxToSplx(
           result.contentUpdates.push({
             path: options.dryRun ? file.from : file.to,
             replacements,
+            changes: options.dryRun ? changes : undefined,
           });
         }
       } catch (error) {
