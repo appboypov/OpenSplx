@@ -8,7 +8,7 @@ parent-id: move-root-files-to-workspace
 # Task: Update transfer service for workspace paths
 
 ## End Goal
-`plx transfer` creates template files in target `workspace/` instead of project root.
+`splx transfer` creates template files in target `workspace/` instead of project root.
 
 ## Currently
 `src/services/transfer-service.ts` `generateTemplateFiles()` method creates files at:

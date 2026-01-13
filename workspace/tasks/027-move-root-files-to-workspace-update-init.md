@@ -8,7 +8,7 @@ parent-id: move-root-files-to-workspace
 # Task: Update init command to create files in workspace
 
 ## End Goal
-`plx init` creates ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md in `workspace/` instead of project root.
+`splx init` creates ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md in `workspace/` instead of project root.
 
 ## Currently
 `src/core/init.ts` creates these files at `projectPath`:
@@ -30,10 +30,10 @@ parent-id: move-root-files-to-workspace
 - [ ] Do not change AGENTS.md location (stays in workspace)
 
 ## Acceptance Criteria
-- [ ] `plx init` creates ARCHITECTURE.md at `workspace/ARCHITECTURE.md`
-- [ ] `plx init` creates REVIEW.md at `workspace/REVIEW.md`
-- [ ] `plx init` creates RELEASE.md at `workspace/RELEASE.md`
-- [ ] `plx init` creates TESTING.md at `workspace/TESTING.md`
+- [ ] `splx init` creates ARCHITECTURE.md at `workspace/ARCHITECTURE.md`
+- [ ] `splx init` creates REVIEW.md at `workspace/REVIEW.md`
+- [ ] `splx init` creates RELEASE.md at `workspace/RELEASE.md`
+- [ ] `splx init` creates TESTING.md at `workspace/TESTING.md`
 - [ ] Extend mode still skips existing files
 
 ## Implementation Checklist

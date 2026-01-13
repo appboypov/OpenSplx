@@ -67,19 +67,19 @@ Review all implemented code:
 Run manual testing:
 ```bash
 # Test init/update
-plx init ./test-project
-plx update ./test-project
+splx init ./test-project
+splx update ./test-project
 
 # Test parse feedback
-plx parse feedback test-review
+splx parse feedback test-review
 
 # Test review commands
-plx review list
-plx review show test-review
+splx review list
+splx review show test-review
 
 # Test list
-plx list --reviews
+splx list --reviews
 
 # Test archive
-plx archive test-review
+splx archive test-review
 ```

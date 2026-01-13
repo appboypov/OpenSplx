@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-A CLI command `plx parse feedback [review-name]` that scans the codebase for feedback markers and generates a review entity.
+A CLI command `splx parse feedback [review-name]` that scans the codebase for feedback markers and generates a review entity.
 
 ## Currently
 
@@ -20,7 +20,7 @@ Create `/src/commands/parse-feedback.ts` with `ParseFeedbackCommand` class:
 - Supports `--json` output option
 - Prompts for review name if not provided
 
-Register in `/src/cli/index.ts` under `plx parse feedback`.
+Register in `/src/cli/index.ts` under `splx parse feedback`.
 
 ## Constraints
 
@@ -31,8 +31,8 @@ Register in `/src/cli/index.ts` under `plx parse feedback`.
 
 ## Acceptance Criteria
 
-- [ ] `plx parse feedback my-review` creates review entity
-- [ ] `plx parse feedback` prompts for review name
+- [ ] `splx parse feedback my-review` creates review entity
+- [ ] `splx parse feedback` prompts for review name
 - [ ] Command fails if review already exists
 - [ ] Command succeeds with no markers (displays message, no entity created)
 - [ ] `--json` outputs JSON with markersFound, tasksCreated, etc.

@@ -2,19 +2,19 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('transfer command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-transfer-cmd-tmp');
   const sourceDir = path.join(testDir, 'source-project');
   const targetDir = path.join(testDir, 'target-project');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await fs.mkdir(testDir, { recursive: true });
-    await createValidPlxWorkspace(sourceDir);
-    await createValidPlxWorkspace(targetDir);
+    await createValidSplxWorkspace(sourceDir);
+    await createValidSplxWorkspace(targetDir);
   });
 
   afterEach(async () => {
@@ -31,7 +31,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer change --id my-feature --target "${targetDir}" --yes --json`,
+          `node ${splxBin} transfer change --id my-feature --target "${targetDir}" --yes --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -60,7 +60,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer change --id my-feature --target "${targetDir}" --yes --json`,
+          `node ${splxBin} transfer change --id my-feature --target "${targetDir}" --yes --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -86,7 +86,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer change --id old-name --target "${targetDir}" --target-name new-name --yes --json`,
+          `node ${splxBin} transfer change --id old-name --target "${targetDir}" --target-name new-name --yes --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -118,7 +118,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer change --id my-feature --target "${targetDir}" --json`,
+          `node ${splxBin} transfer change --id my-feature --target "${targetDir}" --json`,
           { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
         );
         const result = JSON.parse(output);
@@ -147,7 +147,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer spec --id api-design --target "${targetDir}" --yes --json`,
+          `node ${splxBin} transfer spec --id api-design --target "${targetDir}" --yes --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -187,7 +187,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer task --id 005-standalone-task.md --target "${targetDir}" --yes --json`,
+          `node ${splxBin} transfer task --id 005-standalone-task.md --target "${targetDir}" --yes --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -219,7 +219,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer review --id code-review --target "${targetDir}" --yes --json`,
+          `node ${splxBin} transfer review --id code-review --target "${targetDir}" --yes --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -244,7 +244,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer request --id feature-request --target "${targetDir}" --yes --json`,
+          `node ${splxBin} transfer request --id feature-request --target "${targetDir}" --yes --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -272,7 +272,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer change --id my-feature --target "${targetDir}" --dry-run --json`,
+          `node ${splxBin} transfer change --id my-feature --target "${targetDir}" --dry-run --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -305,7 +305,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         execSync(
-          `node ${plxBin} transfer change --id my-feature --no-interactive --json`,
+          `node ${splxBin} transfer change --id my-feature --no-interactive --json`,
           { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
         );
         // Should not reach here
@@ -328,7 +328,7 @@ describe('transfer command', () => {
         let output: string;
         try {
           output = execSync(
-            `node ${plxBin} transfer change --id nonexistent --target "${targetDir}" --yes --json`,
+            `node ${splxBin} transfer change --id nonexistent --target "${targetDir}" --yes --json`,
             { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
           );
         } catch (error: any) {
@@ -359,7 +359,7 @@ describe('transfer command', () => {
       try {
         process.chdir(sourceDir);
         const output = execSync(
-          `node ${plxBin} transfer change --id my-feature --target "${emptyTargetDir}" --yes --json`,
+          `node ${splxBin} transfer change --id my-feature --target "${emptyTargetDir}" --yes --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -389,8 +389,8 @@ describe('transfer command', () => {
       const packageADir = path.join(monorepoDir, 'packages', 'package-a');
       const packageBDir = path.join(monorepoDir, 'packages', 'package-b');
 
-      await createValidPlxWorkspace(packageADir);
-      await createValidPlxWorkspace(packageBDir);
+      await createValidSplxWorkspace(packageADir);
+      await createValidSplxWorkspace(packageBDir);
 
       // Create change in package A
       const changeDir = path.join(packageADir, 'workspace', 'changes', 'shared-feature');
@@ -401,7 +401,7 @@ describe('transfer command', () => {
       try {
         process.chdir(packageADir);
         const output = execSync(
-          `node ${plxBin} transfer change --id shared-feature --target "${packageBDir}" --yes --json`,
+          `node ${splxBin} transfer change --id shared-feature --target "${packageBDir}" --yes --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);

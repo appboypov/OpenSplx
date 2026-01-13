@@ -8,26 +8,26 @@ parent-id: standardize-cli-pattern
 
 ## End Goal
 
-The `plx validate` command uses entity subcommands with `--id` flag for consistent pattern.
+The `splx validate` command uses entity subcommands with `--id` flag for consistent pattern.
 
 ## Currently
 
-- `plx validate <item>` validates with auto-detection
-- `plx validate --all` validates everything
-- `plx validate --changes` validates all changes
-- `plx validate --specs` validates all specs
-- `plx validate --type change <item>` disambiguates type
+- `splx validate <item>` validates with auto-detection
+- `splx validate --all` validates everything
+- `splx validate --changes` validates all changes
+- `splx validate --specs` validates all specs
+- `splx validate --type change <item>` disambiguates type
 
 ## Should
 
-- `plx validate change --id <id>` validates specific change
-- `plx validate changes` validates all changes
-- `plx validate spec --id <id>` validates specific spec
-- `plx validate specs` validates all specs
-- `plx validate --all` continues to work (validates everything)
-- Legacy `plx validate <item>` continues with deprecation warning
-- Legacy `plx validate --changes` continues with deprecation warning
-- Legacy `plx validate --specs` continues with deprecation warning
+- `splx validate change --id <id>` validates specific change
+- `splx validate changes` validates all changes
+- `splx validate spec --id <id>` validates specific spec
+- `splx validate specs` validates all specs
+- `splx validate --all` continues to work (validates everything)
+- Legacy `splx validate <item>` continues with deprecation warning
+- Legacy `splx validate --changes` continues with deprecation warning
+- Legacy `splx validate --specs` continues with deprecation warning
 
 ## Constraints
 
@@ -37,13 +37,13 @@ The `plx validate` command uses entity subcommands with `--id` flag for consiste
 
 ## Acceptance Criteria
 
-- [ ] `plx validate change --id <id>` validates specific change
-- [ ] `plx validate changes` validates all changes with same output as `--changes`
-- [ ] `plx validate spec --id <id>` validates specific spec
-- [ ] `plx validate specs` validates all specs with same output as `--specs`
-- [ ] `plx validate <item>` warns and works (deprecated)
-- [ ] `plx validate --changes` warns and works (deprecated)
-- [ ] `plx validate --specs` warns and works (deprecated)
+- [ ] `splx validate change --id <id>` validates specific change
+- [ ] `splx validate changes` validates all changes with same output as `--changes`
+- [ ] `splx validate spec --id <id>` validates specific spec
+- [ ] `splx validate specs` validates all specs with same output as `--specs`
+- [ ] `splx validate <item>` warns and works (deprecated)
+- [ ] `splx validate --changes` warns and works (deprecated)
+- [ ] `splx validate --specs` warns and works (deprecated)
 - [ ] `--strict` flag works with new subcommands
 - [ ] JSON output unchanged for new commands
 
@@ -62,4 +62,4 @@ The `plx validate` command uses entity subcommands with `--id` flag for consiste
 
 ## Notes
 
-The validation logic remains unchanged; this task only standardizes the command interface. The `plx validate --all` command should remain as-is since it's not entity-specific.
+The validation logic remains unchanged; this task only standardizes the command interface. The `splx validate --all` command should remain as-is since it's not entity-specific.

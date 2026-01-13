@@ -46,7 +46,7 @@ All commands should be verified for:
 - [x] 3.7 Review refine-release.md for consistency
 - [x] 3.8 Review refine-review.md for consistency
 - [x] 3.9 Review refine-testing.md for consistency
-- [x] 3.10 Run `plx update` to regenerate and verify no conflicts
+- [x] 3.10 Run `splx update` to regenerate and verify no conflicts
 
 ## Notes
 

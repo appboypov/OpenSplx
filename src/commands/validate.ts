@@ -62,10 +62,10 @@ export class ValidateCommand {
     // Handle bulk flags first
     if (options.all || options.changes || options.specs) {
       if (options.changes) {
-        emitDeprecationWarning('plx validate --changes', 'plx validate changes');
+        emitDeprecationWarning('splx validate --changes', 'splx validate changes');
       }
       if (options.specs) {
-        emitDeprecationWarning('plx validate --specs', 'plx validate specs');
+        emitDeprecationWarning('splx validate --specs', 'splx validate specs');
       }
       await this.runBulkValidation({
         changes: !!options.all || !!options.changes,
@@ -86,8 +86,8 @@ export class ValidateCommand {
     }
 
     // Direct item validation with type detection or override (no longer supported)
-    console.error('Error: The plx validate <item> syntax is no longer supported.');
-    console.error('Use: plx validate change --id <id> or plx validate spec --id <id>');
+    console.error('Error: The splx validate <item> syntax is no longer supported.');
+    console.error('Use: splx validate change --id <id> or splx validate spec --id <id>');
     process.exitCode = 1;
   }
 
@@ -126,7 +126,7 @@ export class ValidateCommand {
     if (projectPrefix === null && matchingItems.length > 1) {
       const workspaceNames = matchingItems.map(item => item.displayId).join(', ');
       console.error(`Ambiguous ${type} '${id}' exists in multiple workspaces: ${workspaceNames}`);
-      console.error(`Specify the workspace prefix, e.g.: plx validate ${type} --id <workspace>/<id>`);
+      console.error(`Specify the workspace prefix, e.g.: splx validate ${type} --id <workspace>/<id>`);
       process.exitCode = 1;
       return;
     }
@@ -188,11 +188,11 @@ export class ValidateCommand {
 
   private printNonInteractiveHint(): void {
     console.error('Nothing to validate. Try one of:');
-    console.error('  plx validate all');
-    console.error('  plx validate changes');
-    console.error('  plx validate specs');
-    console.error('  plx validate change --id <id>');
-    console.error('  plx validate spec --id <id>');
+    console.error('  splx validate all');
+    console.error('  splx validate changes');
+    console.error('  splx validate specs');
+    console.error('  splx validate change --id <id>');
+    console.error('  splx validate spec --id <id>');
     console.error('Or run in an interactive terminal.');
   }
 
@@ -230,7 +230,7 @@ export class ValidateCommand {
     if (projectPrefix === null && matchingChanges.length > 1) {
       const workspaceNames = matchingChanges.map(c => c.displayId).join(', ');
       console.error(`Ambiguous item '${itemName}' exists in multiple workspaces: ${workspaceNames}`);
-      console.error('Specify the workspace prefix, e.g.: plx validate change --id <workspace>/<id>');
+      console.error('Specify the workspace prefix, e.g.: splx validate change --id <workspace>/<id>');
       process.exitCode = 1;
       return;
     }
@@ -238,7 +238,7 @@ export class ValidateCommand {
     if (projectPrefix === null && matchingSpecs.length > 1) {
       const workspaceNames = matchingSpecs.map(s => s.displayId).join(', ');
       console.error(`Ambiguous item '${itemName}' exists in multiple workspaces: ${workspaceNames}`);
-      console.error('Specify the workspace prefix, e.g.: plx validate spec --id <workspace>/<id>');
+      console.error('Specify the workspace prefix, e.g.: splx validate spec --id <workspace>/<id>');
       process.exitCode = 1;
       return;
     }
@@ -267,7 +267,7 @@ export class ValidateCommand {
     if (!opts.typeOverride && isChange && isSpec) {
       const displayName = isMulti && projectPrefix ? `${projectPrefix}/${actualItemName}` : actualItemName;
       console.error(`Ambiguous item '${displayName}' matches both a change and a spec.`);
-      console.error('Pass --type change|spec, or use: plx change validate / plx spec validate');
+      console.error('Pass --type change|spec, or use: splx change validate / splx spec validate');
       process.exitCode = 1;
       return;
     }
@@ -344,7 +344,7 @@ export class ValidateCommand {
     if (type === 'change') {
       bullets.push('- Ensure change has deltas in specs/: use headers ## ADDED/MODIFIED/REMOVED/RENAMED Requirements');
       bullets.push('- Each requirement MUST include at least one #### Scenario: block');
-      bullets.push('- Debug parsed deltas: plx change show <id> --json --deltas-only');
+      bullets.push('- Debug parsed deltas: splx change show <id> --json --deltas-only');
     } else {
       bullets.push('- Ensure spec includes ## Purpose and ## Requirements sections');
       bullets.push('- Each requirement MUST include at least one #### Scenario: block');

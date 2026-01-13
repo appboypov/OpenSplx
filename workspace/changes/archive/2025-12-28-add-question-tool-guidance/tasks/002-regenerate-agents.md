@@ -18,7 +18,7 @@ The AGENTS.md file is regenerated from the updated template.
 
 ## Constraints
 
-- [ ] Use `plx update` command to regenerate
+- [ ] Use `splx update` command to regenerate
 - [ ] Verify the regenerated content includes the new guidance
 
 ## Acceptance Criteria
@@ -29,7 +29,7 @@ The AGENTS.md file is regenerated from the updated template.
 ## Implementation Checklist
 
 - [x] 2.1 Run `pnpm build` to compile the updated templates
-- [x] 2.2 Run `plx update` to regenerate AGENTS.md
+- [x] 2.2 Run `splx update` to regenerate AGENTS.md
 - [x] 2.3 Verify the regenerated file contains the updated guidance
 
 ## Notes

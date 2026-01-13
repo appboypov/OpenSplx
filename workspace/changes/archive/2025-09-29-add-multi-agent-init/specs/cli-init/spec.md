@@ -20,17 +20,17 @@ The command SHALL provide an interactive menu for AI tool selection with clear n
 
 ## ADDED Requirements
 ### Requirement: Additional AI Tool Initialization
-`plx init` SHALL allow users to add configuration files for new AI coding assistants after the initial setup.
+`splx init` SHALL allow users to add configuration files for new AI coding assistants after the initial setup.
 
 #### Scenario: Configuring an extra tool after initial setup
 - **GIVEN** an `workspace/` directory already exists and at least one AI tool file is present
-- **WHEN** the user runs `plx init` and selects a different supported AI tool
+- **WHEN** the user runs `splx init` and selects a different supported AI tool
 - **THEN** generate that tool's configuration files with PLX markers the same way as during first-time initialization
 - **AND** leave existing tool configuration files unchanged except for managed sections that need refreshing
 - **AND** exit with code 0 and display a success summary highlighting the newly added tool files
 
 ### Requirement: Success Output Enhancements
-`plx init` SHALL summarize tool actions when initialization or extend mode completes.
+`splx init` SHALL summarize tool actions when initialization or extend mode completes.
 
 #### Scenario: Showing tool summary
 - **WHEN** the command completes successfully
@@ -38,7 +38,7 @@ The command SHALL provide an interactive menu for AI tool selection with clear n
 - **AND** personalize the "Next steps" header using the names of the selected tools, defaulting to a generic label when none remain
 
 ### Requirement: Exit Code Adjustments
-`plx init` SHALL treat extend mode with no selected tools as a guarded error.
+`splx init` SHALL treat extend mode with no selected tools as a guarded error.
 
 #### Scenario: Preventing empty extend runs
 - **WHEN** PLX is already initialized and the user selects no additional tools

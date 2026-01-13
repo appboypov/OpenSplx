@@ -172,14 +172,14 @@ export async function migrateGlobalToolDirectories(): Promise<number> {
 }
 
 /**
- * Moves ~/.openspec/ to ~/.plx/.
- * Skips if ~/.plx/ already exists.
+ * Moves ~/.openspec/ to ~/.splx/.
+ * Skips if ~/.splx/ already exists.
  * Returns true if migrated.
  */
 export async function migrateGlobalConfig(): Promise<boolean> {
   const homeDir = os.homedir();
   const openspecGlobal = path.join(homeDir, '.openspec');
-  const plxGlobal = path.join(homeDir, '.plx');
+  const splxGlobal = path.join(homeDir, '.splx');
 
   try {
     const openspecExists = await directoryExists(openspecGlobal);
@@ -187,12 +187,12 @@ export async function migrateGlobalConfig(): Promise<boolean> {
       return false;
     }
 
-    const plxExists = await directoryExists(plxGlobal);
-    if (plxExists) {
+    const splxExists = await directoryExists(splxGlobal);
+    if (splxExists) {
       return false;
     }
 
-    await fs.rename(openspecGlobal, plxGlobal);
+    await fs.rename(openspecGlobal, splxGlobal);
     return true;
   } catch {
     return false;

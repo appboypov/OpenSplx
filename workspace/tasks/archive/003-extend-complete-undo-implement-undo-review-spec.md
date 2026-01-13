@@ -8,7 +8,7 @@ parent-id: extend-complete-undo
 
 ## End Goal
 
-Users can run `plx undo review --id <id>` and `plx undo spec --id <id>` to revert all tasks associated with a review or spec to to-do status.
+Users can run `splx undo review --id <id>` and `splx undo spec --id <id>` to revert all tasks associated with a review or spec to to-do status.
 
 ## Currently
 
@@ -36,8 +36,8 @@ Users can run `plx undo review --id <id>` and `plx undo spec --id <id>` to rever
 
 ## Acceptance Criteria
 
-- [x] `plx undo review --id <id>` reverts all tasks in the review to to-do
-- [x] `plx undo spec --id <id>` reverts all tasks linked to the spec to to-do
+- [x] `splx undo review --id <id>` reverts all tasks in the review to to-do
+- [x] `splx undo spec --id <id>` reverts all tasks linked to the spec to to-do
 - [x] Already to-do tasks are skipped with appropriate message
 - [x] Non-existent entities produce error with exit code 1
 - [x] `--json` flag produces valid JSON output

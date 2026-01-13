@@ -2,13 +2,13 @@
 
 ## Why
 
-Projects created with the original OpenSpec CLI have `openspec/` directories and `<!-- OPENSPEC:START/END -->` markers. When these users upgrade to the PLX CLI and run `plx update` or `plx init`, the CLI should automatically detect and migrate legacy structures to the new PLX format.
+Projects created with the original OpenSpec CLI have `openspec/` directories and `<!-- OPENSPEC:START/END -->` markers. When these users upgrade to the PLX CLI and run `splx update` or `splx init`, the CLI should automatically detect and migrate legacy structures to the new PLX format.
 
 ## What Changes
 
 - Add automatic migration of `openspec/` directory to `workspace/`
 - Add automatic migration of `<!-- OPENSPEC:START/END -->` markers to `<!-- PLX:START/END -->`
-- Add automatic migration of `~/.openspec/` global config to `~/.plx/`
+- Add automatic migration of `~/.openspec/` global config to `~/.splx/`
 - Migration runs silently if no OpenSpec artifacts detected
 - Migration logs results when changes are made
 

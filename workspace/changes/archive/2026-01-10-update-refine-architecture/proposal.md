@@ -14,7 +14,7 @@ The current `refine-architecture` command produces minimal documentation that re
 
 ## Impact
 
-- Affected specs: `plx-slash-commands`
+- Affected specs: `splx-slash-commands`
 - Affected code:
   - `src/core/templates/slash-command-templates.ts` (primary change)
-  - All tool-specific command files via `plx update`
+  - All tool-specific command files via `splx update`

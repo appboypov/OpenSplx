@@ -9,7 +9,7 @@ The CLI SHALL provide a `migrate` command with subcommands for different migrati
 
 #### Scenario: Help displays available migrations
 
-- **WHEN** user runs `plx migrate --help`
+- **WHEN** user runs `splx migrate --help`
 - **THEN** the system displays available migration subcommands
 - **AND** includes description for each migration type
 
@@ -19,7 +19,7 @@ The CLI SHALL provide a `migrate tasks` subcommand that moves nested task files 
 
 #### Scenario: Basic task migration from changes
 
-- **WHEN** user runs `plx migrate tasks`
+- **WHEN** user runs `splx migrate tasks`
 - **AND** tasks exist in `workspace/changes/<name>/tasks/`
 - **THEN** each task file is moved to `workspace/tasks/`
 - **AND** filename is transformed to `NNN-<parent-id>-<name>.md`
@@ -30,7 +30,7 @@ The CLI SHALL provide a `migrate tasks` subcommand that moves nested task files 
 
 #### Scenario: Basic task migration from reviews
 
-- **WHEN** user runs `plx migrate tasks`
+- **WHEN** user runs `splx migrate tasks`
 - **AND** tasks exist in `workspace/reviews/<name>/tasks/`
 - **THEN** each task file is moved to `workspace/tasks/`
 - **AND** filename is transformed to `NNN-<parent-id>-<name>.md`
@@ -41,14 +41,14 @@ The CLI SHALL provide a `migrate tasks` subcommand that moves nested task files 
 
 #### Scenario: No tasks to migrate
 
-- **WHEN** user runs `plx migrate tasks`
+- **WHEN** user runs `splx migrate tasks`
 - **AND** no tasks exist in nested locations
 - **THEN** the system displays "No tasks found to migrate"
 - **AND** exits with success status
 
 #### Scenario: Target directory creation
 
-- **WHEN** user runs `plx migrate tasks`
+- **WHEN** user runs `splx migrate tasks`
 - **AND** `workspace/tasks/` does not exist
 - **THEN** the directory is created before migration
 
@@ -58,7 +58,7 @@ The CLI SHALL support a `--dry-run` flag that previews migration without executi
 
 #### Scenario: Dry run shows planned changes
 
-- **WHEN** user runs `plx migrate tasks --dry-run`
+- **WHEN** user runs `splx migrate tasks --dry-run`
 - **AND** tasks exist to migrate
 - **THEN** the system displays each file that would be moved
 - **AND** displays source and destination paths
@@ -67,7 +67,7 @@ The CLI SHALL support a `--dry-run` flag that previews migration without executi
 
 #### Scenario: Dry run with no tasks
 
-- **WHEN** user runs `plx migrate tasks --dry-run`
+- **WHEN** user runs `splx migrate tasks --dry-run`
 - **AND** no tasks exist to migrate
 - **THEN** the system displays "No tasks found to migrate"
 
@@ -77,7 +77,7 @@ The CLI SHALL support a `--json` flag for machine-readable migration results.
 
 #### Scenario: JSON output structure
 
-- **WHEN** user runs `plx migrate tasks --json`
+- **WHEN** user runs `splx migrate tasks --json`
 - **THEN** the output is valid JSON containing:
   - `totalFound`: number of task files found
   - `migrated`: array of migration results with source, destination, parentType, parentId
@@ -87,7 +87,7 @@ The CLI SHALL support a `--json` flag for machine-readable migration results.
 
 #### Scenario: JSON output with dry-run
 
-- **WHEN** user runs `plx migrate tasks --dry-run --json`
+- **WHEN** user runs `splx migrate tasks --dry-run --json`
 - **THEN** the output is valid JSON
 - **AND** `dryRun: true` is included in the output
 - **AND** migration results show planned (not executed) changes
@@ -98,7 +98,7 @@ The CLI SHALL display a summary report after migration completes.
 
 #### Scenario: Successful migration report
 
-- **WHEN** user runs `plx migrate tasks`
+- **WHEN** user runs `splx migrate tasks`
 - **AND** migration completes successfully
 - **THEN** the system displays:
   - Total tasks found
@@ -108,7 +108,7 @@ The CLI SHALL display a summary report after migration completes.
 
 #### Scenario: Migration with errors report
 
-- **WHEN** user runs `plx migrate tasks`
+- **WHEN** user runs `splx migrate tasks`
 - **AND** some files fail to migrate
 - **THEN** the system displays error details for each failed file
 - **AND** continues with remaining files
@@ -120,7 +120,7 @@ The CLI SHALL handle filename collisions in the target directory.
 
 #### Scenario: Collision detected
 
-- **WHEN** user runs `plx migrate tasks`
+- **WHEN** user runs `splx migrate tasks`
 - **AND** a target filename already exists in `workspace/tasks/`
 - **THEN** the file is skipped
 - **AND** the collision is reported in the summary
@@ -132,7 +132,7 @@ The CLI SHALL support migration in multi-workspace environments.
 
 #### Scenario: Multi-workspace migration
 
-- **WHEN** user runs `plx migrate tasks`
+- **WHEN** user runs `splx migrate tasks`
 - **AND** multiple workspaces are discovered
 - **THEN** each workspace is migrated independently
 - **AND** tasks are moved to each workspace's `tasks/` directory
@@ -140,7 +140,7 @@ The CLI SHALL support migration in multi-workspace environments.
 
 #### Scenario: Workspace filter
 
-- **WHEN** user runs `plx migrate tasks --workspace project-a`
+- **WHEN** user runs `splx migrate tasks --workspace project-a`
 - **THEN** only the specified workspace is migrated
 
 ### Requirement: Shell Completion Support
@@ -149,11 +149,11 @@ The CLI SHALL include `migrate` command in shell completion registry.
 
 #### Scenario: Migrate command completions
 
-- **WHEN** user types `plx migrate <TAB>`
+- **WHEN** user types `splx migrate <TAB>`
 - **THEN** completions include: tasks
 
 #### Scenario: Migrate tasks flag completions
 
-- **WHEN** user types `plx migrate tasks --<TAB>`
+- **WHEN** user types `splx migrate tasks --<TAB>`
 - **THEN** completions include: dry-run, json, workspace
 

@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import os from 'os';
 import { ListCommand } from '../../src/core/list.js';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('ListCommand', () => {
   let tempDir: string;
@@ -15,7 +15,7 @@ describe('ListCommand', () => {
 
   beforeEach(async () => {
     // Create temp directory
-    tempDir = path.join(os.tmpdir(), `plx-list-test-${Date.now()}`);
+    tempDir = path.join(os.tmpdir(), `splx-list-test-${Date.now()}`);
     await fs.mkdir(tempDir, { recursive: true });
 
     // Store original env
@@ -52,7 +52,7 @@ describe('ListCommand', () => {
   describe('execute', () => {
     it('should handle missing workspace/changes directory', async () => {
       // Create valid PLX workspace but without changes directory
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
 
       const listCommand = new ListCommand();
       await listCommand.execute(tempDir, 'changes');
@@ -62,7 +62,7 @@ describe('ListCommand', () => {
     });
 
     it('should handle empty changes directory', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       await fs.mkdir(changesDir, { recursive: true });
 
@@ -73,7 +73,7 @@ describe('ListCommand', () => {
     });
 
     it('should exclude archive directory', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       await fs.mkdir(path.join(changesDir, 'archive'), { recursive: true });
       await fs.mkdir(path.join(changesDir, 'my-change'), { recursive: true });
@@ -99,7 +99,7 @@ describe('ListCommand', () => {
     });
 
     it('should count tasks correctly', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       const tasksDir = path.join(tempDir, 'workspace', 'tasks');
       await fs.mkdir(path.join(changesDir, 'test-change'), { recursive: true });
@@ -137,7 +137,7 @@ Regular text that should be ignored
     });
 
     it('should show complete status for fully completed changes', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       const tasksDir = path.join(tempDir, 'workspace', 'tasks');
       await fs.mkdir(path.join(changesDir, 'completed-change'), { recursive: true });
@@ -162,7 +162,7 @@ Regular text that should be ignored
     });
 
     it('should handle changes without tasks.md', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       await fs.mkdir(path.join(changesDir, 'no-tasks'), { recursive: true });
 
@@ -179,7 +179,7 @@ Regular text that should be ignored
     });
 
     it('should sort changes alphabetically', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       await fs.mkdir(path.join(changesDir, 'zebra'), { recursive: true });
       await fs.mkdir(path.join(changesDir, 'alpha'), { recursive: true });
@@ -212,7 +212,7 @@ Regular text that should be ignored
     });
 
     it('should handle multiple changes with various states', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       const tasksDir = path.join(tempDir, 'workspace', 'tasks');
       await fs.mkdir(tasksDir, { recursive: true });
@@ -257,7 +257,7 @@ Regular text that should be ignored
     });
 
     it('should display tracked issue IDs from proposal frontmatter', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       await fs.mkdir(path.join(changesDir, 'with-issue'), { recursive: true });
 
@@ -284,7 +284,7 @@ Test`;
     });
 
     it('should align columns correctly when changes have different issue ID lengths', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       const tasksDir = path.join(tempDir, 'workspace', 'tasks');
       await fs.mkdir(tasksDir, { recursive: true });
@@ -343,7 +343,7 @@ tracked-issues:
     });
 
     it('should handle changes without tracked issues in alignment calculation', async () => {
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
 
       // Mix of changes with and without issues
@@ -371,8 +371,8 @@ tracked-issues:
   });
 
   describe('deprecation warnings', () => {
-    it('should emit deprecation warning for plx list (changes)', async () => {
-      await createValidPlxWorkspace(tempDir);
+    it('should emit deprecation warning for splx list (changes)', async () => {
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       await fs.mkdir(changesDir, { recursive: true });
 
@@ -380,13 +380,13 @@ tracked-issues:
       await listCommand.execute(tempDir, 'changes');
 
       expect(errorOutput.some(line =>
-        line.includes("Deprecation: 'plx list' is deprecated") &&
-        line.includes('plx get changes')
+        line.includes("Deprecation: 'splx list' is deprecated") &&
+        line.includes('splx get changes')
       )).toBe(true);
     });
 
-    it('should emit deprecation warning for plx list --specs', async () => {
-      await createValidPlxWorkspace(tempDir);
+    it('should emit deprecation warning for splx list --specs', async () => {
+      await createValidSplxWorkspace(tempDir);
       const specsDir = path.join(tempDir, 'workspace', 'specs');
       await fs.mkdir(specsDir, { recursive: true });
 
@@ -394,13 +394,13 @@ tracked-issues:
       await listCommand.execute(tempDir, 'specs');
 
       expect(errorOutput.some(line =>
-        line.includes("Deprecation: 'plx list --specs' is deprecated") &&
-        line.includes('plx get specs')
+        line.includes("Deprecation: 'splx list --specs' is deprecated") &&
+        line.includes('splx get specs')
       )).toBe(true);
     });
 
-    it('should emit deprecation warning for plx list --reviews', async () => {
-      await createValidPlxWorkspace(tempDir);
+    it('should emit deprecation warning for splx list --reviews', async () => {
+      await createValidSplxWorkspace(tempDir);
       const reviewsDir = path.join(tempDir, 'workspace', 'reviews');
       await fs.mkdir(reviewsDir, { recursive: true });
 
@@ -408,14 +408,14 @@ tracked-issues:
       await listCommand.execute(tempDir, 'reviews');
 
       expect(errorOutput.some(line =>
-        line.includes("Deprecation: 'plx list --reviews' is deprecated") &&
-        line.includes('plx get reviews')
+        line.includes("Deprecation: 'splx list --reviews' is deprecated") &&
+        line.includes('splx get reviews')
       )).toBe(true);
     });
 
     it('should suppress deprecation warning when PLX_NO_DEPRECATION_WARNINGS is set', async () => {
       process.env.PLX_NO_DEPRECATION_WARNINGS = '1';
-      await createValidPlxWorkspace(tempDir);
+      await createValidSplxWorkspace(tempDir);
       const changesDir = path.join(tempDir, 'workspace', 'changes');
       await fs.mkdir(changesDir, { recursive: true });
 

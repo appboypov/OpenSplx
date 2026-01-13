@@ -1,26 +1,26 @@
 <p align="center">OpenSpec-driven development for AI coding assistants.</p>
 <p align="center">
   <a href="https://github.com/Fission-AI/OpenSpec"><img alt="Fork of OpenSpec" src="https://img.shields.io/badge/Fork%20of-OpenSpec-blue?style=flat-square" /></a>
-  <a href="https://www.npmjs.com/package/@appboypov/pew-pew-plx"><img alt="npm version" src="https://img.shields.io/npm/v/@appboypov/pew-pew-plx?style=flat-square" /></a>
-  <a href="https://nodejs.org/"><img alt="node version" src="https://img.shields.io/node/v/@appboypov/pew-pew-plx?style=flat-square" /></a>
+  <a href="https://www.npmjs.com/package/@appboypov/OpenSplx"><img alt="npm version" src="https://img.shields.io/npm/v/@appboypov/OpenSplx?style=flat-square" /></a>
+  <a href="https://nodejs.org/"><img alt="node version" src="https://img.shields.io/node/v/@appboypov/OpenSplx?style=flat-square" /></a>
   <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" /></a>
 </p>
 
 <p align="center">
-  <img src="assets/hero.png" alt="Pew Pew Plx dashboard preview" width="90%">
+  <img src="assets/hero.png" alt="OpenSplx dashboard preview" width="90%">
 </p>
 
-# Pew Pew Plx
+# OpenSplx
 
-Pew Pew Plx aligns humans and AI coding assistants with spec-driven development. Agree on what to build before any code is written. **No API keys required.**
+OpenSplx aligns humans and AI coding assistants with spec-driven development. Agree on what to build before any code is written. **No API keys required.**
 
 > Fork of [OpenSpec](https://github.com/Fission-AI/OpenSpec) with extended task management, review workflows, and automatic migration from OpenSpec projects.
 
 ## Installation
 
 ```bash
-npm install -g @appboypov/pew-pew-plx
-plx --version
+npm install -g @appboypov/OpenSplx
+splx --version
 ```
 
 **Prerequisites:** Node.js >= 20.19.0
@@ -29,7 +29,7 @@ plx --version
 
 ```bash
 cd my-project
-plx init
+splx init
 ```
 
 This creates the `workspace/` directory structure and configures slash commands for your AI tools.
@@ -49,86 +49,86 @@ This creates the `workspace/` directory structure and configures slash commands 
 
 | Command | Description |
 |---------|-------------|
-| `plx get changes` | List active changes |
-| `plx get specs` | List specifications |
-| `plx get reviews` | List active reviews |
-| `plx view` | Interactive dashboard |
+| `splx get changes` | List active changes |
+| `splx get specs` | List specifications |
+| `splx get reviews` | List active reviews |
+| `splx view` | Interactive dashboard |
 
-**Note:** `plx list` is deprecated. Use `plx get changes`, `plx get specs`, or `plx get reviews` instead.
+**Note:** `splx list` is deprecated. Use `splx get changes`, `splx get specs`, or `splx get reviews` instead.
 
 ### Task Management
 
 | Command | Description |
 |---------|-------------|
-| `plx get task` | Get next prioritized task |
-| `plx get task --id <id>` | Get specific task |
-| `plx get task --did-complete-previous` | Complete current, get next |
-| `plx get task --constraints` | Show only Constraints |
-| `plx get task --acceptance-criteria` | Show only Acceptance Criteria |
-| `plx get tasks` | List all open tasks |
-| `plx complete task --id <id>` | Mark task done |
-| `plx complete change --id <id>` | Complete all tasks in change |
-| `plx undo task --id <id>` | Revert task to to-do |
-| `plx undo change --id <id>` | Revert all tasks in change |
+| `splx get task` | Get next prioritized task |
+| `splx get task --id <id>` | Get specific task |
+| `splx get task --did-complete-previous` | Complete current, get next |
+| `splx get task --constraints` | Show only Constraints |
+| `splx get task --acceptance-criteria` | Show only Acceptance Criteria |
+| `splx get tasks` | List all open tasks |
+| `splx complete task --id <id>` | Mark task done |
+| `splx complete change --id <id>` | Complete all tasks in change |
+| `splx undo task --id <id>` | Revert task to to-do |
+| `splx undo change --id <id>` | Revert all tasks in change |
 
 ### Item Retrieval
 
 | Command | Description |
 |---------|-------------|
-| `plx get change --id <id>` | Get change by ID |
-| `plx get spec --id <id>` | Get spec by ID |
-| `plx get review --id <id>` | Get review by ID |
+| `splx get change --id <id>` | Get change by ID |
+| `splx get spec --id <id>` | Get spec by ID |
+| `splx get review --id <id>` | Get review by ID |
 
-**Note:** `plx show` is deprecated. Use `plx get change --id <id>` or `plx get spec --id <id>` instead.
+**Note:** `splx show` is deprecated. Use `splx get change --id <id>` or `splx get spec --id <id>` instead.
 
 ### Review System
 
 | Command | Description |
 |---------|-------------|
-| `plx review change --id <id>` | Review a change |
-| `plx review spec --id <id>` | Review a spec |
-| `plx review task --id <id>` | Review a task |
-| `plx parse feedback <name> --parent-id <id> --parent-type change|spec|task` | Parse feedback markers |
+| `splx review change --id <id>` | Review a change |
+| `splx review spec --id <id>` | Review a spec |
+| `splx review task --id <id>` | Review a task |
+| `splx parse feedback <name> --parent-id <id> --parent-type change|spec|task` | Parse feedback markers |
 
 ### Draft Management
 
 | Command | Description |
 |---------|-------------|
-| `plx paste request` | Paste clipboard content as draft request |
+| `splx paste request` | Paste clipboard content as draft request |
 
 ### Validation & Archival
 
 | Command | Description |
 |---------|-------------|
-| `plx validate change --id <id>` | Validate specific change |
-| `plx validate changes` | Validate all changes |
-| `plx validate spec --id <id>` | Validate specific spec |
-| `plx validate specs` | Validate all specs |
-| `plx validate all` | Validate everything |
-| `plx archive change --id <id>` | Archive completed change |
-| `plx archive review --id <id>` | Archive completed review |
+| `splx validate change --id <id>` | Validate specific change |
+| `splx validate changes` | Validate all changes |
+| `splx validate spec --id <id>` | Validate specific spec |
+| `splx validate specs` | Validate all specs |
+| `splx validate all` | Validate everything |
+| `splx archive change --id <id>` | Archive completed change |
+| `splx archive review --id <id>` | Archive completed review |
 
 ### Configuration
 
 | Command | Description |
 |---------|-------------|
-| `plx config path` | Show config file location |
-| `plx config list` | Show all settings |
-| `plx update` | Refresh instruction files |
-| `plx upgrade` | Upgrade CLI to latest version |
-| `plx upgrade --check` | Check for updates without installing |
+| `splx config path` | Show config file location |
+| `splx config list` | Show all settings |
+| `splx update` | Refresh instruction files |
+| `splx upgrade` | Upgrade CLI to latest version |
+| `splx upgrade --check` | Check for updates without installing |
 
 ### Subdirectory Support
 
-All PLX commands work from any subdirectory within a project. The CLI automatically finds the project root by scanning upward for `workspace/AGENTS.md`.
+All OpenSplx commands work from any subdirectory within a project. The CLI automatically finds the project root by scanning upward for `workspace/AGENTS.md`.
 
 ### Multi-Workspace (Monorepo)
 
 | Command | Description |
 |---------|-------------|
-| `plx get changes --workspace <name>` | Filter to specific workspace |
-| `plx get task --workspace <name>` | Get task from specific workspace |
-| `plx validate all --workspace <name>` | Validate specific workspace |
+| `splx get changes --workspace <name>` | Filter to specific workspace |
+| `splx get task --workspace <name>` | Get task from specific workspace |
+| `splx validate all --workspace <name>` | Validate specific workspace |
 
 In monorepos, items display with project prefixes (e.g., `project-a/add-feature`). Use `--workspace` to filter operations.
 
@@ -136,11 +136,11 @@ In monorepos, items display with project prefixes (e.g., `project-a/add-feature`
 
 | Command | Description |
 |---------|-------------|
-| `plx transfer change --id <id> --target <path>` | Move change and linked tasks |
-| `plx transfer spec --id <id> --target <path>` | Move spec and related changes |
-| `plx transfer task --id <id> --target <path>` | Move single task |
-| `plx transfer review --id <id> --target <path>` | Move review and linked tasks |
-| `plx transfer request --id <id> --target <path>` | Move request to target change |
+| `splx transfer change --id <id> --target <path>` | Move change and linked tasks |
+| `splx transfer spec --id <id> --target <path>` | Move spec and related changes |
+| `splx transfer task --id <id> --target <path>` | Move single task |
+| `splx transfer review --id <id> --target <path>` | Move review and linked tasks |
+| `splx transfer request --id <id> --target <path>` | Move request to target change |
 
 Transfer options: `--source <path>`, `--target-name <name>`, `--dry-run`, `--yes`, `--json`.
 
@@ -199,33 +199,33 @@ For parent-linked feedback, include parent type and ID in the marker:
 // #FEEDBACK #TODO | spec:user-auth | Update validation logic
 ```
 
-Parse markers with: `plx parse feedback review-name --parent-id <id> --parent-type change|spec|task`
+Parse markers with: `splx parse feedback review-name --parent-id <id> --parent-type change|spec|task`
 
 ## Slash Commands
 
-When you run `plx init`, these commands are installed for supported AI tools:
+When you run `splx init`, these commands are installed for supported AI tools:
 
-- `/plx/plan-request` - Clarify intent via iterative yes/no questions
-- `/plx/plan-proposal` - Scaffold change proposal (auto-consumes request.md)
-- `/plx/plan-implementation` - Generate workspace/PROGRESS.md for multi-agent task handoff
-- `/plx/get-task` - Get next prioritized task
-- `/plx/copy-next-task` - Copy next task or feedback block to clipboard
-- `/plx/copy-review-request` - Copy review request with workspace/REVIEW.md guidelines to clipboard
-- `/plx/copy-test-request` - Copy test request with workspace/TESTING.md configuration to clipboard
-- `/plx/complete-task` - Mark task as done
-- `/plx/undo-task` - Revert task to to-do
-- `/plx/implement` - Implement current task with guided workflow
-- `/plx/orchestrate` - Coordinate sub-agents for multi-task work
-- `/plx/refine-architecture` - Create or update `workspace/ARCHITECTURE.md` with spec-ready component inventories
-- `/plx/refine-review` - Create or update `workspace/REVIEW.md` template
-- `/plx/refine-release` - Create or update `workspace/RELEASE.md` template
-- `/plx/refine-testing` - Create or update `workspace/TESTING.md` template
-- `/plx/test` - Run tests based on scope (change, task, or spec)
-- `/plx/review` - Review implementations
-- `/plx/parse-feedback` - Parse feedback markers
-- `/plx/prepare-release` - Guided release preparation workflow
-- `/plx/prepare-compact` - Preserve session progress in workspace/PROGRESS.md
-- `/plx/sync-workspace` - Sync workspace state across changes
+- `/splx/plan-request` - Clarify intent via iterative yes/no questions
+- `/splx/plan-proposal` - Scaffold change proposal (auto-consumes request.md)
+- `/splx/plan-implementation` - Generate workspace/PROGRESS.md for multi-agent task handoff
+- `/splx/get-task` - Get next prioritized task
+- `/splx/copy-next-task` - Copy next task or feedback block to clipboard
+- `/splx/copy-review-request` - Copy review request with workspace/REVIEW.md guidelines to clipboard
+- `/splx/copy-test-request` - Copy test request with workspace/TESTING.md configuration to clipboard
+- `/splx/complete-task` - Mark task as done
+- `/splx/undo-task` - Revert task to to-do
+- `/splx/implement` - Implement current task with guided workflow
+- `/splx/orchestrate` - Coordinate sub-agents for multi-task work
+- `/splx/refine-architecture` - Create or update `workspace/ARCHITECTURE.md` with spec-ready component inventories
+- `/splx/refine-review` - Create or update `workspace/REVIEW.md` template
+- `/splx/refine-release` - Create or update `workspace/RELEASE.md` template
+- `/splx/refine-testing` - Create or update `workspace/TESTING.md` template
+- `/splx/test` - Run tests based on scope (change, task, or spec)
+- `/splx/review` - Review implementations
+- `/splx/parse-feedback` - Parse feedback markers
+- `/splx/prepare-release` - Guided release preparation workflow
+- `/splx/prepare-compact` - Preserve session progress in workspace/PROGRESS.md
+- `/splx/sync-workspace` - Sync workspace state across changes
 
 ## Supported AI Tools
 
@@ -234,26 +234,26 @@ When you run `plx init`, these commands are installed for supported AI tools:
 
 | Tool | Command Format |
 |------|----------------|
-| Amazon Q Developer | `plx-plan-proposal`, `plx-implement`, `plx-archive` |
-| Antigravity | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| Auggie (Augment CLI) | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| Claude Code | `/plx:plan-proposal`, `/plx:implement`, `/plx:archive` |
+| Amazon Q Developer | `splx-plan-proposal`, `splx-implement`, `splx-archive` |
+| Antigravity | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| Auggie (Augment CLI) | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| Claude Code | `/splx:plan-proposal`, `/splx:implement`, `/splx:archive` |
 | Cline | Workflows in `.clinerules/workflows/` |
-| CodeBuddy Code | `/plx:plan-proposal`, `/plx:implement`, `/plx:archive` |
-| Codex | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| CoStrict | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| Crush | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| Cursor | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| Factory Droid | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| Gemini CLI | `/plx:plan-proposal`, `/plx:implement`, `/plx:archive` |
-| GitHub Copilot | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| iFlow | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| Kilo Code | `/plx-plan-proposal.md`, `/plx-implement.md`, `/plx-archive.md` |
-| OpenCode | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| Qoder | `/plx:plan-proposal`, `/plx:implement`, `/plx:archive` |
-| Qwen Code | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| RooCode | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
-| Windsurf | `/plx-plan-proposal`, `/plx-implement`, `/plx-archive` |
+| CodeBuddy Code | `/splx:plan-proposal`, `/splx:implement`, `/splx:archive` |
+| Codex | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| CoStrict | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| Crush | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| Cursor | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| Factory Droid | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| Gemini CLI | `/splx:plan-proposal`, `/splx:implement`, `/splx:archive` |
+| GitHub Copilot | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| iFlow | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| Kilo Code | `/splx-plan-proposal.md`, `/splx-implement.md`, `/splx-archive.md` |
+| OpenCode | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| Qoder | `/splx:plan-proposal`, `/splx:implement`, `/splx:archive` |
+| Qwen Code | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| RooCode | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
+| Windsurf | `/splx-plan-proposal`, `/splx-implement`, `/splx-archive` |
 
 </details>
 

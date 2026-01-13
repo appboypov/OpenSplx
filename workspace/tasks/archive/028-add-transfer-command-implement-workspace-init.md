@@ -13,7 +13,7 @@ Transfer command detects missing target workspace and initializes it using sourc
 
 ## Currently
 
-`plx init` exists but transfer command cannot invoke it programmatically with pre-configured tool selections.
+`splx init` exists but transfer command cannot invoke it programmatically with pre-configured tool selections.
 
 ## Should
 
@@ -47,5 +47,5 @@ Transfer command detects missing target workspace and initializes it using sourc
 
 ## Notes
 
-- Tool config may be in `.claude/settings.local.json`, `.cursor/rules/plx.mdc`, etc.
+- Tool config may be in `.claude/settings.local.json`, `.cursor/rules/splx.mdc`, etc.
 - May need to parse multiple tool config files to determine enabled tools

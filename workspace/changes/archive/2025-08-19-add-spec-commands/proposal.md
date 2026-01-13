@@ -6,7 +6,7 @@ Currently, PLX specs can only be viewed as markdown files. This makes programmat
 
 ## What Changes
 
-- Add new `plx spec` command with three subcommands: `show`, `list`, and `validate`
+- Add new `splx spec` command with three subcommands: `show`, `list`, and `validate`
 - Implement JSON output capability for specs using heading-based parsing
 - Add Zod schemas for spec structure validation
 - Enable content filtering options (requirements only, no scenarios, specific requirement)

@@ -10,7 +10,7 @@ describe('CompletionProvider', () => {
   let provider: CompletionProvider;
 
   beforeEach(async () => {
-    testDir = path.join(os.tmpdir(), `plx-test-${randomUUID()}`);
+    testDir = path.join(os.tmpdir(), `splx-test-${randomUUID()}`);
     await fs.mkdir(testDir, { recursive: true });
     provider = new CompletionProvider(2000, testDir);
   });

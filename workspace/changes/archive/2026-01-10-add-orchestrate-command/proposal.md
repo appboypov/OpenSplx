@@ -6,9 +6,9 @@ When implementing multi-task changes, users need a structured way to delegate wo
 
 ## What Changes
 
-- **NEW** `plx/orchestrate` slash command for sub-agent orchestration
-- **MODIFIED** `plx-slash-commands` spec to add orchestrate command requirement
+- **NEW** `splx/orchestrate` slash command for sub-agent orchestration
+- **MODIFIED** `splx-slash-commands` spec to add orchestrate command requirement
 
 ## Impact
 
-- Affected specs: `plx-slash-commands`
+- Affected specs: `splx-slash-commands`

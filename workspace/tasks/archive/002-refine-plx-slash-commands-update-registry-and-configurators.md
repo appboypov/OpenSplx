@@ -1,7 +1,7 @@
 ---
 status: done
 parent-type: change
-parent-id: refine-plx-slash-commands
+parent-id: refine-splx-slash-commands
 ---
 # Update Registry and Configurators
 
@@ -29,28 +29,28 @@ The command registry and all 19 tool configurators are updated to reflect the ne
 - [x] `npx tsc --noEmit` passes
 
 ## Implementation Checklist
-- [x] Update `plx-base.ts`: Remove `init-architecture`, `update-architecture` from `ALL_PLX_COMMANDS`
-- [x] Update `plx-base.ts`: Add `refine-release` to `ALL_PLX_COMMANDS`
-- [x] Update `plx-claude.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-cursor.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-factory.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-codebuddy.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-qoder.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-windsurf.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and DESCRIPTIONS
-- [x] Update `plx-kilocode.ts`: Remove deprecated, add `refine-release` to FILE_PATHS
-- [x] Update `plx-opencode.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-codex.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-github-copilot.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-amazon-q.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-auggie.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-cline.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-crush.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-costrict.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-qwen.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and DESCRIPTIONS
-- [x] Update `plx-roocode.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-antigravity.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and DESCRIPTIONS
-- [x] Update `plx-iflow.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
-- [x] Update `plx-gemini.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and DESCRIPTIONS
+- [x] Update `splx-base.ts`: Remove `init-architecture`, `update-architecture` from `ALL_PLX_COMMANDS`
+- [x] Update `splx-base.ts`: Add `refine-release` to `ALL_PLX_COMMANDS`
+- [x] Update `splx-claude.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-cursor.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-factory.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-codebuddy.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-qoder.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-windsurf.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and DESCRIPTIONS
+- [x] Update `splx-kilocode.ts`: Remove deprecated, add `refine-release` to FILE_PATHS
+- [x] Update `splx-opencode.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-codex.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-github-copilot.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-amazon-q.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-auggie.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-cline.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-crush.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-costrict.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-qwen.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and DESCRIPTIONS
+- [x] Update `splx-roocode.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-antigravity.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and DESCRIPTIONS
+- [x] Update `splx-iflow.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and FRONTMATTER
+- [x] Update `splx-gemini.ts`: Remove deprecated, add `refine-release` to FILE_PATHS and DESCRIPTIONS
 - [x] Run `npx tsc --noEmit` to verify
 
 ## Notes

@@ -1,7 +1,7 @@
 ---
 status: done
 parent-type: change
-parent-id: refine-plx-slash-commands
+parent-id: refine-splx-slash-commands
 ---
 # Update Tests
 
@@ -37,9 +37,9 @@ Tests reflect the new command set and pass successfully.
 - [x] Add assertions for `@ARCHITECTURE.md` in refine-architecture command
 - [x] Add assertions for `@README.md`, `@CHANGELOG.md`, `@ARCHITECTURE.md` in prepare-release command
 - [x] Run `npm test` to verify all tests pass
-- [x] Update `plx-base.test.ts` to use `get-task` instead of deprecated commands
+- [x] Update `splx-base.test.ts` to use `get-task` instead of deprecated commands
 - [x] Update `update.test.ts` PLX command generation tests to use `get-task`
 
 ## Notes
-- Primary test file: `test/core/templates/plx-slash-command-templates.test.ts`
-- Parity tests in `test/core/configurators/slash/plx-parity.test.ts` should pass automatically
+- Primary test file: `test/core/templates/splx-slash-command-templates.test.ts`
+- Parity tests in `test/core/configurators/slash/splx-parity.test.ts` should pass automatically

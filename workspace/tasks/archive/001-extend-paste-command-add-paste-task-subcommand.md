@@ -8,7 +8,7 @@ parent-id: extend-paste-command
 
 ## End Goal
 
-The `plx paste task` command creates tasks from clipboard content, supporting both standalone and parented tasks via `--parent-id`.
+The `splx paste task` command creates tasks from clipboard content, supporting both standalone and parented tasks via `--parent-id`.
 
 ## Currently
 
@@ -16,8 +16,8 @@ The `PasteCommand` class in `src/commands/paste.ts` only supports the `request` 
 
 ## Should
 
-- `plx paste task` creates a standalone task in `workspace/tasks/`
-- `plx paste task --parent-id <id>` creates a parented task with proper frontmatter
+- `splx paste task` creates a standalone task in `workspace/tasks/`
+- `splx paste task --parent-id <id>` creates a parented task with proper frontmatter
 - Task filename follows pattern `NNN-<name>.md` (standalone) or `NNN-<parent-id>-<name>.md` (parented)
 - Clipboard content populates `## End Goal` section
 - Frontmatter includes `status: to-do` and optional `parent-type`/`parent-id`
@@ -27,14 +27,14 @@ The `PasteCommand` class in `src/commands/paste.ts` only supports the `request` 
 ## Constraints
 
 - [ ] Reuse `ClipboardUtils.read()` from existing implementation
-- [ ] Task template structure matches `plx create task` output (assumes `add-create-command` complete)
+- [ ] Task template structure matches `splx create task` output (assumes `add-create-command` complete)
 - [ ] Validate parent entity exists before creating parented task
 - [ ] Follow existing error handling patterns in PasteCommand
 
 ## Acceptance Criteria
 
-- [ ] `plx paste task` creates task file with clipboard content
-- [ ] `plx paste task --parent-id <id>` creates parented task with correct frontmatter
+- [ ] `splx paste task` creates task file with clipboard content
+- [ ] `splx paste task --parent-id <id>` creates parented task with correct frontmatter
 - [ ] Task filename uses correct pattern based on parent presence
 - [ ] Sequence number auto-increments correctly
 - [ ] Error displayed when parent entity not found

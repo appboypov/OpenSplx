@@ -5,7 +5,7 @@ parent-type: change
 parent-id: add-upgrade-command
 ---
 
-# Task: Add tests for plx upgrade command
+# Task: Add tests for splx upgrade command
 
 ## End Goal
 

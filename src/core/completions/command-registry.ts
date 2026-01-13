@@ -35,7 +35,7 @@ const COMMON_FLAGS = {
 export const COMMAND_REGISTRY: CommandDefinition[] = [
   {
     name: 'init',
-    description: 'Initialize Pew Pew Plx in your project',
+    description: 'Initialize OpenSplx in your project',
     acceptsPositional: true,
     positionalType: 'path',
     flags: [
@@ -48,7 +48,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'update',
-    description: 'Update Pew Pew Plx instruction files',
+    description: 'Update OpenSplx instruction files',
     acceptsPositional: true,
     positionalType: 'path',
     flags: [],
@@ -253,7 +253,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'change',
-    description: 'Manage Pew Pew Plx change proposals (deprecated)',
+    description: 'Manage OpenSplx change proposals (deprecated)',
     flags: [],
     subcommands: [
       {
@@ -300,7 +300,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'spec',
-    description: 'Manage Pew Pew Plx specifications',
+    description: 'Manage OpenSplx specifications',
     flags: [],
     subcommands: [
       {
@@ -353,7 +353,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'completion',
-    description: 'Manage shell completions for Pew Pew Plx CLI',
+    description: 'Manage shell completions for OpenSplx CLI',
     flags: [],
     subcommands: [
       {
@@ -386,7 +386,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'config',
-    description: 'View and modify global Pew Pew Plx configuration',
+    description: 'View and modify global OpenSplx configuration',
     flags: [
       {
         name: 'scope',
@@ -802,7 +802,7 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
   },
   {
     name: 'migrate',
-    description: 'Migrate Pew Pew Plx project to newer versions',
+    description: 'Migrate OpenSplx project to newer versions',
     flags: [],
     subcommands: [
       {
@@ -812,6 +812,17 @@ export const COMMAND_REGISTRY: CommandDefinition[] = [
           {
             name: 'dry-run',
             description: 'Show changes without applying them',
+          },
+          COMMON_FLAGS.json,
+        ],
+      },
+      {
+        name: 'plx-to-splx',
+        description: 'Migrate PLX naming to SPLX naming',
+        flags: [
+          {
+            name: 'dry-run',
+            description: 'Preview changes without executing',
           },
           COMMON_FLAGS.json,
         ],

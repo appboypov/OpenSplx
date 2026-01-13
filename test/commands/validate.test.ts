@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { runCLI } from '../helpers/run-cli.js';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('top-level validate command', () => {
   const projectRoot = process.cwd();
@@ -11,7 +11,7 @@ describe('top-level validate command', () => {
   const specsDir = path.join(testDir, 'workspace', 'specs');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
     await fs.mkdir(changesDir, { recursive: true });
     await fs.mkdir(specsDir, { recursive: true });
 
@@ -44,7 +44,7 @@ describe('top-level validate command', () => {
       '',
       '#### Scenario: Apply alpha delta',
       '- **GIVEN** the test change delta',
-      '- **WHEN** plx validate runs',
+      '- **WHEN** splx validate runs',
       '- **THEN** the validator reports the change as valid',
     ].join('\n');
     const c1DeltaDir = path.join(changesDir, 'c1', 'specs', 'alpha');
@@ -123,7 +123,7 @@ describe('top-level validate command', () => {
       '',
       '#### Scenario: Validate CRLF change',
       '- **GIVEN** a change proposal saved with CRLF line endings',
-      '- **WHEN** a developer runs plx validate on the proposal',
+      '- **WHEN** a developer runs splx validate on the proposal',
       '- **THEN** validation succeeds without section errors',
     ]);
 

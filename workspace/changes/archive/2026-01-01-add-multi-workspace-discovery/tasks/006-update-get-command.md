@@ -5,7 +5,7 @@ status: to-do
 # Task: Update get command for multi-workspace
 
 ## End Goal
-The `plx get` command in `src/commands/get.ts` handles multi-workspace discovery, prefixed IDs, and the --workspace filter.
+The `splx get` command in `src/commands/get.ts` handles multi-workspace discovery, prefixed IDs, and the --workspace filter.
 
 ## Currently
 Command uses hardcoded `{cwd}/workspace/changes/` path. Task and change IDs don't support workspace prefixes.
@@ -25,10 +25,10 @@ Update command to:
 - [ ] JSON output includes workspacePath and projectName fields
 
 ## Acceptance Criteria
-- [ ] `plx get task` prioritizes across all workspaces
-- [ ] `plx get task --id project-a/001-impl` resolves from project-a
-- [ ] `plx get task --workspace project-a` only considers project-a
-- [ ] `plx get change --id project-a/add-feature` resolves from project-a
+- [ ] `splx get task` prioritizes across all workspaces
+- [ ] `splx get task --id project-a/001-impl` resolves from project-a
+- [ ] `splx get task --workspace project-a` only considers project-a
+- [ ] `splx get change --id project-a/add-feature` resolves from project-a
 - [ ] JSON output includes workspace context
 
 ## Implementation Checklist

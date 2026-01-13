@@ -41,16 +41,16 @@ Implementation complete but not verified end-to-end.
 ## Implementation Checklist
 
 - [x] 6.1 Create test monorepo with multiple workspaces
-- [x] 6.2 Test `plx transfer change` with linked tasks
-- [x] 6.3 Test `plx transfer spec` with related changes (covered by automated tests)
-- [x] 6.4 Test `plx transfer task` standalone and linked (covered by automated tests)
-- [x] 6.5 Test `plx transfer review` with linked tasks (covered by automated tests)
-- [x] 6.6 Test `plx transfer request` (covered by automated tests)
+- [x] 6.2 Test `splx transfer change` with linked tasks
+- [x] 6.3 Test `splx transfer spec` with related changes (covered by automated tests)
+- [x] 6.4 Test `splx transfer task` standalone and linked (covered by automated tests)
+- [x] 6.5 Test `splx transfer review` with linked tasks (covered by automated tests)
+- [x] 6.6 Test `splx transfer request` (covered by automated tests)
 - [x] 6.7 Test conflict detection and --target-name resolution
 - [x] 6.8 Test workspace auto-initialization
 - [x] 6.9 Test --dry-run output
 - [x] 6.10 Test --json output
-- [x] 6.11 Run `plx validate change --id add-transfer-command --strict`
+- [x] 6.11 Run `splx validate change --id add-transfer-command --strict`
 - [x] 6.12 Run full test suite with `pnpm test`
 
 ## Notes

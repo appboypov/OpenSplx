@@ -30,7 +30,7 @@ Modify `/src/core/archive.ts` to:
 
 ## Acceptance Criteria
 
-- [ ] `plx archive <review-id>` archives a review
+- [ ] `splx archive <review-id>` archives a review
 - [ ] Auto-detects entity type from changes/ vs reviews/
 - [ ] `--type review` forces review archiving
 - [ ] Prompts for confirmation if incomplete tasks

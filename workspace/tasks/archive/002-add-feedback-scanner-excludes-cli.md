@@ -8,7 +8,7 @@ parent-id: add-feedback-scanner-excludes
 # Task: Add CLI options for exclude patterns
 
 ## End Goal
-Users can customize exclude patterns via `--exclude` and `--no-default-excludes` CLI flags on `plx parse feedback`.
+Users can customize exclude patterns via `--exclude` and `--no-default-excludes` CLI flags on `splx parse feedback`.
 
 ## Currently
 The `parse-feedback` command has no options to control which files are scanned beyond the built-in ignore patterns.

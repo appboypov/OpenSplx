@@ -16,7 +16,7 @@
 
 ## Integration
 - [x] Import ViewCommand in CLI index
-- [x] Register `plx view` command with commander
+- [x] Register `splx view` command with commander
 - [x] Add proper error handling and ora spinner integration
 - [x] Ensure command appears in help documentation
 

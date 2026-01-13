@@ -33,9 +33,9 @@ Confirm the upward workspace discovery works correctly in real-world scenarios a
 - [ ] `pnpm test` passes all tests
 - [ ] `pnpm typecheck` shows no errors
 - [ ] `pnpm lint` shows no warnings
-- [ ] Manual test: `cd src && plx list` works
-- [ ] Manual test: `cd src/commands && plx get task` works
-- [ ] Manual test: `plx list` from project root works (unchanged behavior)
+- [ ] Manual test: `cd src && splx list` works
+- [ ] Manual test: `cd src/commands && splx get task` works
+- [ ] Manual test: `splx list` from project root works (unchanged behavior)
 
 ## Implementation Checklist
 

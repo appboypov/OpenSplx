@@ -42,7 +42,7 @@ Implementation tasks are complete but not reviewed.
 - [x] Review agents-template.ts for documentation clarity
 - [x] Review slash-command-templates.ts for instruction clarity
 - [x] Verify tests cover edge cases
-- [x] Run `plx validate add-task-skill-level --strict`
+- [x] Run `splx validate add-task-skill-level --strict`
 - [x] Verify no TypeScript errors: `npm run typecheck`
 - [x] Verify no lint errors: `npm run lint`
 

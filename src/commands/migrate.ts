@@ -7,6 +7,12 @@ import { FileSystemUtils } from '../utils/file-system.js';
 import { buildTaskFilename, parseTaskFilename } from '../utils/task-file-parser.js';
 import { MarkdownParser } from '../core/parsers/markdown-parser.js';
 import { TASKS_DIR_NAME } from '../core/config.js';
+import {
+  migratePlxToSplx,
+  detectPlxArtifacts,
+  type PlxToSplxOptions,
+  type MigrationResult as PlxToSplxMigrationResult,
+} from '../utils/plx-to-splx-migration.js';
 
 interface MigrateTasksOptions {
   dryRun?: boolean;
@@ -56,7 +62,7 @@ export class MigrateCommand {
       if (options.json) {
         console.log(JSON.stringify({ error: 'No workspace found' }));
       } else {
-        ora().fail('No workspace found. Run plx init first.');
+        ora().fail('No workspace found. Run splx init first.');
       }
       process.exitCode = 1;
       return;
@@ -275,6 +281,180 @@ export class MigrateCommand {
     } catch {
       // Directory might not be empty or already deleted
     }
+  }
+
+  async plxToSplx(options: PlxToSplxOptions = {}): Promise<void> {
+    const workspaces = await getFilteredWorkspaces(process.cwd());
+
+    // If no workspaces found, check for plx artifacts at root level
+    const projectPaths = workspaces.length > 0
+      ? workspaces.map(w => w.path)
+      : [process.cwd()];
+
+    const result: PlxToSplxMigrationResult = {
+      success: true,
+      workspaces: [],
+      summary: {
+        totalDirectories: 0,
+        totalFiles: 0,
+        totalContentUpdates: 0,
+        totalSkipped: 0,
+        totalErrors: 0,
+        byTool: {},
+      },
+    };
+
+    if (!options.json) {
+      console.log(chalk.bold('\nMigrating PLX to SPLX...\n'));
+    }
+
+    let hasAnyArtifacts = false;
+
+    for (const projectPath of projectPaths) {
+      const detection = await detectPlxArtifacts(projectPath);
+
+      if (!detection.hasClaudeCommandsDir && !detection.hasFilePatterns && !detection.hasInstructionFiles) {
+        if (!options.json) {
+          console.log(chalk.dim(`Project: ${path.relative(process.cwd(), projectPath) || '.'}`));
+          console.log(chalk.dim('  No PLX artifacts found'));
+        }
+        continue;
+      }
+
+      hasAnyArtifacts = true;
+      const workspaceResult = await migratePlxToSplx(projectPath, options);
+      result.workspaces.push(workspaceResult);
+
+      result.summary.totalDirectories += workspaceResult.directories.length;
+      result.summary.totalFiles += workspaceResult.files.length;
+      result.summary.totalContentUpdates += workspaceResult.contentUpdates.length;
+      result.summary.totalSkipped += workspaceResult.skipped.length;
+      result.summary.totalErrors += workspaceResult.errors.length;
+
+      // Aggregate per-tool counts
+      for (const dir of workspaceResult.directories) {
+        if (!result.summary.byTool[dir.tool]) {
+          result.summary.byTool[dir.tool] = { directories: 0, files: 0 };
+        }
+        result.summary.byTool[dir.tool].directories++;
+      }
+      for (const file of workspaceResult.files) {
+        if (!result.summary.byTool[file.tool]) {
+          result.summary.byTool[file.tool] = { directories: 0, files: 0 };
+        }
+        result.summary.byTool[file.tool].files++;
+      }
+
+      if (!options.json) {
+        console.log(chalk.dim(`Workspace: ${workspaceResult.path}`));
+
+        for (const dir of workspaceResult.directories) {
+          const prefix = options.dryRun ? 'Would rename' : 'Renamed';
+          console.log(chalk.green(`  ✓ [${dir.tool}] ${prefix} directory: ${dir.from} → ${dir.to}`));
+        }
+
+        for (const file of workspaceResult.files) {
+          const prefix = options.dryRun ? 'Would rename' : 'Renamed';
+          console.log(chalk.green(`  ✓ [${file.tool}] ${prefix} file: ${file.from} → ${file.to}`));
+        }
+
+        for (const update of workspaceResult.contentUpdates) {
+          const prefix = options.dryRun ? 'Would update' : 'Updated';
+          console.log(chalk.blue(`  ✓ ${prefix}: ${update.path} (${update.replacements} replacement${update.replacements !== 1 ? 's' : ''})`));
+          if (options.dryRun && update.changes && update.changes.length > 0) {
+            for (const change of update.changes) {
+              console.log(chalk.dim(`      Line ${change.line}:`));
+              console.log(chalk.red(`        - ${change.before}`));
+              console.log(chalk.green(`        + ${change.after}`));
+            }
+          }
+        }
+
+        for (const skipped of workspaceResult.skipped) {
+          console.log(chalk.yellow(`  ⊘ Skipped: ${skipped.path}`) + chalk.dim(` (${skipped.reason})`));
+        }
+
+        for (const error of workspaceResult.errors) {
+          console.log(chalk.red(`  ✗ Error: ${error.path}`) + chalk.dim(` (${error.error})`));
+        }
+      }
+    }
+
+    if (!hasAnyArtifacts) {
+      if (options.json) {
+        // Return consistent structure with empty results
+        console.log(JSON.stringify({
+          success: true,
+          workspaces: [],
+          summary: {
+            totalDirectories: 0,
+            totalFiles: 0,
+            totalContentUpdates: 0,
+            totalSkipped: 0,
+            totalErrors: 0,
+            byTool: {},
+          },
+          message: 'No PLX artifacts found to migrate',
+        }, null, 2));
+      } else {
+        console.log(chalk.dim('\nNo PLX artifacts found to migrate.\n'));
+      }
+      return;
+    }
+
+    if (result.summary.totalErrors > 0) {
+      result.success = false;
+    }
+
+    if (options.json) {
+      console.log(JSON.stringify(result, null, 2));
+    } else {
+      this.printPlxToSplxSummary(result);
+    }
+
+    if (!result.success) {
+      process.exitCode = 1;
+    }
+  }
+
+  private printPlxToSplxSummary(result: PlxToSplxMigrationResult): void {
+    console.log();
+    console.log(chalk.bold('Migration complete:'));
+    console.log(chalk.green(`  Directories renamed: ${result.summary.totalDirectories}`));
+    console.log(chalk.green(`  Files renamed: ${result.summary.totalFiles}`));
+    console.log(chalk.blue(`  Files updated: ${result.summary.totalContentUpdates}`));
+
+    if (result.summary.totalSkipped > 0) {
+      console.log(chalk.yellow(`  Skipped: ${result.summary.totalSkipped}`));
+    } else {
+      console.log(chalk.dim(`  Skipped: ${result.summary.totalSkipped}`));
+    }
+
+    if (result.summary.totalErrors > 0) {
+      console.log(chalk.red(`  Errors: ${result.summary.totalErrors}`));
+    } else {
+      console.log(chalk.dim(`  Errors: ${result.summary.totalErrors}`));
+    }
+
+    // Show per-tool breakdown if there are any results
+    const tools = Object.keys(result.summary.byTool);
+    if (tools.length > 0) {
+      console.log();
+      console.log(chalk.bold('By tool:'));
+      for (const tool of tools) {
+        const counts = result.summary.byTool[tool];
+        const parts: string[] = [];
+        if (counts.directories > 0) {
+          parts.push(`${counts.directories} dir${counts.directories !== 1 ? 's' : ''}`);
+        }
+        if (counts.files > 0) {
+          parts.push(`${counts.files} file${counts.files !== 1 ? 's' : ''}`);
+        }
+        console.log(chalk.dim(`  ${tool}: ${parts.join(', ')}`));
+      }
+    }
+
+    console.log();
   }
 
   private printConsoleSummary(result: MigrationResult): void {

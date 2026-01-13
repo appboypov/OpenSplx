@@ -2,15 +2,15 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('create command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-create-cmd-tmp');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -23,7 +23,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} create change "My New Feature" --json`,
+          `node ${splxBin} create change "My New Feature" --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -56,7 +56,7 @@ describe('create command', () => {
         process.chdir(testDir);
         try {
           execSync(
-            `node ${plxBin} create change "existing change" --json`,
+            `node ${splxBin} create change "existing change" --json`,
             { encoding: 'utf-8' }
           );
         } catch (error: any) {
@@ -73,7 +73,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         execSync(
-          `node ${plxBin} create change "Add User Authentication System" --json`,
+          `node ${splxBin} create change "Add User Authentication System" --json`,
           { encoding: 'utf-8' }
         );
 
@@ -91,7 +91,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} create spec "user-authentication" --json`,
+          `node ${splxBin} create spec "user-authentication" --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -118,7 +118,7 @@ describe('create command', () => {
         process.chdir(testDir);
         try {
           execSync(
-            `node ${plxBin} create spec "existing-spec" --json`,
+            `node ${splxBin} create spec "existing-spec" --json`,
             { encoding: 'utf-8' }
           );
         } catch (error: any) {
@@ -135,7 +135,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         execSync(
-          `node ${plxBin} create spec "Payment Processing Flow" --json`,
+          `node ${splxBin} create spec "Payment Processing Flow" --json`,
           { encoding: 'utf-8' }
         );
 
@@ -153,7 +153,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} create request "Add dark mode support" --json`,
+          `node ${splxBin} create request "Add dark mode support" --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -180,7 +180,7 @@ describe('create command', () => {
         process.chdir(testDir);
         try {
           execSync(
-            `node ${plxBin} create request "existing request" --json`,
+            `node ${splxBin} create request "existing request" --json`,
             { encoding: 'utf-8' }
           );
         } catch (error: any) {
@@ -197,7 +197,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         execSync(
-          `node ${plxBin} create request "Implement OAuth 2.0 Login" --json`,
+          `node ${splxBin} create request "Implement OAuth 2.0 Login" --json`,
           { encoding: 'utf-8' }
         );
 
@@ -223,7 +223,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} create task "Implement feature" --parent-id parent-change --json`,
+          `node ${splxBin} create task "Implement feature" --parent-id parent-change --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -270,7 +270,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} create task "Third task" --parent-id seq-test --json`,
+          `node ${splxBin} create task "Third task" --parent-id seq-test --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -287,7 +287,7 @@ describe('create command', () => {
         process.chdir(testDir);
         try {
           execSync(
-            `node ${plxBin} create task "Test" --parent-id nonexistent --json`,
+            `node ${splxBin} create task "Test" --parent-id nonexistent --json`,
             { encoding: 'utf-8' }
           );
         } catch (error: any) {
@@ -305,7 +305,7 @@ describe('create command', () => {
         process.chdir(testDir);
         try {
           execSync(
-            `node ${plxBin} create task "Test" --json`,
+            `node ${splxBin} create task "Test" --json`,
             { encoding: 'utf-8' }
           );
         } catch (error: any) {
@@ -329,7 +329,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         execSync(
-          `node ${plxBin} create task "Senior task" --parent-id skill-test --skill-level senior --json`,
+          `node ${splxBin} create task "Senior task" --parent-id skill-test --skill-level senior --json`,
           { encoding: 'utf-8' }
         );
 
@@ -354,7 +354,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         execSync(
-          `node ${plxBin} create task "Regular task" --parent-id no-skill-test --json`,
+          `node ${splxBin} create task "Regular task" --parent-id no-skill-test --json`,
           { encoding: 'utf-8' }
         );
 
@@ -380,7 +380,7 @@ describe('create command', () => {
         process.chdir(testDir);
         try {
           execSync(
-            `node ${plxBin} create task "Test" --parent-id test-spec --parent-type spec --json`,
+            `node ${splxBin} create task "Test" --parent-id test-spec --parent-type spec --json`,
             { encoding: 'utf-8' }
           );
         } catch (error: any) {
@@ -404,7 +404,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         execSync(
-          `node ${plxBin} create task "Add User Profile Page" --parent-id kebab-test --json`,
+          `node ${splxBin} create task "Add User Profile Page" --parent-id kebab-test --json`,
           { encoding: 'utf-8' }
         );
 
@@ -428,7 +428,7 @@ describe('create command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} create task "First task" --parent-id pad-test --json`,
+          `node ${splxBin} create task "First task" --parent-id pad-test --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -448,7 +448,7 @@ describe('create command', () => {
   describe('workspace validation', () => {
     it('returns error when no workspace found', async () => {
       // Create a deeply nested directory to avoid finding any parent workspace
-      const noWorkspaceDir = path.join('/tmp', 'plx-test-no-workspace-' + Date.now());
+      const noWorkspaceDir = path.join('/tmp', 'splx-test-no-workspace-' + Date.now());
       await fs.mkdir(noWorkspaceDir, { recursive: true });
 
       const originalCwd = process.cwd();
@@ -456,7 +456,7 @@ describe('create command', () => {
         process.chdir(noWorkspaceDir);
         try {
           execSync(
-            `node ${plxBin} create change "Test" --json`,
+            `node ${splxBin} create change "Test" --json`,
             { encoding: 'utf-8' }
           );
         } catch (error: any) {

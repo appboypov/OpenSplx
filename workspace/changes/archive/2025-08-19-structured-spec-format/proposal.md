@@ -30,7 +30,7 @@ PLX specifications lack a consistent structure that makes sections visually iden
 
 ## Impact
 
-- Affected specs: plx-conventions (enhancement to existing capability)
+- Affected specs: splx-conventions (enhancement to existing capability)
 - Affected code: None initially - this is a documentation standard enhancement
 - Migration: Gradual - existing specs migrate as they're modified
 - Tooling: Enables future parsing tools but doesn't require them

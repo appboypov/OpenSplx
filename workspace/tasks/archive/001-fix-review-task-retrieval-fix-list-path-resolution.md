@@ -7,7 +7,7 @@ parent-id: fix-review-task-retrieval
 
 ## End Goal
 
-The `plx list` command works correctly when invoked from any directory, resolving relative paths to absolute paths before checking directory existence.
+The `splx list` command works correctly when invoked from any directory, resolving relative paths to absolute paths before checking directory existence.
 
 ## Currently
 
@@ -24,9 +24,9 @@ The `plx list` command works correctly when invoked from any directory, resolvin
 
 ## Acceptance Criteria
 
-- [x] `plx list` works when workspace/changes exists
-- [x] `plx list --specs` works when workspace/specs exists
-- [x] `plx list --reviews` works when workspace/reviews exists
+- [x] `splx list` works when workspace/changes exists
+- [x] `splx list --specs` works when workspace/specs exists
+- [x] `splx list --reviews` works when workspace/reviews exists
 - [x] All existing tests continue to pass
 
 ## Implementation Checklist

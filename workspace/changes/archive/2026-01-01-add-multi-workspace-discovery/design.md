@@ -1,6 +1,6 @@
 ## Context
 
-Monorepo setups often contain multiple independent projects, each with their own `workspace/` directory. Currently, `plx` commands only discover the single workspace at `{cwd}/workspace/`, requiring users to navigate into each project directory to manage specs/changes.
+Monorepo setups often contain multiple independent projects, each with their own `workspace/` directory. Currently, `splx` commands only discover the single workspace at `{cwd}/workspace/`, requiring users to navigate into each project directory to manage specs/changes.
 
 **Stakeholders**: Users managing monorepos with multiple PLX-enabled projects.
 

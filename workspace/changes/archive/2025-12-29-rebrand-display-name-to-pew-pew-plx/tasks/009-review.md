@@ -15,8 +15,8 @@ Multiple files have been modified across the codebase.
 ## Should
 
 Review all changes for:
-- Consistent use of "Pew Pew Plx" (display name)
-- Preserved use of "plx" (CLI command)
+- Consistent use of "OpenSplx" (display name)
+- Preserved use of "splx" (CLI command)
 - No unintended changes to markers, constants, or paths
 
 ## Constraints
@@ -26,8 +26,8 @@ Review all changes for:
 
 ## Acceptance Criteria
 
-- [ ] All "PLX" display names replaced with "Pew Pew Plx"
-- [ ] All "plx" CLI references preserved
+- [ ] All "PLX" display names replaced with "OpenSplx"
+- [ ] All "splx" CLI references preserved
 - [ ] Markers `<!-- PLX:START -->` unchanged
 - [ ] Constants like `PLX_DIR_NAME` unchanged
 - [ ] No typos or formatting issues

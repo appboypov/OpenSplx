@@ -28,11 +28,11 @@
 ## 7. Update Existing Specs
 
 - [x] 7.1 Update `workspace/specs/cli-init/spec.md` directory structure and file generation references
-- [x] 7.2 Update `workspace/specs/plx-conventions/spec.md` directory structure references
+- [x] 7.2 Update `workspace/specs/splx-conventions/spec.md` directory structure references
 
 ## 8. Regenerate AGENTS.md
 
-- [x] 8.1 Run `plx update` to regenerate `workspace/AGENTS.md` from updated template
+- [x] 8.1 Run `splx update` to regenerate `workspace/AGENTS.md` from updated template
 
 ## 9. Update Tests
 

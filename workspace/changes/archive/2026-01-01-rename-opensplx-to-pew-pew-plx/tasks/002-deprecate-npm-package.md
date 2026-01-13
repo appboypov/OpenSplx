@@ -6,11 +6,11 @@ status: done
 
 ## End Goal
 
-The old `@appboypov/opensplx` npm package is deprecated with a clear migration message directing users to `@appboypov/pew-pew-plx`.
+The old `@appboypov/OpenSplx` npm package is deprecated with a clear migration message directing users to `@appboypov/OpenSplx`.
 
 ## Currently
 
-The package `@appboypov/opensplx` is active on npm. Users installing it receive no indication that the name has changed.
+The package `@appboypov/OpenSplx` is active on npm. Users installing it receive no indication that the name has changed.
 
 ## Should
 
@@ -26,8 +26,8 @@ The package `@appboypov/opensplx` is active on npm. Users installing it receive 
 
 ## Acceptance Criteria
 
-- [ ] Running `npm install @appboypov/opensplx` shows deprecation warning
-- [ ] Deprecation message includes text "renamed to @appboypov/pew-pew-plx"
+- [ ] Running `npm install @appboypov/OpenSplx` shows deprecation warning
+- [ ] Deprecation message includes text "renamed to @appboypov/OpenSplx"
 
 ## Implementation Checklist
 
@@ -35,12 +35,12 @@ The package `@appboypov/opensplx` is active on npm. Users installing it receive 
 - [x] Launch Playwright browser
 - [x] Navigate to https://www.npmjs.com/login
 - [x] Log in with npm credentials (user enters manually)
-- [x] Navigate to https://www.npmjs.com/package/@appboypov/opensplx/settings
+- [x] Navigate to https://www.npmjs.com/package/@appboypov/OpenSplx/settings
 - [x] Locate deprecation section
-- [x] Enter message: "This package has been renamed to @appboypov/pew-pew-plx"
+- [x] Enter message: "This package has been renamed to @appboypov/OpenSplx"
 - [x] Submit deprecation
 - [x] Verify deprecation banner on package page
-- [x] Test by running `npm show @appboypov/opensplx` to confirm deprecated status
+- [x] Test by running `npm show @appboypov/OpenSplx` to confirm deprecated status
 
 ## Notes
 

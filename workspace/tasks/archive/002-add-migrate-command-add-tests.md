@@ -8,7 +8,7 @@ parent-id: add-migrate-command
 
 ## End Goal
 
-Comprehensive test coverage for the `plx migrate tasks` command covering all scenarios: successful migration, dry-run, error handling, multi-workspace, and edge cases.
+Comprehensive test coverage for the `splx migrate tasks` command covering all scenarios: successful migration, dry-run, error handling, multi-workspace, and edge cases.
 
 ## Currently
 
@@ -70,6 +70,6 @@ Comprehensive test coverage for the `plx migrate tasks` command covering all sce
 
 ## Notes
 
-- Use `createValidPlxWorkspace` from test-utils to set up test workspaces
+- Use `createValidSplxWorkspace` from test-utils to set up test workspaces
 - Clean up test directories in afterEach hooks
 - Consider edge cases: special characters in names, very long names, non-standard frontmatter

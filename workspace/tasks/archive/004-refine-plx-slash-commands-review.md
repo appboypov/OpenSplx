@@ -1,7 +1,7 @@
 ---
 status: done
 parent-type: change
-parent-id: refine-plx-slash-commands
+parent-id: refine-splx-slash-commands
 ---
 # Review Implementation
 
@@ -15,7 +15,7 @@ Implementation tasks 001-003 completed.
 All code reviewed and feedback addressed.
 
 ## Constraints
-- [x] Use `plx review --change-id refine-plx-slash-commands` to generate context
+- [x] Use `splx review --change-id refine-splx-slash-commands` to generate context
 - [x] Insert feedback markers for any issues found
 
 ## Acceptance Criteria
@@ -24,9 +24,9 @@ All code reviewed and feedback addressed.
 - [x] Code follows existing patterns
 
 ## Implementation Checklist
-- [x] Run `plx review --change-id refine-plx-slash-commands`
-- [x] Review template changes in `plx-slash-command-templates.ts`
-- [x] Review registry changes in `plx-base.ts`
+- [x] Run `splx review --change-id refine-splx-slash-commands`
+- [x] Review template changes in `splx-slash-command-templates.ts`
+- [x] Review registry changes in `splx-base.ts`
 - [x] Spot-check 3-4 configurator files for consistency
 - [x] Review test changes
 - [x] Insert feedback markers for any issues

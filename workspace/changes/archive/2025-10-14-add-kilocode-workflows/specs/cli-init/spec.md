@@ -7,9 +7,9 @@ The command SHALL configure AI coding assistants with PLX instructions using a m
 - **AND** list every available tool with a checkbox:
   - Claude Code (creates or refreshes CLAUDE.md and slash commands)
   - Cursor (creates or refreshes `.cursor/commands/*` slash commands)
-  - OpenCode (creates or refreshes `.opencode/command/plx-*.md` slash commands)
-  - Windsurf (creates or refreshes `.windsurf/workflows/plx-*.md` workflows)
-  - Kilo Code (creates or refreshes `.kilocode/workflows/plx-*.md` workflows)
+  - OpenCode (creates or refreshes `.opencode/command/splx-*.md` slash commands)
+  - Windsurf (creates or refreshes `.windsurf/workflows/splx-*.md` workflows)
+  - Kilo Code (creates or refreshes `.kilocode/workflows/splx-*.md` workflows)
   - AGENTS.md standard (creates or refreshes AGENTS.md with PLX markers)
 - **AND** show "(already configured)" beside tools whose managed files exist so users understand selections will refresh content
 - **AND** treat disabled tools as "coming soon" and keep them unselectable
@@ -26,18 +26,18 @@ The init command SHALL generate slash command files for supported editors using 
 
 #### Scenario: Generating slash commands for Cursor
 - **WHEN** the user selects Cursor during initialization
-- **THEN** create `.cursor/commands/plx-proposal.md`, `.cursor/commands/plx-apply.md`, and `.cursor/commands/plx-archive.md`
+- **THEN** create `.cursor/commands/splx-proposal.md`, `.cursor/commands/splx-apply.md`, and `.cursor/commands/splx-archive.md`
 - **AND** populate each file from shared templates so command text matches other tools
 - **AND** each template includes instructions for the relevant PLX workflow stage
 
 #### Scenario: Generating slash commands for OpenCode
 - **WHEN** the user selects OpenCode during initialization
-- **THEN** create `.opencode/commands/plx-proposal.md`, `.opencode/commands/plx-apply.md`, and `.opencode/commands/plx-archive.md`
+- **THEN** create `.opencode/commands/splx-proposal.md`, `.opencode/commands/splx-apply.md`, and `.opencode/commands/splx-archive.md`
 - **AND** populate each file from shared templates so command text matches other tools
 - **AND** each template includes instructions for the relevant PLX workflow stage
 
 #### Scenario: Generating slash commands for Kilo Code
 - **WHEN** the user selects Kilo Code during initialization
-- **THEN** create `.kilocode/workflows/plx-proposal.md`, `.kilocode/workflows/plx-apply.md`, and `.kilocode/workflows/plx-archive.md`
+- **THEN** create `.kilocode/workflows/splx-proposal.md`, `.kilocode/workflows/splx-apply.md`, and `.kilocode/workflows/splx-archive.md`
 - **AND** populate each file from shared templates (wrapped in PLX markers) so workflow text matches other tools
 - **AND** each template includes instructions for the relevant PLX workflow stage

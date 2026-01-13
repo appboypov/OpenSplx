@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-Add `plx complete task` and `plx complete change` CLI commands.
+Add `splx complete task` and `splx complete change` CLI commands.
 
 ## Currently
 
@@ -14,8 +14,8 @@ No `complete` command exists. Task completion only via `get task --did-complete-
 
 ## Should
 
-- `plx complete task --id <task-id>` marks task as done and checks Implementation Checklist items
-- `plx complete change --id <change-id>` completes all tasks in a change
+- `splx complete task --id <task-id>` marks task as done and checks Implementation Checklist items
+- `splx complete change --id <change-id>` completes all tasks in a change
 - Both support `--json` output
 
 ## Constraints
@@ -26,10 +26,10 @@ No `complete` command exists. Task completion only via `get task --did-complete-
 
 ## Acceptance Criteria
 
-- [ ] `plx complete task --id X` marks task X as done
+- [ ] `splx complete task --id X` marks task X as done
 - [ ] Implementation Checklist items are checked when completing
 - [ ] Constraints and Acceptance Criteria remain unchanged
-- [ ] `plx complete change --id X` completes all tasks in change X
+- [ ] `splx complete change --id X` completes all tasks in change X
 - [ ] Already-done tasks are skipped with a note
 - [ ] JSON output includes completedItems array
 

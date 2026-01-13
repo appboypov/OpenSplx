@@ -22,8 +22,8 @@ Add to CLI program definition:
 - [ ] Flag must be accessible to all subcommands
 
 ## Acceptance Criteria
-- [ ] `plx list --workspace project-a` only shows project-a items
-- [ ] `plx --workspace project-a list` works (global flag position)
+- [ ] `splx list --workspace project-a` only shows project-a items
+- [ ] `splx --workspace project-a list` works (global flag position)
 - [ ] Commands without --workspace show all workspaces
 - [ ] Invalid workspace name produces clear error
 

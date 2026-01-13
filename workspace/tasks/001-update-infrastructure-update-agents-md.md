@@ -8,13 +8,13 @@ parent-id: update-infrastructure
 
 ## End Goal
 
-The `workspace/AGENTS.md` file reflects the new standardized CLI patterns (`plx {verb} {entity} --id/--parent-id`) and centralized task storage structure.
+The `workspace/AGENTS.md` file reflects the new standardized CLI patterns (`splx {verb} {entity} --id/--parent-id`) and centralized task storage structure.
 
 ## Currently
 
 AGENTS.md documents:
-- `plx list`, `plx list --specs` for listing
-- `plx show` for displaying items
+- `splx list`, `splx list --specs` for listing
+- `splx show` for displaying items
 - Nested task storage in `changes/<name>/tasks/`
 - Entity-specific flags like `--change-id`, `--spec-id`, `--task-id`
 - Current CLI command table with old patterns
@@ -22,8 +22,8 @@ AGENTS.md documents:
 ## Should
 
 AGENTS.md documents:
-- `plx get changes`, `plx get specs`, `plx get reviews` for listing
-- `plx get change --id <id>`, `plx get spec --id <id>` for display (no `plx show`)
+- `splx get changes`, `splx get specs`, `splx get reviews` for listing
+- `splx get change --id <id>`, `splx get spec --id <id>` for display (no `splx show`)
 - Centralized task storage in `workspace/tasks/`
 - Standardized `--id` and `--parent-id`/`--parent-type` flags
 - Updated CLI command table with new patterns
@@ -44,8 +44,8 @@ AGENTS.md documents:
 - [ ] Command Flags section reflects `--id`, `--parent-id`, `--parent-type`
 - [ ] Directory Structure section shows centralized task storage
 - [ ] Task File Template section shows new frontmatter fields
-- [ ] No references to deprecated commands (`plx list`, `plx show`, `plx change`, `plx spec`)
-- [ ] `plx validate update-infrastructure --strict` passes for this file
+- [ ] No references to deprecated commands (`splx list`, `splx show`, `splx change`, `splx spec`)
+- [ ] `splx validate update-infrastructure --strict` passes for this file
 
 ## Implementation Checklist
 
@@ -64,4 +64,4 @@ AGENTS.md documents:
 
 ## Notes
 
-This is the primary agent instruction file and must be updated before other documentation. Changes here propagate to the managed content block used by `plx update`.
+This is the primary agent instruction file and must be updated before other documentation. Changes here propagate to the managed content block used by `splx update`.

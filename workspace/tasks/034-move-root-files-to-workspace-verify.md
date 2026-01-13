@@ -30,9 +30,9 @@ All tests pass and manual verification confirms:
 ## Acceptance Criteria
 - [ ] `pnpm test` passes
 - [ ] `pnpm build` succeeds
-- [ ] Manual test: `plx init` in new directory creates workspace files
-- [ ] Manual test: `plx update` in project with root files migrates them
-- [ ] Validation passes: `plx validate change --id move-root-files-to-workspace --strict`
+- [ ] Manual test: `splx init` in new directory creates workspace files
+- [ ] Manual test: `splx update` in project with root files migrates them
+- [ ] Validation passes: `splx validate change --id move-root-files-to-workspace --strict`
 
 ## Implementation Checklist
 - [ ] 9.1 Run `pnpm test` and fix any failures

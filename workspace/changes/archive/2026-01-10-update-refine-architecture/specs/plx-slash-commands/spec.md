@@ -1,16 +1,16 @@
-# plx-slash-commands Delta
+# splx-slash-commands Delta
 
 ## MODIFIED Requirements
 
 ### Requirement: Refine Architecture Command
 
-The system SHALL provide a `plx/refine-architecture` slash command that produces spec-ready architecture documentation with complete component inventories.
+The system SHALL provide a `splx/refine-architecture` slash command that produces spec-ready architecture documentation with complete component inventories.
 
 #### Scenario: Generating refine-architecture command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-architecture.md`
-- **AND** include frontmatter with name "Refine Architecture", description "Create or update ARCHITECTURE.md with spec-ready component inventories.", category "Pew Pew Plx", and relevant tags
+- **THEN** create `.claude/commands/splx/refine-architecture.md`
+- **AND** include frontmatter with name "Refine Architecture", description "Create or update ARCHITECTURE.md with spec-ready component inventories.", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails requiring spec-ready reference, complete component inventories, user content preservation, and completeness validation
 - **AND** include context retrieval section with codebase-retrieval tool instructions
@@ -19,7 +19,7 @@ The system SHALL provide a `plx/refine-architecture` slash command that produces
 
 #### Scenario: Context retrieval instructs use of codebase tools
 
-- **WHEN** the `plx/refine-architecture` command body is generated
+- **WHEN** the `splx/refine-architecture` command body is generated
 - **THEN** include Context Retrieval section
 - **AND** instruct use of `mcp__auggie-mcp__codebase-retrieval` or equivalent tools
 - **AND** list component discovery queries for DTOs, services, APIs, views, view models, routing, enums
@@ -28,7 +28,7 @@ The system SHALL provide a `plx/refine-architecture` slash command that produces
 
 #### Scenario: Template structure defines component inventory categories
 
-- **WHEN** the `plx/refine-architecture` command body is generated
+- **WHEN** the `splx/refine-architecture` command body is generated
 - **THEN** include Template Structure section
 - **AND** reference `workspace/templates/ARCHITECTURE.template.md` as canonical template
 - **AND** list required sections: Technology Stack, Project Structure, Component Inventory, Architecture Patterns, Data Flow, Dependency Graph, Configuration, Testing Structure

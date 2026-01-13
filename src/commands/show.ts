@@ -14,7 +14,7 @@ const SPEC_FLAG_KEYS = new Set(['requirements', 'scenarios', 'requirement']);
 export class ShowCommand {
   async execute(itemName?: string, options: { json?: boolean; type?: string; noInteractive?: boolean; [k: string]: any } = {}): Promise<void> {
     if (itemName) {
-      emitDeprecationWarning('plx show', 'plx get change --id <item> or plx get spec --id <item>');
+      emitDeprecationWarning('splx show', 'splx get change --id <item> or splx get spec --id <item>');
     }
     const interactive = isInteractive(options);
     const typeOverride = this.normalizeType(options.type);
@@ -103,7 +103,7 @@ export class ShowCommand {
 
     if (!params.typeOverride && isChange && isSpec) {
       console.error(`Ambiguous item '${itemName}' matches both a change and a spec.`);
-      console.error('Pass --type change|spec, or use: plx change show / plx spec show');
+      console.error('Pass --type change|spec, or use: splx change show / splx spec show');
       process.exitCode = 1;
       return;
     }
@@ -120,8 +120,8 @@ export class ShowCommand {
 
   private printNonInteractiveHint(): void {
     console.error('Nothing to show. Try one of:');
-    console.error('  plx get change --id <id>');
-    console.error('  plx get spec --id <id>');
+    console.error('  splx get change --id <id>');
+    console.error('  splx get spec --id <id>');
     console.error('Or run in an interactive terminal.');
   }
 

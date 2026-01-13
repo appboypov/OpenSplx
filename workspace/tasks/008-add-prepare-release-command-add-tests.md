@@ -11,7 +11,7 @@ Tests verify the prepare-release command and RELEASE.md template work correctly.
 
 ## Currently
 
-- Tests exist for plx-slash-command-templates.ts
+- Tests exist for splx-slash-command-templates.ts
 - Tests exist for init and update commands
 - No tests for prepare-release command or RELEASE.md
 
@@ -41,7 +41,7 @@ Add tests for:
 ## Implementation Checklist
 
 - [x] Add test for `releaseTemplate()` in templates test file
-- [x] Add test for `'prepare-release'` in `plx-slash-command-templates.test.ts`
+- [x] Add test for `'prepare-release'` in `splx-slash-command-templates.test.ts`
 - [x] Add test for RELEASE.md creation in init tests (not needed - covered by pattern)
 - [x] Add test for RELEASE.md creation in update tests (not needed - covered by pattern)
 - [x] Run `pnpm test` to verify all tests pass (1017 tests passing)
@@ -50,6 +50,6 @@ Add tests for:
 
 Test locations:
 - `test/core/templates/release-template.test.ts` (new)
-- `test/core/templates/plx-slash-command-templates.test.ts` (existing)
+- `test/core/templates/splx-slash-command-templates.test.ts` (existing)
 - `test/core/init.test.ts` or `test/cli-e2e/init.test.ts` (existing)
 - Update command tests (existing)

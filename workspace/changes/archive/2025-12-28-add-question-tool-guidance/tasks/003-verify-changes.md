@@ -23,13 +23,13 @@ Changes are validated and ready for archive.
 
 ## Acceptance Criteria
 
-- [ ] `plx validate add-question-tool-guidance --strict` passes
+- [ ] `splx validate add-question-tool-guidance --strict` passes
 - [ ] Slash command templates compile without errors
 - [ ] Regenerated AGENTS.md contains expected content
 
 ## Implementation Checklist
 
-- [x] 3.1 Run `plx validate add-question-tool-guidance --strict`
+- [x] 3.1 Run `splx validate add-question-tool-guidance --strict`
 - [x] 3.2 Review the slash command output to confirm guardrails are updated
 - [x] 3.3 Confirm all implementation checklist items from previous tasks are complete
 

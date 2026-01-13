@@ -25,7 +25,7 @@ export type SlashCommandId =
 const baseGuardrails = `**Guardrails**
 - Favor straightforward, minimal implementations first and add complexity only when it is requested or clearly required.
 - Keep changes tightly scoped to the requested outcome.
-- Refer to \`workspace/AGENTS.md\` (located inside the \`workspace/\` directory—run \`ls workspace\` or \`plx update\` if you don't see it) if you need additional Pew Pew Plx conventions or clarifications.
+- Refer to \`workspace/AGENTS.md\` (located inside the \`workspace/\` directory—run \`ls workspace\` or \`splx update\` if you don't see it) if you need additional OpenSplx conventions or clarifications.
 - When clarification is needed, use your available question tool (if one exists) instead of asking in chat. If no question tool is available, ask in chat.`;
 
 const monorepoAwareness = `**Monorepo Awareness**
@@ -49,56 +49,56 @@ const proposalSteps = `**Steps**
 0. Check for existing \`workspace/changes/<change-id>/request.md\`:
    - If found: consume it as the source of truth for user intent and skip interactive clarification.
    - If not found: proceed with gathering intent through conversation or your question tool.
-1. Review \`workspace/ARCHITECTURE.md\`, run \`plx get changes\` and \`plx get specs\`, and inspect related code or docs (e.g., via \`rg\`/\`ls\`) to ground the proposal in current behaviour; note any gaps that require clarification.
+1. Review \`workspace/ARCHITECTURE.md\`, run \`splx get changes\` and \`splx get specs\`, and inspect related code or docs (e.g., via \`rg\`/\`ls\`) to ground the proposal in current behaviour; note any gaps that require clarification.
 2. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, task files in \`workspace/tasks/\`, and \`design.md\` (when needed) under \`workspace/changes/<id>/\`.
 3. Map the change into concrete capabilities or requirements, breaking multi-scope efforts into distinct spec deltas with clear relationships and sequencing.
 4. Capture architectural reasoning in \`design.md\` when the solution spans multiple systems, introduces new patterns, or demands trade-off discussion before committing to specs.
 5. Draft spec deltas in \`changes/<id>/specs/<capability>/spec.md\` (one folder per capability) using \`## ADDED|MODIFIED|REMOVED Requirements\` with at least one \`#### Scenario:\` per requirement and cross-reference related capabilities when relevant.
 6. Create task files in \`workspace/tasks/\` with numbered files (minimum 3: implementation, review, test). Use format \`NNN-<parent-id>-<kebab-case-name>.md\` for parented tasks (e.g., \`001-add-feature-implement.md\`) or \`NNN-<kebab-case-name>.md\` for standalone tasks. Each file includes frontmatter: status: to-do, skill-level: junior|medior|senior, parent-type: change|review|spec (for parented tasks), parent-id: <id> (for parented tasks). Include sections: End Goal, Currently, Should, Constraints, Acceptance Criteria, Implementation Checklist, Notes. Assign skill-level based on complexity: junior for straightforward changes, medior for feature implementation, senior for architectural work.
-7. Validate with \`plx validate change --id <id> --strict\` and resolve every issue before sharing the proposal.`;
+7. Validate with \`splx validate change --id <id> --strict\` and resolve every issue before sharing the proposal.`;
 
 
 const proposalReferences = `**Reference**
-- Use \`plx get change --id <id> --json --deltas-only\` or \`plx get spec --id <spec>\` to inspect details when validation fails.
+- Use \`splx get change --id <id> --json --deltas-only\` or \`splx get spec --id <spec>\` to inspect details when validation fails.
 - Search existing requirements with \`rg -n "Requirement:|Scenario:" workspace/specs\` before writing new ones.
 - Explore the codebase with \`rg <keyword>\`, \`ls\`, or direct file reads so proposals align with current implementation realities.`;
 
 const implementSteps = `**Steps**
 Track these steps as TODOs and complete them one by one.
 1. Determine the scope:
-   - If user specified a task ID in ARGUMENTS, use \`plx get task --id <task-id>\` to get that specific task and proceed to step 3
-   - Otherwise, run \`plx get tasks\` to retrieve all tasks for the highest-priority change
+   - If user specified a task ID in ARGUMENTS, use \`splx get task --id <task-id>\` to get that specific task (note the change-id from the output)
+   - Otherwise, run \`splx get tasks\` to retrieve all tasks for the highest-priority change (note the change-id from the output)
 2. Generate progress file for tracking:
    \`\`\`bash
-   plx create progress --change-id <change-id>
+   splx create progress --change-id <change-id>
    \`\`\`
 3. For each task (or the single task if task ID was provided):
    a. Work through the task's Implementation Checklist, keeping edits minimal
    b. Mark checklist items complete (\`[x]\`) in the task file
-   c. Mark the task as done with \`plx complete task --id <task-id>\`
-   d. Regenerate progress: \`plx create progress --change-id <change-id>\`
+   c. Mark the task as done with \`splx complete task --id <task-id>\`
+   d. Regenerate progress: \`splx create progress --change-id <change-id>\`
 4. Stop when complete:
    - If implementing a specific task ID (from step 1), stop after completing that task
    - If implementing all tasks in a change, stop after all tasks have been completed
-5. Reference \`plx get changes\` or \`plx get change --id <item>\` when additional context is required.`;
+5. Reference \`splx get changes\` or \`splx get change --id <item>\` when additional context is required.`;
 
 const implementReferences = `**Reference**
-- Use \`plx get change --id <id> --json --deltas-only\` if you need additional context from the proposal while implementing.`;
+- Use \`splx get change --id <id> --json --deltas-only\` if you need additional context from the proposal while implementing.`;
 
 const archiveSteps = `**Steps**
 1. Determine the change ID to archive:
    - If this prompt already includes a specific change ID (for example inside a \`<ChangeId>\` block populated by slash-command arguments), use that value after trimming whitespace.
-   - If the conversation references a change loosely (for example by title or summary), run \`plx get changes\` to surface likely IDs, share the relevant candidates, and confirm which one the user intends.
-   - Otherwise, review the conversation, run \`plx get changes\`, and ask the user which change to archive; wait for a confirmed change ID before proceeding.
+   - If the conversation references a change loosely (for example by title or summary), run \`splx get changes\` to surface likely IDs, share the relevant candidates, and confirm which one the user intends.
+   - Otherwise, review the conversation, run \`splx get changes\`, and ask the user which change to archive; wait for a confirmed change ID before proceeding.
    - If you still cannot identify a single change ID, stop and tell the user you cannot archive anything yet.
-2. Validate the change ID by running \`plx get changes\` (or \`plx get change --id <id>\`) and stop if the change is missing, already archived, or otherwise not ready to archive.
-3. Run \`plx archive change --id <id> --yes\` so the CLI moves the change and applies spec updates without prompts (use \`--skip-specs\` only for tooling-only work).
+2. Validate the change ID by running \`splx get changes\` (or \`splx get change --id <id>\`) and stop if the change is missing, already archived, or otherwise not ready to archive.
+3. Run \`splx archive change --id <id> --yes\` so the CLI moves the change and applies spec updates without prompts (use \`--skip-specs\` only for tooling-only work).
 4. Review the command output to confirm the target specs were updated and the change landed in \`changes/archive/\`.
-5. Validate with \`plx validate all --strict\` and inspect with \`plx get change --id <id>\` if anything looks off.`;
+5. Validate with \`splx validate all --strict\` and inspect with \`splx get change --id <id>\` if anything looks off.`;
 
 const archiveReferences = `**Reference**
-- Use \`plx get changes\` to confirm change IDs before archiving.
-- Inspect refreshed specs with \`plx get specs\` and address any validation issues before handing off.`;
+- Use \`splx get changes\` to confirm change IDs before archiving.
+- Inspect refreshed specs with \`splx get specs\` and address any validation issues before handing off.`;
 
 const getTaskGuardrails = `**Guardrails**
 - Complete tasks sequentially, marking each done before starting the next.
@@ -106,9 +106,9 @@ const getTaskGuardrails = `**Guardrails**
 - Preserve existing task file content when updating status.`;
 
 const getTaskSteps = `**Steps**
-1. Run \`plx get task\` to get the highest-priority task (auto-transitions to in-progress).
+1. Run \`splx get task\` to get the highest-priority task (auto-transitions to in-progress).
 2. Execute the task following its Implementation Checklist.
-3. When all checklist items are complete, run \`plx complete task --id <task-id>\` to mark the task as done.
+3. When all checklist items are complete, run \`splx complete task --id <task-id>\` to mark the task as done.
 4. **Stop and await user confirmation** before proceeding to the next task.`;
 
 const prepareCompactGuardrails = `**Guardrails**
@@ -132,14 +132,14 @@ const reviewGuardrails = `**Guardrails**
 ${monorepoAwareness}`;
 
 const reviewSteps = `**Steps**
-1. Run \`plx review change --id <id>\` (or \`plx review spec --id <id>\`, \`plx review task --id <id>\`).
+1. Run \`splx review change --id <id>\` (or \`splx review spec --id <id>\`, \`splx review task --id <id>\`).
 2. Read the output: @workspace/REVIEW.md guidelines + parent documents.
 3. Review implementation against constraints/acceptance criteria.
 4. Insert feedback markers with format: \`#FEEDBACK #TODO | {type}:{id} | {feedback}\`
    - Examples: \`task:001\`, \`change:my-feature\`, \`spec:auth-spec\`
    - Parent linkage is optional but recommended.
 5. Summarize findings.
-6. Instruct to run \`plx parse feedback <name> --parent-id <id> --parent-type change|spec|task\` (or omit flags if markers include parent linkage).`;
+6. Instruct to run \`splx parse feedback <name> --parent-id <id> --parent-type change|spec|task\` (or omit flags if markers include parent linkage).`;
 
 const refineArchitectureGuardrails = `**Guardrails**
 - Produce a spec-ready reference: senior architects and developers must be able to create detailed technical specs without opening the codebase.
@@ -322,7 +322,7 @@ const refineReviewSteps = `**Steps**
 
 ## Part 3: Confirm
 8. Present summary of configuration and populated scope.
-9. Explain how \`/plx:review\` will use these settings.`;
+9. Explain how \`/splx:review\` will use these settings.`;
 
 const refineTestingGuardrails = `**Guardrails**
 - Reference @workspace/TESTING.md template structure.
@@ -432,7 +432,7 @@ const refineTestingSteps = `**Steps**
 
 ## Part 3: Confirm
 9. Present summary of configuration and populated scope.
-10. Explain how \`/plx:test\` will use these settings.`;
+10. Explain how \`/splx:test\` will use these settings.`;
 
 const parseFeedbackGuardrails = `**Guardrails**
 - Scan only tracked files.
@@ -442,7 +442,7 @@ const parseFeedbackGuardrails = `**Guardrails**
 ${monorepoAwareness}`;
 
 const parseFeedbackSteps = `**Steps**
-1. Run \`plx parse feedback <name> --parent-id <id> --parent-type change|spec|task\` (or omit flags if markers include parent linkage: \`{type}:{id} |\`).
+1. Run \`splx parse feedback <name> --parent-id <id> --parent-type change|spec|task\` (or omit flags if markers include parent linkage: \`{type}:{id} |\`).
 2. Review generated tasks.
 3. Address feedback.
 4. Archive when complete.`;
@@ -591,7 +591,7 @@ const refineReleaseSteps = `**Steps**
 
 ## Part 3: Confirm
 10. Present summary of configuration and populated checklist.
-11. Explain how \`/plx:prepare-release\` will use this configuration.`;
+11. Explain how \`/splx:prepare-release\` will use this configuration.`;
 
 const prepareReleaseGuardrails = `**Guardrails**
 - Read @workspace/RELEASE.md Config section for release configuration.
@@ -674,15 +674,15 @@ const orchestrateGuardrails = `${planningContext}
 
 const orchestrateSteps = `**Steps**
 1. Understand the work scope:
-   - For changes: run \`plx get tasks\` to see all tasks.
+   - For changes: run \`splx get tasks\` to see all tasks.
    - For reviews: identify review aspects (architecture, scope, testing, etc.).
    - For other work: enumerate the discrete units of work.
 2. Generate progress file for tracking:
    \`\`\`bash
-   plx create progress --change-id <change-id>
+   splx create progress --change-id <change-id>
    \`\`\`
 3. For each unit of work:
-   a. Get detailed context (\`plx get task --id <id>\` or equivalent).
+   a. Get detailed context (\`splx get task --id <id>\` or equivalent).
    b. Spawn a sub-agent with clear, scoped instructions; select model based on task skill-level (junior→haiku, medior→sonnet, senior→opus).
    c. Wait for sub-agent to complete work.
 4. Review sub-agent output:
@@ -695,18 +695,18 @@ const orchestrateSteps = `**Steps**
    - Request revision with clear guidance.
    - Repeat review until satisfactory.
 6. If approved:
-   - For tasks: mark complete with \`plx complete task --id <id>\`.
+   - For tasks: mark complete with \`splx complete task --id <id>\`.
    - For reviews: consolidate feedback.
-   - Regenerate progress: \`plx create progress --change-id <change-id>\`
+   - Regenerate progress: \`splx create progress --change-id <change-id>\`
    - Proceed to next unit of work.
 7. Continue until all work is complete.
-8. Final validation: run \`plx validate\` if applicable.`;
+8. Final validation: run \`splx validate\` if applicable.`;
 
 const orchestrateReference = `**Reference**
-- Use \`plx get change --id <change-id>\` for proposal context.
-- Use \`plx get changes\` to see all changes and progress.
-- Use \`plx review\` for review context.
-- Use \`plx parse feedback\` to convert review feedback to tasks.`;
+- Use \`splx get change --id <change-id>\` for proposal context.
+- Use \`splx get changes\` to see all changes and progress.
+- Use \`splx review\` for review context.
+- Use \`splx parse feedback\` to convert review feedback to tasks.`;
 
 const planRequestGuardrails = `${planningContext}
 
@@ -729,10 +729,10 @@ const planRequestSteps = `**Steps**
    - UPDATE: Record decision in request.md Decisions section.
    - REPEAT: Continue until no ambiguities remain.
 5. When user confirms intent is 100% captured, populate Final Intent section.
-6. Direct user to run \`plx/plan-proposal <change-id>\` to create the formal proposal.`;
+6. Direct user to run \`splx/plan-proposal <change-id>\` to create the formal proposal.`;
 
 const planRequestReference = `**Reference**
-- Run \`plx/plan-proposal <change-id>\` after this command to scaffold the proposal.
+- Run \`splx/plan-proposal <change-id>\` after this command to scaffold the proposal.
 - The plan-proposal command auto-detects and consumes request.md when present.`;
 
 const syncWorkspaceGuardrails = `${planningContext}
@@ -741,7 +741,7 @@ const syncWorkspaceGuardrails = `${planningContext}
 - Spawn sub-agents for complex assessments when context is heavy (multiple changes, many tasks).
 - Present actionable suggestions using question tool (multi-select if available) or numbered list.
 - Wait for user selection before executing any actions.
-- Validate workspace state with \`plx validate all --strict\` before and after actions.
+- Validate workspace state with \`splx validate all --strict\` before and after actions.
 - Execute only the actions explicitly selected by the user.`;
 
 const syncWorkspaceSteps = `**Steps**
@@ -750,9 +750,9 @@ const syncWorkspaceSteps = `**Steps**
    - If task-id provided: focus on that task's parent change.
    - If no arguments: scan entire workspace.
 2. Scan workspace state:
-   - Run \`plx get changes\` to see all active changes.
-   - Run \`plx get tasks\` to see all open tasks.
-   - Run \`plx validate all --strict\` to identify validation issues.
+   - Run \`splx get changes\` to see all active changes.
+   - Run \`splx get tasks\` to see all open tasks.
+   - Run \`splx validate all --strict\` to identify validation issues.
 3. Assess and categorize issues:
    - Ready to archive: changes with all tasks completed.
    - Stale changes: changes with no recent activity.
@@ -765,34 +765,34 @@ const syncWorkspaceSteps = `**Steps**
    - Group suggestions by category (archive, create, update, validate, delete).
 5. Wait for user selection—do not proceed without explicit confirmation.
 6. Execute selected actions sequentially:
-   - Archive: \`plx archive change --id <id> --yes\`
+   - Archive: \`splx archive change --id <id> --yes\`
    - Create tasks: scaffold task files in \`workspace/tasks/\` with format \`NNN-<parent-id>-<name>.md\` and frontmatter including parent-type and parent-id
    - Update proposals: edit \`proposal.md\` or \`design.md\`
-   - Validate: \`plx validate change --id <id> --strict\`
+   - Validate: \`splx validate change --id <id> --strict\`
 7. Report summary:
    - List all actions taken with outcomes.
-   - Show current workspace state with \`plx get changes\`.
+   - Show current workspace state with \`splx get changes\`.
    - Highlight any remaining issues.`;
 
 const syncWorkspaceReference = `**Reference**
-- Use \`plx get changes\` to see all active changes.
-- Use \`plx get tasks\` to see all open tasks across changes.
-- Use \`plx get tasks --parent-id <change-id> --parent-type change\` to see tasks for a specific change.
-- Use \`plx validate all --strict\` for comprehensive validation.
-- Use \`plx archive change --id <id> --yes\` to archive without prompts.
-- Use \`plx get change --id <id>\` to inspect change details.
-- Use \`plx get spec --id <id>\` to inspect spec details.`;
+- Use \`splx get changes\` to see all active changes.
+- Use \`splx get tasks\` to see all open tasks across changes.
+- Use \`splx get tasks --parent-id <change-id> --parent-type change\` to see tasks for a specific change.
+- Use \`splx validate all --strict\` for comprehensive validation.
+- Use \`splx archive change --id <id> --yes\` to archive without prompts.
+- Use \`splx get change --id <id>\` to inspect change details.
+- Use \`splx get spec --id <id>\` to inspect spec details.`;
 
 const completeTaskSteps = `**Steps**
 1. Parse \`$ARGUMENTS\` to extract task-id.
-2. If no task-id provided, ask user for task-id or run \`plx get tasks\` to list options.
-3. Run \`plx complete task --id <task-id>\` to mark the task as done.
+2. If no task-id provided, ask user for task-id or run \`splx get tasks\` to list options.
+3. Run \`splx complete task --id <task-id>\` to mark the task as done.
 4. Confirm completion to user.`;
 
 const undoTaskSteps = `**Steps**
 1. Parse \`$ARGUMENTS\` to extract task-id.
-2. If no task-id provided, ask user for task-id or run \`plx get tasks\` to list options.
-3. Run \`plx undo task --id <task-id>\` to revert the task to to-do.
+2. If no task-id provided, ask user for task-id or run \`splx get tasks\` to list options.
+3. Run \`splx undo task --id <task-id>\` to revert the task to to-do.
 4. Confirm undo to user.`;
 
 const planImplementationGuardrails = `${planningContext}
@@ -815,7 +815,7 @@ const planImplementationSteps = `**Steps**
 1. Parse \`$ARGUMENTS\` to extract change-id.
 2. Generate progress file:
    \`\`\`bash
-   plx create progress --change-id <change-id>
+   splx create progress --change-id <change-id>
    \`\`\`
 3. Read the generated workspace/PROGRESS.md and identify the first non-completed task.
 4. Output the first task block to chat. Format:
@@ -836,7 +836,7 @@ const planImplementationSteps = `**Steps**
    Focus on the Constraints and Acceptance Criteria sections.
    When complete, mark the task as done:
    \\\`\\\`\\\`bash
-   plx complete task --id <task-id>
+   splx complete task --id <task-id>
    \\\`\\\`\\\`
    \`\`\`
 5. Wait for external agent to complete the task and return with results.
@@ -863,17 +863,17 @@ const planImplementationSteps = `**Steps**
    Address the issues above. When complete, return with updated results.
    \`\`\`
 8. If all checks pass:
-   - Mark task complete: \`plx complete task --id <task-id>\`
-   - Regenerate progress: \`plx create progress --change-id <change-id>\`
+   - Mark task complete: \`splx complete task --id <task-id>\`
+   - Regenerate progress: \`splx create progress --change-id <change-id>\`
    - If more tasks remain, output next task block (return to step 4)
 9. When all tasks are complete:
-   - Run final validation: \`plx validate change --id <change-id> --strict\`
+   - Run final validation: \`splx validate change --id <change-id> --strict\`
    - Report completion summary with all tasks marked done.`;
 
 const planImplementationReference = `**Reference**
-- Use \`plx get change --id <change-id>\` for proposal context.
-- Use \`plx get tasks --parent-id <change-id> --parent-type change\` to see all tasks.
-- Use \`plx create progress --change-id <id>\` to regenerate progress file.`;
+- Use \`splx get change --id <change-id>\` for proposal context.
+- Use \`splx get tasks --parent-id <change-id> --parent-type change\` to see all tasks.
+- Use \`splx create progress --change-id <id>\` to regenerate progress file.`;
 
 const testGuardrails = `**Guardrails**
 - Read @workspace/TESTING.md for test runner, coverage threshold, and test patterns.
@@ -892,9 +892,9 @@ const testSteps = `**Steps**
    - Coverage threshold (70%, 80%, 90%).
    - Test patterns and file locations.
 3. Determine test scope based on arguments:
-   - If \`--parent-type change\`: use \`plx get change --id <id> --json\` to get changed files, derive test files.
-   - If \`--parent-type task\`: use \`plx get task --id <id>\` to get task scope, derive test files.
-   - If \`--parent-type spec\`: use \`plx get spec --id <id>\` to get spec scope, derive test files.
+   - If \`--parent-type change\`: use \`splx get change --id <id> --json\` to get changed files, derive test files.
+   - If \`--parent-type task\`: use \`splx get task --id <id>\` to get task scope, derive test files.
+   - If \`--parent-type spec\`: use \`splx get spec --id <id>\` to get spec scope, derive test files.
    - If no scope: run full test suite.
 4. Execute tests using configured runner:
    - Run scoped tests if arguments provided.
@@ -925,12 +925,12 @@ Determine which scenario applies:
    - If pending feedback: copy the most recent feedback block.
    - If no feedback: copy the next uncompleted task block from workspace/PROGRESS.md.
 
-2. **New conversation (no context)**: Run \`plx get task\` to retrieve the highest-priority task.
+2. **New conversation (no context)**: Run \`splx get task\` to retrieve the highest-priority task.
    - Generate a task block from the task content.
 
 3. **Existing conversation with context**: Analyze conversation history.
    - If a task was just reviewed with issues: generate a feedback block.
-   - If a task was completed: get next task via \`plx get task --did-complete-previous\`.
+   - If a task was completed: get next task via \`splx get task --did-complete-previous\`.
    - If unclear: ask user what to copy.`;
 
 const copyNextTaskSteps = `**Steps**
@@ -958,7 +958,7 @@ const copyNextTaskSteps = `**Steps**
    **If copying next task (no pending feedback):**
    a. Get task content:
       - From workspace/PROGRESS.md if it exists and has uncompleted tasks
-      - Otherwise via \`plx get task\` (or \`plx get task --did-complete-previous\` if previous completed)
+      - Otherwise via \`splx get task\` (or \`splx get task --did-complete-previous\` if previous completed)
    b. Generate task block:
    \`\`\`markdown
    ## Task: <task-name>
@@ -977,7 +977,7 @@ const copyNextTaskSteps = `**Steps**
    Focus on the Constraints and Acceptance Criteria sections.
    When complete, mark the task as done:
    \\\`\\\`\\\`bash
-   plx complete task --id <task-id>
+   splx complete task --id <task-id>
    \\\`\\\`\\\`
    \`\`\`
 
@@ -989,9 +989,9 @@ const copyNextTaskSteps = `**Steps**
 4. Confirm to user what was copied and the task/feedback ID.`;
 
 const copyNextTaskReference = `**Reference**
-- Use \`plx get task\` to retrieve highest-priority task when no context exists.
-- Use \`plx get task --did-complete-previous\` after completing a task.
-- Use \`plx get change --id <change-id>\` to get proposal context.
+- Use \`splx get task\` to retrieve highest-priority task when no context exists.
+- Use \`splx get task --did-complete-previous\` after completing a task.
+- Use \`splx get change --id <change-id>\` to get proposal context.
 - Read workspace/PROGRESS.md if it exists to find next uncompleted task block.`;
 
 const copyReviewRequestGuardrails = `**Guardrails**
@@ -1006,12 +1006,12 @@ const copyReviewRequestContextDetection = `**Context Detection**
 Determine review scope from:
 1. **Task context**: If current conversation has an active task, review that task's implementation.
 2. **Change context**: If a change-id is provided or can be derived, review all tasks in that change.
-3. **New conversation**: Ask user what to review or run \`plx get task\` to get current task.`;
+3. **New conversation**: Ask user what to review or run \`splx get task\` to get current task.`;
 
 const copyReviewRequestSteps = `**Steps**
 1. Detect context using Context Detection rules above.
 2. Gather review materials:
-   - Run \`plx review change --id <change-id>\` or \`plx review task --id <task-id>\`
+   - Run \`splx review change --id <change-id>\` or \`splx review task --id <task-id>\`
    - Read @workspace/REVIEW.md for guidelines and checklist
 3. Generate review request block:
    \`\`\`markdown
@@ -1041,9 +1041,9 @@ const copyReviewRequestSteps = `**Steps**
 5. Confirm to user what was copied and the review scope.`;
 
 const copyReviewRequestReference = `**Reference**
-- Use \`plx review change --id <id>\` for change review context.
-- Use \`plx review task --id <id>\` for task review context.
-- Use \`plx get change --id <id>\` for proposal details.
+- Use \`splx review change --id <id>\` for change review context.
+- Use \`splx review task --id <id>\` for task review context.
+- Use \`splx get change --id <id>\` for proposal details.
 - Read @workspace/REVIEW.md for review guidelines and checklist.`;
 
 const copyTestRequestGuardrails = `**Guardrails**
@@ -1058,7 +1058,7 @@ const copyTestRequestContextDetection = `**Context Detection**
 Determine test scope from:
 1. **Task context**: If current conversation has an active task, test that task's implementation.
 2. **Change context**: If a change-id is provided or can be derived, test all implementations in that change.
-3. **New conversation**: Ask user what to test or run \`plx get task\` to get current task.`;
+3. **New conversation**: Ask user what to test or run \`splx get task\` to get current task.`;
 
 const copyTestRequestSteps = `**Steps**
 1. Detect context using Context Detection rules above.
@@ -1095,8 +1095,8 @@ const copyTestRequestSteps = `**Steps**
 
 const copyTestRequestReference = `**Reference**
 - Read @workspace/TESTING.md for test configuration and patterns.
-- Use \`plx get task --id <id>\` for task context.
-- Use \`plx get change --id <id>\` for change context.`;
+- Use \`splx get task --id <id>\` for task context.
+- Use \`splx get change --id <id>\` for change context.`;
 
 export const slashCommandBodies: Record<SlashCommandId, string> = {
   'archive': [baseGuardrails, archiveSteps, archiveReferences].join('\n\n'),

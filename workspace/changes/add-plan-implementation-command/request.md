@@ -9,7 +9,7 @@ User wants to introduce a `plan-implementation` command that:
    - The entire task content embedded
    - Instructions for an agent to pick up that specific task
 3. Instructions must NOT mention PROGRESS.md (this is for orchestrating/reviewing/verifying agent only)
-4. Agent must be clearly instructed to ONLY focus on that task and use `plx` CLI to complete it when done
+4. Agent must be clearly instructed to ONLY focus on that task and use `splx` CLI to complete it when done
 5. After task completion, user tells orchestrator "it's done"
 6. Orchestrator verifies completeness, scope adherence, instruction adherence
 7. If feedback arises, orchestrator updates the progress task with a "subtask" - a direct communication message for the agent
@@ -28,7 +28,7 @@ The command creates a handoff protocol for multi-agent workflows:
 2. **Agent instructions** are standalone, context-complete blocks that:
    - Focus on one task only
    - Don't reference PROGRESS.md
-   - Include `plx complete task --id <id>` instruction
+   - Include `splx complete task --id <id>` instruction
 
 3. **Review loop** after each agent completes:
    - Orchestrator verifies work
@@ -45,10 +45,10 @@ The command creates a handoff protocol for multi-agent workflows:
 
 ## Decisions
 
-1. **Location**: PLX slash command in `.claude/commands/plx/` + new CLI command `plx create progress --change-id <id>`
+1. **Location**: PLX slash command in `.claude/commands/splx/` + new CLI command `splx create progress --change-id <id>`
 2. **Two components**:
-   - `plx create progress --change-id <id>` - CLI command that generates PROGRESS.md template with all tasks
-   - `/plx:plan-implementation` - Slash command that guides the orchestrator workflow
+   - `splx create progress --change-id <id>` - CLI command that generates PROGRESS.md template with all tasks
+   - `/splx:plan-implementation` - Slash command that guides the orchestrator workflow
 3. **Output**: CLI writes directly to PROGRESS.md file
 4. **Feedback mechanism**:
    - Inline in PROGRESS.md under the task section
@@ -57,13 +57,13 @@ The command creates a handoff protocol for multi-agent workflows:
 6. **Agent context**: Include relevant parts of proposal.md within task instructions, but focus strictly on the single task
 7. **Verification scope**: Full verification - scope adherence, TracelessChanges, project conventions, tests pass, acceptance criteria met
 8. **File location**: Project root (PROGRESS.md)
-9. **Slash command name**: `/plx:plan-implementation`
+9. **Slash command name**: `/splx:plan-implementation`
 
 ## Final Intent
 
 ### Components
 
-1. **CLI Command**: `plx create progress --change-id <id>`
+1. **CLI Command**: `splx create progress --change-id <id>`
    - Creates PROGRESS.md at project root
    - Includes non-completed tasks (to-do, in-progress) only
    - Each task section contains:
@@ -71,11 +71,11 @@ The command creates a handoff protocol for multi-agent workflows:
      - Full task content embedded
      - Relevant proposal context (focused on that task)
      - Agent instructions (no PROGRESS.md mention)
-     - `plx complete task --id <id>` command at end
+     - `splx complete task --id <id>` command at end
 
-2. **Slash Command**: `/plx:plan-implementation`
+2. **Slash Command**: `/splx:plan-implementation`
    - Takes change-id as argument
-   - Calls `plx create progress --change-id <id>` to generate PROGRESS.md
+   - Calls `splx create progress --change-id <id>` to generate PROGRESS.md
    - Outputs the first task block to chat for immediate copy
    - Enters review loop:
      - Wait for user to report "done"
@@ -90,7 +90,7 @@ Self-contained context block that:
 - Contains task title, end goal, constraints, acceptance criteria, implementation checklist
 - Contains relevant proposal context (why, what changes)
 - Instructs agent to focus ONLY on this task
-- Instructs agent to run `plx complete task --id <id>` when done
+- Instructs agent to run `splx complete task --id <id>` when done
 - Does NOT mention PROGRESS.md
 
 ### Feedback Block Format
@@ -104,7 +104,7 @@ Self-contained feedback block that:
 
 ### Workflow
 
-1. User runs `/plx:plan-implementation <change-id>`
+1. User runs `/splx:plan-implementation <change-id>`
 2. Command generates PROGRESS.md with all non-completed tasks
 3. Command outputs first task block to chat
 4. User copies task block to new agent

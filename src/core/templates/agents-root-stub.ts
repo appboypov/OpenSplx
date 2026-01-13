@@ -1,4 +1,4 @@
-export const agentsRootStubTemplate = `# Pew Pew Plx Instructions
+export const agentsRootStubTemplate = `# OpenSplx Instructions
 
 These instructions are for AI assistants working in this project.
 
@@ -17,80 +17,80 @@ Use \`/workspace/AGENTS.md\` to learn:
 ### Project Setup
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx init [path]\` | Initialize Pew Pew Plx | New project setup |
-| \`plx init --tools <list>\` | Initialize with specific AI tools | Non-interactive setup |
-| \`plx update [path]\` | Refresh instruction files | After CLI updates |
+| \`splx init [path]\` | Initialize OpenSplx | New project setup |
+| \`splx init --tools <list>\` | Initialize with specific AI tools | Non-interactive setup |
+| \`splx update [path]\` | Refresh instruction files | After CLI updates |
 
 ### Navigation & Listing
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx get changes\` | List active changes | Check what's in progress |
-| \`plx get specs\` | List specifications | Find existing specs |
-| \`plx view\` | Interactive dashboard | Visual overview |
+| \`splx get changes\` | List active changes | Check what's in progress |
+| \`splx get specs\` | List specifications | Find existing specs |
+| \`splx view\` | Interactive dashboard | Visual overview |
 
 ### Task Management
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx get task\` | Get next prioritized task | Start work |
-| \`plx get task --id <id>\` | Get specific task | Resume specific task |
-| \`plx get task --did-complete-previous\` | Complete current, get next | Advance workflow |
-| \`plx get task --constraints\` | Show only Constraints | Focus on constraints |
-| \`plx get task --acceptance-criteria\` | Show only AC | Focus on acceptance |
-| \`plx get tasks\` | List all open tasks | See all pending work |
-| \`plx get tasks --parent-id <id> --parent-type change\` | List tasks for change | See tasks in a change |
-| \`plx complete task --id <id>\` | Mark task done | Finish a task |
-| \`plx complete change --id <id>\` | Complete all tasks | Finish entire change |
-| \`plx undo task --id <id>\` | Revert task to to-do | Reopen a task |
-| \`plx undo change --id <id>\` | Revert all tasks | Reopen entire change |
+| \`splx get task\` | Get next prioritized task | Start work |
+| \`splx get task --id <id>\` | Get specific task | Resume specific task |
+| \`splx get task --did-complete-previous\` | Complete current, get next | Advance workflow |
+| \`splx get task --constraints\` | Show only Constraints | Focus on constraints |
+| \`splx get task --acceptance-criteria\` | Show only AC | Focus on acceptance |
+| \`splx get tasks\` | List all open tasks | See all pending work |
+| \`splx get tasks --parent-id <id> --parent-type change\` | List tasks for change | See tasks in a change |
+| \`splx complete task --id <id>\` | Mark task done | Finish a task |
+| \`splx complete change --id <id>\` | Complete all tasks | Finish entire change |
+| \`splx undo task --id <id>\` | Revert task to to-do | Reopen a task |
+| \`splx undo change --id <id>\` | Revert all tasks | Reopen entire change |
 
 ### Item Retrieval
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx get change --id <id>\` | Get change by ID | View specific change |
-| \`plx get spec --id <id>\` | Get spec by ID | View specific spec |
-| \`plx get review --id <id>\` | Get review by ID | View specific review |
-| \`plx get reviews\` | List all reviews | See all active reviews |
+| \`splx get change --id <id>\` | Get change by ID | View specific change |
+| \`splx get spec --id <id>\` | Get spec by ID | View specific spec |
+| \`splx get review --id <id>\` | Get review by ID | View specific review |
+| \`splx get reviews\` | List all reviews | See all active reviews |
 
 ### Display & Inspection
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx get change --id <id>\` | Display change | View change details |
-| \`plx get spec --id <id>\` | Display spec | View spec details |
-| \`plx get change --id <id> --json\` | JSON output | Machine-readable |
-| \`plx get change --id <id> --deltas-only\` | Show only deltas | Focus on changes |
+| \`splx get change --id <id>\` | Display change | View change details |
+| \`splx get spec --id <id>\` | Display spec | View spec details |
+| \`splx get change --id <id> --json\` | JSON output | Machine-readable |
+| \`splx get change --id <id> --deltas-only\` | Show only deltas | Focus on changes |
 
 ### Validation
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx validate change --id <id>\` | Validate specific change | Check for issues |
-| \`plx validate spec --id <id>\` | Validate specific spec | Check for issues |
-| \`plx validate all\` | Validate everything | Full project check |
-| \`plx validate changes\` | Validate all changes | Check all changes |
-| \`plx validate specs\` | Validate all specs | Check all specs |
-| \`plx validate change --id <id> --strict\` | Strict validation | Comprehensive check |
-| \`plx validate all --json\` | JSON output | Machine-readable |
+| \`splx validate change --id <id>\` | Validate specific change | Check for issues |
+| \`splx validate spec --id <id>\` | Validate specific spec | Check for issues |
+| \`splx validate all\` | Validate everything | Full project check |
+| \`splx validate changes\` | Validate all changes | Check all changes |
+| \`splx validate specs\` | Validate all specs | Check all specs |
+| \`splx validate change --id <id> --strict\` | Strict validation | Comprehensive check |
+| \`splx validate all --json\` | JSON output | Machine-readable |
 
 ### Archival
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx archive change --id <change-id>\` | Archive completed change | After deployment |
-| \`plx archive change --id <id> --yes\` | Archive without prompts | Non-interactive |
-| \`plx archive change --id <id> --skip-specs\` | Archive, skip spec updates | Tooling-only changes |
+| \`splx archive change --id <change-id>\` | Archive completed change | After deployment |
+| \`splx archive change --id <id> --yes\` | Archive without prompts | Non-interactive |
+| \`splx archive change --id <id> --skip-specs\` | Archive, skip spec updates | Tooling-only changes |
 
 ### Configuration
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx config path\` | Show config file location | Find config |
-| \`plx config list\` | Show all settings | View configuration |
-| \`plx config get <key>\` | Get specific value | Read a setting |
-| \`plx config set <key> <value>\` | Set a value | Modify configuration |
+| \`splx config path\` | Show config file location | Find config |
+| \`splx config list\` | Show all settings | View configuration |
+| \`splx config get <key>\` | Get specific value | Read a setting |
+| \`splx config set <key> <value>\` | Set a value | Modify configuration |
 
 ### Shell Completions
 | Command | Description | When to Use |
 |---------|-------------|-------------|
-| \`plx completion install [shell]\` | Install completions | Enable tab completion |
-| \`plx completion uninstall [shell]\` | Remove completions | Remove tab completion |
-| \`plx completion generate [shell]\` | Generate script | Manual setup |
+| \`splx completion install [shell]\` | Install completions | Enable tab completion |
+| \`splx completion uninstall [shell]\` | Remove completions | Remove tab completion |
+| \`splx completion generate [shell]\` | Generate script | Manual setup |
 
 ### Global Flags
 | Flag | Description |
@@ -99,5 +99,5 @@ Use \`/workspace/AGENTS.md\` to learn:
 | \`--no-interactive\` | Disable prompts |
 | \`--no-color\` | Disable color output |
 
-Keep this managed block so 'plx update' can refresh the instructions.
+Keep this managed block so 'splx update' can refresh the instructions.
 `;

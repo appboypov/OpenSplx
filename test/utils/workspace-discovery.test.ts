@@ -7,7 +7,7 @@ import {
   isMultiWorkspace,
   getWorkspacePrefix,
   filterWorkspaces,
-  isValidPlxWorkspace,
+  isValidSplxWorkspace,
   findProjectRoot,
   DiscoveredWorkspace,
   MAX_DEPTH,
@@ -18,7 +18,7 @@ describe('workspace-discovery', () => {
   let tempDir: string;
 
   beforeEach(async () => {
-    tempDir = path.join(os.tmpdir(), `plx-workspace-test-${Date.now()}`);
+    tempDir = path.join(os.tmpdir(), `splx-workspace-test-${Date.now()}`);
     await fs.mkdir(tempDir, { recursive: true });
   });
 
@@ -411,19 +411,19 @@ describe('workspace-discovery', () => {
     });
   });
 
-  describe('isValidPlxWorkspace', () => {
+  describe('isValidSplxWorkspace', () => {
     it('returns true when workspace/AGENTS.md exists', async () => {
       const agentsDir = path.join(tempDir, 'workspace');
       await fs.mkdir(agentsDir, { recursive: true });
       await fs.writeFile(path.join(agentsDir, 'AGENTS.md'), '# Test');
 
-      const result = await isValidPlxWorkspace(tempDir);
+      const result = await isValidSplxWorkspace(tempDir);
 
       expect(result).toBe(true);
     });
 
     it('returns false when workspace directory does not exist', async () => {
-      const result = await isValidPlxWorkspace(tempDir);
+      const result = await isValidSplxWorkspace(tempDir);
 
       expect(result).toBe(false);
     });
@@ -432,7 +432,7 @@ describe('workspace-discovery', () => {
       const agentsDir = path.join(tempDir, 'workspace');
       await fs.mkdir(agentsDir, { recursive: true });
 
-      const result = await isValidPlxWorkspace(tempDir);
+      const result = await isValidSplxWorkspace(tempDir);
 
       expect(result).toBe(false);
     });
@@ -441,7 +441,7 @@ describe('workspace-discovery', () => {
       const agentsPath = path.join(tempDir, 'workspace', 'AGENTS.md');
       await fs.mkdir(agentsPath, { recursive: true });
 
-      const result = await isValidPlxWorkspace(tempDir);
+      const result = await isValidSplxWorkspace(tempDir);
 
       expect(result).toBe(false);
     });
@@ -449,7 +449,7 @@ describe('workspace-discovery', () => {
     it('returns false for non-existent directory', async () => {
       const nonExistentPath = path.join(tempDir, 'does-not-exist');
 
-      const result = await isValidPlxWorkspace(nonExistentPath);
+      const result = await isValidSplxWorkspace(nonExistentPath);
 
       expect(result).toBe(false);
     });

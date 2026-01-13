@@ -23,7 +23,7 @@ Users working in monorepos need to transfer PLX entities (changes, specs, tasks,
 ### Command Structure
 
 ```
-plx transfer <entity-type> --id <id> [options]
+splx transfer <entity-type> --id <id> [options]
 
 Entity types: change, spec, task, review, request
 
@@ -127,7 +127,7 @@ For task conflicts specifically:
 
 When target has no workspace:
 1. Detect configured tools from source workspace (parse `.claude/settings.local.json`, etc.)
-2. Run `plx init` logic with detected tools as defaults
+2. Run `splx init` logic with detected tools as defaults
 3. Follow interactive/non-interactive flags from transfer command
 4. Continue with transfer after successful init
 

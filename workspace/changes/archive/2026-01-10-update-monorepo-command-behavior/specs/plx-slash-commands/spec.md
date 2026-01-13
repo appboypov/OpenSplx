@@ -2,7 +2,7 @@
 
 ### Requirement: Prepare Release Version Handling
 
-The `/plx/prepare-release` slash command SHALL enforce concrete version numbers and accurate dates in changelog entries.
+The `/splx/prepare-release` slash command SHALL enforce concrete version numbers and accurate dates in changelog entries.
 
 #### Scenario: Never use Unreleased placeholder
 
@@ -61,7 +61,7 @@ All artifact-creating PLX slash commands SHALL support monorepo project structur
 
 ### Requirement: PLX Command Registry Updates
 
-The system SHALL register new PLX commands in the PlxSlashCommandRegistry.
+The system SHALL register new PLX commands in the SplxSlashCommandRegistry.
 
 #### Scenario: Registering new commands
 

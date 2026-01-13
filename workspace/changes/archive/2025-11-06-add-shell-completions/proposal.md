@@ -12,7 +12,7 @@ PLX CLI commands lack shell completion, forcing users to remember all commands, 
 
 This change adds shell completion support for the PLX CLI, starting with **Zsh (including Oh My Zsh)** and establishing a scalable architecture for future shells (bash, fish, PowerShell). The implementation provides:
 
-1. **New `plx completion` command** with Zsh generation and installation/uninstallation capabilities
+1. **New `splx completion` command** with Zsh generation and installation/uninstallation capabilities
 2. **Native Zsh integration** that respects standard Zsh tab completion behavior (single-TAB menu navigation)
 3. **Dynamic completion providers** that discover active changes and specs from the current project
 4. **Plugin-based architecture** using TypeScript interfaces for easy extension to additional shells in future proposals
@@ -26,4 +26,4 @@ The architecture emphasizes clean TypeScript patterns, composable generators, se
 ### Delta: New CLI completion specification
 - **Spec:** cli-completion
 - **Operation:** ADDED
-- **Description:** Defines requirements for the new `plx completion` command including generation, installation, and shell-specific behaviors for Oh My Zsh, bash, fish, and PowerShell.
+- **Description:** Defines requirements for the new `splx completion` command including generation, installation, and shell-specific behaviors for Oh My Zsh, bash, fish, and PowerShell.

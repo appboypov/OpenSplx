@@ -6,7 +6,7 @@ The update command SHALL update only existing AI tool configuration files and SH
 
 #### Scenario: Updating existing tool files
 
-- **WHEN** a user runs `plx update`
+- **WHEN** a user runs `splx update`
 - **THEN** update each AI tool configuration file that exists (e.g., CLAUDE.md, COPILOT.md)
 - **AND** do not create missing tool configuration files
 - **AND** preserve user content outside PLX markers

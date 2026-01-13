@@ -24,14 +24,14 @@ All generated files match the updated template content and pass validation.
 ## Acceptance Criteria
 
 - [ ] `workspace/AGENTS.md` contains updated Stage 2 instructions
-- [ ] `.claude/commands/plx/get-task.md` contains updated steps
+- [ ] `.claude/commands/splx/get-task.md` contains updated steps
 - [ ] No references to "Repeat" or "continue until all tasks are done" remain in agent-facing instructions
 - [ ] Instructions in AGENTS.md and get-task.md are consistent
 
 ## Implementation Checklist
 
 - [x] 3.1 Read `workspace/AGENTS.md` and verify Stage 2 contains stop-and-wait instruction
-- [x] 3.2 Read `.claude/commands/plx/get-task.md` and verify steps include stop-and-wait
+- [x] 3.2 Read `.claude/commands/splx/get-task.md` and verify steps include stop-and-wait
 - [x] 3.3 Search for any remaining "Repeat" or continuation instructions in generated files
 
 ## Notes

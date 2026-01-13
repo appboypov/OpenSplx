@@ -29,7 +29,7 @@ Implementation task is complete but changes need verification.
 - [x] `npm run build` succeeds
 - [x] `npm run lint` passes
 - [x] `npm run typecheck` passes (no typecheck script; build includes TypeScript compilation)
-- [x] Manual test of `plx init` in a fresh directory generates compact command
+- [x] Manual test of `splx init` in a fresh directory generates compact command
 
 ## Implementation Checklist
 
@@ -37,8 +37,8 @@ Implementation task is complete but changes need verification.
 - [x] 2.2 Run `npm run lint` and fix any linting issues
 - [x] 2.3 Run `npm run typecheck` and fix any type errors (no typecheck script; covered by build)
 - [x] 2.4 Create a temporary test directory
-- [x] 2.5 Run `plx init` in the test directory
-- [x] 2.6 Verify `.claude/commands/plx/compact.md` exists with correct content
+- [x] 2.5 Run `splx init` in the test directory
+- [x] 2.6 Verify `.claude/commands/splx/compact.md` exists with correct content
 - [x] 2.7 Verify compact command has valid frontmatter
 - [x] 2.8 Verify compact command has PLX markers with body content
 - [x] 2.9 Clean up temporary test directory

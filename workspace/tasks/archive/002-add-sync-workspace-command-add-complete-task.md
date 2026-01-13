@@ -11,7 +11,7 @@ The `complete-task` and `undo-task` slash command templates exist in the templat
 
 ## Currently
 
-`complete-task.md` and `undo-task.md` files exist in `.claude/commands/plx/` but are not part of the template system. They were manually created and are not generated/updated by `plx init` or `plx update`.
+`complete-task.md` and `undo-task.md` files exist in `.claude/commands/splx/` but are not part of the template system. They were manually created and are not generated/updated by `splx init` or `splx update`.
 
 ## Should
 
@@ -19,7 +19,7 @@ Both commands are part of the template system:
 - Entries in `SlashCommandId` type union
 - Entries in `ALL_COMMANDS` array
 - Template bodies with appropriate guardrails and steps
-- Generated/updated by `plx init` and `plx update`
+- Generated/updated by `splx init` and `splx update`
 
 ## Constraints
 
@@ -32,7 +32,7 @@ Both commands are part of the template system:
 - [ ] `SlashCommandId` type includes `'complete-task'` and `'undo-task'`
 - [ ] `ALL_COMMANDS` array includes `'complete-task'` and `'undo-task'`
 - [ ] Template bodies contain minimal guardrails and steps
-- [ ] Running `plx update` regenerates `.claude/commands/plx/complete-task.md` and `undo-task.md`
+- [ ] Running `splx update` regenerates `.claude/commands/splx/complete-task.md` and `undo-task.md`
 
 ## Implementation Checklist
 
@@ -44,4 +44,4 @@ Both commands are part of the template system:
 
 ## Notes
 
-These are thin wrappers around `plx complete task --id <id>` and `plx undo task --id <id>`. Minimal template content needed.
+These are thin wrappers around `splx complete task --id <id>` and `splx undo task --id <id>`. Minimal template content needed.

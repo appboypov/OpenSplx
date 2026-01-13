@@ -30,7 +30,7 @@ Missing templates for:
 
 Updated templates:
 - All existing templates use new CLI patterns
-- New templates for `plx create` and `plx paste` commands:
+- New templates for `splx create` and `splx paste` commands:
   - Task template (standalone and parented variants)
   - Change template (proposal.md scaffold)
   - Spec template (spec.md scaffold)
@@ -69,4 +69,4 @@ Updated templates:
 
 ## Notes
 
-Templates are used by `plx create` and `plx paste` commands. Ensure templates match the entity file formats documented in AGENTS.md.
+Templates are used by `splx create` and `splx paste` commands. Ensure templates match the entity file formats documented in AGENTS.md.

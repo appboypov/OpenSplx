@@ -1,19 +1,19 @@
 ## Why
 
-Users need a way to view and modify their global PLX settings without manually editing JSON files. The `global-config` spec provides the foundation, but there's no user-facing interface to interact with the config. A dedicated `plx config` command provides discoverability and ease of use.
+Users need a way to view and modify their global PLX settings without manually editing JSON files. The `global-config` spec provides the foundation, but there's no user-facing interface to interact with the config. A dedicated `splx config` command provides discoverability and ease of use.
 
 ## What Changes
 
-Add `plx config` subcommand with the following operations:
+Add `splx config` subcommand with the following operations:
 
 ```bash
-plx config path                          # Show config file location
-plx config list [--json]                 # Show all current settings
-plx config get <key>                     # Get a specific value (raw, scriptable)
-plx config set <key> <value> [--string]  # Set a value (auto-coerce types)
-plx config unset <key>                   # Remove a key (revert to default)
-plx config reset --all [-y]              # Reset everything to defaults
-plx config edit                          # Open config in $EDITOR
+splx config path                          # Show config file location
+splx config list [--json]                 # Show all current settings
+splx config get <key>                     # Get a specific value (raw, scriptable)
+splx config set <key> <value> [--string]  # Set a value (auto-coerce types)
+splx config unset <key>                   # Remove a key (revert to default)
+splx config reset --all [-y]              # Reset everything to defaults
+splx config edit                          # Open config in $EDITOR
 ```
 
 **Key design decisions:**
@@ -26,27 +26,27 @@ plx config edit                          # Open config in $EDITOR
 
 **Example usage:**
 ```bash
-$ plx config path
+$ splx config path
 /Users/me/.config/workspace/config.json
 
-$ plx config list
+$ splx config list
 featureFlags: {}
 
-$ plx config set featureFlags.enableTelemetry false
+$ splx config set featureFlags.enableTelemetry false
 Set featureFlags.enableTelemetry = false
 
-$ plx config get featureFlags.enableTelemetry
+$ splx config get featureFlags.enableTelemetry
 false
 
-$ plx config list --json
+$ splx config list --json
 {
   "featureFlags": {}
 }
 
-$ plx config unset featureFlags.enableTelemetry
+$ splx config unset featureFlags.enableTelemetry
 Unset featureFlags.enableTelemetry (reverted to default)
 
-$ plx config edit
+$ splx config edit
 # Opens $EDITOR with config.json
 ```
 

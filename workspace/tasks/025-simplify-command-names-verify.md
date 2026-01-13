@@ -20,12 +20,12 @@ Strict validation passes and build is clean.
 - [ ] Must pass strict validation
 
 ## Acceptance Criteria
-- [ ] `plx validate change --id simplify-command-names --strict` passes
+- [ ] `splx validate change --id simplify-command-names --strict` passes
 - [ ] Build succeeds
 - [ ] Git status shows expected changes
 
 ## Implementation Checklist
-- [x] 3.1 Run `plx validate change --id simplify-command-names --strict`
+- [x] 3.1 Run `splx validate change --id simplify-command-names --strict`
 - [x] 3.2 Run `pnpm build`
 - [x] 3.3 Review git status for expected file changes
 

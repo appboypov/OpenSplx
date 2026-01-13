@@ -1,10 +1,10 @@
 # Implementation Tasks
 
 ## 1. CLI Behavior and Help
-- [x] 1.1 Un-deprecate top-level `plx list`; mark `change list` as deprecated with warning that points to `plx list`
-- [x] 1.2 Add support to list specs via `plx list --specs` and keep `--changes` as default
+- [x] 1.1 Un-deprecate top-level `splx list`; mark `change list` as deprecated with warning that points to `splx list`
+- [x] 1.2 Add support to list specs via `splx list --specs` and keep `--changes` as default
 - [x] 1.3 Update command descriptions and `--help` output to emphasize verb–noun pattern
-- [x] 1.4 Keep `plx spec ...` and `plx change ...` commands working but print deprecation notices
+- [x] 1.4 Keep `splx spec ...` and `splx change ...` commands working but print deprecation notices
 
 ## 2. Core List Logic
 - [x] 2.1 Extend `src/core/list.ts` to accept a mode: `changes` (default) or `specs`
@@ -13,15 +13,15 @@
 
 ## 3. Specs and Conventions
 - [x] 3.1 Update `workspace/specs/cli-list/spec.md` to document `--specs` (and default to changes)
-- [x] 3.2 Update `workspace/specs/plx-conventions/spec.md` with a requirement for verb–noun CLI design and deprecation guidance
+- [x] 3.2 Update `workspace/specs/splx-conventions/spec.md` with a requirement for verb–noun CLI design and deprecation guidance
 
 ## 4. Tests and Docs
-- [x] 4.1 Update tests: ensure `plx list` works for changes and specs; keep `change list` tests but assert warning
+- [x] 4.1 Update tests: ensure `splx list` works for changes and specs; keep `change list` tests but assert warning
 - [ ] 4.2 Update README and any usage docs to show new primary commands
 - [ ] 4.3 Add migration notes in repo CHANGELOG or README
 
 ## 5. Follow-ups (Optional, not in this change)
-- [ ] 5.1 Consider `plx show --specs/--changes` for discovery without ids
-- [ ] 5.2 Consider JSON output for `plx list` with `--json` for both modes
+- [ ] 5.1 Consider `splx show --specs/--changes` for discovery without ids
+- [ ] 5.2 Consider JSON output for `splx list` with `--json` for both modes
 
 

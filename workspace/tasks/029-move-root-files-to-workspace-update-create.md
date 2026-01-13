@@ -8,7 +8,7 @@ parent-id: move-root-files-to-workspace
 # Task: Update create command for PROGRESS.md path
 
 ## End Goal
-`plx create progress` creates PROGRESS.md in `workspace/` instead of project root.
+`splx create progress` creates PROGRESS.md in `workspace/` instead of project root.
 
 ## Currently
 `src/commands/create.ts` line 521:
@@ -28,7 +28,7 @@ const progressPath = path.join(change.workspacePath, 'PROGRESS.md');
 - [ ] Keep all other PROGRESS.md content generation unchanged
 
 ## Acceptance Criteria
-- [ ] `plx create progress --change-id <id>` creates `workspace/PROGRESS.md`
+- [ ] `splx create progress --change-id <id>` creates `workspace/PROGRESS.md`
 - [ ] Existing PROGRESS.md content/format unchanged
 
 ## Implementation Checklist

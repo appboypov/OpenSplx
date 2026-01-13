@@ -20,18 +20,18 @@ Update all artifact-creating slash commands to:
 - Follow each package's AGENTS.md if present
 
 **Affected commands:**
-- `/plx/plan-proposal`
-- `/plx/plan-request`
-- `/plx/prepare-release`
-- `/plx/review`
-- `/plx/parse-feedback`
-- `/plx/refine-architecture`
-- `/plx/refine-release`
-- `/plx/refine-review`
-- `/plx/refine-testing`
+- `/splx/plan-proposal`
+- `/splx/plan-request`
+- `/splx/prepare-release`
+- `/splx/review`
+- `/splx/parse-feedback`
+- `/splx/refine-architecture`
+- `/splx/refine-release`
+- `/splx/refine-review`
+- `/splx/refine-testing`
 
 ## Impact
 
-- Affected specs: `plx-slash-commands`
-- Affected code: `.claude/commands/plx/*.md` (slash command prompts)
+- Affected specs: `splx-slash-commands`
+- Affected code: `.claude/commands/splx/*.md` (slash command prompts)
 - No CLI code changes required - these are prompt-only updates

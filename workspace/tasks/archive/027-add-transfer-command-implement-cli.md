@@ -9,7 +9,7 @@ parent-id: add-transfer-command
 
 ## End Goal
 
-A `plx transfer` command with subcommands for each entity type, registered in the CLI and following existing command patterns.
+A `splx transfer` command with subcommands for each entity type, registered in the CLI and following existing command patterns.
 
 ## Currently
 
@@ -17,11 +17,11 @@ No transfer command exists in the CLI.
 
 ## Should
 
-- `plx transfer change --id <id>` subcommand
-- `plx transfer spec --id <id>` subcommand
-- `plx transfer task --id <id>` subcommand
-- `plx transfer review --id <id>` subcommand
-- `plx transfer request --id <id>` subcommand
+- `splx transfer change --id <id>` subcommand
+- `splx transfer spec --id <id>` subcommand
+- `splx transfer task --id <id>` subcommand
+- `splx transfer review --id <id>` subcommand
+- `splx transfer request --id <id>` subcommand
 - Options: `--source`, `--target`, `--target-name`, `--dry-run`, `--yes`, `--json`
 - Interactive workspace selection when paths omitted
 

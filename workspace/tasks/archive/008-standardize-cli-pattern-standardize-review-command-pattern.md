@@ -8,20 +8,20 @@ parent-id: standardize-cli-pattern
 
 ## End Goal
 
-The `plx review` command uses entity subcommands with `--id` flag for reviewing entities.
+The `splx review` command uses entity subcommands with `--id` flag for reviewing entities.
 
 ## Currently
 
-- `plx review --change-id <id>` reviews a change
-- `plx review --spec-id <id>` reviews a spec
-- `plx review --task-id <id>` reviews a task
+- `splx review --change-id <id>` reviews a change
+- `splx review --spec-id <id>` reviews a spec
+- `splx review --task-id <id>` reviews a task
 - Entity-specific flags are required
 
 ## Should
 
-- `plx review change --id <id>` reviews a change
-- `plx review spec --id <id>` reviews a spec
-- `plx review task --id <id>` reviews a task
+- `splx review change --id <id>` reviews a change
+- `splx review spec --id <id>` reviews a spec
+- `splx review task --id <id>` reviews a task
 - Legacy `--change-id`, `--spec-id`, `--task-id` flags deprecated
 - Legacy flags continue to work with deprecation warnings
 - All commands output same review context as before
@@ -34,12 +34,12 @@ The `plx review` command uses entity subcommands with `--id` flag for reviewing 
 
 ## Acceptance Criteria
 
-- [ ] `plx review change --id <id>` produces same output as `--change-id <id>`
-- [ ] `plx review spec --id <id>` produces same output as `--spec-id <id>`
-- [ ] `plx review task --id <id>` produces same output as `--task-id <id>`
-- [ ] `plx review --change-id <id>` warns and works (deprecated)
-- [ ] `plx review --spec-id <id>` warns and works (deprecated)
-- [ ] `plx review --task-id <id>` warns and works (deprecated)
+- [ ] `splx review change --id <id>` produces same output as `--change-id <id>`
+- [ ] `splx review spec --id <id>` produces same output as `--spec-id <id>`
+- [ ] `splx review task --id <id>` produces same output as `--task-id <id>`
+- [ ] `splx review --change-id <id>` warns and works (deprecated)
+- [ ] `splx review --spec-id <id>` warns and works (deprecated)
+- [ ] `splx review --task-id <id>` warns and works (deprecated)
 - [ ] Shell completions include new subcommands
 - [ ] JSON output unchanged
 

@@ -1,7 +1,7 @@
 ## Implementation Tasks
 
 - [x] Create `src/core/configurators/slash/github-copilot.ts` implementing `SlashCommandConfigurator` base class
-  - Implement `getRelativePath()` to return `.github/prompts/plx-{proposal,apply,archive}.prompt.md`
+  - Implement `getRelativePath()` to return `.github/prompts/splx-{proposal,apply,archive}.prompt.md`
   - Implement `getFrontmatter()` to generate YAML frontmatter with `description` field and include `$ARGUMENTS` placeholder
   - Implement `generateAll()` to create `.github/prompts/` directory and write three prompt files with frontmatter, markers, and shared template bodies
   - Implement `updateExisting()` to refresh only the managed block between markers while preserving frontmatter
@@ -13,7 +13,7 @@
   - Update tool picker display name to "GitHub Copilot"
 
 - [x] Update `src/core/init.ts` to include GitHub Copilot in the AI tool selection prompt
-  - Add GitHub Copilot to the available tools list with detection for existing `.github/prompts/plx-*.prompt.md` files
+  - Add GitHub Copilot to the available tools list with detection for existing `.github/prompts/splx-*.prompt.md` files
   - Display "(already configured)" when prompt files exist
 
 - [x] Update `src/core/update.ts` to refresh GitHub Copilot prompts when they exist

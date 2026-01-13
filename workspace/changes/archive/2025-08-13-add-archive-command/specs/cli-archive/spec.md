@@ -5,7 +5,7 @@ The archive command moves completed changes from the active changes directory to
 
 ## Command Syntax
 ```bash
-plx archive [change-name] [--yes|-y]
+splx archive [change-name] [--yes|-y]
 ```
 
 Options:

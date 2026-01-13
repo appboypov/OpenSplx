@@ -154,7 +154,7 @@ export class PasteCommand {
       .join('\n');
 
     throw new Error(
-      `Parent ID '${parentId}' matches multiple types:\n${matchDescriptions}\nUse --parent-type to specify: plx paste task --parent-id ${parentId} --parent-type change`
+      `Parent ID '${parentId}' matches multiple types:\n${matchDescriptions}\nUse --parent-type to specify: splx paste task --parent-id ${parentId} --parent-type change`
     );
   }
 
@@ -227,7 +227,7 @@ export class PasteCommand {
         if (options.json) {
           console.log(JSON.stringify({ error: 'No workspace found' }));
         } else {
-          ora().fail('No workspace found. Run plx init first.');
+          ora().fail('No workspace found. Run splx init first.');
         }
         process.exitCode = 1;
         return;
@@ -390,9 +390,9 @@ export class PasteCommand {
 
       if (workspaces.length === 0) {
         if (options.json) {
-          console.log(JSON.stringify({ error: 'No workspace found. Run plx init first.' }));
+          console.log(JSON.stringify({ error: 'No workspace found. Run splx init first.' }));
         } else {
-          ora().fail('No workspace found. Run plx init first.');
+          ora().fail('No workspace found. Run splx init first.');
         }
         process.exitCode = 1;
         return;
@@ -494,9 +494,9 @@ export class PasteCommand {
 
       if (workspaces.length === 0) {
         if (options.json) {
-          console.log(JSON.stringify({ error: 'No workspace found. Run plx init first.' }));
+          console.log(JSON.stringify({ error: 'No workspace found. Run splx init first.' }));
         } else {
-          ora().fail('No workspace found. Run plx init first.');
+          ora().fail('No workspace found. Run splx init first.');
         }
         process.exitCode = 1;
         return;

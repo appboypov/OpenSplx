@@ -12,4 +12,4 @@ Add support for Cline (VS Code extension) in PLX to enable developers to use Cli
 ## Impact
 - Affected specs: cli-init (new tool option)
 - Affected code: src/core/configurators/slash/cline.ts, src/core/configurators/cline.ts, registry files
-- New files: .clinerules/plx-*.md, CLINE.md
+- New files: .clinerules/splx-*.md, CLINE.md

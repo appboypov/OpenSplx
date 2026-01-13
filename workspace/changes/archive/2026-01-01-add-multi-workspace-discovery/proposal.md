@@ -2,7 +2,7 @@
 
 ## Why
 
-When using `plx` from a root folder containing multiple projects (monorepo), users cannot manage workspaces across all child projects. The CLI only looks at `{cwd}/workspace/` and ignores nested project workspaces, forcing users to navigate into each project individually.
+When using `splx` from a root folder containing multiple projects (monorepo), users cannot manage workspaces across all child projects. The CLI only looks at `{cwd}/workspace/` and ignores nested project workspaces, forcing users to navigate into each project individually.
 
 ## What Changes
 

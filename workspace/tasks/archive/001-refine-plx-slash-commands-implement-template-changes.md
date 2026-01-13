@@ -1,20 +1,20 @@
 ---
 status: done
 parent-type: change
-parent-id: refine-plx-slash-commands
+parent-id: refine-splx-slash-commands
 ---
 # Implement Template Changes
 
 ## End Goal
-The `plx-slash-command-templates.ts` file contains updated type definitions, template bodies, and @ file references.
+The `splx-slash-command-templates.ts` file contains updated type definitions, template bodies, and @ file references.
 
 ## Currently
-- `PlxSlashCommandId` includes `init-architecture` and `update-architecture`
+- `SplxSlashCommandId` includes `init-architecture` and `update-architecture`
 - No `refine-release` command exists
 - Commands reference files without `@` notation
 
 ## Should
-- `PlxSlashCommandId` excludes `init-architecture` and `update-architecture`
+- `SplxSlashCommandId` excludes `init-architecture` and `update-architecture`
 - `refine-release` command with guardrails and steps
 - Commands use `@` notation for file references
 
@@ -24,24 +24,24 @@ The `plx-slash-command-templates.ts` file contains updated type definitions, tem
 - [x] TypeScript must compile without errors
 
 ## Acceptance Criteria
-- [x] `PlxSlashCommandId` type has 8 values (removed 2, added 1)
+- [x] `SplxSlashCommandId` type has 8 values (removed 2, added 1)
 - [x] `baseGuardrails`, `initArchitectureSteps`, `updateArchitectureSteps` constants removed
 - [x] `refineReleaseGuardrails` and `refineReleaseSteps` constants added
-- [x] `plxSlashCommandBodies` record updated with correct entries
+- [x] `splxSlashCommandBodies` record updated with correct entries
 - [x] `review` command body contains `@REVIEW.md`
 - [x] `refine-review` command body contains `@REVIEW.md`
 - [x] `refine-architecture` command body contains `@ARCHITECTURE.md`
 - [x] `prepare-release` command body contains `@README.md`, `@CHANGELOG.md`, `@ARCHITECTURE.md`
 
 ## Implementation Checklist
-- [x] Remove `init-architecture` and `update-architecture` from `PlxSlashCommandId` type
+- [x] Remove `init-architecture` and `update-architecture` from `SplxSlashCommandId` type
 - [x] Remove `baseGuardrails` constant
 - [x] Remove `initArchitectureSteps` constant
 - [x] Remove `updateArchitectureSteps` constant
 - [x] Add `refineReleaseGuardrails` constant
 - [x] Add `refineReleaseSteps` constant
-- [x] Add `refine-release` to `plxSlashCommandBodies`
-- [x] Remove `init-architecture` and `update-architecture` from `plxSlashCommandBodies`
+- [x] Add `refine-release` to `splxSlashCommandBodies`
+- [x] Remove `init-architecture` and `update-architecture` from `splxSlashCommandBodies`
 - [x] Update `reviewSteps` to include `@REVIEW.md`
 - [x] Update `refineReviewGuardrails` to include `@REVIEW.md`
 - [x] Update `refineReviewSteps` to include `@REVIEW.md`
@@ -51,4 +51,4 @@ The `plx-slash-command-templates.ts` file contains updated type definitions, tem
 - [x] Update `prepareReleaseSteps` to include `@README.md`, `@CHANGELOG.md`, `@ARCHITECTURE.md`
 
 ## Notes
-- File: `src/core/templates/plx-slash-command-templates.ts`
+- File: `src/core/templates/splx-slash-command-templates.ts`

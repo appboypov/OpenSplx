@@ -8,7 +8,7 @@ parent-id: add-task-skill-level
 
 ## End Goal
 
-The `plx get task` and `plx get tasks` commands display skill level in both human-readable and JSON output.
+The `splx get task` and `splx get tasks` commands display skill level in both human-readable and JSON output.
 
 ## Currently
 
@@ -16,10 +16,10 @@ Task output shows only id, filename, filepath, sequence, and status. Skill level
 
 ## Should
 
-- `plx get task` shows skill level in task header when present
-- `plx get task --json` includes `skillLevel` field in task object
-- `plx get tasks` shows skill level column in table output
-- `plx get tasks --json` includes `skillLevel` field in each task
+- `splx get task` shows skill level in task header when present
+- `splx get task --json` includes `skillLevel` field in task object
+- `splx get tasks` shows skill level column in table output
+- `splx get tasks --json` includes `skillLevel` field in each task
 
 ## Constraints
 

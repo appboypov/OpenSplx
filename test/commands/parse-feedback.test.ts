@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import os from 'os';
 import { ParseFeedbackCommand } from '../../src/commands/parse-feedback.js';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 // Hoist mock functions for ESM compatibility
 const { mockInput, mockSelect, mockIsInteractive } = vi.hoisted(() => ({
@@ -34,7 +34,7 @@ describe('ParseFeedbackCommand', () => {
     process.chdir(tempDir);
 
     // Create valid PLX workspace with AGENTS.md marker
-    await createValidPlxWorkspace(tempDir);
+    await createValidSplxWorkspace(tempDir);
 
     // Create additional workspace structure
     await fs.mkdir(path.join(tempDir, 'workspace', 'changes'), { recursive: true });

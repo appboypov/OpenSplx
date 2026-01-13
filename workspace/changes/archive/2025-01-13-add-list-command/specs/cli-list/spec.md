@@ -2,13 +2,13 @@
 
 ## Purpose
 
-The `plx list` command SHALL provide developers with a quick overview of all active changes in the project, showing their names and task completion status.
+The `splx list` command SHALL provide developers with a quick overview of all active changes in the project, showing their names and task completion status.
 
 ## Behavior
 
 ### Command Execution
 
-WHEN `plx list` is executed
+WHEN `splx list` is executed
 THEN scan the `workspace/changes/` directory for change directories
 AND exclude the `archive/` subdirectory from results
 AND parse each change's `tasks.md` file to count task completion
@@ -51,7 +51,7 @@ IF a change directory has no `tasks.md` file
 THEN display the change with "No tasks" status
 
 IF `workspace/changes/` directory doesn't exist
-THEN display error: "No PLX changes directory found. Run 'plx init' first."
+THEN display error: "No PLX changes directory found. Run 'splx init' first."
 AND exit with code 1
 
 ### Sorting

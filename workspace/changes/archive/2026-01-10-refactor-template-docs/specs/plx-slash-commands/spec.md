@@ -2,26 +2,26 @@
 
 ### Requirement: Refine Testing Command
 
-The system SHALL provide a `plx/refine-testing` slash command that creates or updates TESTING.md with test configuration options.
+The system SHALL provide a `splx/refine-testing` slash command that creates or updates TESTING.md with test configuration options.
 
 #### Scenario: Generating refine-testing command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-testing.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Refine Testing", description, category "Pew Pew Plx", and relevant tags
+- **THEN** create `.claude/commands/splx/refine-testing.md`
+- **AND** include frontmatter with name "OpenSplx: Refine Testing", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using TESTING.md template structure, preserving existing configuration
 - **AND** include steps for: checking TESTING.md existence, creating if not exists, updating if exists
 
 ### Requirement: Test Command
 
-The system SHALL provide a `plx/test` slash command that runs testing workflow for specified scope.
+The system SHALL provide a `splx/test` slash command that runs testing workflow for specified scope.
 
 #### Scenario: Generating test command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/test.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Test", description, category "Pew Pew Plx", and relevant tags
+- **THEN** create `.claude/commands/splx/test.md`
+- **AND** include frontmatter with name "OpenSplx: Test", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: reading TESTING.md configuration, running tests for specified scope
 - **AND** include steps for: parsing arguments (--change-id, --task-id, --spec-id), reading TESTING.md, running tests, reporting results
@@ -38,14 +38,14 @@ The system SHALL create a TESTING.md template at the project root during initial
 
 #### Scenario: Creating TESTING.md during init
 
-- **WHEN** `plx init` is executed
+- **WHEN** `splx init` is executed
 - **THEN** check if TESTING.md exists at project root
 - **AND** if not exists, create TESTING.md with config-style content
 - **AND** include sections: Purpose, Test Types, Coverage, Test Patterns, Test Checklist
 
 #### Scenario: Creating TESTING.md during update
 
-- **WHEN** `plx update` is executed
+- **WHEN** `splx update` is executed
 - **THEN** check if TESTING.md exists at project root
 - **AND** if not exists, create TESTING.md with config-style content
 - **AND** do not overwrite existing TESTING.md
@@ -54,13 +54,13 @@ The system SHALL create a TESTING.md template at the project root during initial
 
 ### Requirement: Refine Release Command
 
-The system SHALL provide a `plx/refine-release` slash command that creates or updates RELEASE.md with comprehensive option documentation.
+The system SHALL provide a `splx/refine-release` slash command that creates or updates RELEASE.md with comprehensive option documentation.
 
 #### Scenario: Generating refine-release command for Claude Code
 
 - **WHEN** Claude Code is selected during initialization
-- **THEN** create `.claude/commands/plx/refine-release.md`
-- **AND** include frontmatter with name "Pew Pew Plx: Refine Release", description, category "Pew Pew Plx", and relevant tags
+- **THEN** create `.claude/commands/splx/refine-release.md`
+- **AND** include frontmatter with name "OpenSplx: Refine Release", description, category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
 - **AND** include guardrails for: using RELEASE.md template structure, preserving existing configuration
 - **AND** include steps for: checking RELEASE.md existence, creating if not exists with defaults, updating if exists
@@ -68,7 +68,7 @@ The system SHALL provide a `plx/refine-release` slash command that creates or up
 
 ### Requirement: PLX Command Registry Updates
 
-The system SHALL register new PLX commands in the PlxSlashCommandRegistry.
+The system SHALL register new PLX commands in the SplxSlashCommandRegistry.
 
 #### Scenario: Registering new commands
 

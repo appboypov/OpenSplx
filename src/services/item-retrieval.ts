@@ -224,6 +224,7 @@ export class ItemRetrievalService {
    * Supports formats:
    * - Full with project: {projectName}/{taskFilename}
    * - Short: {taskFilename} (searches all workspaces)
+   * Searches both centralized (workspace/tasks/) and legacy (workspace/changes/.../tasks/) locations.
    * @param taskId The task identifier
    * @returns Task with workspace context or null if not found
    */
@@ -236,12 +237,40 @@ export class ItemRetrievalService {
       ? parsed.itemId
       : `${parsed.itemId}.md`;
 
+    // First, search in centralized location (workspace/tasks/)
     for (const { workspace } of workspacePaths) {
       const result = await discoverTasks(workspace);
       const task = result.tasks.find((t) => t.filename === taskFilename);
 
       if (task) {
         return this.discoveredTaskToTaskWithWorkspace(task, workspace);
+      }
+    }
+
+    // Fallback: search in legacy locations (workspace/changes/*/tasks/)
+    for (const { changesPath, workspace } of workspacePaths) {
+      try {
+        const changeEntries = await fs.readdir(changesPath, { withFileTypes: true });
+        const changeDirs = changeEntries.filter((e) => e.isDirectory()).map((e) => e.name);
+
+        for (const changeId of changeDirs) {
+          const structure = await getTaskStructureForChange(changesPath, changeId);
+          const task = structure.files.find((t) => t.filename === taskFilename);
+
+          if (task) {
+            const content = await fs.readFile(task.filepath, 'utf-8');
+            return {
+              task,
+              content,
+              changeId,
+              workspacePath: workspace.path,
+              projectName: workspace.projectName,
+              displayId: this.getDisplayId(workspace.projectName, getTaskIdFromFilename(task.filename)),
+            };
+          }
+        }
+      } catch {
+        // Continue to next workspace if changes directory doesn't exist
       }
     }
 
@@ -365,6 +394,7 @@ export class ItemRetrievalService {
    * Supports formats:
    * - With project: {projectName}/{itemId}
    * - Without: {itemId}
+   * Searches both centralized (workspace/tasks/) and legacy (workspace/changes/.../tasks/) locations.
    * @param itemId The parent identifier
    * @param parentType Optional parent type filter
    * @returns Array of task file info, or empty array if no tasks found
@@ -377,6 +407,7 @@ export class ItemRetrievalService {
     const parsed = this.parsePrefixedId(itemId);
     const workspacePaths = this.getWorkspacePaths(parsed.projectName);
 
+    // First, search in centralized location (workspace/tasks/)
     for (const { workspace } of workspacePaths) {
       const result = await discoverTasks(workspace);
 
@@ -404,6 +435,21 @@ export class ItemRetrievalService {
           name: t.name,
           progress: { total: 0, completed: 0 },
         }));
+      }
+    }
+
+    // Fallback: search in legacy locations (workspace/changes/<change-id>/tasks/)
+    // Only applies when parentType is 'change' or unspecified
+    if (!parentType || parentType === 'change') {
+      for (const { changesPath } of workspacePaths) {
+        try {
+          const structure = await getTaskStructureForChange(changesPath, parsed.itemId);
+          if (structure.files.length > 0) {
+            return structure.files;
+          }
+        } catch {
+          // Continue to next workspace if change doesn't exist
+        }
       }
     }
 

@@ -13,7 +13,7 @@ describe('root-files-migration', () => {
   let workspaceDir: string;
 
   beforeEach(async () => {
-    tempDir = path.join(os.tmpdir(), `plx-root-files-migration-test-${Date.now()}`);
+    tempDir = path.join(os.tmpdir(), `splx-root-files-migration-test-${Date.now()}`);
     workspaceDir = path.join(tempDir, 'workspace');
     await fs.mkdir(tempDir, { recursive: true });
   });

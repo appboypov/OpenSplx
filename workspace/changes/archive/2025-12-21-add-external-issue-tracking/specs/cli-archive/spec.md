@@ -12,7 +12,7 @@ The command SHALL provide clear feedback about delta operations and tracked issu
   - Number of requirements modified
   - Number of requirements removed
   - Number of requirements renamed
-- **AND** use standard output symbols (+ ~ - →) as defined in plx-conventions:
+- **AND** use standard output symbols (+ ~ - →) as defined in splx-conventions:
   ```
   Applying changes to specs/user-auth/spec.md:
     + 2 added

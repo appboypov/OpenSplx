@@ -1,22 +1,22 @@
-# Change: Rename OpenSplx to Pew Pew Plx
+# Change: Rename OpenSplx to OpenSplx
 
 ## Why
 
-The project display name was rebranded to "Pew Pew Plx" but the package name, repository references, and asset files still use "OpenSplx" / "opensplx". This creates inconsistency between the user-facing display name and the technical identifiers.
+The project display name was rebranded to "OpenSplx" but the package name, repository references, and asset files still use "OpenSplx" / "OpenSplx". This creates inconsistency between the user-facing display name and the technical identifiers.
 
 ## What Changes
 
-- **Package name**: `@appboypov/opensplx` to `@appboypov/pew-pew-plx`
-- **GitHub repository**: References updated from `appboypov/OpenSplx` to `appboypov/pew-pew-plx`
-- **Asset files**: Rename `opensplx_pixel_*.svg` to `pew_pew_plx_pixel_*.svg`
-- **Documentation**: Update all "OpenSplx" display text to "Pew Pew Plx"
+- **Package name**: `@appboypov/OpenSplx` to `@appboypov/OpenSplx`
+- **GitHub repository**: References updated from `appboypov/OpenSplx` to `appboypov/OpenSplx`
+- **Asset files**: Rename `OpenSplx_pixel_*.svg` to `pew_pew_splx_pixel_*.svg`
+- **Documentation**: Update all "OpenSplx" display text to "OpenSplx"
 - **Archived changes**: Update historical references for consistency
 - **npm registry**: Deprecate old package, publish under new name
 - **GitHub repository**: Rename repository to match new identity
 
 ## Non-Changes
 
-- CLI command remains `plx`
+- CLI command remains `splx`
 - Internal constants (`PLX_DIR_NAME`, `PLX_INTERACTIVE`, etc.) unchanged
 - Workspace directory structure unchanged
 - Upstream OpenSpec relationship unchanged
@@ -25,7 +25,7 @@ The project display name was rebranded to "Pew Pew Plx" but the package name, re
 
 - Affected files: package.json, README.md, CHANGELOG.md, ARCHITECTURE.md, scripts/, workflows/, archived changes
 - Breaking changes: Package name change requires users to reinstall
-- Migration: Users must `npm uninstall @appboypov/opensplx && npm install @appboypov/pew-pew-plx`
+- Migration: Users must `npm uninstall @appboypov/OpenSplx && npm install @appboypov/OpenSplx`
 
 ## Constraints
 

@@ -5,7 +5,7 @@ The archive command moves completed changes from the active changes directory to
 
 ## Command Syntax
 ```bash
-plx archive [change-name] [--yes|-y] [--skip-specs]
+splx archive [change-name] [--yes|-y] [--skip-specs]
 ```
 
 Options:
@@ -174,7 +174,7 @@ The archive command SHALL support a `--skip-specs` flag that skips all spec upda
 
 #### Scenario: Skipping spec updates with flag
 
-- **WHEN** executing `plx archive <change> --skip-specs`
+- **WHEN** executing `splx archive <change> --skip-specs`
 - **THEN** skip spec discovery and update confirmation
 - **AND** proceed directly to moving the change to archive
 - **AND** display a message indicating specs were skipped

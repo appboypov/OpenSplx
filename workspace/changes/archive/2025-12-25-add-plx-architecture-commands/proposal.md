@@ -11,21 +11,21 @@ Technical agents and engineers need comprehensive architecture documentation to 
 
 ## What Changes
 
-- Add new PLX slash commands: `plx/init-architecture` and `plx/update-architecture`
-- Create PLX-specific template system (`plx-slash-command-templates.ts`)
-- Create PLX configurator infrastructure (`plx-base.ts`, `plx-claude.ts`, `plx-registry.ts`)
-- Integrate PLX command generation into `plx init` workflow
-- Add architecture update suggestion to `plx archive` output
+- Add new PLX slash commands: `splx/init-architecture` and `splx/update-architecture`
+- Create PLX-specific template system (`splx-slash-command-templates.ts`)
+- Create PLX configurator infrastructure (`splx-base.ts`, `splx-claude.ts`, `splx-registry.ts`)
+- Integrate PLX command generation into `splx init` workflow
+- Add architecture update suggestion to `splx archive` output
 
 ## Impact
 
-- Affected specs: `cli-init`, `cli-archive`, new `plx-slash-commands`
+- Affected specs: `cli-init`, `cli-archive`, new `splx-slash-commands`
 - Affected code:
-  - `src/core/templates/plx-slash-command-templates.ts` (CREATE)
+  - `src/core/templates/splx-slash-command-templates.ts` (CREATE)
   - `src/core/templates/architecture-template.ts` (CREATE)
   - `src/core/templates/index.ts` (MODIFY - exports)
-  - `src/core/configurators/slash/plx-base.ts` (CREATE)
-  - `src/core/configurators/slash/plx-claude.ts` (CREATE)
-  - `src/core/configurators/slash/plx-registry.ts` (CREATE)
+  - `src/core/configurators/slash/splx-base.ts` (CREATE)
+  - `src/core/configurators/slash/splx-claude.ts` (CREATE)
+  - `src/core/configurators/slash/splx-registry.ts` (CREATE)
   - `src/core/init.ts` (MODIFY - PLX command generation)
   - `src/core/archive.ts` (MODIFY - suggestion message)

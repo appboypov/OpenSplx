@@ -40,7 +40,7 @@ The command SHALL create a review entity from parsed feedback markers.
 
 #### Scenario: Creating review directory structure
 
-- **WHEN** `plx parse feedback <review-name>` is executed
+- **WHEN** `splx parse feedback <review-name>` is executed
 - **THEN** create `workspace/reviews/<review-name>/` directory
 - **AND** create `review.md` with metadata
 - **AND** create `tasks/` directory with generated task files
@@ -73,7 +73,7 @@ The command SHALL prompt for a review name if not provided.
 
 #### Scenario: No review name argument
 
-- **WHEN** `plx parse feedback` is executed without review-name
+- **WHEN** `splx parse feedback` is executed without review-name
 - **THEN** prompt user for a review name
 - **OR** generate default name from timestamp: `review-YYYYMMDD-HHMMSS`
 
@@ -117,12 +117,12 @@ The command SHALL respect project ignore patterns when scanning.
 
 #### Scenario: Custom exclude patterns via CLI
 
-- **WHEN** `plx parse feedback <name> --exclude "src/legacy/,*.old.ts"` is executed
+- **WHEN** `splx parse feedback <name> --exclude "src/legacy/,*.old.ts"` is executed
 - **THEN** additionally exclude paths matching the comma-separated patterns
 
 #### Scenario: Disabling default excludes via CLI
 
-- **WHEN** `plx parse feedback <name> --no-default-excludes` is executed
+- **WHEN** `splx parse feedback <name> --no-default-excludes` is executed
 - **THEN** only apply .gitignore and ALWAYS_EXCLUDED patterns
 - **AND** scan test files, documentation, and AI tool directories
 
@@ -141,11 +141,11 @@ The command SHALL provide clear feedback about the parsing results.
 - **WHEN** parsing completes successfully
 - **THEN** display: "Found N feedback markers in M files."
 - **AND** display: "Created review '<review-name>' with N tasks."
-- **AND** display: "Run 'plx review show <review-name>' to view details."
+- **AND** display: "Run 'splx review show <review-name>' to view details."
 
 #### Scenario: JSON output
 
-- **WHEN** `plx parse feedback <review-name> --json` is executed
+- **WHEN** `splx parse feedback <review-name> --json` is executed
 - **THEN** output JSON object with: reviewId, markersFound, filesScanned, tasksCreated, specImpacts
 
 #### Scenario: No markers found
@@ -183,46 +183,46 @@ The parse feedback command SHALL support `--parent-id` and `--parent-type` flags
 
 #### Scenario: Link feedback to change with explicit type
 
-- **WHEN** `plx parse feedback "name" --parent-id <id> --parent-type change` is executed
+- **WHEN** `splx parse feedback "name" --parent-id <id> --parent-type change` is executed
 - **THEN** create review linked to the specified change
 - **AND** set review.md frontmatter: target-type: change, target-id: <id>
 
 #### Scenario: Link feedback to spec with explicit type
 
-- **WHEN** `plx parse feedback "name" --parent-id <id> --parent-type spec` is executed
+- **WHEN** `splx parse feedback "name" --parent-id <id> --parent-type spec` is executed
 - **THEN** create review linked to the specified spec
 - **AND** set review.md frontmatter: target-type: spec, target-id: <id>
 
 #### Scenario: Link feedback to task with explicit type
 
-- **WHEN** `plx parse feedback "name" --parent-id <id> --parent-type task` is executed
+- **WHEN** `splx parse feedback "name" --parent-id <id> --parent-type task` is executed
 - **THEN** create review linked to the specified task
 - **AND** set review.md frontmatter: target-type: task, target-id: <id>
 
 #### Scenario: Auto-detect parent type
 
-- **WHEN** `plx parse feedback "name" --parent-id <id>` is executed (without --parent-type)
+- **WHEN** `splx parse feedback "name" --parent-id <id>` is executed (without --parent-type)
 - **AND** `<id>` matches exactly one parent type (change, spec, or task)
 - **THEN** use the detected type
 - **AND** create review with correct target-type frontmatter
 
 #### Scenario: Ambiguous parent ID
 
-- **WHEN** `plx parse feedback "name" --parent-id <id>` is executed
+- **WHEN** `splx parse feedback "name" --parent-id <id>` is executed
 - **AND** `<id>` matches multiple parent types
 - **THEN** display error: "Ambiguous parent ID '<id>'. Use --parent-type to specify: change, spec, task"
 - **AND** exit with non-zero status
 
 #### Scenario: Parent ID not found
 
-- **WHEN** `plx parse feedback "name" --parent-id <id>` is executed
+- **WHEN** `splx parse feedback "name" --parent-id <id>` is executed
 - **AND** `<id>` matches no existing parent
 - **THEN** display error: "Parent '<id>' not found"
 - **AND** exit with non-zero status
 
 #### Scenario: Invalid parent type
 
-- **WHEN** `plx parse feedback "name" --parent-id <id> --parent-type invalid` is executed
+- **WHEN** `splx parse feedback "name" --parent-id <id> --parent-type invalid` is executed
 - **THEN** display error with valid options: change, spec, task
 - **AND** exit with non-zero status
 
@@ -232,25 +232,25 @@ The parse feedback command SHALL emit deprecation warnings for legacy entity-spe
 
 #### Scenario: Deprecation warning on --change-id
 
-- **WHEN** `plx parse feedback "name" --change-id <id>` is executed
+- **WHEN** `splx parse feedback "name" --change-id <id>` is executed
 - **THEN** emit warning to stderr: "Deprecation: '--change-id' is deprecated. Use '--parent-id <id> --parent-type change' instead."
 - **AND** continue with normal operation
 
 #### Scenario: Deprecation warning on --spec-id
 
-- **WHEN** `plx parse feedback "name" --spec-id <id>` is executed
+- **WHEN** `splx parse feedback "name" --spec-id <id>` is executed
 - **THEN** emit warning to stderr: "Deprecation: '--spec-id' is deprecated. Use '--parent-id <id> --parent-type spec' instead."
 - **AND** continue with normal operation
 
 #### Scenario: Deprecation warning on --task-id
 
-- **WHEN** `plx parse feedback "name" --task-id <id>` is executed
+- **WHEN** `splx parse feedback "name" --task-id <id>` is executed
 - **THEN** emit warning to stderr: "Deprecation: '--task-id' is deprecated. Use '--parent-id <id> --parent-type task' instead."
 - **AND** continue with normal operation
 
 #### Scenario: Suppressing deprecation warnings
 
-- **WHEN** `plx parse feedback "name" --change-id <id> --no-deprecation-warnings` is executed
+- **WHEN** `splx parse feedback "name" --change-id <id> --no-deprecation-warnings` is executed
 - **THEN** do not emit deprecation warning
 - **AND** continue with normal operation
 

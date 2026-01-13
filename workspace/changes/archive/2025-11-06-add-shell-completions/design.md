@@ -21,10 +21,10 @@ This design establishes a plugin-based architecture for shell completions that p
 
 **PLX Integration:**
 ```bash
-# After installing: plx completion install bash
-plx val<TAB>           # Completes to "plx validate"
-plx validate <TAB><TAB>  # Shows: --all --changes --specs --strict --json [change-ids] [spec-ids]
-plx show add-<TAB><TAB>  # Shows all changes starting with "add-"
+# After installing: splx completion install bash
+splx val<TAB>           # Completes to "splx validate"
+splx validate <TAB><TAB>  # Shows: --all --changes --specs --strict --json [change-ids] [spec-ids]
+splx show add-<TAB><TAB>  # Shows all changes starting with "add-"
 ```
 
 **Implementation:** Uses bash-completion framework with `_init_completion`, `compgen`, and `COMPREPLY` array.
@@ -39,9 +39,9 @@ plx show add-<TAB><TAB>  # Shows all changes starting with "add-"
 
 **PLX Integration:**
 ```zsh
-# After installing: plx completion install zsh
-plx val<TAB>    # Shows menu with "validate" and "view" highlighted
-plx show <TAB>  # Shows menu with all change IDs and spec IDs, categorized
+# After installing: splx completion install zsh
+splx val<TAB>    # Shows menu with "validate" and "view" highlighted
+splx show <TAB>  # Shows menu with all change IDs and spec IDs, categorized
 ```
 
 **Implementation:** Uses Zsh completion system with `_arguments`, `_describe`, and `compadd` built-ins. Oh My Zsh provides enhanced menu styling automatically.
@@ -57,10 +57,10 @@ plx show <TAB>  # Shows menu with all change IDs and spec IDs, categorized
 
 **PLX Integration:**
 ```fish
-# After installing: plx completion install fish
-plx val       # Gray suggestion shows "validate" immediately
-plx show a    # Real-time suggestions for changes starting with "a"
-plx <TAB>     # Shows all commands with descriptions in paged menu
+# After installing: splx completion install fish
+splx val       # Gray suggestion shows "validate" immediately
+splx show a    # Real-time suggestions for changes starting with "a"
+splx <TAB>     # Shows all commands with descriptions in paged menu
 ```
 
 **Implementation:** Uses Fish's declarative `complete -c` syntax. Completions are auto-loaded from `~/.config/fish/completions/`.
@@ -75,10 +75,10 @@ plx <TAB>     # Shows all commands with descriptions in paged menu
 
 **PLX Integration:**
 ```powershell
-# After installing: plx completion install powershell
-plx val<TAB>       # Cycles: validate → view → validate
-plx show <TAB>     # Cycles through change IDs one by one
-plx <Ctrl+Space>   # Shows IntelliSense menu with all commands
+# After installing: splx completion install powershell
+splx val<TAB>       # Cycles: validate → view → validate
+splx show <TAB>     # Cycles through change IDs one by one
+splx <Ctrl+Space>   # Shows IntelliSense menu with all commands
 ```
 
 **Implementation:** Uses `Register-ArgumentCompleter` with custom script block that returns `[System.Management.Automation.CompletionResult]` objects.
@@ -279,7 +279,7 @@ function createGenerator(shell: SupportedShell, provider: CompletionProvider): C
 
 **This Proposal (Zsh-only):**
 ```
-plx completion
+splx completion
 ├── zsh               # Generate Zsh completion script
 ├── install [shell]   # Install Zsh completion (auto-detects or explicit zsh)
 └── uninstall [shell] # Remove Zsh completion (auto-detects or explicit zsh)
@@ -287,7 +287,7 @@ plx completion
 
 **Future (after follow-up proposals):**
 ```
-plx completion
+splx completion
 ├── bash              # Generate Bash completion script (future)
 ├── zsh               # Generate Zsh completion script (this proposal)
 ├── fish              # Generate Fish completion script (future)
@@ -333,10 +333,10 @@ Zsh implementation prioritizes Oh My Zsh because:
 **Installation Strategy:**
 ```typescript
 if (isOhMyZshInstalled()) {
-  // Install to ~/.oh-my-zsh/custom/completions/_plx
+  // Install to ~/.oh-my-zsh/custom/completions/_splx
   // Automatically loaded by Oh My Zsh
 } else {
-  // Install to ~/.zsh/completions/_plx
+  // Install to ~/.zsh/completions/_splx
   // Update ~/.zshrc with fpath and compinit if needed
 }
 ```

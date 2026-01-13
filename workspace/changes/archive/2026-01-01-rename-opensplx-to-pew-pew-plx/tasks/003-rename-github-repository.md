@@ -6,15 +6,15 @@ status: done
 
 ## End Goal
 
-The GitHub repository is renamed from `OpenSplx` to `pew-pew-plx`, with automatic redirects from the old URL.
+The GitHub repository is renamed from `OpenSplx` to `OpenSplx`, with automatic redirects from the old URL.
 
 ## Currently
 
-The repository is at `github.com/appboypov/OpenSplx`. All documentation references the new name `pew-pew-plx` but the actual repository URL uses the old name.
+The repository is at `github.com/appboypov/OpenSplx`. All documentation references the new name `OpenSplx` but the actual repository URL uses the old name.
 
 ## Should
 
-- Repository URL is `github.com/appboypov/pew-pew-plx`
+- Repository URL is `github.com/appboypov/OpenSplx`
 - Old URLs redirect automatically to new location
 - Local git remote continues working (via redirect)
 
@@ -26,7 +26,7 @@ The repository is at `github.com/appboypov/OpenSplx`. All documentation referenc
 
 ## Acceptance Criteria
 
-- [ ] `https://github.com/appboypov/pew-pew-plx` resolves to repository
+- [ ] `https://github.com/appboypov/OpenSplx` resolves to repository
 - [ ] `https://github.com/appboypov/OpenSplx` redirects to new URL
 - [ ] `git fetch origin` works from local clone
 
@@ -36,12 +36,12 @@ The repository is at `github.com/appboypov/OpenSplx`. All documentation referenc
 - [x] Launch Playwright browser
 - [x] Navigate to https://github.com/appboypov/OpenSplx/settings
 - [x] Scroll to "Repository name" section under "General"
-- [x] Change name from `OpenSplx` to `pew-pew-plx`
+- [x] Change name from `OpenSplx` to `OpenSplx`
 - [x] Click "Rename" button
 - [x] Confirm in modal if prompted
 - [x] Verify new URL works
 - [x] Verify old URL redirects
-- [x] Optionally update local remote: `git remote set-url origin https://github.com/appboypov/pew-pew-plx.git`
+- [x] Optionally update local remote: `git remote set-url origin https://github.com/appboypov/OpenSplx.git`
 
 ## Notes
 

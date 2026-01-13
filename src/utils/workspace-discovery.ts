@@ -116,7 +116,7 @@ export function filterWorkspaces(
  * Checks if a directory is a valid PLX workspace.
  * A valid workspace has a workspace/AGENTS.md file.
  */
-export async function isValidPlxWorkspace(dir: string): Promise<boolean> {
+export async function isValidSplxWorkspace(dir: string): Promise<boolean> {
   try {
     const agentsMdPath = path.join(dir, PLX_DIR_NAME, 'AGENTS.md');
     const stats = await fs.stat(agentsMdPath);
@@ -140,7 +140,7 @@ export async function findProjectRoot(startDir: string): Promise<string | null> 
   const root = path.parse(currentDir).root;
 
   while (true) {
-    if (await isValidPlxWorkspace(currentDir)) {
+    if (await isValidSplxWorkspace(currentDir)) {
       return currentDir;
     }
 

@@ -7,7 +7,7 @@ parent-id: centralize-task-storage
 # Task: Update Complete and Undo Logic
 
 ## End Goal
-`plx complete` and `plx undo` commands operate on centralized task storage with parent-aware operations.
+`splx complete` and `splx undo` commands operate on centralized task storage with parent-aware operations.
 
 ## Currently
 - `completeTask()` operates on tasks in nested `changes/<name>/tasks/`
@@ -26,10 +26,10 @@ parent-id: centralize-task-storage
 - [x] Must work with multi-workspace task discovery
 
 ## Acceptance Criteria
-- [x] `plx complete task --id <id>` finds and completes task in centralized storage
-- [x] `plx complete change --id <id>` finds all tasks with parent-id=<id> and completes them
-- [x] `plx undo task --id <id>` reverts task in centralized storage
-- [x] `plx undo change --id <id>` reverts all tasks linked to change
+- [x] `splx complete task --id <id>` finds and completes task in centralized storage
+- [x] `splx complete change --id <id>` finds all tasks with parent-id=<id> and completes them
+- [x] `splx undo task --id <id>` reverts task in centralized storage
+- [x] `splx undo change --id <id>` reverts all tasks linked to change
 
 ## Implementation Checklist
 - [x] 4.1 Update `src/commands/complete.ts`:

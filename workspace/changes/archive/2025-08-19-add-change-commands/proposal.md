@@ -2,7 +2,7 @@
 
 ## Why
 
-PLX change proposals currently can only be viewed as markdown files, creating the same programmatic access limitations as specs. Additionally, the current `plx list` command only lists changes, which is inconsistent with the new resource-based command structure.
+PLX change proposals currently can only be viewed as markdown files, creating the same programmatic access limitations as specs. Additionally, the current `splx list` command only lists changes, which is inconsistent with the new resource-based command structure.
 
 ## What Changes
 

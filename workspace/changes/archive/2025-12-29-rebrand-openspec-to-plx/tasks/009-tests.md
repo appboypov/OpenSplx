@@ -19,7 +19,7 @@ All tests pass with the updated PLX terminology. Test fixtures use `workspace/` 
 
 - `test/fixtures/tmp-init/workspace/` directory structure
 - Tests reference "workspace" directory paths
-- `test/utils/command-name.test.ts` expects "plx" as default
+- `test/utils/command-name.test.ts` expects "splx" as default
 - Tests reference PLX_DIR_NAME constant
 
 ## Constraints
@@ -32,7 +32,7 @@ All tests pass with the updated PLX terminology. Test fixtures use `workspace/` 
 
 - [x] `pnpm test` passes with 987/988 tests green (1 unrelated permission test failure)
 - [x] Test fixtures updated to workspace/ structure
-- [x] command-name tests expect "plx" default
+- [x] command-name tests expect "splx" default
 
 ## Implementation Checklist
 
@@ -41,9 +41,9 @@ All tests pass with the updated PLX terminology. Test fixtures use `workspace/` 
 - [x] 9.3 Update `test/core/update.test.ts`: change path references and imports
 - [x] 9.4 Update `test/core/list.test.ts`: change path references
 - [x] 9.5 Update `test/core/archive.test.ts`: change path references
-- [x] 9.6 Update `test/core/global-config.test.ts`: update expected directory from "openspec" to "plx"
+- [x] 9.6 Update `test/core/global-config.test.ts`: update expected directory from "openspec" to "splx"
 - [x] 9.7 Update `test/cli-e2e/basic.test.ts`: change path references and command expectations
-- [x] 9.8 Update `test/utils/command-name.test.ts`: change expected default from "openspec" to "plx"
+- [x] 9.8 Update `test/utils/command-name.test.ts`: change expected default from "openspec" to "splx"
 - [x] 9.9 Search all test files for remaining "openspec" references and update
 - [x] 9.10 Run `pnpm test` and fix any remaining failures
 
@@ -59,13 +59,13 @@ All tests pass with the updated PLX terminology. Test fixtures use `workspace/` 
 3. Updated `test/core/update.test.ts`:
    - Same marker and naming replacements as init.test.ts
    - Updated comments referencing "OpenSpec markers" to "PLX markers"
-4. Updated `test/commands/show.test.ts`: Changed `openspec show/change/spec` to `plx show/change/spec`
-5. Updated `test/commands/validate.enriched-output.test.ts`: Changed `openspec change show` to `plx change show`
-6. Updated `test/commands/change.interactive-show.test.ts`: Changed `openspec change list` to `plx change list`
-7. Updated `test/commands/change.interactive-validate.test.ts`: Changed `openspec change list` to `plx change list`
+4. Updated `test/commands/show.test.ts`: Changed `openspec show/change/spec` to `splx show/change/spec`
+5. Updated `test/commands/validate.enriched-output.test.ts`: Changed `openspec change show` to `splx change show`
+6. Updated `test/commands/change.interactive-show.test.ts`: Changed `openspec change list` to `splx change list`
+7. Updated `test/commands/change.interactive-validate.test.ts`: Changed `openspec change list` to `splx change list`
 8. Updated `test/commands/config.test.ts`: Changed expected description from "OpenSpec configuration" to "PLX configuration"
-9. Fixed `test/core/configurators/slash/plx-parity.test.ts`: Fixed duplicate variable declaration bug
-10. Updated `src/commands/spec.ts`: Fixed deprecation warning to use `plx` instead of `openspec`
+9. Fixed `test/core/configurators/slash/splx-parity.test.ts`: Fixed duplicate variable declaration bug
+10. Updated `src/commands/spec.ts`: Fixed deprecation warning to use `splx` instead of `openspec`
 
 ## Notes
 

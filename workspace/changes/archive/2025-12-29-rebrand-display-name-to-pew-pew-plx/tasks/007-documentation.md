@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-README.md and CLAUDE.md use "Pew Pew Plx" for product references.
+README.md and CLAUDE.md use "OpenSplx" for product references.
 
 ## Currently
 
@@ -15,17 +15,17 @@ README.md and CLAUDE.md use "Pew Pew Plx" for product references.
 
 ## Should
 
-Use "Pew Pew Plx" for product name while keeping `plx` for CLI commands.
+Use "OpenSplx" for product name while keeping `splx` for CLI commands.
 
 ## Constraints
 
-- [ ] Code examples stay as `plx init`, `plx list`, etc.
+- [ ] Code examples stay as `splx init`, `splx list`, etc.
 - [ ] Markers in CLAUDE.md stay as `<!-- PLX:START -->`
 - [ ] Links and file paths unchanged
 
 ## Acceptance Criteria
 
-- [ ] README.md section titles use "Pew Pew Plx"
+- [ ] README.md section titles use "OpenSplx"
 - [ ] README.md alt text updated
 - [ ] CLAUDE.md product references updated
 

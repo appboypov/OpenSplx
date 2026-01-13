@@ -2,8 +2,8 @@ export const releaseTemplate = (): string => `# Release Preparation
 
 ## Purpose
 This file configures release preparation and pre-release consistency verification.
-Run \`/plx:refine-release\` to populate project-specific checklists.
-Run \`/plx:prepare-release\` to execute release preparation.
+Run \`/splx:refine-release\` to populate project-specific checklists.
+Run \`/splx:prepare-release\` to execute release preparation.
 
 ## Documentation Config
 \`\`\`yaml

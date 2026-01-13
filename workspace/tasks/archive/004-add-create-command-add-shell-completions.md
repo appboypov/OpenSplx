@@ -8,7 +8,7 @@ parent-id: add-create-command
 
 ## End Goal
 
-Shell completion system includes `plx create` command with subcommand and argument completions.
+Shell completion system includes `splx create` command with subcommand and argument completions.
 
 ## Currently
 
@@ -16,10 +16,10 @@ Shell completions exist for existing commands. No completions for `create` comma
 
 ## Should
 
-- `plx create <TAB>` shows: task, change, spec, request
-- `plx create task --<TAB>` shows: --parent-id, --parent-type, --json
-- `plx create task --parent-type <TAB>` shows: change, review, spec
-- `plx create task --parent-id <TAB>` shows dynamic list of valid parent IDs
+- `splx create <TAB>` shows: task, change, spec, request
+- `splx create task --<TAB>` shows: --parent-id, --parent-type, --json
+- `splx create task --parent-type <TAB>` shows: change, review, spec
+- `splx create task --parent-id <TAB>` shows dynamic list of valid parent IDs
 
 ## Constraints
 

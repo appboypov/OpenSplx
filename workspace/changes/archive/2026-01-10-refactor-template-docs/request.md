@@ -2,7 +2,7 @@
 
 ## Source Input
 
-> The current RELEASE.md template is way too verbose - all the instructions for what could be done should be inside commands refine-release and prepare-release and the RELEASE.md should serve as the folder that shows the actual implementations for release for this project - so it should contain some default instructions but not all options - e.g make the default all the default options keep-a-changelog, etc etc - and then refine-release has all the instructions for all other options to change that. It's a config file so to speak. Same for REVIEW.md (which is already done pretty well but double check to be sure). Then while we're at it I want to introduce the test variant - so a TESTING.md should behave the same way with refine and plx/test commands - where this one is more like the review command as in can take arguments for changes, tasks, etc.
+> The current RELEASE.md template is way too verbose - all the instructions for what could be done should be inside commands refine-release and prepare-release and the RELEASE.md should serve as the folder that shows the actual implementations for release for this project - so it should contain some default instructions but not all options - e.g make the default all the default options keep-a-changelog, etc etc - and then refine-release has all the instructions for all other options to change that. It's a config file so to speak. Same for REVIEW.md (which is already done pretty well but double check to be sure). Then while we're at it I want to introduce the test variant - so a TESTING.md should behave the same way with refine and splx/test commands - where this one is more like the review command as in can take arguments for changes, tasks, etc.
 
 ## Current Understanding
 
@@ -41,7 +41,7 @@
 
 4. **refine-testing command**: Create/update TESTING.md
 
-5. **plx/test command**: Execute testing workflow
+5. **splx/test command**: Execute testing workflow
    - Takes arguments like review: `--change-id`, `--task-id`, `--spec-id`
    - Reads TESTING.md for configuration
 
@@ -62,7 +62,7 @@
    - Test patterns/naming?
    - Framework-specific configs?
 
-4. **plx/test vs plx review**: How similar should they be?
+4. **splx/test vs splx review**: How similar should they be?
    - Same argument pattern (--change-id, --task-id, --spec-id)?
    - Different output format?
 
@@ -80,7 +80,7 @@
    - Test types, patterns, coverage requirements
    - Config-style, not documentation-style
 
-5. **plx/test command**: Follows same argument pattern as review (--change-id, --task-id, --spec-id).
+5. **splx/test command**: Follows same argument pattern as review (--change-id, --task-id, --spec-id).
 
 6. **refine-testing command**: Create/update TESTING.md with all options documented in the command itself.
 
@@ -97,6 +97,6 @@
 3. Verify REVIEW.md follows pattern (it does)
 4. Create TESTING.md config template
 5. Create refine-testing command
-6. Create plx/test command with --change-id, --task-id, --spec-id arguments
+6. Create splx/test command with --change-id, --task-id, --spec-id arguments
 
-Run `plx/plan-proposal refactor-template-docs` to scaffold the proposal.
+Run `splx/plan-proposal refactor-template-docs` to scaffold the proposal.

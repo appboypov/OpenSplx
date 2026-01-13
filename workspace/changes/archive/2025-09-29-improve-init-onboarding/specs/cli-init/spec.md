@@ -35,11 +35,11 @@ The command SHALL properly configure selected AI tools with PLX-specific instruc
 Instructions for AI coding assistants using PLX for spec-driven development.
 
 ## TL;DR Quick Checklist
-- Search existing work: `plx spec list --long`, `plx list`
+- Search existing work: `splx spec list --long`, `splx list`
 - Decide scope: new capability vs modify existing capability
 - Pick a unique `change-id`: verb-led kebab-case (`add-`, `update-`, `remove-`, `refactor-`)
 - Scaffold: `proposal.md`, `tasks.md`, optional `design.md`, and spec deltas
-- Validate with `plx validate [change-id] --strict`
+- Validate with `splx validate [change-id] --strict`
 - Request approval before implementation
 <!-- PLX:END -->
 ```
@@ -86,7 +86,7 @@ The command SHALL provide clear, actionable next steps upon successful initializ
 
 - **WHEN** initialization completes successfully
 - **THEN** display a success banner followed by actionable prompts tailored to the selected tools
-- **AND** summarize which assistant files were created versus refreshed (e.g., `CLAUDE.md (created)`, `.cursor/commands/plx-apply.md (refreshed)`)
+- **AND** summarize which assistant files were created versus refreshed (e.g., `CLAUDE.md (created)`, `.cursor/commands/splx-apply.md (refreshed)`)
 - **AND** include copy-pasteable onboarding prompts for each configured assistant, replacing placeholder text ([YOUR FEATURE HERE]) with real guidance to customize
 - **AND** reference AGENTS.md-compatible assistants when no tool-specific file exists (e.g., when only AGENTS.md standard is selected)
 

@@ -14,15 +14,15 @@ All tasks are currently treated equally regardless of complexity. AI agents have
 ## What Changes
 
 - Add optional `skill-level` field to task YAML frontmatter (values: junior, medior, senior)
-- Display skill level in CLI task output (`plx get task`, `plx get tasks`)
+- Display skill level in CLI task output (`splx get task`, `splx get tasks`)
 - Warn in `--strict` validation mode when tasks are missing skill level
 - Update task template in workspace/AGENTS.md to include skill-level
-- Update plx/plan-proposal slash command to auto-assign skill levels based on complexity heuristics
-- Update plx/orchestrate slash command to select sub-agent model based on skill level
+- Update splx/plan-proposal slash command to auto-assign skill levels based on complexity heuristics
+- Update splx/orchestrate slash command to select sub-agent model based on skill level
 
 ## Impact
 
-- Affected specs: cli-get-task, cli-validate, docs-agent-instructions, plx-slash-commands
+- Affected specs: cli-get-task, cli-validate, docs-agent-instructions, splx-slash-commands
 - Affected code:
   - `src/utils/task-status.ts` - Add skill-level parsing
   - `src/commands/get.ts` - Display skill level in output

@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import os from 'os';
 import { ReviewCommand } from '../../src/commands/review.js';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 // Hoist mock functions for ESM compatibility
 const { mockSelect, mockInput, mockIsInteractive } = vi.hoisted(() => ({
@@ -34,7 +34,7 @@ describe('ReviewCommand', () => {
     process.chdir(tempDir);
 
     // Create valid PLX workspace structure
-    await createValidPlxWorkspace(tempDir);
+    await createValidSplxWorkspace(tempDir);
     await fs.mkdir(path.join(tempDir, 'workspace', 'changes'), { recursive: true });
     await fs.mkdir(path.join(tempDir, 'workspace', 'specs'), { recursive: true });
 
@@ -115,7 +115,7 @@ describe('ReviewCommand', () => {
     it('outputs usage help when parent missing', async () => {
       await command.execute({ noInteractive: true });
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining('plx review change --id')
+        expect.stringContaining('splx review change --id')
       );
     });
 
@@ -247,7 +247,7 @@ describe('ReviewCommand', () => {
         expect.stringContaining('No REVIEW.md found')
       );
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining('plx refine-review')
+        expect.stringContaining('splx refine-review')
       );
     });
 
@@ -263,7 +263,7 @@ describe('ReviewCommand', () => {
         expect.stringContaining('#FEEDBACK #TODO')
       );
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining('plx parse feedback')
+        expect.stringContaining('splx parse feedback')
       );
     });
   });

@@ -107,7 +107,7 @@ export class ArchiveCommand {
     if (!isChange && !isReview) {
       throw new Error(
         `Item '${id}' not found in changes or reviews. ` +
-        `Use 'plx get changes' or 'plx get reviews' to see available items.`
+        `Use 'splx get changes' or 'splx get reviews' to see available items.`
       );
     }
 
@@ -126,7 +126,7 @@ export class ArchiveCommand {
     try {
       await fs.access(changesDir);
     } catch {
-      throw new Error("No PLX changes directory found. Run 'plx init' first.");
+      throw new Error("No PLX changes directory found. Run 'splx init' first.");
     }
 
     // Get change name interactively if not provided
@@ -331,7 +331,7 @@ export class ArchiveCommand {
             `Totals: + ${totals.added}, ~ ${totals.modified}, - ${totals.removed}, → ${totals.renamed}`
           );
           console.log('Specs updated successfully.');
-          console.log(chalk.gray('Tip: Run /plx/update-architecture to refresh your architecture documentation.'));
+          console.log(chalk.gray('Tip: Run /splx/update-architecture to refresh your architecture documentation.'));
         }
       }
     }
@@ -519,7 +519,7 @@ export class ArchiveCommand {
     try {
       await fs.access(reviewsDir);
     } catch {
-      throw new Error("No PLX reviews directory found. Run 'plx init' first.");
+      throw new Error("No PLX reviews directory found. Run 'splx init' first.");
     }
 
     // Get review name interactively if not provided
@@ -703,7 +703,7 @@ export class ArchiveCommand {
             `Totals: + ${totals.added}, ~ ${totals.modified}, - ${totals.removed}, → ${totals.renamed}`
           );
           console.log('Specs updated successfully.');
-          console.log(chalk.gray('Tip: Run /plx/update-architecture to refresh your architecture documentation.'));
+          console.log(chalk.gray('Tip: Run /splx/update-architecture to refresh your architecture documentation.'));
           specUpdatesApplied = true;
         }
       }

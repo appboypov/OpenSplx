@@ -2,11 +2,11 @@
 
 ## Why
 
-Currently `plx update` only refreshes project instruction files (AGENTS.md, slash commands, etc.) but does not update the CLI binary itself. Users must manually run `npm update -g @appboypov/pew-pew-plx` to get new CLI versions. This is confusing because `plx update` sounds like it should update the CLI, and users have no built-in way to check if a newer version is available.
+Currently `splx update` only refreshes project instruction files (AGENTS.md, slash commands, etc.) but does not update the CLI binary itself. Users must manually run `npm update -g @appboypov/OpenSplx` to get new CLI versions. This is confusing because `splx update` sounds like it should update the CLI, and users have no built-in way to check if a newer version is available.
 
 ## What Changes
 
-- Add `plx upgrade` command to self-update the CLI via npm/pnpm
+- Add `splx upgrade` command to self-update the CLI via npm/pnpm
 - Add version check that compares local version against npm registry
 - Display clear messaging about what's being updated (CLI vs project files)
 - Support `--check` flag to only check for updates without installing

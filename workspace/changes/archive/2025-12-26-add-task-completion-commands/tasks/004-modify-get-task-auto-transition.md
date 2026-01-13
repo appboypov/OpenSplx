@@ -6,11 +6,11 @@ status: done
 
 ## End Goal
 
-`plx get task` automatically transitions to-do tasks to in-progress when retrieved.
+`splx get task` automatically transitions to-do tasks to in-progress when retrieved.
 
 ## Currently
 
-`plx get task` retrieves tasks but does not transition to-do tasks to in-progress unless `--did-complete-previous` is used.
+`splx get task` retrieves tasks but does not transition to-do tasks to in-progress unless `--did-complete-previous` is used.
 
 ## Should
 
@@ -26,8 +26,8 @@ status: done
 
 ## Acceptance Criteria
 
-- [ ] `plx get task --id X` on a to-do task sets it to in-progress
-- [ ] `plx get task` on a to-do prioritized task sets it to in-progress
+- [ ] `splx get task --id X` on a to-do task sets it to in-progress
+- [ ] `splx get task` on a to-do prioritized task sets it to in-progress
 - [ ] Already in-progress or done tasks are not modified
 - [ ] Output indicates when a transition occurred
 

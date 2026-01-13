@@ -9,7 +9,7 @@ The CLI SHALL provide a `paste task` subcommand that creates a task from clipboa
 
 #### Scenario: Create standalone task from clipboard
 
-- **WHEN** user runs `plx paste task`
+- **WHEN** user runs `splx paste task`
 - **AND** clipboard contains text content
 - **THEN** the system creates a task file in `workspace/tasks/` with next available sequence number
 - **AND** clipboard content populates the `## End Goal` section
@@ -18,7 +18,7 @@ The CLI SHALL provide a `paste task` subcommand that creates a task from clipboa
 
 #### Scenario: Create parented task from clipboard
 
-- **WHEN** user runs `plx paste task --parent-id <id>`
+- **WHEN** user runs `splx paste task --parent-id <id>`
 - **AND** clipboard contains text content
 - **AND** parent entity exists (change, review, or spec)
 - **THEN** the system creates a task file in `workspace/tasks/`
@@ -28,7 +28,7 @@ The CLI SHALL provide a `paste task` subcommand that creates a task from clipboa
 
 #### Scenario: Parent not found error
 
-- **WHEN** user runs `plx paste task --parent-id <id>`
+- **WHEN** user runs `splx paste task --parent-id <id>`
 - **AND** no entity exists with that ID
 - **THEN** the system displays error "Parent entity not found: <id>"
 - **AND** exits with non-zero status
@@ -45,7 +45,7 @@ The CLI SHALL provide a `paste change` subcommand that creates a change proposal
 
 #### Scenario: Create change from clipboard
 
-- **WHEN** user runs `plx paste change`
+- **WHEN** user runs `splx paste change`
 - **AND** clipboard contains text content
 - **THEN** the system creates a change directory in `workspace/changes/`
 - **AND** creates `proposal.md` with clipboard content in `## Why` section
@@ -72,7 +72,7 @@ The CLI SHALL provide a `paste spec` subcommand that creates a spec from clipboa
 
 #### Scenario: Create spec from clipboard
 
-- **WHEN** user runs `plx paste spec`
+- **WHEN** user runs `splx paste spec`
 - **AND** clipboard contains text content
 - **THEN** the system creates a spec directory in `workspace/specs/`
 - **AND** creates `spec.md` with clipboard content as first requirement description
@@ -97,7 +97,7 @@ The CLI SHALL support a `--json` flag for machine-readable output on all paste s
 
 #### Scenario: JSON success output for paste task
 
-- **WHEN** user runs `plx paste task --json`
+- **WHEN** user runs `splx paste task --json`
 - **AND** operation succeeds
 - **THEN** the output is valid JSON containing:
   - `path`: relative path to created task file
@@ -108,7 +108,7 @@ The CLI SHALL support a `--json` flag for machine-readable output on all paste s
 
 #### Scenario: JSON success output for paste change
 
-- **WHEN** user runs `plx paste change --json`
+- **WHEN** user runs `splx paste change --json`
 - **AND** operation succeeds
 - **THEN** the output is valid JSON containing:
   - `path`: relative path to change directory
@@ -119,7 +119,7 @@ The CLI SHALL support a `--json` flag for machine-readable output on all paste s
 
 #### Scenario: JSON success output for paste spec
 
-- **WHEN** user runs `plx paste spec --json`
+- **WHEN** user runs `splx paste spec --json`
 - **AND** operation succeeds
 - **THEN** the output is valid JSON containing:
   - `path`: relative path to spec directory
@@ -138,23 +138,23 @@ The CLI SHALL support a `--json` flag for machine-readable output on all paste s
 
 ### Requirement: Shared Template System
 
-The CLI SHALL use the same entity templates as the `plx create` command.
+The CLI SHALL use the same entity templates as the `splx create` command.
 
 #### Scenario: Task template consistency
 
-- **WHEN** creating a task via `plx paste task`
-- **THEN** the task file uses the same template structure as `plx create task`
+- **WHEN** creating a task via `splx paste task`
+- **THEN** the task file uses the same template structure as `splx create task`
 - **AND** includes standard sections: End Goal, Currently, Should, Constraints, Acceptance Criteria, Implementation Checklist, Notes
 
 #### Scenario: Change template consistency
 
-- **WHEN** creating a change via `plx paste change`
-- **THEN** the proposal.md uses the same template structure as `plx create change`
+- **WHEN** creating a change via `splx paste change`
+- **THEN** the proposal.md uses the same template structure as `splx create change`
 - **AND** includes standard sections: Why, What Changes, Impact
 
 #### Scenario: Spec template consistency
 
-- **WHEN** creating a spec via `plx paste spec`
-- **THEN** the spec.md uses the same template structure as `plx create spec`
+- **WHEN** creating a spec via `splx paste spec`
+- **THEN** the spec.md uses the same template structure as `splx create spec`
 - **AND** includes standard sections: Requirements with at least one Scenario placeholder
 

@@ -10,7 +10,7 @@ export const PLX_MARKERS = {
   end: '<!-- PLX:END -->'
 };
 
-export interface PlxConfig {
+export interface SplxConfig {
   aiTools: string[];
 }
 

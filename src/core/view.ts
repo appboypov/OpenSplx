@@ -33,7 +33,7 @@ export class ViewCommand {
       process.exit(1);
     }
 
-    console.log(chalk.bold('\nPew Pew Plx Dashboard\n'));
+    console.log(chalk.bold('\nOpenSplx Dashboard\n'));
     console.log('═'.repeat(60));
 
     // Get changes and specs data across all workspaces
@@ -85,7 +85,7 @@ export class ViewCommand {
     }
 
     console.log('\n' + '═'.repeat(60));
-    console.log(chalk.dim(`\nUse ${chalk.white('plx get changes')} or ${chalk.white('plx get specs')} for detailed views`));
+    console.log(chalk.dim(`\nUse ${chalk.white('splx get changes')} or ${chalk.white('splx get specs')} for detailed views`));
   }
 
   private async getChangesData(

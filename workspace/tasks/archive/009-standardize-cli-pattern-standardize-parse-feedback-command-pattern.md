@@ -8,20 +8,20 @@ parent-id: standardize-cli-pattern
 
 ## End Goal
 
-The `plx parse feedback` command uses `--parent-id` and `--parent-type` flags instead of entity-specific flags.
+The `splx parse feedback` command uses `--parent-id` and `--parent-type` flags instead of entity-specific flags.
 
 ## Currently
 
-- `plx parse feedback "name" --change-id <id>` links review to change
-- `plx parse feedback "name" --spec-id <id>` links review to spec
-- `plx parse feedback "name" --task-id <id>` links review to task
+- `splx parse feedback "name" --change-id <id>` links review to change
+- `splx parse feedback "name" --spec-id <id>` links review to spec
+- `splx parse feedback "name" --task-id <id>` links review to task
 - Entity-specific flags are used
 
 ## Should
 
-- `plx parse feedback "name" --parent-id <id> --parent-type change` links to change
-- `plx parse feedback "name" --parent-id <id> --parent-type spec` links to spec
-- `plx parse feedback "name" --parent-id <id> --parent-type task` links to task
+- `splx parse feedback "name" --parent-id <id> --parent-type change` links to change
+- `splx parse feedback "name" --parent-id <id> --parent-type spec` links to spec
+- `splx parse feedback "name" --parent-id <id> --parent-type task` links to task
 - `--parent-type` is optional when ID is unambiguous
 - Legacy `--change-id`, `--spec-id`, `--task-id` flags deprecated
 - Legacy flags continue to work with deprecation warnings
@@ -34,14 +34,14 @@ The `plx parse feedback` command uses `--parent-id` and `--parent-type` flags in
 
 ## Acceptance Criteria
 
-- [ ] `plx parse feedback "name" --parent-id <id> --parent-type change` works
-- [ ] `plx parse feedback "name" --parent-id <id> --parent-type spec` works
-- [ ] `plx parse feedback "name" --parent-id <id> --parent-type task` works
-- [ ] `plx parse feedback "name" --parent-id <id>` auto-detects unambiguous type
-- [ ] `plx parse feedback "name" --parent-id <id>` errors on ambiguous type
-- [ ] `plx parse feedback "name" --change-id <id>` warns and works (deprecated)
-- [ ] `plx parse feedback "name" --spec-id <id>` warns and works (deprecated)
-- [ ] `plx parse feedback "name" --task-id <id>` warns and works (deprecated)
+- [ ] `splx parse feedback "name" --parent-id <id> --parent-type change` works
+- [ ] `splx parse feedback "name" --parent-id <id> --parent-type spec` works
+- [ ] `splx parse feedback "name" --parent-id <id> --parent-type task` works
+- [ ] `splx parse feedback "name" --parent-id <id>` auto-detects unambiguous type
+- [ ] `splx parse feedback "name" --parent-id <id>` errors on ambiguous type
+- [ ] `splx parse feedback "name" --change-id <id>` warns and works (deprecated)
+- [ ] `splx parse feedback "name" --spec-id <id>` warns and works (deprecated)
+- [ ] `splx parse feedback "name" --task-id <id>` warns and works (deprecated)
 - [ ] Generated review.md has correct `target-type` and `target-id` frontmatter
 - [ ] Shell completions include new flags
 
@@ -61,4 +61,4 @@ The `plx parse feedback` command uses `--parent-id` and `--parent-type` flags in
 
 ## Notes
 
-The parse feedback command creates a review entity linked to a parent. The new `--parent-id`/`--parent-type` flags align with the pattern used in `plx get tasks --parent-id`.
+The parse feedback command creates a review entity linked to a parent. The new `--parent-id`/`--parent-type` flags align with the pattern used in `splx get tasks --parent-id`.

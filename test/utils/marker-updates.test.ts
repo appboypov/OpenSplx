@@ -10,7 +10,7 @@ describe('FileSystemUtils.updateFileWithMarkers', () => {
   const END_MARKER = '<!-- PLX:END -->';
 
   beforeEach(async () => {
-    testDir = path.join(os.tmpdir(), `plx-marker-test-${Date.now()}`);
+    testDir = path.join(os.tmpdir(), `splx-marker-test-${Date.now()}`);
     await fs.mkdir(testDir, { recursive: true });
   });
 

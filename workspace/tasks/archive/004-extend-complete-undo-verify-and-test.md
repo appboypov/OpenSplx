@@ -39,10 +39,10 @@ After implementing tasks 001-003, the new commands exist but need validation.
 - [x] 4.1 Run `pnpm build` and fix any TypeScript errors
 - [x] 4.2 Run `pnpm lint` and fix any linting issues
 - [x] 4.3 Run `pnpm test` and verify all tests pass
-- [x] 4.4 Manually test `plx complete review --id <test-id>`
-- [x] 4.5 Manually test `plx complete spec --id <test-id>`
-- [x] 4.6 Manually test `plx undo review --id <test-id>`
-- [x] 4.7 Manually test `plx undo spec --id <test-id>`
+- [x] 4.4 Manually test `splx complete review --id <test-id>`
+- [x] 4.5 Manually test `splx complete spec --id <test-id>`
+- [x] 4.6 Manually test `splx undo review --id <test-id>`
+- [x] 4.7 Manually test `splx undo spec --id <test-id>`
 - [x] 4.8 Test JSON output for all four commands
 
 ## Notes

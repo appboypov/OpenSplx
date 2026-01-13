@@ -11,10 +11,10 @@ export class ZshGenerator implements CompletionGenerator {
    * Generate a Zsh completion script
    *
    * @param commands - Command definitions to generate completions for
-   * @param commandName - The CLI command name (defaults to 'plx')
+   * @param commandName - The CLI command name (defaults to 'splx')
    * @returns Zsh completion script as a string
    */
-  generate(commands: CommandDefinition[], commandName: string = 'plx'): string {
+  generate(commands: CommandDefinition[], commandName: string = 'splx'): string {
     const script: string[] = [];
 
     // Header comment
@@ -360,7 +360,7 @@ export class ZshGenerator implements CompletionGenerator {
   /**
    * Generate positional argument specification
    */
-  private generatePositionalSpec(positionalType?: string, commandName: string = 'plx'): string {
+  private generatePositionalSpec(positionalType?: string, commandName: string = 'splx'): string {
     switch (positionalType) {
       case 'change-id':
         return `'*: :_${commandName}_complete_changes'`;

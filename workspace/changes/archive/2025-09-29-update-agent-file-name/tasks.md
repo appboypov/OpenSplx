@@ -9,14 +9,14 @@
 - [x] Update exported constant from `readmeTemplate` to `agentsTemplate`
 
 ## 3. Adjust CLI Commands
-- [x] Modify `plx init` to generate `AGENTS.md`
-- [x] Update `plx update` to refresh `AGENTS.md`
+- [x] Modify `splx init` to generate `AGENTS.md`
+- [x] Update `splx update` to refresh `AGENTS.md`
 - [x] Ensure CLAUDE.md markers link to `@workspace/AGENTS.md`
 
 ## 4. Update Specifications
 - [x] Modify `cli-init` spec to reference `AGENTS.md`
 - [x] Modify `cli-update` spec to reference `AGENTS.md`
-- [x] Modify `plx-conventions` spec to include `AGENTS.md` in project structure
+- [x] Modify `splx-conventions` spec to include `AGENTS.md` in project structure
 
 ## 5. Validation
 - [x] `pnpm test`

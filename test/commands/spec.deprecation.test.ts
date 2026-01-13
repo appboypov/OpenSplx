@@ -7,7 +7,7 @@ describe('spec command deprecation warnings', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-spec-deprecation-tmp');
   const specsDir = path.join(testDir, 'workspace', 'specs');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
     await fs.mkdir(specsDir, { recursive: true });
@@ -34,14 +34,14 @@ The system SHALL implement feature B
     await fs.rm(testDir, { recursive: true, force: true });
   });
 
-  describe('plx spec show', () => {
+  describe('splx spec show', () => {
     it('should emit deprecation warning', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} spec show test-spec 2>&1`, {
+          output = execSync(`node ${splxBin} spec show test-spec 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {
@@ -51,8 +51,8 @@ The system SHALL implement feature B
           }
         }
 
-        expect(output).toContain("Deprecation: 'plx spec show <id>' is deprecated");
-        expect(output).toContain("Use 'plx get spec --id <id>' instead");
+        expect(output).toContain("Deprecation: 'splx spec show <id>' is deprecated");
+        expect(output).toContain("Use 'splx get spec --id <id>' instead");
       } finally {
         process.chdir(originalCwd);
       }
@@ -64,7 +64,7 @@ The system SHALL implement feature B
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} --no-deprecation-warnings spec show test-spec 2>&1`, {
+          output = execSync(`node ${splxBin} --no-deprecation-warnings spec show test-spec 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {
@@ -81,14 +81,14 @@ The system SHALL implement feature B
     });
   });
 
-  describe('plx spec list', () => {
+  describe('splx spec list', () => {
     it('should emit deprecation warning', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} spec list 2>&1`, {
+          output = execSync(`node ${splxBin} spec list 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {
@@ -98,8 +98,8 @@ The system SHALL implement feature B
           }
         }
 
-        expect(output).toContain("Deprecation: 'plx spec list' is deprecated");
-        expect(output).toContain("Use 'plx get specs' instead");
+        expect(output).toContain("Deprecation: 'splx spec list' is deprecated");
+        expect(output).toContain("Use 'splx get specs' instead");
       } finally {
         process.chdir(originalCwd);
       }
@@ -111,7 +111,7 @@ The system SHALL implement feature B
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} --no-deprecation-warnings spec list 2>&1`, {
+          output = execSync(`node ${splxBin} --no-deprecation-warnings spec list 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {
@@ -128,14 +128,14 @@ The system SHALL implement feature B
     });
   });
 
-  describe('plx spec validate', () => {
+  describe('splx spec validate', () => {
     it('should emit deprecation warning', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} spec validate test-spec 2>&1`, {
+          output = execSync(`node ${splxBin} spec validate test-spec 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {
@@ -145,8 +145,8 @@ The system SHALL implement feature B
           }
         }
 
-        expect(output).toContain("Deprecation: 'plx spec validate <id>' is deprecated");
-        expect(output).toContain("Use 'plx validate spec --id <id>' instead");
+        expect(output).toContain("Deprecation: 'splx spec validate <id>' is deprecated");
+        expect(output).toContain("Use 'splx validate spec --id <id>' instead");
       } finally {
         process.chdir(originalCwd);
       }
@@ -158,7 +158,7 @@ The system SHALL implement feature B
         process.chdir(testDir);
         let output = '';
         try {
-          output = execSync(`node ${plxBin} --no-deprecation-warnings spec validate test-spec 2>&1`, {
+          output = execSync(`node ${splxBin} --no-deprecation-warnings spec validate test-spec 2>&1`, {
             encoding: 'utf-8'
           });
         } catch (error: any) {

@@ -6,7 +6,7 @@ status: to-do
 
 ## End Goal
 
-A `plx paste request` command that saves clipboard content to `workspace/drafts/request.md`.
+A `splx paste request` command that saves clipboard content to `workspace/drafts/request.md`.
 
 ## Currently
 
@@ -26,7 +26,7 @@ No paste command exists in the CLI.
 
 ## Acceptance Criteria
 
-- [ ] `plx paste request` writes clipboard to `workspace/drafts/request.md`
+- [ ] `splx paste request` writes clipboard to `workspace/drafts/request.md`
 - [ ] `--json` flag outputs machine-readable JSON
 - [ ] Error handling matches existing command patterns
 

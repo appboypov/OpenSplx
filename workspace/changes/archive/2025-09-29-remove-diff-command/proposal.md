@@ -2,9 +2,9 @@
 
 ## Problem
 
-The `plx diff` command adds unnecessary complexity to the PLX CLI for several reasons:
+The `splx diff` command adds unnecessary complexity to the PLX CLI for several reasons:
 
-1. **Redundant functionality**: The `plx show` command already provides comprehensive visualization of changes through structured JSON output and markdown rendering
+1. **Redundant functionality**: The `splx show` command already provides comprehensive visualization of changes through structured JSON output and markdown rendering
 2. **Maintenance burden**: The diff command requires a separate dependency (jest-diff) and additional code complexity (~227 lines)
 3. **Limited value**: Developers can achieve better diff visualization using existing tools:
    - Git diff for actual file changes
@@ -14,9 +14,9 @@ The `plx diff` command adds unnecessary complexity to the PLX CLI for several re
 
 ## Solution
 
-Remove the `plx diff` command entirely and guide users to more appropriate alternatives:
+Remove the `splx diff` command entirely and guide users to more appropriate alternatives:
 
-1. **For viewing change content**: Use `plx show <change-name>` which provides:
+1. **For viewing change content**: Use `splx show <change-name>` which provides:
    - Structured JSON output with `--json` flag
    - Markdown rendering for human-readable format
    - Delta-only views with `--deltas-only` flag
@@ -45,21 +45,21 @@ Remove the `plx diff` command entirely and guide users to more appropriate alter
 - `/package.json` - Remove jest-diff dependency
 - `/README.md` - Remove diff command documentation
 - `/workspace/README.md` - Remove diff command references
-- Various documentation files mentioning `plx diff`
+- Various documentation files mentioning `splx diff`
 
 ### Migration Guide for Users
 
-Users currently using `plx diff` should transition to:
+Users currently using `splx diff` should transition to:
 
 ```bash
 # Before
-plx diff add-feature
+splx diff add-feature
 
 # After - view the change proposal
-plx show add-feature
+splx show add-feature
 
 # After - view only the deltas
-plx show add-feature --json --deltas-only
+splx show add-feature --json --deltas-only
 
 # After - use git for file comparisons
 git diff workspace/specs workspace/changes/add-feature/specs

@@ -17,7 +17,7 @@ Implementation complete but not validated.
 - `pnpm run build` completes without errors
 - `pnpm run lint` completes without warnings
 - `pnpm run test` passes all tests
-- Manual test of `plx paste request` works
+- Manual test of `splx paste request` works
 
 ## Constraints
 
@@ -30,17 +30,17 @@ Implementation complete but not validated.
 - [ ] Build succeeds
 - [ ] Lint passes
 - [ ] All tests pass
-- [ ] Manual test confirms `plx paste request` works
+- [ ] Manual test confirms `splx paste request` works
 
 ## Implementation Checklist
 
 - [ ] Run `pnpm run build` and fix any errors
 - [ ] Run `pnpm run lint` and fix any issues
 - [ ] Run `pnpm run test` and verify all tests pass
-- [ ] Manually test `plx paste request` on macOS
+- [ ] Manually test `splx paste request` on macOS
 - [ ] Verify `workspace/drafts/request.md` is created
 - [ ] Test `--json` flag output
-- [ ] Validate change with `plx validate add-paste-request-command --strict`
+- [ ] Validate change with `splx validate add-paste-request-command --strict`
 
 ## Notes
 

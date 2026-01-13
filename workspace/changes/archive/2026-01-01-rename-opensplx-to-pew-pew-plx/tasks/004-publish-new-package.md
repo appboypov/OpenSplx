@@ -6,18 +6,18 @@ status: done
 
 ## End Goal
 
-The first version of `@appboypov/pew-pew-plx` is published to npm and installable by users.
+The first version of `@appboypov/OpenSplx` is published to npm and installable by users.
 
 ## Currently
 
-Only `@appboypov/opensplx` exists on npm. The new package name has no published versions.
+Only `@appboypov/OpenSplx` exists on npm. The new package name has no published versions.
 
 ## Should
 
-- `@appboypov/pew-pew-plx` is published on npm
+- `@appboypov/OpenSplx` is published on npm
 - Version matches current package.json version
-- Package is installable via `npm install -g @appboypov/pew-pew-plx`
-- `plx --version` outputs correct version after install
+- Package is installable via `npm install -g @appboypov/OpenSplx`
+- `splx --version` outputs correct version after install
 
 ## Constraints
 
@@ -27,9 +27,9 @@ Only `@appboypov/opensplx` exists on npm. The new package name has no published 
 
 ## Acceptance Criteria
 
-- [x] `npm view @appboypov/pew-pew-plx` shows package info
-- [x] `npm install -g @appboypov/pew-pew-plx` succeeds
-- [x] `plx --version` outputs expected version
+- [x] `npm view @appboypov/OpenSplx` shows package info
+- [x] `npm install -g @appboypov/OpenSplx` succeeds
+- [x] `splx --version` outputs expected version
 
 ## Implementation Checklist
 

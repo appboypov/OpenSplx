@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import os from 'os';
 import { ViewCommand } from '../../src/core/view.js';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 const stripAnsi = (input: string): string => input.replace(/\u001b\[[0-9;]*m/g, '');
 
@@ -13,7 +13,7 @@ describe('ViewCommand', () => {
   let logOutput: string[] = [];
 
   beforeEach(async () => {
-    tempDir = path.join(os.tmpdir(), `plx-view-test-${Date.now()}`);
+    tempDir = path.join(os.tmpdir(), `splx-view-test-${Date.now()}`);
     await fs.mkdir(tempDir, { recursive: true });
 
     originalLog = console.log;
@@ -30,7 +30,7 @@ describe('ViewCommand', () => {
   });
 
   it('sorts active changes by completion percentage ascending with deterministic tie-breakers', async () => {
-    await createValidPlxWorkspace(tempDir);
+    await createValidSplxWorkspace(tempDir);
     const changesDir = path.join(tempDir, 'workspace', 'changes');
     const tasksDir = path.join(tempDir, 'workspace', 'tasks');
     await fs.mkdir(changesDir, { recursive: true });
@@ -140,7 +140,7 @@ parent-id: alpha-change
   });
 
   it('filters out changes without proposal.md', async () => {
-    await createValidPlxWorkspace(tempDir);
+    await createValidSplxWorkspace(tempDir);
     const changesDir = path.join(tempDir, 'workspace', 'changes');
     const tasksDir = path.join(tempDir, 'workspace', 'tasks');
     await fs.mkdir(changesDir, { recursive: true });
@@ -183,7 +183,7 @@ parent-id: valid-change
   });
 
   it('displays completed changes when all tasks are done', async () => {
-    await createValidPlxWorkspace(tempDir);
+    await createValidSplxWorkspace(tempDir);
     const changesDir = path.join(tempDir, 'workspace', 'changes');
     const tasksDir = path.join(tempDir, 'workspace', 'tasks');
     await fs.mkdir(changesDir, { recursive: true });
@@ -228,7 +228,7 @@ parent-id: completed-change
   });
 
   it('displays changes with zero linked tasks as completed', async () => {
-    await createValidPlxWorkspace(tempDir);
+    await createValidSplxWorkspace(tempDir);
     const changesDir = path.join(tempDir, 'workspace', 'changes');
     const tasksDir = path.join(tempDir, 'workspace', 'tasks');
     await fs.mkdir(changesDir, { recursive: true });
@@ -270,7 +270,7 @@ parent-id: other-change
   });
 
   it('calculates progress correctly for changes with partial task completion', async () => {
-    await createValidPlxWorkspace(tempDir);
+    await createValidSplxWorkspace(tempDir);
     const changesDir = path.join(tempDir, 'workspace', 'changes');
     const tasksDir = path.join(tempDir, 'workspace', 'tasks');
     await fs.mkdir(changesDir, { recursive: true });

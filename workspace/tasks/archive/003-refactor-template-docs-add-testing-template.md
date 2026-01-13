@@ -17,7 +17,7 @@ No TESTING.md or testing-related commands exist. Testing guidance is ad-hoc.
 
 - TESTING.md: Config-style file (like REVIEW.md) with test types, coverage thresholds, test patterns
 - refine-testing command: Contains all testing options, guides through configuration
-- TESTING.md created during `plx init` and `plx update` (like REVIEW.md)
+- TESTING.md created during `splx init` and `splx update` (like REVIEW.md)
 
 ## Constraints
 
@@ -29,8 +29,8 @@ No TESTING.md or testing-related commands exist. Testing guidance is ad-hoc.
 
 - [ ] TESTING.md template exists with Purpose, Test Types, Coverage, Test Patterns, Test Checklist sections
 - [ ] refine-testing command registered in slash-command-templates.ts
-- [ ] plx init creates TESTING.md at project root
-- [ ] plx update creates TESTING.md if missing
+- [ ] splx init creates TESTING.md at project root
+- [ ] splx update creates TESTING.md if missing
 - [ ] All tool configurator slash commands generated
 
 ## Implementation Checklist
@@ -41,7 +41,7 @@ No TESTING.md or testing-related commands exist. Testing guidance is ad-hoc.
 - [x] 3.4 Update init.ts to create TESTING.md template
 - [x] 3.5 Update update.ts to create TESTING.md if missing
 - [x] 3.6 Create TESTING.md template content (Purpose, Test Types, Coverage, Patterns, Checklist)
-- [x] 3.7 Run `plx update` to regenerate all tool configurator files
+- [x] 3.7 Run `splx update` to regenerate all tool configurator files
 
 ## Notes
 

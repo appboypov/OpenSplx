@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-CLI command for outputting review context: `plx review --change-id <id>`, `plx review --spec-id <id>`, `plx review --task-id <id>`.
+CLI command for outputting review context: `splx review --change-id <id>`, `splx review --spec-id <id>`, `splx review --task-id <id>`.
 
 ## Currently
 
@@ -19,7 +19,7 @@ Create `/src/commands/review.ts` with `ReviewCommand` class:
 - Support `--change-id`, `--spec-id`, `--task-id` flags (one required)
 - Output REVIEW.md guidelines + parent documents (proposal, design, tasks)
 
-Register in `/src/cli/index.ts` as `plx review` command.
+Register in `/src/cli/index.ts` as `splx review` command.
 
 ## Constraints
 
@@ -30,10 +30,10 @@ Register in `/src/cli/index.ts` as `plx review` command.
 
 ## Acceptance Criteria
 
-- [x] `plx review --change-id <id>` outputs REVIEW.md + change documents
-- [x] `plx review --spec-id <id>` outputs REVIEW.md + spec document
-- [x] `plx review --task-id <id>` outputs REVIEW.md + task and parent change documents
-- [x] `plx review --json` outputs JSON with documents array
+- [x] `splx review --change-id <id>` outputs REVIEW.md + change documents
+- [x] `splx review --spec-id <id>` outputs REVIEW.md + spec document
+- [x] `splx review --task-id <id>` outputs REVIEW.md + task and parent change documents
+- [x] `splx review --json` outputs JSON with documents array
 - [x] Missing parent shows error with usage hint and exits with code 1
 - [x] Interactive mode prompts for parent type and ID
 
@@ -70,5 +70,5 @@ Output format:
 ═══ Next Steps ═══
 1. Review the implementation against the requirements above
 2. Add feedback markers in code: // #FEEDBACK #TODO | {feedback}
-3. Parse feedback: plx parse feedback <review-name> --change-id add-feature-x
+3. Parse feedback: splx parse feedback <review-name> --change-id add-feature-x
 ```

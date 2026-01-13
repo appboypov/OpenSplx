@@ -17,12 +17,12 @@
   - [x] Fix directory structure examples (lines 376-382)
   - [x] Update archive examples (lines 778-783)
   - [x] Ensure consistency throughout
-- [x] 3.2 Update docs/plx-walkthrough.md
+- [x] 3.2 Update docs/splx-walkthrough.md
   - [x] Replace diff examples with future state examples
   - [x] Ensure the walkthrough reflects new approach
 
 ## 4. Create New Spec
-- [x] 4.1 Finalize plx-conventions spec in main specs/ directory
+- [x] 4.1 Finalize splx-conventions spec in main specs/ directory
   - [x] Document the future state storage approach
   - [x] Include examples of good proposals
   - [x] Make it the source of truth for conventions

@@ -32,5 +32,5 @@ The system SHALL register all commands in the unified SlashCommandRegistry.
 
 ### Requirement: Separate PLX Registry
 
-**Reason**: The dual registry architecture is being unified into a single system. The `PlxSlashCommandRegistry` and `PlxSlashCommandId` types are no longer needed.
+**Reason**: The dual registry architecture is being unified into a single system. The `SplxSlashCommandRegistry` and `SplxSlashCommandId` types are no longer needed.
 **Migration**: All commands are now managed through the unified `SlashCommandRegistry` and `SlashCommandId`.

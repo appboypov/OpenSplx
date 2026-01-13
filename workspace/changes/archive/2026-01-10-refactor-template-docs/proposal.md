@@ -11,11 +11,11 @@ The current RELEASE.md (481 lines) mixes configuration with verbose documentatio
 - **prepare-release command**: Update to read minimal config and apply defaults
 - **TESTING.md**: New config file for test workflows (test types, coverage, patterns)
 - **refine-testing command**: New command to create/update TESTING.md with all options documented
-- **plx/test command**: New command to run testing workflow (args: --change-id, --task-id, --spec-id like review)
+- **splx/test command**: New command to run testing workflow (args: --change-id, --task-id, --spec-id like review)
 
 ## Impact
 
-- Affected specs: `plx-slash-commands`, `cli-init` (if TESTING.md added to init)
+- Affected specs: `splx-slash-commands`, `cli-init` (if TESTING.md added to init)
 - Affected code:
   - `src/core/templates/slash-command-templates.ts` (new commands, updated bodies)
   - `src/core/init.ts` (add TESTING.md creation)

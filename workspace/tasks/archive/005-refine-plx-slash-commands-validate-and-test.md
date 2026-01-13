@@ -1,7 +1,7 @@
 ---
 status: done
 parent-type: change
-parent-id: refine-plx-slash-commands
+parent-id: refine-splx-slash-commands
 ---
 # Validate and Test
 
@@ -20,17 +20,17 @@ Full validation and testing completed.
 - [x] TypeScript must compile
 
 ## Acceptance Criteria
-- [x] `plx validate refine-plx-slash-commands --strict` passes
+- [x] `splx validate refine-splx-slash-commands --strict` passes
 - [x] `npx tsc --noEmit` passes
 - [x] `npm test` passes (1016 tests)
 - [x] Manual verification of generated commands
 
 ## Implementation Checklist
-- [x] Run `plx validate refine-plx-slash-commands --strict`
+- [x] Run `splx validate refine-splx-slash-commands --strict`
 - [x] Run `npx tsc --noEmit`
 - [x] Run `npm test` - all 1016 tests pass
 - [x] Verify template file has correct @ references
 - [x] Verify all 21 configurator files have correct frontmatter patterns
 
 ## Notes
-- If validation fails, use `plx show refine-plx-slash-commands --json --deltas-only` to inspect
+- If validation fails, use `splx show refine-splx-slash-commands --json --deltas-only` to inspect

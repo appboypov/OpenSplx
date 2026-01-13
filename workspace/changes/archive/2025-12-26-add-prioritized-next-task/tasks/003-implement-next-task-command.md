@@ -2,7 +2,7 @@
 
 ## End Goal
 
-Create the `plx get task` command that displays the next task from the highest-priority change.
+Create the `splx get task` command that displays the next task from the highest-priority change.
 
 ## Currently
 
@@ -26,8 +26,8 @@ New `src/commands/act.ts` command provides:
 
 ## Acceptance Criteria
 
-- [ ] `plx get task` shows proposal + design + next task
-- [ ] `plx act next` works as alias
+- [ ] `splx get task` shows proposal + design + next task
+- [ ] `splx act next` works as alias
 - [ ] `--did-complete-previous` completes in-progress and advances
 - [ ] `--did-complete-previous` with no in-progress shows warning
 - [ ] `--json` outputs valid JSON structure

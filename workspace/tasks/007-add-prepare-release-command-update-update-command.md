@@ -7,7 +7,7 @@ parent-id: add-prepare-release-command
 
 ## End Goal
 
-`plx update` creates RELEASE.md at the project root if it doesn't exist.
+`splx update` creates RELEASE.md at the project root if it doesn't exist.
 
 ## Currently
 
@@ -27,7 +27,7 @@ parent-id: add-prepare-release-command
 
 ## Acceptance Criteria
 
-- [x] RELEASE.md created during `plx update` if not exists
+- [x] RELEASE.md created during `splx update` if not exists
 - [x] RELEASE.md not overwritten if already exists
 - [x] TypeScript compiles without errors
 

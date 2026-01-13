@@ -5,7 +5,7 @@ status: to-do
 # Task: Update list command for multi-workspace
 
 ## End Goal
-The `plx list` command in `src/core/list.ts` discovers and aggregates items from all workspaces, respecting the --workspace filter.
+The `splx list` command in `src/core/list.ts` discovers and aggregates items from all workspaces, respecting the --workspace filter.
 
 ## Currently
 Command only looks at `{resolvedPath}/workspace/changes/` or `/specs/` or `/reviews/`.
@@ -24,10 +24,10 @@ Update command to:
 - [ ] Multi-workspace sorts: root first, then alphabetically by projectName
 
 ## Acceptance Criteria
-- [ ] `plx list` from monorepo shows all workspace changes
-- [ ] `plx list --specs` aggregates specs from all workspaces
-- [ ] `plx list --reviews` aggregates reviews from all workspaces
-- [ ] `plx list --workspace X` shows only X workspace items
+- [ ] `splx list` from monorepo shows all workspace changes
+- [ ] `splx list --specs` aggregates specs from all workspaces
+- [ ] `splx list --reviews` aggregates reviews from all workspaces
+- [ ] `splx list --workspace X` shows only X workspace items
 - [ ] Single-workspace project has identical output to before
 
 ## Implementation Checklist

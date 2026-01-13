@@ -42,9 +42,9 @@ Implementation and review tasks are complete.
 - [x] Run `npm run typecheck` and verify no errors
 - [x] Run `npm run lint` and verify no errors
 - [x] Run `npm run build` and verify success
-- [x] Manual test: create task with skill-level, run `plx get task`
+- [x] Manual test: create task with skill-level, run `splx get task`
 - [x] Manual test: verify skill level displays in output
-- [x] Manual test: verify `plx validate --strict` warns about missing skill level
+- [x] Manual test: verify `splx validate --strict` warns about missing skill level
 - [x] Manual test: verify JSON output includes skillLevel field
 
 ## Notes

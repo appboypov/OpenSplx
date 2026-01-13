@@ -11,7 +11,7 @@ Validation output SHALL include specific guidance to fix each error, including e
   - Ensure `workspace/changes/{id}/specs/` exists with `.md` files
   - Use delta headers: `## ADDED Requirements`, `## MODIFIED Requirements`, `## REMOVED Requirements`, `## RENAMED Requirements`
   - Each requirement must include at least one `#### Scenario:` block
-  - Try: `plx change show {id} --json --deltas-only` to inspect what was parsed
+  - Try: `splx change show {id} --json --deltas-only` to inspect what was parsed
 
 #### Scenario: Missing required sections
 - **WHEN** a required section is missing
@@ -50,6 +50,6 @@ The CLI SHALL append a Next steps footer when the item is invalid and not using 
 
 #### Scenario: Change invalid summary
 - **WHEN** a change validation fails
-- **THEN** print "Next steps" with 2-3 targeted bullets and suggest `plx change show <id> --json --deltas-only`
+- **THEN** print "Next steps" with 2-3 targeted bullets and suggest `splx change show <id> --json --deltas-only`
 
 

@@ -715,7 +715,7 @@ export class GetCommand {
           overview: parsed.overview,
           requirementCount: filtered.requirements.length,
           requirements: filtered.requirements,
-          metadata: parsed.metadata ?? { version: '1.0.0', format: 'plx' as const },
+          metadata: parsed.metadata ?? { version: '1.0.0', format: 'splx' as const },
         };
 
         console.log(JSON.stringify(output, null, 2));

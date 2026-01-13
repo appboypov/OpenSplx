@@ -2,17 +2,17 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('validate command enriched human output', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-validate-enriched-tmp');
   const changesDir = path.join(testDir, 'workspace', 'changes');
-  const bin = path.join(projectRoot, 'bin', 'plx.js');
+  const bin = path.join(projectRoot, 'bin', 'splx.js');
 
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
     await fs.mkdir(changesDir, { recursive: true });
   });
 
@@ -41,7 +41,7 @@ describe('validate command enriched human output', () => {
       expect(code).not.toBe(0);
       expect(stderr).toContain('has issues');
       expect(stderr).toContain('Next steps:');
-      expect(stderr).toContain('plx change show');
+      expect(stderr).toContain('splx change show');
     } finally {
       process.chdir(originalCwd);
     }

@@ -2,11 +2,11 @@
 
 ## Why
 
-Users need a quick, at-a-glance overview of their PLX project status without running multiple commands. Currently, users must run `plx list --changes` and `plx list --specs` separately to understand the project state. A unified dashboard view would improve developer experience and provide immediate insight into project progress.
+Users need a quick, at-a-glance overview of their PLX project status without running multiple commands. Currently, users must run `splx list --changes` and `splx list --specs` separately to understand the project state. A unified dashboard view would improve developer experience and provide immediate insight into project progress.
 
 ## What Changes
 
-### Added `plx view` Command
+### Added `splx view` Command
 
 The new command provides an interactive dashboard displaying:
 - Summary metrics (total specs, requirements, changes, task progress)

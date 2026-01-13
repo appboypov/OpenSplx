@@ -4,7 +4,7 @@
 
 ## 2. Templates and checklists
 - [x] 2.1 Add copy/paste templates for proposal, tasks, design, and spec delta files.
-- [x] 2.2 Insert a pre-validation checklist capturing common lint failures before running `plx validate`.
+- [x] 2.2 Insert a pre-validation checklist capturing common lint failures before running `splx validate`.
 
 ## 3. Documentation updates
 - [x] 3.1 Update supporting docs or README pointers so contributors find the redesigned instructions.

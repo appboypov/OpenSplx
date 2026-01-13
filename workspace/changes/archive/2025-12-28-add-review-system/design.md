@@ -125,7 +125,7 @@ With spec impact: `{comment-prefix} #FEEDBACK #TODO | {feedback text} (spec:{spe
 ### CLI Interface
 
 ```bash
-plx parse feedback [review-name] [options]
+splx parse feedback [review-name] [options]
 
 Options:
   --change-id <id>  Link review to a change (required)
@@ -204,10 +204,10 @@ Parsed N feedback markers from M files.
 ### CLI Index (src/cli/index.ts)
 
 Add verb-first commands:
-- `plx review --change-id <id>` - Output review context for a change
-- `plx review --spec-id <id>` - Output review context for a spec
-- `plx review --task-id <id>` - Output review context for a task
-- `plx parse feedback [review-name] --change-id <id>` - Parse markers linked to a change
+- `splx review --change-id <id>` - Output review context for a change
+- `splx review --spec-id <id>` - Output review context for a spec
+- `splx review --task-id <id>` - Output review context for a task
+- `splx parse feedback [review-name] --change-id <id>` - Parse markers linked to a change
 
 ### List Command (src/core/list.ts)
 
@@ -243,7 +243,7 @@ New utility with:
 
 ## Slash Command Templates
 
-### plx/review
+### splx/review
 
 ```markdown
 **Guardrails**
@@ -252,15 +252,15 @@ New utility with:
 - For spec-impacting feedback, include spec reference
 
 **Steps**
-1. Run `plx review --change-id <id>` (or --spec-id, --task-id)
+1. Run `splx review --change-id <id>` (or --spec-id, --task-id)
 2. Read the output: REVIEW.md guidelines + parent documents
 3. Review implementation against constraints/acceptance criteria
 4. Insert feedback markers in relevant code
 5. Summarize findings
-6. Instruct to run `plx parse feedback <name> --change-id <id>`
+6. Instruct to run `splx parse feedback <name> --change-id <id>`
 ```
 
-### plx/refine-architecture
+### splx/refine-architecture
 
 ```markdown
 **Guardrails**
@@ -273,7 +273,7 @@ New utility with:
 3. If exists: read and update
 ```
 
-### plx/refine-review
+### splx/refine-review
 
 ```markdown
 **Guardrails**
@@ -286,7 +286,7 @@ New utility with:
 3. If exists: read and update
 ```
 
-### plx/parse-feedback
+### splx/parse-feedback
 
 ```markdown
 **Guardrails**
@@ -295,7 +295,7 @@ New utility with:
 - Require parent linkage
 
 **Steps**
-1. Run `plx parse feedback <name> --change-id <id>`
+1. Run `splx parse feedback <name> --change-id <id>`
 2. Review generated tasks
 3. Address feedback
 4. Archive when complete
@@ -373,8 +373,8 @@ const ReviewTaskSchema = z.object({
 
 | File | Changes |
 |------|---------|
-| `src/core/templates/plx-slash-command-templates.ts` | Add 4 new command templates |
-| `src/core/configurators/slash/plx-*.ts` | Add paths for new commands |
+| `src/core/templates/splx-slash-command-templates.ts` | Add 4 new command templates |
+| `src/core/configurators/slash/splx-*.ts` | Add paths for new commands |
 | `src/utils/item-discovery.ts` | Add review discovery functions |
 | `src/core/templates/index.ts` | Export review template |
 | `src/core/init.ts` | Create REVIEW.md if missing |

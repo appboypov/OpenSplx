@@ -9,10 +9,10 @@ parent-id: add-plan-request-command
 All tests pass after the proposal → plan-proposal rename.
 
 ## Currently
-Tests reference `proposal.md` and `plx-proposal.md` in various forms.
+Tests reference `proposal.md` and `splx-proposal.md` in various forms.
 
 ## Should
-- All test references updated to `plan-proposal.md` and `plx-plan-proposal.md`
+- All test references updated to `plan-proposal.md` and `splx-plan-proposal.md`
 - All tests pass
 - No stale references to old naming
 

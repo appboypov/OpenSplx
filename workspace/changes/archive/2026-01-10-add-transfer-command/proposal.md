@@ -6,12 +6,12 @@ When working in a monorepo, users develop changes, specs, and tasks at the root 
 
 ## What Changes
 
-- Add `plx transfer` command with subcommands for each entity type:
-  - `plx transfer change` - Transfer change directory with linked tasks
-  - `plx transfer spec` - Transfer spec directory with related changes and tasks
-  - `plx transfer task` - Transfer individual task file
-  - `plx transfer review` - Transfer review directory with linked tasks
-  - `plx transfer request` - Transfer request.md file
+- Add `splx transfer` command with subcommands for each entity type:
+  - `splx transfer change` - Transfer change directory with linked tasks
+  - `splx transfer spec` - Transfer spec directory with related changes and tasks
+  - `splx transfer task` - Transfer individual task file
+  - `splx transfer review` - Transfer review directory with linked tasks
+  - `splx transfer request` - Transfer request.md file
 - Implement move semantics (delete from source after successful transfer)
 - Auto-initialize target workspace if missing (using source's tool configuration)
 - Reassign task sequence numbers in target workspace

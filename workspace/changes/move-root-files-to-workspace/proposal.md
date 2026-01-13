@@ -7,11 +7,11 @@ PLX-managed template files (ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md, 
 ## What Changes
 
 - **BREAKING**: Template files created in `workspace/` instead of project root
-- `plx init` creates ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md in `workspace/`
-- `plx update` creates missing template files in `workspace/` and runs migration
-- `plx create progress` creates PROGRESS.md in `workspace/`
-- `plx transfer` creates template files in target `workspace/`
-- Automatic migration moves existing root files to `workspace/` during `plx update`
+- `splx init` creates ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md in `workspace/`
+- `splx update` creates missing template files in `workspace/` and runs migration
+- `splx create progress` creates PROGRESS.md in `workspace/`
+- `splx transfer` creates template files in target `workspace/`
+- Automatic migration moves existing root files to `workspace/` during `splx update`
 - All slash command references update from `@ARCHITECTURE.md` to `@workspace/ARCHITECTURE.md` (etc.)
 - Documentation updates (ARCHITECTURE.md, AGENTS.md, README.md)
 
@@ -29,7 +29,7 @@ PLX-managed template files (ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md, 
 
 ## Migration Behavior
 
-- Runs automatically in `plx update` after OpenSpec migration
+- Runs automatically in `splx update` after OpenSpec migration
 - If file exists in root but not in workspace: move it
 - If file exists in both: keep workspace version, delete root version
 - If file exists only in workspace: no action needed

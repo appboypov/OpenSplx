@@ -33,4 +33,4 @@ All code reviewed, feedback addressed, and implementation validated.
 - [x] Review code for consistency with project patterns
 
 ## Notes
-Run `/plx/review --change-id add-parent-linkage-to-feedback-markers` to conduct formal review.
+Run `/splx/review --change-id add-parent-linkage-to-feedback-markers` to conduct formal review.

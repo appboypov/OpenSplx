@@ -8,7 +8,7 @@ The command SHALL support listing reviews alongside changes and specs.
 
 #### Scenario: Listing reviews
 
-- **WHEN** `plx list --reviews` is executed
+- **WHEN** `splx list --reviews` is executed
 - **THEN** scan the `workspace/reviews/` directory for review directories
 - **AND** exclude the `archive/` subdirectory from results
 - **AND** display each review with: name, target type, task progress

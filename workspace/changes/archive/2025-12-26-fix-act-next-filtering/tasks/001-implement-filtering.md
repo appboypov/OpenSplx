@@ -2,7 +2,7 @@
 
 ## End Goal
 
-`getPrioritizedChange()` filters out non-actionable changes before prioritization so `plx act next` only returns changes with incomplete checkboxes.
+`getPrioritizedChange()` filters out non-actionable changes before prioritization so `splx act next` only returns changes with incomplete checkboxes.
 
 ## Currently
 
@@ -24,8 +24,8 @@ Only changes with `total > 0 && completed < total` are considered.
 
 ## Acceptance Criteria
 
-- [ ] Running `plx act next` skips changes with all checkboxes complete
-- [ ] Running `plx act next` skips changes with zero checkboxes
+- [ ] Running `splx act next` skips changes with all checkboxes complete
+- [ ] Running `splx act next` skips changes with zero checkboxes
 - [ ] Returns actionable change with highest completion percentage
 - [ ] Returns `null` / "No active changes" when no actionable changes exist
 

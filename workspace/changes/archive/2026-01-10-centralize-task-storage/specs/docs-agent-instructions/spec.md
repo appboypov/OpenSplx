@@ -72,4 +72,4 @@
 
 **Reason**: Migration from legacy `tasks.md` to centralized storage is handled by separate `add-migrate-command` proposal.
 
-**Migration**: Users run `plx migrate tasks` to convert legacy structures.
+**Migration**: Users run `splx migrate tasks` to convert legacy structures.

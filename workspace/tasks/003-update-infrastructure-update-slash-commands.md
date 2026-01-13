@@ -8,24 +8,24 @@ parent-id: update-infrastructure
 
 ## End Goal
 
-All 18 slash commands in `.claude/commands/plx/` use the new standardized CLI patterns.
+All 18 slash commands in `.claude/commands/splx/` use the new standardized CLI patterns.
 
 ## Currently
 
 Slash commands reference:
-- `plx list`, `plx show` for listing and display
-- `plx parse feedback <name> --change-id <id>` style flags
-- `plx review --change-id <id>` style flags
-- `plx archive <change-id>` positional syntax
+- `splx list`, `splx show` for listing and display
+- `splx parse feedback <name> --change-id <id>` style flags
+- `splx review --change-id <id>` style flags
+- `splx archive <change-id>` positional syntax
 
 ## Should
 
 Slash commands reference:
-- `plx get changes`, `plx get change --id <id>` for listing and display
-- `plx parse feedback <name> --parent-id <id> --parent-type change` style flags
-- `plx review change --id <id>` style syntax
-- `plx archive change --id <id>` style syntax
-- `plx create` command where entity creation is needed
+- `splx get changes`, `splx get change --id <id>` for listing and display
+- `splx parse feedback <name> --parent-id <id> --parent-type change` style flags
+- `splx review change --id <id>` style syntax
+- `splx archive change --id <id>` style syntax
+- `splx create` command where entity creation is needed
 - Centralized task storage references
 
 ## Constraints
@@ -44,9 +44,9 @@ Slash commands reference:
 
 ## Implementation Checklist
 
-- [x] 3.1 Update archive.md - change to `plx archive change --id <id>`
-- [x] 3.2 Update complete-task.md - verify `plx complete task --id <id>` (already correct)
-- [x] 3.3 Update get-task.md - verify `plx get task` patterns (already correct)
+- [x] 3.1 Update archive.md - change to `splx archive change --id <id>`
+- [x] 3.2 Update complete-task.md - verify `splx complete task --id <id>` (already correct)
+- [x] 3.3 Update get-task.md - verify `splx get task` patterns (already correct)
 - [x] 3.4 Update implement.md - update list/show references
 - [x] 3.5 Update orchestrate.md - update list/show references
 - [x] 3.6 Update parse-feedback.md - change to `--parent-id`/`--parent-type` syntax
@@ -58,10 +58,10 @@ Slash commands reference:
 - [x] 3.12 Update refine-release.md - update any CLI references
 - [x] 3.13 Update refine-review.md - update any CLI references
 - [x] 3.14 Update refine-testing.md - update any CLI references
-- [x] 3.15 Update review.md - change to `plx review change --id <id>` syntax
+- [x] 3.15 Update review.md - change to `splx review change --id <id>` syntax
 - [x] 3.16 Update sync-workspace.md - update any CLI references
 - [x] 3.17 Update test.md - update any CLI references
-- [x] 3.18 Update undo-task.md - verify `plx undo task --id <id>` (already correct)
+- [x] 3.18 Update undo-task.md - verify `splx undo task --id <id>` (already correct)
 
 ## Notes
 

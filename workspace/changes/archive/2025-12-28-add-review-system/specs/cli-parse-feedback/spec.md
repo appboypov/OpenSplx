@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The `plx parse feedback` command scans the codebase for inline feedback markers and generates a review entity with trackable tasks.
+The `splx parse feedback` command scans the codebase for inline feedback markers and generates a review entity with trackable tasks.
 
 ## ADDED Requirements
 
@@ -43,7 +43,7 @@ The command SHALL create a review entity from parsed feedback markers.
 
 #### Scenario: Creating review directory structure
 
-- **WHEN** `plx parse feedback <review-name>` is executed
+- **WHEN** `splx parse feedback <review-name>` is executed
 - **THEN** create `workspace/reviews/<review-name>/` directory
 - **AND** create `review.md` with metadata
 - **AND** create `tasks/` directory with generated task files
@@ -76,7 +76,7 @@ The command SHALL prompt for a review name if not provided.
 
 #### Scenario: No review name argument
 
-- **WHEN** `plx parse feedback` is executed without review-name
+- **WHEN** `splx parse feedback` is executed without review-name
 - **THEN** prompt user for a review name
 - **OR** generate default name from timestamp: `review-YYYYMMDD-HHMMSS`
 
@@ -111,11 +111,11 @@ The command SHALL provide clear feedback about the parsing results.
 - **WHEN** parsing completes successfully
 - **THEN** display: "Found N feedback markers in M files."
 - **AND** display: "Created review '<review-name>' with N tasks."
-- **AND** display: "Run 'plx review show <review-name>' to view details."
+- **AND** display: "Run 'splx review show <review-name>' to view details."
 
 #### Scenario: JSON output
 
-- **WHEN** `plx parse feedback <review-name> --json` is executed
+- **WHEN** `splx parse feedback <review-name> --json` is executed
 - **THEN** output JSON object with: reviewId, markersFound, filesScanned, tasksCreated, specImpacts
 
 #### Scenario: No markers found

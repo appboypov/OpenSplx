@@ -26,16 +26,16 @@ Run full test suite and linting to ensure nothing is broken.
 - [ ] `pnpm test` passes
 - [ ] `pnpm lint` passes
 - [ ] `pnpm build` succeeds
-- [ ] `plx validate --all` passes
+- [ ] `splx validate --all` passes
 
 ## Implementation Checklist
 
 - [x] Run `pnpm lint` and fix any issues
 - [x] Run `pnpm build` and verify success
 - [x] Run `pnpm test` and fix any failures (988 tests passing)
-- [x] Run `plx validate --all` and resolve any issues (23 items passed)
-- [x] Test `plx --help` shows updated descriptions
-- [ ] Test `plx view` shows "Pew Pew Plx Dashboard" (skipped - requires interactive terminal)
+- [x] Run `splx validate --all` and resolve any issues (23 items passed)
+- [x] Test `splx --help` shows updated descriptions
+- [ ] Test `splx view` shows "OpenSplx Dashboard" (skipped - requires interactive terminal)
 
 ## Notes
 

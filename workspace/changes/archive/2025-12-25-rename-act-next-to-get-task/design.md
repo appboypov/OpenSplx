@@ -19,9 +19,9 @@ The `act next` command retrieves the next prioritized task from active changes. 
 
 ### Command Structure: Subcommand under `get`
 
-- Decision: `plx get task` as subcommand of `get` parent command
+- Decision: `splx get task` as subcommand of `get` parent command
 - Rationale: Allows future `get <x>` commands (e.g., `get change`, `get spec`)
-- Alternative considered: Standalone `plx task` - rejected to preserve extensibility
+- Alternative considered: Standalone `splx task` - rejected to preserve extensibility
 
 ### Checkbox Completion Logic
 

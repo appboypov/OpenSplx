@@ -60,18 +60,18 @@ describe('Deprecation Warnings', () => {
 
   describe('format', () => {
     it('includes old command name', () => {
-      emitDeprecationWarning('plx show <id>', 'plx get change --id <id>');
+      emitDeprecationWarning('splx show <id>', 'splx get change --id <id>');
 
       expect(consoleErrorSpy).toHaveBeenCalledWith(
-        expect.stringContaining('plx show <id>')
+        expect.stringContaining('splx show <id>')
       );
     });
 
     it('includes new command suggestion', () => {
-      emitDeprecationWarning('plx change <id>', 'plx get change --id <id>');
+      emitDeprecationWarning('splx change <id>', 'splx get change --id <id>');
 
       expect(consoleErrorSpy).toHaveBeenCalledWith(
-        expect.stringContaining('plx get change --id <id>')
+        expect.stringContaining('splx get change --id <id>')
       );
     });
 

@@ -12,108 +12,108 @@ describe('getCommandName', () => {
     process.argv = originalArgv;
   });
 
-  describe('returns plx when invoked via plx', () => {
-    it('should return plx for plx.js', () => {
-      process.argv = ['node', '/path/to/plx.js'];
-      expect(getCommandName()).toBe('plx');
+  describe('returns splx when invoked via splx', () => {
+    it('should return splx for splx.js', () => {
+      process.argv = ['node', '/path/to/splx.js'];
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx for plx (no extension)', () => {
-      process.argv = ['node', '/path/to/plx'];
-      expect(getCommandName()).toBe('plx');
+    it('should return splx for splx (no extension)', () => {
+      process.argv = ['node', '/path/to/splx'];
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx for PLX (uppercase)', () => {
+    it('should return splx for PLX (uppercase)', () => {
       process.argv = ['node', '/path/to/PLX'];
-      expect(getCommandName()).toBe('plx');
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx for Plx (mixed case)', () => {
-      process.argv = ['node', '/path/to/Plx.js'];
-      expect(getCommandName()).toBe('plx');
+    it('should return splx for Splx (mixed case)', () => {
+      process.argv = ['node', '/path/to/Splx.js'];
+      expect(getCommandName()).toBe('splx');
     });
   });
 
   describe('handles Windows extensions', () => {
-    it('should return plx for plx.exe', () => {
-      process.argv = ['node', 'C:\\Program Files\\plx.exe'];
-      expect(getCommandName()).toBe('plx');
+    it('should return splx for splx.exe', () => {
+      process.argv = ['node', 'C:\\Program Files\\splx.exe'];
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx for plx.cmd', () => {
-      process.argv = ['node', 'C:\\path\\plx.cmd'];
-      expect(getCommandName()).toBe('plx');
+    it('should return splx for splx.cmd', () => {
+      process.argv = ['node', 'C:\\path\\splx.cmd'];
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx for plx.bat', () => {
-      process.argv = ['node', 'C:\\path\\plx.bat'];
-      expect(getCommandName()).toBe('plx');
+    it('should return splx for splx.bat', () => {
+      process.argv = ['node', 'C:\\path\\splx.bat'];
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should treat legacy openspec.exe executable as plx (backward compatibility with pre-rebrand name)', () => {
+    it('should treat legacy openspec.exe executable as splx (backward compatibility with pre-rebrand name)', () => {
       process.argv = ['node', 'C:\\Program Files\\openspec.exe'];
-      expect(getCommandName()).toBe('plx');
+      expect(getCommandName()).toBe('splx');
     });
   });
 
   describe('handles Node.js module extensions', () => {
-    it('should return plx for plx.cjs', () => {
-      process.argv = ['node', '/path/to/plx.cjs'];
-      expect(getCommandName()).toBe('plx');
+    it('should return splx for splx.cjs', () => {
+      process.argv = ['node', '/path/to/splx.cjs'];
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx for plx.mjs', () => {
-      process.argv = ['node', '/path/to/plx.mjs'];
-      expect(getCommandName()).toBe('plx');
+    it('should return splx for splx.mjs', () => {
+      process.argv = ['node', '/path/to/splx.mjs'];
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx for plx.ts', () => {
-      process.argv = ['node', '/path/to/plx.ts'];
-      expect(getCommandName()).toBe('plx');
+    it('should return splx for splx.ts', () => {
+      process.argv = ['node', '/path/to/splx.ts'];
+      expect(getCommandName()).toBe('splx');
     });
   });
 
-  describe('defaults to plx', () => {
-    it('should treat legacy openspec.js executable as plx (backward compatibility with pre-rebrand name)', () => {
+  describe('defaults to splx', () => {
+    it('should treat legacy openspec.js executable as splx (backward compatibility with pre-rebrand name)', () => {
       process.argv = ['node', '/path/to/openspec.js'];
-      expect(getCommandName()).toBe('plx');
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx for unknown scripts', () => {
+    it('should return splx for unknown scripts', () => {
       process.argv = ['node', '/path/to/somescript.js'];
-      expect(getCommandName()).toBe('plx');
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx when argv[1] is empty', () => {
+    it('should return splx when argv[1] is empty', () => {
       process.argv = ['node', ''];
-      expect(getCommandName()).toBe('plx');
+      expect(getCommandName()).toBe('splx');
     });
 
-    it('should return plx when argv[1] is undefined', () => {
+    it('should return splx when argv[1] is undefined', () => {
       process.argv = ['node'];
-      expect(getCommandName()).toBe('plx');
+      expect(getCommandName()).toBe('splx');
     });
   });
 
   describe('handles various path formats', () => {
     it('should handle Unix paths', () => {
-      process.argv = ['node', '/usr/local/bin/plx'];
-      expect(getCommandName()).toBe('plx');
+      process.argv = ['node', '/usr/local/bin/splx'];
+      expect(getCommandName()).toBe('splx');
     });
 
     it('should handle Windows paths with backslashes', () => {
-      process.argv = ['node', 'C:\\Users\\test\\node_modules\\.bin\\plx.cmd'];
-      expect(getCommandName()).toBe('plx');
+      process.argv = ['node', 'C:\\Users\\test\\node_modules\\.bin\\splx.cmd'];
+      expect(getCommandName()).toBe('splx');
     });
 
     it('should handle paths with spaces', () => {
-      process.argv = ['node', '/path with spaces/to/plx.js'];
-      expect(getCommandName()).toBe('plx');
+      process.argv = ['node', '/path with spaces/to/splx.js'];
+      expect(getCommandName()).toBe('splx');
     });
 
     it('should handle npx-style paths', () => {
-      process.argv = ['node', '/Users/test/.npm/_npx/12345/node_modules/.bin/plx'];
-      expect(getCommandName()).toBe('plx');
+      process.argv = ['node', '/Users/test/.npm/_npx/12345/node_modules/.bin/splx'];
+      expect(getCommandName()).toBe('splx');
     });
   });
 });

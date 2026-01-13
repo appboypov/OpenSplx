@@ -2,15 +2,15 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 describe('migrate tasks command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-migrate-cmd-tmp');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -32,7 +32,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -83,7 +83,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -116,7 +116,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --dry-run --json`,
+          `node ${splxBin} migrate tasks --dry-run --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -154,7 +154,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -191,7 +191,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -220,7 +220,7 @@ describe('migrate tasks command', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        execSync(`node ${plxBin} migrate tasks --json`, { encoding: 'utf-8' });
+        execSync(`node ${splxBin} migrate tasks --json`, { encoding: 'utf-8' });
 
         const centralTasksDir = path.join(testDir, 'workspace', 'tasks');
         const newTask = path.join(centralTasksDir, '001-my-feature-implement.md');
@@ -246,7 +246,7 @@ describe('migrate tasks command', () => {
       const originalCwd = process.cwd();
       try {
         process.chdir(testDir);
-        execSync(`node ${plxBin} migrate tasks --json`, { encoding: 'utf-8' });
+        execSync(`node ${splxBin} migrate tasks --json`, { encoding: 'utf-8' });
 
         const centralTasksDir = path.join(testDir, 'workspace', 'tasks');
         const newTask = path.join(centralTasksDir, '001-my-feature-implement.md');
@@ -275,7 +275,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);
@@ -296,7 +296,7 @@ describe('migrate tasks command', () => {
       const packageBDir = path.join(testDir, 'packages', 'package-b');
 
       // Set up workspace A
-      await createValidPlxWorkspace(packageADir);
+      await createValidSplxWorkspace(packageADir);
       const changeADir = path.join(packageADir, 'workspace', 'changes', 'feature-a');
       const tasksADir = path.join(changeADir, 'tasks');
       await fs.mkdir(tasksADir, { recursive: true });
@@ -306,7 +306,7 @@ describe('migrate tasks command', () => {
       );
 
       // Set up workspace B
-      await createValidPlxWorkspace(packageBDir);
+      await createValidSplxWorkspace(packageBDir);
       const changeBDir = path.join(packageBDir, 'workspace', 'changes', 'feature-b');
       const tasksBDir = path.join(changeBDir, 'tasks');
       await fs.mkdir(tasksBDir, { recursive: true });
@@ -320,7 +320,7 @@ describe('migrate tasks command', () => {
         // Migrate workspace A
         process.chdir(packageADir);
         const outputA = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const resultA = JSON.parse(outputA);
@@ -338,7 +338,7 @@ describe('migrate tasks command', () => {
         // Migrate workspace B
         process.chdir(packageBDir);
         const outputB = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const resultB = JSON.parse(outputB);
@@ -381,7 +381,7 @@ describe('migrate tasks command', () => {
       try {
         process.chdir(testDir);
         const output = execSync(
-          `node ${plxBin} migrate tasks --json`,
+          `node ${splxBin} migrate tasks --json`,
           { encoding: 'utf-8' }
         );
         const result = JSON.parse(output);

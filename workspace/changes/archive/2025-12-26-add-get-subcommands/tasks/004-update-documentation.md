@@ -27,11 +27,11 @@ The AGENTS.md template includes documentation for all new get commands so AI age
 
 ## Acceptance Criteria
 
-- [x] `plx get task`, `get change`, `get spec`, `get tasks` documented
+- [x] `splx get task`, `get change`, `get spec`, `get tasks` documented
 - [x] Filter flags (`--constraints`, `--acceptance-criteria`) explained
 - [x] Usage examples included
-- [x] `plx init` creates AGENTS.md with new commands
-- [x] `plx update` updates existing projects
+- [x] `splx init` creates AGENTS.md with new commands
+- [x] `splx update` updates existing projects
 
 ## Implementation Checklist
 
@@ -40,9 +40,9 @@ The AGENTS.md template includes documentation for all new get commands so AI age
 - [x] 4.3 Add get spec command documentation
 - [x] 4.4 Add get tasks command documentation
 - [x] 4.5 Add usage examples for common workflows
-- [x] 4.6 Test with fresh `plx init` project
-- [x] 4.7 Test with `plx update` on existing project
+- [x] 4.6 Test with fresh `splx init` project
+- [x] 4.7 Test with `splx update` on existing project
 
 ## Notes
 
-Add after the existing `plx list` documentation in CLI Commands section.
+Add after the existing `splx list` documentation in CLI Commands section.

@@ -20,7 +20,7 @@
 ## 3. New Top-level `validate` Command
 - [x] 3.1 Add `validate` command in `src/cli/index.ts`
   - Options: `--all`, `--changes`, `--specs`, `--type <change|spec>`, `--strict`, `--json`, `--no-interactive`
-  - Usage: `plx validate [item-name]`
+  - Usage: `splx validate [item-name]`
 - [x] 3.2 Create `src/commands/validate.ts` implementing:
   - [x] 3.2.1 Interactive selector when no args (choices: All, Changes, Specs, Specific item)
   - [x] 3.2.2 Non-interactive fallback with helpful hint and exit code 1
@@ -74,8 +74,8 @@
 - [x] 9.3 Maintain existing behavior for unaffected commands
 
 ## 10. Acceptance Criteria Mapping
-- [x] AC-1: `plx change validate` interactive selection when no arg (TTY only; respects `--no-interactive`/env) — matches cli-change spec
-- [x] AC-2: `plx spec validate` interactive selection when no arg (TTY only; respects `--no-interactive`/env) — matches cli-spec spec
-- [x] AC-3: New `plx validate` supports interactive selection, bulk/filtered validation, JSON schema, progress, concurrency, exit codes — matches cli-validate spec
+- [x] AC-1: `splx change validate` interactive selection when no arg (TTY only; respects `--no-interactive`/env) — matches cli-change spec
+- [x] AC-2: `splx spec validate` interactive selection when no arg (TTY only; respects `--no-interactive`/env) — matches cli-spec spec
+- [x] AC-3: New `splx validate` supports interactive selection, bulk/filtered validation, JSON schema, progress, concurrency, exit codes — matches cli-validate spec
 
 

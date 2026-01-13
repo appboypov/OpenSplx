@@ -11,11 +11,11 @@ import {
 export class ListCommand {
   async execute(targetPath: string = '.', mode: 'changes' | 'specs' | 'reviews' = 'changes'): Promise<void> {
     if (mode === 'changes') {
-      emitDeprecationWarning('plx list', 'plx get changes');
+      emitDeprecationWarning('splx list', 'splx get changes');
     } else if (mode === 'specs') {
-      emitDeprecationWarning('plx list --specs', 'plx get specs');
+      emitDeprecationWarning('splx list --specs', 'splx get specs');
     } else if (mode === 'reviews') {
-      emitDeprecationWarning('plx list --reviews', 'plx get reviews');
+      emitDeprecationWarning('splx list --reviews', 'splx get reviews');
     }
     const resolvedPath = path.resolve(targetPath);
     const entityListingService = await EntityListingService.create(resolvedPath);

@@ -28,7 +28,7 @@ All changes reviewed for:
 - [ ] `npm run build` succeeds
 
 ## Implementation Checklist
-- [x] 8.1 Verify all PLX files deleted (search for `plx-` in slash dir)
+- [x] 8.1 Verify all PLX files deleted (search for `splx-` in slash dir)
 - [x] 8.2 Verify no dangling imports (run build)
 - [x] 8.3 Verify SlashCommandId has exactly 13 members
 - [x] 8.4 Verify ALL_COMMANDS has exactly 13 entries

@@ -3,7 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { platform } from 'os';
-import { createValidPlxWorkspace } from '../test-utils.js';
+import { createValidSplxWorkspace } from '../test-utils.js';
 
 const isMacOS = platform() === 'darwin';
 
@@ -11,10 +11,10 @@ describe.skipIf(!isMacOS)('paste request command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-paste-request-tmp');
   const draftsDir = path.join(testDir, 'workspace', 'drafts');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -30,7 +30,7 @@ describe.skipIf(!isMacOS)('paste request command', () => {
       execSync('echo "test request content" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste request --json`,
+        `node ${splxBin} paste request --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -62,7 +62,7 @@ describe.skipIf(!isMacOS)('paste request command', () => {
       execSync('echo "new request" | pbcopy');
 
       execSync(
-        `node ${plxBin} paste request`,
+        `node ${splxBin} paste request`,
         { encoding: 'utf-8' }
       );
 
@@ -96,7 +96,7 @@ describe.skipIf(!isMacOS)('paste request command', () => {
       execSync('echo "new content" | pbcopy');
 
       execSync(
-        `node ${plxBin} paste request`,
+        `node ${splxBin} paste request`,
         { encoding: 'utf-8' }
       );
 
@@ -120,7 +120,7 @@ describe.skipIf(!isMacOS)('paste request command', () => {
       execSync('echo "json test" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste request --json`,
+        `node ${splxBin} paste request --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -145,7 +145,7 @@ describe.skipIf(!isMacOS)('paste request command', () => {
       execSync('pbcopy < /dev/null');
 
       const result = execSync(
-        `node ${plxBin} paste request --json 2>&1 || true`,
+        `node ${splxBin} paste request --json 2>&1 || true`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(result.trim());
@@ -159,10 +159,10 @@ describe.skipIf(!isMacOS)('paste request command', () => {
 describe.skipIf(!isMacOS)('paste task command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-paste-task-tmp');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -188,7 +188,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       execSync('echo "Implement user authentication\nAdd login and signup forms" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste task --parent-id test-change --json`,
+        `node ${splxBin} paste task --parent-id test-change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -234,7 +234,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       execSync('echo "Add new feature" | pbcopy');
 
       execSync(
-        `node ${plxBin} paste task --parent-id test-change`,
+        `node ${splxBin} paste task --parent-id test-change`,
         { encoding: 'utf-8' }
       );
 
@@ -267,7 +267,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       execSync('echo "Complex refactoring task" | pbcopy');
 
       execSync(
-        `node ${plxBin} paste task --parent-id test-change --skill-level senior`,
+        `node ${splxBin} paste task --parent-id test-change --skill-level senior`,
         { encoding: 'utf-8' }
       );
 
@@ -290,7 +290,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       execSync('echo "Some task" | pbcopy');
 
       const result = execSync(
-        `node ${plxBin} paste task --parent-id nonexistent --json 2>&1 || true`,
+        `node ${splxBin} paste task --parent-id nonexistent --json 2>&1 || true`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(result.trim());
@@ -320,7 +320,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       execSync('pbcopy < /dev/null');
 
       const result = execSync(
-        `node ${plxBin} paste task --parent-id test-change --json 2>&1 || true`,
+        `node ${splxBin} paste task --parent-id test-change --json 2>&1 || true`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(result.trim());
@@ -350,7 +350,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       execSync('echo "Task title" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste task --parent-id test-change --json`,
+        `node ${splxBin} paste task --parent-id test-change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -387,7 +387,7 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       execSync('echo "Some task" | pbcopy');
 
       const result = execSync(
-        `node ${plxBin} paste task --parent-id test-spec --json 2>&1 || true`,
+        `node ${splxBin} paste task --parent-id test-spec --json 2>&1 || true`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(result.trim());
@@ -416,14 +416,14 @@ describe.skipIf(!isMacOS)('paste task command', () => {
       // Create first task
       execSync('echo "First task" | pbcopy');
       execSync(
-        `node ${plxBin} paste task --parent-id test-change`,
+        `node ${splxBin} paste task --parent-id test-change`,
         { encoding: 'utf-8' }
       );
 
       // Create second task
       execSync('echo "Second task" | pbcopy');
       const output = execSync(
-        `node ${plxBin} paste task --parent-id test-change --json`,
+        `node ${splxBin} paste task --parent-id test-change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -445,10 +445,10 @@ describe.skipIf(!isMacOS)('paste task command', () => {
 describe.skipIf(!isMacOS)('paste change command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-paste-change-tmp');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -464,7 +464,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
       execSync('echo "Add user authentication feature\nImplement login and signup" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste change --json`,
+        `node ${splxBin} paste change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -502,7 +502,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
         execSync(`echo "${verb} feature name" | pbcopy`);
 
         const output = execSync(
-          `node ${plxBin} paste change --json`,
+          `node ${splxBin} paste change --json`,
           { encoding: 'utf-8' }
         );
         const json = JSON.parse(output);
@@ -523,7 +523,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
       execSync('echo "Some random feature name" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste change --json`,
+        `node ${splxBin} paste change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -544,7 +544,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
 
       // Create first change
       const output1 = execSync(
-        `node ${plxBin} paste change --json`,
+        `node ${splxBin} paste change --json`,
         { encoding: 'utf-8' }
       );
       const json1 = JSON.parse(output1);
@@ -553,7 +553,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
       // Create duplicate
       execSync('echo "Add feature" | pbcopy');
       const output2 = execSync(
-        `node ${plxBin} paste change --json`,
+        `node ${splxBin} paste change --json`,
         { encoding: 'utf-8' }
       );
       const json2 = JSON.parse(output2);
@@ -562,7 +562,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
       // Create another duplicate
       execSync('echo "Add feature" | pbcopy');
       const output3 = execSync(
-        `node ${plxBin} paste change --json`,
+        `node ${splxBin} paste change --json`,
         { encoding: 'utf-8' }
       );
       const json3 = JSON.parse(output3);
@@ -581,7 +581,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
       execSync(`echo "${clipboardContent}" | pbcopy`);
 
       execSync(
-        `node ${plxBin} paste change`,
+        `node ${splxBin} paste change`,
         { encoding: 'utf-8' }
       );
 
@@ -611,7 +611,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
       execSync('echo "Add feature" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste change --json`,
+        `node ${splxBin} paste change --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -636,7 +636,7 @@ describe.skipIf(!isMacOS)('paste change command', () => {
       execSync('pbcopy < /dev/null');
 
       const result = execSync(
-        `node ${plxBin} paste change --json 2>&1 || true`,
+        `node ${splxBin} paste change --json 2>&1 || true`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(result.trim());
@@ -651,10 +651,10 @@ describe.skipIf(!isMacOS)('paste change command', () => {
 describe.skipIf(!isMacOS)('paste spec command', () => {
   const projectRoot = process.cwd();
   const testDir = path.join(projectRoot, 'test-paste-spec-tmp');
-  const plxBin = path.join(projectRoot, 'bin', 'plx.js');
+  const splxBin = path.join(projectRoot, 'bin', 'splx.js');
 
   beforeEach(async () => {
-    await createValidPlxWorkspace(testDir);
+    await createValidSplxWorkspace(testDir);
   });
 
   afterEach(async () => {
@@ -670,7 +670,7 @@ describe.skipIf(!isMacOS)('paste spec command', () => {
       execSync('echo "User authentication specification\nThe system SHALL support login" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste spec --json`,
+        `node ${splxBin} paste spec --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -705,7 +705,7 @@ describe.skipIf(!isMacOS)('paste spec command', () => {
       execSync('echo "User Authentication & Authorization System!" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste spec --json`,
+        `node ${splxBin} paste spec --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -724,14 +724,14 @@ describe.skipIf(!isMacOS)('paste spec command', () => {
       // Create first spec
       execSync('echo "Authentication spec" | pbcopy');
       execSync(
-        `node ${plxBin} paste spec`,
+        `node ${splxBin} paste spec`,
         { encoding: 'utf-8' }
       );
 
       // Try to create duplicate
       execSync('echo "Authentication spec" | pbcopy');
       const result = execSync(
-        `node ${plxBin} paste spec --json 2>&1 || true`,
+        `node ${splxBin} paste spec --json 2>&1 || true`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(result.trim());
@@ -751,7 +751,7 @@ describe.skipIf(!isMacOS)('paste spec command', () => {
       execSync(`echo "${clipboardContent}" | pbcopy`);
 
       execSync(
-        `node ${plxBin} paste spec`,
+        `node ${splxBin} paste spec`,
         { encoding: 'utf-8' }
       );
 
@@ -781,7 +781,7 @@ describe.skipIf(!isMacOS)('paste spec command', () => {
       execSync('echo "Test spec" | pbcopy');
 
       const output = execSync(
-        `node ${plxBin} paste spec --json`,
+        `node ${splxBin} paste spec --json`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(output);
@@ -806,7 +806,7 @@ describe.skipIf(!isMacOS)('paste spec command', () => {
       execSync('pbcopy < /dev/null');
 
       const result = execSync(
-        `node ${plxBin} paste spec --json 2>&1 || true`,
+        `node ${splxBin} paste spec --json 2>&1 || true`,
         { encoding: 'utf-8' }
       );
       const json = JSON.parse(result.trim());

@@ -17,7 +17,7 @@ Task prioritization considers parent entity completion status using frontmatter 
 ## Should
 - Task prioritization supports all parent types (change, review, spec)
 - Completion percentage calculated per parent entity
-- `plx get task` without filters returns next task from highest-priority parent
+- `splx get task` without filters returns next task from highest-priority parent
 - Standalone tasks are deprioritized (no parent = lower priority)
 
 ## Constraints
@@ -29,7 +29,7 @@ Task prioritization considers parent entity completion status using frontmatter 
 - [x] Prioritization calculates completion per parent entity
 - [x] All parent types (change, review, spec) are considered
 - [x] Standalone tasks appear after parented tasks
-- [x] `plx get task` returns expected next task based on prioritization
+- [x] `splx get task` returns expected next task based on prioritization
 
 ## Implementation Checklist
 - [x] 3.1 Refactor `src/utils/change-prioritization.ts`:

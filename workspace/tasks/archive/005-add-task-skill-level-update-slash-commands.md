@@ -8,17 +8,17 @@ parent-id: add-task-skill-level
 
 ## End Goal
 
-The plx/orchestrate and plx/plan-proposal slash commands include skill-level guidance for model selection and auto-assignment.
+The splx/orchestrate and splx/plan-proposal slash commands include skill-level guidance for model selection and auto-assignment.
 
 ## Currently
 
-- plx/orchestrate does not mention model selection based on task complexity
-- plx/plan-proposal does not instruct to assign skill levels to tasks
+- splx/orchestrate does not mention model selection based on task complexity
+- splx/plan-proposal does not instruct to assign skill levels to tasks
 
 ## Should
 
-- plx/orchestrate includes model selection guidance based on skill-level
-- plx/plan-proposal includes instruction to auto-assign skill levels
+- splx/orchestrate includes model selection guidance based on skill-level
+- splx/plan-proposal includes instruction to auto-assign skill levels
 - Both include the Claude model mapping and non-Claude fallback guidance
 
 ## Constraints

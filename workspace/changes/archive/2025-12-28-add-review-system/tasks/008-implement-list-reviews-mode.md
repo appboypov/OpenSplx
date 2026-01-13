@@ -6,11 +6,11 @@ status: done
 
 ## End Goal
 
-Add `--reviews` flag to `plx list` command to list active reviews alongside changes and specs.
+Add `--reviews` flag to `splx list` command to list active reviews alongside changes and specs.
 
 ## Currently
 
-`plx list` supports `--changes` (default) and `--specs` flags.
+`splx list` supports `--changes` (default) and `--specs` flags.
 
 ## Should
 
@@ -27,7 +27,7 @@ Modify `/src/core/list.ts` to:
 
 ## Acceptance Criteria
 
-- [ ] `plx list --reviews` shows active reviews
+- [ ] `splx list --reviews` shows active reviews
 - [ ] Output shows review name, target type, task progress
 - [ ] Empty state shows "No active reviews found."
 - [ ] Existing --changes and --specs continue to work

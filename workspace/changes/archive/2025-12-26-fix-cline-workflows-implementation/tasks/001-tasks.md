@@ -1,5 +1,5 @@
 ## 1. Update ClineSlashCommandConfigurator
-- [x] Change FILE_PATHS in `src/core/configurators/slash/cline.ts` from `.clinerules/plx-*.md` to `.clinerules/workflows/plx-*.md`
+- [x] Change FILE_PATHS in `src/core/configurators/slash/cline.ts` from `.clinerules/splx-*.md` to `.clinerules/workflows/splx-*.md`
 
 ## 2. Update Tests
 - [x] Update "should refresh existing Cline rule files" test in `test/core/update.test.ts` to use workflow paths

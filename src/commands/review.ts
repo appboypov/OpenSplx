@@ -200,13 +200,13 @@ export class ReviewCommand {
       } else {
         if (options.json) {
           console.log(
-            JSON.stringify({ error: 'Specify what to review: plx review change --id <id>, plx review spec --id <id>, or plx review task --id <id>' })
+            JSON.stringify({ error: 'Specify what to review: splx review change --id <id>, splx review spec --id <id>, or splx review task --id <id>' })
           );
         } else {
           ora().fail('Specify what to review');
-          console.log(chalk.dim('  Usage: plx review change --id <id>'));
-          console.log(chalk.dim('         plx review spec --id <id>'));
-          console.log(chalk.dim('         plx review task --id <id>'));
+          console.log(chalk.dim('  Usage: splx review change --id <id>'));
+          console.log(chalk.dim('         splx review spec --id <id>'));
+          console.log(chalk.dim('         splx review task --id <id>'));
         }
         process.exitCode = 1;
         return;
@@ -296,7 +296,7 @@ export class ReviewCommand {
       console.log(content);
       console.log();
     } catch {
-      console.log(chalk.dim('No REVIEW.md found. Create one with: plx refine-review\n'));
+      console.log(chalk.dim('No REVIEW.md found. Create one with: splx refine-review\n'));
     }
 
     // Output parent documents
@@ -312,7 +312,7 @@ export class ReviewCommand {
     console.log(chalk.cyan('\n═══ Next Steps ═══\n'));
     console.log(chalk.dim('1. Review the implementation against the requirements above'));
     console.log(chalk.dim('2. Add feedback markers in code: // #FEEDBACK #TODO | {feedback}'));
-    console.log(chalk.dim(`3. Parse feedback: plx parse feedback <review-name> --${parentType}-id ${parentId}`));
+    console.log(chalk.dim(`3. Parse feedback: splx parse feedback <review-name> --${parentType}-id ${parentId}`));
   }
 
   private async addChangeDocuments(

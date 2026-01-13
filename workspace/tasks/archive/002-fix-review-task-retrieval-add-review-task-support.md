@@ -7,7 +7,7 @@ parent-id: fix-review-task-retrieval
 
 ## End Goal
 
-`ItemRetrievalService` searches both `workspace/changes` and `workspace/reviews` for task retrieval, enabling `plx get tasks --id <review-id>` and `plx get task --id <review-id>/<task-id>` to work with reviews.
+`ItemRetrievalService` searches both `workspace/changes` and `workspace/reviews` for task retrieval, enabling `splx get tasks --id <review-id>` and `splx get task --id <review-id>/<task-id>` to work with reviews.
 
 ## Currently
 
@@ -33,9 +33,9 @@ parent-id: fix-review-task-retrieval
 
 ## Acceptance Criteria
 
-- [x] `plx get tasks --id <review-id>` lists tasks from the review
-- [x] `plx get task --id <review-id>/<task-id>` retrieves the specific review task
-- [x] `plx get task` includes review tasks in prioritization workflow
+- [x] `splx get tasks --id <review-id>` lists tasks from the review
+- [x] `splx get task --id <review-id>/<task-id>` retrieves the specific review task
+- [x] `splx get task` includes review tasks in prioritization workflow
 - [x] Short task ID format (just `001-fix`) searches both changes and reviews
 
 ## Implementation Checklist

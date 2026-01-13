@@ -9,7 +9,7 @@ parent-id: fix-view-command-task-progress
 
 ## End Goal
 
-`plx view` correctly displays change progress using centralized task storage (`workspace/tasks/`) instead of legacy per-change task directories.
+`splx view` correctly displays change progress using centralized task storage (`workspace/tasks/`) instead of legacy per-change task directories.
 
 ## Currently
 
@@ -36,7 +36,7 @@ This causes all changes to appear as "completed" since tasks are now in `workspa
 
 ## Acceptance Criteria
 
-- [ ] `plx view` shows changes with tasks linked via `parent-id` as "active" with correct progress
+- [ ] `splx view` shows changes with tasks linked via `parent-id` as "active" with correct progress
 - [ ] Changes without `proposal.md` are excluded from display
 - [ ] Changes with all tasks done show as "completed"
 - [ ] Changes with 0 linked tasks show as "completed" (matches current intended behavior)

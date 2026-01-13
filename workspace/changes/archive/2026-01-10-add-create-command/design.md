@@ -1,6 +1,6 @@
 ## Context
 
-The `plx create` command introduces a unified entity creation interface. The command must support:
+The `splx create` command introduces a unified entity creation interface. The command must support:
 - Standalone tasks (no parent)
 - Parented tasks (linked to change, review, or spec)
 - Change proposal scaffolding
@@ -19,16 +19,16 @@ This change depends on `standardize-cli-pattern` which establishes the `--parent
 
 **Non-Goals:**
 - Centralized task storage (separate proposal)
-- Clipboard-based creation (`plx paste` - separate proposal)
+- Clipboard-based creation (`splx paste` - separate proposal)
 - Migration of existing entities
 - Task numbering logic (uses existing utilities where available)
 
 ## Decisions
 
 ### Decision 1: Command Structure
-Use subcommand pattern: `plx create {entity} "content"` rather than flags for entity type.
+Use subcommand pattern: `splx create {entity} "content"` rather than flags for entity type.
 
-**Rationale:** Matches existing PLX patterns (`plx get task`, `plx complete task`). More readable and discoverable than `plx create --type task --content "Title"`.
+**Rationale:** Matches existing PLX patterns (`splx get task`, `splx complete task`). More readable and discoverable than `splx create --type task --content "Title"`.
 
 ### Decision 2: Positional Content Argument
 Content/title is a required positional argument after the entity type.
@@ -40,7 +40,7 @@ Create dedicated template files for each entity type returning structured conten
 
 **Rationale:**
 - Separates content generation from command logic
-- Enables reuse by `plx paste` command (future)
+- Enables reuse by `splx paste` command (future)
 - Follows existing template patterns (`architecture-template.ts`, `review-template.ts`)
 
 ### Decision 4: Parent Resolution
@@ -53,7 +53,7 @@ When `--parent-id` is provided without `--parent-type`:
 **Rationale:** Reduces friction for common case (unique IDs) while handling edge cases safely.
 
 ### Decision 5: Change and Spec Scaffolding
-`plx create change` and `plx create spec` scaffold directory structures, not just files.
+`splx create change` and `splx create spec` scaffold directory structures, not just files.
 
 - Change: `workspace/changes/{id}/proposal.md`, `workspace/changes/{id}/tasks/`, `workspace/changes/{id}/specs/`
 - Spec: `workspace/specs/{id}/spec.md`
@@ -61,9 +61,9 @@ When `--parent-id` is provided without `--parent-type`:
 **Rationale:** Creates fully valid entities ready for editing. Follows existing directory conventions.
 
 ### Decision 6: Request Location
-`plx create request` creates file at `workspace/changes/{id}/request.md` where `{id}` is derived from slugified description.
+`splx create request` creates file at `workspace/changes/{id}/request.md` where `{id}` is derived from slugified description.
 
-**Rationale:** Matches `plx/plan-request` command output location. Request is pre-proposal artifact tied to future change.
+**Rationale:** Matches `splx/plan-request` command output location. Request is pre-proposal artifact tied to future change.
 
 ## Risks / Trade-offs
 

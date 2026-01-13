@@ -2,13 +2,13 @@
 
 ## Why
 
-After running `plx parse feedback <review-name> --change-id <change-id>`, review tasks are created in `workspace/reviews/<review-id>/tasks/` but cannot be retrieved via `plx get tasks --id <review-id>` or `plx get task --id <review-id>/<task-id>`. The `ItemRetrievalService` only searches `workspace/changes`, ignoring reviews entirely. Additionally, `plx list` fails with "No PLX changes directory found" due to a path resolution bug.
+After running `splx parse feedback <review-name> --change-id <change-id>`, review tasks are created in `workspace/reviews/<review-id>/tasks/` but cannot be retrieved via `splx get tasks --id <review-id>` or `splx get task --id <review-id>/<task-id>`. The `ItemRetrievalService` only searches `workspace/changes`, ignoring reviews entirely. Additionally, `splx list` fails with "No PLX changes directory found" due to a path resolution bug.
 
 ## What Changes
 
 - **ItemRetrievalService**: Extend to search both `workspace/changes` AND `workspace/reviews` for task retrieval
 - **ListCommand**: Fix path resolution by using `path.resolve()` on the `targetPath` parameter
-- **Task prioritization**: Include review tasks in `plx get task` workflow via `getAllOpenTasks()`
+- **Task prioritization**: Include review tasks in `splx get task` workflow via `getAllOpenTasks()`
 
 ## Impact
 

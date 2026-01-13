@@ -7,7 +7,7 @@ parent-id: rename-apply-to-implement
 
 ## End Goal
 
-The `slash-command-templates.ts` file uses `implement` instead of `apply` with updated workflow steps that use `plx get task`.
+The `slash-command-templates.ts` file uses `implement` instead of `apply` with updated workflow steps that use `splx get task`.
 
 ## Currently
 
@@ -16,7 +16,7 @@ The template defines `SlashCommandId` with `'apply'` and `applySteps` that instr
 ## Should
 
 - `SlashCommandId` type includes `'implement'` instead of `'apply'`
-- `implementSteps` replaces `applySteps` with steps using `plx get task` workflow
+- `implementSteps` replaces `applySteps` with steps using `splx get task` workflow
 - `slashCommandBodies` record uses `implement` key instead of `apply`
 - `getSlashCommandBody` function returns body for `'implement'`
 
@@ -29,7 +29,7 @@ The template defines `SlashCommandId` with `'apply'` and `applySteps` that instr
 ## Acceptance Criteria
 
 - [x] `SlashCommandId` type changed from `'apply'` to `'implement'`
-- [x] Template body uses `plx get task` command
+- [x] Template body uses `splx get task` command
 - [x] Template body supports `--id <task-id>` flag for specific task
 - [x] Template body does not reference manual task file scanning
 - [x] Template body says "Run implement again" not "Run apply again"
@@ -49,11 +49,11 @@ The new `implementSteps` content:
 ```typescript
 const implementSteps = `**Steps**
 Track these steps as TODOs and complete them one by one.
-1. Get the next task using \`plx get task\`:
-   - Run \`plx get task\` to retrieve the next prioritized task (includes proposal and design context)
-   - If user specified a task ID in ARGUMENTS, use \`plx get task --id <task-id>\` instead
+1. Get the next task using \`splx get task\`:
+   - Run \`splx get task\` to retrieve the next prioritized task (includes proposal and design context)
+   - If user specified a task ID in ARGUMENTS, use \`splx get task --id <task-id>\` instead
 2. Work through that task's Implementation Checklist, keeping edits minimal.
 3. Mark items complete (\`[x]\`) in that task file only.
-4. Reference \`plx list\` or \`plx show <item>\` when additional context is required.
+4. Reference \`splx list\` or \`splx show <item>\` when additional context is required.
 5. Run implement again in a new conversation for the next task.`;
 ```

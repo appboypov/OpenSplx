@@ -20,7 +20,7 @@
 - [x] Update any example workflows that use diff command
 
 ## 5. Update Related Files
-- [x] Search and update any remaining references to "plx diff" in:
+- [x] Search and update any remaining references to "splx diff" in:
   - Template files
   - Test files (if any exist for diff command)
   - Archive documentation
@@ -32,6 +32,6 @@
 - [x] Test that show command provides adequate replacement functionality
 
 ## 8. Documentation of Alternative Workflows
-- [x] Document how to use `plx show` for viewing changes
+- [x] Document how to use `splx show` for viewing changes
 - [x] Document how to use git diff for file comparisons
 - [x] Add migration guide to help text or documentation

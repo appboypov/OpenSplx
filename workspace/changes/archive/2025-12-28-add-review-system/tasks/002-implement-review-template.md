@@ -6,7 +6,7 @@ status: done
 
 ## End Goal
 
-A REVIEW.md template that is created at project root during `plx init` and `plx update` (if not exists), containing meta-instructions for writing project-specific review guidelines.
+A REVIEW.md template that is created at project root during `splx init` and `splx update` (if not exists), containing meta-instructions for writing project-specific review guidelines.
 
 ## Currently
 
@@ -28,8 +28,8 @@ No REVIEW.md template exists. Only ARCHITECTURE.md is created during init.
 
 ## Acceptance Criteria
 
-- [ ] REVIEW.md created during `plx init` if not exists
-- [ ] REVIEW.md created during `plx update` if not exists
+- [ ] REVIEW.md created during `splx init` if not exists
+- [ ] REVIEW.md created during `splx update` if not exists
 - [ ] Existing REVIEW.md is not overwritten
 - [ ] Template contains Purpose section
 - [ ] Template contains Review Types section

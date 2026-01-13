@@ -2,7 +2,7 @@
 The project root currently receives a full copy of the PLX agent instructions, duplicating the content that also lives in `workspace/AGENTS.md`. When teams edit one copy but not the other, the files drift and onboarding assistants see conflicting guidance.
 
 ## What Changes
-- Keep generating the complete template in `workspace/AGENTS.md` during `plx init` and follow-up updates.
+- Keep generating the complete template in `workspace/AGENTS.md` during `splx init` and follow-up updates.
 - Replace the root-level file (`AGENTS.md` or `CLAUDE.md`, depending on tool selection) with a short hand-off that explains the project uses PLX and points directly to `workspace/AGENTS.md`.
 - Add a dedicated stub template so both the init and update flows reuse the same minimal copy instructions.
 - Update CLI tests and documentation to reflect the new root-level messaging and ensure the PLX marker block still protects future updates.

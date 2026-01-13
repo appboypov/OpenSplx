@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The `plx completion` command SHALL provide shell completion functionality for all PLX CLI commands, flags, and dynamic values (change IDs, spec IDs), with support for Zsh (including Oh My Zsh) and a scalable architecture ready for future shells (bash, fish, PowerShell). The completion system SHALL integrate with Zsh's native completion behavior rather than attempting to customize the user experience.
+The `splx completion` command SHALL provide shell completion functionality for all PLX CLI commands, flags, and dynamic values (change IDs, spec IDs), with support for Zsh (including Oh My Zsh) and a scalable architecture ready for future shells (bash, fish, PowerShell). The completion system SHALL integrate with Zsh's native completion behavior rather than attempting to customize the user experience.
 
 ## ADDED Requirements
 
@@ -31,7 +31,7 @@ The completion command SHALL follow a subcommand pattern for generating and mana
 
 #### Scenario: Available subcommands
 
-- **WHEN** user executes `plx completion --help`
+- **WHEN** user executes `splx completion --help`
 - **THEN** display available subcommands:
   - `zsh` - Generate Zsh completion script
   - `install [shell]` - Install completion for Zsh (auto-detects or requires explicit shell)
@@ -60,7 +60,7 @@ The completion command SHALL generate Zsh completion scripts on demand.
 
 #### Scenario: Generating Zsh completion
 
-- **WHEN** user executes `plx completion zsh`
+- **WHEN** user executes `splx completion zsh`
 - **THEN** output a complete Zsh completion script to stdout
 - **AND** include completions for all commands: init, list, show, validate, archive, view, update, change, spec, completion
 - **AND** include all command-specific flags and options
@@ -105,25 +105,25 @@ The completion command SHALL automatically install completion scripts into shell
 
 #### Scenario: Installing for Oh My Zsh
 
-- **WHEN** user executes `plx completion install zsh`
+- **WHEN** user executes `splx completion install zsh`
 - **THEN** detect if Oh My Zsh is installed by checking for `$ZSH` environment variable or `~/.oh-my-zsh/` directory
 - **AND** create custom completions directory at `~/.oh-my-zsh/custom/completions/` if it doesn't exist
-- **AND** write completion script to `~/.oh-my-zsh/custom/completions/_plx`
+- **AND** write completion script to `~/.oh-my-zsh/custom/completions/_splx`
 - **AND** ensure `~/.oh-my-zsh/custom/completions` is in `$fpath` by updating `~/.zshrc` if needed
 - **AND** display success message with instruction to run `exec zsh` or restart terminal
 
 #### Scenario: Installing for standard Zsh
 
-- **WHEN** user executes `plx completion install zsh` and Oh My Zsh is not detected
+- **WHEN** user executes `splx completion install zsh` and Oh My Zsh is not detected
 - **THEN** create completions directory at `~/.zsh/completions/` if it doesn't exist
-- **AND** write completion script to `~/.zsh/completions/_plx`
+- **AND** write completion script to `~/.zsh/completions/_splx`
 - **AND** add `fpath=(~/.zsh/completions $fpath)` to `~/.zshrc` if not already present
 - **AND** add `autoload -Uz compinit && compinit` to `~/.zshrc` if not already present
 - **AND** display success message with instruction to run `exec zsh` or restart terminal
 
 #### Scenario: Auto-detecting Zsh for installation
 
-- **WHEN** user executes `plx completion install` without specifying a shell
+- **WHEN** user executes `splx completion install` without specifying a shell
 - **THEN** detect current shell using shell detection logic
 - **AND** install completion if detected shell is Zsh
 - **AND** throw error if detected shell is not Zsh
@@ -142,15 +142,15 @@ The completion command SHALL remove installed completion scripts and configurati
 
 #### Scenario: Uninstalling Oh My Zsh completion
 
-- **WHEN** user executes `plx completion uninstall zsh`
-- **THEN** remove `~/.oh-my-zsh/custom/completions/_plx` if Oh My Zsh is detected
-- **AND** remove `~/.zsh/completions/_plx` if standard Zsh setup is detected
+- **WHEN** user executes `splx completion uninstall zsh`
+- **THEN** remove `~/.oh-my-zsh/custom/completions/_splx` if Oh My Zsh is detected
+- **AND** remove `~/.zsh/completions/_splx` if standard Zsh setup is detected
 - **AND** optionally remove fpath modifications from `~/.zshrc` (with confirmation)
 - **AND** display success message
 
 #### Scenario: Auto-detecting Zsh for uninstallation
 
-- **WHEN** user executes `plx completion uninstall` without specifying a shell
+- **WHEN** user executes `splx completion uninstall` without specifying a shell
 - **THEN** detect current shell and uninstall completion if shell is Zsh
 - **AND** throw error if detected shell is not Zsh
 
@@ -229,8 +229,8 @@ The completion command SHALL provide clear error messages for common failure sce
 
 #### Scenario: Shell not detected
 
-- **WHEN** `plx completion install` cannot detect current shell or detects non-Zsh shell
-- **THEN** display error: "Could not detect Zsh. Please specify explicitly: plx completion install zsh"
+- **WHEN** `splx completion install` cannot detect current shell or detects non-Zsh shell
+- **THEN** display error: "Could not detect Zsh. Please specify explicitly: splx completion install zsh"
 - **AND** exit with code 1
 
 ### Requirement: Output Format
@@ -241,7 +241,7 @@ The completion command SHALL provide machine-parseable and human-readable output
 
 - **WHEN** generating completion script to stdout
 - **THEN** output only the completion script content (no extra messages)
-- **AND** allow redirection to files: `plx completion zsh > /path/to/_plx`
+- **AND** allow redirection to files: `splx completion zsh > /path/to/_splx`
 
 #### Scenario: Installation success output
 

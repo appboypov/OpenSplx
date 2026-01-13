@@ -6,7 +6,7 @@ The show command SHALL support various output formats consistent with existing c
 
 #### Scenario: JSON output
 
-- **WHEN** executing `plx show <item> --json`
+- **WHEN** executing `splx show <item> --json`
 - **THEN** output the item in JSON format
 - **AND** include parsed metadata and structure
 - **AND** include `trackedIssues` array if present in frontmatter

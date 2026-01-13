@@ -10,12 +10,12 @@ The init command SHALL generate slash command files for supported editors using 
 
 #### Scenario: Generating slash commands for Cursor
 - **WHEN** the user selects Cursor during initialization
-- **THEN** create `.cursor/commands/plx-proposal.md`, `.cursor/commands/plx-apply.md`, and `.cursor/commands/plx-archive.md`
+- **THEN** create `.cursor/commands/splx-proposal.md`, `.cursor/commands/splx-apply.md`, and `.cursor/commands/splx-archive.md`
 - **AND** populate each file from shared templates so command text matches other tools
 - **AND** each template includes instructions for the relevant PLX workflow stage
 
 #### Scenario: Generating slash commands for OpenCode
 - **WHEN** the user selects OpenCode during initialization
-- **THEN** create `.opencode/commands/plx-proposal.md`, `.opencode/commands/plx-apply.md`, and `.opencode/commands/plx-archive.md`
+- **THEN** create `.opencode/commands/splx-proposal.md`, `.opencode/commands/splx-apply.md`, and `.opencode/commands/splx-archive.md`
 - **AND** populate each file from shared templates so command text matches other tools
 - **AND** each template includes instructions for the relevant PLX workflow stage

@@ -4,7 +4,7 @@
 The command SHALL create the complete PLX directory structure with all required directories and files.
 
 #### Scenario: Creating PLX structure
-- **WHEN** `plx init` is executed
+- **WHEN** `splx init` is executed
 - **THEN** create the following directory structure:
 ```
 workspace/

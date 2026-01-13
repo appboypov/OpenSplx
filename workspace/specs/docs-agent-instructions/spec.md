@@ -20,7 +20,7 @@ The AI instructions SHALL begin with a quick-reference section that surfaces req
 - **AND** accompany each template with a brief example showing correct header usage and scenario bullets
 
 ### Requirement: Pre-validation Checklist
-`workspace/AGENTS.md` SHALL offer a concise pre-validation checklist that highlights common formatting mistakes before running `plx validate`.
+`workspace/AGENTS.md` SHALL offer a concise pre-validation checklist that highlights common formatting mistakes before running `splx validate`.
 
 #### Scenario: Highlighting common validation failures
 - **WHEN** a reader reaches the validation guidance

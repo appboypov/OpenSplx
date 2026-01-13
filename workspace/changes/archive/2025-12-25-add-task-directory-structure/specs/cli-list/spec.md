@@ -4,14 +4,14 @@
 The command SHALL scan and analyze either active changes or specs based on the selected mode.
 
 #### Scenario: Scanning for changes (default)
-- **WHEN** `plx list` is executed without flags
+- **WHEN** `splx list` is executed without flags
 - **THEN** scan the `workspace/changes/` directory for change directories
 - **AND** exclude the `archive/` subdirectory from results
 - **AND** trigger auto-migration if legacy `tasks.md` exists without `tasks/` directory
 - **AND** parse each change's `tasks/` directory to count task completion across all task files
 
 #### Scenario: Scanning for specs
-- **WHEN** `plx list --specs` is executed
+- **WHEN** `splx list --specs` is executed
 - **THEN** scan the `workspace/specs/` directory for capabilities
 - **AND** read each capability's `spec.md`
 - **AND** parse requirements to compute requirement counts
@@ -48,5 +48,5 @@ The command SHALL gracefully handle missing files and directories with appropria
 #### Scenario: Missing changes directory
 
 - **WHEN** `workspace/changes/` directory doesn't exist
-- **THEN** display error: "No PLX changes directory found. Run 'plx init' first."
+- **THEN** display error: "No PLX changes directory found. Run 'splx init' first."
 - **AND** exit with code 1

@@ -12,9 +12,9 @@ All tests pass with the renamed `implement` command.
 ## Currently
 
 `test/core/init.test.ts` contains 50+ references to `apply` in:
-- File path assertions (e.g., `.claude/commands/plx/apply.md`)
+- File path assertions (e.g., `.claude/commands/splx/apply.md`)
 - Variable names (e.g., `applyPath`, `applyContent`, `wsApply`)
-- Content assertions (e.g., `'name: Pew Pew Plx: Apply'`, `'id: plx-apply'`)
+- Content assertions (e.g., `'name: OpenSplx: Apply'`, `'id: splx-apply'`)
 
 `test/utils/file-system.test.ts` has 2 references in path examples.
 
@@ -50,7 +50,7 @@ All tests pass with the renamed `implement` command.
 - [x] Update `test/core/init.test.ts`: rename `factoryApply` → `factoryImplement` variable
 - [x] Update `test/core/init.test.ts`: update all file path strings from `*apply*` to `*implement*`
 - [x] Update `test/core/init.test.ts`: update content assertions from `Apply` to `Implement`
-- [x] Update `test/utils/file-system.test.ts`: update path examples from `plx-apply.md` to `plx-implement.md`
+- [x] Update `test/utils/file-system.test.ts`: update path examples from `splx-apply.md` to `splx-implement.md`
 - [x] Run `pnpm test` to verify all tests pass
 
 ## Notes

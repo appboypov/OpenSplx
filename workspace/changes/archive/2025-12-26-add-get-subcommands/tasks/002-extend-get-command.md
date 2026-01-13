@@ -32,13 +32,13 @@ The `get` command has new subcommands (`change`, `spec`, `tasks`) and filter fla
 
 ## Acceptance Criteria
 
-- [x] `plx get task --id 001-impl` displays task content
-- [x] `plx get task --constraints` shows only Constraints section
-- [x] `plx get task --constraints --acceptance-criteria` shows both sections
-- [x] `plx get change --id add-feature` displays change proposal
-- [x] `plx get spec --id user-auth` displays spec content
-- [x] `plx get tasks` displays summary table
-- [x] `plx get tasks --id add-feature` lists tasks for change
+- [x] `splx get task --id 001-impl` displays task content
+- [x] `splx get task --constraints` shows only Constraints section
+- [x] `splx get task --constraints --acceptance-criteria` shows both sections
+- [x] `splx get change --id add-feature` displays change proposal
+- [x] `splx get spec --id user-auth` displays spec content
+- [x] `splx get tasks` displays summary table
+- [x] `splx get tasks --id add-feature` lists tasks for change
 - [x] All commands support `--json` flag
 - [x] Error messages clear when ID not found
 

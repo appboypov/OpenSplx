@@ -8,7 +8,7 @@ Validation output SHALL include specific guidance to fix each error, including e
   - Explain that change specs must include `## ADDED Requirements`, `## MODIFIED Requirements`, `## REMOVED Requirements`, or `## RENAMED Requirements`
   - Remind authors that files must live under `workspace/changes/{id}/specs/<capability>/spec.md`
   - Include an explicit note: "Spec delta files cannot start with titles before the operation headers"
-  - Suggest running `plx change show {id} --json --deltas-only` for debugging
+  - Suggest running `splx change show {id} --json --deltas-only` for debugging
 
 #### Scenario: Missing required sections
 - **WHEN** a required section is missing

@@ -12,7 +12,7 @@ vi.mock('../../src/core/completions/installers/zsh-installer.js', () => ({
   ZshInstaller: vi.fn().mockImplementation(() => ({
     install: vi.fn().mockResolvedValue({
       success: true,
-      installedPath: '/home/user/.oh-my-zsh/completions/_plx',
+      installedPath: '/home/user/.oh-my-zsh/completions/_splx',
       isOhMyZsh: true,
       message: 'Completion script installed successfully for Oh My Zsh',
       instructions: [
@@ -23,7 +23,7 @@ vi.mock('../../src/core/completions/installers/zsh-installer.js', () => ({
     }),
     uninstall: vi.fn().mockResolvedValue({
       success: true,
-      message: 'Completion script removed from /home/user/.oh-my-zsh/completions/_plx',
+      message: 'Completion script removed from /home/user/.oh-my-zsh/completions/_splx',
     }),
   })),
 }));
@@ -52,8 +52,8 @@ describe('CompletionCommand', () => {
 
       expect(consoleLogSpy).toHaveBeenCalled();
       const output = consoleLogSpy.mock.calls[0][0];
-      expect(output).toContain('#compdef plx');
-      expect(output).toContain('_plx() {');
+      expect(output).toContain('#compdef splx');
+      expect(output).toContain('_splx() {');
     });
 
     it('should auto-detect Zsh shell when no shell specified', async () => {
@@ -63,7 +63,7 @@ describe('CompletionCommand', () => {
 
       expect(consoleLogSpy).toHaveBeenCalled();
       const output = consoleLogSpy.mock.calls[0][0];
-      expect(output).toContain('#compdef plx');
+      expect(output).toContain('#compdef splx');
     });
 
     it('should show error when shell cannot be auto-detected', async () => {
@@ -91,7 +91,7 @@ describe('CompletionCommand', () => {
 
       expect(consoleLogSpy).toHaveBeenCalled();
       const output = consoleLogSpy.mock.calls[0][0];
-      expect(output).toContain('#compdef plx');
+      expect(output).toContain('#compdef splx');
     });
   });
 
@@ -263,7 +263,7 @@ describe('CompletionCommand', () => {
 
       expect(consoleLogSpy).toHaveBeenCalled();
       const output = consoleLogSpy.mock.calls[0][0];
-      expect(output).toContain('#compdef plx');
+      expect(output).toContain('#compdef splx');
     });
   });
 });

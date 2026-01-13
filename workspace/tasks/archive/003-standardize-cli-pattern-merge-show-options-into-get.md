@@ -8,38 +8,38 @@ parent-id: standardize-cli-pattern
 
 ## End Goal
 
-The `plx get change` and `plx get spec` commands support all filtering options from `plx show`.
+The `splx get change` and `splx get spec` commands support all filtering options from `splx show`.
 
 ## Currently
 
-- `plx show <change> --deltas-only` shows only delta content
-- `plx show <spec> --requirements` shows requirements in JSON
-- `plx show <spec> --no-scenarios` excludes scenarios
-- `plx show <spec> -r <id>` shows specific requirement
-- `plx get change --id` does not support these options
-- `plx get spec --id` does not support these options
+- `splx show <change> --deltas-only` shows only delta content
+- `splx show <spec> --requirements` shows requirements in JSON
+- `splx show <spec> --no-scenarios` excludes scenarios
+- `splx show <spec> -r <id>` shows specific requirement
+- `splx get change --id` does not support these options
+- `splx get spec --id` does not support these options
 
 ## Should
 
-- `plx get change --id <change> --deltas-only` shows only delta content
-- `plx get spec --id <spec> --requirements` shows requirements
-- `plx get spec --id <spec> --no-scenarios` excludes scenarios
-- `plx get spec --id <spec> -r <id>` shows specific requirement
+- `splx get change --id <change> --deltas-only` shows only delta content
+- `splx get spec --id <spec> --requirements` shows requirements
+- `splx get spec --id <spec> --no-scenarios` excludes scenarios
+- `splx get spec --id <spec> -r <id>` shows specific requirement
 - Options work with `--json` flag for machine-readable output
 - Invalid option combinations produce clear error messages
 
 ## Constraints
 
-- [ ] Must maintain backward compatibility with existing `plx get change` behavior
-- [ ] Options must work identically to their `plx show` counterparts
-- [ ] Must not add options that don't exist in `plx show`
+- [ ] Must maintain backward compatibility with existing `splx get change` behavior
+- [ ] Options must work identically to their `splx show` counterparts
+- [ ] Must not add options that don't exist in `splx show`
 
 ## Acceptance Criteria
 
-- [ ] `plx get change --id <id> --deltas-only` produces same output as `plx show <id> --deltas-only`
-- [ ] `plx get spec --id <id> --requirements` produces same output as `plx show <id> --requirements`
-- [ ] `plx get spec --id <id> --no-scenarios` produces same output as `plx show <id> --no-scenarios`
-- [ ] `plx get spec --id <id> -r <req-id>` produces same output as `plx show <id> -r <req-id>`
+- [ ] `splx get change --id <id> --deltas-only` produces same output as `splx show <id> --deltas-only`
+- [ ] `splx get spec --id <id> --requirements` produces same output as `splx show <id> --requirements`
+- [ ] `splx get spec --id <id> --no-scenarios` produces same output as `splx show <id> --no-scenarios`
+- [ ] `splx get spec --id <id> -r <req-id>` produces same output as `splx show <id> -r <req-id>`
 - [ ] All combinations work with `--json` flag
 - [ ] Shell completions include new options
 

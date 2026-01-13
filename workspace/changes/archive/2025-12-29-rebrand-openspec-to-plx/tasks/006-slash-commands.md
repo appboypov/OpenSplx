@@ -11,15 +11,15 @@ All slash commands use PLX terminology. OpenSpec-named commands are removed or c
 ## Currently
 
 - `.claude/commands/openspec/` directory exists with proposal.md, apply.md, archive.md
-- `.claude/commands/plx/` directory exists with get-task.md, complete-task.md, undo-task.md
+- `.claude/commands/splx/` directory exists with get-task.md, complete-task.md, undo-task.md
 - Commands reference `openspec` commands and `openspec/AGENTS.md`
 - `.claude/commands/commit.md` references OpenSpec changes directory
 
 ## Should
 
 - `.claude/commands/openspec/` directory deleted
-- `.claude/commands/plx/` contains all commands (proposal.md, apply.md, archive.md, get-task.md, complete-task.md, undo-task.md)
-- All commands reference `plx` commands and `workspace/AGENTS.md`
+- `.claude/commands/splx/` contains all commands (proposal.md, apply.md, archive.md, get-task.md, complete-task.md, undo-task.md)
+- All commands reference `splx` commands and `workspace/AGENTS.md`
 - `.claude/commands/commit.md` references PLX/workspace changes directory
 
 ## Constraints
@@ -31,18 +31,18 @@ All slash commands use PLX terminology. OpenSpec-named commands are removed or c
 ## Acceptance Criteria
 
 - [x] No `.claude/commands/openspec/` directory exists
-- [x] All commands in `.claude/commands/plx/` use PLX terminology
-- [x] Commands reference `plx` CLI and `workspace/` directory
+- [x] All commands in `.claude/commands/splx/` use PLX terminology
+- [x] Commands reference `splx` CLI and `workspace/` directory
 
 ## Implementation Checklist
 
 - [x] 6.1 Delete `.claude/commands/openspec/` directory entirely
-- [x] 6.2 Create `.claude/commands/plx/proposal.md` with PLX content (replace openspec references)
-- [x] 6.3 Create `.claude/commands/plx/apply.md` with PLX content (replace openspec references)
-- [x] 6.4 Create `.claude/commands/plx/archive.md` with PLX content (replace openspec references)
-- [x] 6.5 Update `.claude/commands/plx/get-task.md`: replace `openspec` commands with `plx`
-- [x] 6.6 Update `.claude/commands/plx/complete-task.md`: replace `openspec` commands with `plx`
-- [x] 6.7 Update `.claude/commands/plx/undo-task.md`: replace `openspec` commands with `plx`
+- [x] 6.2 Create `.claude/commands/splx/proposal.md` with PLX content (replace openspec references)
+- [x] 6.3 Create `.claude/commands/splx/apply.md` with PLX content (replace openspec references)
+- [x] 6.4 Create `.claude/commands/splx/archive.md` with PLX content (replace openspec references)
+- [x] 6.5 Update `.claude/commands/splx/get-task.md`: replace `openspec` commands with `splx`
+- [x] 6.6 Update `.claude/commands/splx/complete-task.md`: replace `openspec` commands with `splx`
+- [x] 6.7 Update `.claude/commands/splx/undo-task.md`: replace `openspec` commands with `splx`
 - [x] 6.8 Update `.claude/commands/commit.md`: replace `openspec/changes/` with `workspace/changes/`
 - [x] 6.9 Update markers to use `<!-- PLX:START -->` and `<!-- PLX:END -->`
 

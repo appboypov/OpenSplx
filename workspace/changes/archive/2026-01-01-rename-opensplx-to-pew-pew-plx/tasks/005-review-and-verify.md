@@ -14,7 +14,7 @@ Individual tasks have been completed but full integration verification is pendin
 
 ## Should
 
-- All grep checks pass (no opensplx references)
+- All grep checks pass (no OpenSplx references)
 - Build and tests pass
 - npm package works under new name
 - GitHub repository accessible at new URL
@@ -27,10 +27,10 @@ Individual tasks have been completed but full integration verification is pendin
 
 ## Acceptance Criteria
 
-- [ ] `grep -ri "opensplx" . --include="*.md" --include="*.json" --include="*.mjs" --include="*.yml"` returns empty
+- [ ] `grep -ri "OpenSplx" . --include="*.md" --include="*.json" --include="*.mjs" --include="*.yml"` returns empty
 - [ ] `pnpm run build && pnpm test` succeeds
-- [ ] `npm view @appboypov/pew-pew-plx` shows correct info
-- [ ] `npm view @appboypov/opensplx` shows deprecated status
+- [ ] `npm view @appboypov/OpenSplx` shows correct info
+- [ ] `npm view @appboypov/OpenSplx` shows deprecated status
 - [ ] README badge URLs render correctly
 - [ ] GitHub repository responds at new URL
 

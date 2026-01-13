@@ -2,13 +2,13 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { isInteractive, resolveNoInteractive } from '../../src/utils/interactive.js';
 
 describe('interactive utilities', () => {
-  let originalPlxInteractive: string | undefined;
+  let originalSplxInteractive: string | undefined;
   let originalCI: string | undefined;
   let originalStdinIsTTY: boolean | undefined;
 
   beforeEach(() => {
     // Save original environment
-    originalPlxInteractive = process.env.PLX_INTERACTIVE;
+    originalSplxInteractive = process.env.PLX_INTERACTIVE;
     originalCI = process.env.CI;
     originalStdinIsTTY = process.stdin.isTTY;
 
@@ -19,8 +19,8 @@ describe('interactive utilities', () => {
 
   afterEach(() => {
     // Restore original environment
-    if (originalPlxInteractive !== undefined) {
-      process.env.PLX_INTERACTIVE = originalPlxInteractive;
+    if (originalSplxInteractive !== undefined) {
+      process.env.PLX_INTERACTIVE = originalSplxInteractive;
     } else {
       delete process.env.PLX_INTERACTIVE;
     }
