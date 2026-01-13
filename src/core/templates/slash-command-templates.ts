@@ -66,8 +66,8 @@ const proposalReferences = `**Reference**
 const implementSteps = `**Steps**
 Track these steps as TODOs and complete them one by one.
 1. Determine the scope:
-   - If user specified a task ID in ARGUMENTS, use \`splx get task --id <task-id>\` to get that specific task and proceed to step 3
-   - Otherwise, run \`splx get tasks\` to retrieve all tasks for the highest-priority change
+   - If user specified a task ID in ARGUMENTS, use \`splx get task --id <task-id>\` to get that specific task (note the change-id from the output)
+   - Otherwise, run \`splx get tasks\` to retrieve all tasks for the highest-priority change (note the change-id from the output)
 2. Generate progress file for tracking:
    \`\`\`bash
    splx create progress --change-id <change-id>
