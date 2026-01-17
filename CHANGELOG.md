@@ -1,5 +1,26 @@
 # OpenSplx Changelog
 
+## 0.19.0 - 2026-01-17
+
+### Added
+
+- **Copy-review-request and copy-test-request slash commands**: New commands for external agent handoff
+  - `/splx:copy-review-request` copies review request with workspace/REVIEW.md guidelines to clipboard
+  - `/splx:copy-test-request` copies test request with workspace/TESTING.md configuration to clipboard
+  - Enables seamless handoff to external agents with proper context and guidelines
+
+### Changed
+
+- **PLX-managed template files moved to workspace directory**: Template files (ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md) are now managed in workspace/ directory
+  - Improves organization and keeps all PLX artifacts in one location
+  - Maintains backward compatibility with root-level files during migration
+
+### Fixed
+
+- **Package name restored to open-splx**: Fixed package name consistency across the codebase
+
+---
+
 ## 0.18.0 - 2026-01-10
 
 ### Added
