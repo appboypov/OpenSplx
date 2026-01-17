@@ -899,7 +899,6 @@ const copyNextTaskGuardrails = `**Guardrails**
 - Output format must match task block or feedback block structure exactly.
 - Do NOT modify task content—copy verbatim from source.
 - The copied block is self-contained for a fresh sub-agent with no prior context.
-- The copied block is self-contained for a fresh sub-agent with no prior context.
 - Copy to clipboard using appropriate system command (pbcopy on macOS, xclip on Linux, clip on Windows).
 
 ${monorepoAwareness}`;
