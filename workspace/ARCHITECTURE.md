@@ -369,7 +369,6 @@ PLX creates/updates these files in a project:
 | `workspace/REVIEW.md` | Review guidelines and checklist template |
 | `workspace/RELEASE.md` | Release documentation template |
 | `workspace/TESTING.md` | Testing configuration and patterns template |
-| `workspace/PROGRESS.md` | Multi-agent task handoff progress tracking |
 | `AGENTS.md` (root) | Universal stub for AGENTS.md-compatible tools |
 | `.claude/commands/` | Claude Code slash commands |
 | Various tool configs | Tool-specific configuration files |
@@ -905,7 +904,7 @@ OpenSplx provides:
 7. **Slash Commands**: Commands in `.claude/commands/splx/`
    - `/splx/plan-request` - Clarify intent via iterative yes/no questions before proposal
    - `/splx/plan-proposal` - Scaffold change proposal (auto-consumes request.md)
-   - `/splx/plan-implementation` - Generate workspace/PROGRESS.md for multi-agent task handoff
+   - `/splx/plan-implementation` - Orchestrate multi-agent task handoff for a change
    - `/splx/get-task` - Get next prioritized task and execute workflow
    - `/splx/copy-next-task` - Copy next task or feedback block to clipboard for external agent handoff
    - `/splx/copy-review-request` - Copy review request with workspace/REVIEW.md guidelines to clipboard for external agent
@@ -922,7 +921,7 @@ OpenSplx provides:
    - `/splx/refine-release` - Create or update workspace/RELEASE.md template
    - `/splx/refine-testing` - Create or update workspace/TESTING.md template
    - `/splx/test` - Run tests based on scope (change, task, or spec)
-   - `/splx/prepare-compact` - Preserve session progress in workspace/PROGRESS.md
+   - `/splx/prepare-compact` - Preserve session progress for context continuity
 8. **Extended Templates**: Architecture template generation
 9. **Get Command**: Extended with subcommands for all entities (`get task`, `get change`, `get spec`, `get review`, `get tasks`, `get changes`, `get specs`, `get reviews`) and content filtering (`--constraints`, `--acceptance-criteria`)
 10. **Automatic Task Completion**: Detects when in-progress task has all Implementation Checklist items checked and auto-advances to next task

@@ -18,7 +18,6 @@ All tests pass and manual verification confirms:
 - Migration works for all scenarios
 - Init creates files in correct location
 - Update runs migration and creates files correctly
-- Create progress uses correct path
 - Transfer uses correct paths
 - Slash commands have correct references
 

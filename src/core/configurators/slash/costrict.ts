@@ -64,7 +64,7 @@ description: "Parse feedback markers and generate review tasks."
 argument-hint: (optional context)
 ---`,
   'plan-implementation': `---
-description: "Generate PROGRESS.md and orchestrate multi-agent task handoff."
+description: "Orchestrate multi-agent task handoff for a change."
 argument-hint: (optional context)
 ---`,
   'plan-proposal': `---
@@ -76,7 +76,7 @@ description: "Clarify user intent through iterative yes/no questions before prop
 argument-hint: (optional context)
 ---`,
   'prepare-compact': `---
-description: "Preserve session progress in PROGRESS.md for context continuity."
+description: "Preserve session progress for context continuity."
 argument-hint: (optional context)
 ---`,
   'prepare-release': `---

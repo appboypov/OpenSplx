@@ -56,7 +56,7 @@ Orchestrate sub-agents to complete work collaboratively.`,
 Parse feedback markers and generate review tasks.`,
   'plan-implementation': `# PLX: Plan Implementation
 
-Generate PROGRESS.md and orchestrate multi-agent task handoff.`,
+Orchestrate multi-agent task handoff for a change.`,
   'plan-proposal': `# PLX: Plan Proposal
 
 Scaffold a new PLX change and validate strictly. Consumes request.md when present.`,
@@ -65,7 +65,7 @@ Scaffold a new PLX change and validate strictly. Consumes request.md when presen
 Clarify user intent through iterative yes/no questions before proposal creation.`,
   'prepare-compact': `# PLX: Prepare Compact
 
-Preserve session progress in PROGRESS.md for context continuity.`,
+Preserve session progress for context continuity.`,
   'prepare-release': `# PLX: Prepare Release
 
 Prepare release by updating changelog, readme, and architecture documentation.`,

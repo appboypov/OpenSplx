@@ -6,7 +6,6 @@ Long-term context for AI assistants working on this project.
 
 - **add-transfer-command**: Transfer entities between workspaces in monorepos
   - Status: Proposal complete, awaiting approval
-  - Progress: See `PROGRESS.md`
 
 ## Recent Completions
 

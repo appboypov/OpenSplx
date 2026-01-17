@@ -1,5 +1,5 @@
 ---
-status: to-do
+status: done
 skill-level: junior
 parent-type: change
 parent-id: move-root-files-to-workspace
@@ -36,4 +36,4 @@ const progressPath = path.join(change.workspacePath, 'PROGRESS.md');
 - [ ] 4.2 Update any tests that verify PROGRESS.md location
 
 ## Notes
-Simple path change, no logic changes needed.
+CANCELLED: PROGRESS.md concept has been removed from the application. This task is no longer relevant.

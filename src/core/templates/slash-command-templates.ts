@@ -68,16 +68,11 @@ Track these steps as TODOs and complete them one by one.
 1. Determine the scope:
    - If user specified a task ID in ARGUMENTS, use \`splx get task --id <task-id>\` to get that specific task (note the change-id from the output)
    - Otherwise, run \`splx get tasks\` to retrieve all tasks for the highest-priority change (note the change-id from the output)
-2. Generate progress file for tracking:
-   \`\`\`bash
-   splx create progress --change-id <change-id>
-   \`\`\`
-3. For each task (or the single task if task ID was provided):
+2. For each task (or the single task if task ID was provided):
    a. Work through the task's Implementation Checklist, keeping edits minimal
    b. Mark checklist items complete (\`[x]\`) in the task file
    c. Mark the task as done with \`splx complete task --id <task-id>\`
-   d. Regenerate progress: \`splx create progress --change-id <change-id>\`
-4. Stop when complete:
+3. Stop when complete:
    - If implementing a specific task ID (from step 1), stop after completing that task
    - If implementing all tasks in a change, stop after all tasks have been completed
 5. Reference \`splx get changes\` or \`splx get change --id <item>\` when additional context is required.`;
@@ -112,16 +107,14 @@ const getTaskSteps = `**Steps**
 4. **Stop and await user confirmation** before proceeding to the next task.`;
 
 const prepareCompactGuardrails = `**Guardrails**
-- Save ALL modified files before creating workspace/PROGRESS.md.
-- Create workspace/PROGRESS.md in the workspace directory.
+- Save ALL modified files before preparing session summary.
 - Include enough detail that a new agent can continue without user re-explanation.
-- Add workspace/PROGRESS.md to .gitignore if not already present.
-- Update existing workspace/PROGRESS.md if one already exists (don't create duplicates).`;
+- Document current state, decisions, and context clearly.`;
 
 const prepareCompactSteps = `**Steps**
 1. Save all files you have modified during this session.
-2. Create or update \`workspace/PROGRESS.md\` with these sections: Current Task, Status, Completed Steps, Remaining Steps, Key Decisions Made, Files Modified, Files Created, Open Questions/Blockers, Context for Next Agent, Related Resources.
-3. Check if \`.gitignore\` contains \`workspace/PROGRESS.md\`; if not present, add it on a new line.
+2. Prepare a session summary with these sections: Current Task, Status, Completed Steps, Remaining Steps, Key Decisions Made, Files Modified, Files Created, Open Questions/Blockers, Context for Next Agent, Related Resources.
+3. Output the summary to chat or save to a temporary location for handoff.
 4. Confirm to user that progress has been saved and they can start a new session.`;
 
 const reviewGuardrails = `**Guardrails**
@@ -677,11 +670,7 @@ const orchestrateSteps = `**Steps**
    - For changes: run \`splx get tasks\` to see all tasks.
    - For reviews: identify review aspects (architecture, scope, testing, etc.).
    - For other work: enumerate the discrete units of work.
-2. Generate progress file for tracking:
-   \`\`\`bash
-   splx create progress --change-id <change-id>
-   \`\`\`
-3. For each unit of work:
+2. For each unit of work:
    a. Get detailed context (\`splx get task --id <id>\` or equivalent).
    b. Spawn a sub-agent with clear, scoped instructions; select model based on task skill-level (junior→haiku, medior→sonnet, senior→opus).
    c. Wait for sub-agent to complete work.
@@ -697,7 +686,6 @@ const orchestrateSteps = `**Steps**
 6. If approved:
    - For tasks: mark complete with \`splx complete task --id <id>\`.
    - For reviews: consolidate feedback.
-   - Regenerate progress: \`splx create progress --change-id <change-id>\`
    - Proceed to next unit of work.
 7. Continue until all work is complete.
 8. Final validation: run \`splx validate\` if applicable.`;
@@ -798,9 +786,7 @@ const undoTaskSteps = `**Steps**
 const planImplementationGuardrails = `${planningContext}
 
 **Guardrails**
-- Generate workspace/PROGRESS.md before outputting task blocks.
 - Output task blocks to chat for immediate copy to external agents.
-- Do NOT reference PROGRESS.md in task blocks—agents must work without knowledge of it.
 - Verify each agent's work against scope, TracelessChanges, conventions, and acceptance criteria.
 - Enforce TracelessChanges:
   - No comments referencing removed code.
@@ -813,11 +799,12 @@ ${monorepoAwareness}`;
 
 const planImplementationSteps = `**Steps**
 1. Parse \`$ARGUMENTS\` to extract change-id.
-2. Generate progress file:
+2. Retrieve the change and its tasks:
    \`\`\`bash
-   splx create progress --change-id <change-id>
+   splx get change --id <change-id>
+   splx get tasks --parent-id <change-id> --parent-type change
    \`\`\`
-3. Read the generated workspace/PROGRESS.md and identify the first non-completed task.
+3. Identify the first non-completed task (to-do or in-progress).
 4. Output the first task block to chat. Format:
    \`\`\`markdown
    ## Task: <task-name>
@@ -864,8 +851,7 @@ const planImplementationSteps = `**Steps**
    \`\`\`
 8. If all checks pass:
    - Mark task complete: \`splx complete task --id <task-id>\`
-   - Regenerate progress: \`splx create progress --change-id <change-id>\`
-   - If more tasks remain, output next task block (return to step 4)
+   - If more tasks remain, retrieve next task and output task block (return to step 3)
 9. When all tasks are complete:
    - Run final validation: \`splx validate change --id <change-id> --strict\`
    - Report completion summary with all tasks marked done.`;
@@ -873,7 +859,7 @@ const planImplementationSteps = `**Steps**
 const planImplementationReference = `**Reference**
 - Use \`splx get change --id <change-id>\` for proposal context.
 - Use \`splx get tasks --parent-id <change-id> --parent-type change\` to see all tasks.
-- Use \`splx create progress --change-id <id>\` to regenerate progress file.`;
+- Use \`splx get task\` to get the next prioritized task.`;
 
 const testGuardrails = `**Guardrails**
 - Read @workspace/TESTING.md for test runner, coverage threshold, and test patterns.
@@ -913,7 +899,7 @@ const copyNextTaskGuardrails = `**Guardrails**
 - Output format must match task block or feedback block structure exactly.
 - Do NOT modify task content—copy verbatim from source.
 - The copied block is self-contained for a fresh sub-agent with no prior context.
-- Do NOT reference PROGRESS.md in the output—agents must work without knowledge of it.
+- The copied block is self-contained for a fresh sub-agent with no prior context.
 - Copy to clipboard using appropriate system command (pbcopy on macOS, xclip on Linux, clip on Windows).
 
 ${monorepoAwareness}`;
@@ -921,9 +907,9 @@ ${monorepoAwareness}`;
 const copyNextTaskContextDetection = `**Context Detection**
 Determine which scenario applies:
 
-1. **Plan-implementation workflow active**: Check if workspace/PROGRESS.md exists AND conversation contains task blocks or feedback blocks.
+1. **Plan-implementation workflow active**: Check if conversation contains task blocks or feedback blocks.
    - If pending feedback: copy the most recent feedback block.
-   - If no feedback: copy the next uncompleted task block from workspace/PROGRESS.md.
+   - If no feedback: get the next uncompleted task via \`splx get task\`.
 
 2. **New conversation (no context)**: Run \`splx get task\` to retrieve the highest-priority task.
    - Generate a task block from the task content.
@@ -956,9 +942,7 @@ const copyNextTaskSteps = `**Steps**
    \`\`\`
 
    **If copying next task (no pending feedback):**
-   a. Get task content:
-      - From workspace/PROGRESS.md if it exists and has uncompleted tasks
-      - Otherwise via \`splx get task\` (or \`splx get task --did-complete-previous\` if previous completed)
+   a. Get task content via \`splx get task\` (or \`splx get task --did-complete-previous\` if previous completed)
    b. Generate task block:
    \`\`\`markdown
    ## Task: <task-name>
@@ -992,7 +976,7 @@ const copyNextTaskReference = `**Reference**
 - Use \`splx get task\` to retrieve highest-priority task when no context exists.
 - Use \`splx get task --did-complete-previous\` after completing a task.
 - Use \`splx get change --id <change-id>\` to get proposal context.
-- Read workspace/PROGRESS.md if it exists to find next uncompleted task block.`;
+- Use \`splx get task\` to retrieve the next task.`;
 
 const copyReviewRequestGuardrails = `**Guardrails**
 - Output format must match review request block structure exactly.

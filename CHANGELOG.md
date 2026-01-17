@@ -5,7 +5,6 @@
 ### Added
 
 - **Plan-implementation workflow for multi-agent handoff**: New commands for orchestrating work across sub-agents
-  - `splx create progress --change-id <id>` generates PROGRESS.md with embedded task blocks for external agent handoff
   - `/splx:plan-implementation` slash command orchestrates the workflow with verification loops
   - Task blocks are self-contained for copy-paste to external agents without context dependencies
   - Feedback blocks allow iterative refinement until tasks pass review

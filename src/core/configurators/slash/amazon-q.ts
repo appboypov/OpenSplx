@@ -81,7 +81,7 @@ description: Parse feedback markers and generate review tasks.
 
 <arguments>$ARGUMENTS</arguments>`,
   'plan-implementation': `---
-description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
+description: Orchestrate multi-agent task handoff for a change.
 ---
 
 <arguments>$ARGUMENTS</arguments>`,
@@ -100,7 +100,7 @@ description: Clarify user intent through iterative yes/no questions before propo
 
 <arguments>$ARGUMENTS</arguments>`,
   'prepare-compact': `---
-description: Preserve session progress in PROGRESS.md for context continuity.
+description: Preserve session progress for context continuity.
 ---
 
 <arguments>$ARGUMENTS</arguments>`,

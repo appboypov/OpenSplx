@@ -85,7 +85,7 @@ description: Parse feedback markers and generate review tasks.
 name: /splx-plan-implementation
 id: splx-plan-implementation
 category: OpenSplx
-description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
+description: Orchestrate multi-agent task handoff for a change.
 ---`,
   'plan-proposal': `---
 name: /splx-plan-proposal
@@ -103,7 +103,7 @@ description: Clarify user intent through iterative yes/no questions before propo
 name: /splx-prepare-compact
 id: splx-prepare-compact
 category: OpenSplx
-description: Preserve session progress in PROGRESS.md for context continuity.
+description: Preserve session progress for context continuity.
 ---`,
   'prepare-release': `---
 name: /splx-prepare-release
