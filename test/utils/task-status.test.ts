@@ -19,6 +19,8 @@ import {
   parseParentId,
   parseTaskParentInfo,
   TaskParentInfo,
+  parseType,
+  parseBlockedBy,
 } from '../../src/utils/task-status.js';
 
 describe('task-status', () => {
@@ -908,6 +910,180 @@ parent-id: add-feature-x
       expect(() => parseTaskParentInfo(content)).toThrow(
         'Task has parent-id but missing parent-type in frontmatter'
       );
+    });
+  });
+
+  describe('parseType', () => {
+    it('should parse type from frontmatter', () => {
+      const content = `---
+status: to-do
+type: implementation
+---
+
+# Task: Example`;
+      expect(parseType(content)).toBe('implementation');
+    });
+
+    it('should parse type with different values', () => {
+      const content = `---
+status: to-do
+type: story
+---
+
+# Task: Example`;
+      expect(parseType(content)).toBe('story');
+    });
+
+    it('should return undefined when type is missing', () => {
+      const content = `---
+status: to-do
+---
+
+# Task: Example`;
+      expect(parseType(content)).toBeUndefined();
+    });
+
+    it('should return undefined for missing frontmatter', () => {
+      const content = `# Task: Example
+
+Some content without frontmatter`;
+      expect(parseType(content)).toBeUndefined();
+    });
+
+    it('should handle type with extra whitespace', () => {
+      const content = `---
+type:   bug
+---
+
+# Task`;
+      expect(parseType(content)).toBe('bug');
+    });
+
+    it('should handle type in multi-field frontmatter', () => {
+      const content = `---
+status: in-progress
+parent-type: change
+parent-id: my-change
+type: research
+skill-level: senior
+---
+
+# Task: Example`;
+      expect(parseType(content)).toBe('research');
+    });
+  });
+
+  describe('parseBlockedBy', () => {
+    it('should parse inline array format', () => {
+      const content = `---
+status: to-do
+blocked-by: [043-task-one, 044-task-two]
+---
+
+# Task: Example`;
+      expect(parseBlockedBy(content)).toEqual(['043-task-one', '044-task-two']);
+    });
+
+    it('should parse inline array with single item', () => {
+      const content = `---
+status: to-do
+blocked-by: [043-task-one]
+---
+
+# Task: Example`;
+      expect(parseBlockedBy(content)).toEqual(['043-task-one']);
+    });
+
+    it('should parse multi-line array format', () => {
+      const content = `---
+status: to-do
+blocked-by:
+  - 043-task-one
+  - 044-task-two
+  - 045-task-three
+---
+
+# Task: Example`;
+      expect(parseBlockedBy(content)).toEqual([
+        '043-task-one',
+        '044-task-two',
+        '045-task-three',
+      ]);
+    });
+
+    it('should parse multi-line array with single item', () => {
+      const content = `---
+status: to-do
+blocked-by:
+  - 043-task-one
+---
+
+# Task: Example`;
+      expect(parseBlockedBy(content)).toEqual(['043-task-one']);
+    });
+
+    it('should handle cross-change dependencies', () => {
+      const content = `---
+status: to-do
+blocked-by: [other-change/001-setup, 043-local-task]
+---
+
+# Task: Example`;
+      expect(parseBlockedBy(content)).toEqual([
+        'other-change/001-setup',
+        '043-local-task',
+      ]);
+    });
+
+    it('should return undefined when blocked-by is missing', () => {
+      const content = `---
+status: to-do
+---
+
+# Task: Example`;
+      expect(parseBlockedBy(content)).toBeUndefined();
+    });
+
+    it('should return undefined for missing frontmatter', () => {
+      const content = `# Task: Example
+
+Some content without frontmatter`;
+      expect(parseBlockedBy(content)).toBeUndefined();
+    });
+
+    it('should return undefined for empty inline array', () => {
+      const content = `---
+status: to-do
+blocked-by: []
+---
+
+# Task: Example`;
+      expect(parseBlockedBy(content)).toBeUndefined();
+    });
+
+    it('should handle blocked-by in multi-field frontmatter', () => {
+      const content = `---
+status: in-progress
+parent-type: change
+parent-id: my-change
+type: implementation
+blocked-by:
+  - 043-prerequisite
+skill-level: medior
+---
+
+# Task: Example`;
+      expect(parseBlockedBy(content)).toEqual(['043-prerequisite']);
+    });
+
+    it('should trim whitespace from array items', () => {
+      const content = `---
+status: to-do
+blocked-by: [ 043-task-one , 044-task-two ]
+---
+
+# Task: Example`;
+      expect(parseBlockedBy(content)).toEqual(['043-task-one', '044-task-two']);
     });
   });
 });

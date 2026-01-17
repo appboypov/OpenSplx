@@ -26,6 +26,8 @@ const STATUS_LINE_REGEX = /^status:\s*(to-do|in-progress|done)\s*$/m;
 const SKILL_LEVEL_LINE_REGEX = /^skill-level:\s*(junior|medior|senior)\s*$/m;
 const PARENT_TYPE_LINE_REGEX = /^parent-type:\s*(change|review|spec)\s*$/m;
 const PARENT_ID_LINE_REGEX = /^parent-id:\s*(.+?)\s*$/m;
+const TYPE_LINE_REGEX = /^type:\s*(.+?)\s*$/m;
+const BLOCKED_BY_LINE_REGEX = /^blocked-by:\s*(.+?)\s*$/m;
 
 /**
  * Normalizes line endings to Unix-style (\n).
@@ -369,4 +371,87 @@ export function parseTaskParentInfo(content: string): TaskParentInfo | null {
   }
 
   throw new Error('Task has parent-id but missing parent-type in frontmatter');
+}
+
+/**
+ * Parses the type from YAML frontmatter in a task file's content.
+ * @returns The type or undefined if not present
+ */
+export function parseType(content: string): string | undefined {
+  const normalized = normalizeContent(content);
+  const frontmatterMatch = normalized.match(FRONTMATTER_REGEX);
+  if (!frontmatterMatch) {
+    return undefined;
+  }
+
+  const frontmatter = frontmatterMatch[1];
+  const typeMatch = frontmatter.match(TYPE_LINE_REGEX);
+  if (!typeMatch) {
+    return undefined;
+  }
+
+  return typeMatch[1].trim();
+}
+
+/**
+ * Parses the blocked-by field from YAML frontmatter in a task file's content.
+ * Supports both inline array format: blocked-by: [item1, item2]
+ * and multi-line format:
+ *   blocked-by:
+ *     - item1
+ *     - item2
+ *
+ * @returns Array of blocking task IDs or undefined if not present
+ */
+export function parseBlockedBy(content: string): string[] | undefined {
+  const normalized = normalizeContent(content);
+  const frontmatterMatch = normalized.match(FRONTMATTER_REGEX);
+  if (!frontmatterMatch) {
+    return undefined;
+  }
+
+  const frontmatter = frontmatterMatch[1];
+  const blockedByMatch = frontmatter.match(BLOCKED_BY_LINE_REGEX);
+
+  if (!blockedByMatch) {
+    return undefined;
+  }
+
+  const value = blockedByMatch[1].trim();
+
+  // Handle inline array format: [item1, item2]
+  if (value.startsWith('[') && value.endsWith(']')) {
+    const items = value.slice(1, -1).split(',').map(item => item.trim()).filter(item => item);
+    return items.length > 0 ? items : undefined;
+  }
+
+  // Handle multi-line format - need to parse subsequent lines
+  const frontmatterLines = frontmatter.split('\n');
+  let inBlockedBy = false;
+  const items: string[] = [];
+
+  for (const line of frontmatterLines) {
+    if (line.match(/^blocked-by:\s*$/)) {
+      inBlockedBy = true;
+      continue;
+    }
+
+    if (inBlockedBy) {
+      // Check if we've hit another top-level key
+      if (line.match(/^[a-z][\w-]*:/)) {
+        break;
+      }
+
+      // Parse array item
+      const arrayItemMatch = line.match(/^\s+-\s+(.+)$/);
+      if (arrayItemMatch) {
+        const item = arrayItemMatch[1].trim().replace(/^["']|["']$/g, '');
+        if (item) {
+          items.push(item);
+        }
+      }
+    }
+  }
+
+  return items.length > 0 ? items : undefined;
 }

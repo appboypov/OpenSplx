@@ -11,7 +11,8 @@ import {
   VALIDATION_MESSAGES 
 } from './constants.js';
 import { parseDeltaSpec, normalizeRequirementName } from '../parsers/requirement-blocks.js';
-import { parseSkillLevel } from '../../utils/task-status.js';
+import { parseSkillLevel, parseType } from '../../utils/task-status.js';
+import { getAvailableTypes } from '../templates/template-discovery.js';
 
 export class Validator {
   private strictMode: boolean;
@@ -273,6 +274,10 @@ export class Validator {
     const skillLevelReport = await this.validateChangeTaskSkillLevels(changeDir);
     issues.push(...skillLevelReport.issues);
 
+    // Also validate task types
+    const typeReport = await this.validateChangeTaskTypes(changeDir);
+    issues.push(...typeReport.issues);
+
     return this.createReport(issues);
   }
 
@@ -322,6 +327,69 @@ export class Validator {
       }
     } catch {
       // No tasks directory - that's fine, no warnings to emit
+    }
+
+    return this.createReport(issues);
+  }
+
+  /**
+   * Validate tasks in a change directory for type field.
+   * Emits WARNING for tasks missing type.
+   * Emits ERROR for tasks with unknown type.
+   */
+  async validateChangeTaskTypes(changeDir: string): Promise<ValidationReport> {
+    const issues: ValidationIssue[] = [];
+
+    const tasksDir = path.join(changeDir, 'tasks');
+
+    // Get workspace path (parent of change directory)
+    const workspacePath = path.dirname(path.dirname(changeDir));
+
+    // Get available template types
+    let availableTypes: string[];
+    try {
+      const templates = await getAvailableTypes(workspacePath);
+      availableTypes = templates.map(t => t.type);
+    } catch {
+      // If we can't get available types, skip validation
+      return this.createReport(issues);
+    }
+
+    try {
+      const entries = await fs.readdir(tasksDir);
+      for (const entry of entries) {
+        if (!entry.endsWith('.md')) continue;
+
+        const taskPath = path.join(tasksDir, entry);
+        const content = await fs.readFile(taskPath, 'utf-8');
+        const type = parseType(content);
+
+        // Check if type field exists in frontmatter
+        const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+        const hasFrontmatter = !!frontmatterMatch;
+        const hasTypeField = hasFrontmatter
+          ? /^type:/m.test(frontmatterMatch[1])
+          : false;
+
+        if (!hasFrontmatter || !hasTypeField || !type) {
+          // Missing type - emit WARNING
+          issues.push({
+            level: 'WARNING',
+            path: `tasks/${entry}`,
+            message: VALIDATION_MESSAGES.TASK_MISSING_TYPE,
+          });
+        } else if (!availableTypes.includes(type)) {
+          // Unknown type - emit ERROR with available types listed
+          const typesList = availableTypes.join(', ');
+          issues.push({
+            level: 'ERROR',
+            path: `tasks/${entry}`,
+            message: `${VALIDATION_MESSAGES.TASK_UNKNOWN_TYPE} '${type}'. Available types: ${typesList}`,
+          });
+        }
+      }
+    } catch {
+      // No tasks directory - that's fine, no validation needed
     }
 
     return this.createReport(issues);

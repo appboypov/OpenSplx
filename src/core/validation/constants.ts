@@ -37,6 +37,8 @@ export const VALIDATION_MESSAGES = {
   DELTA_MISSING_REQUIREMENTS: 'Delta should include requirements',
   TASK_MISSING_SKILL_LEVEL: 'Task is missing skill-level field (values: junior, medior, senior)',
   TASK_INVALID_SKILL_LEVEL: 'Task has invalid skill-level value (must be junior, medior, or senior)',
+  TASK_MISSING_TYPE: 'Task has no type specified',
+  TASK_UNKNOWN_TYPE: 'Unknown task type',
 
   // Guidance snippets (appended to primary messages for remediation)
   GUIDE_NO_DELTAS:

@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.agent/workflows/splx-refine-review.md',
   'refine-testing': '.agent/workflows/splx-refine-testing.md',
   'review': '.agent/workflows/splx-review.md',
+  'sync-tasks': '.agent/workflows/splx-sync-tasks.md',
   'sync-workspace': '.agent/workflows/splx-sync-workspace.md',
   'test': '.agent/workflows/splx-test.md',
   'undo-task': '.agent/workflows/splx-undo-task.md'
@@ -46,6 +47,7 @@ const DESCRIPTIONS: Record<SlashCommandId, string> = {
   'refine-review': 'Create or update REVIEW.md.',
   'refine-testing': 'Create or update TESTING.md.',
   'review': 'Review implementations against specs, changes, or tasks.',
+  'sync-tasks': 'Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).',
   'sync-workspace': 'Scan workspace state and suggest maintenance actions.',
   'test': 'Run tests based on scope (change, task, or spec) using TESTING.md configuration.',
   'undo-task': 'Revert a task to to-do.'

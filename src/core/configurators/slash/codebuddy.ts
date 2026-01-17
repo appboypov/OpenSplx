@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.codebuddy/commands/splx/refine-review.md',
   'refine-testing': '.codebuddy/commands/splx/refine-testing.md',
   'review': '.codebuddy/commands/splx/review.md',
+  'sync-tasks': '.codebuddy/commands/splx/sync-tasks.md',
   'sync-workspace': '.codebuddy/commands/splx/sync-workspace.md',
   'test': '.codebuddy/commands/splx/test.md',
   'undo-task': '.codebuddy/commands/splx/undo-task.md'
@@ -140,6 +141,12 @@ name: Review
 description: Review implementations against specs, changes, or tasks.
 category: OpenSplx
 tags: [splx, review, workflow]
+---`,
+  'sync-tasks': `---
+name: Sync Tasks
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
+category: OpenSplx
+tags: [splx, sync, external, mcp]
 ---`,
   'sync-workspace': `---
 name: Sync Workspace

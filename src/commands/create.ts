@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import chalk from 'chalk';
 import ora from 'ora';
-import { TemplateManager } from '../core/templates/index.js';
+import { TemplateManager, getAvailableTypes } from '../core/templates/index.js';
 import { getFilteredWorkspaces } from '../utils/workspace-filter.js';
 import { FileSystemUtils } from '../utils/file-system.js';
 import { ItemRetrievalService } from '../services/item-retrieval.js';
@@ -12,6 +12,8 @@ interface TaskOptions {
   parentId?: string;
   parentType?: 'change' | 'review' | 'spec';
   skillLevel?: 'junior' | 'medior' | 'senior';
+  type?: string;
+  blockedBy?: string;
   json?: boolean;
 }
 
@@ -170,6 +172,24 @@ export class CreateCommand {
       return;
     }
 
+    // Validate type if provided
+    if (options.type) {
+      const availableTypes = await getAvailableTypes(workspaces[0].path);
+      const typeExists = availableTypes.some(t => t.type === options.type);
+      if (!typeExists) {
+        const typeList = availableTypes.map(t => t.type).join(', ');
+        if (options.json) {
+          console.log(JSON.stringify({
+            error: `Unknown task type '${options.type}'. Available types: ${typeList}`
+          }));
+        } else {
+          ora().fail(`Unknown task type '${options.type}'. Available types: ${typeList}`);
+        }
+        process.exitCode = 1;
+        return;
+      }
+    }
+
     if (!options.parentId) {
       if (options.json) {
         console.log(JSON.stringify({
@@ -266,11 +286,22 @@ export class CreateCommand {
     });
     const filepath = path.join(tasksDir, filename);
 
+    // Parse blocked-by parameter
+    let blockedBy: string[] | undefined;
+    if (options.blockedBy) {
+      blockedBy = options.blockedBy
+        .split(',')
+        .map(id => id.trim())
+        .filter(id => id.length > 0);
+    }
+
     const content = TemplateManager.getTaskTemplate({
       title,
       skillLevel: options.skillLevel,
       parentType: actualParentType,
       parentId: parentItemId,
+      type: options.type,
+      blockedBy,
     });
 
     await FileSystemUtils.writeFile(filepath, content);
@@ -285,6 +316,8 @@ export class CreateCommand {
         parentId: parentItemId,
         parentType: actualParentType,
         taskId: `${parentItemId}-${kebabTitle}`,
+        ...(options.type && { taskType: options.type }),
+        ...(blockedBy && blockedBy.length > 0 && { blockedBy }),
       }, null, 2));
     } else {
       console.log(chalk.green(`\n✓ Created task: ${relativePath}\n`));

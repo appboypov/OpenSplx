@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.augment/commands/splx-refine-review.md',
   'refine-testing': '.augment/commands/splx-refine-testing.md',
   'review': '.augment/commands/splx-review.md',
+  'sync-tasks': '.augment/commands/splx-sync-tasks.md',
   'sync-workspace': '.augment/commands/splx-sync-workspace.md',
   'test': '.augment/commands/splx-test.md',
   'undo-task': '.augment/commands/splx-undo-task.md'
@@ -102,6 +103,10 @@ argument-hint: (optional context)
   'review': `---
 description: Review implementations against specs, changes, or tasks.
 argument-hint: (optional context)
+---`,
+  'sync-tasks': `---
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
+argument-hint: change-id
 ---`,
   'sync-workspace': `---
 description: Scan workspace state and suggest maintenance actions.

@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.cursor/commands/splx-refine-review.md',
   'refine-testing': '.cursor/commands/splx-refine-testing.md',
   'review': '.cursor/commands/splx-review.md',
+  'sync-tasks': '.cursor/commands/splx-sync-tasks.md',
   'sync-workspace': '.cursor/commands/splx-sync-workspace.md',
   'test': '.cursor/commands/splx-test.md',
   'undo-task': '.cursor/commands/splx-undo-task.md'
@@ -140,6 +141,12 @@ name: /splx-review
 id: splx-review
 category: OpenSplx
 description: Review implementations against specs, changes, or tasks.
+---`,
+  'sync-tasks': `---
+name: /splx-sync-tasks
+id: splx-sync-tasks
+category: OpenSplx
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
 ---`,
   'sync-workspace': `---
 name: /splx-sync-workspace

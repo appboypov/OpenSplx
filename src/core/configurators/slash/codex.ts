@@ -25,6 +25,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.codex/prompts/splx-refine-review.md',
   'refine-testing': '.codex/prompts/splx-refine-testing.md',
   'review': '.codex/prompts/splx-review.md',
+  'sync-tasks': '.codex/prompts/splx-sync-tasks.md',
   'sync-workspace': '.codex/prompts/splx-sync-workspace.md',
   'test': '.codex/prompts/splx-test.md',
   'undo-task': '.codex/prompts/splx-undo-task.md'
@@ -142,6 +143,12 @@ $ARGUMENTS`,
   'review': `---
 description: Review implementations against specs, changes, or tasks.
 argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'sync-tasks': `---
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
+argument-hint: change-id
 ---
 
 $ARGUMENTS`,

@@ -950,14 +950,18 @@ createCmd
   .option('--parent-id <id>', 'Link task to a parent (change or review)')
   .option('--parent-type <type>', 'Specify parent type: change or review')
   .option('--skill-level <level>', 'Task skill level: junior, medior, or senior')
+  .option('--type <type>', 'Task type (e.g., story, bug, business-logic, components, etc.)')
+  .option('--blocked-by <ids>', 'Comma-separated list of task IDs that block this task')
   .option('--json', 'Output as JSON')
-  .action(async (title: string, options: { parentId?: string; parentType?: string; skillLevel?: string; json?: boolean }) => {
+  .action(async (title: string, options: { parentId?: string; parentType?: string; skillLevel?: string; type?: string; blockedBy?: string; json?: boolean }) => {
     try {
       const createCommand = new CreateCommand();
       await createCommand.createTask(title, {
         parentId: options.parentId,
         parentType: options.parentType as 'change' | 'review' | 'spec' | undefined,
         skillLevel: options.skillLevel as 'junior' | 'medior' | 'senior' | undefined,
+        type: options.type,
+        blockedBy: options.blockedBy,
         json: options.json,
       });
     } catch (error) {

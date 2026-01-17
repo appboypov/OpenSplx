@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import * as fsSync from 'fs';
 import path from 'path';
 import chalk from 'chalk';
 import ora from 'ora';
@@ -13,6 +14,8 @@ import {
 import {
   parseStatus,
   parseSkillLevel,
+  parseType,
+  parseBlockedBy,
   setTaskStatus,
   TaskStatus,
   SkillLevel,
@@ -95,6 +98,8 @@ interface JsonOutput {
     sequence: number;
     status: TaskStatus;
     skillLevel?: SkillLevel;
+    type?: string;
+    blockedBy?: string[];
   } | null;
   taskContent: string | null;
   changeDocuments?: {
@@ -328,6 +333,8 @@ export class GetCommand {
     let taskContent = await fs.readFile(nextTask.filepath, 'utf-8');
     let taskStatus = parseStatus(taskContent);
     const skillLevel = parseSkillLevel(taskContent);
+    const taskType = parseType(taskContent);
+    const blockedBy = parseBlockedBy(taskContent);
     let transitionedToInProgress = false;
 
     // Auto-transition to-do tasks to in-progress when retrieved
@@ -364,6 +371,8 @@ export class GetCommand {
           sequence: nextTask.sequence,
           status: taskStatus,
           ...(skillLevel && { skillLevel }),
+          ...(taskType && { type: taskType }),
+          ...(blockedBy && { blockedBy }),
         },
         taskContent,
       };
@@ -421,10 +430,45 @@ export class GetCommand {
 
       // Print task header with display ID in multi-workspace mode
       const headerTaskId = this.isMulti ? taskDisplayId : getTaskId(nextTaskFileInfo);
+      const typeBadge = taskType ? ` [${this.formatType(taskType)}]` : '';
       const skillBadge = skillLevel ? ` [${this.formatSkillLevel(skillLevel)}]` : '';
       console.log(
-        chalk.bold.cyan(`\n═══ Task ${nextTask.sequence}: ${headerTaskId}${skillBadge} ═══\n`)
+        chalk.bold.cyan(`\n═══ Task ${nextTask.sequence}: ${headerTaskId}${typeBadge}${skillBadge} ═══\n`)
       );
+
+      // Display blocked-by dependencies if present
+      if (blockedBy && blockedBy.length > 0) {
+        console.log(chalk.bold('Blocked by:'));
+        let hasIncompleteBlockers = false;
+
+        for (const blockerId of blockedBy) {
+          try {
+            const blockerResult = await this.itemRetrievalService!.getTaskById(blockerId);
+            if (blockerResult) {
+              const blockerStatus = parseStatus(blockerResult.content);
+              const statusIcon = blockerStatus === 'done' ? chalk.green('✓') : chalk.yellow('○');
+              const statusText = blockerStatus === 'done' ? chalk.dim('(done)') : chalk.yellow(`(${blockerStatus})`);
+              console.log(`  ${statusIcon} ${blockerId} ${statusText}`);
+              if (blockerStatus !== 'done') {
+                hasIncompleteBlockers = true;
+              }
+            } else {
+              console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(not found)')}`);
+              hasIncompleteBlockers = true;
+            }
+          } catch {
+            console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(error)')}`);
+            hasIncompleteBlockers = true;
+          }
+        }
+
+        if (hasIncompleteBlockers) {
+          console.log(chalk.yellow('\n⚠️  Warning: This task has incomplete blockers\n'));
+        } else {
+          console.log();
+        }
+      }
+
       console.log(taskContent);
     }
   }
@@ -438,6 +482,10 @@ export class GetCommand {
       case 'senior':
         return chalk.magenta('senior');
     }
+  }
+
+  private formatType(type: string): string {
+    return chalk.hex('#00CED1')(type);
   }
 
   private async taskById(options: TaskOptions): Promise<void> {
@@ -471,6 +519,8 @@ export class GetCommand {
       : content;
 
     const skillLevel = parseSkillLevel(updatedContent);
+    const taskType = parseType(updatedContent);
+    const blockedBy = parseBlockedBy(updatedContent);
 
     // Apply content filtering if requested
     const filteredContent = this.applyContentFiltering(updatedContent, options);
@@ -488,6 +538,8 @@ export class GetCommand {
           sequence: task.sequence,
           status: taskStatus,
           ...(skillLevel && { skillLevel }),
+          ...(taskType && { type: taskType }),
+          ...(blockedBy && { blockedBy }),
         },
         taskContent: filteredContent,
       };
@@ -500,10 +552,45 @@ export class GetCommand {
       if (transitionedToInProgress) {
         console.log(chalk.blue(`\n→ Transitioned to in-progress: ${taskDisplayId}`));
       }
+      const typeBadge = taskType ? ` [${this.formatType(taskType)}]` : '';
       const skillBadge = skillLevel ? ` [${this.formatSkillLevel(skillLevel)}]` : '';
       console.log(
-        chalk.bold.cyan(`\n═══ Task ${task.sequence}: ${taskDisplayId}${skillBadge} ═══\n`)
+        chalk.bold.cyan(`\n═══ Task ${task.sequence}: ${taskDisplayId}${typeBadge}${skillBadge} ═══\n`)
       );
+
+      // Display blocked-by dependencies if present
+      if (blockedBy && blockedBy.length > 0) {
+        console.log(chalk.bold('Blocked by:'));
+        let hasIncompleteBlockers = false;
+
+        for (const blockerId of blockedBy) {
+          try {
+            const blockerResult = await this.itemRetrievalService!.getTaskById(blockerId);
+            if (blockerResult) {
+              const blockerStatus = parseStatus(blockerResult.content);
+              const statusIcon = blockerStatus === 'done' ? chalk.green('✓') : chalk.yellow('○');
+              const statusText = blockerStatus === 'done' ? chalk.dim('(done)') : chalk.yellow(`(${blockerStatus})`);
+              console.log(`  ${statusIcon} ${blockerId} ${statusText}`);
+              if (blockerStatus !== 'done') {
+                hasIncompleteBlockers = true;
+              }
+            } else {
+              console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(not found)')}`);
+              hasIncompleteBlockers = true;
+            }
+          } catch {
+            console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(error)')}`);
+            hasIncompleteBlockers = true;
+          }
+        }
+
+        if (hasIncompleteBlockers) {
+          console.log(chalk.yellow('\n⚠️  Warning: This task has incomplete blockers\n'));
+        } else {
+          console.log();
+        }
+      }
+
       console.log(filteredContent);
     }
   }
@@ -766,11 +853,13 @@ export class GetCommand {
           const content = await fs.readFile(task.filepath, 'utf-8');
           const status = parseStatus(content);
           const skillLevel = parseSkillLevel(content);
+          const taskType = parseType(content);
           taskData.push({
             id: getTaskId(task),
             status,
             parentId: options.parentId,
             ...(skillLevel && { skillLevel }),
+            ...(taskType && { type: taskType }),
           });
         }
         console.log(
@@ -796,16 +885,27 @@ export class GetCommand {
       }
 
       if (options.json) {
-        const taskData = openTasks.map((t) => ({
-          id: t.taskId,
-          status: t.status,
-          parentId: t.parentId,
-          parentType: t.parentType,
-          workspacePath: t.workspacePath,
-          projectName: t.projectName,
-          displayId: t.displayId,
-          ...(t.skillLevel && { skillLevel: t.skillLevel }),
-        }));
+        const taskData = openTasks.map((t) => {
+          let taskType: string | undefined;
+          try {
+            const content = fsSync.readFileSync(t.task.filepath, 'utf-8');
+            taskType = parseType(content);
+          } catch {
+            // Ignore read errors
+          }
+
+          return {
+            id: t.taskId,
+            status: t.status,
+            parentId: t.parentId,
+            parentType: t.parentType,
+            workspacePath: t.workspacePath,
+            projectName: t.projectName,
+            displayId: t.displayId,
+            ...(t.skillLevel && { skillLevel: t.skillLevel }),
+            ...(taskType && { type: taskType }),
+          };
+        });
         console.log(
           JSON.stringify({ tasks: taskData }, null, 2)
         );
@@ -822,22 +922,26 @@ export class GetCommand {
       chalk.dim('  ') +
       chalk.bold.white('ID'.padEnd(30)) +
       chalk.bold.white('Status'.padEnd(15)) +
+      chalk.bold.white('Type'.padEnd(20)) +
       chalk.bold.white('Skill')
     );
-    console.log(chalk.dim('  ' + '─'.repeat(55)));
+    console.log(chalk.dim('  ' + '─'.repeat(75)));
 
     for (const task of tasks) {
       const content = await fs.readFile(task.filepath, 'utf-8');
       const status = parseStatus(content);
       const skillLevel = parseSkillLevel(content);
+      const taskType = parseType(content);
       const taskId = task.filename.replace('.md', '');
       const statusColor = status === 'in-progress' ? chalk.yellow : status === 'done' ? chalk.green : chalk.gray;
+      const typeDisplay = taskType ? this.formatType(taskType) : chalk.dim('-');
       const skillDisplay = skillLevel ? this.formatSkillLevel(skillLevel) : chalk.dim('-');
 
       console.log(
         chalk.dim('  ') +
         chalk.white(taskId.padEnd(30)) +
         statusColor(status.padEnd(15)) +
+        typeDisplay.padEnd(20) +
         skillDisplay
       );
     }
@@ -847,23 +951,36 @@ export class GetCommand {
     // Header
     console.log(
       chalk.dim('  ') +
-        chalk.bold.white('ID'.padEnd(50)) +
+        chalk.bold.white('ID'.padEnd(40)) +
         chalk.bold.white('Status'.padEnd(15)) +
+        chalk.bold.white('Type'.padEnd(20)) +
         chalk.bold.white('Skill'.padEnd(10)) +
         chalk.bold.white('Parent')
     );
-    console.log(chalk.dim('  ' + '─'.repeat(95)));
+    console.log(chalk.dim('  ' + '─'.repeat(115)));
 
-    for (const { taskId, status, parentId, displayId, skillLevel } of tasks) {
+    for (const { taskId, status, parentId, displayId, skillLevel, task } of tasks) {
       const statusColor = status === 'in-progress' ? chalk.yellow : chalk.gray;
       const displayTaskId = this.isMulti && displayId ? displayId : taskId;
+
+      // Read task content to get type
+      let taskType: string | undefined;
+      try {
+        const content = fsSync.readFileSync(task.filepath, 'utf-8');
+        taskType = parseType(content);
+      } catch {
+        // Ignore read errors
+      }
+
+      const typeDisplay = taskType ? this.formatType(taskType) : chalk.dim('-');
       const skillDisplay = skillLevel ? this.formatSkillLevel(skillLevel) : chalk.dim('-');
       const skillPadding = ' '.repeat(Math.max(0, 10 - (skillLevel?.length ?? 1)));
 
       console.log(
         chalk.dim('  ') +
-          chalk.white(displayTaskId.padEnd(50)) +
+          chalk.white(displayTaskId.padEnd(40)) +
           statusColor(status.padEnd(15)) +
+          typeDisplay.padEnd(20) +
           skillDisplay + skillPadding +
           chalk.blue(parentId)
       );

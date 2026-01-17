@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.roo/commands/splx-refine-review.md',
   'refine-testing': '.roo/commands/splx-refine-testing.md',
   'review': '.roo/commands/splx-review.md',
+  'sync-tasks': '.roo/commands/splx-sync-tasks.md',
   'sync-workspace': '.roo/commands/splx-sync-workspace.md',
   'test': '.roo/commands/splx-test.md',
   'undo-task': '.roo/commands/splx-undo-task.md'
@@ -84,6 +85,9 @@ Create or update TESTING.md.`,
   'review': `# PLX: Review
 
 Review implementations against specs, changes, or tasks.`,
+  'sync-tasks': `# PLX: Sync Tasks
+
+Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).`,
   'sync-workspace': `# PLX: Sync Workspace
 
 Scan workspace state and suggest maintenance actions.`,
