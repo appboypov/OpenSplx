@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.kilocode/workflows/splx-refine-review.md',
   'refine-testing': '.kilocode/workflows/splx-refine-testing.md',
   'review': '.kilocode/workflows/splx-review.md',
+  'sync-tasks': '.kilocode/workflows/splx-sync-tasks.md',
   'sync-workspace': '.kilocode/workflows/splx-sync-workspace.md',
   'test': '.kilocode/workflows/splx-test.md',
   'undo-task': '.kilocode/workflows/splx-undo-task.md'

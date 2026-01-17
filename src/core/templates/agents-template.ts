@@ -308,6 +308,10 @@ status: to-do
 skill-level: junior|medior|senior
 parent-type: change
 parent-id: add-feature
+type: implementation
+blocked-by:
+  - 001-add-feature-components
+  - 002-add-feature-business-logic
 ---
 
 # Task: Implement feature
@@ -364,6 +368,103 @@ For non-Claude models, the agent determines an equivalent model or ignores the f
 - Add \`skill-level\` to task frontmatter during proposal creation
 - \`splx validate change --id <id> --strict\` warns when skill-level is missing
 - Skill level appears in \`splx get task\` output
+
+### Task Templates
+
+Task templates are Markdown files stored in \`workspace/templates/\` that define reusable task structures for different types of work. Templates are discovered via frontmatter \`type:\` field.
+
+**How It Works:**
+1. Create a Markdown file in \`workspace/templates/\` with frontmatter containing \`type: <name>\`
+2. Template discovery scans for all .md files with \`type:\` in frontmatter
+3. User templates automatically override built-in templates with the same type
+4. When creating tasks, you can reference any available type in the \`type:\` field
+
+**Built-in Types** (12 templates provided by default):
+
+| Type | Title Format | Purpose |
+|------|-------------|---------|
+| story | ✨ <Actor> is able to <capability> | User-facing features with business value |
+| bug | 🐞 <Thing> fails when <condition> | Bug fixes restoring intended behavior |
+| business-logic | ⚙️ <Feature> business logic | ViewModels, Services, APIs, DTOs, tests |
+| components | 🧩 <Feature> UI components | Stateless UI components and widgets |
+| research | 🔬 Investigate <unknown> | Best practices research and package evaluation |
+| discovery | 💡 Explore <idea> | Idea exploration and problem validation |
+| chore | 🧹 <Verb> <thing> | Maintenance, cleanup, housekeeping |
+| refactor | 🧱 Refactor <component> to <goal> | Code restructuring without behavior changes |
+| infrastructure | 🏗️ Set up <infrastructure> | CI/CD, deployment, hosting, DevOps |
+| documentation | 📄 Document <thing> | READMEs, API docs, architecture guides |
+| release | 🚀 Prepare release v<version> | Version bumping, changelog, release prep |
+| implementation | 🔧 Wire <feature> to business logic | Integration work wiring components to logic |
+
+**Creating Custom Templates:**
+When no built-in template matches your use case, propose a new type:
+
+1. Create \`workspace/templates/custom-type.md\`
+2. Add frontmatter: \`---\ntype: custom-type\n---\`
+3. Write template structure following conventions
+4. New type becomes immediately available and valid
+5. Reference it in task \`type:\` field
+
+**User Templates Override:**
+Create a file with the same \`type:\` in \`workspace/templates/\` to override any built-in template. This is useful for project-specific customization of standard types.
+
+### Task Dependencies
+
+Tasks can declare dependencies using the \`blocked-by:\` field in frontmatter. This allows sequencing work logically.
+
+**Syntax:**
+- Same-change tasks: \`blocked-by: [001-component-name, 002-logic-name]\`
+- Cross-change tasks: \`blocked-by: [other-change/001-task-name]\`
+- Can reference task IDs or full task file names
+
+**Important:**
+- Dependencies are **advisory only** - warnings, not hard blocks
+- AI agents use \`blocked-by\` for task ordering and planning
+- Dependencies help prevent ordering mistakes but don't prevent task creation
+- Document blockers to improve change coordination
+
+**Example:**
+\`\`\`yaml
+---
+status: to-do
+type: implementation
+blocked-by:
+  - 001-add-feature-components
+  - 002-add-feature-business-logic
+---
+\`\`\`
+
+### Recommended Task Ordering
+
+Follow this proven ordering pattern for features:
+
+1. **Components Task** (🧩 UI components)
+   - Create stateless UI components first
+   - Test in isolation before connecting to logic
+   - Establishes visual contract
+
+2. **Business Logic Task** (⚙️ business logic)
+   - Implement ViewModels, Services, APIs, DTOs
+   - Write unit tests
+   - Ready for connection to UI
+
+3. **Implementation Task** (🔧 wire to business logic)
+   - Connect components to ViewModels/Services
+   - Wire data flow end-to-end
+   - Write integration tests
+
+**Why This Order:**
+- UI-first prevents discovering logic gaps too late
+- Bottom-up testing (tests → logic → integration)
+- Parallel work possible: logic can proceed while UI designed
+- Reduces rework when UI and logic don't align
+
+**Other Recommended Patterns:**
+- Research (🔬) before implementation to validate approaches
+- Discovery (💡) before Research to validate ideas
+- Refactor (🧱) after features stabilize
+- Documentation (📄) as features complete
+- Infrastructure (🏗️) when deployment needs emerge
 
 5. **Create design.md when needed:**
 Create \`design.md\` if any of the following apply; otherwise omit it:

@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.qoder/commands/splx/refine-review.md',
   'refine-testing': '.qoder/commands/splx/refine-testing.md',
   'review': '.qoder/commands/splx/review.md',
+  'sync-tasks': '.qoder/commands/splx/sync-tasks.md',
   'sync-workspace': '.qoder/commands/splx/sync-workspace.md',
   'test': '.qoder/commands/splx/test.md',
   'undo-task': '.qoder/commands/splx/undo-task.md'
@@ -140,6 +141,12 @@ name: Review
 description: Review implementations against specs, changes, or tasks.
 category: OpenSplx
 tags: [splx, review, workflow]
+---`,
+  'sync-tasks': `---
+name: Sync Tasks
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
+category: OpenSplx
+tags: [splx, sync, external, mcp]
 ---`,
   'sync-workspace': `---
 name: Sync Workspace

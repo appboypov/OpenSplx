@@ -44,5 +44,13 @@ describe('slash-command-templates', () => {
       expect(typeof result).toBe('string');
       expect(result.length).toBeGreaterThan(0);
     });
+
+    it('plan-proposal includes template reading step', () => {
+      const result = getSlashCommandBody('plan-proposal');
+      expect(result).toContain('Read all task templates in `workspace/templates/`');
+      expect(result).toContain('workspace/AGENTS.md');
+      expect(result).toContain('type: <template-type>');
+      expect(result).toContain('blocked-by:');
+    });
   });
 });

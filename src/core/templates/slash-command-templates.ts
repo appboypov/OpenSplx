@@ -18,6 +18,7 @@ export type SlashCommandId =
   | 'refine-review'
   | 'refine-testing'
   | 'review'
+  | 'sync-tasks'
   | 'sync-workspace'
   | 'test'
   | 'undo-task';
@@ -50,12 +51,13 @@ const proposalSteps = `**Steps**
    - If found: consume it as the source of truth for user intent and skip interactive clarification.
    - If not found: proceed with gathering intent through conversation or your question tool.
 1. Review \`workspace/ARCHITECTURE.md\`, run \`splx get changes\` and \`splx get specs\`, and inspect related code or docs (e.g., via \`rg\`/\`ls\`) to ground the proposal in current behaviour; note any gaps that require clarification.
-2. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, task files in \`workspace/tasks/\`, and \`design.md\` (when needed) under \`workspace/changes/<id>/\`.
-3. Map the change into concrete capabilities or requirements, breaking multi-scope efforts into distinct spec deltas with clear relationships and sequencing.
-4. Capture architectural reasoning in \`design.md\` when the solution spans multiple systems, introduces new patterns, or demands trade-off discussion before committing to specs.
-5. Draft spec deltas in \`changes/<id>/specs/<capability>/spec.md\` (one folder per capability) using \`## ADDED|MODIFIED|REMOVED Requirements\` with at least one \`#### Scenario:\` per requirement and cross-reference related capabilities when relevant.
-6. Create task files in \`workspace/tasks/\` with numbered files (minimum 3: implementation, review, test). Use format \`NNN-<parent-id>-<kebab-case-name>.md\` for parented tasks (e.g., \`001-add-feature-implement.md\`) or \`NNN-<kebab-case-name>.md\` for standalone tasks. Each file includes frontmatter: status: to-do, skill-level: junior|medior|senior, parent-type: change|review|spec (for parented tasks), parent-id: <id> (for parented tasks). Include sections: End Goal, Currently, Should, Constraints, Acceptance Criteria, Implementation Checklist, Notes. Assign skill-level based on complexity: junior for straightforward changes, medior for feature implementation, senior for architectural work.
-7. Validate with \`splx validate change --id <id> --strict\` and resolve every issue before sharing the proposal.`;
+2. Read all task templates in \`workspace/templates/\` to understand available task types and their structures. See \`workspace/AGENTS.md\` for detailed template documentation.
+3. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, task files in \`workspace/tasks/\`, and \`design.md\` (when needed) under \`workspace/changes/<id>/\`.
+4. Map the change into concrete capabilities or requirements, breaking multi-scope efforts into distinct spec deltas with clear relationships and sequencing.
+5. Capture architectural reasoning in \`design.md\` when the solution spans multiple systems, introduces new patterns, or demands trade-off discussion before committing to specs.
+6. Draft spec deltas in \`changes/<id>/specs/<capability>/spec.md\` (one folder per capability) using \`## ADDED|MODIFIED|REMOVED Requirements\` with at least one \`#### Scenario:\` per requirement and cross-reference related capabilities when relevant.
+7. Create task files in \`workspace/tasks/\` with numbered files (minimum 3: implementation, review, test). Use format \`NNN-<parent-id>-<kebab-case-name>.md\` for parented tasks (e.g., \`001-add-feature-implement.md\`) or \`NNN-<kebab-case-name>.md\` for standalone tasks. Each file includes frontmatter: status: to-do, skill-level: junior|medior|senior, type: <template-type>, parent-type: change|review|spec (for parented tasks), parent-id: <id> (for parented tasks). Select appropriate template type (e.g., components, business-logic, implementation) based on task nature. Use \`blocked-by:\` field to express task dependencies, following recommended ordering: components → business-logic → implementation for feature work. Include sections: End Goal, Currently, Should, Constraints, Acceptance Criteria, Implementation Checklist, Notes. Assign skill-level based on complexity: junior for straightforward changes, medior for feature implementation, senior for architectural work.
+8. Validate with \`splx validate change --id <id> --strict\` and resolve every issue before sharing the proposal.`;
 
 
 const proposalReferences = `**Reference**
@@ -1081,6 +1083,90 @@ const copyTestRequestReference = `**Reference**
 - Use \`splx get task --id <id>\` for task context.
 - Use \`splx get change --id <id>\` for change context.`;
 
+const syncTasksGuardrails = `${planningContext}
+
+**Guardrails**
+- Detect available PM tool MCPs before attempting sync.
+- If no PM MCPs available, inform user and exit gracefully.
+- Create remote issues for each task in the change.
+- Link parent relationships (task → change) when supported.
+- Link blocked-by relationships between issues when supported.
+- Update task frontmatter with external references after successful creation.
+- Continue with other MCPs if one fails; report failures at end.
+
+${monorepoAwareness}`;
+
+const syncTasksMcpDetection = `**MCP Detection**
+Check for available project management MCPs:
+
+1. **Linear MCP** - Check if Linear MCP tools are available:
+   - Look for tools like \`mcp__linear__create_issue\`, \`mcp__linear__list_issues\`
+   - If available, Linear sync is supported
+
+2. **GitHub MCP** - Check if GitHub MCP tools are available:
+   - Look for tools like \`mcp__github__create_issue\`, \`mcp__github__list_issues\`
+   - If available, GitHub Issues sync is supported
+
+3. **Jira MCP** - Check if Jira MCP tools are available:
+   - Look for tools like \`mcp__jira__create_issue\`, \`mcp__jira__list_issues\`
+   - If available, Jira sync is supported
+
+If no PM MCPs are detected:
+- Inform user: "No project management MCPs detected. Install Linear MCP, GitHub MCP, or Jira MCP to enable sync."
+- Exit without making changes.`;
+
+const syncTasksSteps = `**Steps**
+1. Parse \`$ARGUMENTS\` to extract change-id.
+2. If no change-id provided, run \`splx get changes\` and ask user which change to sync.
+3. Detect available PM tool MCPs using MCP Detection rules above.
+4. If no MCPs available, inform user and exit.
+5. Retrieve all tasks for the change:
+   \`\`\`bash
+   splx get tasks --parent-id <change-id> --parent-type change
+   \`\`\`
+6. For each available MCP, for each task:
+   a. Create remote issue with:
+      - Title: Task name (from task file heading)
+      - Body: Task content (End Goal, Currently, Should, Constraints, Acceptance Criteria sections)
+      - Labels: \`splx\`, task type if available
+   b. If task has \`blocked-by\` field, create blocking relationships:
+      - Look up previously created issues for blocked-by task IDs
+      - Link blocking relationships using the MCP's relationship API
+   c. Update task frontmatter with \`tracked-issues\` field:
+      \`\`\`yaml
+      tracked-issues:
+        - tracker: linear
+          id: PLX-123
+          url: https://linear.app/team/issue/PLX-123
+      \`\`\`
+7. Report summary:
+   - List successfully created issues per tracker
+   - List any failures with error details
+   - Show updated task files`;
+
+const syncTasksReference = `**Reference**
+- Use \`splx get change --id <change-id>\` for change context.
+- Use \`splx get tasks --parent-id <change-id> --parent-type change\` to list all tasks.
+- Use \`splx get task --id <task-id>\` for individual task details.
+
+**Frontmatter Format for Tracked Issues**
+\`\`\`yaml
+tracked-issues:
+  - tracker: linear
+    id: PLX-123
+    url: https://linear.app/team/issue/PLX-123
+  - tracker: github
+    id: 456
+    url: https://github.com/owner/repo/issues/456
+\`\`\`
+
+**Supported Trackers**
+| Tracker | MCP | Issue ID Format | URL Pattern |
+|---------|-----|-----------------|-------------|
+| linear | Linear MCP | Team prefix + number (e.g., PLX-123) | https://linear.app/{team}/issue/{id} |
+| github | GitHub MCP | Number (e.g., 456) | https://github.com/{owner}/{repo}/issues/{id} |
+| jira | Jira MCP | Project key + number (e.g., PROJ-123) | https://{domain}/browse/{id} |`;
+
 export const slashCommandBodies: Record<SlashCommandId, string> = {
   'archive': [baseGuardrails, archiveSteps, archiveReferences].join('\n\n'),
   'complete-task': completeTaskSteps,
@@ -1101,6 +1187,7 @@ export const slashCommandBodies: Record<SlashCommandId, string> = {
   'refine-review': [refineReviewGuardrails, refineReviewSteps].join('\n\n'),
   'refine-testing': [refineTestingGuardrails, refineTestingSteps].join('\n\n'),
   'review': [reviewGuardrails, reviewSteps].join('\n\n'),
+  'sync-tasks': [syncTasksGuardrails, syncTasksMcpDetection, syncTasksSteps, syncTasksReference].join('\n\n'),
   'sync-workspace': [syncWorkspaceGuardrails, syncWorkspaceSteps, syncWorkspaceReference].join('\n\n'),
   'test': [testGuardrails, testSteps].join('\n\n'),
   'undo-task': undoTaskSteps

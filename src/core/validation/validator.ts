@@ -11,7 +11,8 @@ import {
   VALIDATION_MESSAGES 
 } from './constants.js';
 import { parseDeltaSpec, normalizeRequirementName } from '../parsers/requirement-blocks.js';
-import { parseSkillLevel } from '../../utils/task-status.js';
+import { parseSkillLevel, parseType } from '../../utils/task-status.js';
+import { getAvailableTypes } from '../templates/template-discovery.js';
 
 export class Validator {
   private strictMode: boolean;
@@ -273,6 +274,10 @@ export class Validator {
     const skillLevelReport = await this.validateChangeTaskSkillLevels(changeDir);
     issues.push(...skillLevelReport.issues);
 
+    // Also validate task types
+    const typeReport = await this.validateChangeTaskTypes(changeDir);
+    issues.push(...typeReport.issues);
+
     return this.createReport(issues);
   }
 
@@ -322,6 +327,75 @@ export class Validator {
       }
     } catch {
       // No tasks directory - that's fine, no warnings to emit
+    }
+
+    return this.createReport(issues);
+  }
+
+  /**
+   * Validate tasks in a change directory for type field.
+   * Emits WARNING for tasks missing type.
+   * Emits ERROR for tasks with unknown type.
+   */
+  async validateChangeTaskTypes(changeDir: string): Promise<ValidationReport> {
+    const issues: ValidationIssue[] = [];
+
+    const tasksDir = path.join(changeDir, 'tasks');
+
+    // Get workspace path (parent of changes directory)
+    // changeDir is workspace/changes/<change-id>, so go up 2 levels
+    const workspacePath = path.dirname(path.dirname(changeDir));
+
+    // Validate workspace path exists
+    try {
+      await fs.access(workspacePath);
+    } catch {
+      console.warn(`Warning: Could not access workspace path "${workspacePath}", skipping type validation`);
+      return this.createReport(issues);
+    }
+
+    // Get available template types
+    let availableTypes: string[];
+    try {
+      const templates = await getAvailableTypes(workspacePath);
+      availableTypes = templates.map(t => t.type);
+    } catch (err) {
+      console.warn(
+        `Warning: Failed to retrieve template types from "${workspacePath}", skipping type validation:`,
+        err instanceof Error ? err.message : err
+      );
+      return this.createReport(issues);
+    }
+
+    try {
+      const entries = await fs.readdir(tasksDir);
+      for (const entry of entries) {
+        if (!entry.endsWith('.md')) continue;
+
+        const taskPath = path.join(tasksDir, entry);
+        const content = await fs.readFile(taskPath, 'utf-8');
+        const type = parseType(content);
+
+        // parseType returns undefined if type is missing from frontmatter
+        if (!type) {
+          // Missing type - emit WARNING
+          issues.push({
+            level: 'WARNING',
+            path: `tasks/${entry}`,
+            message: VALIDATION_MESSAGES.TASK_MISSING_TYPE,
+          });
+        } else if (!availableTypes.includes(type)) {
+          // Unknown type - emit ERROR with available types listed
+          const typesList = availableTypes.join(', ');
+          issues.push({
+            level: 'ERROR',
+            path: `tasks/${entry}`,
+            message: `${VALIDATION_MESSAGES.TASK_UNKNOWN_TYPE} '${type}'. Available types: ${typesList}`,
+          });
+        }
+      }
+    } catch {
+      // No tasks directory - that's fine, no validation needed
     }
 
     return this.createReport(issues);

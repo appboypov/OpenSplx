@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.amazonq/prompts/splx-refine-review.md',
   'refine-testing': '.amazonq/prompts/splx-refine-testing.md',
   'review': '.amazonq/prompts/splx-review.md',
+  'sync-tasks': '.amazonq/prompts/splx-sync-tasks.md',
   'sync-workspace': '.amazonq/prompts/splx-sync-workspace.md',
   'test': '.amazonq/prompts/splx-test.md',
   'undo-task': '.amazonq/prompts/splx-undo-task.md'
@@ -131,6 +132,11 @@ description: Create or update TESTING.md.
 <arguments>$ARGUMENTS</arguments>`,
   'review': `---
 description: Review implementations against specs, changes, or tasks.
+---
+
+<arguments>$ARGUMENTS</arguments>`,
+  'sync-tasks': `---
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
 ---
 
 <arguments>$ARGUMENTS</arguments>`,

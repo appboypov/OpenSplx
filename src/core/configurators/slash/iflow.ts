@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.iflow/commands/splx-refine-review.md',
   'refine-testing': '.iflow/commands/splx-refine-testing.md',
   'review': '.iflow/commands/splx-review.md',
+  'sync-tasks': '.iflow/commands/splx-sync-tasks.md',
   'sync-workspace': '.iflow/commands/splx-sync-workspace.md',
   'test': '.iflow/commands/splx-test.md',
   'undo-task': '.iflow/commands/splx-undo-task.md'
@@ -140,6 +141,12 @@ name: /splx-review
 id: splx-review
 category: OpenSplx
 description: Review implementations against specs, changes, or tasks.
+---`,
+  'sync-tasks': `---
+name: /splx-sync-tasks
+id: splx-sync-tasks
+category: OpenSplx
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
 ---`,
   'sync-workspace': `---
 name: /splx-sync-workspace

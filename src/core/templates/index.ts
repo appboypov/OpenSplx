@@ -87,3 +87,11 @@ export type { TaskContext } from './task-template.js';
 export type { ChangeContext } from './change-template.js';
 export type { SpecContext } from './spec-template.js';
 export type { RequestContext } from './request-template.js';
+
+export {
+  discoverTemplates,
+  getBuiltInTemplates,
+  getAvailableTypes,
+  getTemplateByType,
+  type TemplateInfo,
+} from './template-discovery.js';
