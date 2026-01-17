@@ -342,16 +342,28 @@ export class Validator {
 
     const tasksDir = path.join(changeDir, 'tasks');
 
-    // Get workspace path (parent of change directory)
+    // Get workspace path (parent of changes directory)
+    // changeDir is workspace/changes/<change-id>, so go up 2 levels
     const workspacePath = path.dirname(path.dirname(changeDir));
+
+    // Validate workspace path exists
+    try {
+      await fs.access(workspacePath);
+    } catch {
+      console.warn(`Warning: Could not access workspace path "${workspacePath}", skipping type validation`);
+      return this.createReport(issues);
+    }
 
     // Get available template types
     let availableTypes: string[];
     try {
       const templates = await getAvailableTypes(workspacePath);
       availableTypes = templates.map(t => t.type);
-    } catch {
-      // If we can't get available types, skip validation
+    } catch (err) {
+      console.warn(
+        `Warning: Failed to retrieve template types from "${workspacePath}", skipping type validation:`,
+        err instanceof Error ? err.message : err
+      );
       return this.createReport(issues);
     }
 
@@ -364,14 +376,8 @@ export class Validator {
         const content = await fs.readFile(taskPath, 'utf-8');
         const type = parseType(content);
 
-        // Check if type field exists in frontmatter
-        const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-        const hasFrontmatter = !!frontmatterMatch;
-        const hasTypeField = hasFrontmatter
-          ? /^type:/m.test(frontmatterMatch[1])
-          : false;
-
-        if (!hasFrontmatter || !hasTypeField || !type) {
+        // parseType returns undefined if type is missing from frontmatter
+        if (!type) {
           // Missing type - emit WARNING
           issues.push({
             level: 'WARNING',

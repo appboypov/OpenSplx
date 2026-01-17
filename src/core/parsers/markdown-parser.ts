@@ -192,8 +192,8 @@ export class MarkdownParser {
             const items = value.slice(1, -1).split(',').map(item => item.trim()).filter(item => item);
             if (items.length > 0) {
               result.blockedBy = items;
-              inBlockedBy = false;
             }
+            inBlockedBy = false;
           }
           continue;
         } else {

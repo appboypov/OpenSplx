@@ -1331,10 +1331,9 @@ export async function discoverTemplates(workspacePath: string): Promise<Template
         const content = await fs.readFile(filePath, 'utf-8');
 
         // Use MarkdownParser to extract frontmatter and get the type
-        const parser = new MarkdownParser();
-        const parsed = parser.parse(content);
-        const frontmatter: any = (parsed as any)?.frontmatter ?? (parsed as any)?.metadata ?? (parsed as any)?.data;
-        const typeValue = frontmatter && typeof frontmatter.type === 'string' ? frontmatter.type : null;
+        const parser = new MarkdownParser(content);
+        const frontmatter = parser.getFrontmatter();
+        const typeValue = frontmatter?.type;
 
         // Skip files without valid type in frontmatter
         if (!typeValue) {

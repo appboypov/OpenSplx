@@ -437,39 +437,45 @@ export class GetCommand {
       );
 
       // Display blocked-by dependencies if present
-      if (blockedBy && blockedBy.length > 0) {
-        console.log(chalk.bold('Blocked by:'));
-        let hasIncompleteBlockers = false;
-
-        for (const blockerId of blockedBy) {
-          try {
-            const blockerResult = await this.itemRetrievalService!.getTaskById(blockerId);
-            if (blockerResult) {
-              const blockerStatus = parseStatus(blockerResult.content);
-              const statusIcon = blockerStatus === 'done' ? chalk.green('✓') : chalk.yellow('○');
-              const statusText = blockerStatus === 'done' ? chalk.dim('(done)') : chalk.yellow(`(${blockerStatus})`);
-              console.log(`  ${statusIcon} ${blockerId} ${statusText}`);
-              if (blockerStatus !== 'done') {
-                hasIncompleteBlockers = true;
-              }
-            } else {
-              console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(not found)')}`);
-              hasIncompleteBlockers = true;
-            }
-          } catch {
-            console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(error)')}`);
-            hasIncompleteBlockers = true;
-          }
-        }
-
-        if (hasIncompleteBlockers) {
-          console.log(chalk.yellow('\n⚠️  Warning: This task has incomplete blockers\n'));
-        } else {
-          console.log();
-        }
-      }
+      await this.displayBlockedBy(blockedBy);
 
       console.log(taskContent);
+    }
+  }
+
+  private async displayBlockedBy(blockedBy?: string[]): Promise<void> {
+    if (!blockedBy || blockedBy.length === 0) {
+      return;
+    }
+
+    console.log(chalk.bold('Blocked by:'));
+    let hasIncompleteBlockers = false;
+
+    for (const blockerId of blockedBy) {
+      try {
+        const blockerResult = await this.itemRetrievalService!.getTaskById(blockerId);
+        if (blockerResult) {
+          const blockerStatus = parseStatus(blockerResult.content);
+          const statusIcon = blockerStatus === 'done' ? chalk.green('✓') : chalk.yellow('○');
+          const statusText = blockerStatus === 'done' ? chalk.dim('(done)') : chalk.yellow(`(${blockerStatus})`);
+          console.log(`  ${statusIcon} ${blockerId} ${statusText}`);
+          if (blockerStatus !== 'done') {
+            hasIncompleteBlockers = true;
+          }
+        } else {
+          console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(not found)')}`);
+          hasIncompleteBlockers = true;
+        }
+      } catch {
+        console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(error)')}`);
+        hasIncompleteBlockers = true;
+      }
+    }
+
+    if (hasIncompleteBlockers) {
+      console.log(chalk.yellow('\n⚠️  Warning: This task has incomplete blockers\n'));
+    } else {
+      console.log();
     }
   }
 
@@ -486,6 +492,16 @@ export class GetCommand {
 
   private formatType(type: string): string {
     return chalk.hex('#00CED1')(type);
+  }
+
+  private stripAnsi(str: string): string {
+    return str.replace(/\x1B\[[0-9;]*m/g, '');
+  }
+
+  private padWithAnsi(coloredStr: string, width: number): string {
+    const rawLen = this.stripAnsi(coloredStr).length;
+    const padding = Math.max(0, width - rawLen);
+    return coloredStr + ' '.repeat(padding);
   }
 
   private async taskById(options: TaskOptions): Promise<void> {
@@ -559,37 +575,7 @@ export class GetCommand {
       );
 
       // Display blocked-by dependencies if present
-      if (blockedBy && blockedBy.length > 0) {
-        console.log(chalk.bold('Blocked by:'));
-        let hasIncompleteBlockers = false;
-
-        for (const blockerId of blockedBy) {
-          try {
-            const blockerResult = await this.itemRetrievalService!.getTaskById(blockerId);
-            if (blockerResult) {
-              const blockerStatus = parseStatus(blockerResult.content);
-              const statusIcon = blockerStatus === 'done' ? chalk.green('✓') : chalk.yellow('○');
-              const statusText = blockerStatus === 'done' ? chalk.dim('(done)') : chalk.yellow(`(${blockerStatus})`);
-              console.log(`  ${statusIcon} ${blockerId} ${statusText}`);
-              if (blockerStatus !== 'done') {
-                hasIncompleteBlockers = true;
-              }
-            } else {
-              console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(not found)')}`);
-              hasIncompleteBlockers = true;
-            }
-          } catch {
-            console.log(`  ${chalk.red('✗')} ${blockerId} ${chalk.dim('(error)')}`);
-            hasIncompleteBlockers = true;
-          }
-        }
-
-        if (hasIncompleteBlockers) {
-          console.log(chalk.yellow('\n⚠️  Warning: This task has incomplete blockers\n'));
-        } else {
-          console.log();
-        }
-      }
+      await this.displayBlockedBy(blockedBy);
 
       console.log(filteredContent);
     }
@@ -944,7 +930,7 @@ export class GetCommand {
         chalk.dim('  ') +
         chalk.white(taskId.padEnd(30)) +
         statusColor(status.padEnd(15)) +
-        typeDisplay.padEnd(20) +
+        this.padWithAnsi(typeDisplay, 20) +
         skillDisplay
       );
     }
@@ -981,14 +967,13 @@ export class GetCommand {
 
       const typeDisplay = taskType ? this.formatType(taskType) : chalk.dim('-');
       const skillDisplay = skillLevel ? this.formatSkillLevel(skillLevel) : chalk.dim('-');
-      const skillPadding = ' '.repeat(Math.max(0, 10 - (skillLevel?.length ?? 1)));
 
       console.log(
         chalk.dim('  ') +
           chalk.white(displayTaskId.padEnd(40)) +
           statusColor(status.padEnd(15)) +
-          typeDisplay.padEnd(20) +
-          skillDisplay + skillPadding +
+          this.padWithAnsi(typeDisplay, 20) +
+          this.padWithAnsi(skillDisplay, 10) +
           chalk.blue(parentId)
       );
     }
