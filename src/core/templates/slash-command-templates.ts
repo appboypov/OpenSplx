@@ -75,7 +75,7 @@ Track these steps as TODOs and complete them one by one.
 3. Stop when complete:
    - If implementing a specific task ID (from step 1), stop after completing that task
    - If implementing all tasks in a change, stop after all tasks have been completed
-5. Reference \`splx get changes\` or \`splx get change --id <item>\` when additional context is required.`;
+4. Reference \`splx get changes\` or \`splx get change --id <item>\` when additional context is required.`;
 
 const implementReferences = `**Reference**
 - Use \`splx get change --id <id> --json --deltas-only\` if you need additional context from the proposal while implementing.`;
