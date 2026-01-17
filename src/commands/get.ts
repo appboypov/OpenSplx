@@ -971,8 +971,12 @@ export class GetCommand {
       try {
         const content = fsSync.readFileSync(task.filepath, 'utf-8');
         taskType = parseType(content);
-      } catch {
-        // Ignore read errors
+      } catch (error) {
+        console.error(
+          chalk.yellow(
+            `Warning: Failed to read task file "${task.filepath}" to determine type: ${error instanceof Error ? error.message : String(error)}`
+          )
+        );
       }
 
       const typeDisplay = taskType ? this.formatType(taskType) : chalk.dim('-');
