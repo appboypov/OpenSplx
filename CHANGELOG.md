@@ -4,6 +4,18 @@
 
 ### Added
 
+- **Task type system with template discovery**: Tasks now support typed templates for different kinds of work
+  - `type:` field in task frontmatter specifies the task category
+  - 12 built-in types: story, bug, business-logic, components, research, discovery, chore, refactor, infrastructure, documentation, release, implementation
+  - Template discovery scans `workspace/templates/` for custom templates with `type:` in frontmatter
+  - User templates automatically override built-in templates with the same type
+  - CLI support: `splx create task --type <type>` creates tasks from templates
+- **Task dependency tracking**: Tasks can declare dependencies on other tasks
+  - `blocked-by:` field in task frontmatter lists blocking task IDs
+  - Same-change syntax: `blocked-by: [001-component-name, 002-logic-name]`
+  - Cross-change syntax: `blocked-by: [other-change/001-task-name]`
+  - CLI support: `splx create task --blocked-by <task-ids>` sets dependencies
+  - Dependencies are advisory (warnings, not hard blocks) to help AI agents with task ordering
 - **Copy-review-request and copy-test-request slash commands**: New commands for external agent handoff
   - `/splx:copy-review-request` copies review request with workspace/REVIEW.md guidelines to clipboard
   - `/splx:copy-test-request` copies test request with workspace/TESTING.md configuration to clipboard
@@ -14,10 +26,14 @@
 - **PLX-managed template files moved to workspace directory**: Template files (ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md) are now managed in workspace/ directory
   - Improves organization and keeps all PLX artifacts in one location
   - Maintains backward compatibility with root-level files during migration
+- **PROGRESS.md concept removed**: Simplified workflow by removing PROGRESS.md tracking
+  - Task management now handled entirely through task files and `splx get task` command
+  - Reduces complexity in multi-agent handoff workflows
 
 ### Fixed
 
 - **Package name restored to open-splx**: Fixed package name consistency across the codebase
+- **Task type validation**: Strict mode now warns when task type is missing or unrecognized
 
 ---
 
