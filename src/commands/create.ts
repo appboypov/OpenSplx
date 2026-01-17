@@ -174,7 +174,22 @@ export class CreateCommand {
 
     // Validate type if provided
     if (options.type) {
-      const availableTypes = await getAvailableTypes(workspaces[0].path);
+      // Determine the workspace in which the task will be created.
+      // If the parent ID is prefixed with a project name (e.g. "project-a/change-name"),
+      // prefer the workspace whose projectName matches that prefix.
+      let workspaceForTask = workspaces[0];
+      if (options.parentId) {
+        const slashIndex = options.parentId.indexOf('/');
+        if (slashIndex > 0) {
+          const projectPrefix = options.parentId.substring(0, slashIndex);
+          const matchedWorkspace = workspaces.find(ws => ws.projectName === projectPrefix);
+          if (matchedWorkspace) {
+            workspaceForTask = matchedWorkspace;
+          }
+        }
+      }
+
+      const availableTypes = await getAvailableTypes(workspaceForTask.path);
       const typeExists = availableTypes.some(t => t.type === options.type);
       if (!typeExists) {
         const typeList = availableTypes.map(t => t.type).join(', ');
