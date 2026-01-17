@@ -1330,45 +1330,19 @@ export async function discoverTemplates(workspacePath: string): Promise<Template
         // Read file content
         const content = await fs.readFile(filePath, 'utf-8');
 
-        // Extract frontmatter to get the type
-        // We need to parse the YAML frontmatter manually since MarkdownParser
-        // doesn't store all fields in the raw object
-        const lines = content.split('\n');
-        if (lines.length === 0 || lines[0].trim() !== '---') {
-          continue;
-        }
-
-        let endIndex = -1;
-        for (let i = 1; i < lines.length; i++) {
-          if (lines[i].trim() === '---') {
-            endIndex = i;
-            break;
-          }
-        }
-
-        if (endIndex === -1) {
-          continue;
-        }
-
-        const yamlLines = lines.slice(1, endIndex);
-        let type: string | null = null;
-
-        // Parse type field from YAML
-        for (const line of yamlLines) {
-          const match = line.match(/^type\s*:\s*(.+)$/);
-          if (match) {
-            type = match[1].trim().replace(/^["']|["']$/g, '');
-            break;
-          }
-        }
+        // Use MarkdownParser to extract frontmatter and get the type
+        const parser = new MarkdownParser();
+        const parsed = parser.parse(content);
+        const frontmatter: any = (parsed as any)?.frontmatter ?? (parsed as any)?.metadata ?? (parsed as any)?.data;
+        const typeValue = frontmatter && typeof frontmatter.type === 'string' ? frontmatter.type : null;
 
         // Skip files without valid type in frontmatter
-        if (!type) {
+        if (!typeValue) {
           continue;
         }
 
         templates.push({
-          type,
+          type: typeValue,
           content,
           source: 'user',
           filePath,
