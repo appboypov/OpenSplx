@@ -165,12 +165,12 @@ describe('root-files-migration', () => {
     });
 
     it('should create workspace directory if it does not exist', async () => {
-      await fs.writeFile(path.join(tempDir, 'PROGRESS.md'), 'content');
+      await fs.writeFile(path.join(tempDir, 'ARCHITECTURE.md'), 'content');
 
       const result = await migrateRootFiles(tempDir, workspaceDir);
 
       expect(result.migratedCount).toBe(1);
-      expect(result.migratedFiles).toEqual(['PROGRESS.md']);
+      expect(result.migratedFiles).toEqual(['ARCHITECTURE.md']);
       expect(result.errors).toEqual([]);
       
       // Verify workspace directory created
@@ -217,8 +217,7 @@ describe('root-files-migration', () => {
         'ARCHITECTURE.md',
         'REVIEW.md',
         'RELEASE.md',
-        'TESTING.md',
-        'PROGRESS.md'
+        'TESTING.md'
       ]);
     });
   });

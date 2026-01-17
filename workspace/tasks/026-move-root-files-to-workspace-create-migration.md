@@ -8,7 +8,7 @@ parent-id: move-root-files-to-workspace
 # Task: Create root files migration utility
 
 ## End Goal
-A migration utility that moves ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md, and PROGRESS.md from project root to workspace directory.
+A migration utility that moves ARCHITECTURE.md, REVIEW.md, RELEASE.md, and TESTING.md from project root to workspace directory.
 
 ## Currently
 No migration utility exists for these files.
@@ -41,4 +41,4 @@ No migration utility exists for these files.
 - [ ] 1.5 Add unit tests in `test/utils/root-files-migration.test.ts`
 
 ## Notes
-Files to migrate: ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md, PROGRESS.md
+Files to migrate: ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md

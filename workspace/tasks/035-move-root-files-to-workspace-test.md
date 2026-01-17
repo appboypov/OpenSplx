@@ -20,7 +20,6 @@ Test coverage for:
 - Migration with files already in workspace
 - Init creates files in correct location
 - Update creates files in correct location
-- Create progress creates PROGRESS.md in correct location
 
 ## Constraints
 - [ ] Follow existing test patterns
@@ -39,7 +38,6 @@ Test coverage for:
 - [ ] 10.4 Add unit tests for `migrateRootFiles()` - file in workspace only
 - [ ] 10.5 Update init command tests for new file locations
 - [ ] 10.6 Update update command tests for migration behavior
-- [ ] 10.7 Update create command tests for PROGRESS.md location
 
 ## Notes
 Consider using temporary directories for isolation.

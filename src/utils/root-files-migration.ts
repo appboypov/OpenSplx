@@ -6,8 +6,7 @@ export const PUBLIC_TEMPLATE_FILES = [
   'ARCHITECTURE.md',
   'REVIEW.md',
   'RELEASE.md',
-  'TESTING.md',
-  'PROGRESS.md'
+  'TESTING.md'
 ] as const;
 
 export interface RootFilesMigrationResult {

@@ -207,7 +207,7 @@ When you run `splx init`, these commands are installed for supported AI tools:
 
 - `/splx/plan-request` - Clarify intent via iterative yes/no questions
 - `/splx/plan-proposal` - Scaffold change proposal (auto-consumes request.md)
-- `/splx/plan-implementation` - Generate workspace/PROGRESS.md for multi-agent task handoff
+- `/splx/plan-implementation` - Orchestrate multi-agent task handoff for a change
 - `/splx/get-task` - Get next prioritized task
 - `/splx/copy-next-task` - Copy next task or feedback block to clipboard
 - `/splx/copy-review-request` - Copy review request with workspace/REVIEW.md guidelines to clipboard
@@ -224,7 +224,7 @@ When you run `splx init`, these commands are installed for supported AI tools:
 - `/splx/review` - Review implementations
 - `/splx/parse-feedback` - Parse feedback markers
 - `/splx/prepare-release` - Guided release preparation workflow
-- `/splx/prepare-compact` - Preserve session progress in workspace/PROGRESS.md
+- `/splx/prepare-compact` - Preserve session progress for context continuity
 - `/splx/sync-workspace` - Sync workspace state across changes
 
 ## Supported AI Tools

@@ -83,7 +83,7 @@ tags: [splx, review, workflow]
 ---`,
   'plan-implementation': `---
 name: Plan Implementation
-description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
+description: Orchestrate multi-agent task handoff for a change.
 category: OpenSplx
 tags: [splx, orchestrate, workflow]
 ---`,
@@ -101,7 +101,7 @@ tags: [splx, change, planning]
 ---`,
   'prepare-compact': `---
 name: Prepare Compact
-description: Preserve session progress in PROGRESS.md for context continuity.
+description: Preserve session progress for context continuity.
 category: OpenSplx
 tags: [splx, context, session]
 ---`,

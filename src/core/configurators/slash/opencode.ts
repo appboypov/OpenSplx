@@ -87,7 +87,7 @@ argument-hint: (optional context)
 
 $ARGUMENTS`,
   'plan-implementation': `---
-description: Generate PROGRESS.md and orchestrate multi-agent task handoff.
+description: Orchestrate multi-agent task handoff for a change.
 argument-hint: (optional context)
 ---
 
@@ -107,7 +107,7 @@ argument-hint: (optional context)
 
 $ARGUMENTS`,
   'prepare-compact': `---
-description: Preserve session progress in PROGRESS.md for context continuity.
+description: Preserve session progress for context continuity.
 argument-hint: (optional context)
 ---
 

@@ -8,7 +8,7 @@ parent-id: move-root-files-to-workspace
 # Task: Update slash command template references
 
 ## End Goal
-All slash command templates reference `@workspace/ARCHITECTURE.md`, `@workspace/REVIEW.md`, `@workspace/RELEASE.md`, `@workspace/TESTING.md`, `@workspace/PROGRESS.md` instead of root paths.
+All slash command templates reference `@workspace/ARCHITECTURE.md`, `@workspace/REVIEW.md`, `@workspace/RELEASE.md`, `@workspace/TESTING.md` instead of root paths.
 
 ## Currently
 `src/core/templates/slash-command-templates.ts` contains:
@@ -24,7 +24,6 @@ All references updated to:
 - `@workspace/REVIEW.md`
 - `@workspace/RELEASE.md`
 - `@workspace/TESTING.md`
-- `@workspace/PROGRESS.md`
 
 ## Constraints
 - [ ] Update all occurrences consistently
@@ -36,7 +35,6 @@ All references updated to:
 - [ ] All `@REVIEW.md` → `@workspace/REVIEW.md`
 - [ ] All `@RELEASE.md` → `@workspace/RELEASE.md`
 - [ ] All `@TESTING.md` → `@workspace/TESTING.md`
-- [ ] All `@PROGRESS.md` → `@workspace/PROGRESS.md`
 
 ## Implementation Checklist
 - [ ] 6.1 Update `planningContext` variable (ARCHITECTURE.md reference)
@@ -48,8 +46,7 @@ All references updated to:
 - [ ] 6.7 Update `refineReleaseSteps` variable (RELEASE.md references)
 - [ ] 6.8 Update `copyReviewRequestSteps` variable (REVIEW.md references)
 - [ ] 6.9 Update `copyTestRequestSteps` variable (TESTING.md references)
-- [ ] 6.10 Update `prepareCompactSteps` variable (PROGRESS.md references)
-- [ ] 6.11 Search for any missed references
+- [ ] 6.10 Search for any missed references
 
 ## Notes
 Use search/replace carefully to catch all occurrences.

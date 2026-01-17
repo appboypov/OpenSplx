@@ -2,14 +2,13 @@
 
 ## Why
 
-PLX-managed template files (ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md, PROGRESS.md) are currently created in the project root, mixed with user files. Moving them to `workspace/` keeps all PLX-managed files in one location, improving organization and making the PLX footprint clearer.
+PLX-managed template files (ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md) are currently created in the project root, mixed with user files. Moving them to `workspace/` keeps all PLX-managed files in one location, improving organization and making the PLX footprint clearer.
 
 ## What Changes
 
 - **BREAKING**: Template files created in `workspace/` instead of project root
 - `splx init` creates ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md in `workspace/`
 - `splx update` creates missing template files in `workspace/` and runs migration
-- `splx create progress` creates PROGRESS.md in `workspace/`
 - `splx transfer` creates template files in target `workspace/`
 - Automatic migration moves existing root files to `workspace/` during `splx update`
 - All slash command references update from `@ARCHITECTURE.md` to `@workspace/ARCHITECTURE.md` (etc.)
@@ -21,7 +20,6 @@ PLX-managed template files (ARCHITECTURE.md, REVIEW.md, RELEASE.md, TESTING.md, 
 - Affected code:
   - `src/core/init.ts` - Change file creation paths
   - `src/core/update.ts` - Add migration, change file creation paths
-  - `src/commands/create.ts` - Change PROGRESS.md path
   - `src/services/transfer-service.ts` - Change template file paths
   - `src/core/templates/slash-command-templates.ts` - Update all `@` references
   - `src/core/templates/agents-template.ts` - Update ARCHITECTURE.md references

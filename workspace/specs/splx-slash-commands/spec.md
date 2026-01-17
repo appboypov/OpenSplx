@@ -72,9 +72,9 @@ The system SHALL provide a `splx/compact` slash command that instructs AI agents
 
 - **WHEN** Claude Code is selected during initialization
 - **THEN** create `.claude/commands/splx/compact.md`
-- **AND** include frontmatter with name "OpenSplx: Compact", description "Preserve session progress to PROGRESS.md for context handoff", category "OpenSplx", and relevant tags
+- **AND** include frontmatter with name "OpenSplx: Compact", description "Preserve session progress for context continuity", category "OpenSplx", and relevant tags
 - **AND** wrap the command body in PLX markers
-- **AND** include guardrails for saving files, creating PROGRESS.md in project root, including sufficient detail for continuation, updating .gitignore, and handling existing PROGRESS.md files
+- **AND** include guardrails for saving files, including sufficient detail for continuation, and documenting session state clearly
 
 ### Requirement: Get Task Stop Behavior
 

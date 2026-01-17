@@ -142,7 +142,6 @@ const FEEDBACK_SCANNER_EXCLUDES = [
   'workspace/REVIEW.md',
   'workspace/RELEASE.md',
   'workspace/TESTING.md',
-  'workspace/PROGRESS.md',
 
   // Workspace archives
   'workspace/changes/archive/',
