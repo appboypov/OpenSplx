@@ -3,10 +3,12 @@ export interface TaskContext {
   skillLevel?: 'junior' | 'medior' | 'senior';
   parentType?: 'change' | 'review';
   parentId?: string;
+  type?: string;
+  blockedBy?: string[];
 }
 
 export const taskTemplate = (context: TaskContext): string => `---
-status: to-do${context.skillLevel ? `\nskill-level: ${context.skillLevel}` : ''}${context.parentType ? `\nparent-type: ${context.parentType}` : ''}${context.parentId ? `\nparent-id: ${context.parentId}` : ''}
+status: to-do${context.skillLevel ? `\nskill-level: ${context.skillLevel}` : ''}${context.parentType ? `\nparent-type: ${context.parentType}` : ''}${context.parentId ? `\nparent-id: ${context.parentId}` : ''}${context.type ? `\ntype: ${context.type}` : ''}${context.blockedBy && context.blockedBy.length > 0 ? `\nblocked-by:\n${context.blockedBy.map((b) => `  - ${b}`).join('\n')}` : ''}
 ---
 
 # Task: ${context.title}

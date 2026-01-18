@@ -385,6 +385,7 @@ ${uniqueFiles.map((f) => `- ${f}`).join('\n')}
 status: to-do
 parent-type: review
 parent-id: ${reviewId}
+type: bug
 ---
 
 # Task: ${this.truncateFeedback(marker.feedback, 60)}
