@@ -203,10 +203,11 @@ export class PasteCommand {
           });
 
           // Replace the End Goal section content with clipboard content
+          // Use function form to prevent $& $' $` $n special replacement patterns
           let body = templateResult.body;
           const endGoalMatch = body.match(/## 🎯 End Goal\n[\s\S]*?(?=\n## |$)/);
           if (endGoalMatch) {
-            body = body.replace(endGoalMatch[0], `## 🎯 End Goal\n${endGoalContent}`);
+            body = body.replace(endGoalMatch[0], () => `## 🎯 End Goal\n${endGoalContent}`);
           }
 
           content = frontmatter + '\n\n' + body;
