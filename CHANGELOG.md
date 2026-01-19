@@ -1,5 +1,35 @@
 # OpenSplx Changelog
 
+## 0.20.0 - 2026-01-19
+
+### Changed
+
+- **Template system refactored**: Templates now load from `assets/templates/` at runtime instead of embedded TypeScript strings
+  - Reduces source code size by ~2300 lines
+  - Templates are now editable without recompilation
+  - Organized by category: workspace, task-types, entities, slash-commands
+  - Template caching improves performance on repeated access
+- **Slash command context optimization**: Removed automatic file linking to reduce context waste
+  - Removed `@workspace/ARCHITECTURE.md` auto-linking from slash commands
+  - Converted `@workspace/AGENTS.md` to plain text reference `workspace/AGENTS.md`
+  - Reduces unnecessary context consumption in AI tool conversations
+- **Task utilities extracted**: Shared task utilities moved to dedicated modules with comprehensive unit tests
+  - Improves code organization and maintainability
+  - Better test coverage for task-related functionality
+
+### Fixed
+
+- **Paste command**: Fixed clipboard content replacement to use function form for proper handling
+- **Template synchronization**: Fixed task type system to sync with CLI source templates
+- **Template feedback**: Addressed PR review feedback for task templates
+
+### Removed
+
+- **PROGRESS.md concept**: Removed PROGRESS.md concept entirely from the codebase
+- **Agent-related files**: Cleaned up obsolete agent-related files
+
+---
+
 ## 0.19.0 - 2026-01-17
 
 ### Added

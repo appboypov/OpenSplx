@@ -84,6 +84,13 @@ OpenSplx/
 │       ├── task-status.ts  # Task status (to-do/in-progress/done)
 │       ├── workspace-discovery.ts # Multi-workspace discovery
 │       └── workspace-filter.ts # Workspace filtering
+├── assets/                 # Static assets and templates
+│   ├── templates/          # Runtime-loaded templates
+│   │   ├── workspace/      # Workspace-level templates
+│   │   ├── task-types/     # Task type templates
+│   │   ├── entities/       # Entity templates
+│   │   └── slash-commands/ # Slash command templates
+│   └── hero.png            # Project assets
 ├── test/                   # Test files (mirrors src structure)
 ├── workspace/              # PLX workspace directory (dogfooding)
 │   ├── tasks/              # Centralized task storage
@@ -250,7 +257,7 @@ Domain services encapsulate business logic for reuse across commands:
 
 ### Template System
 
-Templates use a **Factory Pattern** via `TemplateManager`:
+Templates use a **Factory Pattern** with runtime file loading via `TemplateManager`:
 
 ```typescript
 TemplateManager.getTemplates(context)       // Core templates
@@ -258,7 +265,15 @@ TemplateManager.getSlashCommandBody(id)     // Slash command templates
 TemplateManager.getArchitectureTemplate(context) // Architecture doc template
 ```
 
-Templates support dynamic content via context injection.
+**Template Storage:**
+- Templates are stored in `assets/templates/` organized by category:
+  - `workspace/` - Workspace-level templates (AGENTS.md, ARCHITECTURE.md, etc.)
+  - `task-types/` - Task type templates
+  - `entities/` - Entity templates (change, spec, request, review)
+  - `slash-commands/` - Slash command templates for AI tools
+- Templates load at runtime via `template-loader.ts` with caching
+- Reduces source code size (~2300 lines) and enables template editing without recompilation
+- Templates support dynamic content via context injection
 
 ### File Marker System
 
