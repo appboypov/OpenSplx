@@ -1,7 +1,7 @@
 **Guardrails**
 - Read @workspace/RELEASE.md Config section for release configuration.
 - Apply defaults when config values are not specified.
-- Reference @README.md, @CHANGELOG.md, and @workspace/ARCHITECTURE.md for updates.
+- Reference @README.md and @CHANGELOG.md for updates.
 - Execute steps sequentially: changelog → readme → architecture.
 - User confirms or skips each step before proceeding.
 - Preserve existing content when updating files.

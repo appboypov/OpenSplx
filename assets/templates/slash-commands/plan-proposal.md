@@ -1,6 +1,5 @@
 **Context**
-@workspace/ARCHITECTURE.md
-@workspace/AGENTS.md
+workspace/AGENTS.md
 
 **Guardrails**
 - Favor straightforward, minimal implementations first and add complexity only when it is requested or clearly required.

@@ -1,6 +1,5 @@
 **Context**
-@workspace/ARCHITECTURE.md
-@workspace/AGENTS.md
+workspace/AGENTS.md
 
 **Guardrails**
 - Use iterative yes/no questions to clarify intent before proposal creation.
