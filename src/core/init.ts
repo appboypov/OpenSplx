@@ -732,6 +732,7 @@ export class InitCommand {
       path.join(workspacePath, 'specs'),
       path.join(workspacePath, 'changes'),
       path.join(workspacePath, 'changes', 'archive'),
+      path.join(workspacePath, 'templates'),
     ];
 
     for (const dir of directories) {
@@ -800,6 +801,16 @@ export class InitCommand {
     if (!skipExisting || !(await FileSystemUtils.fileExists(testingPath))) {
       const testingContent = TemplateManager.getTestingTemplate();
       await FileSystemUtils.writeFile(testingPath, testingContent);
+    }
+
+    // Write task type templates to workspace/templates/
+    const taskTypeTemplates = TemplateManager.getTaskTypeTemplates();
+    const templatesDir = path.join(workspacePath, 'templates');
+    for (const typeTemplate of taskTypeTemplates) {
+      const templatePath = path.join(templatesDir, typeTemplate.filename);
+      if (!skipExisting || !(await FileSystemUtils.fileExists(templatePath))) {
+        await FileSystemUtils.writeFile(templatePath, typeTemplate.content);
+      }
     }
   }
 

@@ -6,8 +6,7 @@ import { migrateRootFiles } from '../utils/root-files-migration.js';
 import { PLX_DIR_NAME } from './config.js';
 import { ToolRegistry } from './configurators/registry.js';
 import { SlashCommandRegistry } from './configurators/slash/registry.js';
-import { agentsTemplate } from './templates/agents-template.js';
-import { TemplateManager } from './templates/index.js';
+import { getAgentsTemplate, TemplateManager } from './templates/index.js';
 
 export class UpdateCommand {
   async execute(projectPath: string): Promise<void> {
@@ -62,7 +61,7 @@ export class UpdateCommand {
     // 2. Update AGENTS.md (full replacement)
     const agentsPath = path.join(workspacePath, 'AGENTS.md');
 
-    await FileSystemUtils.writeFile(agentsPath, agentsTemplate);
+    await FileSystemUtils.writeFile(agentsPath, getAgentsTemplate());
 
     // 3. Create ARCHITECTURE.md if not exists
     const architecturePath = path.join(workspacePath, 'ARCHITECTURE.md');
@@ -92,7 +91,18 @@ export class UpdateCommand {
       await FileSystemUtils.writeFile(testingPath, testingContent);
     }
 
-    // 7. Update existing AI tool configuration files only
+    // 7. Create templates directory and write task type templates if not exist
+    const templatesDir = path.join(workspacePath, 'templates');
+    await FileSystemUtils.createDirectory(templatesDir);
+    const taskTypeTemplates = TemplateManager.getTaskTypeTemplates();
+    for (const typeTemplate of taskTypeTemplates) {
+      const templatePath = path.join(templatesDir, typeTemplate.filename);
+      if (!(await FileSystemUtils.fileExists(templatePath))) {
+        await FileSystemUtils.writeFile(templatePath, typeTemplate.content);
+      }
+    }
+
+    // 8. Update existing AI tool configuration files only
     const configurators = ToolRegistry.getAll();
     const slashConfigurators = SlashCommandRegistry.getAll();
     const updatedFiles: string[] = [];
