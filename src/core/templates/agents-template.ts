@@ -301,48 +301,34 @@ Create task files in \`workspace/tasks/\` with numbered files. Minimum 3 files r
 For parented tasks, use format \`NNN-<parent-id>-<kebab-case-name>.md\` (e.g., \`001-add-feature-implement.md\`).
 For standalone tasks, use format \`NNN-<kebab-case-name>.md\` (e.g., \`003-standalone-task.md\`).
 
-Example \`workspace/tasks/001-add-feature-implement.md\`:
-\`\`\`markdown
+**Task File Structure:**
+
+Each task file has two parts:
+
+1. **Frontmatter** (YAML between \`---\` markers):
+\`\`\`yaml
 ---
 status: to-do
 skill-level: junior|medior|senior
 parent-type: change
-parent-id: add-feature
-type: implementation
+parent-id: <change-id>
+type: <template-type>
 blocked-by:
-  - 001-add-feature-components
-  - 002-add-feature-business-logic
+  - <task-id-1>
+  - <task-id-2>
 ---
-
-# Task: Implement feature
-
-## End Goal
-What this task accomplishes.
-
-## Currently
-Current state before this task.
-
-## Should
-Expected state after this task.
-
-## Constraints
-- [ ] Constraint 1
-- [ ] Constraint 2
-
-## Acceptance Criteria
-- [ ] Criterion 1
-- [ ] Criterion 2
-
-## Implementation Checklist
-- [ ] 1.1 Create database schema
-- [ ] 1.2 Implement API endpoint
-- [ ] 1.3 Add frontend component
-
-## Notes
-Additional context if needed.
 \`\`\`
 
-**Note:** Checkboxes under \`## Constraints\` and \`## Acceptance Criteria\` are ignored when calculating task progress. Only \`## Implementation Checklist\` checkboxes count.
+2. **Body**: Copy the structure from \`workspace/templates/<type>.md\` and fill in the \`<!-- REPLACE: ... -->\` placeholders with task-specific content.
+
+**Example workflow:**
+1. Choose task type (e.g., \`components\`, \`business-logic\`, \`implementation\`)
+2. Read \`workspace/templates/<type>.md\`
+3. Create task file with frontmatter + template body structure
+4. Replace all \`<!-- REPLACE: ... -->\` placeholders with actual content
+5. Keep all emoji headers and sections from the template
+
+**Note:** Checkboxes under constraint and acceptance criteria sections are ignored when calculating task progress. Only implementation checklist checkboxes count.
 
 ### Task Skill Level
 
@@ -593,7 +579,9 @@ splx get changes
 CHANGE=add-two-factor-auth
 mkdir -p workspace/changes/$CHANGE/specs/auth
 printf "## Why\\n...\\n\\n## What Changes\\n- ...\\n\\n## Impact\\n- ...\\n" > workspace/changes/$CHANGE/proposal.md
-printf "---\\nstatus: to-do\\nskill-level: junior|medior|senior\\nparent-type: change\\nparent-id: add-two-factor-auth\\ntype: implementation\\n---\\n\\n# Task: Implement feature\\n\\n## End Goal\\n...\\n\\n## Implementation Checklist\\n- [ ] 1.1 ...\\n" > workspace/tasks/001-add-two-factor-auth-implement.md
+# Copy template and fill in placeholders
+cp workspace/templates/implementation.md workspace/tasks/001-add-two-factor-auth-implement.md
+# Then edit to add frontmatter and replace <!-- REPLACE: ... --> placeholders
 
 # 3) Add deltas (example)
 cat > workspace/changes/$CHANGE/specs/auth/spec.md << 'EOF'

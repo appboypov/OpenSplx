@@ -1,3 +1,5 @@
+import { buildTaskFrontmatter, KNOWN_TEMPLATE_TYPES } from '../../utils/task-utils.js';
+
 export interface TaskContext {
   title: string;
   skillLevel?: 'junior' | 'medior' | 'senior';
@@ -7,30 +9,30 @@ export interface TaskContext {
   blockedBy?: string[];
 }
 
-export const taskTemplate = (context: TaskContext): string => `---
-status: to-do${context.skillLevel ? `\nskill-level: ${context.skillLevel}` : ''}${context.parentType ? `\nparent-type: ${context.parentType}` : ''}${context.parentId ? `\nparent-id: ${context.parentId}` : ''}${context.type ? `\ntype: ${context.type}` : ''}${context.blockedBy && context.blockedBy.length > 0 ? `\nblocked-by:\n${context.blockedBy.map((b) => `  - ${b}`).join('\n')}` : ''}
----
+/**
+ * Generates task frontmatter only. Body content must come from workspace/templates/<type>.md.
+ * This is a fallback that should rarely be used - prefer using --type to specify a template.
+ */
+export const taskTemplate = (context: TaskContext): string => {
+  const frontmatter = buildTaskFrontmatter({
+    status: 'to-do',
+    skillLevel: context.skillLevel,
+    parentType: context.parentType,
+    parentId: context.parentId,
+    type: context.type,
+    blockedBy: context.blockedBy,
+  });
+
+  const availableTypes = KNOWN_TEMPLATE_TYPES.join(', ');
+
+  return `${frontmatter}
 
 # Task: ${context.title}
 
-## End Goal
-TBD - What this task accomplishes.
+⚠️ **No template type specified.** Use \`--type <type>\` to create a task with proper structure.
 
-## Currently
-TBD - Current state before this task.
+Available types: ${availableTypes}
 
-## Should
-TBD - Expected state after this task.
-
-## Constraints
-- [ ] TBD
-
-## Acceptance Criteria
-- [ ] TBD
-
-## Implementation Checklist
-- [ ] 1.1 TBD
-
-## Notes
-TBD - Additional context if needed.
+Example: \`splx create task "My task" --parent-id my-change --type implementation\`
 `;
+};
