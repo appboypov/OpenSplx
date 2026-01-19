@@ -56,21 +56,6 @@ export class CreateCommand {
       return;
     }
 
-    // Validate template type if provided
-    if (options.type && !TemplateManager.isValidTemplateType(options.type)) {
-      const knownTypes = TemplateManager.getKnownTemplateTypes().join(', ');
-      if (options.json) {
-        console.log(JSON.stringify({
-          error: `Unknown template type '${options.type}'. Available types: ${knownTypes}`
-        }));
-      } else {
-        ora().fail(`Unknown template type '${options.type}'`);
-        console.log(chalk.dim(`  Available types: ${knownTypes}`));
-      }
-      process.exitCode = 1;
-      return;
-    }
-
     let resolved: ResolvedParent | null = null;
     try {
       resolved = await ParentResolverService.resolve(

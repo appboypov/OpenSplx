@@ -120,21 +120,6 @@ export class PasteCommand {
         return;
       }
 
-      // Validate template type if provided
-      if (options.type && !TemplateManager.isValidTemplateType(options.type)) {
-        const knownTypes = TemplateManager.getKnownTemplateTypes().join(', ');
-        if (options.json) {
-          console.log(JSON.stringify({
-            error: `Unknown template type '${options.type}'. Available types: ${knownTypes}`
-          }));
-        } else {
-          ora().fail(`Unknown template type '${options.type}'`);
-          console.log(chalk.dim(`  Available types: ${knownTypes}`));
-        }
-        process.exitCode = 1;
-        return;
-      }
-
       // Resolve parent
       let resolved: ResolvedParent | null = null;
       try {
@@ -226,10 +211,11 @@ export class PasteCommand {
 
           content = frontmatter + '\n\n' + body;
         } else {
-          // Template not found - fall back to generic template with warning
-          templateWarning = templateResult.error || `Template '${options.type}' not found in workspace/templates/. Using generic template.`;
-          content = TemplateManager.getTaskTemplate({
-            title,
+          // Template not found - fall back to minimal structure with clipboard content
+          templateWarning = templateResult.error || `Template '${options.type}' not found in workspace/templates/. Using minimal template.`;
+
+          const frontmatter = buildTaskFrontmatter({
+            status: 'to-do',
             skillLevel: options.skillLevel,
             parentType: actualParentType,
             parentId: parentItemId,
@@ -237,11 +223,13 @@ export class PasteCommand {
             blockedBy: options.blockedBy,
           });
 
-          // Inject clipboard content into End Goal section
-          const endGoalMatch = content.match(/## 🎯 End Goal\n[\s\S]*?(?=\n## |$)/);
-          if (endGoalMatch) {
-            content = content.replace(endGoalMatch[0], `## 🎯 End Goal\n${endGoalContent}`);
-          }
+          content = `${frontmatter}
+
+# Task: ${title}
+
+## 🎯 End Goal
+${endGoalContent}
+`;
         }
       } else {
         // No type specified - use simple format with clipboard content as body

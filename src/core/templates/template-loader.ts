@@ -45,7 +45,8 @@ export function loadTemplateWithReplacements(
 ): string {
   let content = loadTemplate(relativePath);
   for (const [key, value] of Object.entries(replacements)) {
-    content = content.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), value);
+    // Use function form to prevent $& $' $` $n special replacement patterns
+    content = content.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), () => value);
   }
   return content;
 }

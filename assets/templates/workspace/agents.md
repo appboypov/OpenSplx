@@ -310,7 +310,7 @@ Each task file has two parts:
 ---
 status: to-do
 skill-level: junior|medior|senior
-parent-type: change
+parent-type: change|review
 parent-id: <change-id>
 type: <template-type>
 blocked-by:
@@ -401,8 +401,17 @@ Create a file with the same `type:` in `workspace/templates/` to override any bu
 Tasks can declare dependencies using the `blocked-by:` field in frontmatter. This allows sequencing work logically.
 
 **Syntax:**
-- Same-change tasks: `blocked-by: [001-component-name, 002-logic-name]`
-- Cross-change tasks: `blocked-by: [other-change/001-task-name]`
+- Same-change tasks:
+  ```yaml
+  blocked-by:
+    - 001-component-name
+    - 002-logic-name
+  ```
+- Cross-change tasks:
+  ```yaml
+  blocked-by:
+    - other-change/001-task-name
+  ```
 - Can reference task IDs or full task file names
 
 **Important:**
