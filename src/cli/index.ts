@@ -229,7 +229,7 @@ changeCmd
 const archiveCmd = program
   .command('archive [item-name]')
   .description('Archive a completed change or review and update main specs')
-  .option('-y, --yes', 'Skip confirmation prompts')
+  // Note: --yes flag is defined on subcommands, not parent, to avoid conflicts
   .option('--skip-specs', 'Skip spec update operations (useful for infrastructure, tooling, or doc-only changes)')
   .option('--no-validate', 'Skip validation (not recommended, requires confirmation)')
   .option('--type <type>', 'Specify item type when ambiguous: change|review (DEPRECATED)')
@@ -256,12 +256,20 @@ archiveCmd
   .description('Archive a completed change and update main specs')
   .requiredOption('--id <id>', 'Change ID to archive')
   .option('-y, --yes', 'Skip confirmation prompts')
-  .option('--skip-specs', 'Skip spec update operations (useful for infrastructure, tooling, or doc-only changes)')
-  .option('--no-validate', 'Skip validation (not recommended, requires confirmation)')
+  .option('--skip-specs', 'Skip spec update operations (useful for infrastructure, tooling, or doc-only changes)', false)
+  .option('--no-validate', 'Skip validation (not recommended, requires confirmation)', false)
   .action(async (options: { id: string; yes?: boolean; skipSpecs?: boolean; noValidate?: boolean; validate?: boolean }) => {
     try {
+      // Normalize boolean flags to ensure they're actual booleans
+      const normalizedOptions = {
+        ...options,
+        yes: !!options.yes,
+        skipSpecs: !!options.skipSpecs,
+        noValidate: !!options.noValidate,
+        validate: options.validate !== undefined ? !!options.validate : undefined,
+      };
       const archiveCommand = new ArchiveCommand();
-      await archiveCommand.archiveChangeById(options.id, options);
+      await archiveCommand.archiveChangeById(options.id, normalizedOptions);
     } catch (error) {
       console.log();
       ora().fail(`Error: ${(error as Error).message}`);
@@ -278,8 +286,16 @@ archiveCmd
   .option('--no-validate', 'Skip validation (not recommended, requires confirmation)')
   .action(async (options: { id: string; yes?: boolean; skipSpecs?: boolean; noValidate?: boolean; validate?: boolean }) => {
     try {
+      // Normalize boolean flags to ensure they're actual booleans
+      const normalizedOptions = {
+        ...options,
+        yes: !!options.yes,
+        skipSpecs: !!options.skipSpecs,
+        noValidate: !!options.noValidate,
+        validate: options.validate !== undefined ? !!options.validate : undefined,
+      };
       const archiveCommand = new ArchiveCommand();
-      await archiveCommand.archiveReviewById(options.id, options);
+      await archiveCommand.archiveReviewById(options.id, normalizedOptions);
     } catch (error) {
       console.log();
       ora().fail(`Error: ${(error as Error).message}`);

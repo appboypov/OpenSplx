@@ -4,33 +4,30 @@
 TBD - created by archiving change add-create-command. Update Purpose after archive.
 ## Requirements
 ### Requirement: Create Task Command
-
-The command SHALL create standalone or parented task files with proper frontmatter and content structure.
+The command SHALL create standalone or parented task files with proper frontmatter, content structure, and location rules based on parent type.
 
 #### Scenario: Creating standalone task
-
 - **WHEN** `splx create task "Fix typo in README"` is executed
-- **THEN** create task file at appropriate location
+- **THEN** create task file in `workspace/tasks/`
 - **AND** use filename format `NNN-<slugified-title>.md`
 - **AND** include frontmatter with `status: to-do`
 - **AND** populate `# Task: <title>` header and template sections
 
 #### Scenario: Creating parented task with unambiguous parent
-
 - **WHEN** `splx create task "Implement feature" --parent-id add-feature` is executed
 - **AND** only one entity with ID `add-feature` exists across changes, reviews, and specs
 - **THEN** create task file linked to that parent
 - **AND** include frontmatter with `status: to-do`, `parent-type`, and `parent-id`
-- **AND** use filename format `NNN-<parent-id>-<slugified-title>.md`
+- **AND** store change-linked tasks in `workspace/changes/add-feature/tasks/` with filename `NNN-<slugified-title>.md`
+- **AND** store non-change tasks in `workspace/tasks/` with filename `NNN-<parent-id>-<slugified-title>.md`
 
 #### Scenario: Creating parented task with explicit parent type
-
-- **WHEN** `splx create task "Review logic" --parent-id my-spec --parent-type spec` is executed
-- **THEN** create task file linked to spec `my-spec`
-- **AND** include frontmatter with `status: to-do`, `parent-type: spec`, `parent-id: my-spec`
+- **WHEN** `splx create task "Review logic" --parent-id my-review --parent-type review` is executed
+- **THEN** create task file linked to review `my-review`
+- **AND** include frontmatter with `status: to-do`, `parent-type: review`, `parent-id: my-review`
+- **AND** store the task in `workspace/tasks/` with filename `NNN-my-review-review-logic.md`
 
 #### Scenario: Handling ambiguous parent ID
-
 - **WHEN** `splx create task "Task" --parent-id shared-name` is executed
 - **AND** multiple entities with ID `shared-name` exist across different types
 - **THEN** exit with error code 1
@@ -38,7 +35,6 @@ The command SHALL create standalone or parented task files with proper frontmatt
 - **AND** suggest using `--parent-type` flag to disambiguate
 
 #### Scenario: Handling non-existent parent
-
 - **WHEN** `splx create task "Task" --parent-id non-existent` is executed
 - **AND** no entity with ID `non-existent` exists
 - **THEN** exit with error code 1
@@ -203,4 +199,45 @@ The command SHALL provide descriptive help text for all subcommands and options.
 - **THEN** display usage synopsis with positional and optional arguments
 - **AND** describe `--parent-id` and `--parent-type` options
 - **AND** list valid parent types (change, review, spec)
+
+### Requirement: Create Progress Command
+
+The command SHALL generate a PROGRESS.md file with embedded task content for multi-agent handoff.
+
+#### Scenario: Creating progress for a change
+
+- **WHEN** `splx create progress --change-id add-feature` is executed
+- **AND** the change `add-feature` exists with non-completed tasks
+- **THEN** create PROGRESS.md at project root
+- **AND** include a task checklist section for each non-completed task
+- **AND** embed full task content within each section
+- **AND** include relevant proposal context for each task
+- **AND** include agent pickup instructions without PROGRESS.md references
+- **AND** include `splx complete task --id <task-id>` command at end of each task block
+
+#### Scenario: Filtering completed tasks
+
+- **WHEN** `splx create progress --change-id add-feature` is executed
+- **AND** the change has tasks with status `done`
+- **THEN** exclude tasks with status `done` from PROGRESS.md
+- **AND** only include tasks with status `to-do` or `in-progress`
+
+#### Scenario: Handling change with no non-completed tasks
+
+- **WHEN** `splx create progress --change-id add-feature` is executed
+- **AND** all tasks in the change have status `done`
+- **THEN** exit with error code 1
+- **AND** display message indicating all tasks are complete
+
+#### Scenario: Handling non-existent change
+
+- **WHEN** `splx create progress --change-id non-existent` is executed
+- **AND** no change with ID `non-existent` exists
+- **THEN** exit with error code 1
+- **AND** display error message indicating change not found
+
+#### Scenario: JSON output
+
+- **WHEN** `--json` flag is provided
+- **THEN** output JSON with `success`, `path`, `changeId`, and `taskCount` fields
 

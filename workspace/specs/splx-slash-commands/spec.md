@@ -43,24 +43,20 @@ The system SHALL update PLX command content within markers when running init in 
 - **AND** preserve any content outside the markers
 
 ### Requirement: Act Next Actionable Filtering
-
 The system SHALL filter out non-actionable changes when selecting the next task via `splx act next`.
 
-#### Scenario: Skipping changes with all checkboxes complete
-
-- **WHEN** a change has all implementation checkboxes marked as complete (`- [x]`)
+#### Scenario: Skipping changes with all tasks complete
+- **WHEN** a change's task files contain no unchecked markdown checkboxes
 - **THEN** the `splx act next` command SHALL skip that change
-- **AND** select a change with incomplete checkboxes instead
+- **AND** select a change with incomplete tasks instead
 
 #### Scenario: Skipping changes with no checkboxes
-
-- **WHEN** a change has zero implementation checkboxes in its task files
-- **THEN** the `splx act next` command SHALL skip that change
-- **AND** select a change with incomplete checkboxes instead
+- **WHEN** a change has task files but zero markdown checkboxes across those files
+- **THEN** the `splx act next` command SHALL treat the change as complete and skip it
+- **AND** select a change with incomplete tasks instead
 
 #### Scenario: Returning null when no actionable changes exist
-
-- **WHEN** all active changes are either complete or have no checkboxes
+- **WHEN** all active changes are either complete or have no unchecked checkboxes
 - **THEN** the `splx act next` command SHALL return null
 - **AND** display "No active changes found" message
 
@@ -554,4 +550,72 @@ The system SHALL create a TESTING.md template at the project root during initial
 - **THEN** check if TESTING.md exists at project root
 - **AND** if not exists, create TESTING.md with config-style content
 - **AND** do not overwrite existing TESTING.md
+
+### Requirement: Plan Implementation Command
+
+The system SHALL provide a `/splx:plan-implementation` slash command that orchestrates multi-agent task handoff with verification loops.
+
+#### Scenario: Generating plan-implementation command for Claude Code
+
+- **WHEN** Claude Code is selected during initialization
+- **THEN** create `.claude/commands/splx/plan-implementation.md`
+- **AND** include frontmatter with name "OpenSplx: Plan Implementation", description, category "OpenSplx", and relevant tags
+- **AND** wrap the command body in PLX markers
+- **AND** include guardrails for: running `splx create progress`, outputting task blocks to chat, verifying agent work
+- **AND** include steps for: generating PROGRESS.md, outputting first task block, entering review loop, verifying completions, providing feedback, advancing to next task
+
+#### Scenario: Plan-implementation command accepts change-id argument
+
+- **WHEN** the plan-implementation command is invoked with a change-id argument
+- **THEN** pass the change-id to `splx create progress --change-id <id>`
+- **AND** generate PROGRESS.md for that specific change
+
+#### Scenario: Task block format is self-contained
+
+- **WHEN** the plan-implementation command outputs a task block
+- **THEN** include task title, end goal, constraints, acceptance criteria, and implementation checklist
+- **AND** include relevant proposal context (why, what changes)
+- **AND** instruct agent to focus ONLY on this task
+- **AND** instruct agent to run `splx complete task --id <task-id>` when done
+- **AND** NOT mention PROGRESS.md in agent instructions
+
+#### Scenario: Review loop waits for user confirmation
+
+- **WHEN** a task block has been output to chat
+- **THEN** wait for user to report completion (e.g., "done")
+- **AND** NOT automatically proceed to verification
+
+#### Scenario: Verification checks full criteria
+
+- **WHEN** user reports task completion
+- **THEN** verify scope adherence (no unrequested features)
+- **AND** verify TracelessChanges (no comments about removed code)
+- **AND** verify project conventions adherence
+- **AND** verify tests pass
+- **AND** verify acceptance criteria met
+
+#### Scenario: Feedback block format is self-contained
+
+- **WHEN** verification finds issues
+- **THEN** output feedback block to chat for immediate copy
+- **AND** append feedback to PROGRESS.md under the task section
+- **AND** reference task by name in feedback
+- **AND** list specific issues found
+- **AND** provide actionable guidance
+- **AND** make feedback understandable by fresh agent (full context)
+- **AND** NOT require reading PROGRESS.md history
+
+#### Scenario: Task completion advances workflow
+
+- **WHEN** verification passes
+- **THEN** mark task complete with `splx complete task --id <task-id>`
+- **AND** output next task block to chat
+- **AND** continue until all tasks are complete
+
+#### Scenario: All tasks complete ends workflow
+
+- **WHEN** the last task passes verification
+- **THEN** mark task complete
+- **AND** display completion summary
+- **AND** suggest running `splx validate change --id <change-id>` for final check
 

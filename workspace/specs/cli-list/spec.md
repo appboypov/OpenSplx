@@ -21,19 +21,14 @@ The command SHALL scan and analyze either active changes or specs based on the s
 - **AND** parse requirements to compute requirement counts
 
 ### Requirement: Task Counting
-
-The command SHALL accurately count task completion status by aggregating across all task files in the `tasks/` directory, ignoring checkboxes under Constraints and Acceptance Criteria sections.
+The command SHALL accurately count task completion status by treating each task file as one task; a task file is complete only when it contains no unchecked markdown checkboxes.
 
 #### Scenario: Counting tasks in tasks directory
-
 - **WHEN** parsing a change's task files
 - **THEN** scan the `tasks/` directory for files matching `NNN-*.md` pattern
-- **AND** count tasks in each file matching these patterns:
-  - Completed: Lines containing `- [x]`
-  - Incomplete: Lines containing `- [ ]`
-- **AND** ignore checkboxes under `## Constraints` header
-- **AND** ignore checkboxes under `## Acceptance Criteria` header
-- **AND** calculate aggregate total as sum of all task files' completed and incomplete counts
+- **AND** treat each file as exactly one task
+- **AND** mark the task complete only when the file contains zero unchecked markdown checkboxes (`- [ ]`) anywhere in the file
+- **AND** compute aggregate totals by counting completed vs incomplete task files
 
 ### Requirement: Output Format
 The command SHALL display items in a clear, readable table format with mode-appropriate progress or counts, including tracked issue references when available.
