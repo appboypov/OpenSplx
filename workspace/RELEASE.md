@@ -19,8 +19,8 @@ emoji_level: none
 - `src/cli/index.ts` — CLI command definitions, flags, descriptions
 - `src/commands/*.ts` — command implementations with help text/hints (14 files)
 - `src/core/completions/command-registry.ts` — shell completion metadata
-- `src/core/templates/slash-command-templates.ts` — slash command content
-- `src/core/templates/agents-template.ts` — AGENTS.md CLI reference
+- `assets/templates/slash-commands/*.md` — slash command content (loaded at runtime)
+- `assets/templates/workspace/agents.md` — AGENTS.md template
 - `src/core/configurators/slash/*.ts` — AI tool configurators (20 files)
 
 ### Derived Artifacts

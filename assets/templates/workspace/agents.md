@@ -365,22 +365,8 @@ Task templates are Markdown files stored in `workspace/templates/` that define r
 3. User templates automatically override built-in templates with the same type
 4. When creating tasks, you can reference any available type in the `type:` field
 
-**Built-in Types** (12 templates provided by default):
-
-| Type | Title Format | Purpose |
-|------|-------------|---------|
-| story | ✨ <Actor> is able to <capability> | User-facing features with business value |
-| bug | 🐞 <Thing> fails when <condition> | Bug fixes restoring intended behavior |
-| business-logic | ⚙️ <Feature> business logic | ViewModels, Services, APIs, DTOs, tests |
-| components | 🧩 <Feature> UI components | Stateless UI components and widgets |
-| research | 🔬 Investigate <unknown> | Best practices research and package evaluation |
-| discovery | 💡 Explore <idea> | Idea exploration and problem validation |
-| chore | 🧹 <Verb> <thing> | Maintenance, cleanup, housekeeping |
-| refactor | 🧱 Refactor <component> to <goal> | Code restructuring without behavior changes |
-| infrastructure | 🏗️ Set up <infrastructure> | CI/CD, deployment, hosting, DevOps |
-| documentation | 📄 Document <thing> | READMEs, API docs, architecture guides |
-| release | 🚀 Prepare release v<version> | Version bumping, changelog, release prep |
-| implementation | 🔧 Wire <feature> to business logic | Integration work wiring components to logic |
+**Built-in Types:**
+Browse `workspace/templates/` to see all available task types. Each template file contains its title format, purpose, and structure. Run `ls workspace/templates/*.md` to list them.
 
 **Creating Custom Templates:**
 When no built-in template matches your use case, propose a new type:

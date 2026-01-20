@@ -1,6 +1,6 @@
 # OpenSplx Changelog
 
-## 0.20.0 - 2026-01-19
+## 0.20.0 - 2026-01-20
 
 ### Changed
 
@@ -9,6 +9,10 @@
   - Templates are now editable without recompilation
   - Organized by category: workspace, task-types, entities, slash-commands
   - Template caching improves performance on repeated access
+  - `template-discovery.ts` now loads built-in templates from `assets/templates/task-types/` instead of hardcoding ~1275 lines
+- **AGENTS.md references templates**: Task types documentation now references `workspace/templates/` instead of embedding a static table
+  - Ensures documentation stays in sync with actual templates
+  - Single source of truth for task type information
 - **Slash command context optimization**: Removed automatic file linking to reduce context waste
   - Removed `@workspace/ARCHITECTURE.md` auto-linking from slash commands
   - Converted `@workspace/AGENTS.md` to plain text reference `workspace/AGENTS.md`
