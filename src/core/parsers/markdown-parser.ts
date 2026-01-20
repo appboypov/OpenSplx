@@ -14,6 +14,8 @@ export interface Frontmatter {
   status?: string;
   archivedAt?: string;
   specUpdatesApplied?: boolean;
+  type?: string;
+  blockedBy?: string[];
   raw?: Record<string, unknown>;
 }
 
@@ -162,8 +164,10 @@ export class MarkdownParser {
   private static parseSimpleYaml(lines: string[]): Frontmatter {
     const result: Frontmatter = { raw: {} };
     const trackedIssues: TrackedIssue[] = [];
+    const blockedBy: string[] = [];
 
     let inTrackedIssues = false;
+    let inBlockedBy = false;
     let currentIssue: Partial<TrackedIssue> | null = null;
 
     for (const line of lines) {
@@ -176,9 +180,25 @@ export class MarkdownParser {
 
         if (key === 'tracked-issues') {
           inTrackedIssues = true;
+          inBlockedBy = false;
+          continue;
+        } else if (key === 'blocked-by') {
+          inBlockedBy = true;
+          inTrackedIssues = false;
+          currentIssue = null;
+
+          // Handle inline array format: blocked-by: [item1, item2]
+          if (value.startsWith('[') && value.endsWith(']')) {
+            const items = value.slice(1, -1).split(',').map(item => item.trim()).filter(item => item);
+            if (items.length > 0) {
+              result.blockedBy = items;
+            }
+            inBlockedBy = false;
+          }
           continue;
         } else {
           inTrackedIssues = false;
+          inBlockedBy = false;
           currentIssue = null;
         }
 
@@ -186,6 +206,19 @@ export class MarkdownParser {
           result.parentType = value;
         } else if (key === 'parent-id' && value) {
           result.parentId = value;
+        } else if (key === 'type' && value) {
+          result.type = value;
+        }
+      }
+
+      // Handle multi-line blocked-by array
+      if (inBlockedBy) {
+        const arrayItemMatch = line.match(/^\s+-\s+(.+)$/);
+        if (arrayItemMatch) {
+          const item = arrayItemMatch[1].trim().replace(/^["']|["']$/g, '');
+          if (item) {
+            blockedBy.push(item);
+          }
         }
       }
 
@@ -216,6 +249,10 @@ export class MarkdownParser {
 
     if (trackedIssues.length > 0) {
       result.trackedIssues = trackedIssues;
+    }
+
+    if (blockedBy.length > 0) {
+      result.blockedBy = blockedBy;
     }
 
     return result;

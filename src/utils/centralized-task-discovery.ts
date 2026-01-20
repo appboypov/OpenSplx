@@ -14,6 +14,8 @@ import {
   parseTaskParentInfo,
   parseStatus,
   parseSkillLevel,
+  parseType,
+  parseBlockedBy,
   completeImplementationChecklist,
   TaskStatus,
   SkillLevel,
@@ -29,6 +31,8 @@ export interface DiscoveredTask {
   skillLevel?: SkillLevel;
   parentType?: ParentType;
   parentId?: string;
+  type?: string;
+  blockedBy?: string[];
 }
 
 export interface TaskDiscoveryResult {
@@ -115,6 +119,10 @@ export async function discoverTasks(
           continue;
         }
 
+        // Parse optional type and blocked-by fields
+        const type = parseType(content);
+        const blockedBy = parseBlockedBy(content);
+
         // Parse filename with parent hint
         const parsed = parseTaskFilename(filename, !!parentId);
         if (!parsed) continue;
@@ -129,6 +137,8 @@ export async function discoverTasks(
           skillLevel,
           parentType,
           parentId,
+          type,
+          blockedBy,
         });
       } catch {
         // Skip files that can't be read

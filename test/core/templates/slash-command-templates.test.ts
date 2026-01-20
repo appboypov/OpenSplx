@@ -9,6 +9,12 @@ describe('slash-command-templates', () => {
       expect(result.length).toBeGreaterThan(0);
     });
 
+    it('returns non-empty content for sync-tasks', () => {
+      const result = TemplateManager.getSlashCommandBody('sync-tasks');
+      expect(typeof result).toBe('string');
+      expect(result.length).toBeGreaterThan(0);
+    });
+
     it('returns non-empty content for complete-task', () => {
       const result = TemplateManager.getSlashCommandBody('complete-task');
       expect(typeof result).toBe('string');
@@ -133,6 +139,14 @@ describe('slash-command-templates', () => {
       const result = TemplateManager.getSlashCommandBody('review');
       expect(typeof result).toBe('string');
       expect(result.length).toBeGreaterThan(0);
+    });
+
+    it('plan-proposal includes template reading step', () => {
+      const result = TemplateManager.getSlashCommandBody('plan-proposal');
+      expect(result).toContain('Read all task templates in `workspace/templates/`');
+      expect(result).toContain('workspace/AGENTS.md');
+      expect(result).toContain('type, blocked-by fields');
+      expect(result).toContain('blocked-by:');
     });
   });
 });

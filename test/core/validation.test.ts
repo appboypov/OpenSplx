@@ -632,4 +632,166 @@ Just a simple task file.`;
       expect(report.issues[0].message).toContain('missing skill-level');
     });
   });
+
+  describe('validateChangeTaskTypes', () => {
+    it('should warn about missing type', async () => {
+      const changeDir = path.join(testDir, 'test-change-type-missing');
+      const tasksDir = path.join(changeDir, 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
+
+      // Task without type
+      const taskContent = `---
+status: to-do
+---
+
+# Task without type`;
+
+      await fs.writeFile(path.join(tasksDir, '001-test-task.md'), taskContent);
+
+      const validator = new Validator();
+      const report = await validator.validateChangeTaskTypes(changeDir);
+
+      expect(report.valid).toBe(true); // Missing type is WARNING, not ERROR
+      expect(report.summary.warnings).toBe(1);
+      expect(report.issues[0].level).toBe('WARNING');
+      expect(report.issues[0].message).toContain('no type specified');
+    });
+
+    it('should error on unknown type', async () => {
+      const changeDir = path.join(testDir, 'test-change-type-unknown');
+      const tasksDir = path.join(changeDir, 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
+
+      // Task with unknown type
+      const taskContent = `---
+status: to-do
+type: foobar
+---
+
+# Task with unknown type`;
+
+      await fs.writeFile(path.join(tasksDir, '001-test-task.md'), taskContent);
+
+      const validator = new Validator();
+      const report = await validator.validateChangeTaskTypes(changeDir);
+
+      expect(report.valid).toBe(false); // Unknown type is ERROR
+      expect(report.summary.errors).toBe(1);
+      expect(report.issues[0].level).toBe('ERROR');
+      expect(report.issues[0].message).toContain('Unknown task type');
+      expect(report.issues[0].message).toContain('foobar');
+      expect(report.issues[0].message).toContain('Available types:');
+    });
+
+    it('should pass with valid built-in type', async () => {
+      const changeDir = path.join(testDir, 'test-change-type-valid');
+      const tasksDir = path.join(changeDir, 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
+
+      // Task with valid built-in type
+      const taskContent = `---
+status: to-do
+type: story
+---
+
+# Task with valid type`;
+
+      await fs.writeFile(path.join(tasksDir, '001-test-task.md'), taskContent);
+
+      const validator = new Validator();
+      const report = await validator.validateChangeTaskTypes(changeDir);
+
+      expect(report.valid).toBe(true);
+      expect(report.summary.errors).toBe(0);
+      expect(report.summary.warnings).toBe(0);
+    });
+
+    it('should pass with all built-in types', async () => {
+      const changeDir = path.join(testDir, 'test-change-type-builtin-types');
+      const tasksDir = path.join(changeDir, 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
+
+      const builtInTypes = ['story', 'bug', 'business-logic', 'components', 'research', 'discovery', 'chore', 'refactor', 'infrastructure', 'documentation', 'release', 'implementation'];
+
+      for (let i = 0; i < builtInTypes.length; i++) {
+        const type = builtInTypes[i];
+        const taskContent = `---
+status: to-do
+type: ${type}
+---
+
+# Task with ${type} type`;
+
+        await fs.writeFile(path.join(tasksDir, `${String(i + 1).padStart(3, '0')}-test-${type}.md`), taskContent);
+      }
+
+      const validator = new Validator();
+      const report = await validator.validateChangeTaskTypes(changeDir);
+
+      expect(report.valid).toBe(true);
+      expect(report.summary.errors).toBe(0);
+      expect(report.summary.warnings).toBe(0);
+    });
+
+    it('should handle missing tasks directory gracefully', async () => {
+      const changeDir = path.join(testDir, 'test-change-type-no-tasks');
+      await fs.mkdir(changeDir, { recursive: true });
+      // No tasks directory created
+
+      const validator = new Validator();
+      const report = await validator.validateChangeTaskTypes(changeDir);
+
+      expect(report.valid).toBe(true);
+      expect(report.summary.warnings).toBe(0);
+      expect(report.summary.errors).toBe(0);
+    });
+
+    it('should handle tasks without frontmatter', async () => {
+      const changeDir = path.join(testDir, 'test-change-type-no-frontmatter');
+      const tasksDir = path.join(changeDir, 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
+
+      // Task without frontmatter
+      const taskContent = `# Task without frontmatter
+
+Just a simple task file.`;
+
+      await fs.writeFile(path.join(tasksDir, '001-test-task.md'), taskContent);
+
+      const validator = new Validator();
+      const report = await validator.validateChangeTaskTypes(changeDir);
+
+      expect(report.valid).toBe(true); // Missing type is WARNING
+      expect(report.summary.warnings).toBe(1);
+      expect(report.issues[0].message).toContain('no type specified');
+    });
+
+    it('should list available types in error message', async () => {
+      const changeDir = path.join(testDir, 'test-change-type-list-available');
+      const tasksDir = path.join(changeDir, 'tasks');
+      await fs.mkdir(tasksDir, { recursive: true });
+
+      // Task with unknown type
+      const taskContent = `---
+status: to-do
+type: invalid-type
+---
+
+# Task with invalid type`;
+
+      await fs.writeFile(path.join(tasksDir, '001-test-task.md'), taskContent);
+
+      const validator = new Validator();
+      const report = await validator.validateChangeTaskTypes(changeDir);
+
+      expect(report.valid).toBe(false);
+      expect(report.summary.errors).toBe(1);
+      const errorMessage = report.issues[0].message;
+
+      // Should list some built-in types
+      expect(errorMessage).toContain('story');
+      expect(errorMessage).toContain('bug');
+      expect(errorMessage).toContain('business-logic');
+    });
+  });
 });

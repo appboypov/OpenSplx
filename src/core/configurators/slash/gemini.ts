@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.gemini/commands/splx/refine-review.toml',
   'refine-testing': '.gemini/commands/splx/refine-testing.toml',
   'review': '.gemini/commands/splx/review.toml',
+  'sync-tasks': '.gemini/commands/splx/sync-tasks.toml',
   'sync-workspace': '.gemini/commands/splx/sync-workspace.toml',
   'test': '.gemini/commands/splx/test.toml',
   'undo-task': '.gemini/commands/splx/undo-task.toml'
@@ -46,6 +47,7 @@ const DESCRIPTIONS: Record<SlashCommandId, string> = {
   'refine-review': 'Create or update REVIEW.md.',
   'refine-testing': 'Create or update TESTING.md.',
   'review': 'Review implementations against specs, changes, or tasks.',
+  'sync-tasks': 'Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).',
   'sync-workspace': 'Scan workspace state and suggest maintenance actions.',
   'test': 'Run tests based on scope (change, task, or spec) using TESTING.md configuration.',
   'undo-task': 'Revert a task to to-do.'

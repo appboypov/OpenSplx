@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.clinerules/workflows/splx-refine-review.md',
   'refine-testing': '.clinerules/workflows/splx-refine-testing.md',
   'review': '.clinerules/workflows/splx-review.md',
+  'sync-tasks': '.clinerules/workflows/splx-sync-tasks.md',
   'sync-workspace': '.clinerules/workflows/splx-sync-workspace.md',
   'test': '.clinerules/workflows/splx-test.md',
   'undo-task': '.clinerules/workflows/splx-undo-task.md'
@@ -84,6 +85,9 @@ Create or update TESTING.md.`,
   'review': `# PLX: Review
 
 Review implementations against specs, changes, or tasks.`,
+  'sync-tasks': `# PLX: Sync Tasks
+
+Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).`,
   'sync-workspace': `# PLX: Sync Workspace
 
 Scan workspace state and suggest maintenance actions.`,

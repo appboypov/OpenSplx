@@ -23,6 +23,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.opencode/command/splx-refine-review.md',
   'refine-testing': '.opencode/command/splx-refine-testing.md',
   'review': '.opencode/command/splx-review.md',
+  'sync-tasks': '.opencode/command/splx-sync-tasks.md',
   'sync-workspace': '.opencode/command/splx-sync-workspace.md',
   'test': '.opencode/command/splx-test.md',
   'undo-task': '.opencode/command/splx-undo-task.md'
@@ -145,6 +146,12 @@ $ARGUMENTS`,
   'review': `---
 description: Review implementations against specs, changes, or tasks.
 argument-hint: (optional context)
+---
+
+$ARGUMENTS`,
+  'sync-tasks': `---
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
+argument-hint: change-id
 ---
 
 $ARGUMENTS`,

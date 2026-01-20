@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.crush/commands/splx/refine-review.md',
   'refine-testing': '.crush/commands/splx/refine-testing.md',
   'review': '.crush/commands/splx/review.md',
+  'sync-tasks': '.crush/commands/splx/sync-tasks.md',
   'sync-workspace': '.crush/commands/splx/sync-workspace.md',
   'test': '.crush/commands/splx/test.md',
   'undo-task': '.crush/commands/splx/undo-task.md'
@@ -140,6 +141,12 @@ name: Review
 description: Review implementations against specs, changes, or tasks.
 category: OpenSplx
 tags: [splx, review, workflow]
+---`,
+  'sync-tasks': `---
+name: Sync Tasks
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
+category: OpenSplx
+tags: [splx, sync, external, mcp]
 ---`,
   'sync-workspace': `---
 name: Sync Workspace

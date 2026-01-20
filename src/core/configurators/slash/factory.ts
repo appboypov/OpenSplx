@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.factory/commands/splx-refine-review.md',
   'refine-testing': '.factory/commands/splx-refine-testing.md',
   'review': '.factory/commands/splx-review.md',
+  'sync-tasks': '.factory/commands/splx-sync-tasks.md',
   'sync-workspace': '.factory/commands/splx-sync-workspace.md',
   'test': '.factory/commands/splx-test.md',
   'undo-task': '.factory/commands/splx-undo-task.md'
@@ -102,6 +103,10 @@ argument-hint: (optional context)
   'review': `---
 description: Review implementations against specs, changes, or tasks.
 argument-hint: (optional context)
+---`,
+  'sync-tasks': `---
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
+argument-hint: change-id
 ---`,
   'sync-workspace': `---
 description: Scan workspace state and suggest maintenance actions.

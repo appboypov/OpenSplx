@@ -21,6 +21,7 @@ const FILE_PATHS: Record<SlashCommandId, string> = {
   'refine-review': '.github/prompts/splx-refine-review.prompt.md',
   'refine-testing': '.github/prompts/splx-refine-testing.prompt.md',
   'review': '.github/prompts/splx-review.prompt.md',
+  'sync-tasks': '.github/prompts/splx-sync-tasks.prompt.md',
   'sync-workspace': '.github/prompts/splx-sync-workspace.prompt.md',
   'test': '.github/prompts/splx-test.prompt.md',
   'undo-task': '.github/prompts/splx-undo-task.prompt.md'
@@ -119,6 +120,11 @@ description: Create or update TESTING.md.
 $ARGUMENTS`,
   'review': `---
 description: Review implementations against specs, changes, or tasks.
+---
+
+$ARGUMENTS`,
+  'sync-tasks': `---
+description: Sync tasks with external project management tools via MCPs (Linear, GitHub, Jira).
 ---
 
 $ARGUMENTS`,

@@ -1,7 +1,7 @@
 import path from 'path';
 import chalk from 'chalk';
 import ora from 'ora';
-import { TemplateManager } from '../core/templates/index.js';
+import { TemplateManager, getAvailableTypes } from '../core/templates/index.js';
 import { getFilteredWorkspaces } from '../utils/workspace-filter.js';
 import { FileSystemUtils } from '../utils/file-system.js';
 import { buildTaskFilename } from '../utils/task-file-parser.js';
@@ -42,6 +42,39 @@ export class CreateCommand {
       }
       process.exitCode = 1;
       return;
+    }
+
+    // Validate type if provided
+    if (options.type) {
+      // Determine the workspace in which the task will be created.
+      // If the parent ID is prefixed with a project name (e.g. "project-a/change-name"),
+      // prefer the workspace whose projectName matches that prefix.
+      let workspaceForTask = workspaces[0];
+      if (options.parentId) {
+        const slashIndex = options.parentId.indexOf('/');
+        if (slashIndex > 0) {
+          const projectPrefix = options.parentId.substring(0, slashIndex);
+          const matchedWorkspace = workspaces.find(ws => ws.projectName === projectPrefix);
+          if (matchedWorkspace) {
+            workspaceForTask = matchedWorkspace;
+          }
+        }
+      }
+
+      const availableTypes = await getAvailableTypes(workspaceForTask.path);
+      const typeExists = availableTypes.some(t => t.type === options.type);
+      if (!typeExists) {
+        const typeList = availableTypes.map(t => t.type).join(', ');
+        if (options.json) {
+          console.log(JSON.stringify({
+            error: `Unknown task type '${options.type}'. Available types: ${typeList}`
+          }));
+        } else {
+          ora().fail(`Unknown task type '${options.type}'. Available types: ${typeList}`);
+        }
+        process.exitCode = 1;
+        return;
+      }
     }
 
     if (!options.parentId) {

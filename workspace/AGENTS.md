@@ -311,11 +311,11 @@ Each task file has two parts:
 status: to-do
 skill-level: junior|medior|senior
 parent-type: change
-parent-id: <change-id>
-type: <template-type>
+parent-id: add-feature
+type: implementation
 blocked-by:
-  - <task-id-1>
-  - <task-id-2>
+  - 001-add-feature-components
+  - 002-add-feature-business-logic
 ---
 ```
 

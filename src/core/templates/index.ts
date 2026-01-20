@@ -64,6 +64,7 @@ export type SlashCommandId =
   | 'refine-review'
   | 'refine-testing'
   | 'review'
+  | 'sync-tasks'
   | 'sync-workspace'
   | 'test'
   | 'undo-task';
@@ -274,3 +275,12 @@ export { KNOWN_TEMPLATE_TYPES, isValidTemplateType } from '../../utils/task-util
 export function getTaskTypeTemplate(type: string): TaskTypeTemplate | undefined {
   return TemplateManager.getTaskTypeTemplate(type);
 }
+
+// Template discovery exports
+export {
+  discoverTemplates,
+  getBuiltInTemplates,
+  getAvailableTypes,
+  getTemplateByType,
+  type TemplateInfo,
+} from './template-discovery.js';

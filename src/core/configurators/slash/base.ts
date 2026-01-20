@@ -28,6 +28,7 @@ const ALL_COMMANDS: SlashCommandId[] = [
   'refine-review',
   'refine-testing',
   'review',
+  'sync-tasks',
   'sync-workspace',
   'test',
   'undo-task'
